@@ -72,7 +72,7 @@ def add_fault_limit(p, max_faults):
                                    parser.And(map(parser.Primitive, [started, p.faults[0]]))))
 
 
-def pick_faulty_outcome(p, action, precond):
+def pick_faulty_outcome(p, action, addeffect):
     effs = filter(lambda eff: not eff.faulty, action.effect.args)
     if len(effs) < 1:
         print "Error: No more normal effects to become faulty."
@@ -96,13 +96,13 @@ def pick_faulty_outcome(p, action, precond):
 
     eff = effs[outcome_choice]
 
-    make_outcome_faulty(p, eff, precond)
+    make_outcome_faulty(p, eff, addeffect)
 
     print "Done..."
     return
 
 
-def make_outcome_faulty(p, eff, precond):
+def make_outcome_faulty(p, eff, addeffect):
     eff.faulty = True
     assert isinstance(eff, parser.And)
 
@@ -110,7 +110,7 @@ def make_outcome_faulty(p, eff, precond):
     eff.args = []
 
     eff.args.append(parser.When(parser.Not([parser.Primitive(p.faults[-1])]), old_effect))
-    if precond:
+    if addeffect:
         for i in range(p.max_faults):
             eff.args.append(parser.When(parser.Primitive(p.faults[i]),
                                     parser.And([parser.Primitive(p.faults[i+1]), old_effect,
@@ -260,28 +260,6 @@ def convert(dom_name):
         elif 8 == next_action:
             print
             return
-
-        elif 9 == next_action:
-            print
-            if -1 == p.max_faults:
-                print "Error: You must first set the maximum number of faults."
-                continue
-
-            suitable_actions = filter(action_valid, p.actions)
-
-            if not suitable_actions:
-                print "Error: No actions available to make faulty."
-                continue
-
-            action_choice = get_choice('Which action?', [a.name for a in suitable_actions])
-            action = p.actions[action_choice]
-
-            if not isinstance(action.effect, parser.Oneof):
-                print "Error: You can only make non-deterministic effects faulty."
-            else:
-                pick_faulty_outcome(p, action)
-
-
 
 
 if __name__ == '__main__':
