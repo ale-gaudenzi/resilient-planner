@@ -1,6 +1,5 @@
-
-import readline, sys
-
+import readline
+import sys
 from fondparser import parser
 from normalizer import normalize
 
@@ -73,7 +72,7 @@ def add_fault_limit(p, max_faults):
                                    parser.And(map(parser.Primitive, [started, p.faults[0]]))))
 
 
-def pick_faulty_outcome(p, action):
+def pick_faulty_outcome(p, action, precond):
     effs = filter(lambda eff: not eff.faulty, action.effect.args)
     if len(effs) < 1:
         print "Error: No more normal effects to become faulty."
@@ -97,13 +96,13 @@ def pick_faulty_outcome(p, action):
 
     eff = effs[outcome_choice]
 
-    make_outcome_faulty(p, eff)
+    make_outcome_faulty(p, eff, precond)
 
     print "Done..."
     return
 
 
-def make_outcome_faulty(p, eff):
+def make_outcome_faulty(p, eff, precond):
     eff.faulty = True
     assert isinstance(eff, parser.And)
 
@@ -111,9 +110,15 @@ def make_outcome_faulty(p, eff):
     eff.args = []
 
     eff.args.append(parser.When(parser.Not([parser.Primitive(p.faults[-1])]), old_effect))
+    if precond:
+        for i in range(p.max_faults):
+            eff.args.append(parser.When(parser.Primitive(p.faults[i]),
+                                    parser.And([parser.Primitive(p.faults[i+1]), old_effect,
+                                                parser.Not([parser.Primitive(p.faults[i])])])))
 
-    for i in range(p.max_faults):
-        eff.args.append(parser.When(parser.Primitive(p.faults[i]),
+    else:
+        for i in range(p.max_faults):
+            eff.args.append(parser.When(parser.Primitive(p.faults[i]),
                                     parser.And([parser.Primitive(p.faults[i+1]),
                                                 parser.Not([parser.Primitive(p.faults[i])])])))
 
@@ -146,12 +151,12 @@ def convert(dom_name):
                                  ['See the list of actions',   # 0
                                   'Set the maximum number of faults', # 1
                                   'Identify a faulty outcome', # 2
-                                  'Make the domain 1-primary normative\n     (i.e., exactly 1 normal outcome per action)', # 3
+                                  'Make the domain 1-primary normative\n(i.e., exactly 1 normal outcome per action)',#3
                                   'Show domain statistics', # 4
                                   'Print the domain', # 5
                                   'Save the domain',  # 6
                                   'Reload the domain',# 7
-                                  'Quit'])            # 8
+                                  'Quit', ])#8
 
         if 0 == next_action:
             print
@@ -159,6 +164,7 @@ def convert(dom_name):
             for a in p.actions:
                 print " - %s" % a.name
             print
+
         elif 1 == next_action:
             print
             if -1 != p.max_faults:
@@ -173,6 +179,7 @@ def convert(dom_name):
                         add_fault_limit(p, choice)
                 except ValueError:
                     print "\nError: You must select a number for max faults (%s)" % str(answer)
+
         elif 2 == next_action:
             print
             if -1 == p.max_faults:
@@ -191,7 +198,14 @@ def convert(dom_name):
             if not isinstance(action.effect, parser.Oneof):
                 print "Error: You can only make non-deterministic effects faulty."
             else:
-                pick_faulty_outcome(p, action)
+                next_action = get_choice('Do you want to add the effect anyway if faulty? (usually for deactivating precondition)',
+                                         ['Yes',  # 0
+                                          'No', ])  # 1
+                if 0 == next_action:
+                    pick_faulty_outcome(p, action, True)
+                elif 1 == next_action:
+                    pick_faulty_outcome(p, action, False)
+
         elif 3 == next_action:
             print
             if -1 == p.max_faults:
@@ -218,23 +232,56 @@ def convert(dom_name):
 
                     for i in range(len(effs)):
                         if i != outcome_choice:
-                            make_outcome_faulty(p, effs[i])
+                            next_action = get_choice(
+                                'Do you want to add the effect anyway if faulty? (usually for deactivating precondition)',
+                                ['Yes',  # 0
+                                 'No', ])  # 1
+                            if 0 == next_action:
+                                make_outcome_faulty(p, effs[i], True)
+                            elif 1 == next_action:
+                                make_outcome_faulty(p, effs[i], False)
 
         elif 4 == next_action:
             print_domain_stats(p)
+
         elif 5 == next_action:
             print "\n\n-----------------\n"
             p._export_domain(sys.stdout)
             print "\n\n-----------------\n"
+
         elif 6 == next_action:
             print
             answer = raw_input("What filename would you like to use? ")
             p.export(answer, '')
+
         elif 7 == next_action:
             p = load_problem(dom_name)
+
         elif 8 == next_action:
             print
             return
+
+        elif 9 == next_action:
+            print
+            if -1 == p.max_faults:
+                print "Error: You must first set the maximum number of faults."
+                continue
+
+            suitable_actions = filter(action_valid, p.actions)
+
+            if not suitable_actions:
+                print "Error: No actions available to make faulty."
+                continue
+
+            action_choice = get_choice('Which action?', [a.name for a in suitable_actions])
+            action = p.actions[action_choice]
+
+            if not isinstance(action.effect, parser.Oneof):
+                print "Error: You can only make non-deterministic effects faulty."
+            else:
+                pick_faulty_outcome(p, action)
+
+
 
 
 if __name__ == '__main__':
