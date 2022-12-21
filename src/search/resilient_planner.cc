@@ -10,7 +10,7 @@
 #include "policy-repair/policy.h"
 #include "policy-repair/jit.h"
 #include "policy-repair/partial_state.h"
-
+#include "resilient_state.h"
 
 #include <iostream>
 #include <list>
@@ -159,7 +159,9 @@ int main(int argc, const char **argv) {
     set<ResilientState> resilient_states;
     set<ResilientState> deadends;
     stack<ResilientState> nodes;
-    
+
+
+
 
     g_timer_jit.stop();
 

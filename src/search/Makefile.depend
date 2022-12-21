@@ -20,7 +20,7 @@
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h \
- policy-repair/simulator.h policy-repair/jit.h
+ policy-repair/simulator.h policy-repair/jit.h resilient_state.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -429,10 +429,9 @@
  int_packer.h segmented_vector.h utilities.h state.h state_id.h axioms.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h \
  per_state_information.h
-.obj/resilient_state.release.o: resilient_state.cc resilient_state.h int_packer.h \
- state_id.h state.h state_registry.h globals.h segmented_vector.h \
- utilities.h operator.h policy-repair/partial_state.h \
- policy-repair/../state.h
+.obj/resilient_state.release.o: resilient_state.cc resilient_state.h operator.h \
+ globals.h policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h utilities.h
 .obj/successor_generator.release.o: successor_generator.cc globals.h operator.h \
  policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h state.h \
@@ -1554,7 +1553,7 @@
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h \
- policy-repair/simulator.h policy-repair/jit.h
+ policy-repair/simulator.h policy-repair/jit.h resilient_state.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -1963,10 +1962,9 @@
  int_packer.h segmented_vector.h utilities.h state.h state_id.h axioms.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h \
  per_state_information.h
-.obj/resilient_state.debug.o: resilient_state.cc resilient_state.h int_packer.h \
- state_id.h state.h state_registry.h globals.h segmented_vector.h \
- utilities.h operator.h policy-repair/partial_state.h \
- policy-repair/../state.h
+.obj/resilient_state.debug.o: resilient_state.cc resilient_state.h operator.h \
+ globals.h policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h utilities.h
 .obj/successor_generator.debug.o: successor_generator.cc globals.h operator.h \
  policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h state.h \
@@ -3088,7 +3086,7 @@
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h \
- policy-repair/simulator.h policy-repair/jit.h
+ policy-repair/simulator.h policy-repair/jit.h resilient_state.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -3497,10 +3495,9 @@
  int_packer.h segmented_vector.h utilities.h state.h state_id.h axioms.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h \
  per_state_information.h
-.obj/resilient_state.profile.o: resilient_state.cc resilient_state.h int_packer.h \
- state_id.h state.h state_registry.h globals.h segmented_vector.h \
- utilities.h operator.h policy-repair/partial_state.h \
- policy-repair/../state.h
+.obj/resilient_state.profile.o: resilient_state.cc resilient_state.h operator.h \
+ globals.h policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h utilities.h
 .obj/successor_generator.profile.o: successor_generator.cc globals.h operator.h \
  policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h state.h \

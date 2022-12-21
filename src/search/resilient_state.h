@@ -1,32 +1,27 @@
 #ifndef RESILIENT_STATE_H
 #define RESILIENT_STATE_H
 
-#include "int_packer.h"
-#include "state_id.h"
-#include "state.h"
-#include "state_registry.h"
 #include "operator.h"
-#include <iostream>
-#include <vector>
+#include "policy-repair/partial_state.h"
+
 #include <set>
 
 using namespace std;
 
 typedef IntPacker::Bin PackedStateBin;
 
-class ResilientState : public State {
+class ResilientState : public PartialState {
     friend class StateRegistry;
     int k;
     std::set<Operator> forbidden_op;
 
     ResilientState();
 
-    ResilientState(const State &state_, int k_, std::set<Operator> forbidden_op_);
+    ResilientState(const PartialState &partial_state_, int k_, std::set<Operator> forbidden_op_);
 
 public:
 
-    int get_k() const
-    {
+    int get_k() const {
         return k;
     }
 
