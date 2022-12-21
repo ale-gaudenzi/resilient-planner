@@ -15,6 +15,7 @@ class LegacyCausalGraph;
 class Operator;
 class RandomNumberGenerator;
 class State;
+class ResilientState;
 class PartialState;
 class Heuristic;
 class SuccessorGenerator;

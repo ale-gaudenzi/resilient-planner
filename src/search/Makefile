@@ -45,6 +45,7 @@ HEADERS = \
           state.h \
           state_id.h \
           state_registry.h \
+          resilient_state.h \
           successor_generator.h \
           sum_evaluator.h \
           timer.h \
@@ -130,7 +131,8 @@ HEADERS += policy-repair/regression.h \
 
 SHELL = /bin/bash
 
-SOURCES = planner.cc $(HEADERS:%.h=%.cc)
+#SOURCES = planner.cc $(HEADERS:%.h=%.cc)
+SOURCES = resilient_planner.cc $(HEADERS:%.h=%.cc)
 TARGET  = downward
 
 ARGS_PROFILE = --search 'astar(lmcut())' < profile-input.pre

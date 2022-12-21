@@ -11,6 +11,7 @@ using namespace std;
 class Operator;
 class StateInterface;
 
+
 class PartialState : public StateInterface {
     int *vars; // values for vars
     void _allocate();

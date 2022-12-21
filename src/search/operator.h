@@ -9,7 +9,6 @@
 #include <vector>
 
 #include "globals.h"
-#include "state.h"
 #include "policy-repair/partial_state.h"
 
 /****************************************************************
