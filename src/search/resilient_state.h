@@ -17,9 +17,12 @@ class ResilientState : public PartialState {
 
     ResilientState();
 
-    ResilientState(const PartialState &partial_state_, int k_, std::set<Operator> forbidden_op_);
 
 public:
+    ResilientState(const PartialState &partial_state_, int k_, std::set<Operator> forbidden_op_);
+    ResilientState(const PartialState &partial_state_);
+
+    void dump() const;
 
     int get_k() const {
         return k;

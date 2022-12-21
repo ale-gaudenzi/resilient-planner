@@ -34,7 +34,6 @@ struct PolicyItem {
     }
 
     int generality();
-
 };
 
 struct NondetDeadend : PolicyItem {

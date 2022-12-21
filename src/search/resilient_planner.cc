@@ -148,9 +148,13 @@ int main(int argc, const char **argv) {
     g_policy->update_policy(regression_steps);
     g_best_policy = g_policy;
     g_best_policy_score = g_policy->get_score();
-    
-    if (g_sample_for_depth1_deadends)
-        sample_for_depth1_deadends(engine->get_plan(), new PartialState(g_initial_state()));
+
+    cout << "--------------" << endl;
+    cout << "INITIAL POLICY" << endl;
+    g_policy->dump();
+    cout << "--------------" << endl;
+
+    if (g_sample_for_depth1_deadends) sample_for_depth1_deadends(engine->get_plan(), new PartialState(g_initial_state()));
 
     /*********************
      * Main for cycle?   *
@@ -160,8 +164,17 @@ int main(int argc, const char **argv) {
     set<ResilientState> deadends;
     stack<ResilientState> nodes;
 
+    for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter) {
+        PolicyItem *item = *op_iter;
+        ResilientState res_state = ResilientState(*item->state);
+        res_state.dump();
+        nodes.push(res_state);
+    }
 
+    while(!nodes.empty()) {
+        ResilientState res_state = nodes.pop();
 
+    }
 
     g_timer_jit.stop();
 
