@@ -133,12 +133,6 @@ int main(int argc, const char **argv) {
         cout << "No solution -- aborting repairs." << endl;
         exit(1);
     }
-    
-    /* simulator creation
-    cout << "\n\nCreating the simulator..." << endl;
-    Simulator *sim = new Simulator(engine, argc, argv, !g_silent_planning);
-    */
-
 
     cout << "\n\nRegressing the plan..." << endl;
     list<PolicyItem *> regression_steps = perform_regression(engine->get_plan(), g_matched_policy, 0, true);
@@ -156,13 +150,15 @@ int main(int argc, const char **argv) {
 
     if (g_sample_for_depth1_deadends) sample_for_depth1_deadends(engine->get_plan(), new PartialState(g_initial_state()));
 
-    /*********************
-     * Main for cycle?   *
-     *********************/
 
-    set<ResilientState> resilient_states;
-    set<ResilientState> deadends;
-    stack<ResilientState> nodes;
+    /******************************************/
+    
+
+
+    // in globals?
+    set<ResilientState> resilient_states; // in globals?
+    set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
+    stack<ResilientState> nodes; 
 
     for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter) {
         PolicyItem *item = *op_iter;
@@ -172,41 +168,36 @@ int main(int argc, const char **argv) {
     }
 
     while(!nodes.empty()) {
-        ResilientState res_state = nodes.pop();
+        ResilientState res_state = nodes.top(); 
+        nodes.pop();
 
+        /*
+        if(resiliency_check()) {
+            cout << "." << endl;
+        }*/
     }
 
-    g_timer_jit.stop();
 
+
+
+
+    /******************************************/
+
+    g_timer_jit.stop();
     // Use the best policy found so far
     if (g_policy && g_best_policy && (g_best_policy != g_policy)) {
         if (g_best_policy->get_score() > g_policy->get_score())
             g_policy = g_best_policy;
     }
-
-  
-    /*   FINAL SIMULATION PART
-    // Reset the deadend and scd settings for the online simulation(s)
-    g_detect_deadends = false;
-    g_generalize_deadends = false;
-    g_record_online_deadends = false;
-    g_optimized_scd = false;
-
-    cout << "\n\nRunning the simulation..." << endl;
-    g_timer_simulator.resume();
-    sim->run();
-    g_timer_simulator.stop();
-    g_timer.stop();
-    
-    cout << "\n\n" << endl;
-    sim->dump();
-    cout << "\n\n" << endl;
-    g_policy->dump();
-    cout << "\n\n" << endl;
-    */
-
     if (g_policy->is_strong_cyclic())
         exit_with(EXIT_STRONG_CYCLIC);
     else
         exit_with(EXIT_NOT_STRONG_CYCLIC);
 }
+
+// togliere dal main?
+/*
+bool resiliency_check() {
+    return false;
+}
+*/

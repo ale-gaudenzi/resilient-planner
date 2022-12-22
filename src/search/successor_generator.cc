@@ -9,6 +9,7 @@
 #include <vector>
 using namespace std;
 
+
 class SuccessorGeneratorSwitch : public SuccessorGenerator {
     int switch_var;
     SuccessorGenerator *immediate_ops;
@@ -16,16 +17,6 @@ class SuccessorGeneratorSwitch : public SuccessorGenerator {
     SuccessorGenerator *default_generator;
 public:
     SuccessorGeneratorSwitch(istream &in);
-    virtual void generate_applicable_ops(const StateInterface &curr,
-                                         vector<const Operator *> &ops,
-                                         bool keep_all = false);
-    virtual void _dump(string indent);
-};
-
-class SuccessorGeneratorGenerate : public SuccessorGenerator {
-    vector<const Operator *> op;
-public:
-    SuccessorGeneratorGenerate(istream &in);
     virtual void generate_applicable_ops(const StateInterface &curr,
                                          vector<const Operator *> &ops,
                                          bool keep_all = false);
@@ -64,11 +55,17 @@ void SuccessorGeneratorSwitch::_dump(string indent) {
     default_generator->_dump(indent + "  ");
 }
 
-void SuccessorGeneratorGenerate::generate_applicable_ops(const StateInterface &,
-                                                         vector<const Operator *> &ops,
-                                                         bool) {
-    ops.insert(ops.end(), op.begin(), op.end());
-}
+/*********************************************************/
+
+class SuccessorGeneratorGenerate : public SuccessorGenerator {
+    vector<const Operator *> op;
+public:
+    SuccessorGeneratorGenerate(istream &in);
+    virtual void generate_applicable_ops(const StateInterface &curr,
+                                         vector<const Operator *> &ops,
+                                         bool keep_all = false);
+    virtual void _dump(string indent);
+};
 
 SuccessorGeneratorGenerate::SuccessorGeneratorGenerate(istream &in) {
     int count;
@@ -80,12 +77,20 @@ SuccessorGeneratorGenerate::SuccessorGeneratorGenerate(istream &in) {
     }
 }
 
+void SuccessorGeneratorGenerate::generate_applicable_ops(const StateInterface &,
+                                                         vector<const Operator *> &ops,
+                                                         bool) {
+    ops.insert(ops.end(), op.begin(), op.end());
+}
+
 void SuccessorGeneratorGenerate::_dump(string indent) {
     for (int i = 0; i < op.size(); i++) {
         cout << indent;
         op[i]->dump();
     }
 }
+
+/*********************************************************/
 
 SuccessorGenerator *read_successor_generator(istream &in) {
     string type;

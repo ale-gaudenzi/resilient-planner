@@ -86,7 +86,7 @@ void LazySearch::initialize() {
 void LazySearch::get_successor_operators(vector<const Operator *> &ops) {
     vector<const Operator *> all_operators;
     vector<const Operator *> preferred_operators;
-
+    
     g_successor_generator->generate_applicable_ops(
         current_state, all_operators);
 

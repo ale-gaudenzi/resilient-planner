@@ -19,6 +19,8 @@ class StateInterface {
 public:
     virtual int operator[](int index) const = 0;
     virtual ~StateInterface() {};
+    //set<Operator> get_forbidden() { return ; };
+    bool is_resilient;
 };
 
 // For documentation on classes relevant to storing and working with registered

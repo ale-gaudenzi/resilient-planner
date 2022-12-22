@@ -13,23 +13,24 @@ typedef IntPacker::Bin PackedStateBin;
 class ResilientState : public PartialState {
     friend class StateRegistry;
     int k;
-    std::set<Operator> forbidden_op;
+    
+    std::set<Operator> deactivated_op;
 
     ResilientState();
 
 
 public:
-    ResilientState(const PartialState &partial_state_, int k_, std::set<Operator> forbidden_op_);
+    ResilientState(const PartialState &partial_state_, int k_, std::set<Operator> deactivated_op_);
     ResilientState(const PartialState &partial_state_);
-
+    
     void dump() const;
 
     int get_k() const {
         return k;
     }
 
-    std::set<Operator> get_forbidden_op() const {
-        return forbidden_op;
+    std::set<Operator> get_deactivated_op() const {
+        return deactivated_op;
     }
 };
 
