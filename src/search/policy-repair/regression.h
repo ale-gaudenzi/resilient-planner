@@ -72,7 +72,9 @@ struct RegressionStep : PolicyItem {
     RegressionStep * prev;
     RegressionStep * next;
 
-    RegressionStep(const Operator &o, PartialState *s, int d, RegressionStep * nxt, RegressionStep * prv = NULL) : PolicyItem(s), op(&o), distance(d), is_goal(false), is_sc(false), step_id(g_num_regsteps++), prev(prv), next(nxt) {}
+    RegressionStep(const Operator &o, PartialState *s, int d, RegressionStep * nxt, RegressionStep * prv = NULL) 
+                    : PolicyItem(s), op(&o), distance(d), is_goal(false), is_sc(false), step_id(g_num_regsteps++), prev(prv), next(nxt) {}
+                    
     RegressionStep(PartialState *s, int d) : PolicyItem(s), distance(d), is_goal(true), is_sc(false), step_id(g_num_regsteps++), prev(NULL), next(NULL) {}
 
     ~RegressionStep() {}
