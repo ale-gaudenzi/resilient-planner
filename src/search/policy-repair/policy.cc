@@ -380,6 +380,7 @@ void Policy::update_policy(list<PolicyItem *> &reg_items) {
         root->update_policy(reg_items, vars_seen);
     else
         root = new GeneratorSwitch(reg_items, vars_seen);
+        
     all_items.insert(all_items.end(), reg_items.begin(), reg_items.end());
 
     g_timer_policy_build.stop();

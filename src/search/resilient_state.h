@@ -13,14 +13,13 @@ typedef IntPacker::Bin PackedStateBin;
 class ResilientState : public PartialState {
     friend class StateRegistry;
     int k;
-    
     std::set<Operator> deactivated_op;
 
     ResilientState();
 
-
 public:
     ResilientState(const PartialState &partial_state_, int k_, std::set<Operator> deactivated_op_);
+    ResilientState(const PartialState &partial_state_, int k_);
     ResilientState(const PartialState &partial_state_);
     
     void dump() const;
@@ -32,6 +31,8 @@ public:
     std::set<Operator> get_deactivated_op() const {
         return deactivated_op;
     }
+
+    
 };
 
 #endif

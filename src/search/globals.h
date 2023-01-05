@@ -165,4 +165,7 @@ extern Timer g_timer_policy_eval;
 extern Timer g_timer_policy_use;
 extern Timer g_timer_jit;
 
+/* Resiliency */
+extern int max_faults;
+
 #endif

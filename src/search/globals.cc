@@ -533,3 +533,8 @@ Timer g_timer;
 string g_plan_filename = "sas_plan";
 RandomNumberGenerator g_rng(2011); // Use an arbitrary default seed.
 StateRegistry *g_state_registry = 0;
+
+
+/* Resiliency */
+
+int max_faults = 2; // TODO aggiungere nel comando di lancio di prp

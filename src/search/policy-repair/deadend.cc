@@ -215,6 +215,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                         ops.push_back(orig_ops[i]); 
                     }
                 }
+                
                 else {
                     ops.push_back(orig_ops[i]); 
                 }

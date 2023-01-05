@@ -18,6 +18,11 @@
 using namespace std;
 
 
+// dopo fuori dal main queste
+bool resiliency_check(ResilientState state);
+void reset_goal();
+bool compute_plan(ResilientState current_node, SearchEngine *engine);
+
 int main(int argc, const char **argv) {
     register_event_handlers();
 
@@ -113,7 +118,7 @@ int main(int argc, const char **argv) {
     
 
     /*********************
-     * Initial policy search    *
+     * Initial policy search *
      *********************/
     
     // We start the jit timer here since we should include the initial search / policy construction
@@ -157,29 +162,72 @@ int main(int argc, const char **argv) {
 
     // in globals?
     set<ResilientState> resilient_states; // in globals?
-    set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
+    //set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
     stack<ResilientState> nodes; 
 
+    // primo riempiento dello stack con la policy iniziale trovata
     for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter) {
         PolicyItem *item = *op_iter;
-        ResilientState res_state = ResilientState(*item->state);
-        res_state.dump();
-        nodes.push(res_state);
-    }
+        RegressionStep *reg_step = (RegressionStep *)&item;
 
+        ResilientState res_state = ResilientState(*reg_step->state, max_faults); // stato se azione successiva non fallisce
+
+        std::set<Operator> post_action;
+        post_action.insert(*reg_step->op);
+        ResilientState res_state_f = ResilientState(*reg_step->state, max_faults - 1, post_action); // stato se azione successiva fallisce
+
+        res_state.dump();
+        res_state_f.dump();
+        nodes.push(res_state);
+        nodes.push(res_state_f);
+    }
+    
+    // serve aggiungere stato goal a R ?
     while(!nodes.empty()) {
-        ResilientState res_state = nodes.top(); 
+        ResilientState current_node = nodes.top(); 
         nodes.pop();
 
+        if (!resiliency_check(current_node)) {
+            bool found_solution = compute_plan(current_node, engine);
+            if (!found_solution) {
+                // aggiungere nodo a deadend, dovrebbe farlo con la search in computeplan
+                // aggiungere regr a F
+            }
+            else if (current_node.get_k() >= 1) { /*
+                ResilientState state_to_push_A = (stato_precedente, current_node.get_k(), current_node.get_deactivated_op());
+                nodes.push(state_to_push_A);
+                ResilientState state_to_push_B = (stato_precedente, current_node.get_k() - 1, current_node.get_deactivated_op() unite a azione corrente);
+                nodes.push(state_to_push_B);
+                */
+            }
+
+            else {
+
+            }
+
+            
+        }
+
         /*
-        if(resiliency_check()) {
-            cout << "." << endl;
-        }*/
+
+        if !engine.found_solution:
+            D.add() -> c'è da vedere se gestione deadends
+                        presente si puo espandere ai partial state
+            F.add(s,k) ? a cosa serve F?
+        else if k>=1 :
+            Nodes.push()
+            Nodes.push()
+            add op from this to goal to policy
+        else :
+            for i to |pi|:
+                add all state from this to goal to R
+                add all op from this to goal to policy
+                -> vedere se metodo update_policy può aggiungere
+                    senza togliere quelli già inseriti per tenere
+                    una policy globale)
+        */
     }
-
-
-
-
+    
 
     /******************************************/
 
@@ -195,9 +243,83 @@ int main(int argc, const char **argv) {
         exit_with(EXIT_NOT_STRONG_CYCLIC);
 }
 
-// togliere dal main?
-/*
-bool resiliency_check() {
+// TODO togliere funzioni dal main?
+
+bool resiliency_check(ResilientState state) {
+    PartialState s = PartialState(state);
+    //ResilientState aaa = state;
+    /*
+    trovare azioni successive a state nella policy A
+    togliere azioni disattivate A = A - V
+    for a in A
+        succ = s+a
+        succ_res = (succ, k, V)
+        removed = (s, k-1, V+a)
+        if((succ_res in resilient_states or succ in goal) and (removed in resilient_states))
+            add state to R
+            return true
+    */
     return false;
 }
-*/
+
+bool compute_plan(ResilientState current_node, SearchEngine *engine) {
+    bool verbose = true;
+    
+    //salvo stato iniziale originale e replanno dallo stato che non ha soddisfatto resilienza
+    // PartialState *old_initial_state = new PartialState(g_initial_state());
+    ResilientState aaa = current_node;
+
+    g_state_registry->reset_initial_state();
+    //for (int i = 0; i < g_variable_name.size(); i++) // TODO aggiungere stato iniziale modificato
+    //    g_initial_state_data[i] = (*current_node)[i];
+
+    cout << "Creating new engine." << endl;
+    g_timer_engine_init.resume();
+    engine->reset(); 
+
+    g_timer_engine_init.stop();
+
+    if (verbose)
+        cout << "Searching for a solution." << endl;
+
+    g_timer_search.resume();
+    engine->search();
+    g_timer_search.stop();
+    g_limit_states = false;
+    
+    if (engine->found_solution()) {
+        
+        if (verbose) {
+            engine->save_plan_if_necessary();
+            engine->statistics();
+            engine->heuristic_statistics();
+        }
+        
+        if (verbose)
+            cout << "Building the regression list." << endl;
+
+        list<PolicyItem *> regression_steps = perform_regression(engine->get_plan(), g_matched_policy, g_matched_distance, g_policy->empty());
+        
+        if (verbose)
+            cout << "Updating the policy." << endl;
+
+        g_policy->update_policy(regression_steps);
+        
+        reset_goal();
+        
+        return true;
+        
+    } else {
+        
+        reset_goal();
+
+        return false;
+    }
+}
+
+// 
+void reset_goal() {
+    g_goal.clear();
+    for (int i = 0; i < g_goal_orig.size(); i++)
+        g_goal.push_back(make_pair(g_goal_orig[i].first, g_goal_orig[i].second));
+}

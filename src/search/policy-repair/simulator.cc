@@ -2,7 +2,8 @@
 #include "../option_parser.h"
 
 Simulator::Simulator(SearchEngine *eng, int _argc, const char **_argv, bool verb) :
-                    engine(eng), argc(_argc), argv(_argv), verbose(verb), found_solution(false), succeeded(false) {
+                    engine(eng), argc(_argc), argv(_argv), verbose(verb),
+                    found_solution(false), succeeded(false) {
     current_state = new PartialState(g_initial_state());
     successful_states = 0;
     failed_states = 0;
@@ -20,7 +21,6 @@ Simulator::Simulator(bool verb) : verbose(verb), found_solution(false), succeede
 
 void Simulator::run() {
     for (int i = 0; i < g_num_trials; i++) {
-        
         if (g_forgetpolicy) {
             delete g_policy;
             g_policy = new Policy();
@@ -32,11 +32,8 @@ void Simulator::run() {
             g_deadend_policy = new Policy();
             g_deadend_states = new Policy();
         }
-        
         run_once(!g_replan_during_simulation);
-        
         record_stats();
-        
     }
 }
 
