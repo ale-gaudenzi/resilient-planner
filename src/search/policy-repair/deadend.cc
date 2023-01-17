@@ -2,7 +2,6 @@
 
 bool is_deadend(PartialState &state)
 {
-
     // We must always set up the forbidden operators. Why? Well when we
     //  aren't checking with forbidden operators, they are always removed
     //  from the relaxed reachability -- this may create incorrect deadends
@@ -17,7 +16,6 @@ bool is_deadend(PartialState &state)
 
 bool generalize_deadend(PartialState &state)
 {
-
     bool debug = false;
 
     // If the whole state isn't recognized as a deadend, then don't bother
@@ -29,7 +27,6 @@ bool generalize_deadend(PartialState &state)
     //  is violated.
     for (int i = 0; i < g_variable_name.size(); i++)
     {
-
         int old_val = state[i];
         state[i] = -1;
 
@@ -49,7 +46,6 @@ bool generalize_deadend(PartialState &state)
 
 void update_deadends(vector<DeadendTuple *> &failed_states)
 {
-
     list<PolicyItem *> de_items;
     list<PolicyItem *> de_states;
 
@@ -149,11 +145,9 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
     {
         for (std::list<PolicyItem *>::iterator it = de_items.begin(); it != de_items.end(); ++it)
         {
-
             // Make sure the partial state isn't already a deadend
             if (!(g_deadend_states->check_match(*((*it)->state), false)))
             {
-
                 // Just call the successor generator to see if the combination is triggered
                 vector<const Operator *> ops;
                 g_successor_generator->generate_applicable_ops(*((*it)->state), ops);
@@ -168,7 +162,6 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
 {
     if (g_detect_deadends && g_deadend_policy)
     {
-
         PartialState curr = PartialState(_curr);
 
         bool debug = false;
@@ -200,6 +193,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                 if (debug)
                     cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
 
+                /* --------------------- */
                 /* If state is resilient don't push deactivated states (TO DO TEST) */
                 if (curr.is_resilient) {
                     ResilientState current = (ResilientState)curr;
@@ -215,7 +209,8 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                         ops.push_back(orig_ops[i]); 
                     }
                 }
-                
+                /* --------------------- */
+
                 else {
                     ops.push_back(orig_ops[i]); 
                 }

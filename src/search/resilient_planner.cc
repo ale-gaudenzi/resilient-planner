@@ -21,7 +21,7 @@ bool verbose = true;
 
 // dopo fuori dal main queste
 bool found_plan = false;
-bool resiliency_check(ResilientState state);
+bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps);
 void reset_goal();
 list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engine);
 
@@ -168,9 +168,7 @@ int main(int argc, const char **argv)
     /******************************************/
 
     // in globals?
-    set<ResilientState> resilient_states; // in globals?
     // set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
-    stack<ResilientState> nodes;
 
     // primo riempiento dello stack con la policy iniziale trovata
     for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter)
@@ -178,11 +176,11 @@ int main(int argc, const char **argv)
         PolicyItem *item = *op_iter;
         RegressionStep *reg_step = (RegressionStep *)&item;
 
-        ResilientState res_state = ResilientState(*reg_step->state, max_faults); // stato se azione successiva non fallisce
+        ResilientState res_state = ResilientState(*reg_step->state, g_max_faults); // stato se azione successiva non fallisce
 
         std::set<Operator> post_action;
         post_action.insert(*reg_step->op);
-        ResilientState res_state_f = ResilientState(*reg_step->state, max_faults - 1, post_action); // stato se azione successiva fallisce
+        ResilientState res_state_f = ResilientState(*reg_step->state, g_max_faults - 1, post_action); // stato se azione successiva fallisce
 
         if (verbose)
         {
@@ -190,51 +188,56 @@ int main(int argc, const char **argv)
             res_state_f.dump();
         }
 
-        nodes.push(res_state);
-        nodes.push(res_state_f);
+        g_nodes.push(res_state);
+        g_nodes.push(res_state_f);
     }
 
     // serve aggiungere stato goal a R ?
-    while (!nodes.empty()) {
-        ResilientState current_node = nodes.top();
-        nodes.pop();
+    while (!g_nodes.empty())
+    {
+        ResilientState current_node = g_nodes.top();
+        g_nodes.pop();
 
-        if (!resiliency_check(current_node)) {
+        if (!resiliency_check(current_node, regression_steps))
+        {
             found_plan = false;
             list<PolicyItem *> regression_steps = compute_plan(current_node, engine);
 
-            if (found_plan) {
+            if (!found_plan)
+            {
                 // aggiungere nodo a deadend, dovrebbe farlo con la search in computeplan?
                 // aggiungere regr a F
             }
 
-            else if (current_node.get_k() >= 1) {
+            else if (current_node.get_k() >= 1)
+            {
                 std::list<PolicyItem *>::iterator it;
-                for (it = regression_steps.begin(); it != regression_steps.end(); ++it){ // CHIEDERE SE SERVE CHE ITERI IN ORDINE
+                for (it = regression_steps.begin(); it != regression_steps.end(); ++it)
+                { // CHIEDERE SE SERVE CHE ITERI IN ORDINE
                     PolicyItem *item = *it;
                     RegressionStep *reg_step = (RegressionStep *)&item;
 
                     ResilientState state_to_add = *item->state;
 
                     ResilientState state_to_push_A = ResilientState(state_to_add, current_node.get_k(), current_node.get_deactivated_op());
-                    nodes.push(state_to_push_A);
+                    g_nodes.push(state_to_push_A);
 
                     std::set<Operator> set_B = current_node.get_deactivated_op();
                     set_B.insert(*reg_step->op);
                     ResilientState state_to_push_B = ResilientState(state_to_add, current_node.get_k() - 1, set_B);
-                    nodes.push(state_to_push_B);
+                    g_nodes.push(state_to_push_B);
                 }
             }
 
-            else {
-                /*      
-                for i to |pi|:
-                    add all state from this to goal to R
-                    add all op from this to goal to policy
-                        -> vedere se metodo update_policy può aggiungere
-                            senza togliere quelli già inseriti per tenere
-                            una policy globale)
-                */
+            else
+            {
+                std::list<PolicyItem *>::iterator it;
+                for (it = regression_steps.begin(); it != regression_steps.end(); ++it)
+                { // CHIEDERE SE SERVE CHE ITERI IN ORDINE
+                    PolicyItem *item = *it;
+                    ResilientState state_to_add = ResilientState(*item->state, 0, current_node.get_deactivated_op());
+                    g_resilient_states.insert(state_to_add);
+                }
             }
         }
     }
@@ -242,7 +245,7 @@ int main(int argc, const char **argv)
     /******************************************/
 
     g_timer_jit.stop();
-    // Use the best policy found so far
+
     if (g_policy && g_best_policy && (g_best_policy != g_policy))
     {
         if (g_best_policy->get_score() > g_policy->get_score())
@@ -254,15 +257,35 @@ int main(int argc, const char **argv)
         exit_with(EXIT_NOT_STRONG_CYCLIC);
 }
 
-// TODO togliere funzioni dal main?
-
-bool resiliency_check(ResilientState state)
+bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
 {
     PartialState s = PartialState(state);
-    // ResilientState aaa = state;
+    if (g_resilient_states.find(state) != g_resilient_states.end()) return true;
+    
+    std::set<Operator> next_actions;
+
+    // prendo le azioni successive allo stato nella policy
+    std::list<PolicyItem *>::iterator it_r;
+    for (it_r = regression_steps.begin(); it_r != regression_steps.end(); ++it_r)
+    {
+        PolicyItem *item = *it_r;
+        RegressionStep *reg_step = (RegressionStep *)&item;
+        next_actions.insert(*reg_step->op);
+    }
+
+    // tolgo le azioni proibite del resilient_state
+    std::set<Operator>::iterator it_o;
+    for (it_o = state.get_deactivated_op().begin(); it_o != state.get_deactivated_op().end(); ++it_o)
+    {
+        Operator op = *it_o;
+        next_actions.erase(op);
+    }
+
+    for (it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+    {
+    }
+
     /*
-    trovare azioni successive a state nella policy A
-    togliere azioni disattivate A = A - V
     for a in A
         succ = s+a
         succ_res = (succ, k, V)
@@ -330,7 +353,6 @@ list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engin
         return empty;
     }
 }
-
 
 void reset_goal()
 {

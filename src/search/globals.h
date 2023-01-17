@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 #include <map>
+#include <set>
+#include <stack>
 
 class Axiom;
 class AxiomEvaluator;
@@ -166,6 +168,8 @@ extern Timer g_timer_policy_use;
 extern Timer g_timer_jit;
 
 /* Resiliency */
-extern int max_faults;
+extern int g_max_faults;
+extern std::set<ResilientState> g_resilient_states; 
+extern std::stack<ResilientState> g_nodes;
 
 #endif

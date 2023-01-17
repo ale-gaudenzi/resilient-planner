@@ -537,4 +537,6 @@ StateRegistry *g_state_registry = 0;
 
 /* Resiliency */
 
-int max_faults = 2; // TODO aggiungere nel comando di lancio di prp
+int g_max_faults = 2; // TODO aggiungere nel comando di lancio di prp
+set<ResilientState> g_resilient_states; 
+stack<ResilientState> g_nodes;
