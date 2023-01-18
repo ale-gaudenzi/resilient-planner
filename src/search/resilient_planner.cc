@@ -27,7 +27,6 @@ list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engin
 
 int main(int argc, const char **argv)
 {
-
     register_event_handlers();
 
     if (argc < 2)
@@ -259,9 +258,12 @@ int main(int argc, const char **argv)
 
 bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
 {
-    PartialState s = PartialState(state);
-    if (g_resilient_states.find(state) != g_resilient_states.end()) return true;
-    
+    PartialState toCheck = PartialState(state);
+    PartialState *s = &toCheck;
+
+    if (g_resilient_states.find(state) != g_resilient_states.end())
+        return true;
+
     std::set<Operator> next_actions;
 
     // prendo le azioni successive allo stato nella policy
@@ -281,19 +283,22 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
         next_actions.erase(op);
     }
 
+    // controllo resilienza
     for (it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
     {
-    }
+        PartialState *successor = new PartialState(*s, *it_o);
+        ResilientState *successor_r = new ResilientState(*successor, state.get_k(), state.get_deactivated_op());
+        
+        std::set<Operator> forbidden_plus_current = state.get_deactivated_op();
+        forbidden_plus_current.insert(*it_o);
+        ResilientState *successor_r2 = new ResilientState(*s, state.get_k() - 1, forbidden_plus_current);
 
-    /*
-    for a in A
-        succ = s+a
-        succ_res = (succ, k, V)
-        removed = (s, k-1, V+a)
-        if((succ_res in resilient_states or succ in goal) and (removed in resilient_states))
-            add state to R
-            return true
-    */
+        //TODO implicazione goal nel primo termine di &&
+        if (g_resilient_states.find(*successor_r) == g_resilient_states.end() && g_resilient_states.find(*successor_r2) == g_resilient_states.end()) {
+            g_resilient_states.insert(state);
+            return true;
+        }
+    }
     return false;
 }
 
@@ -308,7 +313,6 @@ list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engin
     // for (int i = 0; i < g_variable_name.size(); i++) // TODO aggiungere stato iniziale modificato
     //     g_initial_state_data[i] = (*current_node)[i];
 
-    cout << "Creating new engine." << endl;
     g_timer_engine_init.resume();
     engine->reset();
 

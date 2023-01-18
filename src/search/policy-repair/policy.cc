@@ -117,8 +117,6 @@ void GeneratorLeaf::generate_applicable_items(const PartialState &, vector<Polic
         reg_items.push_back(best_rs);
 }
 
-
-
 GeneratorSwitch::GeneratorSwitch(int switch_variable,
                                  list<PolicyItem *> &reg_items,
                                  const vector<GeneratorBase *> &gen_for_val,

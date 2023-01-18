@@ -90,8 +90,6 @@ bool RegressableOperator::check_relevance(const PartialState &ps) {
     return false;
 }
 
-
-
 list<PolicyItem *> perform_regression(const SearchEngine::Plan &plan, RegressionStep *goal_step, int distance, bool create_goal) {
     g_timer_regression.resume();
     list<PolicyItem *> reg_steps;
