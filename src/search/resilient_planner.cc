@@ -244,7 +244,6 @@ int main(int argc, const char **argv)
     /******************************************/
 
     g_timer_jit.stop();
-
     if (g_policy && g_best_policy && (g_best_policy != g_policy))
     {
         if (g_best_policy->get_score() > g_policy->get_score())
@@ -256,6 +255,9 @@ int main(int argc, const char **argv)
         exit_with(EXIT_NOT_STRONG_CYCLIC);
 }
 
+/*********************
+ *       RCheck       *
+ *********************/
 bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
 {
     PartialState toCheck = PartialState(state);
@@ -266,35 +268,34 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
 
     std::set<Operator> next_actions;
 
-    // prendo le azioni successive allo stato nella policy
+    // prendo le azioni successive allo stato nella policy, tranne le proibite
     std::list<PolicyItem *>::iterator it_r;
     for (it_r = regression_steps.begin(); it_r != regression_steps.end(); ++it_r)
     {
         PolicyItem *item = *it_r;
         RegressionStep *reg_step = (RegressionStep *)&item;
-        next_actions.insert(*reg_step->op);
-    }
-
-    // tolgo le azioni proibite del resilient_state
-    std::set<Operator>::iterator it_o;
-    for (it_o = state.get_deactivated_op().begin(); it_o != state.get_deactivated_op().end(); ++it_o)
-    {
-        Operator op = *it_o;
-        next_actions.erase(op);
+        if (state.get_deactivated_op().find(*reg_step->op) == state.get_deactivated_op().end() &&
+            toCheck == *item->state)
+        {
+            next_actions.insert(*reg_step->op);
+        }
     }
 
     // controllo resilienza
+    std::set<Operator>::iterator it_o;
     for (it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
     {
         PartialState *successor = new PartialState(*s, *it_o);
         ResilientState *successor_r = new ResilientState(*successor, state.get_k(), state.get_deactivated_op());
-        
+
         std::set<Operator> forbidden_plus_current = state.get_deactivated_op();
         forbidden_plus_current.insert(*it_o);
         ResilientState *successor_r2 = new ResilientState(*s, state.get_k() - 1, forbidden_plus_current);
 
-        //TODO implicazione goal nel primo termine di &&
-        if (g_resilient_states.find(*successor_r) == g_resilient_states.end() && g_resilient_states.find(*successor_r2) == g_resilient_states.end()) {
+        // TODO implicazione goal nel primo termine di &&
+        if (g_resilient_states.find(*successor_r) == g_resilient_states.end() &&
+            g_resilient_states.find(*successor_r2) == g_resilient_states.end())
+        {
             g_resilient_states.insert(state);
             return true;
         }
@@ -302,16 +303,19 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
     return false;
 }
 
+/*********************
+ *    computePlan     *
+ *********************/
 list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engine)
 {
-    // salvo stato iniziale originale e replanno dallo stato che non ha soddisfatto resilienza
+    //  salvo stato iniziale originale e replanno dallo stato che non ha soddisfatto resilienza
     //  perchè gcc da errore su inutilizzate, temporaneo
-    //  PartialState *old_initial_state = new PartialState(g_initial_state());
+    // PartialState *old_initial_state = new PartialState(g_initial_state());
     ResilientState aaa = current_node;
 
     g_state_registry->reset_initial_state();
     // for (int i = 0; i < g_variable_name.size(); i++) // TODO aggiungere stato iniziale modificato
-    //     g_initial_state_data[i] = (*current_node)[i];
+    //     g_initial_state_data[i] = (current_node)[i];
 
     g_timer_engine_init.resume();
     engine->reset();
