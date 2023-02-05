@@ -19,11 +19,13 @@ using namespace std;
 
 bool verbose = true;
 
-// dopo fuori dal main queste
-bool found_plan = false;
-bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps);
+// probably better take this function in a separate class in future
+bool resiliency_check(ResilientState state);
 void reset_goal();
-list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engine);
+bool compute_plan(ResilientState current_node, SearchEngine *engine);
+
+// main and compute_plan work on this. is cleared before every replan
+list<PolicyItem *> regression_steps;
 
 int main(int argc, const char **argv)
 {
@@ -148,7 +150,7 @@ int main(int argc, const char **argv)
     }
 
     cout << "\n\nRegressing the plan..." << endl;
-    list<PolicyItem *> regression_steps = perform_regression(engine->get_plan(), g_matched_policy, 0, true);
+    regression_steps = perform_regression(engine->get_plan(), g_matched_policy, 0, true);
 
     cout << "\n\nGenerating an initial policy..." << endl;
     g_policy = new Policy();
@@ -166,10 +168,10 @@ int main(int argc, const char **argv)
 
     /******************************************/
 
-    // in globals?
+    // spsotati in globals gli altri set
     // set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
 
-    // primo riempiento dello stack con la policy iniziale trovata
+    // primo riempimento dello stack con la policy iniziale trovata
     for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter)
     {
         PolicyItem *item = *op_iter;
@@ -197,22 +199,21 @@ int main(int argc, const char **argv)
         ResilientState current_node = g_nodes.top();
         g_nodes.pop();
 
-        if (!resiliency_check(current_node, regression_steps))
+        if (!resiliency_check(current_node))
         {
-            found_plan = false;
-            list<PolicyItem *> regression_steps = compute_plan(current_node, engine);
-
-            if (!found_plan)
+            regression_steps.clear();
+            if (!compute_plan(current_node, engine))
             {
-                // aggiungere nodo a deadend, dovrebbe farlo con la search in computeplan?
-                // aggiungere regr a F
+                // add node to deadend,
+                // add regr to F
+                // TODO: ask Diego about deadend logic and F if we can control only forbidden action V
             }
 
             else if (current_node.get_k() >= 1)
             {
                 std::list<PolicyItem *>::iterator it;
                 for (it = regression_steps.begin(); it != regression_steps.end(); ++it)
-                { // CHIEDERE SE SERVE CHE ITERI IN ORDINE
+                { // TODO: ask Diego if the order matter
                     PolicyItem *item = *it;
                     RegressionStep *reg_step = (RegressionStep *)&item;
 
@@ -232,7 +233,7 @@ int main(int argc, const char **argv)
             {
                 std::list<PolicyItem *>::iterator it;
                 for (it = regression_steps.begin(); it != regression_steps.end(); ++it)
-                { // CHIEDERE SE SERVE CHE ITERI IN ORDINE
+                { // TODO: ask Diego if the order matter
                     PolicyItem *item = *it;
                     ResilientState state_to_add = ResilientState(*item->state, 0, current_node.get_deactivated_op());
                     g_resilient_states.insert(state_to_add);
@@ -258,7 +259,7 @@ int main(int argc, const char **argv)
 /*********************
  *       RCheck       *
  *********************/
-bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
+bool resiliency_check(ResilientState state)
 {
     PartialState toCheck = PartialState(state);
     PartialState *s = &toCheck;
@@ -268,7 +269,7 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
 
     std::set<Operator> next_actions;
 
-    // prendo le azioni successive allo stato nella policy, tranne le proibite
+    // consider state successive action in the policy excluding the forbidden ones
     std::list<PolicyItem *>::iterator it_r;
     for (it_r = regression_steps.begin(); it_r != regression_steps.end(); ++it_r)
     {
@@ -281,7 +282,7 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
         }
     }
 
-    // controllo resilienza
+    // resiliency check
     std::set<Operator>::iterator it_o;
     for (it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
     {
@@ -292,7 +293,7 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
         forbidden_plus_current.insert(*it_o);
         ResilientState *successor_r2 = new ResilientState(*s, state.get_k() - 1, forbidden_plus_current);
 
-        // TODO implicazione goal nel primo termine di &&
+        // TODO goal implication in the first and branch
         if (g_resilient_states.find(*successor_r) == g_resilient_states.end() &&
             g_resilient_states.find(*successor_r2) == g_resilient_states.end())
         {
@@ -306,16 +307,11 @@ bool resiliency_check(ResilientState state, list<PolicyItem *> regression_steps)
 /*********************
  *    computePlan     *
  *********************/
-list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engine)
+bool compute_plan(ResilientState current_node, SearchEngine *engine)
 {
-    //  salvo stato iniziale originale e replanno dallo stato che non ha soddisfatto resilienza
-    //  perchè gcc da errore su inutilizzate, temporaneo
-    // PartialState *old_initial_state = new PartialState(g_initial_state());
-    ResilientState aaa = current_node;
-
     g_state_registry->reset_initial_state();
-    // for (int i = 0; i < g_variable_name.size(); i++) // TODO aggiungere stato iniziale modificato
-    //     g_initial_state_data[i] = (current_node)[i];
+    for (int i = 0; i < g_variable_name.size(); i++)
+        g_initial_state_data[i] = (current_node)[i];
 
     g_timer_engine_init.resume();
     engine->reset();
@@ -342,7 +338,7 @@ list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engin
         if (verbose)
             cout << "Building the regression list." << endl;
 
-        list<PolicyItem *> regression_steps = perform_regression(engine->get_plan(), g_matched_policy, g_matched_distance, g_policy->empty());
+        regression_steps = perform_regression(engine->get_plan(), g_matched_policy, g_matched_distance, g_policy->empty());
 
         if (verbose)
             cout << "Updating the policy." << endl;
@@ -350,15 +346,14 @@ list<PolicyItem *> compute_plan(ResilientState current_node, SearchEngine *engin
         g_policy->update_policy(regression_steps);
 
         reset_goal();
-        found_plan = true;
-        return regression_steps;
+
+        return true;
     }
     else
     {
         reset_goal();
-        found_plan = false;
-        list<PolicyItem *> empty;
-        return empty;
+
+        return false;
     }
 }
 
