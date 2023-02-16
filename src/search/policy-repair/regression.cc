@@ -1,5 +1,6 @@
 #include "regression.h"
 #include "policy.h"
+#include <stdio.h>
 
 void RegressionStep::dump() const {
     cout << "Regression Step (" << this << ")" << endl;
@@ -22,6 +23,17 @@ string RegressionStep::get_name() {
         return "goal / SC / d=0";
     else
         return op->get_nondet_name() + " / " + (is_sc ? "SC" : "NSC") + " / d=" + static_cast<ostringstream*>( &(ostringstream() << distance) )->str();
+}
+
+string RegressionStep::get_op_name() {
+    if (is_goal)
+        return "goal";
+    else
+        return op->get_nondet_name();
+}
+
+Operator RegressionStep::get_op() {
+    return *op;
 }
 
 void NondetDeadend::dump() const {
@@ -106,11 +118,8 @@ list<PolicyItem *> perform_regression(const SearchEngine::Plan &plan, Regression
     if (g_fullstate) {
 
         if (create_goal) {
-
             PartialState *g = new PartialState(*(goal_step->state));
-
             reg_steps.push_back(new RegressionStep(g, distance));
-
         } else {
             reg_steps.push_back(new RegressionStep(states.back(), distance));
         }

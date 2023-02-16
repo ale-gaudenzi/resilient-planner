@@ -15,6 +15,7 @@
 #include <iostream>
 #include <list>
 #include <new>
+#include <string>
 using namespace std;
 
 bool verbose = true;
@@ -172,19 +173,25 @@ int main(int argc, const char **argv)
     // set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
 
     // primo riempimento dello stack con la policy iniziale trovata
+
+
     for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter)
-    {
-        PolicyItem *item = *op_iter;
-        RegressionStep *reg_step = (RegressionStep *)&item;
-
+    {        
+        RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*op_iter);        
         ResilientState res_state = ResilientState(*reg_step->state, g_max_faults); // stato se azione successiva non fallisce
-
+        
         std::set<Operator> post_action;
-        post_action.insert(*reg_step->op);
-        ResilientState res_state_f = ResilientState(*reg_step->state, g_max_faults - 1, post_action); // stato se azione successiva fallisce
+        post_action.clear();
 
-        if (verbose)
-        {
+        if(!reg_step->is_goal) {
+            post_action.insert(reg_step->get_op());
+        }
+    
+        ResilientState res_state_f = ResilientState(*reg_step->state, g_max_faults - 1, post_action); // stato se azione successiva fallisce
+        
+        post_action.clear();
+
+        if (verbose) {
             res_state.dump();
             res_state_f.dump();
         }
@@ -192,7 +199,7 @@ int main(int argc, const char **argv)
         g_nodes.push(res_state);
         g_nodes.push(res_state_f);
     }
-
+/*
     // serve aggiungere stato goal a R ?
     while (!g_nodes.empty())
     {
@@ -241,7 +248,7 @@ int main(int argc, const char **argv)
             }
         }
     }
-
+*/
     /******************************************/
 
     g_timer_jit.stop();

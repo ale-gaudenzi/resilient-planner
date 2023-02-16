@@ -1,0 +1,1577 @@
+1. Running translator
+Second argument is a file name: use two translator arguments.
+Parsing...
+Parsing: [0.010s CPU, 0.003s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.004s wall-clock]
+Preparing model... [0.000s CPU, 0.002s wall-clock]
+Generated 145 rules.
+Computing model... [0.080s CPU, 0.070s wall-clock]
+10943 relevant atoms
+4917 auxiliary atoms
+15860 final queue length
+27929 total queue pushes
+Completing instantiation... [0.200s CPU, 0.211s wall-clock]
+Instantiating: [0.280s CPU, 0.289s wall-clock]
+Computing fact groups...
+Finding invariants...
+32 initial candidates
+Finding invariants: [0.010s CPU, 0.004s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+2610 uncovered facts
+Choosing groups: [0.000s CPU, 0.001s wall-clock]
+Building translation key... [0.010s CPU, 0.005s wall-clock]
+Computing fact groups: [0.030s CPU, 0.024s wall-clock]
+Building STRIPS to SAS dictionary... [0.020s CPU, 0.026s wall-clock]
+Building dictionary for full mutex groups... [0.010s CPU, 0.001s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.002s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.010s CPU, 0.013s wall-clock]
+Translating task: [0.230s CPU, 0.235s wall-clock]
+450 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+Removed false proposition: 1 = <none of those>
+Removed false proposition: 2 = <none of those>
+Removed false proposition: 3 = <none of those>
+Removed false proposition: 4 = <none of those>
+Removed false proposition: 5 = <none of those>
+Removed false proposition: 6 = <none of those>
+Removed false proposition: 7 = <none of those>
+Removed false proposition: 8 = <none of those>
+Removed false proposition: 9 = <none of those>
+Removed false proposition: 10 = <none of those>
+Removed false proposition: 11 = <none of those>
+Removed false proposition: None = Atom locked(node0-0)
+Removed true proposition: None = Atom open(node0-0)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node0-1)
+Removed true proposition: None = Atom open(node0-1)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node0-2)
+Removed true proposition: None = Atom open(node0-2)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node0-3)
+Removed true proposition: None = Atom open(node0-3)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node0-4)
+Removed true proposition: None = Atom open(node0-4)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node1-0)
+Removed true proposition: None = Atom open(node1-0)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node1-1)
+Removed true proposition: None = Atom open(node1-1)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node1-2)
+Removed true proposition: None = Atom open(node1-2)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node1-3)
+Removed true proposition: None = Atom open(node1-3)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node1-4)
+Removed true proposition: None = Atom open(node1-4)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node2-0)
+Removed true proposition: None = Atom open(node2-0)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node2-1)
+Removed true proposition: None = Atom open(node2-1)
+Removed false proposition: None = <none of those>
+Removed false proposition: 12 = <none of those>
+Removed false proposition: 13 = <none of those>
+Removed false proposition: None = Atom locked(node2-4)
+Removed true proposition: None = Atom open(node2-4)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node3-0)
+Removed true proposition: None = Atom open(node3-0)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node3-1)
+Removed true proposition: None = Atom open(node3-1)
+Removed false proposition: None = <none of those>
+Removed false proposition: 14 = <none of those>
+Removed false proposition: 15 = <none of those>
+Removed false proposition: 16 = <none of those>
+Removed false proposition: None = Atom locked(node4-0)
+Removed true proposition: None = Atom open(node4-0)
+Removed false proposition: None = <none of those>
+Removed false proposition: None = Atom locked(node4-1)
+Removed true proposition: None = Atom open(node4-1)
+Removed false proposition: None = <none of those>
+Removed false proposition: 17 = <none of those>
+Removed false proposition: 18 = <none of those>
+Removed false proposition: 19 = <none of those>
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node0-0, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-0, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node0-1, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-1, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node0-2, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-2, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node0-3, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-3, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node0-4, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node0-4, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node1-0, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-0, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node1-1, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-1, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node1-2, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-2, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node1-3, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-3, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node1-4, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node1-4, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node2-0, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-0, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node2-1, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-1, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node2-2, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-2, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node2-3, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-3, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node2-4, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node2-4, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node3-0, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-0, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node3-1, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-1, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node3-2, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-2, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node3-3, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-3, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node3-4, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node3-4, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node4-0, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-0, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node4-1, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-1, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node4-2, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-2, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node4-3, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-3, key8, key8)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key0, key0)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key0, key0)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key1, key1)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key1, key1)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key2, key2)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key2, key2)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key3, key3)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key3, key3)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key4, key4)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key4, key4)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key5, key5)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key5, key5)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key6, key6)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key6, key6)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key7, key7)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key7, key7)
+Removed false proposition: None = Atom pickup-and-loose(node4-4, key8, key8)
+Removed true proposition: None = NegatedAtom pickup-and-loose(node4-4, key8, key8)
+0 operators removed
+520 propositions removed
+Detecting unreachable propositions: [0.040s CPU, 0.034s wall-clock]
+Translator variables: 2404
+Translator derived variables: 0
+Translator facts: 5047
+Translator goal facts: 1
+Translator mutex groups: 20
+Translator total mutex groups size: 287
+Translator operators: 7152
+Translator axioms: 0
+Translator task size: 63613
+Translator peak memory: 69872 KB
+Writing output... [0.040s CPU, 0.045s wall-clock]
+Done! [0.680s CPU, 0.674s wall-clock]
+
+2. Running preprocessor
+Building causal graph...
+The causal graph is not acyclic.
+2404 variables of 2404 necessary
+1 of 20 mutex groups necessary.
+7152 of 7152 operators necessary.
+0 of 0 axiom rules necessary.
+Building domain transition graphs...
+solveable in poly time 0
+Building successor generator...
+Preprocessor facts: 5047
+Preprocessor derived variables: 0
+Preprocessor task size: 63336
+Writing output...
+done
+
+
+3. Running search
+/home/sifao/prp/src/search/downward ipc policy-repair
+This is a unit task.
+/home/sifao/prp/src/search/downward-release --heuristic "h=ff(cost_type=1)" --search "lazy_greedy([h],preferred=[h])" --random-seed 814102613 < output
+Simplifying transitions... done!
+Variables: 2404
+Bytes per state: 308
+
+Total allotted time (s): 1800
+Max time for core JIC (remaining used in final-round repairs): 1800
+Max time for each of the 1 epochs: 1800
+
+ !! Warning: Disabling the simplification of unary operators !!
+ !!           to keep the non-deterministic planning sound.  !!
+Generated 188 state(s).
+Dead ends: 0 state(s). (0 recorded)
+move-0_DETDUP_0 node2-4 node1-4 (1)
+move-0_DETDUP_0 node1-4 node1-3 (1)
+move-0_DETDUP_0 node1-3 node1-2 (1)
+move-0_DETDUP_0 node1-2 node0-2 (1)
+pickup-0_DETDUP_0 node0-2 key3 (1)
+move-0_DETDUP_0 node0-2 node0-1 (1)
+move-0_DETDUP_0 node0-1 node1-1 (1)
+move-0_DETDUP_0 node1-1 node1-2 (1)
+move-0_DETDUP_0 node1-2 node1-3 (1)
+unlock-0_DETDUP_0 node1-3 node2-3 key3 square (1)
+move-0_DETDUP_0 node1-3 node2-3 (1)
+pickup-and-loose-0_DETDUP_0 node2-3 key0 key3 (1)
+move-0_DETDUP_0 node2-3 node1-3 (1)
+move-0_DETDUP_0 node1-3 node1-2 (1)
+move-0_DETDUP_0 node1-2 node1-1 (1)
+putdown-0_DETDUP_0 node1-1 key0 (1)
+Plan length: 16 step(s).
+Plan cost: 16
+Initial search time: 0.01s
+Initial total time: 1.04s
+
+
+Regressing the plan...
+
+
+Generating an initial policy...
+--------------
+INITIAL POLICY
+Policy:
+Regression Step (0xc200360)
+ Distance: 0
+ Relevant: 0
+ SC: 0
+ -{ Goal }-
+
+ -{ State }-
+Atom at(key0, node1-1)
+
+Regression Step (0xc242480)
+ Distance: 1
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+putdown-0_DETDUP_0 node1-1 key0 (putdown-0 node1-1 key0): [Atom at-robot(node1-1)] [Atom faults_0()] [NegatedAtom putdown(node1-1, key0)] [anything -> Atom arm-empty()] [Atom holding(key0) -> Atom at(key0, node1-1)]
+
+ -{ State }-
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-1)
+Atom faults_0()
+Atom holding(key0)
+
+Regression Step (0xc200f10)
+ Distance: 2
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-2 node1-1 (move-0 node1-2 node1-1): [Atom faults_0()] [NegatedAtom move(node1-2, node1-1)] [Atom at-robot(node1-2) -> Atom at-robot(node1-1)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-2)
+Atom faults_0()
+Atom holding(key0)
+
+Regression Step (0xc243910)
+ Distance: 3
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-3 node1-2 (move-0 node1-3 node1-2): [Atom faults_0()] [NegatedAtom move(node1-3, node1-2)] [Atom at-robot(node1-3) -> Atom at-robot(node1-2)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-3)
+Atom faults_0()
+Atom holding(key0)
+
+Regression Step (0xc243e20)
+ Distance: 4
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node2-3 node1-3 (move-0 node2-3 node1-3): [Atom faults_0()] [NegatedAtom move(node2-3, node1-3)] [Atom at-robot(node2-3) -> Atom at-robot(node1-3)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node2-3)
+Atom faults_0()
+Atom holding(key0)
+
+Regression Step (0xc244330)
+ Distance: 5
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+pickup-and-loose-0_DETDUP_0 node2-3 key0 key3 (pickup-and-loose-0 node2-3 key0 key3): [Atom at-robot(node2-3)] [Atom faults_0()] [NegatedAtom pickup-and-loose(node2-3, key0, key3)] [Atom at(key0, node2-3) -> Atom holding(key0)] [Atom holding(key3) -> Atom at(key3, node2-3)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom at-robot(node2-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc20f1f0)
+ Distance: 6
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-3 node2-3 (move-0 node1-3 node2-3): [Atom faults_0()] [Atom open(node2-3)] [NegatedAtom move(node1-3, node2-3)] [Atom at-robot(node1-3) -> Atom at-robot(node2-3)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom open(node2-3)
+Atom at-robot(node1-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc2457c0)
+ Distance: 7
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+unlock-0_DETDUP_0 node1-3 node2-3 key3 square (unlock-0 node1-3 node2-3 key3 square): [Atom holding(key3)] [Atom at-robot(node1-3)] [Atom faults_0()] [NegatedAtom unlock(node1-3, node2-3, key3, square)] [Atom locked(node2-3) -> Atom open(node2-3)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc245cd0)
+ Distance: 8
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-2 node1-3 (move-0 node1-2 node1-3): [Atom faults_0()] [NegatedAtom move(node1-2, node1-3)] [Atom at-robot(node1-2) -> Atom at-robot(node1-3)]
+
+ -{ State }-
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-2)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc2461e0)
+ Distance: 9
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-1 node1-2 (move-0 node1-1 node1-2): [Atom faults_0()] [NegatedAtom move(node1-1, node1-2)] [Atom at-robot(node1-1) -> Atom at-robot(node1-2)]
+
+ -{ State }-
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-1)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc20f790)
+ Distance: 10
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node0-1 node1-1 (move-0 node0-1 node1-1): [Atom faults_0()] [NegatedAtom move(node0-1, node1-1)] [Atom at-robot(node0-1) -> Atom at-robot(node1-1)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-1)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc20fa00)
+ Distance: 11
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node0-2 node0-1 (move-0 node0-2 node0-1): [Atom faults_0()] [NegatedAtom move(node0-2, node0-1)] [Atom at-robot(node0-2) -> Atom at-robot(node0-1)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-2)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+
+Regression Step (0xc245f40)
+ Distance: 12
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+pickup-0_DETDUP_0 node0-2 key3 (pickup-0 node0-2 key3): [Atom at-robot(node0-2)] [Atom faults_0()] [NegatedAtom pickup(node0-2, key3)] [Atom arm-empty() -> NegatedAtom arm-empty()] [Atom at(key3, node0-2) -> Atom holding(key3)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-2)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+
+Regression Step (0xc226210)
+ Distance: 13
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-2 node0-2 (move-0 node1-2 node0-2): [Atom faults_0()] [NegatedAtom move(node1-2, node0-2)] [Atom at-robot(node1-2) -> Atom at-robot(node0-2)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-2)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+
+Regression Step (0xc23e1e0)
+ Distance: 14
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-3 node1-2 (move-0 node1-3 node1-2): [Atom faults_0()] [NegatedAtom move(node1-3, node1-2)] [Atom at-robot(node1-3) -> Atom at-robot(node1-2)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-3)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+
+Regression Step (0xc23e6f0)
+ Distance: 15
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node1-4 node1-3 (move-0 node1-4 node1-3): [Atom faults_0()] [NegatedAtom move(node1-4, node1-3)] [Atom at-robot(node1-4) -> Atom at-robot(node1-3)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node1-4, node1-3)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-4)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+
+Regression Step (0xc2075f0)
+ Distance: 16
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+move-0_DETDUP_0 node2-4 node1-4 (move-0 node2-4 node1-4): [Atom faults_0()] [NegatedAtom move(node2-4, node1-4)] [Atom at-robot(node2-4) -> Atom at-robot(node1-4)]
+
+ -{ State }-
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node1-4, node1-3)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node2-4, node1-4)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node2-4)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+
+--------------
+resilient_state: 0x7ffd10041400
+Atom at(key0, node1-1)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+Atom at(key0, node1-1)
+k: 1
+deactivated_op: 
+
+resilient_state: 0x7ffd10041400
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-1)
+Atom faults_0()
+Atom holding(key0)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-1)
+Atom faults_0()
+Atom holding(key0)
+k: 1
+deactivated_op: 
+putdown-0_DETDUP_0 node1-1 key0 (putdown-0 node1-1 key0): [Atom at-robot(node1-1)] [Atom faults_0()] [NegatedAtom putdown(node1-1, key0)] [anything -> Atom arm-empty()] [Atom holding(key0) -> Atom at(key0, node1-1)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-2)
+Atom faults_0()
+Atom holding(key0)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-2)
+Atom faults_0()
+Atom holding(key0)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-2 node1-1 (move-0 node1-2 node1-1): [Atom faults_0()] [NegatedAtom move(node1-2, node1-1)] [Atom at-robot(node1-2) -> Atom at-robot(node1-1)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-3)
+Atom faults_0()
+Atom holding(key0)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node1-3)
+Atom faults_0()
+Atom holding(key0)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-3 node1-2 (move-0 node1-3 node1-2): [Atom faults_0()] [NegatedAtom move(node1-3, node1-2)] [Atom at-robot(node1-3) -> Atom at-robot(node1-2)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node2-3)
+Atom faults_0()
+Atom holding(key0)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom putdown(node1-1, key0)
+Atom at-robot(node2-3)
+Atom faults_0()
+Atom holding(key0)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node2-3 node1-3 (move-0 node2-3 node1-3): [Atom faults_0()] [NegatedAtom move(node2-3, node1-3)] [Atom at-robot(node2-3) -> Atom at-robot(node1-3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom at-robot(node2-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom at-robot(node2-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+pickup-and-loose-0_DETDUP_0 node2-3 key0 key3 (pickup-and-loose-0 node2-3 key0 key3): [Atom at-robot(node2-3)] [Atom faults_0()] [NegatedAtom pickup-and-loose(node2-3, key0, key3)] [Atom at(key0, node2-3) -> Atom holding(key0)] [Atom holding(key3) -> Atom at(key3, node2-3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom open(node2-3)
+Atom at-robot(node1-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom open(node2-3)
+Atom at-robot(node1-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-3 node2-3 (move-0 node1-3 node2-3): [Atom faults_0()] [Atom open(node2-3)] [NegatedAtom move(node1-3, node2-3)] [Atom at-robot(node1-3) -> Atom at-robot(node2-3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-3)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+unlock-0_DETDUP_0 node1-3 node2-3 key3 square (unlock-0 node1-3 node2-3 key3 square): [Atom holding(key3)] [Atom at-robot(node1-3)] [Atom faults_0()] [NegatedAtom unlock(node1-3, node2-3, key3, square)] [Atom locked(node2-3) -> Atom open(node2-3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-2)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-2)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-2 node1-3 (move-0 node1-2 node1-3): [Atom faults_0()] [NegatedAtom move(node1-2, node1-3)] [Atom at-robot(node1-2) -> Atom at-robot(node1-3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-1)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-1)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-1 node1-2 (move-0 node1-1 node1-2): [Atom faults_0()] [NegatedAtom move(node1-1, node1-2)] [Atom at-robot(node1-1) -> Atom at-robot(node1-2)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-1)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-1)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node0-1 node1-1 (move-0 node0-1 node1-1): [Atom faults_0()] [NegatedAtom move(node0-1, node1-1)] [Atom at-robot(node0-1) -> Atom at-robot(node1-1)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-2)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-2)
+Atom holding(key3)
+Atom faults_0()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node0-2 node0-1 (move-0 node0-2 node0-1): [Atom faults_0()] [NegatedAtom move(node0-2, node0-1)] [Atom at-robot(node0-2) -> Atom at-robot(node0-1)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-2)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node0-2)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+pickup-0_DETDUP_0 node0-2 key3 (pickup-0 node0-2 key3): [Atom at-robot(node0-2)] [Atom faults_0()] [NegatedAtom pickup(node0-2, key3)] [Atom arm-empty() -> NegatedAtom arm-empty()] [Atom at(key3, node0-2) -> Atom holding(key3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-2)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-2)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-2 node0-2 (move-0 node1-2 node0-2): [Atom faults_0()] [NegatedAtom move(node1-2, node0-2)] [Atom at-robot(node1-2) -> Atom at-robot(node0-2)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-3)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-3)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-3 node1-2 (move-0 node1-3 node1-2): [Atom faults_0()] [NegatedAtom move(node1-3, node1-2)] [Atom at-robot(node1-3) -> Atom at-robot(node1-2)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node1-4, node1-3)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-4)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node1-4, node1-3)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node1-4)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node1-4 node1-3 (move-0 node1-4 node1-3): [Atom faults_0()] [NegatedAtom move(node1-4, node1-3)] [Atom at-robot(node1-4) -> Atom at-robot(node1-3)]
+
+resilient_state: 0x7ffd10041400
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node1-4, node1-3)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node2-4, node1-4)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node2-4)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 2
+deactivated_op: 
+
+resilient_state: 0x7ffd10041450
+NegatedAtom move(node0-1, node1-1)
+NegatedAtom move(node0-2, node0-1)
+NegatedAtom move(node1-1, node1-2)
+NegatedAtom move(node1-2, node0-2)
+NegatedAtom move(node1-2, node1-1)
+NegatedAtom move(node1-2, node1-3)
+NegatedAtom move(node1-3, node1-2)
+NegatedAtom move(node1-4, node1-3)
+NegatedAtom move(node2-3, node1-3)
+NegatedAtom move(node2-4, node1-4)
+NegatedAtom move(node1-3, node2-3)
+NegatedAtom putdown(node1-1, key0)
+NegatedAtom unlock(node1-3, node2-3, key3, square)
+NegatedAtom pickup(node0-2, key3)
+NegatedAtom pickup-and-loose(node2-3, key0, key3)
+Atom locked(node2-3)
+Atom at-robot(node2-4)
+Atom at(key3, node0-2)
+Atom faults_0()
+Atom arm-empty()
+Atom at(key0, node2-3)
+k: 1
+deactivated_op: 
+move-0_DETDUP_0 node2-4 node1-4 (move-0 node2-4 node1-4): [Atom faults_0()] [NegatedAtom move(node2-4, node1-4)] [Atom at-robot(node2-4) -> Atom at-robot(node1-4)]
+
+Plan found, but not strong cyclic.
+Peak memory: 188636 KB

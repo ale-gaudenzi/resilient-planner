@@ -82,6 +82,9 @@ struct RegressionStep : PolicyItem {
     void strengthen(PartialState *s);
 
     string get_name();
+    Operator get_op();
+    string get_op_name();
+
     void dump() const;
 
     bool operator< (const RegressionStep& other) const {

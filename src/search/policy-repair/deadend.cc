@@ -201,7 +201,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                     bool is_deactivated = false;
                     for (set<Operator>::iterator it = current.get_deactivated_op().begin(); it != current.get_deactivated_op().end(); it++) {
                         Operator deactivated_op = *it;
-                        if (deactivated_op.get_nondet_name() == orig_op.get_nondet_name()) {
+                        if (deactivated_op.get_name() == orig_op.get_nondet_name()) {
                             is_deactivated = true;
                         }
                     }
