@@ -51,16 +51,3 @@ void State::dump_fdr() const
         cout << "  #" << i << " [" << g_variable_name[i] << "] -> "
              << (*this)[i] << endl;
 }
-
-/*
-ResilientState::ResilientState(const State &state_, int k_, std::set<Operator> forbidden_op_) 
-                : State(state_) {
-    k = k_;
-    forbidden_op = forbidden_op_;
-}
-
-ResilientState::ResilientState(const State &state_, int k_) 
-                : State(state_) {
-    k = k_;
-}
-*/

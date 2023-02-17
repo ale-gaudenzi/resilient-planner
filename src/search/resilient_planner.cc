@@ -18,7 +18,7 @@
 #include <string>
 using namespace std;
 
-bool verbose = true;
+bool verbose = false;
 
 // probably better take this function in a separate class in future
 bool resiliency_check(ResilientState state);
@@ -27,6 +27,7 @@ bool compute_plan(ResilientState current_node, SearchEngine *engine);
 
 // main and compute_plan work on this. is cleared before every replan
 list<PolicyItem *> regression_steps;
+PolicyItem *goal_step = NULL;
 
 int main(int argc, const char **argv)
 {
@@ -159,10 +160,12 @@ int main(int argc, const char **argv)
     g_best_policy = g_policy;
     g_best_policy_score = g_policy->get_score();
 
-    cout << "--------------" << endl;
-    cout << "INITIAL POLICY" << endl;
-    g_policy->dump();
-    cout << "--------------" << endl;
+    /*
+        cout << "--------------" << endl;
+        cout << "INITIAL POLICY" << endl;
+        g_policy->dump();
+        cout << "--------------" << endl;
+    */
 
     if (g_sample_for_depth1_deadends)
         sample_for_depth1_deadends(engine->get_plan(), new PartialState(g_initial_state()));
@@ -173,25 +176,27 @@ int main(int argc, const char **argv)
     // set<ResilientState> deadends; // dovrebbe gestirli da solo, non credo serva
 
     // primo riempimento dello stack con la policy iniziale trovata
-
-
     for (list<PolicyItem *>::iterator op_iter = regression_steps.begin(); op_iter != regression_steps.end(); ++op_iter)
-    {        
-        RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*op_iter);        
-        ResilientState res_state = ResilientState(*reg_step->state, g_max_faults); // stato se azione successiva non fallisce
-        
-        std::set<Operator> post_action;
-        post_action.clear();
+    {
+        RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*op_iter);
 
-        if(!reg_step->is_goal) {
+        std::set<Operator> post_action;
+        if (!reg_step->is_goal)
+        {
             post_action.insert(reg_step->get_op());
         }
-    
+        else
+        {
+            goal_step = reg_step;
+        }
+
+        ResilientState res_state = ResilientState(*reg_step->state, g_max_faults);                    // stato se azione successiva non fallisce
         ResilientState res_state_f = ResilientState(*reg_step->state, g_max_faults - 1, post_action); // stato se azione successiva fallisce
-        
+
         post_action.clear();
 
-        if (verbose) {
+        if (verbose)
+        {
             res_state.dump();
             res_state_f.dump();
         }
@@ -199,7 +204,7 @@ int main(int argc, const char **argv)
         g_nodes.push(res_state);
         g_nodes.push(res_state_f);
     }
-/*
+
     // serve aggiungere stato goal a R ?
     while (!g_nodes.empty())
     {
@@ -208,14 +213,16 @@ int main(int argc, const char **argv)
 
         if (!resiliency_check(current_node))
         {
-            regression_steps.clear();
-            if (!compute_plan(current_node, engine))
-            {
-                // add node to deadend,
-                // add regr to F
-                // TODO: ask Diego about deadend logic and F if we can control only forbidden action V
-            }
 
+            // if (!compute_plan(current_node, engine)) //TODO make computePlan works with new current_node as initial state
+            if (false)
+            {
+                // cout << "AAAAAAAAAAA" << endl;
+                //  add node to deadend,
+                //  add regr to F
+                //  TODO: ask Diego about deadend logic and F if we can control only forbidden action V
+            }
+            /*
             else if (current_node.get_k() >= 1)
             {
                 std::list<PolicyItem *>::iterator it;
@@ -245,10 +252,10 @@ int main(int argc, const char **argv)
                     ResilientState state_to_add = ResilientState(*item->state, 0, current_node.get_deactivated_op());
                     g_resilient_states.insert(state_to_add);
                 }
-            }
+            }*/
         }
     }
-*/
+
     /******************************************/
 
     g_timer_jit.stop();
@@ -268,8 +275,13 @@ int main(int argc, const char **argv)
  *********************/
 bool resiliency_check(ResilientState state)
 {
+    if (false)
+    { // TODO return to verbose after debugging
+        cout << "Resiliency check for state:" << endl;
+        state.dump();
+    }
+
     PartialState toCheck = PartialState(state);
-    PartialState *s = &toCheck;
 
     if (g_resilient_states.find(state) != g_resilient_states.end())
         return true;
@@ -277,35 +289,33 @@ bool resiliency_check(ResilientState state)
     std::set<Operator> next_actions;
 
     // consider state successive action in the policy excluding the forbidden ones
-    std::list<PolicyItem *>::iterator it_r;
-    for (it_r = regression_steps.begin(); it_r != regression_steps.end(); ++it_r)
+    for (std::list<PolicyItem *>::iterator it_r = regression_steps.begin(); it_r != regression_steps.end(); ++it_r)
     {
-        PolicyItem *item = *it_r;
-        RegressionStep *reg_step = (RegressionStep *)&item;
-        if (state.get_deactivated_op().find(*reg_step->op) == state.get_deactivated_op().end() &&
-            toCheck == *item->state)
+        RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it_r);
+        if (reg_step != goal_step)
         {
-            next_actions.insert(*reg_step->op);
+            if (state.get_deactivated_op().find(reg_step->get_op()) == state.get_deactivated_op().end() && reg_step->state == &toCheck)
+            {
+                next_actions.insert(reg_step->get_op());
+            }
         }
-    }
 
-    // resiliency check
-    std::set<Operator>::iterator it_o;
-    for (it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
-    {
-        PartialState *successor = new PartialState(*s, *it_o);
-        ResilientState *successor_r = new ResilientState(*successor, state.get_k(), state.get_deactivated_op());
-
-        std::set<Operator> forbidden_plus_current = state.get_deactivated_op();
-        forbidden_plus_current.insert(*it_o);
-        ResilientState *successor_r2 = new ResilientState(*s, state.get_k() - 1, forbidden_plus_current);
-
-        // TODO goal implication in the first and branch
-        if (g_resilient_states.find(*successor_r) == g_resilient_states.end() &&
-            g_resilient_states.find(*successor_r2) == g_resilient_states.end())
+        // resiliency check
+        for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
         {
-            g_resilient_states.insert(state);
-            return true;
+            PartialState *successor = new PartialState(toCheck, *it_o);
+            ResilientState *successor_r = new ResilientState(*successor, state.get_k(), state.get_deactivated_op());
+
+            std::set<Operator> forbidden_plus_current = state.get_deactivated_op();
+            forbidden_plus_current.insert(*it_o);
+            ResilientState *successor_r2 = new ResilientState(toCheck, state.get_k() - 1, forbidden_plus_current);
+
+            // TODO goal implication in the first and branch
+            if ((g_resilient_states.find(*successor_r) == g_resilient_states.end() || successor == goal_step->state) && g_resilient_states.find(*successor_r2) == g_resilient_states.end())
+            {
+                g_resilient_states.insert(state);
+                return true;
+            }
         }
     }
     return false;
@@ -314,52 +324,95 @@ bool resiliency_check(ResilientState state)
 /*********************
  *    computePlan     *
  *********************/
+
 bool compute_plan(ResilientState current_node, SearchEngine *engine)
 {
+    PartialState *old_initial_state = new PartialState(g_initial_state());
+
+    PartialState current_state = (PartialState)current_node;
+
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
-        g_initial_state_data[i] = (current_node)[i];
+        g_initial_state_data[i] = current_state[i];
+
+    cout << "AAAAAAAAAAAAAAAAAA" << endl;
+    cout << g_initial_state_data << endl;
+    cout << g_initial_state().get_id() << endl;
+
+    bool engine_ready = true;
+
+    if (g_deadend_states->check_match(current_state, false))
+        return false;
+    if (is_deadend(current_state))
+        return false;
 
     g_timer_engine_init.resume();
-    engine->reset();
-
+    try
+    {
+        engine->reset();
+    }
+    catch (SolvableError &se)
+    {
+        if (!g_silent_planning)
+            cout << se;
+        engine = 0; // Memory leak seems necessary --> engine can't be deleted.
+        engine_ready = false;
+    }
     g_timer_engine_init.stop();
 
-    if (verbose)
-        cout << "Searching for a solution." << endl;
-
-    g_timer_search.resume();
-    engine->search();
-    g_timer_search.stop();
-    g_limit_states = false;
-
-    if (engine->found_solution())
+    if (engine_ready)
     {
         if (verbose)
+            cout << "Searching for a solution." << endl;
+
+        g_timer_search.resume();
+        engine->search();
+        g_timer_search.stop();
+        g_limit_states = false;
+        return false;
+
+        if (engine->found_solution())
         {
-            engine->save_plan_if_necessary();
-            engine->statistics();
-            engine->heuristic_statistics();
+            if (verbose)
+            {
+                engine->save_plan_if_necessary();
+                engine->statistics();
+                engine->heuristic_statistics();
+            }
+
+            if (verbose)
+                cout << "Building the regression list." << endl;
+
+            regression_steps = perform_regression(engine->get_plan(), g_matched_policy, g_matched_distance, g_policy->empty());
+
+            if (verbose)
+                cout << "Updating the policy." << endl;
+
+            g_policy->update_policy(regression_steps);
+
+            reset_goal();
+            g_state_registry->reset_initial_state();
+            for (int i = 0; i < g_variable_name.size(); i++)
+                g_initial_state_data[i] = (*old_initial_state)[i];
+            return true;
         }
-
-        if (verbose)
-            cout << "Building the regression list." << endl;
-
-        regression_steps = perform_regression(engine->get_plan(), g_matched_policy, g_matched_distance, g_policy->empty());
-
-        if (verbose)
-            cout << "Updating the policy." << endl;
-
-        g_policy->update_policy(regression_steps);
-
-        reset_goal();
-
-        return true;
+        else
+        {
+            reset_goal();
+            g_state_registry->reset_initial_state();
+            for (int i = 0; i < g_variable_name.size(); i++)
+                g_initial_state_data[i] = (*old_initial_state)[i];
+            return false;
+        }
     }
     else
     {
+        if (verbose)
+            cout << "Replanning failed!" << endl;
         reset_goal();
-
+        g_state_registry->reset_initial_state();
+        for (int i = 0; i < g_variable_name.size(); i++)
+            g_initial_state_data[i] = (*old_initial_state)[i];
         return false;
     }
 }

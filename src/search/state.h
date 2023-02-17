@@ -65,33 +65,6 @@ public:
     void dump_fdr() const;
 };
 
-/*
-class ResilientState : public State {
-    friend class StateRegistry;
-    int k;
-    std::set<Operator> forbidden_op;
-
-    ResilientState();
-
-    ResilientState(const PackedStateBin *buffer_, const StateRegistry &registry_,
-                   StateID id_, int k_, std::set<Operator> forbidden_op_);
-
-    ResilientState(const State &state_, int k_);
-    ResilientState(const State &state_, int k_, std::set<Operator> forbidden_op_);
-
-public:
-
-    int get_k() const
-    {
-        return k;
-    }
-
-    std::set<Operator> get_forbidden_op() const {
-        return forbidden_op;
-    }
-};
-*/
-
 
 
 
