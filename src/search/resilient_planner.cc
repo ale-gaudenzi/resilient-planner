@@ -275,12 +275,6 @@ int main(int argc, const char **argv)
  *********************/
 bool resiliency_check(ResilientState state)
 {
-    if (false)
-    { // TODO return to verbose after debugging
-        cout << "Resiliency check for state:" << endl;
-        state.dump();
-    }
-
     PartialState toCheck = PartialState(state);
 
     if (g_resilient_states.find(state) != g_resilient_states.end())
@@ -299,23 +293,22 @@ bool resiliency_check(ResilientState state)
                 next_actions.insert(reg_step->get_op());
             }
         }
+    }
 
-        // resiliency check
-        for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+    // resiliency check
+    for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+    {
+        PartialState *successor = new PartialState(toCheck, *it_o);
+        ResilientState *successor_r = new ResilientState(*successor, state.get_k(), state.get_deactivated_op());
+
+        std::set<Operator> forbidden_plus_current = state.get_deactivated_op();
+        forbidden_plus_current.insert(*it_o);
+        ResilientState *successor_r2 = new ResilientState(toCheck, state.get_k() - 1, forbidden_plus_current);
+
+        if ((g_resilient_states.find(*successor_r) == g_resilient_states.end() || successor == goal_step->state) && g_resilient_states.find(*successor_r2) == g_resilient_states.end())
         {
-            PartialState *successor = new PartialState(toCheck, *it_o);
-            ResilientState *successor_r = new ResilientState(*successor, state.get_k(), state.get_deactivated_op());
-
-            std::set<Operator> forbidden_plus_current = state.get_deactivated_op();
-            forbidden_plus_current.insert(*it_o);
-            ResilientState *successor_r2 = new ResilientState(toCheck, state.get_k() - 1, forbidden_plus_current);
-
-            // TODO goal implication in the first and branch
-            if ((g_resilient_states.find(*successor_r) == g_resilient_states.end() || successor == goal_step->state) && g_resilient_states.find(*successor_r2) == g_resilient_states.end())
-            {
-                g_resilient_states.insert(state);
-                return true;
-            }
+            g_resilient_states.insert(state);
+            return true;
         }
     }
     return false;
