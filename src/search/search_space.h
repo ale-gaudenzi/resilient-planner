@@ -61,6 +61,7 @@ public:
     SearchNode get_node(const State &state);
     void trace_path(const State &goal_state,
                     std::vector<const Operator *> &path) const;
+    void save_state_path(const State &goal_state) const;
 
     void dump() const;
     void statistics() const;

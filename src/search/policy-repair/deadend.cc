@@ -195,6 +195,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
 
                 /* --------------------- */
                 /* If state is resilient don't push deactivated states (TO DO TEST) */
+                /*
                 if (curr.is_resilient) {
                     ResilientState current = (ResilientState)curr;
                     Operator orig_op = *orig_ops[i];
@@ -208,7 +209,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                     if(!is_deactivated) {
                         ops.push_back(orig_ops[i]); 
                     }
-                }
+                }*/
                 /* --------------------- */
 
                 else {

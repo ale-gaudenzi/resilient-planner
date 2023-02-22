@@ -7,6 +7,7 @@
 #include <map>
 #include <set>
 #include <stack>
+#include <utility>
 
 class Axiom;
 class AxiomEvaluator;
@@ -28,6 +29,7 @@ class Policy;
 class DeadendAwareSuccessorGenerator;
 class RegressionStep;
 class NondetDeadend;
+class StateID;
 
 bool test_goal(const State &state);
 bool test_policy(const State &state);
@@ -168,8 +170,13 @@ extern Timer g_timer_policy_use;
 extern Timer g_timer_jit;
 
 /* Resiliency */
+
+typedef std::pair<State, Operator> StateActionTuple;
+typedef std::pair<int, std::set<Operator> > FaultForbiddenTuple;
+
 extern int g_max_faults;
-extern std::set<ResilientState> g_resilient_states; 
-extern std::stack<ResilientState> g_nodes;
+extern int g_current_faults;
+extern std::set<Operator> g_current_forbidden;
+extern std::map<size_t, StateActionTuple> g_fault_model;
 
 #endif

@@ -36,6 +36,10 @@ Operator RegressionStep::get_op() {
     return *op;
 }
 
+PartialState PolicyItem::get_state() {
+    return *state;
+}
+
 void NondetDeadend::dump() const {
     cout << "Non-deterministic deadend:" << endl;
     cout << "Operator: " << g_operators[op_index].get_name() << endl;

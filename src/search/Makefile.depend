@@ -21,7 +21,8 @@
  policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h \
- policy-repair/simulator.h policy-repair/jit.h resilient_state.h
+ policy-repair/simulator.h policy-repair/jit.h resilient_state.h \
+ resilient_node.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -513,6 +514,9 @@
  open_lists/alternation_open_list.h open_lists/../plugin.h \
  open_lists/alternation_open_list.cc open_lists/pareto_open_list.h \
  open_lists/pareto_open_list.cc
+.obj/resilient_node.release.o: resilient_node.cc resilient_node.h operator.h globals.h \
+ policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h
 .obj/open_lists/alternation_open_list.release.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.release.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.release.o: open_lists/pareto_open_list.cc
@@ -1599,7 +1603,8 @@
  policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h \
- policy-repair/simulator.h policy-repair/jit.h resilient_state.h
+ policy-repair/simulator.h policy-repair/jit.h resilient_state.h \
+ resilient_node.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -2091,6 +2096,9 @@
  open_lists/alternation_open_list.h open_lists/../plugin.h \
  open_lists/alternation_open_list.cc open_lists/pareto_open_list.h \
  open_lists/pareto_open_list.cc
+.obj/resilient_node.debug.o: resilient_node.cc resilient_node.h operator.h globals.h \
+ policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h
 .obj/open_lists/alternation_open_list.debug.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.debug.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.debug.o: open_lists/pareto_open_list.cc
@@ -3177,7 +3185,8 @@
  policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h \
- policy-repair/simulator.h policy-repair/jit.h resilient_state.h
+ policy-repair/simulator.h policy-repair/jit.h resilient_state.h \
+ resilient_node.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -3669,6 +3678,9 @@
  open_lists/alternation_open_list.h open_lists/../plugin.h \
  open_lists/alternation_open_list.cc open_lists/pareto_open_list.h \
  open_lists/pareto_open_list.cc
+.obj/resilient_node.profile.o: resilient_node.cc resilient_node.h operator.h globals.h \
+ policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h
 .obj/open_lists/alternation_open_list.profile.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.profile.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.profile.o: open_lists/pareto_open_list.cc

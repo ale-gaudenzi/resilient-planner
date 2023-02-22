@@ -144,6 +144,7 @@ void Simulator::reset_goal()
 
 bool Simulator::replan()
 {
+
     g_replan_detected_deadends = false;
 
     // If the policy is complete, searching further won't help us
@@ -156,6 +157,7 @@ bool Simulator::replan()
         if (g_deadend_states->check_match(*current_state, false))
             return false;
     }
+
 
     // If we can detect that this is a deadend for the original goal, forget about it
     if (is_deadend(*current_state))
@@ -189,6 +191,7 @@ bool Simulator::replan()
                 g_goal.push_back(make_pair(i, (*current_goal)[i]));
         }
     }
+
 
     if (verbose)
         cout << "Creating new engine." << endl;

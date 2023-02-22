@@ -51,6 +51,7 @@ HEADERS = \
           timer.h \
           utilities.h \
           weighted_evaluator.h \
+          resilient_node.h \
           \
           open_lists/alternation_open_list.h \
           open_lists/open_list_buckets.h \

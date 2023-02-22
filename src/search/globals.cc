@@ -16,6 +16,7 @@
 #include "policy-repair/policy.h"
 #include "policy-repair/regression.h"
 #include "policy-repair/deadend.h"
+#include "state_id.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -31,7 +32,6 @@ using namespace std;
 #include <ext/hash_map>
 using namespace __gnu_cxx;
 
-#include "state_registry.h"
 
 static const int PRE_FILE_VERSION = 3;
 
@@ -528,7 +528,6 @@ Timer g_timer_policy_build;
 Timer g_timer_policy_eval;
 Timer g_timer_policy_use;
 Timer g_timer_jit;
-
 Timer g_timer;
 string g_plan_filename = "sas_plan";
 RandomNumberGenerator g_rng(2011); // Use an arbitrary default seed.
@@ -537,6 +536,9 @@ StateRegistry *g_state_registry = 0;
 
 /* Resiliency */
 
-int g_max_faults = 2; // TODO aggiungere nel comando di lancio di prp
-set<ResilientState> g_resilient_states; 
-stack<ResilientState> g_nodes;
+int g_max_faults = 1; // TODO aggiungere nel comando di lancio di prp
+
+int g_current_faults;
+std::set<Operator> g_current_forbidden;
+std::map<int, StateActionTuple> g_res_deadends;
+

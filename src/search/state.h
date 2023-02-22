@@ -10,7 +10,6 @@
 
 using namespace std;
 
-//class Operator;
 class StateRegistry;
 
 typedef IntPacker::Bin PackedStateBin;
@@ -19,7 +18,6 @@ class StateInterface {
 public:
     virtual int operator[](int index) const = 0;
     virtual ~StateInterface() {};
-    //set<Operator> get_forbidden() { return ; };
     bool is_resilient;
 };
 
@@ -29,6 +27,7 @@ class State : public StateInterface {
     friend class StateRegistry;
     template <class Entry>
     friend class PerStateInformation;
+    friend class ResilientNode;
 
 protected:
     // Values for vars are maintained in a packed state and accessed on demand.

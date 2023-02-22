@@ -158,6 +158,7 @@ void SearchSpace::trace_path(const State &goal_state,
     reverse(path.begin(), path.end());
 }
 
+
 void SearchSpace::dump() const {
     for (PerStateInformation<SearchNodeInfo>::const_iterator it =
             search_node_infos.begin(g_state_registry);

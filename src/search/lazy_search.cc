@@ -33,6 +33,7 @@ void LazySearch::reset() {
     SearchEngine::reset();
 
     current_state = g_initial_state();
+
     current_predecessor_id = StateID::no_state;
     current_operator = NULL;
     current_g = 0;
@@ -59,7 +60,7 @@ void LazySearch::initialize() {
 
     // Only set up the heuristics on the first go
     if (was_initialized)
-        return;
+        return; 
     else
         was_initialized = true;
     
@@ -81,6 +82,7 @@ void LazySearch::initialize() {
         heuristics.push_back(*it);
     }
     assert(!heuristics.empty());
+    cout << "end of initialize" << endl;
 }
 
 void LazySearch::get_successor_operators(vector<const Operator *> &ops) {
@@ -166,7 +168,6 @@ int LazySearch::step() {
     // - current_operator is the operator which leads to current_state from predecessor.
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
-
     SearchNode node = search_space.get_node(current_state);
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
 
@@ -211,8 +212,10 @@ int LazySearch::step() {
                 node.open(h, parent_node, current_operator);
             }
             node.close();
-            if (check_goal_and_set_plan(current_state))
+            if (check_goal_and_set_plan(current_state)) {
+                //search_space.save_state_path(current_state);
                 return SOLVED;
+            }
             if (search_progress.check_h_progress(current_g)) {
                 reward_progress();
             }

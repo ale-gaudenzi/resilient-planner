@@ -32,7 +32,7 @@ struct PolicyItem {
         cout << "\n\nWarning: Calling item.relevant(ps) on a non-RegressableOperator item.\n" << endl;
         return false;
     }
-
+    PartialState get_state();
     int generality();
 };
 

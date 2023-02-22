@@ -3,6 +3,7 @@
 
 #include <hash_set>
 
+
 // For documentation on classes relevant to storing and working with registered
 // states see the file state_registry.h.
 
@@ -11,6 +12,7 @@ class StateID {
     friend std::ostream &operator<<(std::ostream &os, StateID id);
     template<typename>
     friend class PerStateInformation;
+    friend class ResilientNode;
 
     int value;
     explicit StateID(int value_)
@@ -34,6 +36,10 @@ public:
     }
 
     size_t hash() const {
+        return value;
+    }
+
+    int get_value() const {
         return value;
     }
 };
