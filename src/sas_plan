@@ -1,2 +1,2 @@
-(fly plane1 city0 city2)
-(fly plane1 city2 city1)
+(refuel plane1 city2 fl1 fl2)
+(fly plane1 city2 city0 fl2 fl1)

@@ -86,6 +86,8 @@ public:
     void dump_human_policy(bool fsap=false);
 
     void copy_relevant_items(list<PolicyItem *> &items, bool checksc=false);
+
+    list<PolicyItem *> get_items() { return all_items; };
 };
 
 

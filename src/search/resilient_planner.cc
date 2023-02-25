@@ -263,6 +263,8 @@ int main(int argc, const char **argv)
                     }
                     regression_steps.clear();
                     regression_steps = perform_regression(engine->get_plan(), g_matched_policy, 0, true);
+                    // TODO: add the regression steps to the policy and not update it
+
                     g_policy->update_policy(regression_steps);
                 }
             }
@@ -271,12 +273,28 @@ int main(int argc, const char **argv)
 
     /******************************************/
 
+    g_policy->dump();
+
     g_timer_jit.stop();
     if (g_policy && g_best_policy && (g_best_policy != g_policy))
     {
         if (g_best_policy->get_score() > g_policy->get_score())
             g_policy = g_best_policy;
     }
+
+    g_timer.stop();
+    
+    cout << "\n\n                  -{ Timing Statistics }-\n"
+         << endl;
+    cout << "        Regression Computation: " << g_timer_regression << endl;
+    cout << "         Engine Initialization: " << g_timer_engine_init << endl;
+    cout << "                   Search Time: " << g_timer_search << endl;
+    cout << "           Policy Construction: " << g_timer_policy_build << endl;
+    cout << " Evaluating the policy quality: " << g_timer_policy_eval << endl;
+    cout << "              Using the policy: " << g_timer_policy_use << endl;
+    cout << "          Just-in-case Repairs: " << g_timer_jit << endl;
+    cout << "                Simulator time: " << g_timer_simulator << endl;
+    cout << "                    Total time: " << g_timer << endl;
 
     if (g_policy->is_strong_cyclic())
         exit_with(EXIT_STRONG_CYCLIC);
@@ -288,26 +306,38 @@ int main(int argc, const char **argv)
  *       RCheck      *
  *********************/
 
+// TODO: check the correctness of this, especially the part about the
 bool resiliency_check(ResilientNode node)
 {
-    PartialState state = PartialState(node.get_state());
+    PartialState state_to_check = PartialState(node.get_state());
 
     if (!(resilient_nodes.find(node) == resilient_nodes.end()))
         return true;
 
     std::set<Operator> next_actions;
-    std::list<PolicyItem *> full_policy;
-    g_policy->copy_relevant_items(full_policy, false);
+    list<PolicyItem *> current_policy = g_policy->get_items();
 
-    // get all the next actions
-    for (std::list<PolicyItem *>::iterator it_r = full_policy.begin(); it_r != full_policy.end(); ++it_r)
+    for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
     {
-        RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it_r);
-        if (reg_step != goal_step)
+        RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
+
+        if (!reg_step->is_goal)
         {
-            // TODO: regress the state to find the previous actions and change 2nd and branch
-            if (node.get_deactivated_op().find(reg_step->get_op()) == node.get_deactivated_op().end() && reg_step->state == &state)
+            bool equal = true;
+            PartialState policy_state = PartialState(*reg_step->state);
+
+            for (int i = 0; i < PartialState(*reg_step->state).size(); i++)
             {
+                if (policy_state[i] != -1)
+                    if (state_to_check[i] != policy_state[i]){
+                        cout << "-->NOT EQUAL" << endl;
+                        equal = false;
+                    }
+            }
+
+            if (node.get_deactivated_op().find(reg_step->get_op()) == node.get_deactivated_op().end() && equal)
+            {
+                cout << "-->INSERTED IN NEXT_ACTIONS" << endl;
                 next_actions.insert(reg_step->get_op());
             }
         }
@@ -322,7 +352,8 @@ bool resiliency_check(ResilientNode node)
         forbidden_plus_current.insert(*it_o);
         ResilientNode successor_r2 = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current);
 
-        if ((resilient_nodes.find(successor_r) == resilient_nodes.end() || PartialState(successor) == *goal_step->state) && resilient_nodes.find(successor_r2) == resilient_nodes.end())
+        if ((resilient_nodes.find(successor_r) == resilient_nodes.end() || PartialState(successor) == *goal_step->state) 
+            && resilient_nodes.find(successor_r2) == resilient_nodes.end())
         {
             resilient_nodes.insert(node);
             return true;
