@@ -171,12 +171,15 @@ extern Timer g_timer_jit;
 
 /* Resiliency */
 
-typedef std::pair<State, Operator> StateActionTuple;
-typedef std::pair<int, std::set<Operator> > FaultForbiddenTuple;
+typedef std::set<std::pair<PartialState, Operator> > StateActionSet;
 
 extern int g_max_faults;
-extern int g_current_faults;
-extern std::set<Operator> g_current_forbidden;
-extern std::map<size_t, StateActionTuple> g_fault_model;
 
+extern int g_current_faults;
+extern std::set<Operator> g_current_forbidden_ops;
+extern size_t g_current_forbidden_hash;
+
+extern std::map<size_t, Policy *> g_fault_model;
+
+extern bool g_use_resilient_planner;
 #endif

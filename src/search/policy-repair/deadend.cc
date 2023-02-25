@@ -83,7 +83,6 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
         // For each operator, create a new deadend avoidance pair
         for (int j = 0; j < reg_items.size(); j++)
         {
-
             RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
 
             de_items.push_back(new NondetDeadend(new PartialState(*failed_state, *(ro->op), false, dummy_state),
@@ -176,8 +175,21 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
         g_successor_generator_orig->generate_applicable_ops(_curr, orig_ops, true);
         g_deadend_policy->generate_applicable_items(curr, reg_items, false, false);
 
+        // FOR RESILIENCY
+        // we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
+        // and add them to the deadends of the current search
+        if (g_use_resilient_planner)
+        {
+            if (g_fault_model.find(g_current_forbidden_hash) != g_fault_model.end())
+            {
+                Policy *current_forbidden = g_fault_model[g_current_forbidden_hash];
+                current_forbidden->generate_applicable_items(curr, reg_items, false, false);
+            }
+        }
+
         set<int> forbidden;
-        for (int i = 0; i < reg_items.size(); i++) {
+        for (int i = 0; i < reg_items.size(); i++)
+        {
             int index = ((NondetDeadend *)(reg_items[i]))->op_index;
 
             forbidden.insert(index);
@@ -188,35 +200,31 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
         }
 
         vector<int> ruled_out;
-        for (int i = 0; i < orig_ops.size(); i++) {
-            if (0 == forbidden.count(orig_ops[i]->nondet_index)) {
+        for (int i = 0; i < orig_ops.size(); i++)
+        {
+            if (0 == forbidden.count(orig_ops[i]->nondet_index))
+            {
                 if (debug)
                     cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
 
-                /* --------------------- */
-                /* If state is resilient don't push deactivated states (TO DO TEST) */
-                /*
-                if (curr.is_resilient) {
-                    ResilientState current = (ResilientState)curr;
-                    Operator orig_op = *orig_ops[i];
-                    bool is_deactivated = false;
-                    for (set<Operator>::iterator it = current.get_deactivated_op().begin(); it != current.get_deactivated_op().end(); it++) {
-                        Operator deactivated_op = *it;
-                        if (deactivated_op.get_name() == orig_op.get_nondet_name()) {
-                            is_deactivated = true;
-                        }
+                // FOR RESILIENCY
+                // don't push back the operator if it is forbidden (found in current node V)
+                if (g_use_resilient_planner)
+                {
+                    if (g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end()) {
+                        cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
+                        ops.push_back(orig_ops[i]);
+                    } else {
+                        cout << "Forbidding operator " << orig_ops[i]->get_name() << endl;
                     }
-                    if(!is_deactivated) {
-                        ops.push_back(orig_ops[i]); 
-                    }
-                }*/
-                /* --------------------- */
-
-                else {
-                    ops.push_back(orig_ops[i]); 
+                }
+                else
+                {
+                    ops.push_back(orig_ops[i]);
                 }
             }
-            else {
+            else
+            {
                 if (g_combine_deadends)
                     ruled_out.push_back(orig_ops[i]->nondet_index);
 
@@ -260,15 +268,14 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
     }
     else
     {
-
         g_successor_generator_orig->generate_applicable_ops(_curr, ops, true);
     }
+
     return;
 }
 
 bool sample_for_depth1_deadends(const SearchEngine::Plan &plan, PartialState *state)
 {
-
     bool debug = false;
 
     if (!g_detect_deadends)

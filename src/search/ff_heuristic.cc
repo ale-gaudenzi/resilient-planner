@@ -13,9 +13,6 @@ using namespace std;
 #include <ext/hash_map>
 using namespace __gnu_cxx;
 
-
-
-
 // construction and destruction
 FFHeuristic::FFHeuristic(const Options &opts)
     : AdditiveHeuristic(opts) {

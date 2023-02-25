@@ -295,7 +295,13 @@ SearchEngine *OptionParser::parse_cmd_line(
         } else if (arg.compare("--debug-output") == 0) {
             ++i;
             g_silent_planning = (1 != atoi(argv[i]));
-        } else {
+        } 
+        else if(arg.compare("--resilient") == 0){
+            ++i;
+            g_use_resilient_planner = true;
+            g_max_faults = atoi(argv[i]);
+        }
+        else {
             cerr << "unknown option " << arg << endl << endl;
             cout << OptionParser::usage(argv[0]) << endl;
             exit_with(EXIT_INPUT_ERROR);
