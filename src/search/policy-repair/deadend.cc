@@ -159,6 +159,7 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
 
 void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterface &_curr, vector<const Operator *> &ops)
 {
+    bool verbose = false;
     if (g_detect_deadends && g_deadend_policy)
     {
         PartialState curr = PartialState(_curr);
@@ -180,11 +181,17 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
         // and add them to the deadends of the current search
         if (g_use_resilient_planner)
         {
+            if (g_fault_model.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_fault_model.end())
+            {
+                Policy *current_forbidden = g_fault_model[std::make_pair(g_current_faults, g_current_forbidden_ops)];
+                current_forbidden->generate_applicable_items(curr, reg_items, false, false);
+            }
+            /*
             if (g_fault_model.find(g_current_forbidden_hash) != g_fault_model.end())
             {
                 Policy *current_forbidden = g_fault_model[g_current_forbidden_hash];
                 current_forbidden->generate_applicable_items(curr, reg_items, false, false);
-            }
+            }*/
         }
 
         set<int> forbidden;
@@ -212,10 +219,15 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                 if (g_use_resilient_planner)
                 {
                     if (g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end()) {
-                        cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
+                        if(verbose){
+                            cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
+
+                        }
                         ops.push_back(orig_ops[i]);
                     } else {
-                        cout << "Forbidding operator " << orig_ops[i]->get_name() << endl;
+                        if(verbose){
+                            cout << "Forbidding operator " << orig_ops[i]->get_name() << endl;
+                        }
                     }
                 }
                 else

@@ -74,7 +74,7 @@ void SearchEngine::search()
     initialize();
     Timer timer;
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
-        cout << "Search step " << search_progress.get_expanded() << " [t=" << g_timer << "]" << endl;
+        //cout << "Search step " << search_progress.get_expanded() << " [t=" << g_timer << "]" << endl;
     ;
 
     if (g_timer_jit() < g_jic_limit)
