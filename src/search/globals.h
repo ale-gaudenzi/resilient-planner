@@ -169,8 +169,8 @@ extern Timer g_timer_policy_eval;
 extern Timer g_timer_policy_use;
 extern Timer g_timer_jit;
 
-/* Resiliency */
 
+/* Resiliency */
 typedef std::pair<int, std::set<Operator> > k_v_pair;
 
 extern int g_max_faults; // Maximum number of faults that can be tolerated
