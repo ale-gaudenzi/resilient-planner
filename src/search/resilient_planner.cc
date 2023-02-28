@@ -10,7 +10,6 @@
 #include "policy-repair/policy.h"
 #include "policy-repair/jit.h"
 #include "policy-repair/partial_state.h"
-#include "resilient_state.h"
 #include "resilient_node.h"
 #include "search_engine.h"
 
@@ -180,16 +179,18 @@ int main(int argc, const char **argv)
     // first filling of the nodes stack with the initial policy
     State current = g_initial_state();
     std::vector<const Operator *> plan = engine->get_plan();
+
     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
     {
+        ResilientNode res_node = ResilientNode(current, g_max_faults);
+        
         std::set<Operator> post_actions;
         post_actions.insert(*(*it));
-        ResilientNode res_node = ResilientNode(current, g_max_faults, post_actions);
         ResilientNode res_node_f = ResilientNode(current, g_max_faults - 1, post_actions);
 
         if (verbose)
         {
-            cout << "Pushing nodes:" << endl;
+            cout << "------> Pushing nodes:" << endl;
             res_node.dump();
             res_node_f.dump();
         }
@@ -235,7 +236,7 @@ int main(int argc, const char **argv)
 
                         if (verbose)
                         {
-                            cout << "Pushing nodes:" << endl;
+                            cout << "------> Pushing nodes:" << endl;
                             res_node.dump();
                             res_node_f.dump();
                         }
@@ -264,6 +265,10 @@ int main(int argc, const char **argv)
 
                 g_policy->update_policy(regression_steps);
             }
+        } else {
+            cout << "------------------------------" << endl;
+            cout << "Resiliency check passed for node:" << endl;
+            current_node.dump();
         }
     }
     g_timer_jit.stop();
@@ -346,8 +351,8 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     {
         cout << "\n-----------------------\n"
              << endl;
-        cout << "Replanning from state " << current_node.get_state().get_id() << endl;
-        current_node.get_state().dump_pddl();
+        cout << "Replanning from node " << endl;
+        current_node.dump();
     }
 
     PartialState current_state = PartialState(current_node.get_state());
@@ -383,7 +388,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 
     if (engine->found_solution())
     {
-        cout << "--> Solution found" << endl;
+        cout << "Solution found" << endl;
         if (verbose)
         {
             engine->save_plan_if_necessary();

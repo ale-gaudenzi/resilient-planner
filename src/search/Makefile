@@ -45,7 +45,6 @@ HEADERS = \
           state.h \
           state_id.h \
           state_registry.h \
-          resilient_state.h \
           successor_generator.h \
           sum_evaluator.h \
           timer.h \
