@@ -96,6 +96,9 @@ int main(int argc, const char **argv)
     g_deadend_states = new Policy();
     g_temporary_deadends = new Policy();
 
+    // test for resiliency, the first time we need to create StateRegistry, then we do not reset with SearchEngine::reset()
+    g_state_registry = new StateRegistry;
+
     /***************************************
      * Assert the settings are consistent. *
      ***************************************/
@@ -190,7 +193,7 @@ int main(int argc, const char **argv)
 
         if (verbose)
         {
-            cout << "------> Pushing nodes:" << endl;
+            cout << "Pushing nodes:" << endl;
             res_node.dump();
             res_node_f.dump();
         }
@@ -226,7 +229,11 @@ int main(int argc, const char **argv)
 
                 if (current_node.get_k() >= 1)
                 {
-                    for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
+                    vector<const Operator *>::iterator it = plan.begin();
+                    current = g_state_registry->get_successor_state(current, *(*it));
+                    ++it;
+
+                    while (it != plan.end())
                     {
                         ResilientNode res_node = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
 
@@ -236,7 +243,7 @@ int main(int argc, const char **argv)
 
                         if (verbose)
                         {
-                            cout << "------> Pushing nodes:" << endl;
+                            cout << "Pushing nodes:" << endl;
                             res_node.dump();
                             res_node_f.dump();
                         }
@@ -244,6 +251,7 @@ int main(int argc, const char **argv)
                         nodes.push(res_node);
                         nodes.push(res_node_f);
                         current = g_state_registry->get_successor_state(current, *(*it));
+                        ++it;
                     }
                 }
                 else
@@ -329,6 +337,7 @@ bool resiliency_check(ResilientNode node)
 
         std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
         forbidden_plus_current.insert(*it_o);
+        
         ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
 
         if ((resilient_nodes.find(successor_r) == resilient_nodes.end() || PartialState(successor) == *goal_step->state) && resilient_nodes.find(current_r) == resilient_nodes.end())

@@ -3,7 +3,6 @@
 
 #include "int_packer.h"
 #include "state_id.h"
-//#include "operator.h"
 #include <iostream>
 #include <vector>
 #include <set>
@@ -18,7 +17,6 @@ class StateInterface {
 public:
     virtual int operator[](int index) const = 0;
     virtual ~StateInterface() {};
-    bool is_resilient;
 };
 
 // For documentation on classes relevant to storing and working with registered

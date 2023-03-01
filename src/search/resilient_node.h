@@ -32,6 +32,7 @@ public:
         return deactivated_op;
     }
 
+
     bool operator==(const ResilientNode &other) const;
     bool operator<(const ResilientNode &other) const;
 

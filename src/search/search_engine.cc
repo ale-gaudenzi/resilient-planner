@@ -32,8 +32,12 @@ void SearchEngine::reset()
     solved = false;
     search_space.reset();
     search_progress.reset();
-    delete g_state_registry;
-    g_state_registry = new StateRegistry;
+    
+    if(!g_use_resilient_planner) {
+        delete g_state_registry;
+        g_state_registry = new StateRegistry;
+    }
+
     for (int i = 0; i < g_operators.size(); i++)
     {
         g_operators[i].unmark();
