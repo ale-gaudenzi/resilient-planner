@@ -36,6 +36,9 @@ public:
     bool operator==(const ResilientNode &other) const;
     bool operator<(const ResilientNode &other) const;
 
+    bool operator!=(const ResilientNode &other) const {
+        return !(*this == other);
+    }
 };
 
 #endif

@@ -51,3 +51,16 @@ void State::dump_fdr() const
         cout << "  #" << i << " [" << g_variable_name[i] << "] -> "
              << (*this)[i] << endl;
 }
+
+
+bool State::operator==(const State &other) const
+{
+    for (int i = 0; i < g_variable_domain.size(); i++)
+    {
+        const string &fact_name1 = g_fact_names[i][(*this)[i]];
+        const string &fact_name2 = g_fact_names[i][(other)[i]];
+        if (fact_name1 != "<none of those>" && fact_name2 != "<none of those>" && fact_name1.compare(fact_name2) != 0)
+            return false;
+    }
+    return true;
+}

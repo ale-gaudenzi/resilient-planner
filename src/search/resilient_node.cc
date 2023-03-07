@@ -24,14 +24,16 @@ void ResilientNode::dump() const {
     for (set<Operator>::iterator it = deactivated_op.begin(); it != deactivated_op.end(); it++) {
         it->dump();
     }
-    cout << "\n";
 }
+
 
 bool ResilientNode::operator==(const ResilientNode &other) const {
     bool equal_op = true;
     
-    if (deactivated_op.size() != other.deactivated_op.size())
+    if (deactivated_op.size() != other.deactivated_op.size()){
         return false;
+    }
+
     else if (deactivated_op.size() != 0) {
         for (set<Operator>::iterator it = deactivated_op.begin(); it != deactivated_op.end(); it++) {
             if (other.deactivated_op.find(*it) == other.deactivated_op.end()) {
@@ -45,7 +47,9 @@ bool ResilientNode::operator==(const ResilientNode &other) const {
 }
 
 bool ResilientNode::operator<(const ResilientNode &other) const {
-    return (state.buffer < other.state.buffer) && (k < other.k) && (deactivated_op < other.deactivated_op);
+    return (state.get_id().get_value() < other.state.get_id().get_value());
+
+    //return (state.get_id().get_value() < other.state.get_id().get_value()) && (k < other.k) && (deactivated_op < other.deactivated_op);
 }
 
 

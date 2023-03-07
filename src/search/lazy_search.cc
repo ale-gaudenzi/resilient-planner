@@ -107,10 +107,10 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
             heur->get_preferred_operators(preferred_operators);
     }
 
-// RESILIENCY
-// for now we use this hack to exclude the preferred operators.
-// TODO: generalize for every search engine and change the preferred_operators logic
-//       to exclude the banned operators by itself
+    // RESILIENCY
+    // for now we use this hack to exclude the preferred operators.
+    // TODO: generalize for every search engine and change the preferred_operators logic
+    //       to exclude the banned operators by itself
     if (!g_use_resilient_planner)
     {
         if (succ_mode == pref_first)
@@ -205,7 +205,16 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
+
+    current_state.dump_pddl();
+    cout << "Reopen closed nodes: " << reopen_closed_nodes << endl;
+    cout << "Current g: " << current_g << endl;
+    cout << "Node g: " << node.get_g() << endl;
+    cout << "Node is dead end: " << node.is_dead_end() << endl;
+    cout << "Node is new: " << node.is_new() << endl;
+
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
+
     if (node.is_new() || reopen)
     {
         if (g_force_limit_states || (g_plan_locally_limited && g_limit_states))
@@ -236,6 +245,7 @@ int LazySearch::step()
         search_progress.inc_evaluated_states();
         search_progress.inc_evaluations(heuristics.size());
         open_list->evaluate(current_g, false);
+
         if (!open_list->is_dead_end())
         {
             // We use the value of the first heuristic, because SearchSpace only

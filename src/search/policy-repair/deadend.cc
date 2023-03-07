@@ -159,7 +159,7 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
 
 void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterface &_curr, vector<const Operator *> &ops)
 {
-    bool verbose = false;
+    bool verbose = true;
     if (g_detect_deadends && g_deadend_policy)
     {
         PartialState curr = PartialState(_curr);
@@ -186,12 +186,6 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                 Policy *current_forbidden = g_fault_model[std::make_pair(g_current_faults, g_current_forbidden_ops)];
                 current_forbidden->generate_applicable_items(curr, reg_items, false, false);
             }
-            /*
-            if (g_fault_model.find(g_current_forbidden_hash) != g_fault_model.end())
-            {
-                Policy *current_forbidden = g_fault_model[g_current_forbidden_hash];
-                current_forbidden->generate_applicable_items(curr, reg_items, false, false);
-            }*/
         }
 
         set<int> forbidden;

@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <set>
+#include <string>
 
 using namespace std;
 
@@ -57,9 +58,11 @@ public:
     }
 
     int operator[](int index) const;
-
+    bool operator==(const State &other) const;
+    
     void dump_pddl() const;
     void dump_fdr() const;
+   // std::string to_string();
 };
 
 
