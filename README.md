@@ -1,3 +1,6 @@
+## Option for resiliency
+--resilient K
+
 
 # Planner: PRP -- (P)lanner for (R)elevant (P)olicies
 
