@@ -26,7 +26,7 @@ bool verbose = true;
 bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
 void reset_goal();
-void add_fault_model_deadend(State state);
+void add_fault_model_deadend(ResilientNode node);
 void print_results();
 void print_timings();
 bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
@@ -91,11 +91,6 @@ int main(int argc, const char **argv)
     g_deadend_policy = new Policy();
     g_deadend_states = new Policy();
     g_temporary_deadends = new Policy();
-
-    // RESILIENCY
-    // in the first run we need to create StateRegistry, then we do not reset with SearchEngine::reset()
-    // cout << "AA" << endl;
-    g_state_registry = new StateRegistry;
 
     /***************************************
      * Assert the settings are consistent. *
@@ -196,14 +191,6 @@ int main(int argc, const char **argv)
         current = g_state_registry->get_successor_state(current, *(*it));
     }
 
-    // set<Operator> empty;
-    k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
-
-    StateRegistry *current_registry = (StateRegistry *)malloc(sizeof(StateRegistry));
-    *current_registry = *g_state_registry;
-
-    g_resilient_state_registries[current_pair] = current_registry;
-
     int iteration = 1;
 
     while (!nodes.empty())
@@ -214,11 +201,6 @@ int main(int argc, const char **argv)
         g_current_forbidden_ops = current_node.get_deactivated_op();
 
         k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
-        if (g_resilient_state_registries.find(current_pair) != g_resilient_state_registries.end())
-        {
-            delete g_state_registry;
-            *g_state_registry = *g_resilient_state_registries.find(current_pair)->second;
-        }
 
         if (verbose)
         {
@@ -237,12 +219,12 @@ int main(int argc, const char **argv)
             {
                 if (verbose)
                     cout << "\nFailed replanning." << endl;
-                add_fault_model_deadend(current_node.get_state());
+                add_fault_model_deadend(current_node);
 
                 if (!find_in_nodes_list(resilient_deadends, current_node))
                 {
                     if (verbose)
-                        cout << "Adding node to deadend set.\n"
+                        cout << "Adding nodes to deadend set.\n"
                              << endl;
                     resilient_deadends.push_back(current_node);
                 }
@@ -307,7 +289,9 @@ int main(int argc, const char **argv)
 
                 g_policy->update_policy(regression_steps);
             }
-        } else {
+        }
+        else
+        {
             if (verbose)
                 cout << "\nSuccessfull resiliency check.\n"
                      << endl;
@@ -456,8 +440,9 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 }
 
 // regress the state and add every state-action pair Regr(s,A) to the fault model policy map indexed by the current (k,V)
-void add_fault_model_deadend(State state)
+void add_fault_model_deadend(ResilientNode node)
 {
+    State state = node.get_state();
     list<PolicyItem *> de_items;
 
     PartialState *dummy_state = new PartialState();
@@ -480,6 +465,28 @@ void add_fault_model_deadend(State state)
 
     current_deadend_policy->update_policy(de_items);
     g_fault_model.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), current_deadend_policy));
+
+    std::set<Operator> v = node.get_deactivated_op();
+    for (std::set<Operator>::iterator it = v.begin(); it != v.end(); ++it)
+    {
+        std::set<Operator> forbidden_minus_a = g_current_forbidden_ops;
+        forbidden_minus_a.erase(*it);
+
+        Policy *s_a = new Policy();
+        list<PolicyItem *> s_a_item;
+
+        s_a_item.push_back(new NondetDeadend(new PartialState(state), it->nondet_index));
+
+        if (g_fault_model.find(std::make_pair(g_current_faults + 1, forbidden_minus_a)) != g_fault_model.end())
+        {
+            g_fault_model.find(std::make_pair(g_current_faults + 1, forbidden_minus_a))->second->update_policy(s_a_item);
+        }
+        else
+        {
+            s_a->update_policy(s_a_item);
+            g_fault_model.insert(std::make_pair(std::make_pair(g_current_faults + 1, forbidden_minus_a), s_a));
+        }
+    }
 }
 
 void reset_goal()
@@ -551,7 +558,6 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
     {
         if (it->get_nondet_name() == op.get_nondet_name())
         {
-
             return true;
         }
     }

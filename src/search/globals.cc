@@ -603,4 +603,3 @@ std::map<k_v_pair, Policy *> g_resilient_policies;
 bool g_use_resilient_planner = true;
 Policy *g_original_policy;
 
-std::map<k_v_pair, StateRegistry *> g_resilient_state_registries;

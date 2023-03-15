@@ -31,7 +31,6 @@ bool ResilientNode::operator==(const ResilientNode &other) const {
     bool equal_op = true;
     
     if (deactivated_op.size() != other.deactivated_op.size()){
-        cout << "KKKKKKKKKKKKK FALSO" << endl;
         return false;
     }
 
@@ -42,7 +41,6 @@ bool ResilientNode::operator==(const ResilientNode &other) const {
             }
         }
     }   
-    cout << "KKKKKKKKKKKKKKK equal_op: " << equal_op << endl;
 
     return (state.get_packed_buffer() == other.state.get_packed_buffer()) && (k == other.k) && equal_op; //&& (deactivated_op == other.deactivated_op);
 }
