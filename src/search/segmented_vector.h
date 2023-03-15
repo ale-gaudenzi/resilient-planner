@@ -48,6 +48,8 @@
 
 template<class Entry, class Allocator = std::allocator<Entry> >
 class SegmentedVector {
+    public:
+
     typedef typename Allocator::template rebind<Entry>::other EntryAllocator;
     // TODO: Try to find a good value for SEGMENT_BYTES.
     static const size_t SEGMENT_BYTES = 8192;
@@ -77,7 +79,6 @@ class SegmentedVector {
     // No implementation to forbid copies and assignment
     SegmentedVector(const SegmentedVector<Entry> &);
     SegmentedVector & operator=(const SegmentedVector<Entry> &);
-public:
     SegmentedVector()
         : the_size(0) {
     }

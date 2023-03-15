@@ -8,9 +8,10 @@ end_metric
 begin_variable
 var0
 -1
-2
+3
 Atom at(plane1, city0)
 Atom at(plane1, city1)
+Atom at(plane1, city2)
 end_variable
 0
 begin_state
@@ -20,12 +21,19 @@ begin_goal
 1
 0 1
 end_goal
-2
+6
 begin_operator
 fly plane1 city0 city1
 0
 1
 0 0 0 1
+0
+end_operator
+begin_operator
+fly plane1 city0 city2
+0
+1
+0 0 0 2
 0
 end_operator
 begin_operator
@@ -35,24 +43,63 @@ fly plane1 city1 city0
 0 0 1 0
 0
 end_operator
+begin_operator
+fly plane1 city1 city2
+0
+1
+0 0 1 2
+0
+end_operator
+begin_operator
+fly plane1 city2 city0
+0
+1
+0 0 2 0
+0
+end_operator
+begin_operator
+fly plane1 city2 city1
+0
+1
+0 0 2 1
+0
+end_operator
 0
 begin_SG
 switch 0
 check 0
-check 1
+check 2
 0
-check 1
 1
+check 2
+2
+3
+check 2
+4
+5
 check 0
 end_SG
 begin_DTG
-1
-1
-0
-0
+2
 1
 0
+0
+2
 1
+0
+2
+0
+2
+0
+2
+3
+0
+2
+0
+4
+0
+1
+5
 0
 end_DTG
 begin_CG

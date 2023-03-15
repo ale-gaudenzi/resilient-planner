@@ -159,7 +159,7 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
 
 void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterface &_curr, vector<const Operator *> &ops)
 {
-    bool verbose = true;
+    bool verbose = false;
     if (g_detect_deadends && g_deadend_policy)
     {
         PartialState curr = PartialState(_curr);
@@ -215,7 +215,6 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                     if (g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end()) {
                         if(verbose){
                             cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
-
                         }
                         ops.push_back(orig_ops[i]);
                     } else {

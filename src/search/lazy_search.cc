@@ -205,14 +205,6 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
-
-    current_state.dump_pddl();
-    cout << "Reopen closed nodes: " << reopen_closed_nodes << endl;
-    cout << "Current g: " << current_g << endl;
-    cout << "Node g: " << node.get_g() << endl;
-    cout << "Node is dead end: " << node.is_dead_end() << endl;
-    cout << "Node is new: " << node.is_new() << endl;
-
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
 
     if (node.is_new() || reopen)
@@ -231,6 +223,7 @@ int LazySearch::step()
         {
             dummy_id = g_initial_state().get_id();
         }
+
         State parent_state = g_state_registry->lookup_state(dummy_id);
         SearchNode parent_node = search_space.get_node(parent_state);
 
@@ -242,6 +235,7 @@ int LazySearch::step()
             }
             heuristics[i]->evaluate(current_state);
         }
+
         search_progress.inc_evaluated_states();
         search_progress.inc_evaluations(heuristics.size());
         open_list->evaluate(current_g, false);
@@ -251,25 +245,31 @@ int LazySearch::step()
             // We use the value of the first heuristic, because SearchSpace only
             // supported storing one heuristic value
             int h = heuristics[0]->get_value();
+
             if (reopen)
             {
                 node.reopen(parent_node, current_operator);
                 search_progress.inc_reopened();
             }
+
             else if (current_predecessor_id == StateID::no_state)
             {
                 node.open_initial(h);
                 search_progress.get_initial_h_values();
             }
+
             else
             {
                 node.open(h, parent_node, current_operator);
             }
+
             node.close();
+
             if (check_goal_and_set_plan(current_state))
             {
                 return SOLVED;
             }
+
             if (search_progress.check_h_progress(current_g))
             {
                 reward_progress();

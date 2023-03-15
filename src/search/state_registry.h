@@ -98,88 +98,107 @@
 
 class PerStateInformationBase;
 
-class StateRegistry {
-    struct StateIDSemanticHash {
-        const SegmentedArrayVector<PackedStateBin> &state_data_pool;
-        StateIDSemanticHash(const SegmentedArrayVector<PackedStateBin> &state_data_pool_)
-            : state_data_pool (state_data_pool_) {
-        }
-        size_t operator() (StateID id) const {
-            return ::hash_number_sequence(state_data_pool[id.value], g_state_packer->get_num_bins());
-        }
-    };
+class StateRegistry
+{
 
-    struct StateIDSemanticEqual {
-        const SegmentedArrayVector<PackedStateBin> &state_data_pool;
-        StateIDSemanticEqual(const SegmentedArrayVector<PackedStateBin> &state_data_pool_)
-            : state_data_pool (state_data_pool_) {
-        }
+  struct StateIDSemanticHash
+  {
+    const SegmentedArrayVector<PackedStateBin> &state_data_pool;
+    StateIDSemanticHash(const SegmentedArrayVector<PackedStateBin> &state_data_pool_)
+        : state_data_pool(state_data_pool_)
+    {
+    }
+    size_t operator()(StateID id) const
+    {
+      return ::hash_number_sequence(state_data_pool[id.value], g_state_packer->get_num_bins());
+    }
+  };
 
-        size_t operator() (StateID lhs, StateID rhs) const {
-            size_t size = g_state_packer->get_num_bins();
-            const PackedStateBin *lhs_data = state_data_pool[lhs.value];
-            const PackedStateBin *rhs_data = state_data_pool[rhs.value];
-            return std::equal(lhs_data, lhs_data + size, rhs_data);
-        }
-    };
-
-    /*
-      Hash set of StateIDs used to detect states that are already registered in
-      this registry and find their IDs. States are compared/hashed semantically,
-      i.e. the actual state data is compared, not the memory location.
-    */
-    typedef __gnu_cxx::hash_set<StateID,
-                                StateIDSemanticHash,
-                                StateIDSemanticEqual> StateIDSet;
-
-    SegmentedArrayVector<PackedStateBin> state_data_pool;
-    StateIDSet registered_states;
-    State *cached_initial_state;
-    mutable std::set<PerStateInformationBase *> subscribers;
-    StateID insert_id_or_pop_state();
-public:
-    StateRegistry();
-    ~StateRegistry();
-
-    /*
-      Returns the state that was registered at the given ID. The ID must refer
-      to a state in this registry. Do not mix IDs from from different registries.
-    */
-    State lookup_state(StateID id) const;
-
-    /*
-      Returns a reference to the initial state and registers it if this was not
-      done before. The result is cached internally so subsequent calls are cheap.
-    */
-    const State &get_initial_state();
-
-    /*
-      Returns the state that results from applying op to predecessor and
-      registers it if this was not done before. This is an expensive operation
-      as it includes duplicate checking.
-    */
-    State get_successor_state(const State &predecessor, const Operator &op);
-
-    /*
-      Returns the number of states registered so far.
-    */
-    size_t size() const {
-        return registered_states.size();
+  struct StateIDSemanticEqual
+  {
+    const SegmentedArrayVector<PackedStateBin> &state_data_pool;
+    StateIDSemanticEqual(const SegmentedArrayVector<PackedStateBin> &state_data_pool_)
+        : state_data_pool(state_data_pool_)
+    {
     }
 
-    /*
-      Remembers the given PerStateInformation. If this StateRegistry is
-      destroyed, it notifies all subscribed PerStateInformation objects.
-      The information stored in them that relates to states from this
-      registry is then destroyed as well.
-    */
-    void subscribe(PerStateInformationBase *psi) const;
-    void unsubscribe(PerStateInformationBase *psi) const;
-    
-    /*
-      Used to reset the initial state when new data is used for g_initial_state_data
-    */
-    void reset_initial_state();
+    size_t operator()(StateID lhs, StateID rhs) const
+    {
+      size_t size = g_state_packer->get_num_bins();
+      const PackedStateBin *lhs_data = state_data_pool[lhs.value];
+      const PackedStateBin *rhs_data = state_data_pool[rhs.value];
+      return std::equal(lhs_data, lhs_data + size, rhs_data);
+    }
+  };
+
+  /*
+    Hash set of StateIDs used to detect states that are already registered in
+    this registry and find their IDs. States are compared/hashed semantically,
+    i.e. the actual state data is compared, not the memory location.
+  */
+  typedef __gnu_cxx::hash_set<StateID,
+                              StateIDSemanticHash,
+                              StateIDSemanticEqual>
+      StateIDSet;
+
+  SegmentedArrayVector<PackedStateBin> state_data_pool;
+  StateIDSet registered_states;
+  State *cached_initial_state;
+  mutable std::set<PerStateInformationBase *> subscribers;
+  StateID insert_id_or_pop_state();
+
+public:
+
+  StateRegistry();
+  ~StateRegistry();
+
+  /*
+    Returns the state that was registered at the given ID. The ID must refer
+    to a state in this registry. Do not mix IDs from from different registries.
+  */
+  State lookup_state(StateID id) const;
+
+  /*
+    Returns a reference to the initial state and registers it if this was not
+    done before. The result is cached internally so subsequent calls are cheap.
+  */
+  const State &get_initial_state();
+
+  /*
+    Returns the state that results from applying op to predecessor and
+    registers it if this was not done before. This is an expensive operation
+    as it includes duplicate checking.
+  */
+  State get_successor_state(const State &predecessor, const Operator &op);
+
+  /*
+    Returns the number of states registered so far.
+  */
+  size_t size() const
+  {
+    return registered_states.size();
+  }
+
+  /*
+    Remembers the given PerStateInformation. If this StateRegistry is
+    destroyed, it notifies all subscribed PerStateInformation objects.
+    The information stored in them that relates to states from this
+    registry is then destroyed as well.
+  */
+  void subscribe(PerStateInformationBase *psi) const;
+  void unsubscribe(PerStateInformationBase *psi) const;
+
+  /*
+    Used to reset the initial state when new data is used for g_initial_state_data
+  */
+  void reset_initial_state();
+
+  StateRegistry *operator=(const StateRegistry &)
+  {
+    return this;
+  }
+
+
 };
 
 #endif

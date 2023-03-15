@@ -29,11 +29,11 @@ void reset_goal();
 void add_fault_model_deadend(State state);
 void print_results();
 void print_timings();
-bool find_in_res_set(std::set<ResilientNode> set, ResilientNode node);
+bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
 bool find_in_op_set(std::set<Operator> set, Operator op);
 
-std::set<ResilientNode> resilient_nodes;
-std::set<ResilientNode> resilient_deadends;
+std::list<ResilientNode> resilient_nodes;
+std::list<ResilientNode> resilient_deadends;
 std::stack<ResilientNode> nodes;
 
 int main(int argc, const char **argv)
@@ -94,7 +94,8 @@ int main(int argc, const char **argv)
 
     // RESILIENCY
     // in the first run we need to create StateRegistry, then we do not reset with SearchEngine::reset()
-    // g_state_registry = new StateRegistry;
+    // cout << "AA" << endl;
+    g_state_registry = new StateRegistry;
 
     /***************************************
      * Assert the settings are consistent. *
@@ -173,7 +174,7 @@ int main(int argc, const char **argv)
     std::vector<const Operator *> plan = engine->get_plan();
     ResilientNode initial_node = ResilientNode(current, g_max_faults);
     g_current_faults = g_max_faults;
-    
+
     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
     {
         ResilientNode res_node = ResilientNode(current, g_max_faults);
@@ -195,23 +196,34 @@ int main(int argc, const char **argv)
         current = g_state_registry->get_successor_state(current, *(*it));
     }
 
+    // set<Operator> empty;
+    k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
 
-    int i = 1;
+    StateRegistry *current_registry = (StateRegistry *)malloc(sizeof(StateRegistry));
+    *current_registry = *g_state_registry;
+
+    g_resilient_state_registries[current_pair] = current_registry;
+
+    int iteration = 1;
 
     while (!nodes.empty())
     {
-
         ResilientNode current_node = nodes.top();
         nodes.pop();
         g_current_faults = current_node.get_k();
         g_current_forbidden_ops = current_node.get_deactivated_op();
 
+        k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
+        if (g_resilient_state_registries.find(current_pair) != g_resilient_state_registries.end())
+        {
+            delete g_state_registry;
+            *g_state_registry = *g_resilient_state_registries.find(current_pair)->second;
+        }
+
         if (verbose)
         {
             cout << "\n----------------------------------------" << endl;
-            cout << "current nodes stack size:" << nodes.size() << endl;
-
-            cout << "\nIteration:" << i << endl;
+            cout << "\nIteration:" << iteration << endl;
             cout << "Current node:" << endl;
             current_node.dump();
         }
@@ -227,16 +239,15 @@ int main(int argc, const char **argv)
                     cout << "\nFailed replanning." << endl;
                 add_fault_model_deadend(current_node.get_state());
 
-                if (!find_in_res_set(resilient_deadends, current_node))
+                if (!find_in_nodes_list(resilient_deadends, current_node))
                 {
                     if (verbose)
                         cout << "Adding node to deadend set.\n"
                              << endl;
-                    resilient_deadends.insert(current_node);
+                    resilient_deadends.push_back(current_node);
                 }
                 else
                 {
-                    cout << "Deadend size:" << resilient_deadends.size() << endl;
                     if (verbose)
                         cout << "Node already in deadend set.\n"
                              << endl;
@@ -246,9 +257,8 @@ int main(int argc, const char **argv)
             {
                 if (verbose)
                     cout << "Successfull replanning" << endl;
+
                 State current = g_initial_state();
-                cout << "CURRENT INITIAL STATE" << endl;
-                current.dump_pddl();
                 std::vector<const Operator *> plan = engine->get_plan();
 
                 if (current_node.get_k() >= 1)
@@ -278,16 +288,12 @@ int main(int argc, const char **argv)
                         current = g_state_registry->get_successor_state(current, *(*it));
                     }
                 }
-
                 else
-                {   
-                    cout << "ELSE = 0" << endl;
+                {
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
-                        cout << "INSERT NODE IN R" << endl;
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                        res_node.dump();
-                        resilient_nodes.insert(res_node);
+                        resilient_nodes.push_back(res_node);
                         current = g_state_registry->get_successor_state(current, *(*it));
                     }
                 }
@@ -301,22 +307,16 @@ int main(int argc, const char **argv)
 
                 g_policy->update_policy(regression_steps);
             }
-        }
-        else
-        {
+        } else {
             if (verbose)
-            {
-                cout << "\nResiliency check passed for node:" << endl;
-                current_node.dump();
-            }
+                cout << "\nSuccessfull resiliency check.\n"
+                     << endl;
         }
 
-        i++;
-        if (i>6)
-            break;
+        iteration++;
     }
 
-    if (find_in_res_set(resilient_deadends, initial_node))
+    if (find_in_nodes_list(resilient_deadends, initial_node))
         cout << "\nInitial state is a deadend, problem is not " << g_max_faults << "-resilient!\n"
              << endl;
     else
@@ -338,7 +338,7 @@ bool resiliency_check(ResilientNode node)
 
     PartialState state_to_check = PartialState(node.get_state());
 
-    if (find_in_res_set(resilient_nodes, node))
+    if (find_in_nodes_list(resilient_nodes, node))
         return true;
 
     std::set<Operator> next_actions;
@@ -360,24 +360,26 @@ bool resiliency_check(ResilientNode node)
             }
         }
         else
+        {
             goal_step = reg_step;
+        }
     }
 
-    cout << "Starting resiliency check" << endl;
-    
+    State state = node.get_state();
+    StateRegistry *registry = const_cast<StateRegistry *>(&state.get_registry());
+
     for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
     {
-        State successor = g_state_registry->get_successor_state(node.get_state(), *it_o);
+        State successor = registry->get_successor_state(node.get_state(), *it_o);
         ResilientNode successor_r = ResilientNode(successor, node.get_k(), node.get_deactivated_op()); // <s[a], k, V>
 
         std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
         forbidden_plus_current.insert(*it_o);
-
         ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
 
-        if ((find_in_res_set(resilient_nodes, successor_r) || PartialState(successor) == *goal_step->state) && (find_in_res_set(resilient_nodes, current_r)))
+        if ((find_in_nodes_list(resilient_nodes, successor_r) || PartialState(successor) == *goal_step->state) && (find_in_nodes_list(resilient_nodes, current_r)))
         {
-            resilient_nodes.insert(node);
+            resilient_nodes.push_back(node);
             return true;
         }
     }
@@ -487,6 +489,75 @@ void reset_goal()
         g_goal.push_back(make_pair(g_goal_orig[i].first, g_goal_orig[i].second));
 }
 
+bool find_in_nodes_list(std::list<ResilientNode> res_set, ResilientNode node)
+{
+    if (res_set.size() == 0)
+    {
+        return false;
+    }
+    else
+    {
+        bool found;
+        for (std::list<ResilientNode>::iterator it = res_set.begin(); it != res_set.end(); ++it)
+        {
+
+            found = true;
+            for (int i = 0; i < g_variable_domain.size(); i++)
+            {
+                const string &fact_name1 = g_fact_names[i][(it->get_state())[i]];
+                const string &fact_name2 = g_fact_names[i][(node.get_state())[i]];
+                if (fact_name1 != "<none of those>" && fact_name2 != "<none of those>" && fact_name1.compare(fact_name2) != 0)
+                {
+                    found = false;
+                }
+            }
+
+            if (it->get_k() != node.get_k())
+            {
+                found = false;
+            }
+
+            if (it->get_deactivated_op().size() != node.get_deactivated_op().size())
+            {
+                found = false;
+            }
+
+            std::set<Operator> prova = it->get_deactivated_op();
+            for (std::set<Operator>::iterator it_o = prova.begin(); it_o != prova.end(); ++it_o)
+            {
+                bool equal_op = false;
+                if (find_in_op_set(node.get_deactivated_op(), *it_o))
+                    equal_op = true;
+                if (!equal_op)
+                {
+                    found = false;
+                }
+            }
+            if (found)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
+bool find_in_op_set(std::set<Operator> op_set, Operator op)
+{
+    if (op_set.empty())
+        return false;
+
+    for (std::set<Operator>::iterator it = op_set.begin(); it != op_set.end(); ++it)
+    {
+        if (it->get_nondet_name() == op.get_nondet_name())
+        {
+
+            return true;
+        }
+    }
+    return false;
+}
+
 void print_results()
 {
     cout << "\n\n--------------------------------------------------------------------" << endl;
@@ -530,62 +601,4 @@ void print_timings()
     cout << "                    Total time: " << g_timer << endl;
     cout << "\n--------------------------------------------------------------\n"
          << endl;
-}
-
-bool find_in_res_set(std::set<ResilientNode> res_set, ResilientNode node)
-{
-    if (res_set.size() == 0){
-        cout << "Empty set" << endl;
-        return false;
-
-    }
-    else
-    {
-        for (std::set<ResilientNode>::iterator it = res_set.begin(); it != res_set.end(); ++it)
-        {
-            for (int i = 0; i < g_variable_domain.size(); i++)
-            {
-                const string &fact_name1 = g_fact_names[i][(it->get_state())[i]];
-                const string &fact_name2 = g_fact_names[i][(node.get_state())[i]];
-                if (fact_name1 != "<none of those>" && fact_name2 != "<none of those>" && fact_name1.compare(fact_name2) != 0)
-                    return false;
-            }
-
-            if (it->get_k() != node.get_k())
-                return false;
-
-            if (it->get_deactivated_op().size() != node.get_deactivated_op().size())
-                return false;
-
-            std::set<Operator> prova = it->get_deactivated_op();
-            for (std::set<Operator>::iterator it_o = prova.begin(); it_o != prova.end(); ++it_o)
-            {
-                bool equal_op = false;
-                if (find_in_op_set(node.get_deactivated_op(), *it_o))
-                    equal_op = true;
-                if (!equal_op)
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return true;
-    }
-}
-
-bool find_in_op_set(std::set<Operator> op_set, Operator op)
-{
-    if (op_set.empty())
-        return false;
-
-    for (std::set<Operator>::iterator it = op_set.begin(); it != op_set.end(); ++it)
-    {
-        if (it->get_nondet_name() == op.get_nondet_name())
-        {
-
-            return true;
-        }
-    }
-    return false;
 }

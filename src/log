@@ -6,7 +6,7 @@ Normalizing task... [0.000s CPU, 0.000s wall-clock]
 Instantiating...
 Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
 Normalizing Datalog program...
-Normalizing Datalog program: [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program: [0.000s CPU, 0.000s wall-clock]
 Preparing model... [0.000s CPU, 0.000s wall-clock]
 Generated 8 rules.
 Computing model... [0.000s CPU, 0.000s wall-clock]
@@ -27,7 +27,7 @@ Choosing groups...
 0 uncovered facts
 Choosing groups: [0.000s CPU, 0.000s wall-clock]
 Building translation key... [0.000s CPU, 0.000s wall-clock]
-Computing fact groups: [0.000s CPU, 0.001s wall-clock]
+Computing fact groups: [0.000s CPU, 0.000s wall-clock]
 Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
 Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
 Building mutex information...
@@ -53,7 +53,7 @@ Translator total mutex groups size: 4
 Translator operators: 12
 Translator axioms: 0
 Translator task size: 46
-Translator peak memory: 30776 KB
+Translator peak memory: 30780 KB
 Writing output... [0.000s CPU, 0.000s wall-clock]
 Done! [0.000s CPU, 0.003s wall-clock]
 
@@ -88,6 +88,7 @@ Max time for each of the 1 epochs: 1800
 
 Conducting lazy best first search, (real) bound = 2147483647
 end of initialize
+State #0
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 0
@@ -101,14 +102,14 @@ Allowing operator fly plane1 city0 city1
 Allowing operator fly plane1 city0 city2
 Allowing operator fly plane1 city0 city3
 Search step 1 [t=0s]
+State #1
 Atom at(plane1, city1)
 Reopen closed nodes: 0
 Current g: 1
 Node g: -1
 Node is dead end: 0
 Node is new: 1
-CHEKC GOAL AND SET PLAN TRUE
-DDDDDDDDDDD
+ELSE
 Generated 3 state(s).
 Dead ends: 0 state(s). (0 recorded)
 fly plane1 city0 city1 (1)
@@ -122,11 +123,13 @@ Regressing the plan...
 Generating an initial policy...
 
 Pushing nodes of the initial policy:
-state_id: 0x7ffe275797b0
+Node: 0x7ffd67999460
+State #0
 Atom at(plane1, city0)
 k: 2
 deactivated_op: 
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #0
 Atom at(plane1, city0)
 k: 1
 deactivated_op: 
@@ -136,8 +139,10 @@ fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom
 current nodes stack size:1
 
 Iteration:1
+R SIZE: 0
 Current node:
-state_id: 0x7ffe27579750
+Node: 0x7ffd67999400
+State #0
 Atom at(plane1, city0)
 k: 1
 deactivated_op: 
@@ -151,6 +156,7 @@ Creating initial state.
 Creating new engine.
 Searching for a solution.
 Conducting lazy best first search, (real) bound = 2147483647
+State #0
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 0
@@ -162,28 +168,33 @@ Forbidding operator fly plane1 city0 city1
 Allowing operator fly plane1 city0 city2
 Allowing operator fly plane1 city0 city3
 Search step 1 [t=0s]
+State #1
 Atom at(plane1, city2)
 Reopen closed nodes: 0
 Current g: 1
 Node g: -1
 Node is dead end: 0
 Node is new: 1
+ELSE
 Goal not reached
 Allowing operator fly plane1 city2 city0
 Allowing operator fly plane1 city2 city1
 Allowing operator fly plane1 city2 city3
 Search step 2 [t=0s]
+State #2
 Atom at(plane1, city3)
 Reopen closed nodes: 0
 Current g: 1
 Node g: -1
 Node is dead end: 0
 Node is new: 1
+ELSE
 Goal not reached
 Allowing operator fly plane1 city3 city0
 Allowing operator fly plane1 city3 city1
 Allowing operator fly plane1 city3 city2
 Search step 3 [t=0s]
+State #0
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 2
@@ -191,14 +202,14 @@ Node g: 0
 Node is dead end: 0
 Node is new: 0
 Search step 3 [t=0s]
+State #3
 Atom at(plane1, city1)
 Reopen closed nodes: 0
 Current g: 2
 Node g: -1
 Node is dead end: 0
 Node is new: 1
-CHEKC GOAL AND SET PLAN TRUE
-DDDDDDDDDDD
+ELSE
 Generated 8 state(s).
 Dead ends: 0 state(s). (0 recorded)
 Solution found
@@ -207,19 +218,22 @@ fly plane1 city2 city1 (1)
 Plan length: 2 step(s).
 Plan cost: 2
 Plan: 
-[0xcafaa8, 0xcafe38]
+[0x9beaa8, 0x9bee38]
 Successfull replanning
 CURRENT INITIAL STATE
+State #0
 Atom at(plane1, city0)
 
 Pushing nodes:
 
-state_id: 0x7ffe275797b0
+Node: 0x7ffd67999460
+State #0
 Atom at(plane1, city0)
 k: 1
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #0
 Atom at(plane1, city0)
 k: 0
 deactivated_op: 
@@ -227,12 +241,14 @@ fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom
 fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
 
 
-state_id: 0x7ffe275797b0
+Node: 0x7ffd67999460
+State #1
 Atom at(plane1, city2)
 k: 1
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #1
 Atom at(plane1, city2)
 k: 0
 deactivated_op: 
@@ -245,8 +261,10 @@ fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom
 current nodes stack size:4
 
 Iteration:2
+R SIZE: 0
 Current node:
-state_id: 0x7ffe27579750
+Node: 0x7ffd67999400
+State #1
 Atom at(plane1, city2)
 k: 0
 deactivated_op: 
@@ -261,6 +279,7 @@ Creating initial state.
 Creating new engine.
 Searching for a solution.
 Conducting lazy best first search, (real) bound = 2147483647
+State #0
 Atom at(plane1, city2)
 Reopen closed nodes: 0
 Current g: 0
@@ -272,28 +291,33 @@ Allowing operator fly plane1 city2 city0
 Forbidding operator fly plane1 city2 city1
 Allowing operator fly plane1 city2 city3
 Search step 1 [t=0s]
+State #1
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 1
 Node g: -1
 Node is dead end: 0
 Node is new: 1
+ELSE
 Goal not reached
 Forbidding operator fly plane1 city0 city1
 Allowing operator fly plane1 city0 city2
 Allowing operator fly plane1 city0 city3
 Search step 2 [t=0s]
+State #2
 Atom at(plane1, city3)
 Reopen closed nodes: 0
 Current g: 1
 Node g: -1
 Node is dead end: 0
 Node is new: 1
+ELSE
 Goal not reached
 Allowing operator fly plane1 city3 city0
 Allowing operator fly plane1 city3 city1
 Allowing operator fly plane1 city3 city2
 Search step 3 [t=0s]
+State #0
 Atom at(plane1, city2)
 Reopen closed nodes: 0
 Current g: 2
@@ -301,6 +325,7 @@ Node g: 0
 Node is dead end: 0
 Node is new: 0
 Search step 3 [t=0s]
+State #2
 Atom at(plane1, city3)
 Reopen closed nodes: 0
 Current g: 2
@@ -308,6 +333,7 @@ Node g: 1
 Node is dead end: 0
 Node is new: 0
 Search step 3 [t=0s]
+State #1
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 2
@@ -315,14 +341,14 @@ Node g: 1
 Node is dead end: 0
 Node is new: 0
 Search step 3 [t=0s]
+State #3
 Atom at(plane1, city1)
 Reopen closed nodes: 0
 Current g: 2
 Node g: -1
 Node is dead end: 0
 Node is new: 1
-CHEKC GOAL AND SET PLAN TRUE
-DDDDDDDDDDD
+ELSE
 Generated 7 state(s).
 Dead ends: 0 state(s). (0 recorded)
 Solution found
@@ -331,186 +357,85 @@ fly plane1 city3 city1 (1)
 Plan length: 2 step(s).
 Plan cost: 2
 Plan: 
-[0xcafed0, 0xcb0000]
+[0x9beed0, 0x9bf000]
 Successfull replanning
 CURRENT INITIAL STATE
+State #0
 Atom at(plane1, city2)
 ELSE = 0
 INSERT NODE IN R
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #0
 Atom at(plane1, city2)
 k: 0
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
+-------> res_nodes size:1
 INSERT NODE IN R
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #2
 Atom at(plane1, city3)
 k: 0
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
+-------> res_nodes size:2
 
 ----------------------------------------
 current nodes stack size:3
 
 Iteration:3
+R SIZE: 2
 Current node:
-state_id: 0x7ffe27579750
-Atom at(plane1, city0)
+Node: 0x7ffd67999400
+State #1
+Atom at(plane1, city2)
 k: 1
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
+
 Starting resiliency check
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Atom at(plane1, city0)
-Reopen closed nodes: 0
-Current g: 0
-Node g: -1
-Node is dead end: 0
-Node is new: 1
-Goal not reached
-Forbidding operator fly plane1 city0 city1
-Allowing operator fly plane1 city0 city2
-Allowing operator fly plane1 city0 city3
-Search step 1 [t=0s]
-Atom at(plane1, city2)
-Reopen closed nodes: 0
-Current g: 1
-Node g: -1
-Node is dead end: 0
-Node is new: 1
-Goal not reached
-Allowing operator fly plane1 city2 city0
-Allowing operator fly plane1 city2 city1
-Allowing operator fly plane1 city2 city3
-Search step 2 [t=0s]
-Atom at(plane1, city3)
-Reopen closed nodes: 0
-Current g: 1
-Node g: -1
-Node is dead end: 0
-Node is new: 1
-Goal not reached
-Allowing operator fly plane1 city3 city0
-Allowing operator fly plane1 city3 city1
-Allowing operator fly plane1 city3 city2
-Search step 3 [t=0s]
-Atom at(plane1, city0)
-Reopen closed nodes: 0
-Current g: 2
-Node g: 0
-Node is dead end: 0
-Node is new: 0
-Search step 3 [t=0s]
+Next action: fly plane1 city2 city1
+AAAAAAAA
+Successor state: (s[a], k, V)
+Node: 0x7ffd67998f20
+State #3
 Atom at(plane1, city1)
-Reopen closed nodes: 0
-Current g: 2
-Node g: -1
-Node is dead end: 0
-Node is new: 1
-CHEKC GOAL AND SET PLAN TRUE
-DDDDDDDDDDD
-Generated 8 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-fly plane1 city0 city2 (1)
-fly plane1 city2 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Plan: 
-[0xcafaa8, 0xcafe38]
-Successfull replanning
-CURRENT INITIAL STATE
-Atom at(plane1, city0)
-
-Pushing nodes:
-
-state_id: 0x7ffe275797b0
-Atom at(plane1, city0)
 k: 1
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-state_id: 0x7ffe27579810
-Atom at(plane1, city0)
-k: 0
-deactivated_op: 
-fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
-
-
-state_id: 0x7ffe275797b0
-Atom at(plane1, city2)
-k: 1
-deactivated_op: 
-fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-state_id: 0x7ffe27579810
+Current state: (s, k-1, Vua)
+Node: 0x7ffd67998f80
+State #1
 Atom at(plane1, city2)
 k: 0
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
-
-
+Found
+INSERT NODE IN R
+Node: 0x7ffd679994c0
+State #1
+Atom at(plane1, city2)
+k: 1
+deactivated_op: 
+fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 
 ----------------------------------------
-current nodes stack size:6
+current nodes stack size:2
 
 Iteration:4
+R SIZE: 3
 Current node:
-state_id: 0x7ffe27579750
-Atom at(plane1, city2)
-k: 0
-deactivated_op: 
-fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
-
-Resiliency check passed for node:
-state_id: 0x7ffe27579750
-Atom at(plane1, city2)
-k: 0
-deactivated_op: 
-fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
-
-----------------------------------------
-current nodes stack size:5
-
-Iteration:5
-Current node:
-state_id: 0x7ffe27579750
-Atom at(plane1, city2)
-k: 1
-deactivated_op: 
-fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-Starting resiliency check
-
-Resiliency check passed for node:
-state_id: 0x7ffe27579750
-Atom at(plane1, city2)
-k: 1
-deactivated_op: 
-fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
-
-----------------------------------------
-current nodes stack size:4
-
-Iteration:6
-Current node:
-state_id: 0x7ffe27579750
+Node: 0x7ffd67999400
+State #0
 Atom at(plane1, city0)
 k: 0
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
+
 Starting resiliency check
 
 Failed resiliency check.
@@ -521,6 +446,7 @@ Creating initial state.
 Creating new engine.
 Searching for a solution.
 Conducting lazy best first search, (real) bound = 2147483647
+State #0
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 0
@@ -532,17 +458,20 @@ Forbidding operator fly plane1 city0 city1
 Forbidding operator fly plane1 city0 city2
 Allowing operator fly plane1 city0 city3
 Search step 1 [t=0s]
+State #1
 Atom at(plane1, city3)
 Reopen closed nodes: 0
 Current g: 1
 Node g: -1
 Node is dead end: 0
 Node is new: 1
+ELSE
 Goal not reached
 Allowing operator fly plane1 city3 city0
 Allowing operator fly plane1 city3 city1
 Allowing operator fly plane1 city3 city2
 Search step 2 [t=0s]
+State #0
 Atom at(plane1, city0)
 Reopen closed nodes: 0
 Current g: 2
@@ -550,14 +479,14 @@ Node g: 0
 Node is dead end: 0
 Node is new: 0
 Search step 2 [t=0s]
+State #2
 Atom at(plane1, city1)
 Reopen closed nodes: 0
 Current g: 2
 Node g: -1
 Node is dead end: 0
 Node is new: 1
-CHEKC GOAL AND SET PLAN TRUE
-DDDDDDDDDDD
+ELSE
 Generated 4 state(s).
 Dead ends: 0 state(s). (0 recorded)
 Solution found
@@ -566,26 +495,107 @@ fly plane1 city3 city1 (1)
 Plan length: 2 step(s).
 Plan cost: 2
 Plan: 
-[0xcafb40, 0xcb0000]
+[0x9beb40, 0x9bf000]
 Successfull replanning
 CURRENT INITIAL STATE
+State #0
 Atom at(plane1, city0)
 ELSE = 0
 INSERT NODE IN R
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #0
 Atom at(plane1, city0)
 k: 0
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
+-------> res_nodes size:4
 INSERT NODE IN R
-state_id: 0x7ffe27579810
+Node: 0x7ffd679994c0
+State #1
 Atom at(plane1, city3)
 k: 0
 deactivated_op: 
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
-Empty set
+-------> res_nodes size:5
+
+----------------------------------------
+current nodes stack size:1
+
+Iteration:5
+R SIZE: 5
+Current node:
+Node: 0x7ffd67999400
+State #0
+Atom at(plane1, city0)
+k: 1
+deactivated_op: 
+fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
+
+Starting resiliency check
+Next action: fly plane1 city0 city2
+AAAAAAAA
+Successor state: (s[a], k, V)
+Node: 0x7ffd67998f20
+State #1
+Atom at(plane1, city2)
+k: 1
+deactivated_op: 
+fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
+Current state: (s, k-1, Vua)
+Node: 0x7ffd67998f80
+State #0
+Atom at(plane1, city0)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
+fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
+Found
+Found
+INSERT NODE IN R
+Node: 0x7ffd679994c0
+State #0
+Atom at(plane1, city0)
+k: 1
+deactivated_op: 
+fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
+
+----------------------------------------
+current nodes stack size:0
+
+Iteration:6
+R SIZE: 6
+Current node:
+Node: 0x7ffd67999400
+State #0
+Atom at(plane1, city0)
+k: 2
+deactivated_op: 
+
+Starting resiliency check
+Next action: fly plane1 city0 city1
+AAAAAAAA
+Successor state: (s[a], k, V)
+Node: 0x7ffd67998f20
+State #1
+Atom at(plane1, city1)
+k: 2
+deactivated_op: 
+Current state: (s, k-1, Vua)
+Node: 0x7ffd67998f80
+State #0
+Atom at(plane1, city0)
+k: 1
+deactivated_op: 
+fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
+Found
+INSERT NODE IN R
+Node: 0x7ffd679994c0
+State #0
+Atom at(plane1, city0)
+k: 2
+deactivated_op: 
 
 
 --------------------------------------------------------------------
@@ -595,7 +605,7 @@ Empty set
 --------------------------------------------------------------------
 
 Policy:
-Regression Step (0xcb4000)
+Regression Step (0x9c3000)
  Distance: 0
  Relevant: 0
  SC: 0
@@ -604,7 +614,7 @@ Regression Step (0xcb4000)
  -{ State }-
 Atom at(plane1, city1)
 
-Regression Step (0xcb6920)
+Regression Step (0x9c5920)
  Distance: 1
  Relevant: 0
  SC: 0
@@ -628,7 +638,7 @@ fly plane1 city0 city1
 fly plane1 city0 city2
 
 Policy:
-Regression Step (0xcba060)
+Regression Step (0x9d8e30)
  Distance: 0
  Relevant: 0
  SC: 0
@@ -637,7 +647,7 @@ Regression Step (0xcba060)
  -{ State }-
 Atom at(plane1, city1)
 
-Regression Step (0xcb9f60)
+Regression Step (0x9d9880)
  Distance: 1
  Relevant: 0
  SC: 0
@@ -647,7 +657,7 @@ fly plane1 city3 city1 (fly plane1 city3 city1): [Atom at(plane1, city3) -> Atom
  -{ State }-
 Atom at(plane1, city3)
 
-Regression Step (0xcc1730)
+Regression Step (0x9d8bf0)
  Distance: 2
  Relevant: 0
  SC: 0
@@ -667,7 +677,7 @@ fly plane1 city0 city1
 fly plane1 city2 city1
 
 Policy:
-Regression Step (0xcb96a0)
+Regression Step (0x9d8de0)
  Distance: 0
  Relevant: 0
  SC: 0
@@ -676,7 +686,7 @@ Regression Step (0xcb96a0)
  -{ State }-
 Atom at(plane1, city1)
 
-Regression Step (0xcb9920)
+Regression Step (0x9d8fd0)
  Distance: 1
  Relevant: 0
  SC: 0
@@ -686,7 +696,7 @@ fly plane1 city3 city1 (fly plane1 city3 city1): [Atom at(plane1, city3) -> Atom
  -{ State }-
 Atom at(plane1, city3)
 
-Regression Step (0xcb99d0)
+Regression Step (0x9d9080)
  Distance: 2
  Relevant: 0
  SC: 0
@@ -705,7 +715,7 @@ Failed operator :
 fly plane1 city0 city1
 
 Policy:
-Regression Step (0xcb84a0)
+Regression Step (0x9d37f0)
  Distance: 0
  Relevant: 0
  SC: 0
@@ -714,7 +724,7 @@ Regression Step (0xcb84a0)
  -{ State }-
 Atom at(plane1, city1)
 
-Regression Step (0xcb8f20)
+Regression Step (0x9d4270)
  Distance: 1
  Relevant: 0
  SC: 0
@@ -724,7 +734,7 @@ fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom
  -{ State }-
 Atom at(plane1, city2)
 
-Regression Step (0xcb8fb0)
+Regression Step (0x9d4300)
  Distance: 2
  Relevant: 0
  SC: 0
@@ -747,5 +757,5 @@ Atom at(plane1, city0)
 
 --------------------------------------------------------------
 
-Peak memory: 4372 KB
+Peak memory: 4384 KB
 

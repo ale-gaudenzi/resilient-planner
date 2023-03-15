@@ -14,15 +14,17 @@ class StateRegistry;
 
 typedef IntPacker::Bin PackedStateBin;
 
-class StateInterface {
+class StateInterface
+{
 public:
     virtual int operator[](int index) const = 0;
-    virtual ~StateInterface() {};
+    virtual ~StateInterface(){};
 };
 
 // For documentation on classes relevant to storing and working with registered
 // states see the file state_registry.h.
-class State : public StateInterface {
+class State : public StateInterface
+{
     friend class StateRegistry;
     template <class Entry>
     friend class PerStateInformation;
@@ -40,32 +42,32 @@ protected:
     State(const PackedStateBin *buffer_, const StateRegistry &registry_,
           StateID id_);
 
-    const PackedStateBin *get_packed_buffer() const {
+    const PackedStateBin *get_packed_buffer() const
+    {
         return buffer;
-    }
-
-    const StateRegistry &get_registry() const {
-        return *registry;
     }
 
     // No implementation to prevent default construction
     State();
+
 public:
     ~State();
 
-    StateID get_id() const {
+    StateID get_id() const
+    {
         return id;
+    }
+
+    const StateRegistry &get_registry() const
+    {
+        return *registry;
     }
 
     int operator[](int index) const;
     bool operator==(const State &other) const;
-    
+
     void dump_pddl() const;
     void dump_fdr() const;
-   // std::string to_string();
 };
-
-
-
 
 #endif
