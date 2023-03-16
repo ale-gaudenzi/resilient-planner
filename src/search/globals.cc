@@ -57,7 +57,7 @@ bool test_goal(const State &state)
     {
         if (state[g_goal[i].first] != g_goal[i].second)
         {
-            cout << "Goal not reached" << endl;
+            //cout << "Goal not reached" << endl;
             return false;
         }
     }

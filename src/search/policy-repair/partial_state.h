@@ -40,6 +40,7 @@ public:
     bool operator==(const PartialState &other) const;
     bool operator<(const PartialState &other) const;
     size_t hash() const;
+    bool implies(PartialState &other);
 
 };
 

@@ -20,7 +20,7 @@
 #include <tr1/functional>
 using namespace std;
 
-bool verbose = true;
+bool verbose = false;
 
 // probably better move this function in a separate class in future
 bool resiliency_check(ResilientNode node);
@@ -191,6 +191,8 @@ int main(int argc, const char **argv)
         current = g_state_registry->get_successor_state(current, *(*it));
     }
 
+    cout << "\nInitial policy:" << endl;
+    g_policy->dump();
     int iteration = 1;
 
     while (!nodes.empty())
@@ -274,7 +276,10 @@ int main(int argc, const char **argv)
                 {
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
+                        cout << "Pushing to R" << endl;
+
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
+                        res_node.dump();
                         resilient_nodes.push_back(res_node);
                         current = g_state_registry->get_successor_state(current, *(*it));
                     }
@@ -288,6 +293,8 @@ int main(int argc, const char **argv)
                 g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
 
                 g_policy->update_policy(regression_steps);
+                cout << "\n Updated policy:" << endl;
+                g_policy->dump();
             }
         }
         else
@@ -296,6 +303,9 @@ int main(int argc, const char **argv)
                 cout << "\nSuccessfull resiliency check.\n"
                      << endl;
         }
+
+        //if (iteration > 100)
+        //    break;
 
         iteration++;
     }
@@ -326,6 +336,7 @@ bool resiliency_check(ResilientNode node)
         return true;
 
     std::set<Operator> next_actions;
+    next_actions.clear();
     list<PolicyItem *> current_policy = g_policy->get_items();
     PolicyItem *goal_step = NULL;
 
@@ -333,17 +344,16 @@ bool resiliency_check(ResilientNode node)
     for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
     {
         RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
-
         if (!reg_step->is_goal)
         {
             PartialState policy_state = PartialState(*reg_step->state);
 
-            if (state_to_check == *reg_step->state && !find_in_op_set(node.get_deactivated_op(), reg_step->get_op()))
-            {
+            if ((*reg_step->state).implies(state_to_check) && !find_in_op_set(node.get_deactivated_op(), reg_step->get_op()))
+            {   
                 next_actions.insert(reg_step->get_op());
             }
         }
-        else
+        else if (reg_step->is_goal)
         {
             goal_step = reg_step;
         }
@@ -355,13 +365,14 @@ bool resiliency_check(ResilientNode node)
     for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
     {
         State successor = registry->get_successor_state(node.get_state(), *it_o);
+        PartialState successor_p = PartialState(successor);
         ResilientNode successor_r = ResilientNode(successor, node.get_k(), node.get_deactivated_op()); // <s[a], k, V>
 
         std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
         forbidden_plus_current.insert(*it_o);
         ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
 
-        if ((find_in_nodes_list(resilient_nodes, successor_r) || PartialState(successor) == *goal_step->state) && (find_in_nodes_list(resilient_nodes, current_r)))
+        if ((find_in_nodes_list(resilient_nodes, successor_r) || (*goal_step->state).implies(successor_p)) && (find_in_nodes_list(resilient_nodes, current_r)))
         {
             resilient_nodes.push_back(node);
             return true;
