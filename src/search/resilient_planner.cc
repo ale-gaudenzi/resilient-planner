@@ -276,10 +276,11 @@ int main(int argc, const char **argv)
                 {
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
-                        cout << "Pushing to R" << endl;
-
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                        res_node.dump();
+                        if(verbose){
+                            cout << "Pushing to R" << endl;
+                            res_node.dump();
+                        }
                         resilient_nodes.push_back(res_node);
                         current = g_state_registry->get_successor_state(current, *(*it));
                     }
@@ -290,11 +291,12 @@ int main(int argc, const char **argv)
 
                 Policy *resilient_policy = new Policy();
                 resilient_policy->update_policy(regression_steps);
+                //cout << "AAAAAAAA" << iteration << endl;
                 g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
 
                 g_policy->update_policy(regression_steps);
-                cout << "\n Updated policy:" << endl;
-                g_policy->dump();
+                //cout << "\n Updated policy:" << endl;
+                //g_policy->dump();
             }
         }
         else
@@ -386,7 +388,7 @@ bool resiliency_check(ResilientNode node)
  *********************/
 bool replan(ResilientNode current_node, SearchEngine *engine)
 {
-    bool verbose = true;
+    bool verbose = false;
 
     if (verbose)
     {
