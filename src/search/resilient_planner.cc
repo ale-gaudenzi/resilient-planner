@@ -153,18 +153,20 @@ int main(int argc, const char **argv)
     g_policy = new Policy();
     g_policy->update_policy(regression_steps);
 
-    // save the first policy as the original policy
-    g_original_policy = new Policy();
-    g_original_policy->update_policy(regression_steps);
-
     if (g_sample_for_depth1_deadends)
         sample_for_depth1_deadends(engine->get_plan(), new PartialState(g_initial_state()));
 
     /***********************
      * Resilient Alghoritm *
      ***********************/
+    // the resilient algorithm start from here, previously is cloned from the original prp.
 
-    // first fill of the nodes stack with the initial policy
+    // save the first policy as the original policy
+    // g_policy during the execution will contain all the other branches too 
+    g_original_policy = new Policy();
+    g_original_policy->update_policy(regression_steps);
+
+    // first filling of the nodes stack with the initial policy
     State current = g_initial_state();
     std::vector<const Operator *> plan = engine->get_plan();
     ResilientNode initial_node = ResilientNode(current, g_max_faults);
@@ -193,8 +195,9 @@ int main(int argc, const char **argv)
 
     cout << "\nInitial policy:" << endl;
     g_policy->dump();
-    int iteration = 1;
 
+    // main while loop of the algorithm, basically 1:1 with the pseudocode
+    int iteration = 1;
     while (!nodes.empty())
     {
         ResilientNode current_node = nodes.top();
@@ -217,10 +220,12 @@ int main(int argc, const char **argv)
             if (verbose)
                 cout << "\nFailed resiliency check.\n"
                      << endl;
+
             if (!replan(current_node, engine))
             {
                 if (verbose)
                     cout << "\nFailed replanning." << endl;
+
                 add_fault_model_deadend(current_node);
 
                 if (!find_in_nodes_list(resilient_deadends, current_node))
@@ -248,8 +253,7 @@ int main(int argc, const char **argv)
                 if (current_node.get_k() >= 1)
                 {
                     if (verbose)
-                        cout << "\nPushing nodes:\n"
-                             << endl;
+                        cout << "\nPushing nodes:\n" << endl;
 
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
@@ -291,12 +295,9 @@ int main(int argc, const char **argv)
 
                 Policy *resilient_policy = new Policy();
                 resilient_policy->update_policy(regression_steps);
-                //cout << "AAAAAAAA" << iteration << endl;
                 g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
 
                 g_policy->update_policy(regression_steps);
-                //cout << "\n Updated policy:" << endl;
-                //g_policy->dump();
             }
         }
         else
@@ -305,9 +306,6 @@ int main(int argc, const char **argv)
                 cout << "\nSuccessfull resiliency check.\n"
                      << endl;
         }
-
-        //if (iteration > 100)
-        //    break;
 
         iteration++;
     }
@@ -342,7 +340,8 @@ bool resiliency_check(ResilientNode node)
     list<PolicyItem *> current_policy = g_policy->get_items();
     PolicyItem *goal_step = NULL;
 
-    // getPolicyActions(P,s)
+    // implementation of getPolicyActions(P,s) in the pseudocode
+    // 
     for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
     {
         RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
@@ -386,6 +385,8 @@ bool resiliency_check(ResilientNode node)
 /*********************
  *    computePlan    *
  *********************/
+
+// the replanning function is the same at the prp's one but using the state in the current node as initial state
 bool replan(ResilientNode current_node, SearchEngine *engine)
 {
     bool verbose = false;
@@ -407,6 +408,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     if (verbose)
         cout << "\nCreating initial state." << endl;
 
+    // set the initial state as the state in the current node
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
         g_initial_state_data[i] = current_state[i];
@@ -436,10 +438,6 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->heuristic_statistics();
         }
 
-        cout << "Plan: " << endl;
-        cout << engine->get_plan() << endl;
-
-        reset_goal();
         return true;
     }
     else
@@ -447,7 +445,6 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
         if (verbose)
             cout << "Replanning failed!" << endl;
 
-        reset_goal();
         return false;
     }
 }
@@ -502,6 +499,7 @@ void add_fault_model_deadend(ResilientNode node)
     }
 }
 
+// the goal need to be resetted before replanning 
 void reset_goal()
 {
     g_goal.clear();
@@ -509,6 +507,7 @@ void reset_goal()
         g_goal.push_back(make_pair(g_goal_orig[i].first, g_goal_orig[i].second));
 }
 
+// check if the node is present in the resilient nodes list
 bool find_in_nodes_list(std::list<ResilientNode> res_set, ResilientNode node)
 {
     if (res_set.size() == 0)
@@ -562,6 +561,7 @@ bool find_in_nodes_list(std::list<ResilientNode> res_set, ResilientNode node)
     }
 }
 
+// check if the operator is present in the operator set
 bool find_in_op_set(std::set<Operator> op_set, Operator op)
 {
     if (op_set.empty())
@@ -595,14 +595,15 @@ void print_results()
     int i = 1;
     for (std::map<k_v_pair, Policy *>::iterator it = g_resilient_policies.begin(); it != g_resilient_policies.end(); ++it)
     {
-        cout << "\n-{ Policy number " << i << " }-\n"
+        cout << "\n-{ Branch number " << i << " }-\n"
              << endl;
+        cout << "Node information:" << endl;
         cout << "Remaining faults : " << it->first.first << endl;
         cout << "Failed operator : " << endl;
         for (std::set<Operator>::iterator it_o = it->first.second.begin(); it_o != it->first.second.end(); ++it_o)
             cout << it_o->get_nondet_name() << endl;
         cout << endl;
-        it->second->dump();
+        it->second->dump_simple();
         i++;
         cout << "--------------------------------------------------------------" << endl;
     }
@@ -612,11 +613,9 @@ void print_timings()
 {
     cout << "\n                  -{ Timing Statistics }-\n"
          << endl;
-    cout << "        Regression Computation: " << g_timer_regression << endl;
     cout << "         Engine Initialization: " << g_timer_engine_init << endl;
     cout << "                   Search Time: " << g_timer_search << endl;
     cout << "           Policy Construction: " << g_timer_policy_build << endl;
-    cout << "              Using the policy: " << g_timer_policy_use << endl;
     cout << "                    Total time: " << g_timer << endl;
     cout << "\n--------------------------------------------------------------\n"
          << endl;

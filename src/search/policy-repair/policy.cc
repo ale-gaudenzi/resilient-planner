@@ -634,11 +634,11 @@ Policy::~Policy()
 void Policy::dump() const
 {
     cout << "Policy:" << endl;
-    // root->dump("  ");
     for (list<PolicyItem *>::const_iterator op_iter = all_items.begin();
          op_iter != all_items.end(); ++op_iter)
         (*op_iter)->dump();
 }
+
 void Policy::generate_cpp_input(ofstream &outfile) const
 {
     root->generate_cpp_input(outfile);
@@ -995,4 +995,17 @@ void Policy::dump_human_policy(bool fsap)
     }
 
     outfile.close();
+}
+
+
+// simplified dump for resilient planning for printing branches
+void Policy::dump_simple()
+{
+    cout << "Policy:\n" << endl;
+    for (list<PolicyItem *>::reverse_iterator op_iter = all_items.rbegin();
+         op_iter != all_items.rend(); ++op_iter)
+    {
+        RegressionStep *rs = (RegressionStep *)(*op_iter);
+        rs->dump_simple();
+    }
 }

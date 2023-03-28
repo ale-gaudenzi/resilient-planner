@@ -27,8 +27,9 @@ struct PolicyItem {
     virtual ~PolicyItem() {}
     virtual string get_name() = 0;
     virtual void dump() const = 0;
-
-    virtual bool check_relevance(const PartialState &) {
+    //virtual void dump_simple() = 0;
+    virtual bool check_relevance(const PartialState &)
+    {
         cout << "\n\nWarning: Calling item.relevant(ps) on a non-RegressableOperator item.\n" << endl;
         return false;
     }
@@ -86,6 +87,7 @@ struct RegressionStep : PolicyItem {
     string get_op_name();
 
     void dump() const;
+    void dump_simple();
 
     bool operator< (const RegressionStep& other) const {
         if (is_sc != other.is_sc)

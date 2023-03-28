@@ -34,7 +34,15 @@ void SearchEngine::reset()
     search_progress.reset();
     search_space.reset();
 
-    //delete g_state_registry;
+    /* for resilient planner
+    * Wwe need to keep the old state refistries in order to
+    * be able to recognize states that have been generated in previous replanning
+    * As long as a state is in a node in the nodes stack, its register must also be kept in memory
+    * otherwise the state can't be recognized correctly
+    */
+    if (!g_use_resilient_planner)
+        delete g_state_registry;
+
     g_state_registry = new StateRegistry;
 
     for (int i = 0; i < g_operators.size(); i++)
@@ -77,7 +85,6 @@ void SearchEngine::search()
     initialize();
     Timer timer;
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
-        //cout << "Search step " << search_progress.get_expanded() << " [t=" << g_timer << "]" << endl;
     ;
 
     if (g_timer_jit() < g_jic_limit)
@@ -85,7 +92,6 @@ void SearchEngine::search()
         if (g_record_online_deadends && !g_limit_states && g_found_deadends.size() > 0)
         {
             g_replan_detected_deadends = true;
-            // cout << "Number of online deadends: " << g_found_deadends.size() << endl;
             update_deadends(g_found_deadends);
         }
         if (search_progress.get_generated() > 2)

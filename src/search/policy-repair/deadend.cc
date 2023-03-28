@@ -176,9 +176,11 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
         g_successor_generator_orig->generate_applicable_ops(_curr, orig_ops, true);
         g_deadend_policy->generate_applicable_items(curr, reg_items, false, false);
 
-        // FOR RESILIENCY
-        // we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
-        // and add them to the deadends of the current search
+        /*
+        * for resilient planner
+        * we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
+        * and add them to the deadends of the current search
+        */ 
         if (g_use_resilient_planner)
         {
             if (g_fault_model.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_fault_model.end())
@@ -208,8 +210,10 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
                 if (debug)
                     cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
 
-                // FOR RESILIENCY
-                // don't push back the operator if it is forbidden (found in current node V)
+                /*
+                * for resilient planner
+                * we don't push back the operator if it is forbidden (= found in current node V)
+                */ 
                 if (g_use_resilient_planner)
                 {
                     if (g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end()) {

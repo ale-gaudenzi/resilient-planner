@@ -46,9 +46,10 @@ DeadendTuple::~DeadendTuple() { delete prev_state; }
 
 bool test_goal(const State &state)
 {
-    // RESILIENCY
-    // we test only if we reached the goal, otherwise it stop immediately
-    // because the current initial state is always already in the policy
+    /* for resilient planner
+    * we test only if we reached the goal, otherwise it stop immediately
+    * because the current initial state is always already in the policy
+    */
     if (!g_use_resilient_planner)
         if (g_policy && !(g_policy->empty()))
             return test_policy(state);
@@ -57,7 +58,6 @@ bool test_goal(const State &state)
     {
         if (state[g_goal[i].first] != g_goal[i].second)
         {
-            //cout << "Goal not reached" << endl;
             return false;
         }
     }
@@ -592,8 +592,9 @@ string g_plan_filename = "sas_plan";
 RandomNumberGenerator g_rng(2011); // Use an arbitrary default seed.
 StateRegistry *g_state_registry = 0;
 
-/* Resiliency */
-
+/* Resiliency 
+*  structure and variables added for resilient planning algorithm
+*/
 int g_max_faults; 
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
