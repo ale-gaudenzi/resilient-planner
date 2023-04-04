@@ -1,5 +1,8 @@
 ## Option for resiliency
+```
+
 --resilient K
+```
 
 ### Examples
 ```
