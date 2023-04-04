@@ -1,0 +1,1887 @@
+1. Running translator
+Second argument is a file name: use two translator arguments.
+Parsing...
+Parsing: [0.000s CPU, 0.002s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
+Preparing model... [0.010s CPU, 0.001s wall-clock]
+Generated 44 rules.
+Computing model... [0.010s CPU, 0.006s wall-clock]
+1039 relevant atoms
+493 auxiliary atoms
+1532 final queue length
+2228 total queue pushes
+Completing instantiation... [0.010s CPU, 0.012s wall-clock]
+Instantiating: [0.030s CPU, 0.023s wall-clock]
+Computing fact groups...
+Finding invariants...
+12 initial candidates
+Finding invariants: [0.000s CPU, 0.001s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+68 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.002s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.000s wall-clock]
+Translating task: [0.010s CPU, 0.010s wall-clock]
+24 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+Removed false proposition: 56 = <none of those>
+Removed false proposition: 57 = <none of those>
+Removed false proposition: 58 = <none of those>
+Removed false proposition: 59 = <none of those>
+0 operators removed
+4 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.002s wall-clock]
+Translator variables: 72
+Translator derived variables: 0
+Translator facts: 184
+Translator goal facts: 9
+Translator mutex groups: 4
+Translator total mutex groups size: 48
+Translator operators: 756
+Translator axioms: 0
+Translator task size: 3021
+Translator peak memory: 33332 KB
+Writing output... [0.010s CPU, 0.003s wall-clock]
+Done! [0.050s CPU, 0.043s wall-clock]
+
+2. Running preprocessor
+Building causal graph...
+The causal graph is not acyclic.
+72 variables of 72 necessary
+0 of 4 mutex groups necessary.
+756 of 756 operators necessary.
+0 of 0 axiom rules necessary.
+Building domain transition graphs...
+solveable in poly time 0
+Building successor generator...
+Preprocessor facts: 184
+Preprocessor derived variables: 0
+Preprocessor task size: 2973
+Writing output...
+done
+
+
+3. Running search
+/home/sifao/prp/src/search/downward ipc policy-repair --resilient 1
+This is a unit task.
+/home/sifao/prp/src/search/downward-release --heuristic "h=ff(cost_type=1)" --search "lazy_greedy([h],preferred=[h])" --random-seed 814102613 --resilient 1 < output
+Simplifying transitions... done!
+Variables: 72
+Bytes per state: 12
+
+Total allotted time (s): 1800
+Max time for core JIC (remaining used in final-round repairs): 1800
+Max time for each of the 1 epochs: 1800
+
+Conducting lazy best first search, (real) bound = 2147483647
+end of initialize
+ !! Warning: Disabling the simplification of unary operators !!
+ !!           to keep the non-deterministic planning sound.  !!
+Generated 50597 state(s).
+Dead ends: 0 state(s). (0 recorded)
+turn_to satellite0 groundstation0 star6 (1)
+turn_to satellite0 star1 groundstation0 (1)
+turn_to satellite1 groundstation4 groundstation0 (1)
+turn_to satellite2 phenomenon5 star6 (1)
+switch_on instrument0 satellite0 (1)
+calibrate satellite0 instrument0 star1 (1)
+turn_to satellite0 planet9 star1 (1)
+take_image satellite0 planet9 instrument0 image3 (1)
+turn_to satellite0 star6 planet9 (1)
+take_image satellite0 star6 instrument0 image1 (1)
+switch_on instrument3 satellite1 (1)
+calibrate satellite1 instrument3 groundstation4 (1)
+turn_to satellite1 phenomenon5 groundstation4 (1)
+take_image satellite1 phenomenon5 instrument3 image0 (1)
+turn_to satellite1 planet10 phenomenon5 (1)
+take_image satellite1 planet10 instrument3 image0 (1)
+turn_to satellite1 planet11 planet10 (1)
+take_image satellite1 planet11 instrument3 image2 (1)
+turn_to satellite1 planet8 planet11 (1)
+take_image satellite1 planet8 instrument3 image0 (1)
+turn_to satellite1 star1 planet8 (1)
+turn_to satellite1 star7 star1 (1)
+take_image satellite1 star7 instrument3 image0 (1)
+turn_to satellite1 star1 star7 (1)
+Plan length: 24 step(s).
+Plan cost: 24
+Initial search time: 0.01s
+Initial total time: 0.01s
+
+Regressing the plan...
+
+Generating an initial policy...
+
+Initial policy:
+Policy:
+Regression Step (0x25e8ba0)
+ Distance: 0
+ Relevant: 0
+ SC: 0
+ -{ Goal }-
+
+ -{ State }-
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star1)
+Atom have_image(planet11, image2)
+Atom have_image(star7, image0)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x25eabc0)
+ Distance: 1
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 star1 star7 [Atom pointing(satellite1, star7) -> Atom pointing(satellite1, star1)]
+
+ -{ State }-
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star7)
+Atom have_image(planet11, image2)
+Atom have_image(star7, image0)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2290)
+ Distance: 2
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 star7 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, star7)] [Atom power_on(instrument3)] [anything -> Atom have_image(star7, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star7)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2450)
+ Distance: 3
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 star7 star1 [Atom pointing(satellite1, star1) -> Atom pointing(satellite1, star7)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star1)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2610)
+ Distance: 4
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 star1 planet8 [Atom pointing(satellite1, planet8) -> Atom pointing(satellite1, star1)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet8)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e27d0)
+ Distance: 5
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 planet8 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, planet8)] [Atom power_on(instrument3)] [anything -> Atom have_image(planet8, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet8)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2990)
+ Distance: 6
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 planet8 planet11 [Atom pointing(satellite1, planet11) -> Atom pointing(satellite1, planet8)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet11)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2b50)
+ Distance: 7
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 planet11 instrument3 image2 [Atom calibrated(instrument3)] [Atom pointing(satellite1, planet11)] [Atom power_on(instrument3)] [anything -> Atom have_image(planet11, image2)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet11)
+Atom calibrated(instrument3)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2d10)
+ Distance: 8
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 planet11 planet10 [Atom pointing(satellite1, planet10) -> Atom pointing(satellite1, planet11)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet10)
+Atom calibrated(instrument3)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2ed0)
+ Distance: 9
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 planet10 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, planet10)] [Atom power_on(instrument3)] [anything -> Atom have_image(planet10, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet10)
+Atom calibrated(instrument3)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3090)
+ Distance: 10
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 planet10 phenomenon5 [Atom pointing(satellite1, phenomenon5) -> Atom pointing(satellite1, planet10)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, phenomenon5)
+Atom calibrated(instrument3)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3250)
+ Distance: 11
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 phenomenon5 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, phenomenon5)] [Atom power_on(instrument3)] [anything -> Atom have_image(phenomenon5, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, phenomenon5)
+Atom calibrated(instrument3)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3410)
+ Distance: 12
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 phenomenon5 groundstation4 [Atom pointing(satellite1, groundstation4) -> Atom pointing(satellite1, phenomenon5)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom calibrated(instrument3)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e35d0)
+ Distance: 13
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+calibrate satellite1 instrument3 groundstation4 [Atom pointing(satellite1, groundstation4)] [Atom power_on(instrument3)] [anything -> Atom calibrated(instrument3)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3790)
+ Distance: 14
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+switch_on instrument3 satellite1 [anything -> NegatedAtom calibrated(instrument3)] [Atom power_avail(satellite1) -> NegatedAtom power_avail(satellite1)] [anything -> Atom power_on(instrument3)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3950)
+ Distance: 15
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite0 star6 instrument0 image1 [Atom calibrated(instrument0)] [Atom pointing(satellite0, star6)] [Atom power_on(instrument0)] [anything -> Atom have_image(star6, image1)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star6)
+Atom calibrated(instrument0)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3b10)
+ Distance: 16
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 star6 planet9 [Atom pointing(satellite0, planet9) -> Atom pointing(satellite0, star6)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, planet9)
+Atom calibrated(instrument0)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3cd0)
+ Distance: 17
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite0 planet9 instrument0 image3 [Atom calibrated(instrument0)] [Atom pointing(satellite0, planet9)] [Atom power_on(instrument0)] [anything -> Atom have_image(planet9, image3)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, planet9)
+Atom calibrated(instrument0)
+
+Regression Step (0x26e3e90)
+ Distance: 18
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 planet9 star1 [Atom pointing(satellite0, star1) -> Atom pointing(satellite0, planet9)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+Atom calibrated(instrument0)
+
+Regression Step (0x26e4050)
+ Distance: 19
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+calibrate satellite0 instrument0 star1 [Atom pointing(satellite0, star1)] [Atom power_on(instrument0)] [anything -> Atom calibrated(instrument0)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e4210)
+ Distance: 20
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+switch_on instrument0 satellite0 [anything -> NegatedAtom calibrated(instrument0)] [Atom power_avail(satellite0) -> NegatedAtom power_avail(satellite0)] [anything -> Atom power_on(instrument0)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e43d0)
+ Distance: 21
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite2 phenomenon5 star6 [Atom pointing(satellite2, star6) -> Atom pointing(satellite2, phenomenon5)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e4590)
+ Distance: 22
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 groundstation4 groundstation0 [Atom pointing(satellite1, groundstation0) -> Atom pointing(satellite1, groundstation4)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e4750)
+ Distance: 23
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 star1 groundstation0 [Atom pointing(satellite0, groundstation0) -> Atom pointing(satellite0, star1)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, groundstation0)
+
+Regression Step (0x26e4910)
+ Distance: 24
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 groundstation0 star6 [Atom pointing(satellite0, star6) -> Atom pointing(satellite0, groundstation0)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, star6)
+
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 31490 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 21414807 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 3781428 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 2527 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 21448348 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 72160 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 21489327 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 38932 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 21512704 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 39959 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 21544855 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 40999 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 512968 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 171279 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 1969332 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 55722 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 1974034 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 45832 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 189120 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 35321 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 80866 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 51134 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 57777 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 47586 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+
+--------------------------------------------------------------------
+
+                  -{ Base policy without faults}-
+
+--------------------------------------------------------------------
+
+Policy:
+Regression Step (0x25e8ba0)
+ Distance: 0
+ Relevant: 0
+ SC: 0
+ -{ Goal }-
+
+ -{ State }-
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star1)
+Atom have_image(planet11, image2)
+Atom have_image(star7, image0)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x25eabc0)
+ Distance: 1
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 star1 star7 [Atom pointing(satellite1, star7) -> Atom pointing(satellite1, star1)]
+
+ -{ State }-
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star7)
+Atom have_image(planet11, image2)
+Atom have_image(star7, image0)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2290)
+ Distance: 2
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 star7 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, star7)] [Atom power_on(instrument3)] [anything -> Atom have_image(star7, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star7)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2450)
+ Distance: 3
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 star7 star1 [Atom pointing(satellite1, star1) -> Atom pointing(satellite1, star7)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star1)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2610)
+ Distance: 4
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 star1 planet8 [Atom pointing(satellite1, planet8) -> Atom pointing(satellite1, star1)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet8)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e27d0)
+ Distance: 5
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 planet8 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, planet8)] [Atom power_on(instrument3)] [anything -> Atom have_image(planet8, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet8)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2990)
+ Distance: 6
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 planet8 planet11 [Atom pointing(satellite1, planet11) -> Atom pointing(satellite1, planet8)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet11)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2b50)
+ Distance: 7
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 planet11 instrument3 image2 [Atom calibrated(instrument3)] [Atom pointing(satellite1, planet11)] [Atom power_on(instrument3)] [anything -> Atom have_image(planet11, image2)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet11)
+Atom calibrated(instrument3)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2d10)
+ Distance: 8
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 planet11 planet10 [Atom pointing(satellite1, planet10) -> Atom pointing(satellite1, planet11)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet10)
+Atom calibrated(instrument3)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e2ed0)
+ Distance: 9
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 planet10 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, planet10)] [Atom power_on(instrument3)] [anything -> Atom have_image(planet10, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet10)
+Atom calibrated(instrument3)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3090)
+ Distance: 10
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 planet10 phenomenon5 [Atom pointing(satellite1, phenomenon5) -> Atom pointing(satellite1, planet10)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, phenomenon5)
+Atom calibrated(instrument3)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3250)
+ Distance: 11
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite1 phenomenon5 instrument3 image0 [Atom calibrated(instrument3)] [Atom pointing(satellite1, phenomenon5)] [Atom power_on(instrument3)] [anything -> Atom have_image(phenomenon5, image0)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, phenomenon5)
+Atom calibrated(instrument3)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3410)
+ Distance: 12
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 phenomenon5 groundstation4 [Atom pointing(satellite1, groundstation4) -> Atom pointing(satellite1, phenomenon5)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom calibrated(instrument3)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e35d0)
+ Distance: 13
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+calibrate satellite1 instrument3 groundstation4 [Atom pointing(satellite1, groundstation4)] [Atom power_on(instrument3)] [anything -> Atom calibrated(instrument3)]
+
+ -{ State }-
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3790)
+ Distance: 14
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+switch_on instrument3 satellite1 [anything -> NegatedAtom calibrated(instrument3)] [Atom power_avail(satellite1) -> NegatedAtom power_avail(satellite1)] [anything -> Atom power_on(instrument3)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3950)
+ Distance: 15
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite0 star6 instrument0 image1 [Atom calibrated(instrument0)] [Atom pointing(satellite0, star6)] [Atom power_on(instrument0)] [anything -> Atom have_image(star6, image1)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star6)
+Atom calibrated(instrument0)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3b10)
+ Distance: 16
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 star6 planet9 [Atom pointing(satellite0, planet9) -> Atom pointing(satellite0, star6)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, planet9)
+Atom calibrated(instrument0)
+Atom have_image(planet9, image3)
+
+Regression Step (0x26e3cd0)
+ Distance: 17
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+take_image satellite0 planet9 instrument0 image3 [Atom calibrated(instrument0)] [Atom pointing(satellite0, planet9)] [Atom power_on(instrument0)] [anything -> Atom have_image(planet9, image3)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, planet9)
+Atom calibrated(instrument0)
+
+Regression Step (0x26e3e90)
+ Distance: 18
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 planet9 star1 [Atom pointing(satellite0, star1) -> Atom pointing(satellite0, planet9)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+Atom calibrated(instrument0)
+
+Regression Step (0x26e4050)
+ Distance: 19
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+calibrate satellite0 instrument0 star1 [Atom pointing(satellite0, star1)] [Atom power_on(instrument0)] [anything -> Atom calibrated(instrument0)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e4210)
+ Distance: 20
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+switch_on instrument0 satellite0 [anything -> NegatedAtom calibrated(instrument0)] [Atom power_avail(satellite0) -> NegatedAtom power_avail(satellite0)] [anything -> Atom power_on(instrument0)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e43d0)
+ Distance: 21
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite2 phenomenon5 star6 [Atom pointing(satellite2, star6) -> Atom pointing(satellite2, phenomenon5)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e4590)
+ Distance: 22
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite1 groundstation4 groundstation0 [Atom pointing(satellite1, groundstation0) -> Atom pointing(satellite1, groundstation4)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, star1)
+
+Regression Step (0x26e4750)
+ Distance: 23
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 star1 groundstation0 [Atom pointing(satellite0, groundstation0) -> Atom pointing(satellite0, star1)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, groundstation0)
+
+Regression Step (0x26e4910)
+ Distance: 24
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+turn_to satellite0 groundstation0 star6 [Atom pointing(satellite0, star6) -> Atom pointing(satellite0, groundstation0)]
+
+ -{ State }-
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, star6)
+
+--------------------------------------------------------------------
+
+                  -{ Alternative policies }-
+
+--------------------------------------------------------------------
+
+-{ Branch number 1 }-
+
+Remaining faults : 0
+
+Failed operators : 
+calibrate satellite0 instrument0 star1
+
+State : 
+Atom power_avail(satellite3)
+Atom power_avail(satellite1)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+
+Policy : 
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 planet9 groundstation0
+take_image satellite3 planet9 instrument7 image3
+turn_to satellite3 star6 planet9
+take_image satellite3 star6 instrument7 image1
+
+--------------------------------------------------------------
+
+-{ Branch number 2 }-
+
+Remaining faults : 0
+
+Failed operators : 
+calibrate satellite1 instrument3 groundstation4
+
+State : 
+Atom power_avail(satellite3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 star1 groundstation4
+turn_to satellite3 groundstation4 groundstation2
+switch_on instrument6 satellite3
+calibrate satellite3 instrument6 groundstation4
+turn_to satellite3 phenomenon5 groundstation4
+take_image satellite3 phenomenon5 instrument6 image0
+turn_to satellite3 planet10 phenomenon5
+take_image satellite3 planet10 instrument6 image0
+turn_to satellite3 planet11 planet10
+take_image satellite3 planet11 instrument6 image2
+turn_to satellite3 planet8 planet11
+take_image satellite3 planet8 instrument6 image0
+turn_to satellite3 star7 planet8
+take_image satellite3 star7 instrument6 image0
+
+--------------------------------------------------------------
+
+-{ Branch number 3 }-
+
+Remaining faults : 0
+
+Failed operators : 
+switch_on instrument0 satellite0
+
+State : 
+Atom power_avail(satellite3)
+Atom power_avail(satellite1)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+
+Policy : 
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 planet9 groundstation0
+take_image satellite3 planet9 instrument7 image3
+turn_to satellite3 star6 planet9
+take_image satellite3 star6 instrument7 image1
+
+--------------------------------------------------------------
+
+-{ Branch number 4 }-
+
+Remaining faults : 0
+
+Failed operators : 
+switch_on instrument3 satellite1
+
+State : 
+Atom power_avail(satellite2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+switch_on instrument5 satellite2
+turn_to satellite1 star1 groundstation4
+turn_to satellite2 star1 phenomenon5
+calibrate satellite2 instrument5 star1
+turn_to satellite2 phenomenon5 star1
+take_image satellite2 phenomenon5 instrument5 image0
+turn_to satellite2 planet10 phenomenon5
+take_image satellite2 planet10 instrument5 image0
+turn_to satellite2 phenomenon5 planet10
+turn_to satellite2 planet11 phenomenon5
+take_image satellite2 planet11 instrument5 image2
+turn_to satellite2 phenomenon5 planet11
+turn_to satellite2 planet8 phenomenon5
+take_image satellite2 planet8 instrument5 image0
+turn_to satellite2 phenomenon5 planet8
+turn_to satellite2 star7 phenomenon5
+take_image satellite2 star7 instrument5 image0
+turn_to satellite2 phenomenon5 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 5 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite0 planet9 instrument0 image3
+
+State : 
+Atom power_avail(satellite3)
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, planet9)
+Atom calibrated(instrument0)
+
+Policy : 
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite0 star6 planet9
+take_image satellite0 star6 instrument0 image1
+turn_to satellite0 planet9 star6
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 planet9 groundstation0
+take_image satellite3 planet9 instrument7 image3
+
+--------------------------------------------------------------
+
+-{ Branch number 6 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite0 star6 instrument0 image1
+
+State : 
+Atom power_avail(satellite3)
+Atom power_avail(satellite1)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom have_image(planet9, image3)
+
+Policy : 
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 star6 groundstation0
+take_image satellite3 star6 instrument7 image1
+
+--------------------------------------------------------------
+
+-{ Branch number 7 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite1 phenomenon5 instrument3 image0
+
+State : 
+Atom power_avail(satellite3)
+Atom power_on(instrument3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, phenomenon5)
+Atom calibrated(instrument3)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 phenomenon5 planet10
+turn_to satellite1 planet11 phenomenon5
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 phenomenon5 planet11
+turn_to satellite1 planet8 phenomenon5
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 phenomenon5 planet8
+turn_to satellite1 star7 phenomenon5
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 phenomenon5 star7
+turn_to satellite1 star1 phenomenon5
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 phenomenon5 groundstation0
+take_image satellite3 phenomenon5 instrument7 image0
+
+--------------------------------------------------------------
+
+-{ Branch number 8 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite1 planet10 instrument3 image0
+
+State : 
+Atom power_avail(satellite3)
+Atom power_on(instrument3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet10)
+Atom calibrated(instrument3)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet10 planet11
+turn_to satellite1 planet8 planet10
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 planet10 planet8
+turn_to satellite1 star7 planet10
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 planet10 star7
+turn_to satellite1 star1 planet10
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 planet10 groundstation0
+take_image satellite3 planet10 instrument7 image0
+
+--------------------------------------------------------------
+
+-{ Branch number 9 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite1 planet11 instrument3 image2
+
+State : 
+Atom power_avail(satellite3)
+Atom power_on(instrument3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet11)
+Atom calibrated(instrument3)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 planet11 planet8
+turn_to satellite1 star7 planet11
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 planet11 star7
+turn_to satellite1 star1 planet11
+turn_to satellite3 groundstation4 groundstation2
+switch_on instrument6 satellite3
+calibrate satellite3 instrument6 groundstation4
+turn_to satellite3 planet11 groundstation4
+take_image satellite3 planet11 instrument6 image2
+
+--------------------------------------------------------------
+
+-{ Branch number 10 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite1 planet8 instrument3 image0
+
+State : 
+Atom power_avail(satellite3)
+Atom power_on(instrument3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet8)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 star7 planet8
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 planet8 star7
+turn_to satellite1 star1 planet8
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 planet8 groundstation0
+take_image satellite3 planet8 instrument7 image0
+
+--------------------------------------------------------------
+
+-{ Branch number 11 }-
+
+Remaining faults : 0
+
+Failed operators : 
+take_image satellite1 star7 instrument3 image0
+
+State : 
+Atom power_avail(satellite3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star7)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 star1 star7
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 star7 groundstation0
+take_image satellite3 star7 instrument7 image0
+
+--------------------------------------------------------------
+
+-{ Branch number 12 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite0 groundstation0 star6
+
+State : 
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, star6)
+
+Policy : 
+turn_to satellite0 groundstation2 star6
+turn_to satellite0 star1 groundstation2
+turn_to satellite1 groundstation4 groundstation0
+turn_to satellite2 phenomenon5 star6
+switch_on instrument0 satellite0
+calibrate satellite0 instrument0 star1
+turn_to satellite0 planet9 star1
+take_image satellite0 planet9 instrument0 image3
+turn_to satellite0 star6 planet9
+take_image satellite0 star6 instrument0 image1
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 13 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite0 planet9 star1
+
+State : 
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+Atom calibrated(instrument0)
+
+Policy : 
+turn_to satellite0 star6 star1
+take_image satellite0 star6 instrument0 image1
+turn_to satellite0 planet9 star6
+take_image satellite0 planet9 instrument0 image3
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 14 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite0 star1 groundstation0
+
+State : 
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, groundstation0)
+
+Policy : 
+turn_to satellite1 groundstation4 groundstation0
+switch_on instrument0 satellite0
+turn_to satellite0 planet9 groundstation0
+turn_to satellite2 phenomenon5 star6
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite0 star1 planet9
+calibrate satellite0 instrument0 star1
+turn_to satellite0 planet9 star1
+take_image satellite0 planet9 instrument0 image3
+turn_to satellite0 star6 planet9
+take_image satellite0 star6 instrument0 image1
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 15 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite0 star6 planet9
+
+State : 
+Atom power_avail(satellite1)
+Atom power_on(instrument0)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, planet9)
+Atom calibrated(instrument0)
+Atom have_image(planet9, image3)
+
+Policy : 
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite0 groundstation0 planet9
+turn_to satellite0 star6 groundstation0
+take_image satellite0 star6 instrument0 image1
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 16 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 groundstation4 groundstation0
+
+State : 
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation0)
+Atom pointing(satellite0, star1)
+
+Policy : 
+turn_to satellite1 phenomenon5 groundstation0
+turn_to satellite1 groundstation4 phenomenon5
+turn_to satellite2 phenomenon5 star6
+switch_on instrument0 satellite0
+calibrate satellite0 instrument0 star1
+turn_to satellite0 planet9 star1
+take_image satellite0 planet9 instrument0 image3
+turn_to satellite0 star6 planet9
+take_image satellite0 star6 instrument0 image1
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 17 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 phenomenon5 groundstation4
+
+State : 
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, groundstation4)
+Atom calibrated(instrument3)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 planet10 groundstation4
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 phenomenon5 planet10
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet11 phenomenon5
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 18 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 planet10 phenomenon5
+
+State : 
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, phenomenon5)
+Atom calibrated(instrument3)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 planet11 phenomenon5
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet10 planet11
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet8 planet10
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 19 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 planet11 planet10
+
+State : 
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet10)
+Atom calibrated(instrument3)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 planet8 planet10
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 planet11 planet8
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 star1 planet11
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 20 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 planet8 planet11
+
+State : 
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet11)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 star1 planet11
+turn_to satellite1 planet8 star1
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 21 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 star1 planet8
+
+State : 
+Atom power_on(instrument3)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, planet8)
+Atom calibrated(instrument3)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 star7 planet8
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+
+--------------------------------------------------------------
+
+-{ Branch number 22 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 star1 star7
+
+State : 
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star7)
+Atom have_image(planet11, image2)
+Atom have_image(star7, image0)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite1 groundstation0 star7
+turn_to satellite1 star1 groundstation0
+
+--------------------------------------------------------------
+
+-{ Branch number 23 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite1 star7 star1
+
+State : 
+Atom power_avail(satellite3)
+Atom pointing(satellite3, groundstation2)
+Atom pointing(satellite2, phenomenon5)
+Atom pointing(satellite1, star1)
+Atom have_image(planet11, image2)
+Atom have_image(planet8, image0)
+Atom have_image(planet10, image0)
+Atom have_image(phenomenon5, image0)
+Atom have_image(star6, image1)
+Atom have_image(planet9, image3)
+
+Policy : 
+turn_to satellite3 groundstation0 groundstation2
+switch_on instrument7 satellite3
+calibrate satellite3 instrument7 groundstation0
+turn_to satellite3 star7 groundstation0
+take_image satellite3 star7 instrument7 image0
+
+--------------------------------------------------------------
+
+-{ Branch number 24 }-
+
+Remaining faults : 0
+
+Failed operators : 
+turn_to satellite2 phenomenon5 star6
+
+State : 
+Atom power_avail(satellite1)
+Atom power_avail(satellite0)
+Atom pointing(satellite2, star6)
+Atom pointing(satellite1, groundstation4)
+Atom pointing(satellite0, star1)
+
+Policy : 
+switch_on instrument0 satellite0
+calibrate satellite0 instrument0 star1
+turn_to satellite0 planet9 star1
+take_image satellite0 planet9 instrument0 image3
+turn_to satellite0 star6 planet9
+take_image satellite0 star6 instrument0 image1
+switch_on instrument3 satellite1
+calibrate satellite1 instrument3 groundstation4
+turn_to satellite1 phenomenon5 groundstation4
+take_image satellite1 phenomenon5 instrument3 image0
+turn_to satellite1 planet10 phenomenon5
+take_image satellite1 planet10 instrument3 image0
+turn_to satellite1 planet11 planet10
+take_image satellite1 planet11 instrument3 image2
+turn_to satellite1 planet8 planet11
+take_image satellite1 planet8 instrument3 image0
+turn_to satellite1 star1 planet8
+turn_to satellite1 star7 star1
+take_image satellite1 star7 instrument3 image0
+turn_to satellite1 star1 star7
+turn_to satellite2 groundstation0 star6
+turn_to satellite2 phenomenon5 groundstation0
+
+--------------------------------------------------------------
+
+                  -{ Timing Statistics }-
+
+         Engine Initialization: 0.28s
+                   Search Time: 34.58s
+           Policy Construction: 0.01s
+                    Total time: 34.9s
+
+--------------------------------------------------------------
+
+Peak memory: 622432 KB
+

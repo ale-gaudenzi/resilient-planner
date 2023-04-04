@@ -1,0 +1,1838 @@
+1. Running translator
+Second argument is a file name: use two translator arguments.
+Parsing...
+Parsing: [0.000s CPU, 0.033s wall-clock]
+Normalizing task... [0.000s CPU, 0.000s wall-clock]
+Instantiating...
+Generating Datalog program... [0.010s CPU, 0.000s wall-clock]
+Normalizing Datalog program...
+Normalizing Datalog program: [0.000s CPU, 0.007s wall-clock]
+Preparing model... [0.010s CPU, 0.002s wall-clock]
+Generated 59 rules.
+Computing model... [0.010s CPU, 0.013s wall-clock]
+1291 relevant atoms
+773 auxiliary atoms
+2064 final queue length
+3935 total queue pushes
+Completing instantiation... [0.020s CPU, 0.027s wall-clock]
+Instantiating: [0.050s CPU, 0.050s wall-clock]
+Computing fact groups...
+Finding invariants...
+9 initial candidates
+Finding invariants: [0.000s CPU, 0.002s wall-clock]
+Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
+Instantiating groups... [0.000s CPU, 0.000s wall-clock]
+Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
+Choosing groups...
+0 uncovered facts
+Choosing groups: [0.000s CPU, 0.000s wall-clock]
+Building translation key... [0.000s CPU, 0.000s wall-clock]
+Computing fact groups: [0.000s CPU, 0.003s wall-clock]
+Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
+Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
+Building mutex information...
+Building mutex information: [0.000s CPU, 0.000s wall-clock]
+Translating task...
+Processing axioms...
+Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
+Processing axioms: [0.000s CPU, 0.001s wall-clock]
+Translating task: [0.020s CPU, 0.018s wall-clock]
+0 effect conditions simplified
+0 implied preconditions added
+Detecting unreachable propositions...
+Removed false proposition: 0 = <none of those>
+Removed false proposition: 1 = <none of those>
+Removed false proposition: 2 = <none of those>
+Removed false proposition: 3 = <none of those>
+Removed false proposition: 4 = <none of those>
+Removed false proposition: 5 = <none of those>
+Removed false proposition: 6 = <none of those>
+Removed false proposition: 7 = <none of those>
+Removed false proposition: 8 = <none of those>
+Removed false proposition: 9 = <none of those>
+Removed false proposition: 10 = <none of those>
+Removed false proposition: 11 = <none of those>
+Removed false proposition: 12 = <none of those>
+0 operators removed
+13 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.002s wall-clock]
+Translator variables: 13
+Translator derived variables: 0
+Translator facts: 92
+Translator goal facts: 7
+Translator mutex groups: 13
+Translator total mutex groups size: 92
+Translator operators: 1125
+Translator axioms: 0
+Translator task size: 5364
+Translator peak memory: 35128 KB
+Writing output... [0.010s CPU, 0.004s wall-clock]
+Done! [0.080s CPU, 0.111s wall-clock]
+
+2. Running preprocessor
+Building causal graph...
+The causal graph is not acyclic.
+13 variables of 13 necessary
+0 of 13 mutex groups necessary.
+1125 of 1125 operators necessary.
+0 of 0 axiom rules necessary.
+Building domain transition graphs...
+solveable in poly time 0
+Building successor generator...
+Preprocessor facts: 92
+Preprocessor derived variables: 0
+Preprocessor task size: 5272
+Writing output...
+done
+
+
+3. Running search
+/home/sifao/prp/src/search/downward ipc policy-repair --resilient 1
+This is a unit task.
+/home/sifao/prp/src/search/downward-release --heuristic "h=ff(cost_type=1)" --search "lazy_greedy([h],preferred=[h])" --random-seed 814102613 --resilient 1 < output
+Simplifying transitions... done!
+Variables: 13
+Bytes per state: 8
+
+Total allotted time (s): 1800
+Max time for core JIC (remaining used in final-round repairs): 1800
+Max time for each of the 1 epochs: 1800
+
+Conducting lazy best first search, (real) bound = 2147483647
+end of initialize
+ !! Warning: Disabling the simplification of unary operators !!
+ !!           to keep the non-deterministic planning sound.  !!
+Generated 6171 state(s).
+Dead ends: 0 state(s). (0 recorded)
+board person3 plane1 city2 (1)
+fly plane1 city2 city0 fl5 fl4 (1)
+board person4 plane1 city0 (1)
+fly plane1 city0 city1 fl4 fl3 (1)
+board person2 plane1 city1 (1)
+fly plane1 city1 city0 fl3 fl2 (1)
+debark person2 plane1 city0 (1)
+fly plane1 city0 city1 fl2 fl1 (1)
+refuel plane1 city1 fl1 fl2 (1)
+fly plane1 city1 city3 fl2 fl1 (1)
+debark person4 plane1 city3 (1)
+board person6 plane1 city3 (1)
+board person7 plane1 city3 (1)
+fly plane1 city3 city4 fl1 fl0 (1)
+board person1 plane1 city4 (1)
+debark person3 plane1 city4 (1)
+board person5 plane1 city4 (1)
+debark person6 plane1 city4 (1)
+debark person7 plane1 city4 (1)
+refuel plane1 city4 fl0 fl1 (1)
+fly plane1 city4 city1 fl1 fl0 (1)
+debark person5 plane1 city1 (1)
+refuel plane1 city1 fl0 fl1 (1)
+fly plane1 city1 city2 fl1 fl0 (1)
+debark person1 plane1 city2 (1)
+Plan length: 25 step(s).
+Plan cost: 25
+Initial search time: 0.01s
+Initial total time: 0.01s
+
+Regressing the plan...
+
+Generating an initial policy...
+
+Initial policy:
+Policy:
+Regression Step (0x228a8c0)
+ Distance: 0
+ Relevant: 0
+ SC: 0
+ -{ Goal }-
+
+ -{ State }-
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom at(person1, city2)
+
+Regression Step (0x228f080)
+ Distance: 1
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person1 plane1 city2 (debark person1 plane1 city2): [Atom at(plane1, city2)] [Atom in(person1, plane1) -> Atom at(person1, city2)]
+
+ -{ State }-
+Atom at(plane1, city2)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f150)
+ Distance: 2
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city1 city2 fl1 fl0 (fly plane1 city1 city2 fl1 fl0): [Atom at(plane1, city1) -> Atom at(plane1, city2)] [Atom fuel-level(plane1, fl1) -> Atom fuel-level(plane1, fl0)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f220)
+ Distance: 3
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+refuel plane1 city1 fl0 fl1 (refuel plane1 city1 fl0 fl1): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl0) -> Atom fuel-level(plane1, fl1)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl0)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f2f0)
+ Distance: 4
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person5 plane1 city1 (debark person5 plane1 city1): [Atom at(plane1, city1)] [Atom in(person5, plane1) -> Atom at(person5, city1)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl0)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f3c0)
+ Distance: 5
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city4 city1 fl1 fl0 (fly plane1 city4 city1 fl1 fl0): [Atom at(plane1, city4) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl1) -> Atom fuel-level(plane1, fl0)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f490)
+ Distance: 6
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+refuel plane1 city4 fl0 fl1 (refuel plane1 city4 fl0 fl1): [Atom at(plane1, city4)] [Atom fuel-level(plane1, fl0) -> Atom fuel-level(plane1, fl1)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f560)
+ Distance: 7
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person7 plane1 city4 (debark person7 plane1 city4): [Atom at(plane1, city4)] [Atom in(person7, plane1) -> Atom at(person7, city4)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f630)
+ Distance: 8
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person6 plane1 city4 (debark person6 plane1 city4): [Atom at(plane1, city4)] [Atom in(person6, plane1) -> Atom at(person6, city4)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f700)
+ Distance: 9
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person5 plane1 city4 (board person5 plane1 city4): [Atom at(plane1, city4)] [Atom at(person5, city4) -> Atom in(person5, plane1)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f7d0)
+ Distance: 10
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person3 plane1 city4 (debark person3 plane1 city4): [Atom at(plane1, city4)] [Atom in(person3, plane1) -> Atom at(person3, city4)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x228f8a0)
+ Distance: 11
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person1 plane1 city4 (board person1 plane1 city4): [Atom at(plane1, city4)] [Atom at(person1, city4) -> Atom in(person1, plane1)]
+
+ -{ State }-
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228f970)
+ Distance: 12
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city3 city4 fl1 fl0 (fly plane1 city3 city4 fl1 fl0): [Atom at(plane1, city3) -> Atom at(plane1, city4)] [Atom fuel-level(plane1, fl1) -> Atom fuel-level(plane1, fl0)]
+
+ -{ State }-
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228fa40)
+ Distance: 13
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person7 plane1 city3 (board person7 plane1 city3): [Atom at(plane1, city3)] [Atom at(person7, city3) -> Atom in(person7, plane1)]
+
+ -{ State }-
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228fb10)
+ Distance: 14
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person6 plane1 city3 (board person6 plane1 city3): [Atom at(plane1, city3)] [Atom at(person6, city3) -> Atom in(person6, plane1)]
+
+ -{ State }-
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228fbe0)
+ Distance: 15
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person4 plane1 city3 (debark person4 plane1 city3): [Atom at(plane1, city3)] [Atom in(person4, plane1) -> Atom at(person4, city3)]
+
+ -{ State }-
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228fcb0)
+ Distance: 16
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city1 city3 fl2 fl1 (fly plane1 city1 city3 fl2 fl1): [Atom at(plane1, city1) -> Atom at(plane1, city3)] [Atom fuel-level(plane1, fl2) -> Atom fuel-level(plane1, fl1)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228fd80)
+ Distance: 17
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+refuel plane1 city1 fl1 fl2 (refuel plane1 city1 fl1 fl2): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl1) -> Atom fuel-level(plane1, fl2)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228fe50)
+ Distance: 18
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city0 city1 fl2 fl1 (fly plane1 city0 city1 fl2 fl1): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl2) -> Atom fuel-level(plane1, fl1)]
+
+ -{ State }-
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Regression Step (0x228ff20)
+ Distance: 19
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+debark person2 plane1 city0 (debark person2 plane1 city0): [Atom at(plane1, city0)] [Atom in(person2, plane1) -> Atom at(person2, city0)]
+
+ -{ State }-
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom in(person2, plane1)
+Atom at(person1, city4)
+
+Regression Step (0x228fff0)
+ Distance: 20
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city1 city0 fl3 fl2 (fly plane1 city1 city0 fl3 fl2): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom in(person2, plane1)
+Atom at(person1, city4)
+
+Regression Step (0x22900c0)
+ Distance: 21
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person2 plane1 city1 (board person2 plane1 city1): [Atom at(plane1, city1)] [Atom at(person2, city1) -> Atom in(person2, plane1)]
+
+ -{ State }-
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Regression Step (0x2290190)
+ Distance: 22
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+ -{ State }-
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Regression Step (0x2290260)
+ Distance: 23
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person4 plane1 city0 (board person4 plane1 city0): [Atom at(plane1, city0)] [Atom at(person4, city0) -> Atom in(person4, plane1)]
+
+ -{ State }-
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Regression Step (0x2290330)
+ Distance: 24
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+fly plane1 city2 city0 fl5 fl4 (fly plane1 city2 city0 fl5 fl4): [Atom at(plane1, city2) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl5) -> Atom fuel-level(plane1, fl4)]
+
+ -{ State }-
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl5)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Regression Step (0x2290400)
+ Distance: 25
+ Relevant: 0
+ SC: 0
+ -{ Operator }-
+board person3 plane1 city2 (board person3 plane1 city2): [Atom at(plane1, city2)] [Atom at(person3, city2) -> Atom in(person3, plane1)]
+
+ -{ State }-
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl5)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom at(person3, city2)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+
+ MEM USAGE Before replan 4560 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 9836452 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 160028 0 0
+
+ MEM USAGE Before replan 160028 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 471 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 160028 0 0
+
+ MEM USAGE Before replan 160028 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 1386 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 160028 0 0
+
+ MEM USAGE Before replan 160028 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 9549317 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 180880 0 0
+
+ MEM USAGE Before replan 181144 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 606 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 181144 0 0
+
+ MEM USAGE Before replan 181144 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 246702 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 181144 0 0
+
+ MEM USAGE Before replan 181144 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 12489628 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 238696 0 0
+
+ MEM USAGE Before replan 238696 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 12489666 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 262720 0 0
+
+ MEM USAGE Before replan 262720 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 2016 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 262720 0 0
+
+ MEM USAGE Before replan 262720 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 12489695 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 286480 0 0
+
+ MEM USAGE Before replan 286480 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 961 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 286480 0 0
+
+ MEM USAGE Before replan 286480 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 4084 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 286480 0 0
+
+ MEM USAGE Before replan 286480 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 10962 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 286480 0 0
+
+ MEM USAGE Before replan 286480 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 10978 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 286480 0 0
+
+ MEM USAGE Before replan 286480 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 9836932 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 293080 0 0
+
+ MEM USAGE Before replan 293080 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 5413 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 293080 0 0
+
+ MEM USAGE Before replan 293080 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 25746 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 293080 0 0
+
+ MEM USAGE Before replan 293080 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 3856 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 293080 0 0
+
+ MEM USAGE Before replan 293080 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 9838642 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+ MEM USAGE Before replan 295984 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 3063 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+ MEM USAGE Before replan 295984 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 7879 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+ MEM USAGE Before replan 295984 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 6867 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+ MEM USAGE Before replan 295984 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 4440 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+ MEM USAGE Before replan 295984 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 3716 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+ MEM USAGE Before replan 295984 0 0
+Conducting lazy best first search, (real) bound = 2147483647
+Generated 5389 state(s).
+Dead ends: 0 state(s). (0 recorded)
+Solution found
+
+ MEM USAGE After replan 295984 0 0
+
+
+--------------------------------------------------------------------
+
+                  -{ Base policy without faults}-
+
+--------------------------------------------------------------------
+
+
+Initial state:
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl5)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom at(person3, city2)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Policy:
+board person3 plane1 city2
+fly plane1 city2 city0 fl5 fl4
+board person4 plane1 city0
+fly plane1 city0 city1 fl4 fl3
+board person2 plane1 city1
+fly plane1 city1 city0 fl3 fl2
+debark person2 plane1 city0
+fly plane1 city0 city1 fl2 fl1
+refuel plane1 city1 fl1 fl2
+fly plane1 city1 city3 fl2 fl1
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city4 fl1 fl0
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------------
+
+                  -{ Alternative policies }-
+
+--------------------------------------------------------------------
+
+-{ Branch number 1 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person1 plane1 city4
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+fly plane2 city2 city4 fl2 fl1
+board person1 plane2 city4
+fly plane2 city4 city2 fl1 fl0
+debark person1 plane2 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 2 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person2 plane1 city1
+
+Initial state:
+Atom at(plane3, city1)
+Atom fuel-level(plane3, fl0)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Policy:
+board person2 plane3 city1
+refuel plane3 city1 fl0 fl1
+fly plane3 city1 city0 fl1 fl0
+debark person2 plane3 city0
+fly plane1 city1 city3 fl3 fl2
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city1 fl2 fl1
+refuel plane1 city1 fl1 fl2
+fly plane1 city1 city4 fl2 fl1
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 3 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person3 plane1 city2
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl5)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom at(person3, city2)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Policy:
+board person3 plane2 city2
+fly plane1 city2 city0 fl5 fl4
+board person4 plane1 city0
+fly plane1 city0 city1 fl4 fl3
+board person2 plane1 city1
+fly plane1 city1 city0 fl3 fl2
+debark person2 plane1 city0
+fly plane1 city0 city1 fl2 fl1
+zoom plane2 city2 city4 fl2 fl1 fl0
+debark person3 plane2 city4
+board person1 plane2 city4
+board person5 plane2 city4
+refuel plane2 city4 fl0 fl1
+fly plane1 city1 city3 fl1 fl0
+debark person4 plane1 city3
+refuel plane1 city3 fl0 fl1
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city4 fl1 fl0
+debark person6 plane1 city4
+debark person7 plane1 city4
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city2 fl1 fl0
+debark person1 plane2 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 4 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person4 plane1 city0
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city0 city1 fl4 fl3
+board person2 plane1 city1
+fly plane1 city1 city0 fl3 fl2
+debark person2 plane1 city0
+fly plane1 city0 city3 fl2 fl1
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane2 city2 city0 fl2 fl1
+board person4 plane2 city0
+fly plane2 city0 city3 fl1 fl0
+debark person4 plane2 city3
+fly plane1 city3 city4 fl1 fl0
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 5 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person5 plane1 city4
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city2 fl1 fl0
+debark person1 plane1 city2
+fly plane2 city2 city1 fl2 fl1
+refuel plane2 city1 fl1 fl2
+fly plane2 city1 city4 fl2 fl1
+board person5 plane2 city4
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+
+--------------------------------------------------------------
+
+-{ Branch number 6 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person6 plane1 city3
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+board person7 plane1 city3
+fly plane2 city2 city4 fl2 fl1
+board person1 plane2 city4
+board person5 plane2 city4
+fly plane1 city3 city4 fl1 fl0
+debark person3 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city2 fl1 fl0
+debark person1 plane2 city2
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city3 fl1 fl0
+board person6 plane2 city3
+refuel plane2 city3 fl0 fl1
+fly plane2 city3 city4 fl1 fl0
+debark person6 plane2 city4
+
+--------------------------------------------------------------
+
+-{ Branch number 7 }-
+
+Remaining faults : 0
+
+Failed operator : 
+board person7 plane1 city3
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+fly plane2 city2 city4 fl2 fl1
+board person1 plane2 city4
+board person5 plane2 city4
+fly plane1 city3 city4 fl1 fl0
+debark person3 plane1 city4
+debark person6 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city2 fl1 fl0
+debark person1 plane2 city2
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city3 fl1 fl0
+board person7 plane2 city3
+refuel plane2 city3 fl0 fl1
+fly plane2 city3 city4 fl1 fl0
+debark person7 plane2 city4
+
+--------------------------------------------------------------
+
+-{ Branch number 8 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person1 plane1 city2
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl0)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+refuel plane1 city2 fl0 fl1
+refuel plane1 city2 fl1 fl2
+fly plane2 city2 city0 fl2 fl1
+fly plane1 city2 city0 fl2 fl1
+debark person1 plane1 city0
+board person1 plane2 city0
+fly plane2 city0 city2 fl1 fl0
+debark person1 plane2 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 9 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person2 plane1 city0
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom in(person2, plane1)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city0 city3 fl2 fl1
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city0 fl1 fl0
+refuel plane1 city0 fl0 fl1
+fly plane2 city2 city4 fl2 fl1
+board person1 plane2 city4
+board person5 plane2 city4
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city2 fl1 fl0
+debark person1 plane2 city2
+refuel plane1 city0 fl1 fl2
+fly plane1 city0 city4 fl2 fl1
+debark person3 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+fly plane1 city4 city0 fl1 fl0
+refuel plane1 city0 fl0 fl1
+refuel plane1 city0 fl1 fl2
+refuel plane2 city2 fl0 fl1
+fly plane1 city0 city2 fl2 fl1
+debark person2 plane1 city2
+board person2 plane2 city2
+fly plane2 city2 city0 fl1 fl0
+debark person2 plane2 city0
+
+--------------------------------------------------------------
+
+-{ Branch number 10 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person3 plane1 city4
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+refuel plane1 city4 fl1 fl2
+fly plane1 city4 city1 fl2 fl1
+debark person5 plane1 city1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+debark person3 plane1 city2
+board person3 plane2 city2
+fly plane2 city2 city4 fl2 fl1
+debark person3 plane2 city4
+
+--------------------------------------------------------------
+
+-{ Branch number 11 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person4 plane1 city3
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane2 city2 city4 fl2 fl1
+board person1 plane2 city4
+board person5 plane2 city4
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city2 fl1 fl0
+debark person1 plane2 city2
+refuel plane1 city3 fl1 fl2
+fly plane1 city3 city4 fl2 fl1
+debark person3 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+fly plane1 city4 city3 fl1 fl0
+refuel plane1 city3 fl0 fl1
+refuel plane1 city3 fl1 fl2
+refuel plane2 city2 fl0 fl1
+fly plane1 city3 city2 fl2 fl1
+debark person4 plane1 city2
+board person4 plane2 city2
+fly plane2 city2 city3 fl1 fl0
+debark person4 plane2 city3
+
+--------------------------------------------------------------
+
+-{ Branch number 12 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person5 plane1 city1
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl0)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+refuel plane1 city1 fl0 fl1
+refuel plane1 city1 fl1 fl2
+fly plane1 city1 city2 fl2 fl1
+debark person1 plane1 city2
+debark person5 plane1 city2
+board person5 plane2 city2
+fly plane2 city2 city1 fl2 fl1
+debark person5 plane2 city1
+
+--------------------------------------------------------------
+
+-{ Branch number 13 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person6 plane1 city4
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+refuel plane1 city4 fl1 fl2
+fly plane1 city4 city1 fl2 fl1
+debark person5 plane1 city1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+debark person6 plane1 city2
+board person6 plane2 city2
+fly plane2 city2 city4 fl2 fl1
+debark person6 plane2 city4
+
+--------------------------------------------------------------
+
+-{ Branch number 14 }-
+
+Remaining faults : 0
+
+Failed operator : 
+debark person7 plane1 city4
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl0)
+Atom in(person7, plane1)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+refuel plane1 city4 fl0 fl1
+refuel plane1 city4 fl1 fl2
+fly plane1 city4 city1 fl2 fl1
+debark person5 plane1 city1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+debark person7 plane1 city2
+board person7 plane2 city2
+fly plane2 city2 city4 fl2 fl1
+debark person7 plane2 city4
+
+--------------------------------------------------------------
+
+-{ Branch number 15 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city0 city1 fl2 fl1
+
+Initial state:
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city0 city2 fl2 fl1
+refuel plane1 city2 fl1 fl2
+fly plane1 city2 city3 fl2 fl1
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city4 fl1 fl0
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 16 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city0 city1 fl4 fl3
+
+Initial state:
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city0 city3 fl4 fl3
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city0 fl3 fl2
+fly plane1 city0 city1 fl2 fl1
+board person2 plane1 city1
+refuel plane1 city1 fl1 fl2
+fly plane1 city1 city0 fl2 fl1
+debark person2 plane1 city0
+fly plane1 city0 city4 fl1 fl0
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 17 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city1 city0 fl3 fl2
+
+Initial state:
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom in(person2, plane1)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city1 city3 fl3 fl2
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city0 fl2 fl1
+debark person2 plane1 city0
+fly plane1 city0 city4 fl1 fl0
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 18 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city1 city2 fl1 fl0
+
+Initial state:
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+refuel plane1 city1 fl1 fl2
+fly plane1 city1 city2 fl2 fl1
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 19 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city1 city3 fl2 fl1
+
+Initial state:
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city1 city4 fl2 fl1
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+refuel plane1 city4 fl1 fl2
+fly plane1 city4 city1 fl2 fl1
+debark person5 plane1 city1
+fly plane1 city1 city3 fl1 fl0
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+refuel plane1 city3 fl0 fl1
+fly plane1 city3 city2 fl1 fl0
+debark person1 plane1 city2
+refuel plane1 city2 fl0 fl1
+fly plane1 city2 city4 fl1 fl0
+debark person6 plane1 city4
+debark person7 plane1 city4
+
+--------------------------------------------------------------
+
+-{ Branch number 20 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city2 city0 fl5 fl4
+
+Initial state:
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl5)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom at(person4, city0)
+Atom in(person3, plane1)
+Atom at(person2, city1)
+Atom at(person1, city4)
+
+Policy:
+fly plane1 city2 city1 fl5 fl4
+board person2 plane1 city1
+fly plane1 city1 city0 fl4 fl3
+debark person2 plane1 city0
+board person4 plane1 city0
+fly plane1 city0 city1 fl3 fl2
+fly plane1 city1 city3 fl2 fl1
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+fly plane1 city3 city4 fl1 fl0
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane1 city4 fl0 fl1
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 21 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city3 city4 fl1 fl0
+
+Initial state:
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl1)
+Atom in(person7, plane1)
+Atom in(person6, plane1)
+Atom at(person5, city4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+refuel plane1 city3 fl1 fl2
+fly plane1 city3 city1 fl2 fl1
+refuel plane1 city1 fl1 fl2
+fly plane1 city1 city4 fl2 fl1
+board person1 plane1 city4
+debark person3 plane1 city4
+board person5 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+fly plane1 city4 city1 fl1 fl0
+debark person5 plane1 city1
+refuel plane1 city1 fl0 fl1
+fly plane1 city1 city2 fl1 fl0
+debark person1 plane1 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 22 }-
+
+Remaining faults : 0
+
+Failed operator : 
+fly plane1 city4 city1 fl1 fl0
+
+Initial state:
+Atom at(plane1, city4)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+fly plane1 city4 city2 fl1 fl0
+debark person1 plane1 city2
+refuel plane1 city2 fl0 fl1
+fly plane1 city2 city1 fl1 fl0
+debark person5 plane1 city1
+
+--------------------------------------------------------------
+
+-{ Branch number 23 }-
+
+Remaining faults : 0
+
+Failed operator : 
+refuel plane1 city1 fl0 fl1
+
+Initial state:
+Atom at(plane3, city1)
+Atom fuel-level(plane3, fl0)
+Atom at(plane1, city1)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom at(person5, city1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+debark person1 plane1 city1
+board person1 plane3 city1
+refuel plane3 city1 fl0 fl1
+fly plane3 city1 city2 fl1 fl0
+debark person1 plane3 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 24 }-
+
+Remaining faults : 0
+
+Failed operator : 
+refuel plane1 city1 fl1 fl2
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl1)
+Atom at(person7, city3)
+Atom at(person6, city3)
+Atom at(person5, city4)
+Atom in(person4, plane1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city4)
+
+Policy:
+zoom plane2 city2 city4 fl2 fl1 fl0
+board person1 plane2 city4
+board person5 plane2 city4
+fly plane1 city1 city3 fl1 fl0
+debark person4 plane1 city3
+board person6 plane1 city3
+board person7 plane1 city3
+refuel plane1 city3 fl0 fl1
+fly plane1 city3 city4 fl1 fl0
+debark person3 plane1 city4
+debark person6 plane1 city4
+debark person7 plane1 city4
+refuel plane2 city4 fl0 fl1
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city2 fl1 fl0
+debark person1 plane2 city2
+
+--------------------------------------------------------------
+
+-{ Branch number 25 }-
+
+Remaining faults : 0
+
+Failed operator : 
+refuel plane1 city4 fl0 fl1
+
+Initial state:
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl2)
+Atom at(plane1, city4)
+Atom at(person7, city4)
+Atom at(person6, city4)
+Atom in(person5, plane1)
+Atom at(person4, city3)
+Atom at(person3, city4)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Policy:
+fly plane2 city2 city4 fl2 fl1
+debark person1 plane1 city4
+board person1 plane2 city4
+fly plane2 city4 city2 fl1 fl0
+debark person1 plane2 city2
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city4 fl1 fl0
+refuel plane2 city4 fl0 fl1
+debark person5 plane1 city4
+board person5 plane2 city4
+fly plane2 city4 city1 fl1 fl0
+debark person5 plane2 city1
+
+--------------------------------------------------------------
+
+                  -{ Timing Statistics }-
+
+         Engine Initialization: 0.14s
+                   Search Time: 51.49s
+           Policy Construction: 0s
+                    Total time: 51.66s
+
+--------------------------------------------------------------
+
+Peak memory: 299900 KB
+

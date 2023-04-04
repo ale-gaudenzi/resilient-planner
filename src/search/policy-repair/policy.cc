@@ -1001,7 +1001,13 @@ void Policy::dump_human_policy(bool fsap)
 // simplified dump for resilient planning for printing branches
 void Policy::dump_simple()
 {
-    cout << "Policy:\n" << endl;
+    cout << "\nInitial state:" << endl;
+    list<PolicyItem *>::reverse_iterator op_iter = all_items.rbegin();
+    RegressionStep *rs = (RegressionStep *)(*op_iter);
+    rs->get_state().dump_pddl();
+
+    cout << "\nPolicy:" << endl;
+
     for (list<PolicyItem *>::reverse_iterator op_iter = all_items.rbegin();
          op_iter != all_items.rend(); ++op_iter)
     {

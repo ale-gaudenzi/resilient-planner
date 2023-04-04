@@ -18,6 +18,8 @@
 #include <vector>
 #include <stack>
 #include <tr1/functional>
+#include <sys/resource.h>
+
 using namespace std;
 
 bool verbose = false;
@@ -31,6 +33,7 @@ void print_results();
 void print_timings();
 bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
 bool find_in_op_set(std::set<Operator> set, Operator op);
+void resource_usage(string o);
 
 std::list<ResilientNode> resilient_nodes;
 std::list<ResilientNode> resilient_deadends;
@@ -162,7 +165,7 @@ int main(int argc, const char **argv)
     // the resilient algorithm start from here, previously is cloned from the original prp.
 
     // save the first policy as the original policy
-    // g_policy during the execution will contain all the other branches too 
+    // g_policy during the execution will contain all the other branches too
     g_original_policy = new Policy();
     g_original_policy->update_policy(regression_steps);
 
@@ -253,7 +256,8 @@ int main(int argc, const char **argv)
                 if (current_node.get_k() >= 1)
                 {
                     if (verbose)
-                        cout << "\nPushing nodes:\n" << endl;
+                        cout << "\nPushing nodes:\n"
+                             << endl;
 
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
@@ -281,7 +285,8 @@ int main(int argc, const char **argv)
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                        if(verbose){
+                        if (verbose)
+                        {
                             cout << "Pushing to R" << endl;
                             res_node.dump();
                         }
@@ -341,7 +346,7 @@ bool resiliency_check(ResilientNode node)
     PolicyItem *goal_step = NULL;
 
     // implementation of getPolicyActions(P,s) in the pseudocode
-    // 
+    //
     for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
     {
         RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
@@ -350,7 +355,7 @@ bool resiliency_check(ResilientNode node)
             PartialState policy_state = PartialState(*reg_step->state);
 
             if ((*reg_step->state).implies(state_to_check) && !find_in_op_set(node.get_deactivated_op(), reg_step->get_op()))
-            {   
+            {
                 next_actions.insert(reg_step->get_op());
             }
         }
@@ -389,6 +394,7 @@ bool resiliency_check(ResilientNode node)
 // the replanning function is the same at the prp's one but using the state in the current node as initial state
 bool replan(ResilientNode current_node, SearchEngine *engine)
 {
+    resource_usage("Before replan");
     bool verbose = false;
 
     if (verbose)
@@ -437,14 +443,15 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->statistics();
             engine->heuristic_statistics();
         }
-
+        
+        resource_usage("After replan");
         return true;
     }
     else
     {
         if (verbose)
             cout << "Replanning failed!" << endl;
-
+        resource_usage("After replan");
         return false;
     }
 }
@@ -499,7 +506,7 @@ void add_fault_model_deadend(ResilientNode node)
     }
 }
 
-// the goal need to be resetted before replanning 
+// the goal need to be resetted before replanning
 void reset_goal()
 {
     g_goal.clear();
@@ -585,9 +592,9 @@ void print_results()
     cout << "--------------------------------------------------------------------\n"
          << endl;
 
-    g_original_policy->dump();
+    g_original_policy->dump_simple();
 
-    cout << "--------------------------------------------------------------------" << endl;
+    cout << "\n--------------------------------------------------------------------" << endl;
     cout << "\n                  -{ Alternative policies }-\n"
          << endl;
     cout << "--------------------------------------------------------------------" << endl;
@@ -597,15 +604,13 @@ void print_results()
     {
         cout << "\n-{ Branch number " << i << " }-\n"
              << endl;
-        cout << "Node information:" << endl;
         cout << "Remaining faults : " << it->first.first << endl;
-        cout << "Failed operator : " << endl;
+        cout << "\nFailed operator : " << endl;
         for (std::set<Operator>::iterator it_o = it->first.second.begin(); it_o != it->first.second.end(); ++it_o)
             cout << it_o->get_nondet_name() << endl;
-        cout << endl;
         it->second->dump_simple();
         i++;
-        cout << "--------------------------------------------------------------" << endl;
+        cout << "\n--------------------------------------------------------------" << endl;
     }
 }
 
@@ -619,4 +624,12 @@ void print_timings()
     cout << "                    Total time: " << g_timer << endl;
     cout << "\n--------------------------------------------------------------\n"
          << endl;
+}
+
+void resource_usage(string o = "")
+{
+    int who = RUSAGE_SELF;
+    struct rusage usage;
+    getrusage(who, &usage);
+    cout << "\n MEM USAGE " << o << " " << usage.ru_maxrss << " " << usage.ru_idrss << " " << usage.ru_isrss << "\n";
 }

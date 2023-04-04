@@ -24,18 +24,8 @@ void RegressionStep::dump() const
 
 void RegressionStep::dump_simple()
 {
-    if (!is_goal) {
-        cout << "-{ State }-" << endl;
-    } else {
-        cout << " -{ Goal }-" << endl;
-    }
-    state->dump_pddl();
-    if (!is_goal)
-    {
-        cout << "       V" << endl;
-        cout << " -{ Operator }-" << endl;
-        op->dump();
-        cout << "       V" << endl;
+    if(!is_goal) {
+        cout << op->get_nondet_name() << endl;
     }
 }
 

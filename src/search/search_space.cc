@@ -133,6 +133,10 @@ void SearchNode::dump() const {
     }
 }
 
+
+
+
+
 SearchSpace::SearchSpace(OperatorCost cost_type_)
     : cost_type(cost_type_) {
 }
@@ -182,5 +186,16 @@ void SearchSpace::statistics() const {
 }
 
 void SearchSpace::reset() {
-    // TODO: Something should probably happen here, no?
+    /* resilient_planner
+    *  clear old search node infos before replanning
+    */
+    search_node_infos.remove_state_registry(g_state_registry);
 }
+
+
+
+
+
+
+
+
