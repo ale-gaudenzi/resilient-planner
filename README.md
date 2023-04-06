@@ -1,23 +1,25 @@
 ## Option for resiliency
+```
+
 --resilient K
+```
+
+### Examples
+```
+/src/prp /problems/simpletravel/domain.pddl /problems/simpletravel/pfile1 --resilient 1
+/src/prp /problems/simpletravel/domain.pddl /problems/satellite/p7 --resilient 1
+
+```
 
 
-# Planner: PRP -- (P)lanner for (R)elevant (P)olicies
 
-![PRP logo](logo.png)
 
-* Version: 0.4
-* [Wiki](https://github.com/QuMuLab/planner-for-relevant-policies/wiki)
+
 
 ## Build
 ```
 cd src/
 ./build_all
-```
-
-## Citing
-```
-./src/prp --citation
 ```
 
 ## Usage
