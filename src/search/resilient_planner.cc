@@ -36,7 +36,6 @@ bool find_in_op_set(std::set<Operator> set, Operator op);
 void resource_usage(string o);
 
 std::list<ResilientNode> resilient_nodes;
-std::list<ResilientNode> resilient_deadends;
 std::stack<ResilientNode> nodes;
 
 int main(int argc, const char **argv)
@@ -230,20 +229,6 @@ int main(int argc, const char **argv)
                     cout << "\nFailed replanning." << endl;
 
                 add_fault_model_deadend(current_node);
-
-                if (!find_in_nodes_list(resilient_deadends, current_node))
-                {
-                    if (verbose)
-                        cout << "Adding nodes to deadend set.\n"
-                             << endl;
-                    resilient_deadends.push_back(current_node);
-                }
-                else
-                {
-                    if (verbose)
-                        cout << "Node already in deadend set.\n"
-                             << endl;
-                }
             }
             else
             {
@@ -315,11 +300,15 @@ int main(int argc, const char **argv)
         iteration++;
     }
 
-    if (find_in_nodes_list(resilient_deadends, initial_node))
+    if (find_in_nodes_list(resilient_nodes, initial_node))
+    {
+        print_results();
+    }
+    else
+    {
         cout << "\nInitial state is a deadend, problem is not " << g_max_faults << "-resilient!\n"
              << endl;
-    else
-        print_results();
+    }
 
     if (1 == g_dump_policy)
     {
@@ -366,7 +355,6 @@ bool resiliency_check(ResilientNode node)
     PolicyItem *goal_step = NULL;
 
     // implementation of getPolicyActions(P,s) in the pseudocode
-    //
     for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
     {
         RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
