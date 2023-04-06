@@ -36,7 +36,9 @@ if [[ "$1" == "debug" ]]; then
     echo
     echo
 else
+    #PLANNER="valgrind --tool=massif --pages-as-heap=yes  $BASEDIR/downward-release"
     PLANNER="$BASEDIR/downward-release"
+
 fi
 
 function run_portfolio {
@@ -237,7 +239,9 @@ elif [[ "$1" == "--portfolio" ]]; then
     shift 2
     run_portfolio "$BASEDIR/$PORTFOLIO" "$@"
 else
+    echo "Chiamata valgrind"
     "$PLANNER" "$@" < $TEMPFILE
+    
 fi
 EXITCODE=$?
 rm -f $TEMPFILE

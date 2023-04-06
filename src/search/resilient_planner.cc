@@ -321,6 +321,26 @@ int main(int argc, const char **argv)
     else
         print_results();
 
+    if (1 == g_dump_policy)
+    {
+        cout << "Dumping the policy and fsaps..." << endl;
+        ofstream outfile;
+
+        outfile.open("policy.out", ios::out);
+        g_policy->generate_cpp_input(outfile);
+        outfile.close();
+
+        outfile.open("policy.fsap", ios::out);
+        g_deadend_policy->generate_cpp_input(outfile);
+        outfile.close();
+    }
+    else if (2 == g_dump_policy)
+    {
+        cout << "Dumping the policy and fsaps..." << endl;
+        g_policy->dump_human_policy();
+        g_deadend_policy->dump_human_policy(true);
+    }
+
     g_timer.stop();
     print_timings();
 }
@@ -443,7 +463,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->statistics();
             engine->heuristic_statistics();
         }
-        
+
         resource_usage("After replan");
         return true;
     }

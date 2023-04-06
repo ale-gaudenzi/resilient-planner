@@ -16,12 +16,4 @@ python ../prp-scripts/validator.py $1 $2 human_policy.out prp
 
 dot -Tpng graph.dot > graph.png
 
-if [ "--keep-files" != "$3" ]; then
-  ./cleanup
-  rm -f policy.out
-  rm -f human_policy.out
-  rm -f graph.dot
-  rm -f action.map
-  rm -f graph.png
-  rm -f unhandled.states
-fi
+
