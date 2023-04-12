@@ -32,6 +32,7 @@ void reset_goal();
 void add_fault_model_deadend(ResilientNode node);
 void print_results();
 void print_timings();
+void print_policy_res();
 bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
 bool find_in_op_set(std::set<Operator> set, Operator op);
 void resource_usage(string o);
@@ -622,6 +623,7 @@ void print_results()
         i++;
         cout << "\n--------------------------------------------------------------" << endl;
     }
+    print_policy_res();
 }
 
 /// @brief Print time statistics
@@ -635,6 +637,21 @@ void print_timings()
     cout << "                    Total time: " << g_timer << endl;
     cout << "\n--------------------------------------------------------------\n"
          << endl;
+}
+
+void print_policy_res() 
+{
+    cout << "\nGlobal policy:\n\n";
+    g_policy->dump_state_op();
+    cout << "\n--------------------------------------------------------------------\n" << endl;
+    cout << "Resilient nodes:\n\n";
+    for (std::list<ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
+    {
+        it->dump();
+        cout << endl;
+    }
+    cout << "\n--------------------------------------------------------------------\n" << endl;
+
 }
 
 /// @brief Print memory usage in a particural moment

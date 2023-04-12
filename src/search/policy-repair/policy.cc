@@ -997,7 +997,6 @@ void Policy::dump_human_policy(bool fsap)
     outfile.close();
 }
 
-
 // simplified dump for resilient planning for printing branches
 void Policy::dump_simple()
 {
@@ -1013,5 +1012,15 @@ void Policy::dump_simple()
     {
         RegressionStep *rs = (RegressionStep *)(*op_iter);
         rs->dump_simple();
+    }
+}
+
+void Policy::dump_state_op()
+{
+    for (list<PolicyItem *>::const_iterator op_iter = all_items.begin();
+         op_iter != all_items.end(); ++op_iter)
+    {
+        RegressionStep *rs = (RegressionStep *)(*op_iter);
+        rs->dump_state_op();
     }
 }

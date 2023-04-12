@@ -27,6 +27,7 @@ struct PolicyItem {
     virtual ~PolicyItem() {}
     virtual string get_name() = 0;
     virtual void dump() const = 0;
+
     //virtual void dump_simple() = 0;
     virtual bool check_relevance(const PartialState &)
     {
@@ -88,6 +89,7 @@ struct RegressionStep : PolicyItem {
 
     void dump() const;
     void dump_simple();
+    void dump_state_op();
 
     bool operator< (const RegressionStep& other) const {
         if (is_sc != other.is_sc)

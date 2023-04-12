@@ -58,7 +58,9 @@ public:
     bool return_if_possible;
 
     void dump() const;
+    void dump_state_op();
     void dump_simple();
+    
     void generate_cpp_input(ofstream &outfile) const;
 
     void update_policy(list<PolicyItem *> &reg_items);
