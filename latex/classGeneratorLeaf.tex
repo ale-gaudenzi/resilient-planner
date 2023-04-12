@@ -1,0 +1,50 @@
+\hypertarget{classGeneratorLeaf}{}\doxysection{Generator\+Leaf Class Reference}
+\label{classGeneratorLeaf}\index{GeneratorLeaf@{GeneratorLeaf}}
+
+
+Inheritance diagram for Generator\+Leaf\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classGeneratorLeaf__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Generator\+Leaf\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{classGeneratorLeaf__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_a7b864d6189f7dfc8f5fa1c639d065f31}\label{classGeneratorLeaf_a7b864d6189f7dfc8f5fa1c639d065f31}} 
+{\bfseries Generator\+Leaf} (list$<$ \mbox{\hyperlink{structPolicyItem}{Policy\+Item}} $\ast$ $>$ \&reg\+\_\+items)
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_a81bcf114ff1998631f1c50ce7651f4d5}\label{classGeneratorLeaf_a81bcf114ff1998631f1c50ce7651f4d5}} 
+virtual \mbox{\hyperlink{classGeneratorBase}{Generator\+Base}} $\ast$ {\bfseries update\+\_\+policy} (list$<$ \mbox{\hyperlink{structPolicyItem}{Policy\+Item}} $\ast$ $>$ \&reg\+\_\+items, set$<$ int $>$ \&vars\+\_\+seen)
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_ad91170d8c37e53ed156ec7cae29aee49}\label{classGeneratorLeaf_ad91170d8c37e53ed156ec7cae29aee49}} 
+virtual void {\bfseries generate\+\_\+applicable\+\_\+items} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&curr, vector$<$ \mbox{\hyperlink{structPolicyItem}{Policy\+Item}} $\ast$ $>$ \&reg\+\_\+items, bool keep\+\_\+all, bool only\+\_\+if\+\_\+relevant)
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_a90a06113b3e607becaf385b9957a24ea}\label{classGeneratorLeaf_a90a06113b3e607becaf385b9957a24ea}} 
+virtual void {\bfseries generate\+\_\+applicable\+\_\+items} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&curr, vector$<$ \mbox{\hyperlink{structPolicyItem}{Policy\+Item}} $\ast$ $>$ \&reg\+\_\+items, int bound)
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_a43f689e7102ee2b6968ac92188c7c955}\label{classGeneratorLeaf_a43f689e7102ee2b6968ac92188c7c955}} 
+virtual bool {\bfseries check\+\_\+match} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&curr, bool keep\+\_\+all)
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_aa2d1d15a3a68387c47ac7ae58d84d428}\label{classGeneratorLeaf_aa2d1d15a3a68387c47ac7ae58d84d428}} 
+virtual void {\bfseries dump} (string indent) const
+\item 
+\mbox{\Hypertarget{classGeneratorLeaf_a432405bea6f5ad91cbe1d3f8668119f1}\label{classGeneratorLeaf_a432405bea6f5ad91cbe1d3f8668119f1}} 
+virtual void {\bfseries generate\+\_\+cpp\+\_\+input} (ofstream \&outfile) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/policy-\/repair/policy.\+h\item 
+src/search/policy-\/repair/policy.\+cc\end{DoxyCompactItemize}

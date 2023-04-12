@@ -1,0 +1,228 @@
+\hypertarget{classSelectiveMaxHeuristic}{}\doxysection{Selective\+Max\+Heuristic Class Reference}
+\label{classSelectiveMaxHeuristic}\index{SelectiveMaxHeuristic@{SelectiveMaxHeuristic}}
+
+
+Inheritance diagram for Selective\+Max\+Heuristic\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{classSelectiveMaxHeuristic__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Selective\+Max\+Heuristic\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classSelectiveMaxHeuristic__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a81ac2b6357ef3c6cf83fcee8477af5ac}\label{classSelectiveMaxHeuristic_a81ac2b6357ef3c6cf83fcee8477af5ac}} 
+{\bfseries Selective\+Max\+Heuristic} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ad2876597ecd31703fca389dc2271afda}\label{classSelectiveMaxHeuristic_ad2876597ecd31703fca389dc2271afda}} 
+void {\bfseries add\+\_\+heuristic} (\mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$h)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ac29e26c1415163dd574d52137aa41524}\label{classSelectiveMaxHeuristic_ac29e26c1415163dd574d52137aa41524}} 
+void {\bfseries set\+\_\+num\+\_\+always\+\_\+calc} (int num)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aea7df45682322c653a7bd2b2b6782160}\label{classSelectiveMaxHeuristic_aea7df45682322c653a7bd2b2b6782160}} 
+void {\bfseries set\+\_\+uniform\+\_\+sampling} (bool uniform)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a78ed9dab0e91e666b83591d62e275c1a}\label{classSelectiveMaxHeuristic_a78ed9dab0e91e666b83591d62e275c1a}} 
+void {\bfseries set\+\_\+confidence} (double conf)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a55b92cf112e49b0e374c2e746830ac55}\label{classSelectiveMaxHeuristic_a55b92cf112e49b0e374c2e746830ac55}} 
+void {\bfseries set\+\_\+training\+\_\+set\+\_\+size} (int size)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a47745785d92d575c75d806a427c86304}\label{classSelectiveMaxHeuristic_a47745785d92d575c75d806a427c86304}} 
+void {\bfseries set\+\_\+random\+\_\+selection} (bool r)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a67c2485b0a1b982bfd970c6087e97b7f}\label{classSelectiveMaxHeuristic_a67c2485b0a1b982bfd970c6087e97b7f}} 
+void {\bfseries set\+\_\+zero\+\_\+threshold} (bool z)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a8ec45bea2e5617466367c445195c11da}\label{classSelectiveMaxHeuristic_a8ec45bea2e5617466367c445195c11da}} 
+void {\bfseries set\+\_\+alpha} (double alph)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ad3ef3f50fe5c13b40742abd8a77947da}\label{classSelectiveMaxHeuristic_ad3ef3f50fe5c13b40742abd8a77947da}} 
+void {\bfseries set\+\_\+classifier} (classifier\+\_\+t ct)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ae513147423bdf3993165dfc740d34fd4}\label{classSelectiveMaxHeuristic_ae513147423bdf3993165dfc740d34fd4}} 
+void {\bfseries set\+\_\+state\+\_\+space\+\_\+sample} (state\+\_\+space\+\_\+sample\+\_\+t st)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_acc5608ebbf2d21513a30296b2d4dcdfb}\label{classSelectiveMaxHeuristic_acc5608ebbf2d21513a30296b2d4dcdfb}} 
+\mbox{\hyperlink{structFeatureExtractorFactory}{Feature\+Extractor\+Factory}} \& {\bfseries get\+\_\+feature\+\_\+extractors} ()
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a714706bf01335d0978e17ea50ce496a3}\label{classSelectiveMaxHeuristic_a714706bf01335d0978e17ea50ce496a3}} 
+void {\bfseries set\+\_\+retime\+\_\+heuristics} (bool retime)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_abfa8508db4678c3b1fd9e6b36bdfea1d}\label{classSelectiveMaxHeuristic_abfa8508db4678c3b1fd9e6b36bdfea1d}} 
+virtual void {\bfseries print\+\_\+statistics} () const
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aa43ec3ca511a0eb4b9b2f1544e80189e}\label{classSelectiveMaxHeuristic_aa43ec3ca511a0eb4b9b2f1544e80189e}} 
+virtual bool {\bfseries reach\+\_\+state} (const \mbox{\hyperlink{classState}{State}} \&parent\+\_\+state, const \mbox{\hyperlink{classOperator}{Operator}} \&op, const \mbox{\hyperlink{classState}{State}} \&state)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a1b6121412754a722a1487b3d43605e2f}\label{classSelectiveMaxHeuristic_a1b6121412754a722a1487b3d43605e2f}} 
+virtual void {\bfseries initialize} ()
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_acc341ad43745476bf7d618c28df5d56c}\label{classSelectiveMaxHeuristic_acc341ad43745476bf7d618c28df5d56c}} 
+virtual int {\bfseries compute\+\_\+heuristic} (const \mbox{\hyperlink{classState}{State}} \&state)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_add6af5843bb97e8fd7a537e4ee7d8d12}\label{classSelectiveMaxHeuristic_add6af5843bb97e8fd7a537e4ee7d8d12}} 
+void {\bfseries learn} (const \mbox{\hyperlink{classState}{State}} \&state)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_abcd2e979c27191ee160297cac2a1f435}\label{classSelectiveMaxHeuristic_abcd2e979c27191ee160297cac2a1f435}} 
+void {\bfseries classify} (const \mbox{\hyperlink{classState}{State}} \&state)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a02e7f6c39374e3a855847452fd2e6594}\label{classSelectiveMaxHeuristic_a02e7f6c39374e3a855847452fd2e6594}} 
+int {\bfseries eval\+\_\+heuristic} (const \mbox{\hyperlink{classState}{State}} \&state, int index, bool count)
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a86f430b97fa1ad7eea85b5a914c00bcc}\label{classSelectiveMaxHeuristic_a86f430b97fa1ad7eea85b5a914c00bcc}} 
+int {\bfseries calc\+\_\+max} ()
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a908de324b86da848c7762f19d9c776f4}\label{classSelectiveMaxHeuristic_a908de324b86da848c7762f19d9c776f4}} 
+void {\bfseries train} ()
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a5988c7971761d9041b393141390e1784}\label{classSelectiveMaxHeuristic_a5988c7971761d9041b393141390e1784}} 
+void {\bfseries reset\+\_\+statistics} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a4032e26639a17fd8e50af2554b38e295}\label{classSelectiveMaxHeuristic_a4032e26639a17fd8e50af2554b38e295}} 
+vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries heuristics}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a58e2da13ee63afbedce85cb33e9dc838}\label{classSelectiveMaxHeuristic_a58e2da13ee63afbedce85cb33e9dc838}} 
+int $\ast$ {\bfseries hvalue}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aead309fe02052db12890039e5d0c4494}\label{classSelectiveMaxHeuristic_aead309fe02052db12890039e5d0c4494}} 
+bool $\ast$ {\bfseries computed}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ad981fd28a86b7fc7ca07262cee849e41}\label{classSelectiveMaxHeuristic_ad981fd28a86b7fc7ca07262cee849e41}} 
+int {\bfseries num\+\_\+always\+\_\+calc}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a203f8c79fae4c2b277574b0698a44a4b}\label{classSelectiveMaxHeuristic_a203f8c79fae4c2b277574b0698a44a4b}} 
+int {\bfseries num\+\_\+evals}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a9cfbbccc1632ea83b2cf0502221a54ad}\label{classSelectiveMaxHeuristic_a9cfbbccc1632ea83b2cf0502221a54ad}} 
+int {\bfseries correct0\+\_\+classifications}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a7830f1b48b1de877b4c3a211d30b3b6f}\label{classSelectiveMaxHeuristic_a7830f1b48b1de877b4c3a211d30b3b6f}} 
+int {\bfseries incorrect0\+\_\+classifications}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ac352469581d6b39a811a9001286192aa}\label{classSelectiveMaxHeuristic_ac352469581d6b39a811a9001286192aa}} 
+int {\bfseries correct1\+\_\+classifications}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aadf1555f77c692b6f1d3631bf47da421}\label{classSelectiveMaxHeuristic_aadf1555f77c692b6f1d3631bf47da421}} 
+int {\bfseries incorrect1\+\_\+classifications}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a49cc4f91cdc74e390d95fbac24a0dca8}\label{classSelectiveMaxHeuristic_a49cc4f91cdc74e390d95fbac24a0dca8}} 
+int {\bfseries training\+\_\+set\+\_\+size}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aae7cfd93e4d1bfaa028012834760d192}\label{classSelectiveMaxHeuristic_aae7cfd93e4d1bfaa028012834760d192}} 
+int {\bfseries num\+\_\+learn\+\_\+from\+\_\+no\+\_\+confidence}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a8d78f8dd0048cfa5afbf6c4a9c77891d}\label{classSelectiveMaxHeuristic_a8d78f8dd0048cfa5afbf6c4a9c77891d}} 
+double $\ast$ {\bfseries total\+\_\+computation\+\_\+time}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a3b4865f5d5cd559c4c03373cb86f80d0}\label{classSelectiveMaxHeuristic_a3b4865f5d5cd559c4c03373cb86f80d0}} 
+double $\ast$ {\bfseries avg\+\_\+time}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ac54e70748387f347058b4660ecfed13b}\label{classSelectiveMaxHeuristic_ac54e70748387f347058b4660ecfed13b}} 
+\mbox{\hyperlink{classExactTimer}{Exact\+Timer}} {\bfseries total\+\_\+classification\+\_\+time}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a8f1894ecb921e2551ddc26ec5d85fc4e}\label{classSelectiveMaxHeuristic_a8f1894ecb921e2551ddc26ec5d85fc4e}} 
+\mbox{\hyperlink{classExactTimer}{Exact\+Timer}} {\bfseries total\+\_\+training\+\_\+time}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a9f8c2f606631b5ca8d75f88014a19819}\label{classSelectiveMaxHeuristic_a9f8c2f606631b5ca8d75f88014a19819}} 
+int $\ast$ {\bfseries num\+\_\+evaluated}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a700d023d289add48419f1c9c63737373}\label{classSelectiveMaxHeuristic_a700d023d289add48419f1c9c63737373}} 
+int $\ast$ {\bfseries num\+\_\+winner}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aee69e512ad3455163311aaf600745f04}\label{classSelectiveMaxHeuristic_aee69e512ad3455163311aaf600745f04}} 
+int $\ast$ {\bfseries num\+\_\+only\+\_\+winner}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a62295403a551a4904340c08d852df639}\label{classSelectiveMaxHeuristic_a62295403a551a4904340c08d852df639}} 
+double {\bfseries branching\+\_\+factor}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a0af1f644c8fb98f8389481dea52cfc69}\label{classSelectiveMaxHeuristic_a0af1f644c8fb98f8389481dea52cfc69}} 
+int {\bfseries num\+\_\+pairs}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a5e230f43dd0f50897a3ec699a567a4dc}\label{classSelectiveMaxHeuristic_a5e230f43dd0f50897a3ec699a567a4dc}} 
+bool {\bfseries test\+\_\+mode}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_addf77f8f1861bb61f9c5a719f30e4c76}\label{classSelectiveMaxHeuristic_addf77f8f1861bb61f9c5a719f30e4c76}} 
+bool {\bfseries perfect\+\_\+mode}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a9e1c94ed5e0858225a8b63ea66fadfbd}\label{classSelectiveMaxHeuristic_a9e1c94ed5e0858225a8b63ea66fadfbd}} 
+bool {\bfseries zero\+\_\+threshold}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a3442c1d9ac36f7ba3a6c877fa39dcdb3}\label{classSelectiveMaxHeuristic_a3442c1d9ac36f7ba3a6c877fa39dcdb3}} 
+int {\bfseries min\+\_\+training\+\_\+set}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a4a1e636e8a00f3e975c717254b94c126}\label{classSelectiveMaxHeuristic_a4a1e636e8a00f3e975c717254b94c126}} 
+double {\bfseries conf\+\_\+threshold}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_ac53f511bd3daced0739867971ec24f11}\label{classSelectiveMaxHeuristic_ac53f511bd3daced0739867971ec24f11}} 
+bool {\bfseries uniform\+\_\+sampling}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_af26fd56e9bdc3814defade780cc7b83b}\label{classSelectiveMaxHeuristic_af26fd56e9bdc3814defade780cc7b83b}} 
+bool {\bfseries random\+\_\+selection}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a7dc1f55e2ac9f179320af613c52e43c4}\label{classSelectiveMaxHeuristic_a7dc1f55e2ac9f179320af613c52e43c4}} 
+double {\bfseries alpha}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a222007f583b9c1b7ad5038571c8ff180}\label{classSelectiveMaxHeuristic_a222007f583b9c1b7ad5038571c8ff180}} 
+bool {\bfseries retime\+\_\+heuristics}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aa766a32e1450a88053bc0e66202c2eb1}\label{classSelectiveMaxHeuristic_aa766a32e1450a88053bc0e66202c2eb1}} 
+int {\bfseries num\+\_\+heuristics}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a163e48a2cc7be89c1bdee475e4180f48}\label{classSelectiveMaxHeuristic_a163e48a2cc7be89c1bdee475e4180f48}} 
+state\+\_\+space\+\_\+sample\+\_\+t {\bfseries state\+\_\+space\+\_\+sample\+\_\+type}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_aaa509bc67b66bc07adbd271fa6650947}\label{classSelectiveMaxHeuristic_aaa509bc67b66bc07adbd271fa6650947}} 
+classifier\+\_\+t {\bfseries classifier\+\_\+type}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a312c6f5ba64527fff7234eaefc1c4214}\label{classSelectiveMaxHeuristic_a312c6f5ba64527fff7234eaefc1c4214}} 
+\mbox{\hyperlink{classClassifier}{Classifier}} $\ast$$\ast$ {\bfseries classifiers}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_add535cefcf299bf4b769b1eb73deb65c}\label{classSelectiveMaxHeuristic_add535cefcf299bf4b769b1eb73deb65c}} 
+\mbox{\hyperlink{classFeatureExtractor}{Feature\+Extractor}} $\ast$ {\bfseries feature\+\_\+extractor}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_abff71b936d75f993d9d1e7727f6b5a78}\label{classSelectiveMaxHeuristic_abff71b936d75f993d9d1e7727f6b5a78}} 
+\mbox{\hyperlink{structFeatureExtractorFactory}{Feature\+Extractor\+Factory}} {\bfseries feature\+\_\+extractor\+\_\+types}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_adebf6ac09fcebe9ef1dff756b60b159d}\label{classSelectiveMaxHeuristic_adebf6ac09fcebe9ef1dff756b60b159d}} 
+int $\ast$ {\bfseries expensive}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a0f9275415b7700cde25af1e4fbeb8138}\label{classSelectiveMaxHeuristic_a0f9275415b7700cde25af1e4fbeb8138}} 
+int $\ast$ {\bfseries cheap}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a1b9c70186d4c72c80683a05db50d9dfb}\label{classSelectiveMaxHeuristic_a1b9c70186d4c72c80683a05db50d9dfb}} 
+double $\ast$ {\bfseries threshold}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_acaac22b7fe81f71b4ecb3707ddef6bbd}\label{classSelectiveMaxHeuristic_acaac22b7fe81f71b4ecb3707ddef6bbd}} 
+double $\ast$ {\bfseries dist}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a3092d287095ab1144b1de6be627ee1f2}\label{classSelectiveMaxHeuristic_a3092d287095ab1144b1de6be627ee1f2}} 
+double $\ast$ {\bfseries heuristic\+\_\+conf}
+\item 
+\mbox{\Hypertarget{classSelectiveMaxHeuristic_a3b1a7cba1d01e5cad7de4a13aa74b912}\label{classSelectiveMaxHeuristic_a3b1a7cba1d01e5cad7de4a13aa74b912}} 
+int {\bfseries num\+\_\+classes}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/learning/selective\+\_\+max\+\_\+heuristic.\+h\item 
+src/search/learning/selective\+\_\+max\+\_\+heuristic.\+cc\end{DoxyCompactItemize}

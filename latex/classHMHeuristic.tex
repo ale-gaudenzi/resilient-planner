@@ -1,0 +1,118 @@
+\hypertarget{classHMHeuristic}{}\doxysection{H\+M\+Heuristic Class Reference}
+\label{classHMHeuristic}\index{HMHeuristic@{HMHeuristic}}
+
+
+{\ttfamily \#include $<$hm\+\_\+heuristic.\+h$>$}
+
+
+
+Inheritance diagram for H\+M\+Heuristic\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classHMHeuristic__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for H\+M\+Heuristic\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=173pt]{classHMHeuristic__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a931b97f30c1cefb5eca83a6e50f245c1}\label{classHMHeuristic_a931b97f30c1cefb5eca83a6e50f245c1}} 
+{\bfseries H\+M\+Heuristic} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a84ed7c1b0fe0aba2335a1b503bfb8d52}\label{classHMHeuristic_a84ed7c1b0fe0aba2335a1b503bfb8d52}} 
+virtual int {\bfseries compute\+\_\+heuristic} (const \mbox{\hyperlink{classState}{State}} \&state)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a5950f9eaced4ece083a012fe306c67a6}\label{classHMHeuristic_a5950f9eaced4ece083a012fe306c67a6}} 
+virtual void {\bfseries initialize} ()
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a56792f41dd4c28754ab9847d1fdf02b1}\label{classHMHeuristic_a56792f41dd4c28754ab9847d1fdf02b1}} 
+void {\bfseries init\+\_\+hm\+\_\+table} (tuple \&t)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a61cca1e8c5d22320109035095a22c30c}\label{classHMHeuristic_a61cca1e8c5d22320109035095a22c30c}} 
+void {\bfseries update\+\_\+hm\+\_\+table} ()
+\item 
+\mbox{\Hypertarget{classHMHeuristic_aec10ea240af476f5566f80b494c756fe}\label{classHMHeuristic_aec10ea240af476f5566f80b494c756fe}} 
+int {\bfseries eval} (tuple \&t)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a58dab1ce15dade67e357c9e53bcb2f8c}\label{classHMHeuristic_a58dab1ce15dade67e357c9e53bcb2f8c}} 
+int {\bfseries update\+\_\+hm\+\_\+entry} (tuple \&t, int val)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a900b352136bbe691651d549ba0ad92e0}\label{classHMHeuristic_a900b352136bbe691651d549ba0ad92e0}} 
+void {\bfseries extend\+\_\+tuple} (tuple \&t, const \mbox{\hyperlink{classOperator}{Operator}} \&op)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a66604d37905c6f93235aff63622f900a}\label{classHMHeuristic_a66604d37905c6f93235aff63622f900a}} 
+int {\bfseries check\+\_\+tuple\+\_\+in\+\_\+tuple} (const tuple \&tup, const tuple \&big\+\_\+tuple)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a9735137ae29abe2de63c24ff7a1d0b9c}\label{classHMHeuristic_a9735137ae29abe2de63c24ff7a1d0b9c}} 
+void {\bfseries state\+\_\+to\+\_\+tuple} (const \mbox{\hyperlink{classState}{State}} \&state, tuple \&t)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a215c7dacd192e9adabbf5677666cf38e}\label{classHMHeuristic_a215c7dacd192e9adabbf5677666cf38e}} 
+int {\bfseries get\+\_\+operator\+\_\+pre\+\_\+value} (const \mbox{\hyperlink{classOperator}{Operator}} \&op, int var)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a02d0da5112f0f3d2cea5f24fd584ac5d}\label{classHMHeuristic_a02d0da5112f0f3d2cea5f24fd584ac5d}} 
+void {\bfseries get\+\_\+operator\+\_\+pre} (const \mbox{\hyperlink{classOperator}{Operator}} \&op, tuple \&t)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a104d67b3a62e83b29ebe38e412197113}\label{classHMHeuristic_a104d67b3a62e83b29ebe38e412197113}} 
+void {\bfseries get\+\_\+operator\+\_\+eff} (const \mbox{\hyperlink{classOperator}{Operator}} \&op, tuple \&t)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_aacfe00a3f6c352a82cacc2aa51a27f21}\label{classHMHeuristic_aacfe00a3f6c352a82cacc2aa51a27f21}} 
+bool {\bfseries is\+\_\+pre\+\_\+of} (const \mbox{\hyperlink{classOperator}{Operator}} \&op, int var)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a45bacc041aaf085d579afc2457d1fb3b}\label{classHMHeuristic_a45bacc041aaf085d579afc2457d1fb3b}} 
+bool {\bfseries is\+\_\+effect\+\_\+of} (const \mbox{\hyperlink{classOperator}{Operator}} \&op, int var)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_af51eb3bef3604533d0cd6f5b1e1f4fc6}\label{classHMHeuristic_af51eb3bef3604533d0cd6f5b1e1f4fc6}} 
+bool {\bfseries contradict\+\_\+effect\+\_\+of} (const \mbox{\hyperlink{classOperator}{Operator}} \&op, int var, int val)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a4d0ef65b64011b1bb1a0154cfaece7fd}\label{classHMHeuristic_a4d0ef65b64011b1bb1a0154cfaece7fd}} 
+void {\bfseries generate\+\_\+all\+\_\+tuples} ()
+\item 
+\mbox{\Hypertarget{classHMHeuristic_aba7aab14197df32a8a916e43641dc68b}\label{classHMHeuristic_aba7aab14197df32a8a916e43641dc68b}} 
+void {\bfseries generate\+\_\+all\+\_\+tuples} (int var, int sz, tuple \&base)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_ad078416a5968674ef957fb9cba53e983}\label{classHMHeuristic_ad078416a5968674ef957fb9cba53e983}} 
+void {\bfseries generate\+\_\+all\+\_\+partial\+\_\+tuple} (tuple \&base\+\_\+tuple, vector$<$ tuple $>$ \&res)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a3b05b5abc4bfb439b07913f2ec069a62}\label{classHMHeuristic_a3b05b5abc4bfb439b07913f2ec069a62}} 
+void {\bfseries generate\+\_\+all\+\_\+partial\+\_\+tuple} (tuple \&base\+\_\+tuple, tuple \&t, int index, int sz, vector$<$ tuple $>$ \&res)
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a1185ea4335d565c331e71465db8c623a}\label{classHMHeuristic_a1185ea4335d565c331e71465db8c623a}} 
+void {\bfseries dump\+\_\+table} () const
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a0415e1fdd752cfcefeaca4c74c06add8}\label{classHMHeuristic_a0415e1fdd752cfcefeaca4c74c06add8}} 
+void {\bfseries print\+\_\+tuple} (tuple \&tup) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classHMHeuristic_aa4e98dc94b8b7eff0425c2ca47e4fe5a}\label{classHMHeuristic_aa4e98dc94b8b7eff0425c2ca47e4fe5a}} 
+int {\bfseries m}
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a831c796c70595254ae5ce4be735a53f9}\label{classHMHeuristic_a831c796c70595254ae5ce4be735a53f9}} 
+map$<$ tuple, int $>$ {\bfseries hm\+\_\+table}
+\item 
+\mbox{\Hypertarget{classHMHeuristic_a12a30a9029756f80e0b38370e9d2b5b7}\label{classHMHeuristic_a12a30a9029756f80e0b38370e9d2b5b7}} 
+bool {\bfseries was\+\_\+updated}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+The h$^\wedge$m heuristic. This is a preliminary implementation, and it is very slow. Please do not use this for comparison. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/hm\+\_\+heuristic.\+h\item 
+src/search/hm\+\_\+heuristic.\+cc\end{DoxyCompactItemize}

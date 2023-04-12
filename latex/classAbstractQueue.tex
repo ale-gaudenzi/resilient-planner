@@ -1,0 +1,43 @@
+\hypertarget{classAbstractQueue}{}\doxysection{Abstract\+Queue$<$ Value $>$ Class Template Reference}
+\label{classAbstractQueue}\index{AbstractQueue$<$ Value $>$@{AbstractQueue$<$ Value $>$}}
+
+
+Inheritance diagram for Abstract\+Queue$<$ Value $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classAbstractQueue__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAbstractQueue_abe60381528bc4cf9d4032f33f2ff6f3c}\label{classAbstractQueue_abe60381528bc4cf9d4032f33f2ff6f3c}} 
+typedef std\+::pair$<$ int, Value $>$ {\bfseries Entry}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classAbstractQueue_af9268b0501749d8ab1b220a5db62a24e}\label{classAbstractQueue_af9268b0501749d8ab1b220a5db62a24e}} 
+virtual void {\bfseries push} (int key, const Value \&value)=0
+\item 
+\mbox{\Hypertarget{classAbstractQueue_aaec692216c729a7e7ca79b02a826cbf3}\label{classAbstractQueue_aaec692216c729a7e7ca79b02a826cbf3}} 
+virtual Entry {\bfseries pop} ()=0
+\item 
+\mbox{\Hypertarget{classAbstractQueue_a38635110a147c0c1914e0f2f277a10de}\label{classAbstractQueue_a38635110a147c0c1914e0f2f277a10de}} 
+virtual bool {\bfseries empty} () const =0
+\item 
+\mbox{\Hypertarget{classAbstractQueue_a2e976dcbc1ca3e97d05591cd466ff3e7}\label{classAbstractQueue_a2e976dcbc1ca3e97d05591cd466ff3e7}} 
+virtual void {\bfseries clear} ()=0
+\item 
+\mbox{\Hypertarget{classAbstractQueue_a4c9793d6ec0442bbf806c2f57d6fd426}\label{classAbstractQueue_a4c9793d6ec0442bbf806c2f57d6fd426}} 
+virtual \mbox{\hyperlink{classAbstractQueue}{Abstract\+Queue}}$<$ Value $>$ $\ast$ {\bfseries convert\+\_\+if\+\_\+necessary} (int)
+\item 
+\mbox{\Hypertarget{classAbstractQueue_a2db622c67d66a0ee3d18e9e98145ece9}\label{classAbstractQueue_a2db622c67d66a0ee3d18e9e98145ece9}} 
+virtual void {\bfseries add\+\_\+virtual\+\_\+pushes} (int num\+\_\+extra\+\_\+pushes)=0
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/priority\+\_\+queue.\+h\end{DoxyCompactItemize}

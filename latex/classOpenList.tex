@@ -1,0 +1,64 @@
+\hypertarget{classOpenList}{}\doxysection{Open\+List$<$ Entry $>$ Class Template Reference}
+\label{classOpenList}\index{OpenList$<$ Entry $>$@{OpenList$<$ Entry $>$}}
+
+
+Inheritance diagram for Open\+List$<$ Entry $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classOpenList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Open\+List$<$ Entry $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classOpenList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOpenList_abd8fe5323f185a0ef760a4b373d4c152}\label{classOpenList_abd8fe5323f185a0ef760a4b373d4c152}} 
+{\bfseries Open\+List} (bool preferred\+\_\+only=false)
+\item 
+\mbox{\Hypertarget{classOpenList_a7b22f610b84fcf7b568984af53ccd0d0}\label{classOpenList_a7b22f610b84fcf7b568984af53ccd0d0}} 
+virtual int {\bfseries insert} (const Entry \&entry)=0
+\item 
+\mbox{\Hypertarget{classOpenList_ae225b03466861773c3cab933eb1fc977}\label{classOpenList_ae225b03466861773c3cab933eb1fc977}} 
+virtual Entry {\bfseries remove\+\_\+min} (std\+::vector$<$ int $>$ $\ast$key=0)=0
+\item 
+\mbox{\Hypertarget{classOpenList_aa17af208ac1962d3005cbe5d4a93e9dd}\label{classOpenList_aa17af208ac1962d3005cbe5d4a93e9dd}} 
+virtual bool {\bfseries empty} () const =0
+\item 
+\mbox{\Hypertarget{classOpenList_a3850ef01c106e31866b25b7090a5a6ee}\label{classOpenList_a3850ef01c106e31866b25b7090a5a6ee}} 
+virtual void {\bfseries clear} ()=0
+\item 
+\mbox{\Hypertarget{classOpenList_ac1ff4d4dc49d33c87961a3d93de561ac}\label{classOpenList_ac1ff4d4dc49d33c87961a3d93de561ac}} 
+bool {\bfseries only\+\_\+preferred\+\_\+states} () const
+\item 
+\mbox{\Hypertarget{classOpenList_a42eea31f8151fade6d019dc70577db69}\label{classOpenList_a42eea31f8151fade6d019dc70577db69}} 
+virtual int {\bfseries boost\+\_\+preferred} ()
+\item 
+\mbox{\Hypertarget{classOpenList_adeb4f03caca22720a2b0cb9511e14f6e}\label{classOpenList_adeb4f03caca22720a2b0cb9511e14f6e}} 
+virtual void {\bfseries boost\+\_\+last\+\_\+used\+\_\+list} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOpenList_ae5c7cf08dfb92899fde24f8b8e354703}\label{classOpenList_ae5c7cf08dfb92899fde24f8b8e354703}} 
+virtual \mbox{\hyperlink{classEvaluator}{Evaluator}} $\ast$ {\bfseries get\+\_\+evaluator} ()=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOpenList_a6753891a0404db5eb6d3129ee213a30a}\label{classOpenList_a6753891a0404db5eb6d3129ee213a30a}} 
+bool {\bfseries only\+\_\+preferred}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/open\+\_\+lists/open\+\_\+list.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,75 @@
+\hypertarget{classEagerSearch}{}\doxysection{Eager\+Search Class Reference}
+\label{classEagerSearch}\index{EagerSearch@{EagerSearch}}
+
+
+Inheritance diagram for Eager\+Search\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classEagerSearch__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Eager\+Search\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classEagerSearch__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEagerSearch_a3c83aaaa9c15bd7e60cb239d2c329704}\label{classEagerSearch_a3c83aaaa9c15bd7e60cb239d2c329704}} 
+{\bfseries Eager\+Search} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\item 
+\mbox{\Hypertarget{classEagerSearch_a70d45e47944a764f541197c0abeead8c}\label{classEagerSearch_a70d45e47944a764f541197c0abeead8c}} 
+void {\bfseries statistics} () const
+\item 
+\mbox{\Hypertarget{classEagerSearch_a0749d0ccd0a332cab5406e1e49032301}\label{classEagerSearch_a0749d0ccd0a332cab5406e1e49032301}} 
+void {\bfseries dump\+\_\+search\+\_\+space} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEagerSearch_ac59ce9d753ee84ba9a1d21567bcebb4e}\label{classEagerSearch_ac59ce9d753ee84ba9a1d21567bcebb4e}} 
+int {\bfseries step} ()
+\item 
+\mbox{\Hypertarget{classEagerSearch_a03a759ac6eb4941eada1a71bc8809882}\label{classEagerSearch_a03a759ac6eb4941eada1a71bc8809882}} 
+std\+::pair$<$ \mbox{\hyperlink{classSearchNode}{Search\+Node}}, bool $>$ {\bfseries fetch\+\_\+next\+\_\+node} ()
+\item 
+\mbox{\Hypertarget{classEagerSearch_ae7683da8d37e99042d6310ef37ea322d}\label{classEagerSearch_ae7683da8d37e99042d6310ef37ea322d}} 
+bool {\bfseries check\+\_\+goal} (const \mbox{\hyperlink{classSearchNode}{Search\+Node}} \&node)
+\item 
+\mbox{\Hypertarget{classEagerSearch_a2da1a7713275bba51115ccac7f38ad21}\label{classEagerSearch_a2da1a7713275bba51115ccac7f38ad21}} 
+void {\bfseries update\+\_\+jump\+\_\+statistic} (const \mbox{\hyperlink{classSearchNode}{Search\+Node}} \&node)
+\item 
+\mbox{\Hypertarget{classEagerSearch_a11bbeb5bd82a503534cd89d59b922d8f}\label{classEagerSearch_a11bbeb5bd82a503534cd89d59b922d8f}} 
+void {\bfseries print\+\_\+heuristic\+\_\+values} (const std\+::vector$<$ int $>$ \&values) const
+\item 
+\mbox{\Hypertarget{classEagerSearch_a55d06001e2a981acfc0a22cc4d510150}\label{classEagerSearch_a55d06001e2a981acfc0a22cc4d510150}} 
+void {\bfseries reward\+\_\+progress} ()
+\item 
+\mbox{\Hypertarget{classEagerSearch_ad30fca2045e10db128e30acaaec8c8d9}\label{classEagerSearch_ad30fca2045e10db128e30acaaec8c8d9}} 
+virtual void {\bfseries initialize} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEagerSearch_a051f22d070907a1bb449035e0a06c821}\label{classEagerSearch_a051f22d070907a1bb449035e0a06c821}} 
+std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries heuristics}
+\item 
+\mbox{\Hypertarget{classEagerSearch_aec60741b05036c68dc2a0ec833059148}\label{classEagerSearch_aec60741b05036c68dc2a0ec833059148}} 
+std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries preferred\+\_\+operator\+\_\+heuristics}
+\item 
+\mbox{\Hypertarget{classEagerSearch_ae1ffe6812bc32b6f449cb356bec1acf2}\label{classEagerSearch_ae1ffe6812bc32b6f449cb356bec1acf2}} 
+std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries estimate\+\_\+heuristics}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/eager\+\_\+search.\+h\item 
+src/search/eager\+\_\+search.\+cc\end{DoxyCompactItemize}

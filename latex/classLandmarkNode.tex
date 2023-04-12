@@ -1,0 +1,73 @@
+\hypertarget{classLandmarkNode}{}\doxysection{Landmark\+Node Class Reference}
+\label{classLandmarkNode}\index{LandmarkNode@{LandmarkNode}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_ab27ae0112233f2b399df88942a338967}\label{classLandmarkNode_ab27ae0112233f2b399df88942a338967}} 
+{\bfseries Landmark\+Node} (std\+::vector$<$ int $>$ \&variables, std\+::vector$<$ int $>$ \&values, bool disj, bool conj=false)
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a2d7a9009c589fb6f1d4171339924bddb}\label{classLandmarkNode_a2d7a9009c589fb6f1d4171339924bddb}} 
+int {\bfseries get\+\_\+id} () const
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a61dbbf602dd489aecb930b9965e55205}\label{classLandmarkNode_a61dbbf602dd489aecb930b9965e55205}} 
+void {\bfseries assign\+\_\+id} (int new\+\_\+id)
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a2755fe5e48f0c07996061d92b700e74b}\label{classLandmarkNode_a2755fe5e48f0c07996061d92b700e74b}} 
+bool {\bfseries is\+\_\+goal} () const
+\item 
+\mbox{\Hypertarget{classLandmarkNode_ad64ef1ddf253c0536fc5d4a3a53068ea}\label{classLandmarkNode_ad64ef1ddf253c0536fc5d4a3a53068ea}} 
+bool {\bfseries is\+\_\+true\+\_\+in\+\_\+state} (const \mbox{\hyperlink{classState}{State}} \&state) const
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a920b80755afe12df941b348ba1ec2c2f}\label{classLandmarkNode_a920b80755afe12df941b348ba1ec2c2f}} 
+int {\bfseries get\+\_\+status} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a53cdbf1809525946720e275a26122719}\label{classLandmarkNode_a53cdbf1809525946720e275a26122719}} 
+std\+::vector$<$ int $>$ {\bfseries vars}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_aac177bceb7310e3d1beaf21c61d2a1fc}\label{classLandmarkNode_aac177bceb7310e3d1beaf21c61d2a1fc}} 
+std\+::vector$<$ int $>$ {\bfseries vals}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a8a82a61dafcbe15f28130b0c77fe60bb}\label{classLandmarkNode_a8a82a61dafcbe15f28130b0c77fe60bb}} 
+bool {\bfseries disjunctive}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a7c7425eaa7e4c1ad078e49e959177cb2}\label{classLandmarkNode_a7c7425eaa7e4c1ad078e49e959177cb2}} 
+bool {\bfseries conjunctive}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a5719462f7153d35e2e1ddffcb45601de}\label{classLandmarkNode_a5719462f7153d35e2e1ddffcb45601de}} 
+\+\_\+\+\_\+gnu\+\_\+cxx\+::hash\+\_\+map$<$ \mbox{\hyperlink{classLandmarkNode}{Landmark\+Node}} $\ast$, edge\+\_\+type, \mbox{\hyperlink{classhash__pointer}{hash\+\_\+pointer}} $>$ {\bfseries parents}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_af00f2aa50fe14c5f8cd74421c8e66a9a}\label{classLandmarkNode_af00f2aa50fe14c5f8cd74421c8e66a9a}} 
+\+\_\+\+\_\+gnu\+\_\+cxx\+::hash\+\_\+map$<$ \mbox{\hyperlink{classLandmarkNode}{Landmark\+Node}} $\ast$, edge\+\_\+type, \mbox{\hyperlink{classhash__pointer}{hash\+\_\+pointer}} $>$ {\bfseries children}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a4c9915a9ce473f5328bd89b0f7f98748}\label{classLandmarkNode_a4c9915a9ce473f5328bd89b0f7f98748}} 
+bool {\bfseries in\+\_\+goal}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a2be1fc5df800018e2c0eb73ce4fc7695}\label{classLandmarkNode_a2be1fc5df800018e2c0eb73ce4fc7695}} 
+int {\bfseries min\+\_\+cost}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_aea2dd53da37ccc7c9dcab340c53cd33e}\label{classLandmarkNode_aea2dd53da37ccc7c9dcab340c53cd33e}} 
+double {\bfseries shared\+\_\+cost}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a07ba28abf8b519174d6132c3b9b49d14}\label{classLandmarkNode_a07ba28abf8b519174d6132c3b9b49d14}} 
+landmark\+\_\+status {\bfseries status}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a23a5ce9485c1fd4ce5a883a6ddc0d5b0}\label{classLandmarkNode_a23a5ce9485c1fd4ce5a883a6ddc0d5b0}} 
+bool {\bfseries is\+\_\+derived}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a55b0e3c3f6c4fe3d044edc7cacbc8140}\label{classLandmarkNode_a55b0e3c3f6c4fe3d044edc7cacbc8140}} 
+\+\_\+\+\_\+gnu\+\_\+cxx\+::hash\+\_\+set$<$ std\+::pair$<$ int, int $>$, \mbox{\hyperlink{structhash__int__pair}{hash\+\_\+int\+\_\+pair}} $>$ {\bfseries forward\+\_\+orders}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_ab7ec25572b3be303cdfad1ed41848d10}\label{classLandmarkNode_ab7ec25572b3be303cdfad1ed41848d10}} 
+std\+::set$<$ int $>$ {\bfseries first\+\_\+achievers}
+\item 
+\mbox{\Hypertarget{classLandmarkNode_a6ab1f0dd8a2c04d4988c95c58d9ed7d3}\label{classLandmarkNode_a6ab1f0dd8a2c04d4988c95c58d9ed7d3}} 
+std\+::set$<$ int $>$ {\bfseries possible\+\_\+achievers}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/landmarks/landmark\+\_\+graph.\+h\end{DoxyCompactItemize}

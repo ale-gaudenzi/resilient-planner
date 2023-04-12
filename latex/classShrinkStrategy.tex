@@ -1,0 +1,74 @@
+\hypertarget{classShrinkStrategy}{}\doxysection{Shrink\+Strategy Class Reference}
+\label{classShrinkStrategy}\index{ShrinkStrategy@{ShrinkStrategy}}
+
+
+Inheritance diagram for Shrink\+Strategy\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classShrinkStrategy__inherit__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a114e62f5a1a34059cd291e9c29e9df02}\label{classShrinkStrategy_a114e62f5a1a34059cd291e9c29e9df02}} 
+virtual std\+::string {\bfseries name} () const =0
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a79d757aec56977ad843e07365c091b02}\label{classShrinkStrategy_a79d757aec56977ad843e07365c091b02}} 
+{\bfseries Shrink\+Strategy} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_ae7a82ea4fbd376bbc5d428f02d0e50b4}\label{classShrinkStrategy_ae7a82ea4fbd376bbc5d428f02d0e50b4}} 
+virtual bool {\bfseries reduce\+\_\+labels\+\_\+before\+\_\+shrinking} () const =0
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a6a46963fa92e1ab89d1f3c95c573b1bd}\label{classShrinkStrategy_a6a46963fa92e1ab89d1f3c95c573b1bd}} 
+void {\bfseries dump\+\_\+options} () const
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a8189b95156f7baaa5958be3b6756588e}\label{classShrinkStrategy_a8189b95156f7baaa5958be3b6756588e}} 
+virtual void {\bfseries shrink} (\mbox{\hyperlink{classAbstraction}{Abstraction}} \&abs, int threshold, bool force=false)=0
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_af1d369253ec2ee8ac871cfc8ed9f0f86}\label{classShrinkStrategy_af1d369253ec2ee8ac871cfc8ed9f0f86}} 
+virtual void {\bfseries shrink\+\_\+atomic} (\mbox{\hyperlink{classAbstraction}{Abstraction}} \&abs1)
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a1d357986500a326168eee29aa28a1b94}\label{classShrinkStrategy_a1d357986500a326168eee29aa28a1b94}} 
+virtual void {\bfseries shrink\+\_\+before\+\_\+merge} (\mbox{\hyperlink{classAbstraction}{Abstraction}} \&abs1, \mbox{\hyperlink{classAbstraction}{Abstraction}} \&abs2)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a7272db9f60d941ee32904998a51bceb2}\label{classShrinkStrategy_a7272db9f60d941ee32904998a51bceb2}} 
+static void {\bfseries add\+\_\+options\+\_\+to\+\_\+parser} (\mbox{\hyperlink{classOptionParser}{Option\+Parser}} \&parser)
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a61ed62380a91aa65fba9adc1c4280f62}\label{classShrinkStrategy_a61ed62380a91aa65fba9adc1c4280f62}} 
+static void {\bfseries handle\+\_\+option\+\_\+defaults} (\mbox{\hyperlink{classOptions}{Options}} \&opts)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a7c613bb55f095a14fab91e11b61adeea}\label{classShrinkStrategy_a7c613bb55f095a14fab91e11b61adeea}} 
+typedef \+\_\+\+\_\+gnu\+\_\+cxx\+::slist$<$ Abstract\+State\+Ref $>$ {\bfseries Equivalence\+Class}
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a216eee994362e951d87197727ec61aeb}\label{classShrinkStrategy_a216eee994362e951d87197727ec61aeb}} 
+typedef std\+::vector$<$ Equivalence\+Class $>$ {\bfseries Equivalence\+Relation}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_ab8164d5e457c83e995923093e48e8004}\label{classShrinkStrategy_ab8164d5e457c83e995923093e48e8004}} 
+virtual void {\bfseries dump\+\_\+strategy\+\_\+specific\+\_\+options} () const
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a8048366fce4029adf1eaebdc4cc7a8bc}\label{classShrinkStrategy_a8048366fce4029adf1eaebdc4cc7a8bc}} 
+std\+::pair$<$ int, int $>$ {\bfseries compute\+\_\+shrink\+\_\+sizes} (int size1, int size2) const
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_a8aef4514a689ecd47ed93379b587ffeb}\label{classShrinkStrategy_a8aef4514a689ecd47ed93379b587ffeb}} 
+bool {\bfseries must\+\_\+shrink} (const \mbox{\hyperlink{classAbstraction}{Abstraction}} \&abs, int threshold, bool force) const
+\item 
+\mbox{\Hypertarget{classShrinkStrategy_af40b6a777eeae1fcb07b7c0f02712e17}\label{classShrinkStrategy_af40b6a777eeae1fcb07b7c0f02712e17}} 
+void {\bfseries apply} (\mbox{\hyperlink{classAbstraction}{Abstraction}} \&abs, Equivalence\+Relation \&equivalence\+\_\+relation, int threshold) const
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/merge\+\_\+and\+\_\+shrink/shrink\+\_\+strategy.\+h\item 
+src/search/merge\+\_\+and\+\_\+shrink/shrink\+\_\+strategy.\+cc\end{DoxyCompactItemize}

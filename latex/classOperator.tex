@@ -1,0 +1,80 @@
+\hypertarget{classOperator}{}\doxysection{Operator Class Reference}
+\label{classOperator}\index{Operator@{Operator}}
+
+
+Collaboration diagram for Operator\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=202pt]{classOperator__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOperator_a45de25004074223639ea09acb51cfa58}\label{classOperator_a45de25004074223639ea09acb51cfa58}} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classOperator}{Operator}} \&x) const
+\item 
+\mbox{\Hypertarget{classOperator_a644138bff828775a5eb8f676442bb221}\label{classOperator_a644138bff828775a5eb8f676442bb221}} 
+{\bfseries Operator} (std\+::istream \&in, bool is\+\_\+axiom)
+\item 
+\mbox{\Hypertarget{classOperator_a3c6fa131e9fe2a39a55e89c331a9d50c}\label{classOperator_a3c6fa131e9fe2a39a55e89c331a9d50c}} 
+void {\bfseries dump} () const
+\item 
+\mbox{\Hypertarget{classOperator_a130d5ef34bf745aeca4ad44b0acc0b30}\label{classOperator_a130d5ef34bf745aeca4ad44b0acc0b30}} 
+std\+::string {\bfseries get\+\_\+name} () const
+\item 
+\mbox{\Hypertarget{classOperator_a82bbe1b6c96f51487279b08f83ec2b31}\label{classOperator_a82bbe1b6c96f51487279b08f83ec2b31}} 
+std\+::string {\bfseries get\+\_\+nondet\+\_\+name} () const
+\item 
+\mbox{\Hypertarget{classOperator_a7f86d03e690564cf4fc467463f712807}\label{classOperator_a7f86d03e690564cf4fc467463f712807}} 
+bool {\bfseries is\+\_\+axiom} () const
+\item 
+\mbox{\Hypertarget{classOperator_a20647fe44692516f5d5f035482d02f7f}\label{classOperator_a20647fe44692516f5d5f035482d02f7f}} 
+const std\+::vector$<$ \mbox{\hyperlink{structPrevail}{Prevail}} $>$ \& {\bfseries get\+\_\+prevail} () const
+\item 
+\mbox{\Hypertarget{classOperator_af8d7569d56947839c417b6affddf611f}\label{classOperator_af8d7569d56947839c417b6affddf611f}} 
+const std\+::vector$<$ \mbox{\hyperlink{structPrePost}{Pre\+Post}} $>$ \& {\bfseries get\+\_\+pre\+\_\+post} () const
+\item 
+\mbox{\Hypertarget{classOperator_a9630c61f1f621ab7df30861992ec0bfb}\label{classOperator_a9630c61f1f621ab7df30861992ec0bfb}} 
+bool {\bfseries is\+\_\+applicable} (const \mbox{\hyperlink{classState}{State}} \&state) const
+\item 
+\mbox{\Hypertarget{classOperator_a10217c1f31126c1eec9a0ab8a3c04494}\label{classOperator_a10217c1f31126c1eec9a0ab8a3c04494}} 
+bool {\bfseries is\+\_\+applicable} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&state) const
+\item 
+\mbox{\Hypertarget{classOperator_a386245ce218863fa7ae0105791e1148e}\label{classOperator_a386245ce218863fa7ae0105791e1148e}} 
+bool {\bfseries has\+\_\+conditional\+\_\+effect} () const
+\item 
+\mbox{\Hypertarget{classOperator_a34d4fd3a056fdece6d701195c4fe684f}\label{classOperator_a34d4fd3a056fdece6d701195c4fe684f}} 
+bool {\bfseries is\+\_\+marked} () const
+\item 
+\mbox{\Hypertarget{classOperator_ad0c680f39891efcad83e6b52c79f17f3}\label{classOperator_ad0c680f39891efcad83e6b52c79f17f3}} 
+void {\bfseries mark} () const
+\item 
+\mbox{\Hypertarget{classOperator_aa4ef03d278e24a2bde4682d46e50c673}\label{classOperator_aa4ef03d278e24a2bde4682d46e50c673}} 
+void {\bfseries unmark} () const
+\item 
+\mbox{\Hypertarget{classOperator_a043f220d4e9e3b31076a23378f9a4f08}\label{classOperator_a043f220d4e9e3b31076a23378f9a4f08}} 
+int {\bfseries get\+\_\+cost} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classOperator_a39a74f4676c3ee1dd668007719a894b3}\label{classOperator_a39a74f4676c3ee1dd668007719a894b3}} 
+int {\bfseries nondet\+\_\+index}
+\item 
+\mbox{\Hypertarget{classOperator_afecd5c5c5a864f825ea8bb4a77a11601}\label{classOperator_afecd5c5c5a864f825ea8bb4a77a11601}} 
+\mbox{\hyperlink{classPartialState}{Partial\+State}} $\ast$ {\bfseries all\+\_\+fire\+\_\+context}
+\item 
+\mbox{\Hypertarget{classOperator_a4d39271fe5c3c9cc46f27ace3f07b752}\label{classOperator_a4d39271fe5c3c9cc46f27ace3f07b752}} 
+bool {\bfseries marker1}
+\item 
+\mbox{\Hypertarget{classOperator_a0ef33ab09a388aefad01402bfddc1593}\label{classOperator_a0ef33ab09a388aefad01402bfddc1593}} 
+bool {\bfseries marker2}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/operator.\+h\item 
+src/search/operator.\+cc\end{DoxyCompactItemize}

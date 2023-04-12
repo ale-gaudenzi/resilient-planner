@@ -107,8 +107,8 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
             heur->get_preferred_operators(preferred_operators);
     }
 
-    /* for resilient planner
-    * we don't consider preferred operators because it causes inconsistency 
+    /** For resilient planner: 
+    * We don't consider preferred operators because it causes inconsistency 
     * when using the policy to retrieve successor operators of the plan
     */ 
     if (!g_use_resilient_planner)

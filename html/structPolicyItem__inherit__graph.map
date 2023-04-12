@@ -1,0 +1,6 @@
+<map id="PolicyItem" name="PolicyItem">
+<area shape="rect" id="node1" title=" " alt="" coords="190,5,281,32"/>
+<area shape="rect" id="node2" href="$structNondetDeadend.html" title=" " alt="" coords="5,80,132,107"/>
+<area shape="rect" id="node3" href="$structRegressableOperator.html" title=" " alt="" coords="156,80,315,107"/>
+<area shape="rect" id="node4" href="$structRegressionStep.html" title=" " alt="" coords="339,80,462,107"/>
+</map>

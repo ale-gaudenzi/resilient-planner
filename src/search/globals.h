@@ -174,7 +174,7 @@ extern Timer g_timer_jit;
 *  structure and variables added for resilient planning algorithm
 */
 
-typedef std::pair<int, std::set<Operator> > k_v_pair; // k-v pair is useful for indexing the resilient policies and the policies generated
+typedef std::pair<int, std::set<Operator> > k_v_pair; // k-v pair is useful for indexing the resilient policies and the policies generated. 
 extern bool g_use_resilient_planner; // whether or not to use the resilient planner (instead of the original one)
 extern int g_max_faults; // maximum number of faults that can be tolerated
 extern int g_current_faults; // number of faults that have been tolerated as the current node is elaborated

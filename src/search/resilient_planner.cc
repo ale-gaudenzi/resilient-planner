@@ -1,3 +1,5 @@
+/** @file */
+
 #include "globals.h"
 #include "operator.h"
 #include "option_parser.h"
@@ -24,7 +26,6 @@ using namespace std;
 
 bool verbose = false;
 
-// probably better move this function in a separate class in future
 bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
 void reset_goal();
@@ -161,7 +162,7 @@ int main(int argc, const char **argv)
     /***********************
      * Resilient Alghoritm *
      ***********************/
-    // the resilient algorithm start from here, previously is cloned from the original prp.
+    // the resilient algorithm start from here, previously code is cloned from the original prp
 
     // save the first policy as the original policy
     // g_policy during the execution will contain all the other branches too
@@ -334,15 +335,16 @@ int main(int argc, const char **argv)
     print_timings();
 }
 
-/*********************
- *       RCheck      *
- *********************/
+/// Checks if the given node is resilient, using the current global policy to find the applicable next actions
+/// then the StateRegistry linked to the state of the node to find the successors of the node.
+/// The check is the same as the one in the pseudocode: (⟨s[a], k, V ⟩ ∈ R ∨ s[a] |= G) ∧ ⟨s, k − 1, V ∪ {a}⟩ ∈ R.
+/// It also add the node to resilient_nodes list if the check succeds.
+/// @param node The node to check if is resilient or not.
+/// @return True if the node is resilient, false otherwise.
 bool resiliency_check(ResilientNode node)
 {
     if (resilient_nodes.empty())
-    {
         return false;
-    }
 
     PartialState state_to_check = PartialState(node.get_state());
 
@@ -363,14 +365,10 @@ bool resiliency_check(ResilientNode node)
             PartialState policy_state = PartialState(*reg_step->state);
 
             if ((*reg_step->state).implies(state_to_check) && !find_in_op_set(node.get_deactivated_op(), reg_step->get_op()))
-            {
                 next_actions.insert(reg_step->get_op());
-            }
         }
         else if (reg_step->is_goal)
-        {
             goal_step = reg_step;
-        }
     }
 
     State state = node.get_state();
@@ -395,19 +393,20 @@ bool resiliency_check(ResilientNode node)
     return false;
 }
 
-/*********************
- *    computePlan    *
- *********************/
-
-// the replanning function is the same at the prp's one but using the state in the current node as initial state
+/// @brief Try to replan from the state contained in current_node to the goal.
+/// The search engine is resetted and not recreated to avoid the overhead of the initialization.
+/// The plan is saved inside the engine object and can be retrieved from it.
+/// @param current_node The node containing the state to replan from.
+/// @param engine The search engine originally created.
+/// @return True if the replan succeds, false otherwise.
 bool replan(ResilientNode current_node, SearchEngine *engine)
 {
-    resource_usage("Before replan");
     bool verbose = false;
 
     if (verbose)
     {
         cout << "Replanning... " << endl;
+        resource_usage("Before replan");
     }
 
     PartialState current_state = PartialState(current_node.get_state());
@@ -450,21 +449,23 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->save_plan_if_necessary();
             engine->statistics();
             engine->heuristic_statistics();
+            resource_usage("After replan");
         }
 
-        resource_usage("After replan");
         return true;
     }
     else
     {
         if (verbose)
             cout << "Replanning failed!" << endl;
-        resource_usage("After replan");
+
         return false;
     }
 }
 
-// regress the state and add every state-action pair Regr(s,A) to the fault model policy map indexed by the current (k,V)
+/// @brief Regress the state contained in node and add every state-action pair Regr(s,A) 
+/// to the fault model policy map indexed by the current (k,V).
+/// @param node Node containing the state to regress and the current (k,V).
 void add_fault_model_deadend(ResilientNode node)
 {
     State state = node.get_state();
@@ -514,7 +515,7 @@ void add_fault_model_deadend(ResilientNode node)
     }
 }
 
-// the goal need to be resetted before replanning
+/// @brief Reset the goal, used before replanning. Not sure if is really useful, but it was present in prp policy repair.
 void reset_goal()
 {
     g_goal.clear();
@@ -522,7 +523,7 @@ void reset_goal()
         g_goal.push_back(make_pair(g_goal_orig[i].first, g_goal_orig[i].second));
 }
 
-// check if the node is present in the resilient nodes list
+/// @brief Check if the node is present in the resilient nodes list, using the custom minority and equality operators.
 bool find_in_nodes_list(std::list<ResilientNode> res_set, ResilientNode node)
 {
     if (res_set.size() == 0)
@@ -576,7 +577,7 @@ bool find_in_nodes_list(std::list<ResilientNode> res_set, ResilientNode node)
     }
 }
 
-// check if the operator is present in the operator set
+/// @brief Check if the operator is present in the operator set.
 bool find_in_op_set(std::set<Operator> op_set, Operator op)
 {
     if (op_set.empty())
@@ -592,6 +593,7 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
     return false;
 }
 
+/// @brief Print first base policy found and other branches generated from replanning
 void print_results()
 {
     cout << "\n\n--------------------------------------------------------------------" << endl;
@@ -622,6 +624,7 @@ void print_results()
     }
 }
 
+/// @brief Print time statistics
 void print_timings()
 {
     cout << "\n                  -{ Timing Statistics }-\n"
@@ -634,6 +637,7 @@ void print_timings()
          << endl;
 }
 
+/// @brief Print memory usage in a particural moment
 void resource_usage(string o = "")
 {
     int who = RUSAGE_SELF;

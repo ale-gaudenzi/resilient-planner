@@ -26,10 +26,6 @@ void PartialState::_copy_buffer_from_state(const PartialState &state)
         vars[i] = state.vars[i];
 }
 
-
-
-
-
 PartialState &PartialState::operator=(const PartialState &other)
 {
     if (this != &other)
@@ -193,15 +189,15 @@ size_t PartialState::hash() const
     return ::hash_number_sequence(vars, g_variable_domain.size());
 }
 
-
+/// @brief Checks if the state passed implies this state
+/// @param other the state to check against
+/// @return True if the other state implies this state, false otherwise
 bool PartialState::implies(PartialState &other)
 {
     for (int i = 0; i < g_variable_domain.size(); i++)
     {
-        if((vars[i] != -1) && (vars[i] != other.vars[i]))
-        {
+        if ((vars[i] != -1) && (vars[i] != other.vars[i]))
             return false;
-        }
     }
     return true;
 }

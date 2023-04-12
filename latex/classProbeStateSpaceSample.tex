@@ -1,0 +1,86 @@
+\hypertarget{classProbeStateSpaceSample}{}\doxysection{Probe\+State\+Space\+Sample Class Reference}
+\label{classProbeStateSpaceSample}\index{ProbeStateSpaceSample@{ProbeStateSpaceSample}}
+
+
+Inheritance diagram for Probe\+State\+Space\+Sample\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=216pt]{classProbeStateSpaceSample__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Probe\+State\+Space\+Sample\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=245pt]{classProbeStateSpaceSample__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a91d4b6649e33f5c36195a54e2e716476}\label{classProbeStateSpaceSample_a91d4b6649e33f5c36195a54e2e716476}} 
+{\bfseries Probe\+State\+Space\+Sample} (int goal\+\_\+depth, int probes, int size)
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_ac991bffc9741833951f1cd3e0607e062}\label{classProbeStateSpaceSample_ac991bffc9741833951f1cd3e0607e062}} 
+virtual int {\bfseries collect} ()
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a20d5dfccc4667e527a2b51a21d139814}\label{classProbeStateSpaceSample_a20d5dfccc4667e527a2b51a21d139814}} 
+int {\bfseries get\+\_\+goal\+\_\+depth\+\_\+estimate} () const
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a76d05ed8e129cfc8e57000cb075a979c}\label{classProbeStateSpaceSample_a76d05ed8e129cfc8e57000cb075a979c}} 
+void {\bfseries set\+\_\+goal\+\_\+depth\+\_\+estimate} (int depth)
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a149a98f7fecff696985365c756d44699}\label{classProbeStateSpaceSample_a149a98f7fecff696985365c756d44699}} 
+int {\bfseries get\+\_\+max\+\_\+num\+\_\+probes} () const
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_ac3216425a1a77b0c078ee351df605620}\label{classProbeStateSpaceSample_ac3216425a1a77b0c078ee351df605620}} 
+void {\bfseries set\+\_\+max\+\_\+num\+\_\+probes} (int num\+\_\+probes)
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a05aa727734a3e4565b743f80547b598d}\label{classProbeStateSpaceSample_a05aa727734a3e4565b743f80547b598d}} 
+int {\bfseries get\+\_\+min\+\_\+training\+\_\+set\+\_\+size} () const
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a4a7049888a721400c10bbc18c8e22c89}\label{classProbeStateSpaceSample_a4a7049888a721400c10bbc18c8e22c89}} 
+void {\bfseries set\+\_\+min\+\_\+training\+\_\+set\+\_\+size} (int training\+\_\+set\+\_\+size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a60a09a5c9b981ccee89f6dcbaec2a992}\label{classProbeStateSpaceSample_a60a09a5c9b981ccee89f6dcbaec2a992}} 
+void {\bfseries send\+\_\+probe} (int depth\+\_\+limit)
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a481d8e24e3606878febe7018a363b39b}\label{classProbeStateSpaceSample_a481d8e24e3606878febe7018a363b39b}} 
+int {\bfseries get\+\_\+aggregate\+\_\+value} (vector$<$ int $>$ \&values)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a1f90d6dae6f10aaa8a91bbea420e1a71}\label{classProbeStateSpaceSample_a1f90d6dae6f10aaa8a91bbea420e1a71}} 
+int {\bfseries goal\+\_\+depth\+\_\+estimate}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_aa668786737d0ffa23021c8e3b4ce3101}\label{classProbeStateSpaceSample_aa668786737d0ffa23021c8e3b4ce3101}} 
+int {\bfseries max\+\_\+num\+\_\+probes}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a799bfde732d1bce01625951c437f204f}\label{classProbeStateSpaceSample_a799bfde732d1bce01625951c437f204f}} 
+int {\bfseries min\+\_\+training\+\_\+set\+\_\+size}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a78edb9437c1b778a81999c221176c0fb}\label{classProbeStateSpaceSample_a78edb9437c1b778a81999c221176c0fb}} 
+bool {\bfseries add\+\_\+every\+\_\+state}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a97bb91a48bcfbd9774e1673e942ac574}\label{classProbeStateSpaceSample_a97bb91a48bcfbd9774e1673e942ac574}} 
+int {\bfseries expanded}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_ac097ae9dbd0fb83840abbe5fd9dcbcce}\label{classProbeStateSpaceSample_ac097ae9dbd0fb83840abbe5fd9dcbcce}} 
+int {\bfseries generated}
+\item 
+\mbox{\Hypertarget{classProbeStateSpaceSample_a1baed34ef0b3e98bcb3328988f297640}\label{classProbeStateSpaceSample_a1baed34ef0b3e98bcb3328988f297640}} 
+sample\+\_\+t $\ast$ {\bfseries temporary\+\_\+samp}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/learning/probe\+\_\+state\+\_\+space\+\_\+sample.\+h\item 
+src/search/learning/probe\+\_\+state\+\_\+space\+\_\+sample.\+cc\end{DoxyCompactItemize}

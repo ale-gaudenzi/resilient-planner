@@ -1,0 +1,34 @@
+\hypertarget{classRegistry}{}\doxysection{Registry$<$ T $>$ Class Template Reference}
+\label{classRegistry}\index{Registry$<$ T $>$@{Registry$<$ T $>$}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRegistry_a8b394445a89959cee482b37a4355bb07}\label{classRegistry_a8b394445a89959cee482b37a4355bb07}} 
+typedef T($\ast$ {\bfseries Factory}) (\mbox{\hyperlink{classOptionParser}{Option\+Parser}} \&)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRegistry_ac8743ef4f6c786cdc586c10690304b65}\label{classRegistry_ac8743ef4f6c786cdc586c10690304b65}} 
+void {\bfseries register\+\_\+object} (std\+::string k, Factory f)
+\item 
+\mbox{\Hypertarget{classRegistry_a2795a773248805660bc088e5ae66afdf}\label{classRegistry_a2795a773248805660bc088e5ae66afdf}} 
+bool {\bfseries contains} (std\+::string k)
+\item 
+\mbox{\Hypertarget{classRegistry_a136baf1555b8261c0ced8d03a487871e}\label{classRegistry_a136baf1555b8261c0ced8d03a487871e}} 
+Factory {\bfseries get} (std\+::string k)
+\item 
+\mbox{\Hypertarget{classRegistry_a6f9ae594d466810bed868efda4065efb}\label{classRegistry_a6f9ae594d466810bed868efda4065efb}} 
+std\+::vector$<$ std\+::string $>$ {\bfseries get\+\_\+keys} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classRegistry_a6036963c4d06bfe4bee6f3f478733922}\label{classRegistry_a6036963c4d06bfe4bee6f3f478733922}} 
+static \mbox{\hyperlink{classRegistry}{Registry}}$<$ T $>$ $\ast$ {\bfseries instance} ()
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/option\+\_\+parser\+\_\+util.\+h\end{DoxyCompactItemize}

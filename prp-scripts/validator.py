@@ -56,7 +56,7 @@ class VALAction:
 
 def validate(dfile, pfile, sol, val):
 
-    print "\nParsing the problem..."
+    print("\nParsing the problem...")
 
     problem = grounder.GroundProblem(dfile, pfile)
 
@@ -69,7 +69,7 @@ def validate(dfile, pfile, sol, val):
         unfluents[index] = str(f).lower()
         unfluents[-1 * index] = "not(%s)" % str(f).lower()
         index += 1
-
+    
     actions = {}
     for op in problem.operators:
         if '_' == op.name[-1]:

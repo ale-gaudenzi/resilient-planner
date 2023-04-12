@@ -1,0 +1,4 @@
+<map id="tree&lt; T, tree_node_allocator &gt;::leaf_iterator" name="tree&lt; T, tree_node_allocator &gt;::leaf_iterator">
+<area shape="rect" id="node1" title="Iterator which traverses only the leaves." alt="" coords="8,95,197,136"/>
+<area shape="rect" id="node2" href="$classtree_1_1iterator__base.html" title="Base class for iterators, only pointers stored, no traversal logic." alt="" coords="5,5,200,47"/>
+</map>

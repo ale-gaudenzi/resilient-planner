@@ -34,7 +34,7 @@ void SearchEngine::reset()
     search_progress.reset();
     search_space.reset();
 
-    /* for resilient planner
+    /** For resilient planner:
     * we need to keep the old state refistries in order to
     * be able to recognize states that have been generated in previous replanning
     * As long as a state is in a node in the nodes stack, its register must also be kept in memory

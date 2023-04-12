@@ -1,0 +1,48 @@
+\hypertarget{structPrevail}{}\doxysection{Prevail Struct Reference}
+\label{structPrevail}\index{Prevail@{Prevail}}
+
+
+{\ttfamily \#include $<$operator.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structPrevail_ae9062f0321d50149175e4522c15cd05a}\label{structPrevail_ae9062f0321d50149175e4522c15cd05a}} 
+{\bfseries Prevail} (std\+::istream \&in)
+\item 
+\mbox{\Hypertarget{structPrevail_a6a0e41bd61138886c289a453699b6c4c}\label{structPrevail_a6a0e41bd61138886c289a453699b6c4c}} 
+{\bfseries Prevail} (int v, int p)
+\item 
+\mbox{\Hypertarget{structPrevail_ad4e3414960c2e8d866072814ca5626da}\label{structPrevail_ad4e3414960c2e8d866072814ca5626da}} 
+bool {\bfseries is\+\_\+applicable} (const \mbox{\hyperlink{classState}{State}} \&state) const
+\item 
+\mbox{\Hypertarget{structPrevail_a0e804672acbf48a3a83b7287e16d5d9b}\label{structPrevail_a0e804672acbf48a3a83b7287e16d5d9b}} 
+bool {\bfseries is\+\_\+applicable} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&state) const
+\item 
+\mbox{\Hypertarget{structPrevail_aad2ab855d51f85b231dd9b8a4894652e}\label{structPrevail_aad2ab855d51f85b231dd9b8a4894652e}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{structPrevail}{Prevail}} \&other) const
+\item 
+\mbox{\Hypertarget{structPrevail_a22985ae2ac3690f389a2bf5272a8aabb}\label{structPrevail_a22985ae2ac3690f389a2bf5272a8aabb}} 
+bool {\bfseries operator!=} (const \mbox{\hyperlink{structPrevail}{Prevail}} \&other) const
+\item 
+\mbox{\Hypertarget{structPrevail_a607ee50182e501e66afc7618ba76d0f6}\label{structPrevail_a607ee50182e501e66afc7618ba76d0f6}} 
+void {\bfseries dump} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{structPrevail_a6eac02eebd739ce50fdd07d78a282e9f}\label{structPrevail_a6eac02eebd739ce50fdd07d78a282e9f}} 
+int {\bfseries var}
+\item 
+\mbox{\Hypertarget{structPrevail_a534683a3668888f2a5a75d9af44af3bc}\label{structPrevail_a534683a3668888f2a5a75d9af44af3bc}} 
+int {\bfseries prev}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+H\+AZ\+: I realize there is a lot of duplication here, but I\textquotesingle{}d rather not start to try and define \mbox{\hyperlink{classState}{State}} and \mbox{\hyperlink{classPartialState}{Partial\+State}} in terms of one another to avoid the overloading. 
+
+The documentation for this struct was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/operator.\+h\item 
+src/search/operator.\+cc\end{DoxyCompactItemize}

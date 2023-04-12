@@ -1,734 +1,153 @@
-switch 7
-check 0
-switch 6
-check 0
-switch 5
-check 0
-switch 4
-check 0
-check 0
-switch 1
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-board person1 plane2 city0 / NSC / d=4
-check 0
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city2 city0 fl5 fl4 / NSC / d=5
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 3
-check 0
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-board person3 plane1 city1 / NSC / d=8
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 2
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 1
-board person1 plane1 city0 / NSC / d=6
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane1 city0 city1 fl4 fl3 / NSC / d=9
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 2
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-debark person3 plane1 city0 / NSC / d=6
-check 0
-check 0
-check 0
-switch 3
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane1 city1 city0 fl3 fl2 / NSC / d=7
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 6
-check 0
-switch 5
-check 0
-switch 4
-check 0
-check 0
-switch 1
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city0 city2 fl3 fl2 / NSC / d=1
-check 1
-fly plane2 city0 city2 fl4 fl3 / NSC / d=1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city1 city2 fl3 fl2 / NSC / d=1
-check 1
-fly plane2 city1 city2 fl4 fl3 / NSC / d=1
-check 0
-check 0
-check 0
-check 7
-goal / SC / d=0
-goal / SC / d=0
-goal / SC / d=0
-goal / SC / d=0
-goal / SC / d=0
-goal / SC / d=0
-goal / SC / d=0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 3
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 1
-board person3 plane1 city1 / NSC / d=3
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 1
-board person3 plane1 city1 / NSC / d=3
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-board person3 plane2 city1 / NSC / d=4
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city2 city1 fl5 fl4 / NSC / d=5
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-board person3 plane2 city2 / NSC / d=4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 2
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 3
-check 3
-debark person3 plane1 city0 / NSC / d=1
-debark person3 plane1 city0 / NSC / d=1
-debark person3 plane1 city0 / NSC / d=1
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane1 city0 city2 fl2 fl1 / NSC / d=6
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 3
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 1
-fly plane1 city1 city0 fl2 fl1 / NSC / d=2
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 2
-fly plane1 city1 city0 fl3 fl2 / NSC / d=2
-zoom plane1 city1 city0 fl3 fl2 fl1 / NSC / d=2
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-debark person3 plane1 city2 / NSC / d=5
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 1
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 1
-debark person3 plane2 city0 / NSC / d=2
-check 1
-debark person3 plane2 city0 / NSC / d=2
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city1 city0 fl4 fl3 / NSC / d=3
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city2 city0 fl5 fl4 / NSC / d=3
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 6
-check 0
-switch 5
-check 0
-switch 4
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-board person1 plane2 city2 / NSC / d=4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 6
-check 0
-switch 5
-check 0
-switch 4
-check 0
-check 0
-switch 2
-check 0
-switch 3
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane1 city0 city1 fl2 fl1 / NSC / d=8
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 3
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-refuel plane1 city1 fl1 fl2 / NSC / d=7
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane1 city1 city2 fl2 fl1 / NSC / d=6
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-debark person1 plane1 city2 / NSC / d=5
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 3
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 1
-debark person1 plane1 city1 / NSC / d=4
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 1
-debark person1 plane1 city1 / NSC / d=4
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-board person3 plane1 city1 / NSC / d=11
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 2
-check 0
-switch 1
-check 0
-check 0
-check 0
-check 2
-fly plane1 city0 city1 fl4 fl3 / NSC / d=5
-zoom plane1 city0 city1 fl4 fl3 fl2 / NSC / d=5
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 4
-check 0
-check 0
-switch 3
-check 0
-check 0
-check 0
-switch 2
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-debark person3 plane1 city0 / NSC / d=9
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 2
-check 0
-check 0
-switch 1
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane1 city1 city0 fl3 fl2 / NSC / d=10
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-switch 6
-check 0
-switch 5
-check 0
-switch 4
-check 0
-check 0
-switch 1
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city0 city1 fl4 fl3 / NSC / d=3
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 1
-debark person1 plane2 city1 / NSC / d=2
-check 1
-debark person1 plane2 city1 / NSC / d=2
-check 0
-check 0
-check 0
-switch 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 1
-fly plane2 city2 city1 fl5 fl4 / NSC / d=3
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
-check 0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var3:1 var2:0 var1:0 var0:1
+Execute: goal / SC / d=0
+
+If holds: var5:2 var4:0 var3:1 var2:3 var1:0 var0:1
+Execute: debark person3 plane1 city0 / NSC / d=1
+
+If holds: var7:4 var5:0 var3:1 var2:0 var1:0 var0:1
+Execute: fly plane2 city0 city2 fl4 fl3 / NSC / d=1
+
+If holds: var5:2 var4:0 var3:1 var2:3 var1:0 var0:1
+Execute: debark person3 plane1 city0 / NSC / d=1
+
+If holds: var7:3 var5:0 var3:1 var2:0 var1:0 var0:1
+Execute: fly plane2 city0 city2 fl3 fl2 / NSC / d=1
+
+If holds: var7:4 var5:1 var3:1 var2:0 var1:0 var0:1
+Execute: fly plane2 city1 city2 fl4 fl3 / NSC / d=1
+
+If holds: var5:2 var4:0 var3:1 var2:3 var1:0 var0:1
+Execute: debark person3 plane1 city0 / NSC / d=1
+
+If holds: var7:3 var5:1 var3:1 var2:0 var1:0 var0:1
+Execute: fly plane2 city1 city2 fl3 fl2 / NSC / d=1
+
+If holds: var5:2 var4:1 var6:3 var3:1 var2:3 var1:0 var0:1
+Execute: fly plane1 city1 city0 fl3 fl2 / NSC / d=2
+
+If holds: var7:4 var5:0 var3:1 var2:4 var1:0 var0:1
+Execute: debark person3 plane2 city0 / NSC / d=2
+
+If holds: var5:2 var4:1 var6:3 var3:1 var2:3 var1:0 var0:1
+Execute: zoom plane1 city1 city0 fl3 fl2 fl1 / NSC / d=2
+
+If holds: var7:3 var5:0 var3:1 var2:4 var1:0 var0:1
+Execute: debark person3 plane2 city0 / NSC / d=2
+
+If holds: var7:4 var5:1 var3:1 var2:0 var1:0 var0:4
+Execute: debark person1 plane2 city1 / NSC / d=2
+
+If holds: var5:2 var4:1 var6:2 var3:1 var2:3 var1:0 var0:1
+Execute: fly plane1 city1 city0 fl2 fl1 / NSC / d=2
+
+If holds: var7:3 var5:1 var3:1 var2:0 var1:0 var0:4
+Execute: debark person1 plane2 city1 / NSC / d=2
+
+If holds: var5:2 var4:1 var6:3 var3:1 var2:1 var1:0 var0:1
+Execute: board person3 plane1 city1 / NSC / d=3
+
+If holds: var7:5 var5:2 var3:1 var2:4 var1:0 var0:1
+Execute: fly plane2 city2 city0 fl5 fl4 / NSC / d=3
+
+If holds: var7:4 var5:1 var3:1 var2:4 var1:0 var0:1
+Execute: fly plane2 city1 city0 fl4 fl3 / NSC / d=3
+
+If holds: var7:5 var5:2 var3:1 var2:0 var1:0 var0:4
+Execute: fly plane2 city2 city1 fl5 fl4 / NSC / d=3
+
+If holds: var5:2 var4:1 var6:2 var3:1 var2:1 var1:0 var0:1
+Execute: board person3 plane1 city1 / NSC / d=3
+
+If holds: var7:4 var5:0 var3:1 var2:0 var1:0 var0:4
+Execute: fly plane2 city0 city1 fl4 fl3 / NSC / d=3
+
+If holds: var5:2 var4:1 var6:3 var3:1 var2:1 var1:0 var0:3
+Execute: debark person1 plane1 city1 / NSC / d=4
+
+If holds: var7:5 var5:2 var3:1 var2:2 var1:0 var0:1
+Execute: board person3 plane2 city2 / NSC / d=4
+
+If holds: var7:4 var5:1 var3:1 var2:1 var1:0 var0:1
+Execute: board person3 plane2 city1 / NSC / d=4
+
+If holds: var7:5 var5:2 var3:1 var2:0 var1:0 var0:2
+Execute: board person1 plane2 city2 / NSC / d=4
+
+If holds: var5:2 var4:1 var6:2 var3:1 var2:1 var1:0 var0:3
+Execute: debark person1 plane1 city1 / NSC / d=4
+
+If holds: var7:4 var5:0 var3:1 var2:0 var1:0 var0:0
+Execute: board person1 plane2 city0 / NSC / d=4
+
+If holds: var5:2 var4:0 var6:4 var3:1 var2:1 var1:0 var0:3
+Execute: fly plane1 city0 city1 fl4 fl3 / NSC / d=5
+
+If holds: var7:5 var5:2 var4:2 var3:1 var2:3 var1:0 var0:1
+Execute: debark person3 plane1 city2 / NSC / d=5
+
+If holds: var7:5 var5:2 var3:1 var2:1 var1:0 var0:1
+Execute: fly plane2 city2 city1 fl5 fl4 / NSC / d=5
+
+If holds: var7:5 var5:2 var4:2 var3:1 var2:0 var1:0 var0:3
+Execute: debark person1 plane1 city2 / NSC / d=5
+
+If holds: var5:2 var4:0 var6:4 var3:1 var2:1 var1:0 var0:3
+Execute: zoom plane1 city0 city1 fl4 fl3 fl2 / NSC / d=5
+
+If holds: var7:5 var5:2 var3:1 var2:0 var1:0 var0:0
+Execute: fly plane2 city2 city0 fl5 fl4 / NSC / d=5
+
+If holds: var5:2 var4:0 var6:4 var3:1 var2:1 var1:0 var0:0
+Execute: board person1 plane1 city0 / NSC / d=6
+
+If holds: var7:5 var5:2 var4:0 var6:2 var3:1 var2:3 var1:0 var0:1
+Execute: fly plane1 city0 city2 fl2 fl1 / NSC / d=6
+
+If holds: var7:5 var5:2 var4:1 var6:2 var3:1 var2:0 var1:0 var0:3
+Execute: fly plane1 city1 city2 fl2 fl1 / NSC / d=6
+
+If holds: var7:5 var5:2 var4:0 var3:1 var2:3 var1:0 var0:0
+Execute: debark person3 plane1 city0 / NSC / d=6
+
+If holds: var7:5 var5:2 var4:1 var6:1 var3:1 var2:0 var1:0 var0:3
+Execute: refuel plane1 city1 fl1 fl2 / NSC / d=7
+
+If holds: var7:5 var5:2 var4:1 var6:3 var3:1 var2:3 var1:0 var0:0
+Execute: fly plane1 city1 city0 fl3 fl2 / NSC / d=7
+
+If holds: var7:5 var5:2 var4:0 var6:2 var3:1 var2:0 var1:0 var0:3
+Execute: fly plane1 city0 city1 fl2 fl1 / NSC / d=8
+
+If holds: var7:5 var5:2 var4:1 var6:3 var3:1 var2:1 var1:0 var0:0
+Execute: board person3 plane1 city1 / NSC / d=8
+
+If holds: var7:5 var5:2 var4:0 var6:2 var3:1 var2:3 var1:0 var0:3
+Execute: debark person3 plane1 city0 / NSC / d=9
+
+If holds: var7:5 var5:2 var4:0 var6:4 var3:1 var2:1 var1:0 var0:0
+Execute: fly plane1 city0 city1 fl4 fl3 / NSC / d=9
+
+If holds: var7:5 var5:2 var4:1 var6:3 var3:1 var2:3 var1:0 var0:3
+Execute: fly plane1 city1 city0 fl3 fl2 / NSC / d=10
+
+If holds: var7:5 var5:2 var4:1 var6:3 var3:1 var2:1 var1:0 var0:3
+Execute: board person3 plane1 city1 / NSC / d=11

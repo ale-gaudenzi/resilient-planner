@@ -1,0 +1,30 @@
+<map id="ScalarEvaluator" name="ScalarEvaluator">
+<area shape="rect" id="node1" title=" " alt="" coords="137,477,261,504"/>
+<area shape="rect" id="node3" href="$classCombiningEvaluator.html" title=" " alt="" coords="309,56,464,83"/>
+<area shape="rect" id="node6" href="$classGEvaluator.html" title=" " alt="" coords="339,427,434,453"/>
+<area shape="rect" id="node7" href="$classHeuristic.html" title=" " alt="" coords="347,477,427,504"/>
+<area shape="rect" id="node27" href="$classPrefEvaluator.html" title=" " alt="" coords="331,528,442,555"/>
+<area shape="rect" id="node28" href="$classWeightedEvaluator.html" title=" " alt="" coords="314,579,459,605"/>
+<area shape="rect" id="node2" href="$classEvaluator.html" title=" " alt="" coords="5,477,89,504"/>
+<area shape="rect" id="node4" href="$classMaxEvaluator.html" title=" " alt="" coords="571,5,683,32"/>
+<area shape="rect" id="node5" href="$classSumEvaluator.html" title=" " alt="" coords="571,56,684,83"/>
+<area shape="rect" id="node8" href="$classBlindSearchHeuristic.html" title=" " alt="" coords="549,107,706,133"/>
+<area shape="rect" id="node9" href="$classCanonicalPDBsHeuristic.html" title=" " alt="" coords="538,157,717,184"/>
+<area shape="rect" id="node10" href="$classcea__heuristic_1_1ContextEnhancedAdditiveHeuristic.html" title=" " alt="" coords="512,209,743,250"/>
+<area shape="rect" id="node11" href="$classCGHeuristic.html" title=" " alt="" coords="578,275,677,301"/>
+<area shape="rect" id="node12" href="$classExploration.html" title=" " alt="" coords="579,325,675,352"/>
+<area shape="rect" id="node13" href="$classGoalCountHeuristic.html" title=" " alt="" coords="553,376,701,403"/>
+<area shape="rect" id="node14" href="$classHMHeuristic.html" title=" " alt="" coords="576,427,679,453"/>
+<area shape="rect" id="node15" href="$classIPCMaxHeuristic.html" title=" " alt="" coords="563,477,692,504"/>
+<area shape="rect" id="node16" href="$classLandmarkCountHeuristic.html" title=" " alt="" coords="536,528,719,555"/>
+<area shape="rect" id="node17" href="$classLandmarkCutHeuristic.html" title=" " alt="" coords="544,579,711,605"/>
+<area shape="rect" id="node18" href="$classMaxHeuristic.html" title=" " alt="" coords="573,629,681,656"/>
+<area shape="rect" id="node19" href="$classMergeAndShrinkHeuristic.html" title=" " alt="" coords="534,680,721,707"/>
+<area shape="rect" id="node20" href="$classPDBHeuristic.html" title=" " alt="" coords="574,731,681,757"/>
+<area shape="rect" id="node21" href="$classRelaxationHeuristic.html" title=" " alt="" coords="552,781,703,808"/>
+<area shape="rect" id="node25" href="$classSelectiveMaxHeuristic.html" title=" " alt="" coords="543,832,711,859"/>
+<area shape="rect" id="node26" href="$classZeroOnePDBsHeuristic.html" title=" " alt="" coords="542,883,713,909"/>
+<area shape="rect" id="node22" href="$classAdditiveHeuristic.html" title=" " alt="" coords="791,756,925,783"/>
+<area shape="rect" id="node24" href="$classHSPMaxHeuristic.html" title=" " alt="" coords="791,807,925,833"/>
+<area shape="rect" id="node23" href="$classFFHeuristic.html" title=" " alt="" coords="973,756,1069,783"/>
+</map>

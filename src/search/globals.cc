@@ -46,7 +46,7 @@ DeadendTuple::~DeadendTuple() { delete prev_state; }
 
 bool test_goal(const State &state)
 {
-    /* for resilient planner
+    /** For resilient planner:
     * we test only if we reached the goal, otherwise it stop immediately
     * because the current initial state is always already in the policy
     */

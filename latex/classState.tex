@@ -1,0 +1,80 @@
+\hypertarget{classState}{}\doxysection{State Class Reference}
+\label{classState}\index{State@{State}}
+
+
+Inheritance diagram for State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_a128f8878e53f08ace2a4c299c1466f5a}\label{classState_a128f8878e53f08ace2a4c299c1466f5a}} 
+\mbox{\hyperlink{classStateID}{State\+ID}} {\bfseries get\+\_\+id} () const
+\item 
+\mbox{\Hypertarget{classState_aef92a26ae20a96f3fde9a8593a12d10a}\label{classState_aef92a26ae20a96f3fde9a8593a12d10a}} 
+const \mbox{\hyperlink{classStateRegistry}{State\+Registry}} \& {\bfseries get\+\_\+registry} () const
+\item 
+\mbox{\Hypertarget{classState_a7d7c00bff937ce020b63efd20df97397}\label{classState_a7d7c00bff937ce020b63efd20df97397}} 
+int {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index) const
+\item 
+\mbox{\Hypertarget{classState_ab98d310aaceb21737346521c5bc6fc6c}\label{classState_ab98d310aaceb21737346521c5bc6fc6c}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classState}{State}} \&other) const
+\item 
+\mbox{\Hypertarget{classState_a813f40dd2fec3cbf3884a6e01bb909bd}\label{classState_a813f40dd2fec3cbf3884a6e01bb909bd}} 
+void {\bfseries dump\+\_\+pddl} () const
+\item 
+\mbox{\Hypertarget{classState_aedf033e9ac23807f97b28874f32568a5}\label{classState_aedf033e9ac23807f97b28874f32568a5}} 
+void {\bfseries dump\+\_\+fdr} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_a3acca7ca8d6a9d00f28e45031d6624ee}\label{classState_a3acca7ca8d6a9d00f28e45031d6624ee}} 
+{\bfseries State} (const Packed\+State\+Bin $\ast$buffer\+\_\+, const \mbox{\hyperlink{classStateRegistry}{State\+Registry}} \&registry\+\_\+, \mbox{\hyperlink{classStateID}{State\+ID}} id\+\_\+)
+\item 
+\mbox{\Hypertarget{classState_a17af93f2f1327b6b242083571b824943}\label{classState_a17af93f2f1327b6b242083571b824943}} 
+const Packed\+State\+Bin $\ast$ {\bfseries get\+\_\+packed\+\_\+buffer} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_aebf20eac24ab4c8fe1209d49c16f8731}\label{classState_aebf20eac24ab4c8fe1209d49c16f8731}} 
+const Packed\+State\+Bin $\ast$ {\bfseries buffer}
+\item 
+\mbox{\Hypertarget{classState_a722d4c9ce0ebfefffb4794de51d86ba6}\label{classState_a722d4c9ce0ebfefffb4794de51d86ba6}} 
+const \mbox{\hyperlink{classStateRegistry}{State\+Registry}} $\ast$ {\bfseries registry}
+\item 
+\mbox{\Hypertarget{classState_a7c1b703a721777917dc84e28501d633f}\label{classState_a7c1b703a721777917dc84e28501d633f}} 
+\mbox{\hyperlink{classStateID}{State\+ID}} {\bfseries id}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classState_ab5efff6db8e98ec0a35ba239b664d5f8}\label{classState_ab5efff6db8e98ec0a35ba239b664d5f8}} 
+class {\bfseries State\+Registry}
+\item 
+\mbox{\Hypertarget{classState_a4eefff55b1e2316623deddf37fded3da}\label{classState_a4eefff55b1e2316623deddf37fded3da}} 
+{\footnotesize template$<$class Entry $>$ }\\class {\bfseries Per\+State\+Information}
+\item 
+\mbox{\Hypertarget{classState_a72a72acc416ee1193222ba634875a169}\label{classState_a72a72acc416ee1193222ba634875a169}} 
+class {\bfseries Resilient\+Node}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/state.\+h\item 
+src/search/state.\+cc\end{DoxyCompactItemize}

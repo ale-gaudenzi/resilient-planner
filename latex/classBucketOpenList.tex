@@ -1,0 +1,68 @@
+\hypertarget{classBucketOpenList}{}\doxysection{Bucket\+Open\+List$<$ Entry $>$ Class Template Reference}
+\label{classBucketOpenList}\index{BucketOpenList$<$ Entry $>$@{BucketOpenList$<$ Entry $>$}}
+
+
+Inheritance diagram for Bucket\+Open\+List$<$ Entry $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classBucketOpenList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Bucket\+Open\+List$<$ Entry $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{classBucketOpenList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBucketOpenList_a67083a96d98cbbd6492078ca296bb105}\label{classBucketOpenList_a67083a96d98cbbd6492078ca296bb105}} 
+{\bfseries Bucket\+Open\+List} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\item 
+\mbox{\Hypertarget{classBucketOpenList_aed54d5c9ad16b99c434f027e9113f551}\label{classBucketOpenList_aed54d5c9ad16b99c434f027e9113f551}} 
+int {\bfseries insert} (const Entry \&entry)
+\item 
+\mbox{\Hypertarget{classBucketOpenList_a6c782fb13567e080c98d82dfa7410f04}\label{classBucketOpenList_a6c782fb13567e080c98d82dfa7410f04}} 
+Entry {\bfseries remove\+\_\+min} (std\+::vector$<$ int $>$ $\ast$key=0)
+\item 
+\mbox{\Hypertarget{classBucketOpenList_add2b8bfa5dd1b43f57c08facadfd752a}\label{classBucketOpenList_add2b8bfa5dd1b43f57c08facadfd752a}} 
+bool {\bfseries empty} () const
+\item 
+\mbox{\Hypertarget{classBucketOpenList_ac6a61dbd236cb98319b5c8b17677ade2}\label{classBucketOpenList_ac6a61dbd236cb98319b5c8b17677ade2}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{classBucketOpenList_a2e883b4d5da2d1372d50da3026c7491f}\label{classBucketOpenList_a2e883b4d5da2d1372d50da3026c7491f}} 
+void {\bfseries evaluate} (int g, bool preferred)
+\item 
+\mbox{\Hypertarget{classBucketOpenList_ab438c32e277abd55cb3f8b549740fa3d}\label{classBucketOpenList_ab438c32e277abd55cb3f8b549740fa3d}} 
+bool {\bfseries is\+\_\+dead\+\_\+end} () const
+\item 
+\mbox{\Hypertarget{classBucketOpenList_a56e0e566a6063338711bd57f046699e3}\label{classBucketOpenList_a56e0e566a6063338711bd57f046699e3}} 
+bool {\bfseries dead\+\_\+end\+\_\+is\+\_\+reliable} () const
+\item 
+\mbox{\Hypertarget{classBucketOpenList_ac802746b220ae9bde82ffac265f5f231}\label{classBucketOpenList_ac802746b220ae9bde82ffac265f5f231}} 
+void {\bfseries get\+\_\+involved\+\_\+heuristics} (std\+::set$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ \&hset)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBucketOpenList_a45f3c098f71da2689e6b3f2fc1874855}\label{classBucketOpenList_a45f3c098f71da2689e6b3f2fc1874855}} 
+static \mbox{\hyperlink{classOpenList}{Open\+List}}$<$ Entry $>$ $\ast$ {\bfseries \+\_\+parse} (\mbox{\hyperlink{classOptionParser}{Option\+Parser}} \&parser)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classBucketOpenList_ac72be7c67f2be9f5666df56cd8e5b675}\label{classBucketOpenList_ac72be7c67f2be9f5666df56cd8e5b675}} 
+\mbox{\hyperlink{classScalarEvaluator}{Scalar\+Evaluator}} $\ast$ {\bfseries get\+\_\+evaluator} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/open\+\_\+lists/open\+\_\+list\+\_\+buckets.\+h\end{DoxyCompactItemize}

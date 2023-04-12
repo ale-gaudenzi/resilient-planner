@@ -1,0 +1,100 @@
+\hypertarget{classtree_1_1iterator__base}{}\doxysection{tree$<$ T, tree\+\_\+node\+\_\+allocator $>$\+::iterator\+\_\+base Class Reference}
+\label{classtree_1_1iterator__base}\index{tree$<$ T, tree\_node\_allocator $>$::iterator\_base@{tree$<$ T, tree\_node\_allocator $>$::iterator\_base}}
+
+
+Base class for iterators, only pointers stored, no traversal logic.  
+
+
+
+
+{\ttfamily \#include $<$tree.\+hh$>$}
+
+
+
+Inheritance diagram for tree$<$ T, tree\+\_\+node\+\_\+allocator $>$\+::iterator\+\_\+base\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classtree_1_1iterator__base__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for tree$<$ T, tree\+\_\+node\+\_\+allocator $>$\+::iterator\+\_\+base\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=226pt]{classtree_1_1iterator__base__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_aab430bec9e607ae24cdd2bdffe3faf70}\label{classtree_1_1iterator__base_aab430bec9e607ae24cdd2bdffe3faf70}} 
+typedef T {\bfseries value\+\_\+type}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a0665bed45269b6f7b97809ea9920008e}\label{classtree_1_1iterator__base_a0665bed45269b6f7b97809ea9920008e}} 
+typedef T $\ast$ {\bfseries pointer}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a063faf883017de195e7e72cf55be6914}\label{classtree_1_1iterator__base_a063faf883017de195e7e72cf55be6914}} 
+typedef T \& {\bfseries reference}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_aa2b239ac4db713d5b191e696584a9076}\label{classtree_1_1iterator__base_aa2b239ac4db713d5b191e696584a9076}} 
+typedef size\+\_\+t {\bfseries size\+\_\+type}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_aeff66472181aa05d50c7ffe4a91dc4c0}\label{classtree_1_1iterator__base_aeff66472181aa05d50c7ffe4a91dc4c0}} 
+typedef ptrdiff\+\_\+t {\bfseries difference\+\_\+type}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a7d0ace14418254eaab7526f1d0aabf40}\label{classtree_1_1iterator__base_a7d0ace14418254eaab7526f1d0aabf40}} 
+typedef std\+::bidirectional\+\_\+iterator\+\_\+tag {\bfseries iterator\+\_\+category}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_add6dda19c2febebabbc5e769365dc4dd}\label{classtree_1_1iterator__base_add6dda19c2febebabbc5e769365dc4dd}} 
+{\bfseries iterator\+\_\+base} (\mbox{\hyperlink{classtree__node__}{tree\+\_\+node}} $\ast$)
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_ad6f2c9adb004d5f086195e4145736ed4}\label{classtree_1_1iterator__base_ad6f2c9adb004d5f086195e4145736ed4}} 
+T \& {\bfseries operator$\ast$} () const
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a8f48a56f39396b1e6e5a7b44f603b871}\label{classtree_1_1iterator__base_a8f48a56f39396b1e6e5a7b44f603b871}} 
+T $\ast$ {\bfseries operator-\/$>$} () const
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_aa0be7989b9dd4c5bcdcc0d47a56d11fb}\label{classtree_1_1iterator__base_aa0be7989b9dd4c5bcdcc0d47a56d11fb}} 
+void \mbox{\hyperlink{classtree_1_1iterator__base_aa0be7989b9dd4c5bcdcc0d47a56d11fb}{skip\+\_\+children}} ()
+\begin{DoxyCompactList}\small\item\em When called, the next increment/decrement skips children of this node. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a7b3abca43bc087fbaa277c5d287d0ad5}\label{classtree_1_1iterator__base_a7b3abca43bc087fbaa277c5d287d0ad5}} 
+void {\bfseries skip\+\_\+children} (bool skip)
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_ae6f2ec470dac0149858add00617f51a7}\label{classtree_1_1iterator__base_ae6f2ec470dac0149858add00617f51a7}} 
+unsigned int \mbox{\hyperlink{classtree_1_1iterator__base_ae6f2ec470dac0149858add00617f51a7}{number\+\_\+of\+\_\+children}} () const
+\begin{DoxyCompactList}\small\item\em Number of children of the node pointed to by the iterator. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_ae963353ec3487a984cd244a37b63e131}\label{classtree_1_1iterator__base_ae963353ec3487a984cd244a37b63e131}} 
+\mbox{\hyperlink{classtree_1_1sibling__iterator}{sibling\+\_\+iterator}} {\bfseries begin} () const
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a3c62bfda36d4ce0952f6ae3b6f621f95}\label{classtree_1_1iterator__base_a3c62bfda36d4ce0952f6ae3b6f621f95}} 
+\mbox{\hyperlink{classtree_1_1sibling__iterator}{sibling\+\_\+iterator}} {\bfseries end} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a8e012d9505968cd1b51afab5bb4f2bf0}\label{classtree_1_1iterator__base_a8e012d9505968cd1b51afab5bb4f2bf0}} 
+\mbox{\hyperlink{classtree__node__}{tree\+\_\+node}} $\ast$ {\bfseries node}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classtree_1_1iterator__base_a88239267268c728952e0cd89b9326e82}\label{classtree_1_1iterator__base_a88239267268c728952e0cd89b9326e82}} 
+bool {\bfseries skip\+\_\+current\+\_\+children\+\_\+}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+\subsubsection*{template$<$class T, class tree\+\_\+node\+\_\+allocator = std\+::allocator$<$tree\+\_\+node\+\_\+$<$\+T$>$ $>$$>$\newline
+class tree$<$ T, tree\+\_\+node\+\_\+allocator $>$\+::iterator\+\_\+base}
+
+Base class for iterators, only pointers stored, no traversal logic. 
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/ext/tree.\+hh\end{DoxyCompactItemize}

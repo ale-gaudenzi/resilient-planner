@@ -1,0 +1,71 @@
+\hypertarget{classParetoOpenList}{}\doxysection{Pareto\+Open\+List$<$ Entry $>$ Class Template Reference}
+\label{classParetoOpenList}\index{ParetoOpenList$<$ Entry $>$@{ParetoOpenList$<$ Entry $>$}}
+
+
+Inheritance diagram for Pareto\+Open\+List$<$ Entry $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classParetoOpenList__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Pareto\+Open\+List$<$ Entry $>$\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=218pt]{classParetoOpenList__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a3e6830e78f0597e540db21ee6dc0953e}\label{classParetoOpenList_a3e6830e78f0597e540db21ee6dc0953e}} 
+{\bfseries Pareto\+Open\+List} (const std\+::vector$<$ \mbox{\hyperlink{classScalarEvaluator}{Scalar\+Evaluator}} $\ast$ $>$ \&evals, bool preferred\+\_\+only, bool state\+\_\+uniform\+\_\+selection\+\_\+)
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a6d03b78a3537be8ea78479aa3d60252c}\label{classParetoOpenList_a6d03b78a3537be8ea78479aa3d60252c}} 
+{\bfseries Pareto\+Open\+List} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\item 
+\mbox{\Hypertarget{classParetoOpenList_ab26ba5bffc8b312075953cacf8045f47}\label{classParetoOpenList_ab26ba5bffc8b312075953cacf8045f47}} 
+int {\bfseries insert} (const Entry \&entry)
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a0957668ac5baf8b2d7671233ab24f921}\label{classParetoOpenList_a0957668ac5baf8b2d7671233ab24f921}} 
+Entry {\bfseries remove\+\_\+min} (std\+::vector$<$ int $>$ $\ast$key=0)
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a1a6d6ac535f9b67ed6fa0137311d1da4}\label{classParetoOpenList_a1a6d6ac535f9b67ed6fa0137311d1da4}} 
+bool {\bfseries empty} () const
+\item 
+\mbox{\Hypertarget{classParetoOpenList_aa16d10e1bf90dab690509a43e87b26e7}\label{classParetoOpenList_aa16d10e1bf90dab690509a43e87b26e7}} 
+void {\bfseries clear} ()
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a08a10394e47a738f04ac7df6c048d3b9}\label{classParetoOpenList_a08a10394e47a738f04ac7df6c048d3b9}} 
+void {\bfseries evaluate} (int g, bool preferred)
+\item 
+\mbox{\Hypertarget{classParetoOpenList_ae7e978ebe42eef9c5ca9e20fd0feb94e}\label{classParetoOpenList_ae7e978ebe42eef9c5ca9e20fd0feb94e}} 
+bool {\bfseries is\+\_\+dead\+\_\+end} () const
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a6448f07dd469724b08edbc2138ae2fa8}\label{classParetoOpenList_a6448f07dd469724b08edbc2138ae2fa8}} 
+bool {\bfseries dead\+\_\+end\+\_\+is\+\_\+reliable} () const
+\item 
+\mbox{\Hypertarget{classParetoOpenList_a8f141beb2aba11077cbbf9ceae3b4b8a}\label{classParetoOpenList_a8f141beb2aba11077cbbf9ceae3b4b8a}} 
+void {\bfseries get\+\_\+involved\+\_\+heuristics} (std\+::set$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ \&hset)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParetoOpenList_afa9e4a78e1ceb9d25cc5830e7aeb75b1}\label{classParetoOpenList_afa9e4a78e1ceb9d25cc5830e7aeb75b1}} 
+static \mbox{\hyperlink{classOpenList}{Open\+List}}$<$ Entry $>$ $\ast$ {\bfseries \+\_\+parse} (\mbox{\hyperlink{classOptionParser}{Option\+Parser}} \&p)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classParetoOpenList_ac504ea31a679ee3acbe0d5d85b8bcfb9}\label{classParetoOpenList_ac504ea31a679ee3acbe0d5d85b8bcfb9}} 
+\mbox{\hyperlink{classEvaluator}{Evaluator}} $\ast$ {\bfseries get\+\_\+evaluator} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/search/open\+\_\+lists/pareto\+\_\+open\+\_\+list.\+h\end{DoxyCompactItemize}

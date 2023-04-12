@@ -1,0 +1,178 @@
+\hypertarget{classLazySearch}{}\doxysection{Lazy\+Search Class Reference}
+\label{classLazySearch}\index{LazySearch@{LazySearch}}
+
+
+Inheritance diagram for Lazy\+Search\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=163pt]{classLazySearch__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Lazy\+Search\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classLazySearch__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLazySearch_a7899b6aab5ec92a59f8c34c3efffde34}\label{classLazySearch_a7899b6aab5ec92a59f8c34c3efffde34}} 
+{\bfseries Lazy\+Search} (const \mbox{\hyperlink{classOptions}{Options}} \&opts)
+\item 
+\mbox{\Hypertarget{classLazySearch_aee996209b530866fd5c89a48ef613289}\label{classLazySearch_aee996209b530866fd5c89a48ef613289}} 
+void {\bfseries set\+\_\+pref\+\_\+operator\+\_\+heuristics} (std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ \&heur)
+\item 
+\mbox{\Hypertarget{classLazySearch_a663e046926d5785eaa2cd6b3056e7ccb}\label{classLazySearch_a663e046926d5785eaa2cd6b3056e7ccb}} 
+virtual void {\bfseries statistics} () const
+\item 
+\mbox{\Hypertarget{classLazySearch_a0237d0322118a5e2d4939a179826158a}\label{classLazySearch_a0237d0322118a5e2d4939a179826158a}} 
+virtual void {\bfseries reset} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLazySearch_af21e954f01b5262859b32c976387ca7c}\label{classLazySearch_af21e954f01b5262859b32c976387ca7c}} 
+enum \{ {\bfseries original}, 
+{\bfseries pref\+\_\+first}, 
+{\bfseries shuffled}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLazySearch_af2ad0d5761ea2a35c64aded9caa4246e}\label{classLazySearch_af2ad0d5761ea2a35c64aded9caa4246e}} 
+virtual void {\bfseries initialize} ()
+\item 
+\mbox{\Hypertarget{classLazySearch_a71bf26c8c691b19c6e5de4ba8b10d2ea}\label{classLazySearch_a71bf26c8c691b19c6e5de4ba8b10d2ea}} 
+virtual int {\bfseries step} ()
+\item 
+\mbox{\Hypertarget{classLazySearch_a19cd42338e21b07532404fc3c189a22f}\label{classLazySearch_a19cd42338e21b07532404fc3c189a22f}} 
+void {\bfseries generate\+\_\+successors} ()
+\item 
+\mbox{\Hypertarget{classLazySearch_afcaf47e897dd095d908f5fc3dc5ab700}\label{classLazySearch_afcaf47e897dd095d908f5fc3dc5ab700}} 
+int {\bfseries fetch\+\_\+next\+\_\+state} ()
+\item 
+\mbox{\Hypertarget{classLazySearch_a19d3e061ca7656aab252ae80ecbc0cc8}\label{classLazySearch_a19d3e061ca7656aab252ae80ecbc0cc8}} 
+void {\bfseries reward\+\_\+progress} ()
+\item 
+void \mbox{\hyperlink{classLazySearch_a14f54c3c54d5bbd658c715c834b3117d}{get\+\_\+successor\+\_\+operators}} (std\+::vector$<$ const \mbox{\hyperlink{classOperator}{Operator}} $\ast$ $>$ \&ops)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classLazySearch_a67eadc9a21234e4aac2ea9fa8cfc3ef3}\label{classLazySearch_a67eadc9a21234e4aac2ea9fa8cfc3ef3}} 
+\mbox{\hyperlink{classOpenList}{Open\+List}}$<$ Open\+List\+Entry\+Lazy $>$ $\ast$ {\bfseries open\+\_\+list}
+\item 
+\mbox{\Hypertarget{classLazySearch_a5d08aa7f2a8eb170ab0e32b006265218}\label{classLazySearch_a5d08aa7f2a8eb170ab0e32b006265218}} 
+bool {\bfseries reopen\+\_\+closed\+\_\+nodes}
+\item 
+\mbox{\Hypertarget{classLazySearch_a5f971a74f5337f85548145c6bbd80997}\label{classLazySearch_a5f971a74f5337f85548145c6bbd80997}} 
+enum Lazy\+Search\+:: \{ ... \}  {\bfseries succ\+\_\+mode}
+\item 
+\mbox{\Hypertarget{classLazySearch_a8252cee86ea2ca31fe4b7e2d35c2b952}\label{classLazySearch_a8252cee86ea2ca31fe4b7e2d35c2b952}} 
+std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries heuristics}
+\item 
+\mbox{\Hypertarget{classLazySearch_a7f1e75bf8bbf159776ea65afe15110c2}\label{classLazySearch_a7f1e75bf8bbf159776ea65afe15110c2}} 
+std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries preferred\+\_\+operator\+\_\+heuristics}
+\item 
+\mbox{\Hypertarget{classLazySearch_a0e6f2058093334ca068a87c828e77b32}\label{classLazySearch_a0e6f2058093334ca068a87c828e77b32}} 
+std\+::vector$<$ \mbox{\hyperlink{classHeuristic}{Heuristic}} $\ast$ $>$ {\bfseries estimate\+\_\+heuristics}
+\item 
+\mbox{\Hypertarget{classLazySearch_a9ec59e22b37381ff4669c4793185729e}\label{classLazySearch_a9ec59e22b37381ff4669c4793185729e}} 
+\mbox{\hyperlink{classState}{State}} {\bfseries current\+\_\+state}
+\item 
+\mbox{\Hypertarget{classLazySearch_a39019af3180b660aa0c256fc0e51285b}\label{classLazySearch_a39019af3180b660aa0c256fc0e51285b}} 
+\mbox{\hyperlink{classStateID}{State\+ID}} {\bfseries current\+\_\+predecessor\+\_\+id}
+\item 
+\mbox{\Hypertarget{classLazySearch_affa7516290f2e0c187bd1d93162db5b2}\label{classLazySearch_affa7516290f2e0c187bd1d93162db5b2}} 
+const \mbox{\hyperlink{classOperator}{Operator}} $\ast$ {\bfseries current\+\_\+operator}
+\item 
+\mbox{\Hypertarget{classLazySearch_aa9a52970b26305529f0cc5e896f9111e}\label{classLazySearch_aa9a52970b26305529f0cc5e896f9111e}} 
+int {\bfseries current\+\_\+g}
+\item 
+\mbox{\Hypertarget{classLazySearch_a7dfc150f2a8fcdbec91914f4ce2625f9}\label{classLazySearch_a7dfc150f2a8fcdbec91914f4ce2625f9}} 
+int {\bfseries current\+\_\+real\+\_\+g}
+\item 
+\mbox{\Hypertarget{classLazySearch_af2225baae131fc990248b247489dbdf3}\label{classLazySearch_af2225baae131fc990248b247489dbdf3}} 
+int {\bfseries state\+\_\+count}
+\item 
+\mbox{\Hypertarget{classLazySearch_aef8f9062c5d307983adf6747b5e6d31e}\label{classLazySearch_aef8f9062c5d307983adf6747b5e6d31e}} 
+bool {\bfseries was\+\_\+initialized}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLazySearch_a14f54c3c54d5bbd658c715c834b3117d}\label{classLazySearch_a14f54c3c54d5bbd658c715c834b3117d}} 
+\index{LazySearch@{LazySearch}!get\_successor\_operators@{get\_successor\_operators}}
+\index{get\_successor\_operators@{get\_successor\_operators}!LazySearch@{LazySearch}}
+\doxysubsubsection{\texorpdfstring{get\_successor\_operators()}{get\_successor\_operators()}}
+{\footnotesize\ttfamily void Lazy\+Search\+::get\+\_\+successor\+\_\+operators (\begin{DoxyParamCaption}\item[{std\+::vector$<$ const \mbox{\hyperlink{classOperator}{Operator}} $\ast$ $>$ \&}]{ops }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+For resilient planner\+: We don\textquotesingle{}t consider preferred operators because it causes inconsistency when using the policy to retrieve successor operators of the plan
+\begin{DoxyCode}{0}
+\DoxyCodeLine{96 \{}
+\DoxyCodeLine{97     vector<const Operator *> all\_operators;}
+\DoxyCodeLine{98     vector<const Operator *> preferred\_operators;}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     g\_successor\_generator-\/>\mbox{\hyperlink{structDeadendAwareSuccessorGenerator_ab11336ee528705ffd274437e30c281c9}{generate\_applicable\_ops}}(}
+\DoxyCodeLine{101         current\_state, all\_operators);}
+\DoxyCodeLine{102 }
+\DoxyCodeLine{103     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operator\_heuristics.size(); i++)}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         \mbox{\hyperlink{classHeuristic}{Heuristic}} *heur = preferred\_operator\_heuristics[i];}
+\DoxyCodeLine{106         \textcolor{keywordflow}{if} (!heur-\/>is\_dead\_end())}
+\DoxyCodeLine{107             heur-\/>get\_preferred\_operators(preferred\_operators);}
+\DoxyCodeLine{108     \}}
+\DoxyCodeLine{109 }
+\DoxyCodeLine{114     \textcolor{keywordflow}{if} (!g\_use\_resilient\_planner)}
+\DoxyCodeLine{115     \{}
+\DoxyCodeLine{116         \textcolor{keywordflow}{if} (succ\_mode == pref\_first)}
+\DoxyCodeLine{117         \{}
+\DoxyCodeLine{118             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
+\DoxyCodeLine{119             \{}
+\DoxyCodeLine{120                 \textcolor{keywordflow}{if} (!preferred\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{121                 \{}
+\DoxyCodeLine{122                     ops.push\_back(preferred\_operators[i]);}
+\DoxyCodeLine{123                     preferred\_operators[i]-\/>mark();}
+\DoxyCodeLine{124                 \}}
+\DoxyCodeLine{125             \}}
+\DoxyCodeLine{126 }
+\DoxyCodeLine{127             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < all\_operators.size(); i++)}
+\DoxyCodeLine{128                 \textcolor{keywordflow}{if} (!all\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{129                 \{}
+\DoxyCodeLine{130                     ops.push\_back(all\_operators[i]);}
+\DoxyCodeLine{131                 \}}
+\DoxyCodeLine{132         \}}
+\DoxyCodeLine{133         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{134         \{}
+\DoxyCodeLine{135             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
+\DoxyCodeLine{136                 \textcolor{keywordflow}{if} (!preferred\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{137                     preferred\_operators[i]-\/>mark();}
+\DoxyCodeLine{138             ops.swap(all\_operators);}
+\DoxyCodeLine{139             \textcolor{keywordflow}{if} (succ\_mode == shuffled)}
+\DoxyCodeLine{140                 random\_shuffle(ops.begin(), ops.end());}
+\DoxyCodeLine{141         \}}
+\DoxyCodeLine{142     \}}
+\DoxyCodeLine{143     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{144     \{}
+\DoxyCodeLine{145         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < all\_operators.size(); i++)}
+\DoxyCodeLine{146             \textcolor{keywordflow}{if} (!all\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{147             \{}
+\DoxyCodeLine{148                 ops.push\_back(all\_operators[i]);}
+\DoxyCodeLine{149             \}}
+\DoxyCodeLine{150     \}}
+\DoxyCodeLine{151 \}}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/lazy\+\_\+search.\+h\item 
+src/search/lazy\+\_\+search.\+cc\end{DoxyCompactItemize}

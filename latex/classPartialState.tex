@@ -1,0 +1,71 @@
+\hypertarget{classPartialState}{}\doxysection{Partial\+State Class Reference}
+\label{classPartialState}\index{PartialState@{PartialState}}
+
+
+Inheritance diagram for Partial\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classPartialState__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Collaboration diagram for Partial\+State\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=166pt]{classPartialState__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classPartialState_ad82448c8301bc9aefca697462ecb8b4f}\label{classPartialState_ad82448c8301bc9aefca697462ecb8b4f}} 
+{\bfseries Partial\+State} (const \mbox{\hyperlink{classStateInterface}{State\+Interface}} \&state)
+\item 
+\mbox{\Hypertarget{classPartialState_a1d0fdccaa28578d42cfa50f7590745d0}\label{classPartialState_a1d0fdccaa28578d42cfa50f7590745d0}} 
+{\bfseries Partial\+State} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&state)
+\item 
+\mbox{\Hypertarget{classPartialState_a18fbcc8d873f4844cb273f4cab07ed15}\label{classPartialState_a18fbcc8d873f4844cb273f4cab07ed15}} 
+{\bfseries Partial\+State} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&predecessor, const \mbox{\hyperlink{classOperator}{Operator}} \&op, bool progress=true, \mbox{\hyperlink{classPartialState}{Partial\+State}} $\ast$context=N\+U\+LL)
+\item 
+\mbox{\Hypertarget{classPartialState_a2c369190d6e16eaf037e9cbfed58e5b0}\label{classPartialState_a2c369190d6e16eaf037e9cbfed58e5b0}} 
+void {\bfseries combine\+\_\+with} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&state)
+\item 
+\mbox{\Hypertarget{classPartialState_a092599b2ad47c1639ea51ddd538fe554}\label{classPartialState_a092599b2ad47c1639ea51ddd538fe554}} 
+int {\bfseries size} () const
+\item 
+\mbox{\Hypertarget{classPartialState_a44dabee3f4a6b8b39580c8aa68693b8a}\label{classPartialState_a44dabee3f4a6b8b39580c8aa68693b8a}} 
+\mbox{\hyperlink{classPartialState}{Partial\+State}} \& {\bfseries operator=} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&other)
+\item 
+\mbox{\Hypertarget{classPartialState_ac56ae18597344d8b3cdc8896cbc3580c}\label{classPartialState_ac56ae18597344d8b3cdc8896cbc3580c}} 
+int \& {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index)
+\item 
+\mbox{\Hypertarget{classPartialState_a476ded88b110a99293ae3b5672b2848e}\label{classPartialState_a476ded88b110a99293ae3b5672b2848e}} 
+int {\bfseries operator\mbox{[}$\,$\mbox{]}} (int index) const
+\item 
+\mbox{\Hypertarget{classPartialState_add6bdf3dc240fd2d8864709f960b0d41}\label{classPartialState_add6bdf3dc240fd2d8864709f960b0d41}} 
+void {\bfseries dump\+\_\+pddl} () const
+\item 
+\mbox{\Hypertarget{classPartialState_ad786944aa54bc1a6c2542d5a2fcb85a4}\label{classPartialState_ad786944aa54bc1a6c2542d5a2fcb85a4}} 
+void {\bfseries dump\+\_\+fdr} () const
+\item 
+\mbox{\Hypertarget{classPartialState_a5f650c7db2420a82a610c9f12fbf5096}\label{classPartialState_a5f650c7db2420a82a610c9f12fbf5096}} 
+bool {\bfseries operator==} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&other) const
+\item 
+\mbox{\Hypertarget{classPartialState_a4fbf110839e76f62f42f90467834e10b}\label{classPartialState_a4fbf110839e76f62f42f90467834e10b}} 
+bool {\bfseries operator$<$} (const \mbox{\hyperlink{classPartialState}{Partial\+State}} \&other) const
+\item 
+\mbox{\Hypertarget{classPartialState_a50c4a62ad676ee232bde04f2da10ba34}\label{classPartialState_a50c4a62ad676ee232bde04f2da10ba34}} 
+size\+\_\+t {\bfseries hash} () const
+\item 
+\mbox{\Hypertarget{classPartialState_add05ac14a78557f1e11cdfdf557b893c}\label{classPartialState_add05ac14a78557f1e11cdfdf557b893c}} 
+bool {\bfseries implies} (\mbox{\hyperlink{classPartialState}{Partial\+State}} \&other)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+src/search/policy-\/repair/partial\+\_\+state.\+h\item 
+src/search/policy-\/repair/partial\+\_\+state.\+cc\end{DoxyCompactItemize}
