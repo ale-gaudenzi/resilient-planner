@@ -2,6 +2,9 @@
 ```
 
 --resilient K
+
+--verbose
+
 ```
 
 ### Examples

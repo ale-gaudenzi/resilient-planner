@@ -24,8 +24,6 @@
 
 using namespace std;
 
-bool verbose = false;
-
 bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
 void reset_goal();
@@ -184,7 +182,7 @@ int main(int argc, const char **argv)
         post_actions.insert(*(*it));
         ResilientNode res_node_f = ResilientNode(current, g_max_faults - 1, post_actions);
 
-        if (verbose)
+        if (g_verbose)
         {
             cout << "\nPushing nodes of the initial policy:" << endl;
             res_node.dump();
@@ -211,7 +209,7 @@ int main(int argc, const char **argv)
 
         k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
 
-        if (verbose)
+        if (g_verbose)
         {
             cout << "\n----------------------------------------" << endl;
             cout << "\nIteration:" << iteration << endl;
@@ -221,20 +219,20 @@ int main(int argc, const char **argv)
 
         if (!resiliency_check(current_node))
         {
-            if (verbose)
+            if (g_verbose)
                 cout << "\nFailed resiliency check.\n"
                      << endl;
 
             if (!replan(current_node, engine))
             {
-                if (verbose)
+                if (g_verbose)
                     cout << "\nFailed replanning." << endl;
 
                 add_fault_model_deadend(current_node);
             }
             else
             {
-                if (verbose)
+                if (g_verbose)
                     cout << "Successfull replanning" << endl;
 
                 State current = g_initial_state();
@@ -242,7 +240,7 @@ int main(int argc, const char **argv)
 
                 if (current_node.get_k() >= 1)
                 {
-                    if (verbose)
+                    if (g_verbose)
                         cout << "\nPushing nodes:\n"
                              << endl;
 
@@ -254,7 +252,7 @@ int main(int argc, const char **argv)
                         post_actions.insert(*(*it));
                         ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
 
-                        if (verbose)
+                        if (g_verbose)
                         {
                             res_node.dump();
                             res_node_f.dump();
@@ -272,7 +270,7 @@ int main(int argc, const char **argv)
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                        if (verbose)
+                        if (g_verbose)
                         {
                             cout << "Pushing to R" << endl;
                             res_node.dump();
@@ -294,7 +292,7 @@ int main(int argc, const char **argv)
         }
         else
         {
-            if (verbose)
+            if (g_verbose)
                 cout << "\nSuccessfull resiliency check.\n"
                      << endl;
         }
@@ -402,9 +400,7 @@ bool resiliency_check(ResilientNode node)
 /// @return True if the replan succeds, false otherwise.
 bool replan(ResilientNode current_node, SearchEngine *engine)
 {
-    bool verbose = false;
-
-    if (verbose)
+    if (g_verbose)
     {
         cout << "Replanning... " << endl;
         resource_usage("Before replan");
@@ -414,12 +410,12 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 
     if (is_deadend(current_state))
     {
-        if (verbose)
+        if (g_verbose)
             cout << "\nDetected deadend" << endl;
         return false;
     }
 
-    if (verbose)
+    if (g_verbose)
         cout << "\nCreating initial state." << endl;
 
     // set the initial state as the state in the current node
@@ -427,7 +423,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     for (int i = 0; i < g_variable_name.size(); i++)
         g_initial_state_data[i] = current_state[i];
 
-    if (verbose)
+    if (g_verbose)
         cout << "Creating new engine." << endl;
 
     reset_goal();
@@ -435,7 +431,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     engine->reset();
     g_timer_engine_init.stop();
 
-    if (verbose)
+    if (g_verbose)
         cout << "Searching for a solution." << endl;
 
     g_timer_search.resume();
@@ -445,7 +441,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     if (engine->found_solution())
     {
         cout << "Solution found" << endl;
-        if (verbose)
+        if (g_verbose)
         {
             engine->save_plan_if_necessary();
             engine->statistics();
@@ -457,7 +453,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     }
     else
     {
-        if (verbose)
+        if (g_verbose)
             cout << "Replanning failed!" << endl;
 
         return false;
@@ -491,7 +487,7 @@ void add_fault_model_deadend(ResilientNode node)
     Policy *current_deadend_policy = new Policy();
 
     current_deadend_policy->update_policy(de_items);
-    g_fault_model.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), current_deadend_policy));
+    g_fault_models.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), current_deadend_policy));
 
     std::set<Operator> v = node.get_deactivated_op();
     for (std::set<Operator>::iterator it = v.begin(); it != v.end(); ++it)
@@ -504,14 +500,14 @@ void add_fault_model_deadend(ResilientNode node)
 
         s_a_item.push_back(new NondetDeadend(new PartialState(state), it->nondet_index));
 
-        if (g_fault_model.find(std::make_pair(g_current_faults + 1, forbidden_minus_a)) != g_fault_model.end())
+        if (g_fault_models.find(std::make_pair(g_current_faults + 1, forbidden_minus_a)) != g_fault_models.end())
         {
-            g_fault_model.find(std::make_pair(g_current_faults + 1, forbidden_minus_a))->second->update_policy(s_a_item);
+            g_fault_models.find(std::make_pair(g_current_faults + 1, forbidden_minus_a))->second->update_policy(s_a_item);
         }
         else
         {
             s_a->update_policy(s_a_item);
-            g_fault_model.insert(std::make_pair(std::make_pair(g_current_faults + 1, forbidden_minus_a), s_a));
+            g_fault_models.insert(std::make_pair(std::make_pair(g_current_faults + 1, forbidden_minus_a), s_a));
         }
     }
 }
@@ -635,7 +631,7 @@ void print_timings()
     cout << "                   Search Time: " << g_timer_search << endl;
     cout << "           Policy Construction: " << g_timer_policy_build << endl;
     cout << "                    Total time: " << g_timer << endl;
-    cout << "\n--------------------------------------------------------------\n"
+    cout << "\n--------------------------------------------------------------------\n"
          << endl;
 }
 

@@ -1005,7 +1005,7 @@ void Policy::dump_simple()
     RegressionStep *rs = (RegressionStep *)(*op_iter);
     rs->get_state().dump_pddl();
 
-    cout << "\nPolicy:" << endl;
+    cout << "\nPlan:" << endl;
 
     for (list<PolicyItem *>::reverse_iterator op_iter = all_items.rbegin();
          op_iter != all_items.rend(); ++op_iter)

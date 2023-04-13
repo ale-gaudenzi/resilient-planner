@@ -301,6 +301,10 @@ SearchEngine *OptionParser::parse_cmd_line(
             g_use_resilient_planner = true;
             g_max_faults = atoi(argv[i]);
         }
+        else if(arg.compare("--verbose") == 0){
+            ++i;
+            g_verbose = true;
+        }
         else {
             cerr << "unknown option " << arg << endl << endl;
             cout << OptionParser::usage(argv[0]) << endl;

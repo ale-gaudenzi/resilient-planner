@@ -27,14 +27,12 @@ void RegressionStep::dump_state_op()
     cout << "Regression Step (" << this << ")" << endl;
     if (!is_goal)
     {
-        cout << " -{ Operator }-" << endl;
         op->dump();
     }
     else
     {
-        cout << " -{ Goal }-" << endl;
+        cout << "Goal" << endl;
     }
-    cout << "\n -{ State }-" << endl;
     state->dump_pddl();
     cout << "" << endl;
 }

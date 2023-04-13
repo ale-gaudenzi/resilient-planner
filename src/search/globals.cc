@@ -599,8 +599,9 @@ int g_max_faults;
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
 size_t g_current_forbidden_hash;
-std::map<k_v_pair, Policy *> g_fault_model;
+std::map<k_v_pair, Policy *> g_fault_models;
 std::map<k_v_pair, Policy *> g_resilient_policies;
 bool g_use_resilient_planner = true;
 Policy *g_original_policy;
 
+bool g_verbose = false;
