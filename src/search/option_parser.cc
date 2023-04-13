@@ -302,7 +302,7 @@ SearchEngine *OptionParser::parse_cmd_line(
             g_max_faults = atoi(argv[i]);
         }
         else if(arg.compare("--verbose") == 0){
-            ++i;
+            //++i;
             g_verbose = true;
         }
         else {

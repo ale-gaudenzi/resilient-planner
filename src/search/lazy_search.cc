@@ -142,9 +142,13 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
     }
     else
     {
+        if(g_verbose)
+            cout << "Considered operators:" << endl;
         for (int i = 0; i < all_operators.size(); i++)
             if (!all_operators[i]->is_marked())
             {
+                if(g_verbose)
+                    cout << "Operator " << all_operators[i]->get_name() << endl;
                 ops.push_back(all_operators[i]);
             }
     }
@@ -163,6 +167,7 @@ void LazySearch::generate_successors()
         bool is_preferred = operators[i]->is_marked();
         if (is_preferred)
             operators[i]->unmark();
+
         if (new_real_g < bound)
         {
             open_list->evaluate(new_g, is_preferred);
