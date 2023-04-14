@@ -47,8 +47,9 @@ void Heuristic::compute_forbidden(const StateInterface &state) {
 }
 
 void Heuristic::evaluate(const State &state) {
-    if (heuristic == NOT_INITIALIZED)
+    if (heuristic == NOT_INITIALIZED){
         initialize();
+    }
 
     preferred_operators.clear();
     for (int i = 0; i < g_operators.size(); i++)
@@ -57,8 +58,10 @@ void Heuristic::evaluate(const State &state) {
     compute_forbidden(state);
 
     heuristic = compute_heuristic(state);
+
     for (int i = 0; i < preferred_operators.size(); i++)
         preferred_operators[i]->unmark();
+        
     assert(heuristic == DEAD_END || heuristic >= 0);
 
     if (heuristic == DEAD_END) {

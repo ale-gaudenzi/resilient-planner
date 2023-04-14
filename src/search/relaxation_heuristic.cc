@@ -22,7 +22,6 @@ RelaxationHeuristic::~RelaxationHeuristic() {
 void RelaxationHeuristic::reset() {
     
     Heuristic::reset();
-    
     // Rebuild the goal propositions (there may be a new goal)
     for (int i = 0; i < goal_propositions.size(); i++) {
         goal_propositions[i]->is_goal = false;
@@ -39,6 +38,12 @@ void RelaxationHeuristic::reset() {
 
 // initialization
 void RelaxationHeuristic::initialize() {
+    // for resilient
+    unary_operators.clear();
+    propositions.clear();
+    goal_propositions.clear();
+
+
     // Build propositions.
     int prop_id = 0;
     propositions.resize(g_variable_domain.size());
@@ -61,9 +66,9 @@ void RelaxationHeuristic::initialize() {
         build_unary_operators(g_axioms[i], -1);
 
     // Simplify unary operators.
-    cout << " !! Warning: Disabling the simplification of unary operators !!" << endl;
-    cout << " !!           to keep the non-deterministic planning sound.  !!" << endl;
-    //simplify();
+    //cout << " !! Warning: Disabling the simplification of unary operators !!" << endl;
+    //cout << " !!           to keep the non-deterministic planning sound.  !!" << endl;
+    // simplify();
 
     // Cross-reference unary operators.
     for (int i = 0; i < unary_operators.size(); i++) {

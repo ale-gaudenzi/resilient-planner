@@ -159,7 +159,7 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
 
 void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterface &_curr, vector<const Operator *> &ops)
 {
-    bool verbose = false;
+    //bool verbose = false;
     if (g_detect_deadends && g_deadend_policy)
     {
         PartialState curr = PartialState(_curr);
@@ -176,11 +176,10 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
         g_successor_generator_orig->generate_applicable_ops(_curr, orig_ops, true);
         g_deadend_policy->generate_applicable_items(curr, reg_items, false, false);
 
-        
         /** For resilient planner:
-        * we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
-        * and add them to the deadends of the current search
-        */ 
+         * we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
+         * and add them to the deadends of the current search
+         */
         if (g_use_resilient_planner)
         {
             if (g_fault_models.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_fault_models.end())
@@ -203,33 +202,19 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
         }
 
         vector<int> ruled_out;
+
         for (int i = 0; i < orig_ops.size(); i++)
         {
-            if (0 == forbidden.count(orig_ops[i]->nondet_index))
+            /** For resilient planner:
+             * we don't push back the operator if it is forbidden (= found in current node V)
+             */
+            if (0 == forbidden.count(orig_ops[i]->nondet_index) && g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end())
             {
+                debug = false;
                 if (debug)
                     cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
-
-                /** For resilient planner:
-                * we don't push back the operator if it is forbidden (= found in current node V)
-                */ 
-                if (g_use_resilient_planner)
-                {
-                    if (g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end()) {
-                        if(verbose){
-                            cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
-                        }
-                        ops.push_back(orig_ops[i]);
-                    } else {
-                        if(verbose){
-                            cout << "Forbidding operator " << orig_ops[i]->get_name() << endl;
-                        }
-                    }
-                }
-                else
-                {
-                    ops.push_back(orig_ops[i]);
-                }
+                
+                ops.push_back(orig_ops[i]);
             }
             else
             {

@@ -81,6 +81,7 @@ void AdditiveHeuristic::setup_exploration_queue_state(const StateInterface &stat
 
 bool AdditiveHeuristic::relaxed_exploration(bool include_forbidden) {
     int unsolved_goals = goal_propositions.size();
+
     while (!queue.empty()) {
         pair<int, Proposition *> top_pair = queue.pop();
         int distance = top_pair.first;
@@ -94,6 +95,7 @@ bool AdditiveHeuristic::relaxed_exploration(bool include_forbidden) {
             return true;
         const vector<UnaryOperator *> &triggered_operators =
             prop->precondition_of;
+
         for (int i = 0; i < triggered_operators.size(); i++) {
             
             UnaryOperator *unary_op = triggered_operators[i];
@@ -104,9 +106,9 @@ bool AdditiveHeuristic::relaxed_exploration(bool include_forbidden) {
             //assert(unary_op->unsatisfied_preconditions >= 0);
             
             if (unary_op->unsatisfied_preconditions == 0) {
-                
+
                 bool is_forbidden = (0 != forbidden_ops.count(g_operators[unary_op->operator_no].nondet_index));
-                
+
                 if (!g_detect_deadends || !is_forbidden ||
                     (include_forbidden && (unary_op->cost != unary_op->base_cost)))
                     enqueue_if_necessary(unary_op->effect,
@@ -127,7 +129,6 @@ bool AdditiveHeuristic::relaxed_exploration(bool include_forbidden) {
         
                 for (int j = 0; j < new_triggered_operators.size(); j++) {
                     if (0 != forbidden_ops.count(g_operators[new_triggered_operators[j]->operator_no].nondet_index)) {
-                        
                         if (new_triggered_operators[j]->unsatisfied_preconditions <= 0) {
                             increase_cost(new_triggered_operators[j]->cost, unary_op->cost);
                             enqueue_if_necessary(new_triggered_operators[j]->effect,
@@ -137,6 +138,7 @@ bool AdditiveHeuristic::relaxed_exploration(bool include_forbidden) {
                     }
                 }
             }
+
         }
     }
     return false;
@@ -178,10 +180,15 @@ int AdditiveHeuristic::compute_add_and_ff(const StateInterface &state) {
     }
 
     int total_cost = 0;
+
     for (int i = 0; i < goal_propositions.size(); i++) {
+
         int prop_cost = goal_propositions[i]->cost;
+        //cout << "prop_cost: " << prop_cost << endl;
+
         if (prop_cost == -1)
             return DEAD_END;
+
         increase_cost(total_cost, prop_cost);
     }
     return total_cost;

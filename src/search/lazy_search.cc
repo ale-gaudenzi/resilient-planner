@@ -45,8 +45,10 @@ void LazySearch::reset()
 
     open_list->clear();
 
+    cout << "heuristics.size() = " << heuristics.size() << endl;
     for (int i = 0; i < heuristics.size(); i++)
     {
+        
         heuristics[i]->reset();
     }
 }
@@ -60,12 +62,14 @@ void LazySearch::set_pref_operator_heuristics(
 void LazySearch::initialize()
 {
     // TODO children classes should output which kind of search
-    //  if (!g_silent_planning)
+
     cout << "Conducting lazy best first search, (real) bound = " << bound << endl;
 
     // Only set up the heuristics on the first go
-    if (was_initialized)
+    
+    if (was_initialized){
         return;
+    }
     else
         was_initialized = true;
 
@@ -89,7 +93,6 @@ void LazySearch::initialize()
         heuristics.push_back(*it);
     }
     assert(!heuristics.empty());
-    cout << "end of initialize" << endl;
 }
 
 void LazySearch::get_successor_operators(vector<const Operator *> &ops)
@@ -107,10 +110,10 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
             heur->get_preferred_operators(preferred_operators);
     }
 
-    /** 
+    /**
      * For resilient planner
      * Remove from preferred operators the ones in V
-    */
+     */
     if (g_use_resilient_planner)
     {
         for (int i = 0; i < preferred_operators.size(); i++)
@@ -122,7 +125,6 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
             }
         }
     }
-
 
     if (succ_mode == pref_first)
     {
@@ -210,6 +212,7 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
+
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
 
     if (node.is_new() || reopen)
@@ -250,7 +253,7 @@ int LazySearch::step()
             // We use the value of the first heuristic, because SearchSpace only
             // supported storing one heuristic value
             int h = heuristics[0]->get_value();
-
+            //cout << "h: " << h << endl;
             if (reopen)
             {
                 node.reopen(parent_node, current_operator);

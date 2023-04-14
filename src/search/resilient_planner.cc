@@ -162,7 +162,6 @@ int main(int argc, const char **argv)
      * Resilient Alghoritm *
      ***********************/
     // the resilient algorithm start from here, previously code is cloned from the original prp
-
     // save the first policy as the original policy
     // g_policy during the execution will contain all the other branches too
     g_original_policy = new Policy();
@@ -181,22 +180,22 @@ int main(int argc, const char **argv)
         std::set<Operator> post_actions;
         post_actions.insert(*(*it));
         ResilientNode res_node_f = ResilientNode(current, g_max_faults - 1, post_actions);
-
+/*
         if (g_verbose)
         {
             cout << "\nPushing nodes of the initial policy:" << endl;
             res_node.dump();
             res_node_f.dump();
         }
-
+*/
         nodes.push(res_node);
         nodes.push(res_node_f);
 
         current = g_state_registry->get_successor_state(current, *(*it));
     }
 
-    cout << "\nInitial policy:" << endl;
-    g_policy->dump();
+    //cout << "\nInitial policy:" << endl;
+    //g_policy->dump();
 
     // main while loop of the algorithm, basically 1:1 with the pseudocode
     int iteration = 1;
@@ -208,6 +207,7 @@ int main(int argc, const char **argv)
         g_current_forbidden_ops = current_node.get_deactivated_op();
 
         k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
+
 
         if (g_verbose)
         {
@@ -223,15 +223,32 @@ int main(int argc, const char **argv)
                 cout << "\nFailed resiliency check.\n"
                      << endl;
 
+            for (int i = 0; i < g_operators.size(); i++)
+            {
+                if(g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end()) {
+                    g_operators.erase(g_operators.begin()+i);
+                    i--;
+                }
+            }
+
             if (!replan(current_node, engine))
             {
+                for (set<Operator>::iterator it = g_current_forbidden_ops.begin(); it != g_current_forbidden_ops.end(); ++it)
+                {
+                    g_operators.push_back(*it);
+                }   
+
                 if (g_verbose)
                     cout << "\nFailed replanning." << endl;
-
                 add_fault_model_deadend(current_node);
             }
             else
             {
+                for (set<Operator>::iterator it = g_current_forbidden_ops.begin(); it != g_current_forbidden_ops.end(); ++it)
+                {
+                    g_operators.push_back(*it);
+                }   
+
                 if (g_verbose)
                     cout << "Successfull replanning" << endl;
 
@@ -270,11 +287,11 @@ int main(int argc, const char **argv)
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                        if (g_verbose)
+                        /*if (g_verbose)
                         {
                             cout << "Pushing to R" << endl;
                             res_node.dump();
-                        }
+                        }*/
                         resilient_nodes.push_back(res_node);
                         current = g_state_registry->get_successor_state(current, *(*it));
                     }
@@ -288,16 +305,19 @@ int main(int argc, const char **argv)
                 g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
 
                 g_policy->update_policy(regression_steps);
-            }
+            } 
         }
         else
         {
+
             if (g_verbose)
                 cout << "\nSuccessfull resiliency check.\n"
                      << endl;
         }
 
         iteration++;
+        //if (iteration > 2)
+        //    break;
     }
 
     if (find_in_nodes_list(resilient_nodes, initial_node))
@@ -368,6 +388,7 @@ bool resiliency_check(ResilientNode node)
         }
         else if (reg_step->is_goal)
             goal_step = reg_step;
+
     }
 
     State state = node.get_state();

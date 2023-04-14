@@ -85,12 +85,10 @@ void SearchEngine::search()
     initialize();
     Timer timer;
     //int i = 1;
-    //if(g_verbose)
-    //    cout << "Step " << i << endl;
+    //cout << "Step " << i << endl;
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit)){
-    //    i++;
-    //    if (g_verbose)
-    //        cout << "Step " << i << endl;
+        //i++;
+        //cout << "Step " << i << endl;
     }
         ;
 

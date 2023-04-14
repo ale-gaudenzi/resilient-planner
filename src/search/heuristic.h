@@ -62,7 +62,11 @@ public:
     static Options default_options();
 
     // for policy handling
-    virtual void reset() { preferred_operators.clear(); }
+    virtual void reset() { 
+        preferred_operators.clear();
+        // for resilient
+        initialize();
+    }
     std::set<int> forbidden_ops;
     void compute_forbidden(const StateInterface &state);
 };

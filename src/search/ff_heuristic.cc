@@ -70,6 +70,7 @@ int FFHeuristic::compute_heuristic(const State &state) {
         return DEAD_END;
     
     int h_add = compute_add_and_ff(state);
+    //cout << "h_add: " << h_add << endl;
     if (h_add == DEAD_END) {
         
         if (g_record_online_deadends && !g_limit_states) {
@@ -93,12 +94,15 @@ int FFHeuristic::compute_heuristic(const State &state) {
         mark_preferred_operators_and_relaxed_plan(state, goal_propositions[i]);
 
     int h_ff = 0;
+    
     for (int op_no = 0; op_no < relaxed_plan.size(); op_no++) {
         if (relaxed_plan[op_no]) {
             relaxed_plan[op_no] = false; // Clean up for next computation.
             h_ff += get_adjusted_cost(g_operators[op_no]);
         }
     }
+
+
     return h_ff;
 }
 
