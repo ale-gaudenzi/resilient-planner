@@ -107,50 +107,50 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
             heur->get_preferred_operators(preferred_operators);
     }
 
-    /** For resilient planner: 
-    * We don't consider preferred operators because it causes inconsistency 
-    * when using the policy to retrieve successor operators of the plan
-    */ 
-    if (!g_use_resilient_planner)
+    /** 
+     * For resilient planner
+     * Remove from preferred operators the ones in V
+    */
+    if (g_use_resilient_planner)
     {
-        if (succ_mode == pref_first)
+        for (int i = 0; i < preferred_operators.size(); i++)
         {
-            for (int i = 0; i < preferred_operators.size(); i++)
+            if (g_current_forbidden_ops.find(*preferred_operators[i]) != g_current_forbidden_ops.end())
             {
-                if (!preferred_operators[i]->is_marked())
-                {
-                    ops.push_back(preferred_operators[i]);
-                    preferred_operators[i]->mark();
-                }
+                preferred_operators.erase(preferred_operators.begin() + i);
+                i--;
             }
-
-            for (int i = 0; i < all_operators.size(); i++)
-                if (!all_operators[i]->is_marked())
-                {
-                    ops.push_back(all_operators[i]);
-                }
-        }
-        else
-        {
-            for (int i = 0; i < preferred_operators.size(); i++)
-                if (!preferred_operators[i]->is_marked())
-                    preferred_operators[i]->mark();
-            ops.swap(all_operators);
-            if (succ_mode == shuffled)
-                random_shuffle(ops.begin(), ops.end());
         }
     }
-    else
+
+
+    if (succ_mode == pref_first)
     {
-        if(g_verbose)
-            cout << "Considered operators:" << endl;
+        for (int i = 0; i < preferred_operators.size(); i++)
+        {
+            if (!preferred_operators[i]->is_marked())
+            {
+                ops.push_back(preferred_operators[i]);
+                preferred_operators[i]->mark();
+            }
+        }
+
         for (int i = 0; i < all_operators.size(); i++)
             if (!all_operators[i]->is_marked())
             {
-                if(g_verbose)
-                    cout << "Operator " << all_operators[i]->get_name() << endl;
                 ops.push_back(all_operators[i]);
             }
+    }
+    else
+    {
+        for (int i = 0; i < preferred_operators.size(); i++)
+            if (!preferred_operators[i]->is_marked())
+                preferred_operators[i]->mark();
+
+        ops.swap(all_operators);
+
+        if (succ_mode == shuffled)
+            random_shuffle(ops.begin(), ops.end());
     }
 }
 

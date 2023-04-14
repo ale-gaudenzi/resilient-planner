@@ -95,4 +95,3 @@ echo "$SEARCH" "$IPC" policy-repair < output "$@"
 "$SEARCH" $IPC policy-repair < output "$@"
 echo
 
-

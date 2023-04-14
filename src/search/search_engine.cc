@@ -35,7 +35,7 @@ void SearchEngine::reset()
     search_space.reset();
 
     /** For resilient planner:
-    * we need to keep the old state refistries in order to
+    * we need to keep the old state registries in order to
     * be able to recognize states that have been generated in previous replanning
     * As long as a state is in a node in the nodes stack, its register must also be kept in memory
     * otherwise the state can't be recognized correctly
@@ -84,13 +84,13 @@ void SearchEngine::search()
 
     initialize();
     Timer timer;
-    int i = 1;
-    if(g_verbose)
-        cout << "Step " << i << endl;
+    //int i = 1;
+    //if(g_verbose)
+    //    cout << "Step " << i << endl;
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit)){
-        i++;
-        if (g_verbose)
-            cout << "Step " << i << endl;
+    //    i++;
+    //    if (g_verbose)
+    //        cout << "Step " << i << endl;
     }
         ;
 

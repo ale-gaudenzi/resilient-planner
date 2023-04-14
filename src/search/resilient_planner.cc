@@ -240,9 +240,9 @@ int main(int argc, const char **argv)
 
                 if (current_node.get_k() >= 1)
                 {
-                    if (g_verbose)
-                        cout << "\nPushing nodes:\n"
-                             << endl;
+                    //if (g_verbose)
+                    //    cout << "\nPushing nodes:\n"
+                    //         << endl;
 
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
@@ -251,14 +251,14 @@ int main(int argc, const char **argv)
                         std::set<Operator> post_actions = g_current_forbidden_ops;
                         post_actions.insert(*(*it));
                         ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
-
+                        /*
                         if (g_verbose)
                         {
                             res_node.dump();
                             res_node_f.dump();
                             cout << "\n"
                                  << endl;
-                        }
+                        }*/
 
                         nodes.push(res_node);
                         nodes.push(res_node_f);
