@@ -129,6 +129,8 @@ int main(int argc, const char **argv)
     cout << "Max time for each of the " << epochs_remaining << " epochs: " << g_jic_limit << endl
          << endl;
 
+    g_operators_backup = g_operators;
+
     /************************
      * Initial policy search *
      *************************/
@@ -176,26 +178,23 @@ int main(int argc, const char **argv)
     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
     {
         ResilientNode res_node = ResilientNode(current, g_max_faults);
-
         std::set<Operator> post_actions;
         post_actions.insert(*(*it));
         ResilientNode res_node_f = ResilientNode(current, g_max_faults - 1, post_actions);
-/*
-        if (g_verbose)
-        {
-            cout << "\nPushing nodes of the initial policy:" << endl;
-            res_node.dump();
-            res_node_f.dump();
-        }
-*/
         nodes.push(res_node);
         nodes.push(res_node_f);
-
         current = g_state_registry->get_successor_state(current, *(*it));
     }
 
     //cout << "\nInitial policy:" << endl;
     //g_policy->dump();
+
+    /*
+    cout << "PPPPPPPPPPP" << endl;
+    for (int i = 0; i < g_operators.size(); i++){
+        cout << g_operators[i].get_nondet_name() << endl;
+
+    }*/
 
     // main while loop of the algorithm, basically 1:1 with the pseudocode
     int iteration = 1;
@@ -207,8 +206,7 @@ int main(int argc, const char **argv)
         g_current_forbidden_ops = current_node.get_deactivated_op();
 
         k_v_pair current_pair = std::make_pair(g_current_faults, g_current_forbidden_ops);
-
-
+        
         if (g_verbose)
         {
             cout << "\n----------------------------------------" << endl;
@@ -222,32 +220,29 @@ int main(int argc, const char **argv)
             if (g_verbose)
                 cout << "\nFailed resiliency check.\n"
                      << endl;
-
+/*
             for (int i = 0; i < g_operators.size(); i++)
             {
                 if(g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end()) {
+                    cout << "Removing operator " << g_operators[i].get_name() << endl;
                     g_operators.erase(g_operators.begin()+i);
                     i--;
                 }
-            }
+            }*/
 
             if (!replan(current_node, engine))
             {
-                for (set<Operator>::iterator it = g_current_forbidden_ops.begin(); it != g_current_forbidden_ops.end(); ++it)
-                {
-                    g_operators.push_back(*it);
-                }   
+                //g_operators = g_operators_backup;
 
                 if (g_verbose)
                     cout << "\nFailed replanning." << endl;
+
                 add_fault_model_deadend(current_node);
             }
+            
             else
             {
-                for (set<Operator>::iterator it = g_current_forbidden_ops.begin(); it != g_current_forbidden_ops.end(); ++it)
-                {
-                    g_operators.push_back(*it);
-                }   
+             //   g_operators = g_operators_backup;
 
                 if (g_verbose)
                     cout << "Successfull replanning" << endl;
@@ -257,10 +252,6 @@ int main(int argc, const char **argv)
 
                 if (current_node.get_k() >= 1)
                 {
-                    //if (g_verbose)
-                    //    cout << "\nPushing nodes:\n"
-                    //         << endl;
-
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
                         ResilientNode res_node = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
@@ -268,14 +259,6 @@ int main(int argc, const char **argv)
                         std::set<Operator> post_actions = g_current_forbidden_ops;
                         post_actions.insert(*(*it));
                         ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
-                        /*
-                        if (g_verbose)
-                        {
-                            res_node.dump();
-                            res_node_f.dump();
-                            cout << "\n"
-                                 << endl;
-                        }*/
 
                         nodes.push(res_node);
                         nodes.push(res_node_f);
@@ -287,11 +270,7 @@ int main(int argc, const char **argv)
                     for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                     {
                         ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                        /*if (g_verbose)
-                        {
-                            cout << "Pushing to R" << endl;
-                            res_node.dump();
-                        }*/
+
                         resilient_nodes.push_back(res_node);
                         current = g_state_registry->get_successor_state(current, *(*it));
                     }
@@ -316,8 +295,8 @@ int main(int argc, const char **argv)
         }
 
         iteration++;
-        //if (iteration > 2)
-        //    break;
+        if (g_max_iterations > 0 && iteration > g_max_iterations)
+            break;
     }
 
     if (find_in_nodes_list(resilient_nodes, initial_node))
@@ -424,7 +403,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     if (g_verbose)
     {
         cout << "Replanning... " << endl;
-        resource_usage("Before replan");
+        //resource_usage("Before replan");
     }
 
     PartialState current_state = PartialState(current_node.get_state());
@@ -467,7 +446,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->save_plan_if_necessary();
             engine->statistics();
             engine->heuristic_statistics();
-            resource_usage("After replan");
+            //resource_usage("After replan");
         }
 
         return true;
@@ -499,9 +478,12 @@ void add_fault_model_deadend(ResilientNode node)
 
     for (int j = 0; j < reg_items.size(); j++)
     {
+        //cout << "Adding in de_items:" << endl;
+        //reg_items[j]->dump();
         RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
         de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state),
                                              ro->op->nondet_index));
+
     }
 
     delete dummy_state;

@@ -301,6 +301,10 @@ SearchEngine *OptionParser::parse_cmd_line(
             g_use_resilient_planner = true;
             g_max_faults = atoi(argv[i]);
         }
+        else if(arg.compare("--max-iterations") == 0){
+            ++i;
+            g_max_iterations = atoi(argv[i]);
+        }
         else if(arg.compare("--verbose") == 0){
             g_verbose = true;
         }

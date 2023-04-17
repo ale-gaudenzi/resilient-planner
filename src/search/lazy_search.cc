@@ -33,8 +33,18 @@ LazySearch::~LazySearch()
 
 void LazySearch::reset()
 {
-    SearchEngine::reset();
+    for (int i = 0; i < g_operators.size(); i++)
+    {
+        if(g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end()) {
+            cout << "Removing operator " << g_operators[i].get_name() << endl;
+            g_operators.erase(g_operators.begin()+i);
+            i--;
+        }
+    }
 
+
+    SearchEngine::reset();
+    initialize();
     current_state = g_initial_state();
 
     current_predecessor_id = StateID::no_state;
@@ -46,11 +56,13 @@ void LazySearch::reset()
     open_list->clear();
 
     cout << "heuristics.size() = " << heuristics.size() << endl;
+    
     for (int i = 0; i < heuristics.size(); i++)
     {
-        
         heuristics[i]->reset();
     }
+    // provare qui g_operators = g_operators_backup;
+    g_operators = g_operators_backup;
 }
 
 void LazySearch::set_pref_operator_heuristics(

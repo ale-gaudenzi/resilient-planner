@@ -5,6 +5,8 @@
 
 --verbose
 
+--max-iterations N
+
 ```
 
 ### Examples

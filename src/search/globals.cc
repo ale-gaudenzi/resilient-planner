@@ -604,4 +604,8 @@ std::map<k_v_pair, Policy *> g_resilient_policies;
 bool g_use_resilient_planner = true;
 Policy *g_original_policy;
 
+std::vector<Operator> g_operators_backup;
+
 bool g_verbose = false;
+
+int g_max_iterations = -1;
