@@ -220,19 +220,10 @@ int main(int argc, const char **argv)
             if (g_verbose)
                 cout << "\nFailed resiliency check.\n"
                      << endl;
-/*
-            for (int i = 0; i < g_operators.size(); i++)
-            {
-                if(g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end()) {
-                    cout << "Removing operator " << g_operators[i].get_name() << endl;
-                    g_operators.erase(g_operators.begin()+i);
-                    i--;
-                }
-            }*/
+
 
             if (!replan(current_node, engine))
             {
-                //g_operators = g_operators_backup;
 
                 if (g_verbose)
                     cout << "\nFailed replanning." << endl;
@@ -242,7 +233,6 @@ int main(int argc, const char **argv)
             
             else
             {
-             //   g_operators = g_operators_backup;
 
                 if (g_verbose)
                     cout << "Successfull replanning" << endl;

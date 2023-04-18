@@ -182,15 +182,10 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
          */
         if (g_use_resilient_planner)
         {
-            //g_operators = g_operators_backup;
-
             if (g_fault_models.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_fault_models.end())
             {
-                // cout << "AAAAAAAAA" << endl;
                 Policy *current_forbidden = g_fault_models[std::make_pair(g_current_faults, g_current_forbidden_ops)];
                 current_forbidden->generate_applicable_items(curr, reg_items, false, false);
-                // current_forbidden->dump();
-
             }
         }
 

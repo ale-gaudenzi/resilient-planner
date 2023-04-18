@@ -33,6 +33,10 @@ LazySearch::~LazySearch()
 
 void LazySearch::reset()
 {
+    /**
+     * For resilient planner
+     * Removing operators in V from g_operators before reinitializing the heuristic
+    */
     for (int i = 0; i < g_operators.size(); i++)
     {
         if(g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end()) {
@@ -41,7 +45,6 @@ void LazySearch::reset()
             i--;
         }
     }
-
 
     SearchEngine::reset();
     initialize();
@@ -61,7 +64,11 @@ void LazySearch::reset()
     {
         heuristics[i]->reset();
     }
-    // provare qui g_operators = g_operators_backup;
+
+    /**
+     * For resilient planner
+     * Restore the original operators after heuristic reinitialization
+    */
     g_operators = g_operators_backup;
 }
 
