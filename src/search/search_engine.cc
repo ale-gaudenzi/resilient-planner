@@ -30,16 +30,16 @@ SearchEngine::~SearchEngine()
 void SearchEngine::reset()
 {
     solved = false;
-    
+
     search_progress.reset();
     search_space.reset();
 
     /** For resilient planner:
-    * we need to keep the old state registries in order to
-    * be able to recognize states that have been generated in previous replanning
-    * As long as a state is in a node in the nodes stack, its register must also be kept in memory
-    * otherwise the state can't be recognized correctly
-    */
+     * we need to keep the old state registries in order to
+     * be able to recognize states that have been generated in previous replanning
+     * As long as a state is in a node in the nodes stack, its register must also be kept in memory
+     * otherwise the state can't be recognized correctly
+     */
     if (!g_use_resilient_planner)
         delete g_state_registry;
 
@@ -84,13 +84,13 @@ void SearchEngine::search()
 
     initialize();
     Timer timer;
-    //int i = 1;
-    //cout << "Step " << i << endl;
-    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit)){
-        //i++;
-        //cout << "Step " << i << endl;
-    }
-        ;
+    // int i = 1;
+    // cout << "Step " << i << endl;
+    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
+    {
+        // i++;
+        // cout << "Step " << i << endl;
+    };
 
     if (g_timer_jit() < g_jic_limit)
     {
@@ -101,13 +101,15 @@ void SearchEngine::search()
         }
         if (search_progress.get_generated() > 2)
         {
-            cout << "Generated " << search_progress.get_generated() << " state(s)." << endl;
-
-            if (g_record_online_deadends && !g_limit_states)
-                cout << "Dead ends: " << search_progress.get_deadend_states() << " state(s). ("
-                     << g_found_deadends.size() << " recorded)" << endl;
-            else
-                cout << "Dead ends: " << search_progress.get_deadend_states() << " state(s)." << endl;
+            if (g_verbose)
+            {
+                cout << "Generated " << search_progress.get_generated() << " state(s)." << endl;
+                if (g_record_online_deadends && !g_limit_states)
+                    cout << "Dead ends: " << search_progress.get_deadend_states() << " state(s). ("
+                         << g_found_deadends.size() << " recorded)" << endl;
+                else
+                    cout << "Dead ends: " << search_progress.get_deadend_states() << " state(s)." << endl;
+            }
         }
         if (!g_silent_planning)
             cout << "Actual search time: " << timer

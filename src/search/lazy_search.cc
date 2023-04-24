@@ -36,12 +36,12 @@ void LazySearch::reset()
     /**
      * For resilient planner
      * Removing operators in V from g_operators before reinitializing the heuristic
-    */
+     */
     for (int i = 0; i < g_operators.size(); i++)
     {
-        if(g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end()) {
-            cout << "Removing operator " << g_operators[i].get_name() << endl;
-            g_operators.erase(g_operators.begin()+i);
+        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+        {
+            g_operators.erase(g_operators.begin() + i);
             i--;
         }
     }
@@ -58,8 +58,6 @@ void LazySearch::reset()
 
     open_list->clear();
 
-    cout << "heuristics.size() = " << heuristics.size() << endl;
-    
     for (int i = 0; i < heuristics.size(); i++)
     {
         heuristics[i]->reset();
@@ -68,7 +66,7 @@ void LazySearch::reset()
     /**
      * For resilient planner
      * Restore the original operators after heuristic reinitialization
-    */
+     */
     g_operators = g_operators_backup;
 }
 
@@ -81,12 +79,13 @@ void LazySearch::set_pref_operator_heuristics(
 void LazySearch::initialize()
 {
     // TODO children classes should output which kind of search
-
-    cout << "Conducting lazy best first search, (real) bound = " << bound << endl;
+    if(g_verbose)
+        cout << "Conducting lazy best first search, (real) bound = " << bound << endl;
 
     // Only set up the heuristics on the first go
-    
-    if (was_initialized){
+
+    if (was_initialized)
+    {
         return;
     }
     else
@@ -272,7 +271,7 @@ int LazySearch::step()
             // We use the value of the first heuristic, because SearchSpace only
             // supported storing one heuristic value
             int h = heuristics[0]->get_value();
-            //cout << "h: " << h << endl;
+            // cout << "h: " << h << endl;
             if (reopen)
             {
                 node.reopen(parent_node, current_operator);

@@ -214,7 +214,9 @@ const <a class="el" href="classOptions.html">Options</a> *&#160;</td><td class="
   </tr>
 </table>
 </div><div class="memdoc">
-<p>For resilient planner: we need to keep the old state refistries in order to be able to recognize states that have been generated in previous replanning As long as a state is in a node in the nodes stack, its register must also be kept in memory otherwise the state can't be recognized correctly</p>
+<p>For resilient planner: we need to keep the old state registries in order to be able to recognize states that have been generated in previous replanning As long as a state is in a node in the nodes stack, its register must also be kept in memory otherwise the state can't be recognized correctly</p>
+
+<p>Reimplemented in <a class="el" href="classLazySearch.html#a0237d0322118a5e2d4939a179826158a">LazySearch</a>.</p>
 <div class="fragment"><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    solved = <span class="keyword">false</span>;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    </div>

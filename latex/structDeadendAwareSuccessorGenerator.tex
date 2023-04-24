@@ -19,7 +19,7 @@ For resilient planner\+: we retrieve the forbidden state-\/action pairs relative
 For resilient planner\+: we don\textquotesingle{}t push back the operator if it is forbidden (= found in current node V)
 \begin{DoxyCode}{0}
 \DoxyCodeLine{161 \{}
-\DoxyCodeLine{162     \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false};}
+\DoxyCodeLine{162     \textcolor{comment}{//bool verbose = false;}}
 \DoxyCodeLine{163     \textcolor{keywordflow}{if} (g\_detect\_deadends \&\& g\_deadend\_policy)}
 \DoxyCodeLine{164     \{}
 \DoxyCodeLine{165         \mbox{\hyperlink{classPartialState}{PartialState}} curr = \mbox{\hyperlink{classPartialState}{PartialState}}(\_curr);}
@@ -36,104 +36,91 @@ For resilient planner\+: we don\textquotesingle{}t push back the operator if it 
 \DoxyCodeLine{176         g\_successor\_generator\_orig-\/>generate\_applicable\_ops(\_curr, orig\_ops, \textcolor{keyword}{true});}
 \DoxyCodeLine{177         g\_deadend\_policy-\/>generate\_applicable\_items(curr, reg\_items, \textcolor{keyword}{false}, \textcolor{keyword}{false});}
 \DoxyCodeLine{178 }
-\DoxyCodeLine{179         }
-\DoxyCodeLine{184         \textcolor{keywordflow}{if} (g\_use\_resilient\_planner)}
-\DoxyCodeLine{185         \{}
-\DoxyCodeLine{186             \textcolor{keywordflow}{if} (g\_fault\_model.find(std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops)) != g\_fault\_model.end())}
-\DoxyCodeLine{187             \{}
-\DoxyCodeLine{188                 \mbox{\hyperlink{classPolicy}{Policy}} *current\_forbidden = g\_fault\_model[std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops)];}
-\DoxyCodeLine{189                 current\_forbidden-\/>generate\_applicable\_items(curr, reg\_items, \textcolor{keyword}{false}, \textcolor{keyword}{false});}
-\DoxyCodeLine{190             \}}
-\DoxyCodeLine{191         \}}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{193         set<int> forbidden;}
-\DoxyCodeLine{194         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < reg\_items.size(); i++)}
-\DoxyCodeLine{195         \{}
-\DoxyCodeLine{196             \textcolor{keywordtype}{int} index = ((\mbox{\hyperlink{structNondetDeadend}{NondetDeadend}} *)(reg\_items[i]))-\/>op\_index;}
-\DoxyCodeLine{197 }
-\DoxyCodeLine{198             forbidden.insert(index);}
-\DoxyCodeLine{199 }
-\DoxyCodeLine{200             \textcolor{keywordflow}{if} ((fsap\_map.find(index) == fsap\_map.end()) ||}
-\DoxyCodeLine{201                 (reg\_items[i]-\/>state-\/>size() < fsap\_map[index]-\/>state-\/>size()))}
-\DoxyCodeLine{202                 fsap\_map[index] = reg\_items[i];}
-\DoxyCodeLine{203         \}}
-\DoxyCodeLine{204 }
-\DoxyCodeLine{205         vector<int> ruled\_out;}
+\DoxyCodeLine{183         \textcolor{keywordflow}{if} (g\_use\_resilient\_planner)}
+\DoxyCodeLine{184         \{}
+\DoxyCodeLine{185             \textcolor{keywordflow}{if} (g\_fault\_models.find(std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops)) != g\_fault\_models.end())}
+\DoxyCodeLine{186             \{}
+\DoxyCodeLine{187                 \mbox{\hyperlink{classPolicy}{Policy}} *current\_forbidden = g\_fault\_models[std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops)];}
+\DoxyCodeLine{188                 current\_forbidden-\/>generate\_applicable\_items(curr, reg\_items, \textcolor{keyword}{false}, \textcolor{keyword}{false});}
+\DoxyCodeLine{189             \}}
+\DoxyCodeLine{190         \}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192         set<int> forbidden;}
+\DoxyCodeLine{193         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < reg\_items.size(); i++)}
+\DoxyCodeLine{194         \{}
+\DoxyCodeLine{195             \textcolor{keywordtype}{int} index = ((\mbox{\hyperlink{structNondetDeadend}{NondetDeadend}} *)(reg\_items[i]))-\/>op\_index;}
+\DoxyCodeLine{196 }
+\DoxyCodeLine{197             forbidden.insert(index);}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{199             \textcolor{keywordflow}{if} ((fsap\_map.find(index) == fsap\_map.end()) ||}
+\DoxyCodeLine{200                 (reg\_items[i]-\/>state-\/>size() < fsap\_map[index]-\/>state-\/>size()))}
+\DoxyCodeLine{201                 fsap\_map[index] = reg\_items[i];}
+\DoxyCodeLine{202         \}}
+\DoxyCodeLine{203 }
+\DoxyCodeLine{204         vector<int> ruled\_out;}
+\DoxyCodeLine{205 }
 \DoxyCodeLine{206         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < orig\_ops.size(); i++)}
 \DoxyCodeLine{207         \{}
-\DoxyCodeLine{208             \textcolor{keywordflow}{if} (0 == forbidden.count(orig\_ops[i]-\/>nondet\_index))}
-\DoxyCodeLine{209             \{}
-\DoxyCodeLine{210                 \textcolor{keywordflow}{if} (debug)}
-\DoxyCodeLine{211                     cout << \textcolor{stringliteral}{"Allowing operator "} << orig\_ops[i]-\/>get\_name() << endl;}
-\DoxyCodeLine{212 }
-\DoxyCodeLine{216                 \textcolor{keywordflow}{if} (g\_use\_resilient\_planner)}
-\DoxyCodeLine{217                 \{}
-\DoxyCodeLine{218                     \textcolor{keywordflow}{if} (g\_current\_forbidden\_ops.find(*orig\_ops[i]) == g\_current\_forbidden\_ops.end()) \{}
-\DoxyCodeLine{219                         \textcolor{keywordflow}{if}(verbose)\{}
-\DoxyCodeLine{220                             cout << \textcolor{stringliteral}{"Allowing operator "} << orig\_ops[i]-\/>get\_name() << endl;}
-\DoxyCodeLine{221                         \}}
-\DoxyCodeLine{222                         ops.push\_back(orig\_ops[i]);}
-\DoxyCodeLine{223                     \} \textcolor{keywordflow}{else} \{}
-\DoxyCodeLine{224                         \textcolor{keywordflow}{if}(verbose)\{}
-\DoxyCodeLine{225                             cout << \textcolor{stringliteral}{"Forbidding operator "} << orig\_ops[i]-\/>get\_name() << endl;}
-\DoxyCodeLine{226                         \}}
-\DoxyCodeLine{227                     \}}
-\DoxyCodeLine{228                 \}}
-\DoxyCodeLine{229                 \textcolor{keywordflow}{else}}
-\DoxyCodeLine{230                 \{}
-\DoxyCodeLine{231                     ops.push\_back(orig\_ops[i]);}
-\DoxyCodeLine{232                 \}}
-\DoxyCodeLine{233             \}}
-\DoxyCodeLine{234             \textcolor{keywordflow}{else}}
-\DoxyCodeLine{235             \{}
-\DoxyCodeLine{236                 \textcolor{keywordflow}{if} (g\_combine\_deadends)}
-\DoxyCodeLine{237                     ruled\_out.push\_back(orig\_ops[i]-\/>nondet\_index);}
+\DoxyCodeLine{211             \textcolor{keywordflow}{if} (0 == forbidden.count(orig\_ops[i]-\/>nondet\_index) \&\& g\_current\_forbidden\_ops.find(*orig\_ops[i]) == g\_current\_forbidden\_ops.end())}
+\DoxyCodeLine{212             \{}
+\DoxyCodeLine{213                 debug = \textcolor{keyword}{false};}
+\DoxyCodeLine{214 }
+\DoxyCodeLine{215                 \textcolor{keywordflow}{if} (debug)}
+\DoxyCodeLine{216                     cout << \textcolor{stringliteral}{"Allowing operator "} << orig\_ops[i]-\/>get\_name() << endl;}
+\DoxyCodeLine{217                 }
+\DoxyCodeLine{218                 ops.push\_back(orig\_ops[i]);}
+\DoxyCodeLine{219             \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{222             \{}
+\DoxyCodeLine{223                 \textcolor{keywordflow}{if} (g\_combine\_deadends)}
+\DoxyCodeLine{224                     ruled\_out.push\_back(orig\_ops[i]-\/>nondet\_index);}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226                 \textcolor{comment}{/* HAZ: Since we are using the ff heuristic with preferred operators,}}
+\DoxyCodeLine{227 \textcolor{comment}{                 *      we don't want the preferred operators to sneak into the applicable}}
+\DoxyCodeLine{228 \textcolor{comment}{                 *      list of actions. As such, we "mark" the operator which prevents}}
+\DoxyCodeLine{229 \textcolor{comment}{                 *      the operator from being added. See LazySearch::get\_successor\_operators}}
+\DoxyCodeLine{230 \textcolor{comment}{                 *      for where this occurrs.}}
+\DoxyCodeLine{231 \textcolor{comment}{                 */}}
+\DoxyCodeLine{232                 orig\_ops[i]-\/>mark();}
+\DoxyCodeLine{233 }
+\DoxyCodeLine{234                 \textcolor{keywordflow}{if} (debug)}
+\DoxyCodeLine{235                     cout << \textcolor{stringliteral}{"Forbidding operator "} << orig\_ops[i]-\/>get\_name() << endl;}
+\DoxyCodeLine{236             \}}
+\DoxyCodeLine{237         \}}
 \DoxyCodeLine{238 }
-\DoxyCodeLine{239                 \textcolor{comment}{/* HAZ: Since we are using the ff heuristic with preferred operators,}}
-\DoxyCodeLine{240 \textcolor{comment}{                 *      we don't want the preferred operators to sneak into the applicable}}
-\DoxyCodeLine{241 \textcolor{comment}{                 *      list of actions. As such, we "mark" the operator which prevents}}
-\DoxyCodeLine{242 \textcolor{comment}{                 *      the operator from being added. See LazySearch::get\_successor\_operators}}
-\DoxyCodeLine{243 \textcolor{comment}{                 *      for where this occurrs.}}
-\DoxyCodeLine{244 \textcolor{comment}{                 */}}
-\DoxyCodeLine{245                 orig\_ops[i]-\/>mark();}
-\DoxyCodeLine{246 }
-\DoxyCodeLine{247                 \textcolor{keywordflow}{if} (debug)}
-\DoxyCodeLine{248                     cout << \textcolor{stringliteral}{"Forbidding operator "} << orig\_ops[i]-\/>get\_name() << endl;}
-\DoxyCodeLine{249             \}}
-\DoxyCodeLine{250         \}}
-\DoxyCodeLine{251 }
-\DoxyCodeLine{252         \textcolor{comment}{// Add this state as a deadend if we have ruled out everything}}
-\DoxyCodeLine{253         \textcolor{keywordflow}{if} (!g\_limit\_states \&\& g\_record\_online\_deadends \&\&}
-\DoxyCodeLine{254             g\_combine\_deadends \&\& (orig\_ops.size() > 0) \&\& ops.empty())}
-\DoxyCodeLine{255         \{}
-\DoxyCodeLine{256 }
-\DoxyCodeLine{257             \mbox{\hyperlink{classPartialState}{PartialState}} *newDE = \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}();}
-\DoxyCodeLine{258             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < ruled\_out.size(); i++)}
-\DoxyCodeLine{259             \{}
-\DoxyCodeLine{260                 newDE-\/>combine\_with(*(((\mbox{\hyperlink{structNondetDeadend}{NondetDeadend}} *)(fsap\_map[ruled\_out[i]]))-\/>state));}
-\DoxyCodeLine{261             \}}
-\DoxyCodeLine{262 }
-\DoxyCodeLine{263             \textcolor{keywordflow}{if} (debug)}
-\DoxyCodeLine{264             \{}
-\DoxyCodeLine{265                 cout << \textcolor{stringliteral}{"<< (\#"} << g\_debug\_count++ << \textcolor{stringliteral}{") Found a new deadend state of size "} << newDE-\/>size() << \textcolor{stringliteral}{" >>"} << endl;}
-\DoxyCodeLine{266                 newDE-\/>dump\_pddl();}
-\DoxyCodeLine{267             \}}
+\DoxyCodeLine{239         \textcolor{comment}{// Add this state as a deadend if we have ruled out everything}}
+\DoxyCodeLine{240         \textcolor{keywordflow}{if} (!g\_limit\_states \&\& g\_record\_online\_deadends \&\&}
+\DoxyCodeLine{241             g\_combine\_deadends \&\& (orig\_ops.size() > 0) \&\& ops.empty())}
+\DoxyCodeLine{242         \{}
+\DoxyCodeLine{243 }
+\DoxyCodeLine{244             \mbox{\hyperlink{classPartialState}{PartialState}} *newDE = \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}();}
+\DoxyCodeLine{245             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < ruled\_out.size(); i++)}
+\DoxyCodeLine{246             \{}
+\DoxyCodeLine{247                 newDE-\/>combine\_with(*(((\mbox{\hyperlink{structNondetDeadend}{NondetDeadend}} *)(fsap\_map[ruled\_out[i]]))-\/>state));}
+\DoxyCodeLine{248             \}}
+\DoxyCodeLine{249 }
+\DoxyCodeLine{250             \textcolor{keywordflow}{if} (debug)}
+\DoxyCodeLine{251             \{}
+\DoxyCodeLine{252                 cout << \textcolor{stringliteral}{"<< (\#"} << g\_debug\_count++ << \textcolor{stringliteral}{") Found a new deadend state of size "} << newDE-\/>size() << \textcolor{stringliteral}{" >>"} << endl;}
+\DoxyCodeLine{253                 newDE-\/>dump\_pddl();}
+\DoxyCodeLine{254             \}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256             g\_combined\_count++;}
+\DoxyCodeLine{257 }
+\DoxyCodeLine{258             vector<DeadendTuple *> failed\_states;}
+\DoxyCodeLine{259             failed\_states.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{structDeadendTuple}{DeadendTuple}}(newDE, NULL, NULL));}
+\DoxyCodeLine{260             g\_updated\_deadends = \textcolor{keyword}{true};}
+\DoxyCodeLine{261             update\_deadends(failed\_states);}
+\DoxyCodeLine{262         \}}
+\DoxyCodeLine{263     \}}
+\DoxyCodeLine{264     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{265     \{}
+\DoxyCodeLine{266         g\_successor\_generator\_orig-\/>generate\_applicable\_ops(\_curr, ops, \textcolor{keyword}{true});}
+\DoxyCodeLine{267     \}}
 \DoxyCodeLine{268 }
-\DoxyCodeLine{269             g\_combined\_count++;}
-\DoxyCodeLine{270 }
-\DoxyCodeLine{271             vector<DeadendTuple *> failed\_states;}
-\DoxyCodeLine{272             failed\_states.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{structDeadendTuple}{DeadendTuple}}(newDE, NULL, NULL));}
-\DoxyCodeLine{273             g\_updated\_deadends = \textcolor{keyword}{true};}
-\DoxyCodeLine{274             update\_deadends(failed\_states);}
-\DoxyCodeLine{275         \}}
-\DoxyCodeLine{276     \}}
-\DoxyCodeLine{277     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{278     \{}
-\DoxyCodeLine{279         g\_successor\_generator\_orig-\/>generate\_applicable\_ops(\_curr, ops, \textcolor{keyword}{true});}
-\DoxyCodeLine{280     \}}
-\DoxyCodeLine{281 }
-\DoxyCodeLine{282     \textcolor{keywordflow}{return};}
-\DoxyCodeLine{283 \}}
+\DoxyCodeLine{269     \textcolor{keywordflow}{return};}
+\DoxyCodeLine{270 \}}
 
 \end{DoxyCode}
 

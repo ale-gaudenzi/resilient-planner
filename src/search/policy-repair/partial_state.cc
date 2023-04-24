@@ -192,7 +192,7 @@ size_t PartialState::hash() const
 /// @brief Checks if the state passed implies this state
 /// @param other the state to check against
 /// @return True if the other state implies this state, false otherwise
-bool PartialState::implies(PartialState &other)
+bool PartialState::is_implied(PartialState &other)
 {
     for (int i = 0; i < g_variable_domain.size(); i++)
     {

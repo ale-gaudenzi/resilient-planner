@@ -30,8 +30,7 @@ void {\bfseries set\+\_\+pref\+\_\+operator\+\_\+heuristics} (std\+::vector$<$ \
 \mbox{\Hypertarget{classLazySearch_a663e046926d5785eaa2cd6b3056e7ccb}\label{classLazySearch_a663e046926d5785eaa2cd6b3056e7ccb}} 
 virtual void {\bfseries statistics} () const
 \item 
-\mbox{\Hypertarget{classLazySearch_a0237d0322118a5e2d4939a179826158a}\label{classLazySearch_a0237d0322118a5e2d4939a179826158a}} 
-virtual void {\bfseries reset} ()
+virtual void \mbox{\hyperlink{classLazySearch_a0237d0322118a5e2d4939a179826158a}{reset}} ()
 \end{DoxyCompactItemize}
 \doxysubsection*{Protected Types}
 \begin{DoxyCompactItemize}
@@ -114,60 +113,107 @@ bool {\bfseries was\+\_\+initialized}
 \doxysubsubsection{\texorpdfstring{get\_successor\_operators()}{get\_successor\_operators()}}
 {\footnotesize\ttfamily void Lazy\+Search\+::get\+\_\+successor\+\_\+operators (\begin{DoxyParamCaption}\item[{std\+::vector$<$ const \mbox{\hyperlink{classOperator}{Operator}} $\ast$ $>$ \&}]{ops }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
 
-For resilient planner\+: We don\textquotesingle{}t consider preferred operators because it causes inconsistency when using the policy to retrieve successor operators of the plan
+For resilient planner Remove from preferred operators the ones in V
 \begin{DoxyCode}{0}
-\DoxyCodeLine{96 \{}
-\DoxyCodeLine{97     vector<const Operator *> all\_operators;}
-\DoxyCodeLine{98     vector<const Operator *> preferred\_operators;}
-\DoxyCodeLine{99 }
-\DoxyCodeLine{100     g\_successor\_generator-\/>\mbox{\hyperlink{structDeadendAwareSuccessorGenerator_ab11336ee528705ffd274437e30c281c9}{generate\_applicable\_ops}}(}
-\DoxyCodeLine{101         current\_state, all\_operators);}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operator\_heuristics.size(); i++)}
-\DoxyCodeLine{104     \{}
-\DoxyCodeLine{105         \mbox{\hyperlink{classHeuristic}{Heuristic}} *heur = preferred\_operator\_heuristics[i];}
-\DoxyCodeLine{106         \textcolor{keywordflow}{if} (!heur-\/>is\_dead\_end())}
-\DoxyCodeLine{107             heur-\/>get\_preferred\_operators(preferred\_operators);}
-\DoxyCodeLine{108     \}}
-\DoxyCodeLine{109 }
-\DoxyCodeLine{114     \textcolor{keywordflow}{if} (!g\_use\_resilient\_planner)}
-\DoxyCodeLine{115     \{}
-\DoxyCodeLine{116         \textcolor{keywordflow}{if} (succ\_mode == pref\_first)}
-\DoxyCodeLine{117         \{}
-\DoxyCodeLine{118             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
-\DoxyCodeLine{119             \{}
-\DoxyCodeLine{120                 \textcolor{keywordflow}{if} (!preferred\_operators[i]-\/>is\_marked())}
-\DoxyCodeLine{121                 \{}
-\DoxyCodeLine{122                     ops.push\_back(preferred\_operators[i]);}
-\DoxyCodeLine{123                     preferred\_operators[i]-\/>mark();}
-\DoxyCodeLine{124                 \}}
-\DoxyCodeLine{125             \}}
-\DoxyCodeLine{126 }
-\DoxyCodeLine{127             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < all\_operators.size(); i++)}
-\DoxyCodeLine{128                 \textcolor{keywordflow}{if} (!all\_operators[i]-\/>is\_marked())}
-\DoxyCodeLine{129                 \{}
-\DoxyCodeLine{130                     ops.push\_back(all\_operators[i]);}
-\DoxyCodeLine{131                 \}}
-\DoxyCodeLine{132         \}}
-\DoxyCodeLine{133         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{134         \{}
-\DoxyCodeLine{135             \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
-\DoxyCodeLine{136                 \textcolor{keywordflow}{if} (!preferred\_operators[i]-\/>is\_marked())}
-\DoxyCodeLine{137                     preferred\_operators[i]-\/>mark();}
-\DoxyCodeLine{138             ops.swap(all\_operators);}
-\DoxyCodeLine{139             \textcolor{keywordflow}{if} (succ\_mode == shuffled)}
-\DoxyCodeLine{140                 random\_shuffle(ops.begin(), ops.end());}
-\DoxyCodeLine{141         \}}
-\DoxyCodeLine{142     \}}
-\DoxyCodeLine{143     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{144     \{}
-\DoxyCodeLine{145         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < all\_operators.size(); i++)}
-\DoxyCodeLine{146             \textcolor{keywordflow}{if} (!all\_operators[i]-\/>is\_marked())}
-\DoxyCodeLine{147             \{}
-\DoxyCodeLine{148                 ops.push\_back(all\_operators[i]);}
-\DoxyCodeLine{149             \}}
-\DoxyCodeLine{150     \}}
-\DoxyCodeLine{151 \}}
+\DoxyCodeLine{115 \{}
+\DoxyCodeLine{116     vector<const Operator *> all\_operators;}
+\DoxyCodeLine{117     vector<const Operator *> preferred\_operators;}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{119     g\_successor\_generator-\/>\mbox{\hyperlink{structDeadendAwareSuccessorGenerator_ab11336ee528705ffd274437e30c281c9}{generate\_applicable\_ops}}(}
+\DoxyCodeLine{120         current\_state, all\_operators);}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operator\_heuristics.size(); i++)}
+\DoxyCodeLine{123     \{}
+\DoxyCodeLine{124         \mbox{\hyperlink{classHeuristic}{Heuristic}} *heur = preferred\_operator\_heuristics[i];}
+\DoxyCodeLine{125         \textcolor{keywordflow}{if} (!heur-\/>is\_dead\_end())}
+\DoxyCodeLine{126             heur-\/>get\_preferred\_operators(preferred\_operators);}
+\DoxyCodeLine{127     \}}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{133     \textcolor{keywordflow}{if} (g\_use\_resilient\_planner)}
+\DoxyCodeLine{134     \{}
+\DoxyCodeLine{135         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
+\DoxyCodeLine{136         \{}
+\DoxyCodeLine{137             \textcolor{keywordflow}{if} (g\_current\_forbidden\_ops.find(*preferred\_operators[i]) != g\_current\_forbidden\_ops.end())}
+\DoxyCodeLine{138             \{}
+\DoxyCodeLine{139                 preferred\_operators.erase(preferred\_operators.begin() + i);}
+\DoxyCodeLine{140                 i-\/-\/;}
+\DoxyCodeLine{141             \}}
+\DoxyCodeLine{142         \}}
+\DoxyCodeLine{143     \}}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{145     \textcolor{keywordflow}{if} (succ\_mode == pref\_first)}
+\DoxyCodeLine{146     \{}
+\DoxyCodeLine{147         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
+\DoxyCodeLine{148         \{}
+\DoxyCodeLine{149             \textcolor{keywordflow}{if} (!preferred\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{150             \{}
+\DoxyCodeLine{151                 ops.push\_back(preferred\_operators[i]);}
+\DoxyCodeLine{152                 preferred\_operators[i]-\/>mark();}
+\DoxyCodeLine{153             \}}
+\DoxyCodeLine{154         \}}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < all\_operators.size(); i++)}
+\DoxyCodeLine{157             \textcolor{keywordflow}{if} (!all\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{158             \{}
+\DoxyCodeLine{159                 ops.push\_back(all\_operators[i]);}
+\DoxyCodeLine{160             \}}
+\DoxyCodeLine{161     \}}
+\DoxyCodeLine{162     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{163     \{}
+\DoxyCodeLine{164         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < preferred\_operators.size(); i++)}
+\DoxyCodeLine{165             \textcolor{keywordflow}{if} (!preferred\_operators[i]-\/>is\_marked())}
+\DoxyCodeLine{166                 preferred\_operators[i]-\/>mark();}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168         ops.swap(all\_operators);}
+\DoxyCodeLine{169 }
+\DoxyCodeLine{170         \textcolor{keywordflow}{if} (succ\_mode == shuffled)}
+\DoxyCodeLine{171             random\_shuffle(ops.begin(), ops.end());}
+\DoxyCodeLine{172     \}}
+\DoxyCodeLine{173 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classLazySearch_a0237d0322118a5e2d4939a179826158a}\label{classLazySearch_a0237d0322118a5e2d4939a179826158a}} 
+\index{LazySearch@{LazySearch}!reset@{reset}}
+\index{reset@{reset}!LazySearch@{LazySearch}}
+\doxysubsubsection{\texorpdfstring{reset()}{reset()}}
+{\footnotesize\ttfamily void Lazy\+Search\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+For resilient planner Removing operators in V from g\+\_\+operators before reinitializing the heuristic
+
+For resilient planner Restore the original operators after heuristic reinitialization
+
+Reimplemented from \mbox{\hyperlink{classSearchEngine_ac26c460dfa1bdd798aa50ebeae28d6f9}{Search\+Engine}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{40     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < g\_operators.size(); i++)}
+\DoxyCodeLine{41     \{}
+\DoxyCodeLine{42         \textcolor{keywordflow}{if}(g\_current\_forbidden\_ops.find(g\_operators[i]) != g\_current\_forbidden\_ops.end()) \{}
+\DoxyCodeLine{43             g\_operators.erase(g\_operators.begin()+i);}
+\DoxyCodeLine{44             i-\/-\/;}
+\DoxyCodeLine{45         \}}
+\DoxyCodeLine{46     \}}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \mbox{\hyperlink{classSearchEngine_ac26c460dfa1bdd798aa50ebeae28d6f9}{SearchEngine::reset}}();}
+\DoxyCodeLine{49     initialize();}
+\DoxyCodeLine{50     current\_state = g\_initial\_state();}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     current\_predecessor\_id = StateID::no\_state;}
+\DoxyCodeLine{53     current\_operator = NULL;}
+\DoxyCodeLine{54     current\_g = 0;}
+\DoxyCodeLine{55     current\_real\_g = 0;}
+\DoxyCodeLine{56     state\_count = 0;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     open\_list-\/>clear();}
+\DoxyCodeLine{59     }
+\DoxyCodeLine{60     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < heuristics.size(); i++)}
+\DoxyCodeLine{61     \{}
+\DoxyCodeLine{62         heuristics[i]-\/>reset();}
+\DoxyCodeLine{63     \}}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{69     g\_operators = g\_operators\_backup;}
+\DoxyCodeLine{70 \}}
 
 \end{DoxyCode}
 

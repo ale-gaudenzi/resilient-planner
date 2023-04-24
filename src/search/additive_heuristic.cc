@@ -9,9 +9,6 @@
 #include <vector>
 using namespace std;
 
-
-
-
 // construction and destruction
 AdditiveHeuristic::AdditiveHeuristic(const Options &opts)
     : RelaxationHeuristic(opts),

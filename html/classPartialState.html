@@ -128,10 +128,46 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>operator&lt;</b> (con
 <tr class="memitem:a50c4a62ad676ee232bde04f2da10ba34"><td class="memItemLeft" align="right" valign="top"><a id="a50c4a62ad676ee232bde04f2da10ba34"></a>
 size_t&#160;</td><td class="memItemRight" valign="bottom"><b>hash</b> () const</td></tr>
 <tr class="separator:a50c4a62ad676ee232bde04f2da10ba34"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add05ac14a78557f1e11cdfdf557b893c"><td class="memItemLeft" align="right" valign="top"><a id="add05ac14a78557f1e11cdfdf557b893c"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>implies</b> (<a class="el" href="classPartialState.html">PartialState</a> &amp;other)</td></tr>
+<tr class="memitem:add05ac14a78557f1e11cdfdf557b893c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPartialState.html#add05ac14a78557f1e11cdfdf557b893c">implies</a> (<a class="el" href="classPartialState.html">PartialState</a> &amp;other)</td></tr>
+<tr class="memdesc:add05ac14a78557f1e11cdfdf557b893c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if the state passed implies this state.  <a href="classPartialState.html#add05ac14a78557f1e11cdfdf557b893c">More...</a><br /></td></tr>
 <tr class="separator:add05ac14a78557f1e11cdfdf557b893c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="add05ac14a78557f1e11cdfdf557b893c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#add05ac14a78557f1e11cdfdf557b893c">&#9670;&nbsp;</a></span>implies()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool PartialState::implies </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classPartialState.html">PartialState</a> &amp;&#160;</td>
+          <td class="paramname"><em>other</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Checks if the state passed implies this state. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>the state to check against </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the other state implies this state, false otherwise </dd></dl>
+<div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;{</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; g_variable_domain.size(); i++)</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;    {</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        <span class="keywordflow">if</span> ((vars[i] != -1) &amp;&amp; (vars[i] != other.vars[i]))</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;    }</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">return</span> <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>src/search/policy-repair/<a class="el" href="partial__state_8h_source.html">partial_state.h</a></li>
 <li>src/search/policy-repair/partial_state.cc</li>

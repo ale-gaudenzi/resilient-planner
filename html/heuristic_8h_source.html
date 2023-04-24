@@ -133,12 +133,16 @@ $(function() {
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keyword">static</span> <a class="code" href="classOptions.html">Options</a> default_options();</div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="comment">// for policy handling</span></div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> reset() { preferred_operators.clear(); }</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    std::set&lt;int&gt; forbidden_ops;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordtype">void</span> compute_forbidden(<span class="keyword">const</span> <a class="code" href="classStateInterface.html">StateInterface</a> &amp;state);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;};</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> reset() { </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        preferred_operators.clear();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// for resilient</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        initialize();</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    std::set&lt;int&gt; forbidden_ops;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> compute_forbidden(<span class="keyword">const</span> <a class="code" href="classStateInterface.html">StateInterface</a> &amp;state);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassState_html"><div class="ttname"><a href="classState.html">State</a></div><div class="ttdef"><b>Definition:</b> state.h:26</div></div>
 <div class="ttc" id="aclassOptions_html"><div class="ttname"><a href="classOptions.html">Options</a></div><div class="ttdef"><b>Definition:</b> option_parser_util.h:347</div></div>

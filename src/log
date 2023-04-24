@@ -1,25 +1,25 @@
 1. Running translator
 Second argument is a file name: use two translator arguments.
 Parsing...
-Parsing: [0.000s CPU, 0.001s wall-clock]
+Parsing: [0.000s CPU, 0.002s wall-clock]
 Normalizing task... [0.000s CPU, 0.000s wall-clock]
 Instantiating...
 Generating Datalog program... [0.000s CPU, 0.000s wall-clock]
 Normalizing Datalog program...
-Normalizing Datalog program: [0.000s CPU, 0.003s wall-clock]
-Preparing model... [0.000s CPU, 0.001s wall-clock]
+Normalizing Datalog program: [0.000s CPU, 0.004s wall-clock]
+Preparing model... [0.010s CPU, 0.001s wall-clock]
 Generated 59 rules.
-Computing model... [0.000s CPU, 0.002s wall-clock]
-183 relevant atoms
-233 auxiliary atoms
-416 final queue length
-627 total queue pushes
-Completing instantiation... [0.010s CPU, 0.003s wall-clock]
-Instantiating: [0.010s CPU, 0.009s wall-clock]
+Computing model... [0.000s CPU, 0.006s wall-clock]
+378 relevant atoms
+394 auxiliary atoms
+772 final queue length
+1220 total queue pushes
+Completing instantiation... [0.010s CPU, 0.010s wall-clock]
+Instantiating: [0.020s CPU, 0.022s wall-clock]
 Computing fact groups...
 Finding invariants...
 9 initial candidates
-Finding invariants: [0.000s CPU, 0.001s wall-clock]
+Finding invariants: [0.000s CPU, 0.003s wall-clock]
 Checking invariant weight... [0.000s CPU, 0.000s wall-clock]
 Instantiating groups... [0.000s CPU, 0.000s wall-clock]
 Collecting mutex groups... [0.000s CPU, 0.000s wall-clock]
@@ -27,7 +27,7 @@ Choosing groups...
 0 uncovered facts
 Choosing groups: [0.000s CPU, 0.000s wall-clock]
 Building translation key... [0.000s CPU, 0.000s wall-clock]
-Computing fact groups: [0.000s CPU, 0.002s wall-clock]
+Computing fact groups: [0.010s CPU, 0.004s wall-clock]
 Building STRIPS to SAS dictionary... [0.000s CPU, 0.000s wall-clock]
 Building dictionary for full mutex groups... [0.000s CPU, 0.000s wall-clock]
 Building mutex information...
@@ -36,69 +36,63 @@ Translating task...
 Processing axioms...
 Simplifying axioms... [0.000s CPU, 0.000s wall-clock]
 Processing axioms: [0.000s CPU, 0.000s wall-clock]
-Translating task: [0.000s CPU, 0.002s wall-clock]
+Translating task: [0.000s CPU, 0.007s wall-clock]
 0 effect conditions simplified
 0 implied preconditions added
 Detecting unreachable propositions...
 Removed false proposition: 0 = <none of those>
 Removed false proposition: 1 = <none of those>
 Removed false proposition: 2 = <none of those>
+Removed false proposition: 3 = <none of those>
+Removed false proposition: 4 = <none of those>
+Removed false proposition: 5 = <none of those>
+Removed false proposition: 6 = <none of those>
+Removed false proposition: 7 = <none of those>
 0 operators removed
-3 propositions removed
-Detecting unreachable propositions: [0.000s CPU, 0.000s wall-clock]
-Translator variables: 3
+8 propositions removed
+Detecting unreachable propositions: [0.000s CPU, 0.001s wall-clock]
+Translator variables: 8
 Translator derived variables: 0
-Translator facts: 14
-Translator goal facts: 1
-Translator mutex groups: 3
-Translator total mutex groups size: 14
-Translator operators: 123
+Translator facts: 40
+Translator goal facts: 5
+Translator mutex groups: 8
+Translator total mutex groups size: 40
+Translator operators: 282
 Translator axioms: 0
-Translator task size: 590
-Translator peak memory: 31292 KB
-Writing output... [0.000s CPU, 0.001s wall-clock]
-Done! [0.010s CPU, 0.015s wall-clock]
+Translator task size: 1353
+Translator peak memory: 31804 KB
+Writing output... [0.010s CPU, 0.002s wall-clock]
+Done! [0.040s CPU, 0.038s wall-clock]
 
 2. Running preprocessor
 Building causal graph...
 The causal graph is not acyclic.
-3 variables of 3 necessary
-0 of 3 mutex groups necessary.
-123 of 123 operators necessary.
+8 variables of 8 necessary
+0 of 8 mutex groups necessary.
+282 of 282 operators necessary.
 0 of 0 axiom rules necessary.
 Building domain transition graphs...
 solveable in poly time 0
 Building successor generator...
-Preprocessor facts: 14
+Preprocessor facts: 40
 Preprocessor derived variables: 0
-Preprocessor task size: 576
+Preprocessor task size: 1313
 Writing output...
 done
 
 
 3. Running search
-/home/sifao/resplanner/src/search/downward ipc policy-repair --resilient 1 --max-iterations 40 --verbose
+/home/sifao/resplanner/src/search/downward ipc policy-repair --resilient 1 --dump-global-policy 1 --dump-resilient-nodes 1
 This is a unit task.
-/home/sifao/resplanner/src/search/downward-release --heuristic "h=ff(cost_type=1)" --search "lazy_greedy([h],preferred=[h])" --random-seed 814102613 --resilient 1 --max-iterations 40 --verbose < output
+/home/sifao/resplanner/src/search/downward-release --heuristic "h=ff(cost_type=1)" --search "lazy_greedy([h],preferred=[h])" --random-seed 814102613 --resilient 1 --dump-global-policy 1 --dump-resilient-nodes 1 < output
 Simplifying transitions... done!
-Variables: 3
+Variables: 8
 Bytes per state: 4
 
 Total allotted time (s): 1800
 Max time for core JIC (remaining used in final-round repairs): 1800
 Max time for each of the 1 epochs: 1800
 
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 26 state(s).
-Dead ends: 0 state(s). (0 recorded)
-fly plane1 city0 city2 fl2 fl1 (1)
-board person1 plane1 city2 (1)
-fly plane1 city2 city1 fl1 fl0 (1)
-debark person1 plane1 city1 (1)
-Plan length: 4 step(s).
-Plan cost: 4
 Initial search time: 0s
 Initial total time: 0s
 
@@ -106,889 +100,1034 @@ Regressing the plan...
 
 Generating an initial policy...
 
-----------------------------------------
-
-Iteration:1
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl0)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:2
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl0)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 6 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city1 fl0 fl1 (1)
-debark person1 plane1 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Successfull replanning
-
-----------------------------------------
-
-Iteration:3
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl1)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:4
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl1)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 27 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city1 fl1 fl2 (1)
-debark person1 plane1 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Successfull replanning
-
-----------------------------------------
-
-Iteration:5
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl2)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:6
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl2)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 30 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city1 fl2 fl3 (1)
-debark person1 plane1 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Successfull replanning
-
-----------------------------------------
-
-Iteration:7
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl3)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:8
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl3)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 42 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city1 fl3 fl4 (1)
-debark person1 plane1 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Successfull replanning
-
-----------------------------------------
-
-Iteration:9
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl4)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:10
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl4)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 45 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city1 fl4 fl5 (1)
-debark person1 plane1 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Successfull replanning
-
-----------------------------------------
-
-Iteration:11
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl5)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:12
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl5)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 44 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city1 fl5 fl6 (1)
-debark person1 plane1 city1 (1)
-Plan length: 2 step(s).
-Plan cost: 2
-Successfull replanning
-
-----------------------------------------
-
-Iteration:13
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl6)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
-
-Failed resiliency check.
-
-Removing operator debark person1 plane1 city1
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:14
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl6)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:15
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl5)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-refuel plane1 city1 fl5 fl6 (refuel plane1 city1 fl5 fl6): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl5) -> Atom fuel-level(plane1, fl6)]
-
-Failed resiliency check.
-
-Removing operator refuel plane1 city1 fl5 fl6
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 7 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-debark person1 plane1 city1 (1)
-Plan length: 1 step(s).
-Plan cost: 1
-Successfull replanning
-
-----------------------------------------
-
-Iteration:16
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl5)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:17
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl4)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-refuel plane1 city1 fl4 fl5 (refuel plane1 city1 fl4 fl5): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl5)]
-
-Failed resiliency check.
-
-Removing operator refuel plane1 city1 fl4 fl5
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 7 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-debark person1 plane1 city1 (1)
-Plan length: 1 step(s).
-Plan cost: 1
-Successfull replanning
-
-----------------------------------------
-
-Iteration:18
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl4)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:19
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl3)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-refuel plane1 city1 fl3 fl4 (refuel plane1 city1 fl3 fl4): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl4)]
-
-Failed resiliency check.
-
-Removing operator refuel plane1 city1 fl3 fl4
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 7 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-debark person1 plane1 city1 (1)
-Plan length: 1 step(s).
-Plan cost: 1
-Successfull replanning
-
-----------------------------------------
-
-Iteration:20
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl3)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:21
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl2)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-refuel plane1 city1 fl2 fl3 (refuel plane1 city1 fl2 fl3): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl2) -> Atom fuel-level(plane1, fl3)]
-
-Failed resiliency check.
-
-Removing operator refuel plane1 city1 fl2 fl3
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 7 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-debark person1 plane1 city1 (1)
-Plan length: 1 step(s).
-Plan cost: 1
-Successfull replanning
-
-----------------------------------------
-
-Iteration:22
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl2)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:23
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl1)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-refuel plane1 city1 fl1 fl2 (refuel plane1 city1 fl1 fl2): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl1) -> Atom fuel-level(plane1, fl2)]
-
-Failed resiliency check.
-
-Removing operator refuel plane1 city1 fl1 fl2
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 4 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-debark person1 plane1 city1 (1)
-Plan length: 1 step(s).
-Plan cost: 1
-Successfull replanning
-
-----------------------------------------
-
-Iteration:24
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl1)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:25
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl0)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-refuel plane1 city1 fl0 fl1 (refuel plane1 city1 fl0 fl1): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl0) -> Atom fuel-level(plane1, fl1)]
-
-Failed resiliency check.
-
-Removing operator refuel plane1 city1 fl0 fl1
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Solution found
-debark person1 plane1 city1 (1)
-Plan length: 1 step(s).
-Plan cost: 1
-Successfull replanning
-
-----------------------------------------
-
-Iteration:26
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city1)
-Atom fuel-level(plane1, fl0)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:27
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom in(person1, plane1)
-k: 0
-deactivated_op: 
-fly plane1 city2 city1 fl1 fl0 (fly plane1 city2 city1 fl1 fl0): [Atom at(plane1, city2) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl1) -> Atom fuel-level(plane1, fl0)]
-
-Failed resiliency check.
-
-Removing operator fly plane1 city2 city1 fl1 fl0
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 36 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-refuel plane1 city2 fl1 fl2 (1)
-fly plane1 city2 city0 fl2 fl1 (1)
-fly plane1 city0 city1 fl1 fl0 (1)
-debark person1 plane1 city1 (1)
-Plan length: 4 step(s).
-Plan cost: 4
-Successfull replanning
-
-----------------------------------------
-
-Iteration:28
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom in(person1, plane1)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 379 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:29
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom at(person1, city2)
-k: 0
-deactivated_op: 
-board person1 plane1 city2 (board person1 plane1 city2): [Atom at(plane1, city2)] [Atom at(person1, city2) -> Atom in(person1, plane1)]
-
-Failed resiliency check.
-
-Removing operator board person1 plane1 city2
-Replanning... 
-
-Detected deadend
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:30
-Current node:
-Node: 0x7ffe792e59d0
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom at(person1, city2)
-k: 1
-deactivated_op: 
-
-Failed resiliency check.
-
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 378 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
-
-Failed replanning.
-
-----------------------------------------
-
-Iteration:31
-Current node:
-Node: 0x7ffe792e59d0
+Running resilient algorithm...
+
+                  -{ Global policy }-
+
+Regression Step (0x1875590)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1878ba0)
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+Atom at(plane2, city2)
 Atom at(plane1, city0)
-Atom fuel-level(plane1, fl2)
-Atom at(person1, city2)
-k: 0
-deactivated_op: 
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18835f0)
+fly plane1 city1 city0 fl3 fl2 (fly plane1 city1 city0 fl3 fl2): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18836b0)
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x1883770)
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x1883830)
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x18838f0)
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x1875890)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1875320)
+fly plane2 city0 city2 fl4 fl3 (fly plane2 city0 city2 fl4 fl3): [Atom at(plane2, city0) -> Atom at(plane2, city2)] [Atom fuel-level(plane2, fl4) -> Atom fuel-level(plane2, fl3)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1872ae0)
+debark person3 plane2 city0 (debark person3 plane2 city0): [Atom at(plane2, city0)] [Atom in(person3, plane2) -> Atom at(person3, city0)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1877d80)
+fly plane2 city2 city0 fl5 fl4 (fly plane2 city2 city0 fl5 fl4): [Atom at(plane2, city2) -> Atom at(plane2, city0)] [Atom fuel-level(plane2, fl5) -> Atom fuel-level(plane2, fl4)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1875280)
+board person3 plane2 city2 (board person3 plane2 city2): [Atom at(plane2, city2)] [Atom at(person3, city2) -> Atom in(person3, plane2)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18717a0)
+debark person3 plane1 city2 (debark person3 plane1 city2): [Atom at(plane1, city2)] [Atom in(person3, plane1) -> Atom at(person3, city2)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1886570)
 fly plane1 city0 city2 fl2 fl1 (fly plane1 city0 city2 fl2 fl1): [Atom at(plane1, city0) -> Atom at(plane1, city2)] [Atom fuel-level(plane1, fl2) -> Atom fuel-level(plane1, fl1)]
-
-Failed resiliency check.
-
-Removing operator fly plane1 city0 city2 fl2 fl1
-Replanning... 
-
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 73 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Solution found
-zoom plane1 city0 city1 fl6 fl5 fl4 (1)
-fly plane1 city1 city2 fl4 fl3 (1)
-board person1 plane1 city2 (1)
-fly plane1 city2 city0 fl3 fl2 (1)
-fly plane1 city0 city1 fl2 fl1 (1)
-debark person1 plane1 city1 (1)
-Plan length: 6 step(s).
-Plan cost: 6
-Successfull replanning
-
-----------------------------------------
-
-Iteration:32
-Current node:
-Node: 0x7ffe792e59d0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
 Atom at(plane1, city0)
 Atom fuel-level(plane1, fl2)
-Atom at(person1, city2)
-k: 1
-deactivated_op: 
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
-Failed resiliency check.
+Regression Step (0x1893400)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
-Replanning... 
+Regression Step (0x1893eb0)
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
-Creating initial state.
-Creating new engine.
-Conducting lazy best first search, (real) bound = 2147483647
-heuristics.size() = 1
-Searching for a solution.
-Conducting lazy best first search, (real) bound = 2147483647
-Generated 378 state(s).
-Dead ends: 0 state(s). (0 recorded)
-Replanning failed!
+Regression Step (0x1892f20)
+fly plane1 city1 city0 fl2 fl1 (fly plane1 city1 city0 fl2 fl1): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl2) -> Atom fuel-level(plane1, fl1)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
-Failed replanning.
+Regression Step (0x1877f20)
+fly plane1 city1 city1 fl3 fl2 (fly plane1 city1 city1 fl3 fl2): [Atom at(plane1, city1)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
-Initial state is a deadend, problem is not 1-resilient!
+Regression Step (0x1876670)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
+Regression Step (0x1893740)
+fly plane2 city1 city2 fl3 fl2 (fly plane2 city1 city2 fl3 fl2): [Atom at(plane2, city1) -> Atom at(plane2, city2)] [Atom fuel-level(plane2, fl3) -> Atom fuel-level(plane2, fl2)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
 
-                  -{ Timing Statistics }-
+Regression Step (0x1882700)
+debark person1 plane2 city1 (debark person1 plane2 city1): [Atom at(plane2, city1)] [Atom in(person1, plane2) -> Atom at(person1, city1)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
 
-         Engine Initialization: 0s
-                   Search Time: 0s
-           Policy Construction: 0s
-                    Total time: 0s
+Regression Step (0x1882100)
+fly plane2 city0 city1 fl4 fl3 (fly plane2 city0 city1 fl4 fl3): [Atom at(plane2, city0) -> Atom at(plane2, city1)] [Atom fuel-level(plane2, fl4) -> Atom fuel-level(plane2, fl3)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+
+Regression Step (0x1882170)
+board person1 plane2 city0 (board person1 plane2 city0): [Atom at(plane2, city0)] [Atom at(person1, city0) -> Atom in(person1, plane2)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x188e980)
+fly plane2 city2 city0 fl5 fl4 (fly plane2 city2 city0 fl5 fl4): [Atom at(plane2, city2) -> Atom at(plane2, city0)] [Atom fuel-level(plane2, fl5) -> Atom fuel-level(plane2, fl4)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x188e610)
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x188e6a0)
+debark person1 plane1 city0 (debark person1 plane1 city0): [Atom at(plane1, city0)] [Atom in(person1, plane1) -> Atom at(person1, city0)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x1892fc0)
+fly plane1 city1 city0 fl3 fl2 (fly plane1 city1 city0 fl3 fl2): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x189ffd0)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1892f70)
+fly plane2 city0 city2 fl3 fl2 (fly plane2 city0 city2 fl3 fl2): [Atom at(plane2, city0) -> Atom at(plane2, city2)] [Atom fuel-level(plane2, fl3) -> Atom fuel-level(plane2, fl2)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x189fbc0)
+debark person3 plane2 city0 (debark person3 plane2 city0): [Atom at(plane2, city0)] [Atom in(person3, plane2) -> Atom at(person3, city0)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x1875c10)
+fly plane2 city1 city0 fl4 fl3 (fly plane2 city1 city0 fl4 fl3): [Atom at(plane2, city1) -> Atom at(plane2, city0)] [Atom fuel-level(plane2, fl4) -> Atom fuel-level(plane2, fl3)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x189ff80)
+board person3 plane2 city1 (board person3 plane2 city1): [Atom at(plane2, city1)] [Atom at(person3, city1) -> Atom in(person3, plane2)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18a0750)
+fly plane2 city2 city1 fl5 fl4 (fly plane2 city2 city1 fl5 fl4): [Atom at(plane2, city2) -> Atom at(plane2, city1)] [Atom fuel-level(plane2, fl5) -> Atom fuel-level(plane2, fl4)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18a0d60)
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x18ab870)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18a9590)
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18afbc0)
+fly plane1 city1 city0 fl2 fl1 (fly plane1 city1 city0 fl2 fl1): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl2) -> Atom fuel-level(plane1, fl1)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18ac1f0)
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x18a0840)
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x18ab780)
+fly plane1 city0 city1 fl3 fl2 (fly plane1 city0 city1 fl3 fl2): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x18af780)
+fly plane1 city0 city0 fl4 fl3 (fly plane1 city0 city0 fl4 fl3): [Atom at(plane1, city0)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+
+Regression Step (0x18afb10)
+Goal
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18a8250)
+fly plane2 city1 city2 fl2 fl1 (fly plane2 city1 city2 fl2 fl1): [Atom at(plane2, city1) -> Atom at(plane2, city2)] [Atom fuel-level(plane2, fl2) -> Atom fuel-level(plane2, fl1)]
+Atom fuel-level(plane2, fl2)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+
+Regression Step (0x18719e0)
+debark person1 plane2 city1 (debark person1 plane2 city1): [Atom at(plane2, city1)] [Atom in(person1, plane2) -> Atom at(person1, city1)]
+Atom fuel-level(plane2, fl2)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+
+Regression Step (0x18a4d20)
+fly plane2 city0 city1 fl3 fl2 (fly plane2 city0 city1 fl3 fl2): [Atom at(plane2, city0) -> Atom at(plane2, city1)] [Atom fuel-level(plane2, fl3) -> Atom fuel-level(plane2, fl2)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+
+Regression Step (0x1873b40)
+debark person3 plane2 city0 (debark person3 plane2 city0): [Atom at(plane2, city0)] [Atom in(person3, plane2) -> Atom at(person3, city0)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+
+Regression Step (0x18a5100)
+board person1 plane2 city0 (board person1 plane2 city0): [Atom at(plane2, city0)] [Atom at(person1, city0) -> Atom in(person1, plane2)]
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x18a51a0)
+fly plane2 city1 city0 fl4 fl3 (fly plane2 city1 city0 fl4 fl3): [Atom at(plane2, city1) -> Atom at(plane2, city0)] [Atom fuel-level(plane2, fl4) -> Atom fuel-level(plane2, fl3)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x18abc50)
+board person3 plane2 city1 (board person3 plane2 city1): [Atom at(plane2, city1)] [Atom at(person3, city1) -> Atom in(person3, plane2)]
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
+Regression Step (0x18a56f0)
+fly plane2 city2 city1 fl5 fl4 (fly plane2 city2 city1 fl5 fl4): [Atom at(plane2, city2) -> Atom at(plane2, city1)] [Atom fuel-level(plane2, fl5) -> Atom fuel-level(plane2, fl4)]
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+
 
 --------------------------------------------------------------------
 
-Peak memory: 4896 KB
 
+                  -{ Resilient nodes }-
+
+Node: 0x1883f60
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+
+Node: 0x18780c0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+
+Node: 0x188efc0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom at(person3, city2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+
+Node: 0x188f110
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+
+Node: 0x188f260
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+
+Node: 0x188f3b0
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(plane1, city2)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person3 plane1 city0 (debark person3 plane1 city0): [Atom at(plane1, city0)] [Atom in(person3, plane1) -> Atom at(person3, city0)]
+
+Node: 0x1892a10
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 1
+deactivated_op: 
+
+Node: 0x1893940
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+fly plane1 city1 city0 fl3 fl2 (fly plane1 city1 city0 fl3 fl2): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+
+Node: 0x1893b20
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+fly plane1 city1 city0 fl3 fl2 (fly plane1 city1 city0 fl3 fl2): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+
+Node: 0x18929a0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+fly plane1 city1 city0 fl3 fl2 (fly plane1 city1 city0 fl3 fl2): [Atom at(plane1, city1) -> Atom at(plane1, city0)] [Atom fuel-level(plane1, fl3) -> Atom fuel-level(plane1, fl2)]
+
+Node: 0x188cba0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 1
+deactivated_op: 
+
+Node: 0x188d9d0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x188dbb0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x188c9c0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x1890520
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x18828e0
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x1882680
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x188cb10
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city1)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x188c0f0
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city1)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+debark person1 plane1 city1 (debark person1 plane1 city1): [Atom at(plane1, city1)] [Atom in(person1, plane1) -> Atom at(person1, city1)]
+
+Node: 0x18a1890
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 1
+deactivated_op: 
+
+Node: 0x18a1110
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+
+Node: 0x18a12f0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+
+Node: 0x18a14d0
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+
+Node: 0x18a16b0
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+
+Node: 0x189f3e0
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+
+Node: 0x189f5c0
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+board person3 plane1 city1 (board person3 plane1 city1): [Atom at(plane1, city1)] [Atom at(person3, city1) -> Atom in(person3, plane1)]
+
+Node: 0x18ad800
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 1
+deactivated_op: 
+
+Node: 0x18ad260
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+Node: 0x18ad440
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+Node: 0x18ad620
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+Node: 0x18a2380
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+Node: 0x18abf40
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+Node: 0x18ab390
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl1)
+Atom at(person4, city1)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+fly plane1 city0 city1 fl4 fl3 (fly plane1 city0 city1 fl4 fl3): [Atom at(plane1, city0) -> Atom at(plane1, city1)] [Atom fuel-level(plane1, fl4) -> Atom fuel-level(plane1, fl3)]
+
+Node: 0x18a60f0
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
+k: 1
+deactivated_op: 
+
+Node: 0x18a5d50
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18a5f10
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18ad2d0
+Atom fuel-level(plane2, fl4)
+Atom at(plane2, city1)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18a1b50
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18a1c50
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom in(person3, plane2)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18a1cc0
+Atom fuel-level(plane2, fl3)
+Atom at(plane2, city0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18a5e80
+Atom fuel-level(plane2, fl2)
+Atom at(plane2, city1)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane2)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18aa620
+Atom fuel-level(plane2, fl2)
+Atom at(plane2, city1)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city1)
+k: 0
+deactivated_op: 
+board person1 plane1 city0 (board person1 plane1 city0): [Atom at(plane1, city0)] [Atom at(person1, city0) -> Atom in(person1, plane1)]
+
+Node: 0x18bf190
+Atom fuel-level(plane2, fl5)
+Atom at(plane2, city2)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city1)
+Atom at(person3, city1)
+Atom at(person2, city0)
+Atom at(person1, city0)
+k: 1
+deactivated_op: 
+
+
+--------------------------------------------------------------------
+
+Peak memory: 736212 KB
+caught signal 2 -- exiting

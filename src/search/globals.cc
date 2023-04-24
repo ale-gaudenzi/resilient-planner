@@ -607,5 +607,9 @@ Policy *g_original_policy;
 std::vector<Operator> g_operators_backup;
 
 bool g_verbose = false;
+bool g_plan_to_file = false;
+bool g_dump_branches = false;
+bool g_dump_global_policy = false;
+bool g_dump_resilient_nodes = false;
 
 int g_max_iterations = -1;

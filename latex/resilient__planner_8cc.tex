@@ -44,6 +44,9 @@ void \mbox{\hyperlink{resilient__planner_8cc_ad058227fc490e93e440cb97b1c2051f5}{
 \mbox{\Hypertarget{resilient__planner_8cc_ad5edd47cc26a1609925da2b1c1dec9e6}\label{resilient__planner_8cc_ad5edd47cc26a1609925da2b1c1dec9e6}} 
 void \mbox{\hyperlink{resilient__planner_8cc_ad5edd47cc26a1609925da2b1c1dec9e6}{print\+\_\+timings}} ()
 \begin{DoxyCompactList}\small\item\em Print time statistics. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{resilient__planner_8cc_a3370e249aa277940b5a838bdb2473c29}\label{resilient__planner_8cc_a3370e249aa277940b5a838bdb2473c29}} 
+void {\bfseries print\+\_\+policy\+\_\+res} ()
+\item 
 \mbox{\Hypertarget{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}\label{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}} 
 bool \mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\+\_\+in\+\_\+nodes\+\_\+list}} (std\+::list$<$ \mbox{\hyperlink{classResilientNode}{Resilient\+Node}} $>$ res\+\_\+set, \mbox{\hyperlink{classResilientNode}{Resilient\+Node}} node)
 \begin{DoxyCompactList}\small\item\em Check if the node is present in the resilient nodes list, using the custom minority and equality operators. \end{DoxyCompactList}\item 
@@ -57,9 +60,6 @@ int \mbox{\hyperlink{resilient__planner_8cc_a217dbf8b442f20279ea00b898af96f52}{m
 \end{DoxyCompactItemize}
 \doxysubsection*{Variables}
 \begin{DoxyCompactItemize}
-\item 
-\mbox{\Hypertarget{resilient__planner_8cc_ab3f078684998b83967d507d0f453f454}\label{resilient__planner_8cc_ab3f078684998b83967d507d0f453f454}} 
-bool {\bfseries verbose} = false
 \item 
 \mbox{\Hypertarget{resilient__planner_8cc_ab36ed1f1614a7b32f49ba945c6638b7c}\label{resilient__planner_8cc_ab36ed1f1614a7b32f49ba945c6638b7c}} 
 std\+::list$<$ \mbox{\hyperlink{classResilientNode}{Resilient\+Node}} $>$ {\bfseries resilient\+\_\+nodes}
@@ -87,53 +87,56 @@ Regress the state contained in node and add every state-\/action pair Regr(s,\+A
 \end{DoxyParams}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{470 \{}
-\DoxyCodeLine{471     \mbox{\hyperlink{classState}{State}} state = node.get\_state();}
-\DoxyCodeLine{472     list<PolicyItem *> de\_items;}
-\DoxyCodeLine{473 }
-\DoxyCodeLine{474     \mbox{\hyperlink{classPartialState}{PartialState}} *dummy\_state = \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}();}
-\DoxyCodeLine{475 }
-\DoxyCodeLine{476     \mbox{\hyperlink{classPartialState}{PartialState}} *de\_state = \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(state);}
-\DoxyCodeLine{477     generalize\_deadend(*de\_state);}
+\DoxyCodeLine{457 \{}
+\DoxyCodeLine{458     \mbox{\hyperlink{classState}{State}} state = node.get\_state();}
+\DoxyCodeLine{459     list<PolicyItem *> de\_items;}
+\DoxyCodeLine{460 }
+\DoxyCodeLine{461     \mbox{\hyperlink{classPartialState}{PartialState}} *dummy\_state = \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}();}
+\DoxyCodeLine{462 }
+\DoxyCodeLine{463     \mbox{\hyperlink{classPartialState}{PartialState}} *de\_state = \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(state);}
+\DoxyCodeLine{464     generalize\_deadend(*de\_state);}
+\DoxyCodeLine{465 }
+\DoxyCodeLine{466     vector<PolicyItem *> reg\_items;}
+\DoxyCodeLine{467     g\_regressable\_ops-\/>generate\_applicable\_items(*de\_state, reg\_items, \textcolor{keyword}{true}, g\_regress\_only\_relevant\_deadends);}
+\DoxyCodeLine{468 }
+\DoxyCodeLine{469     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < reg\_items.size(); j++)}
+\DoxyCodeLine{470     \{}
+\DoxyCodeLine{471         \textcolor{comment}{//cout << "Adding in de\_items:" << endl;}}
+\DoxyCodeLine{472         \textcolor{comment}{//reg\_items[j]-\/>dump();}}
+\DoxyCodeLine{473         \mbox{\hyperlink{structRegressableOperator}{RegressableOperator}} *ro = (\mbox{\hyperlink{structRegressableOperator}{RegressableOperator}} *)(reg\_items[j]);}
+\DoxyCodeLine{474         de\_items.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{structNondetDeadend}{NondetDeadend}}(\textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(*de\_state, *(ro-\/>op), \textcolor{keyword}{false}, dummy\_state),}
+\DoxyCodeLine{475                                              ro-\/>op-\/>nondet\_index));}
+\DoxyCodeLine{476 }
+\DoxyCodeLine{477     \}}
 \DoxyCodeLine{478 }
-\DoxyCodeLine{479     vector<PolicyItem *> reg\_items;}
-\DoxyCodeLine{480     g\_regressable\_ops-\/>generate\_applicable\_items(*de\_state, reg\_items, \textcolor{keyword}{true}, g\_regress\_only\_relevant\_deadends);}
+\DoxyCodeLine{479     \textcolor{keyword}{delete} dummy\_state;}
+\DoxyCodeLine{480     \mbox{\hyperlink{classPolicy}{Policy}} *current\_deadend\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
 \DoxyCodeLine{481 }
-\DoxyCodeLine{482     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < reg\_items.size(); j++)}
-\DoxyCodeLine{483     \{}
-\DoxyCodeLine{484         \mbox{\hyperlink{structRegressableOperator}{RegressableOperator}} *ro = (\mbox{\hyperlink{structRegressableOperator}{RegressableOperator}} *)(reg\_items[j]);}
-\DoxyCodeLine{485         de\_items.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{structNondetDeadend}{NondetDeadend}}(\textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(*de\_state, *(ro-\/>op), \textcolor{keyword}{false}, dummy\_state),}
-\DoxyCodeLine{486                                              ro-\/>op-\/>nondet\_index));}
-\DoxyCodeLine{487     \}}
-\DoxyCodeLine{488 }
-\DoxyCodeLine{489     \textcolor{keyword}{delete} dummy\_state;}
-\DoxyCodeLine{490     \mbox{\hyperlink{classPolicy}{Policy}} *current\_deadend\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
-\DoxyCodeLine{491 }
-\DoxyCodeLine{492     current\_deadend\_policy-\/>update\_policy(de\_items);}
-\DoxyCodeLine{493     g\_fault\_model.insert(std::make\_pair(std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops), current\_deadend\_policy));}
-\DoxyCodeLine{494 }
-\DoxyCodeLine{495     std::set<Operator> v = node.get\_deactivated\_op();}
-\DoxyCodeLine{496     \textcolor{keywordflow}{for} (std::set<Operator>::iterator it = v.begin(); it != v.end(); ++it)}
-\DoxyCodeLine{497     \{}
-\DoxyCodeLine{498         std::set<Operator> forbidden\_minus\_a = g\_current\_forbidden\_ops;}
-\DoxyCodeLine{499         forbidden\_minus\_a.erase(*it);}
-\DoxyCodeLine{500 }
-\DoxyCodeLine{501         \mbox{\hyperlink{classPolicy}{Policy}} *s\_a = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
-\DoxyCodeLine{502         list<PolicyItem *> s\_a\_item;}
-\DoxyCodeLine{503 }
-\DoxyCodeLine{504         s\_a\_item.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{structNondetDeadend}{NondetDeadend}}(\textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(state), it-\/>nondet\_index));}
-\DoxyCodeLine{505 }
-\DoxyCodeLine{506         \textcolor{keywordflow}{if} (g\_fault\_model.find(std::make\_pair(g\_current\_faults + 1, forbidden\_minus\_a)) != g\_fault\_model.end())}
-\DoxyCodeLine{507         \{}
-\DoxyCodeLine{508             g\_fault\_model.find(std::make\_pair(g\_current\_faults + 1, forbidden\_minus\_a))-\/>second-\/>update\_policy(s\_a\_item);}
-\DoxyCodeLine{509         \}}
-\DoxyCodeLine{510         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{511         \{}
-\DoxyCodeLine{512             s\_a-\/>update\_policy(s\_a\_item);}
-\DoxyCodeLine{513             g\_fault\_model.insert(std::make\_pair(std::make\_pair(g\_current\_faults + 1, forbidden\_minus\_a), s\_a));}
-\DoxyCodeLine{514         \}}
-\DoxyCodeLine{515     \}}
-\DoxyCodeLine{516 \}}
+\DoxyCodeLine{482     current\_deadend\_policy-\/>update\_policy(de\_items);}
+\DoxyCodeLine{483     g\_fault\_models.insert(std::make\_pair(std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops), current\_deadend\_policy));}
+\DoxyCodeLine{484 }
+\DoxyCodeLine{485     std::set<Operator> v = node.get\_deactivated\_op();}
+\DoxyCodeLine{486     \textcolor{keywordflow}{for} (std::set<Operator>::iterator it = v.begin(); it != v.end(); ++it)}
+\DoxyCodeLine{487     \{}
+\DoxyCodeLine{488         std::set<Operator> forbidden\_minus\_a = g\_current\_forbidden\_ops;}
+\DoxyCodeLine{489         forbidden\_minus\_a.erase(*it);}
+\DoxyCodeLine{490 }
+\DoxyCodeLine{491         \mbox{\hyperlink{classPolicy}{Policy}} *s\_a = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{492         list<PolicyItem *> s\_a\_item;}
+\DoxyCodeLine{493 }
+\DoxyCodeLine{494         s\_a\_item.push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{structNondetDeadend}{NondetDeadend}}(\textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(state), it-\/>nondet\_index));}
+\DoxyCodeLine{495 }
+\DoxyCodeLine{496         \textcolor{keywordflow}{if} (g\_fault\_models.find(std::make\_pair(g\_current\_faults + 1, forbidden\_minus\_a)) != g\_fault\_models.end())}
+\DoxyCodeLine{497         \{}
+\DoxyCodeLine{498             g\_fault\_models.find(std::make\_pair(g\_current\_faults + 1, forbidden\_minus\_a))-\/>second-\/>update\_policy(s\_a\_item);}
+\DoxyCodeLine{499         \}}
+\DoxyCodeLine{500         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{501         \{}
+\DoxyCodeLine{502             s\_a-\/>update\_policy(s\_a\_item);}
+\DoxyCodeLine{503             g\_fault\_models.insert(std::make\_pair(std::make\_pair(g\_current\_faults + 1, forbidden\_minus\_a), s\_a));}
+\DoxyCodeLine{504         \}}
+\DoxyCodeLine{505     \}}
+\DoxyCodeLine{506 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{resilient__planner_8cc_a217dbf8b442f20279ea00b898af96f52}\label{resilient__planner_8cc_a217dbf8b442f20279ea00b898af96f52}} 
@@ -150,122 +153,123 @@ Initial policy search $\ast$
 
 Resilient Alghoritm $\ast$
 \begin{DoxyCode}{0}
-\DoxyCodeLine{43 \{}
-\DoxyCodeLine{44     register\_event\_handlers();}
-\DoxyCodeLine{45 }
-\DoxyCodeLine{46     \textcolor{keywordflow}{if} (argc < 2)}
-\DoxyCodeLine{47     \{}
-\DoxyCodeLine{48         cout << OptionParser::usage(argv[0]) << endl;}
-\DoxyCodeLine{49         exit\_with(EXIT\_INPUT\_ERROR);}
-\DoxyCodeLine{50     \}}
-\DoxyCodeLine{51 }
-\DoxyCodeLine{52     \textcolor{keywordflow}{if} (\textcolor{keywordtype}{string}(argv[1]).compare(\textcolor{stringliteral}{"-\/-\/help"}) != 0)}
-\DoxyCodeLine{53         read\_everything(cin);}
-\DoxyCodeLine{54 }
-\DoxyCodeLine{55     \mbox{\hyperlink{classSearchEngine}{SearchEngine}} *engine = 0;}
-\DoxyCodeLine{56     g\_policy = 0;}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58     g\_timer\_regression.stop();}
-\DoxyCodeLine{59     g\_timer\_engine\_init.stop();}
-\DoxyCodeLine{60     g\_timer\_search.stop();}
-\DoxyCodeLine{61     g\_timer\_policy\_build.stop();}
-\DoxyCodeLine{62     g\_timer\_policy\_use.stop();}
-\DoxyCodeLine{63 }
-\DoxyCodeLine{64     g\_timer\_regression.reset();}
-\DoxyCodeLine{65     g\_timer\_engine\_init.reset();}
-\DoxyCodeLine{66     g\_timer\_search.reset();}
-\DoxyCodeLine{67     g\_timer\_policy\_build.reset();}
-\DoxyCodeLine{68     g\_timer\_policy\_use.reset();}
-\DoxyCodeLine{69 }
-\DoxyCodeLine{70     \textcolor{comment}{// the input will be parsed twice:}}
-\DoxyCodeLine{71     \textcolor{comment}{// once in dry-\/run mode, to check for simple input errors,}}
-\DoxyCodeLine{72     \textcolor{comment}{// then in normal mode}}
-\DoxyCodeLine{73     g\_timer\_engine\_init.resume();}
-\DoxyCodeLine{74     \textcolor{keywordflow}{try}}
-\DoxyCodeLine{75     \{}
-\DoxyCodeLine{76         OptionParser::parse\_cmd\_line(argc, argv, \textcolor{keyword}{true});}
-\DoxyCodeLine{77         engine = OptionParser::parse\_cmd\_line(argc, argv, \textcolor{keyword}{false});}
-\DoxyCodeLine{78     \}}
-\DoxyCodeLine{79     \textcolor{keywordflow}{catch} (\mbox{\hyperlink{structParseError}{ParseError}} \&pe)}
-\DoxyCodeLine{80     \{}
-\DoxyCodeLine{81         cerr << pe << endl;}
-\DoxyCodeLine{82         exit\_with(EXIT\_INPUT\_ERROR);}
-\DoxyCodeLine{83     \}}
-\DoxyCodeLine{84     g\_timer\_engine\_init.stop();}
-\DoxyCodeLine{85 }
-\DoxyCodeLine{86     \textcolor{comment}{/* HAZ: Unfortunately, this must go here (as supposed to globals.cc)}}
-\DoxyCodeLine{87 \textcolor{comment}{     *      since we need to know if g\_detect\_deadends is true or not. */}}
-\DoxyCodeLine{88     \textcolor{keywordflow}{if} (g\_detect\_deadends)}
-\DoxyCodeLine{89     \{}
-\DoxyCodeLine{90         generate\_regressable\_ops();}
-\DoxyCodeLine{91     \}}
-\DoxyCodeLine{92     \textcolor{comment}{/* HAZ: We create the policies even if we aren't using deadends, as}}
-\DoxyCodeLine{93 \textcolor{comment}{     *      they may be consulted by certain parts of the code. */}}
-\DoxyCodeLine{94     g\_deadend\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
-\DoxyCodeLine{95     g\_deadend\_states = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
-\DoxyCodeLine{96     g\_temporary\_deadends = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43     register\_event\_handlers();}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordflow}{if} (argc < 2)}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47         cout << OptionParser::usage(argv[0]) << endl;}
+\DoxyCodeLine{48         exit\_with(EXIT\_INPUT\_ERROR);}
+\DoxyCodeLine{49     \}}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51     \textcolor{keywordflow}{if} (\textcolor{keywordtype}{string}(argv[1]).compare(\textcolor{stringliteral}{"-\/-\/help"}) != 0)}
+\DoxyCodeLine{52         read\_everything(cin);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \mbox{\hyperlink{classSearchEngine}{SearchEngine}} *engine = 0;}
+\DoxyCodeLine{55     g\_policy = 0;}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57     g\_timer\_regression.stop();}
+\DoxyCodeLine{58     g\_timer\_engine\_init.stop();}
+\DoxyCodeLine{59     g\_timer\_search.stop();}
+\DoxyCodeLine{60     g\_timer\_policy\_build.stop();}
+\DoxyCodeLine{61     g\_timer\_policy\_use.stop();}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{63     g\_timer\_regression.reset();}
+\DoxyCodeLine{64     g\_timer\_engine\_init.reset();}
+\DoxyCodeLine{65     g\_timer\_search.reset();}
+\DoxyCodeLine{66     g\_timer\_policy\_build.reset();}
+\DoxyCodeLine{67     g\_timer\_policy\_use.reset();}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69     \textcolor{comment}{// the input will be parsed twice:}}
+\DoxyCodeLine{70     \textcolor{comment}{// once in dry-\/run mode, to check for simple input errors,}}
+\DoxyCodeLine{71     \textcolor{comment}{// then in normal mode}}
+\DoxyCodeLine{72     g\_timer\_engine\_init.resume();}
+\DoxyCodeLine{73     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{74     \{}
+\DoxyCodeLine{75         OptionParser::parse\_cmd\_line(argc, argv, \textcolor{keyword}{true});}
+\DoxyCodeLine{76         engine = OptionParser::parse\_cmd\_line(argc, argv, \textcolor{keyword}{false});}
+\DoxyCodeLine{77     \}}
+\DoxyCodeLine{78     \textcolor{keywordflow}{catch} (\mbox{\hyperlink{structParseError}{ParseError}} \&pe)}
+\DoxyCodeLine{79     \{}
+\DoxyCodeLine{80         cerr << pe << endl;}
+\DoxyCodeLine{81         exit\_with(EXIT\_INPUT\_ERROR);}
+\DoxyCodeLine{82     \}}
+\DoxyCodeLine{83     g\_timer\_engine\_init.stop();}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{comment}{/* HAZ: Unfortunately, this must go here (as supposed to globals.cc)}}
+\DoxyCodeLine{86 \textcolor{comment}{     *      since we need to know if g\_detect\_deadends is true or not. */}}
+\DoxyCodeLine{87     \textcolor{keywordflow}{if} (g\_detect\_deadends)}
+\DoxyCodeLine{88     \{}
+\DoxyCodeLine{89         generate\_regressable\_ops();}
+\DoxyCodeLine{90     \}}
+\DoxyCodeLine{91     \textcolor{comment}{/* HAZ: We create the policies even if we aren't using deadends, as}}
+\DoxyCodeLine{92 \textcolor{comment}{     *      they may be consulted by certain parts of the code. */}}
+\DoxyCodeLine{93     g\_deadend\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{94     g\_deadend\_states = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{95     g\_temporary\_deadends = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{96 }
 \DoxyCodeLine{97 }
-\DoxyCodeLine{98 }
-\DoxyCodeLine{101     \textcolor{keywordflow}{if} (((g\_record\_online\_deadends || g\_generalize\_deadends) \&\& !g\_detect\_deadends) ||}
-\DoxyCodeLine{102         ((g\_partial\_planlocal || g\_plan\_locally\_limited) \&\& !g\_plan\_locally) ||}
-\DoxyCodeLine{103         (g\_optimized\_scd \&\& (g\_jic\_limit == 0)) ||}
-\DoxyCodeLine{104         (g\_forgetpolicy \&\& (g\_jic\_limit > 0)))}
-\DoxyCodeLine{105     \{}
-\DoxyCodeLine{106         cout << \textcolor{stringliteral}{"\(\backslash\)n  Parameter Error: Make sure that the set of parameters is consistent.\(\backslash\)n"}}
-\DoxyCodeLine{107              << endl;}
-\DoxyCodeLine{108         exit(0);}
-\DoxyCodeLine{109     \}}
+\DoxyCodeLine{100     \textcolor{keywordflow}{if} (((g\_record\_online\_deadends || g\_generalize\_deadends) \&\& !g\_detect\_deadends) ||}
+\DoxyCodeLine{101         ((g\_partial\_planlocal || g\_plan\_locally\_limited) \&\& !g\_plan\_locally) ||}
+\DoxyCodeLine{102         (g\_optimized\_scd \&\& (g\_jic\_limit == 0)) ||}
+\DoxyCodeLine{103         (g\_forgetpolicy \&\& (g\_jic\_limit > 0)))}
+\DoxyCodeLine{104     \{}
+\DoxyCodeLine{105         cout << \textcolor{stringliteral}{"\(\backslash\)n  Parameter Error: Make sure that the set of parameters is consistent.\(\backslash\)n"}}
+\DoxyCodeLine{106              << endl;}
+\DoxyCodeLine{107         exit(0);}
+\DoxyCodeLine{108     \}}
+\DoxyCodeLine{109 }
 \DoxyCodeLine{110 }
-\DoxyCodeLine{111 }
-\DoxyCodeLine{114     cout << \textcolor{stringliteral}{"\(\backslash\)nTotal allotted time (s): "} << g\_jic\_limit << endl;}
-\DoxyCodeLine{115 }
-\DoxyCodeLine{116     \textcolor{comment}{// If we are going to do a final FSAP-\/free round, then we modify the}}
-\DoxyCodeLine{117     \textcolor{comment}{//  time limits to give a 50/50 split between the JIC phase and final}}
-\DoxyCodeLine{118     \textcolor{comment}{//  round phase}}
-\DoxyCodeLine{119     \textcolor{keywordtype}{double} jic\_ratio = 0.5;}
-\DoxyCodeLine{120     \textcolor{keywordflow}{if} (g\_final\_fsap\_free\_round)}
-\DoxyCodeLine{121         g\_jic\_limit *= jic\_ratio;}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123     cout << \textcolor{stringliteral}{"Max time for core JIC (remaining used in final-\/round repairs): "} << g\_jic\_limit << endl;}
-\DoxyCodeLine{124 }
-\DoxyCodeLine{125     \textcolor{comment}{// Adjust the g\_jic\_limit so the epochs are handled properly}}
-\DoxyCodeLine{126     \textcolor{keywordtype}{int} epochs\_remaining = g\_num\_epochs;}
-\DoxyCodeLine{127     \textcolor{keywordtype}{double} single\_jic\_limit = g\_jic\_limit / (double)g\_num\_epochs;}
-\DoxyCodeLine{128     g\_jic\_limit = single\_jic\_limit;}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{130     cout << \textcolor{stringliteral}{"Max time for each of the "} << epochs\_remaining << \textcolor{stringliteral}{" epochs: "} << g\_jic\_limit << endl}
-\DoxyCodeLine{131          << endl;}
-\DoxyCodeLine{132 }
+\DoxyCodeLine{113     cout << \textcolor{stringliteral}{"\(\backslash\)nTotal allotted time (s): "} << g\_jic\_limit << endl;}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115     \textcolor{comment}{// If we are going to do a final FSAP-\/free round, then we modify the}}
+\DoxyCodeLine{116     \textcolor{comment}{//  time limits to give a 50/50 split between the JIC phase and final}}
+\DoxyCodeLine{117     \textcolor{comment}{//  round phase}}
+\DoxyCodeLine{118     \textcolor{keywordtype}{double} jic\_ratio = 0.5;}
+\DoxyCodeLine{119     \textcolor{keywordflow}{if} (g\_final\_fsap\_free\_round)}
+\DoxyCodeLine{120         g\_jic\_limit *= jic\_ratio;}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122     cout << \textcolor{stringliteral}{"Max time for core JIC (remaining used in final-\/round repairs): "} << g\_jic\_limit << endl;}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124     \textcolor{comment}{// Adjust the g\_jic\_limit so the epochs are handled properly}}
+\DoxyCodeLine{125     \textcolor{keywordtype}{int} epochs\_remaining = g\_num\_epochs;}
+\DoxyCodeLine{126     \textcolor{keywordtype}{double} single\_jic\_limit = g\_jic\_limit / (double)g\_num\_epochs;}
+\DoxyCodeLine{127     g\_jic\_limit = single\_jic\_limit;}
+\DoxyCodeLine{128 }
+\DoxyCodeLine{129     cout << \textcolor{stringliteral}{"Max time for each of the "} << epochs\_remaining << \textcolor{stringliteral}{" epochs: "} << g\_jic\_limit << endl}
+\DoxyCodeLine{130          << endl;}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{132     g\_operators\_backup = g\_operators;}
 \DoxyCodeLine{133 }
-\DoxyCodeLine{136     engine-\/>\mbox{\hyperlink{classSearchEngine_ac26c460dfa1bdd798aa50ebeae28d6f9}{reset}}();}
-\DoxyCodeLine{137     g\_timer\_search.resume();}
-\DoxyCodeLine{138     engine-\/>search();}
-\DoxyCodeLine{139     g\_timer\_search.stop();}
-\DoxyCodeLine{140     engine-\/>save\_plan\_if\_necessary();}
-\DoxyCodeLine{141     engine-\/>statistics();}
-\DoxyCodeLine{142     engine-\/>heuristic\_statistics();}
-\DoxyCodeLine{143     cout << \textcolor{stringliteral}{"Initial search time: "} << g\_timer\_search << endl;}
-\DoxyCodeLine{144     cout << \textcolor{stringliteral}{"Initial total time: "} << g\_timer << endl;}
-\DoxyCodeLine{145 }
-\DoxyCodeLine{146     \textcolor{keywordflow}{if} (!engine-\/>found\_solution())}
-\DoxyCodeLine{147     \{}
-\DoxyCodeLine{148         cout << \textcolor{stringliteral}{"No solution -\/-\/ aborting repairs."} << endl;}
-\DoxyCodeLine{149         exit(1);}
-\DoxyCodeLine{150     \}}
-\DoxyCodeLine{151 }
-\DoxyCodeLine{152     cout << \textcolor{stringliteral}{"\(\backslash\)nRegressing the plan..."} << endl;}
-\DoxyCodeLine{153     list<PolicyItem *> regression\_steps = perform\_regression(engine-\/>get\_plan(), g\_matched\_policy, 0, \textcolor{keyword}{true});}
-\DoxyCodeLine{154 }
-\DoxyCodeLine{155     cout << \textcolor{stringliteral}{"\(\backslash\)nGenerating an initial policy..."} << endl;}
-\DoxyCodeLine{156     g\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
-\DoxyCodeLine{157     g\_policy-\/>update\_policy(regression\_steps);}
-\DoxyCodeLine{158 }
-\DoxyCodeLine{159     \textcolor{keywordflow}{if} (g\_sample\_for\_depth1\_deadends)}
-\DoxyCodeLine{160         sample\_for\_depth1\_deadends(engine-\/>get\_plan(), \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(g\_initial\_state()));}
-\DoxyCodeLine{161 }
+\DoxyCodeLine{134 }
+\DoxyCodeLine{137     engine-\/>\mbox{\hyperlink{classSearchEngine_ac26c460dfa1bdd798aa50ebeae28d6f9}{reset}}();}
+\DoxyCodeLine{138     g\_timer\_search.resume();}
+\DoxyCodeLine{139     engine-\/>search();}
+\DoxyCodeLine{140     g\_timer\_search.stop();}
+\DoxyCodeLine{141     engine-\/>save\_plan\_if\_necessary();}
+\DoxyCodeLine{142     engine-\/>statistics();}
+\DoxyCodeLine{143     engine-\/>heuristic\_statistics();}
+\DoxyCodeLine{144     cout << \textcolor{stringliteral}{"Initial search time: "} << g\_timer\_search << endl;}
+\DoxyCodeLine{145     cout << \textcolor{stringliteral}{"Initial total time: "} << g\_timer << endl;}
+\DoxyCodeLine{146 }
+\DoxyCodeLine{147     \textcolor{keywordflow}{if} (!engine-\/>found\_solution())}
+\DoxyCodeLine{148     \{}
+\DoxyCodeLine{149         cout << \textcolor{stringliteral}{"No solution -\/-\/ aborting repairs."} << endl;}
+\DoxyCodeLine{150         exit(1);}
+\DoxyCodeLine{151     \}}
+\DoxyCodeLine{152 }
+\DoxyCodeLine{153     cout << \textcolor{stringliteral}{"\(\backslash\)nRegressing the plan..."} << endl;}
+\DoxyCodeLine{154     list<PolicyItem *> regression\_steps = perform\_regression(engine-\/>get\_plan(), g\_matched\_policy, 0, \textcolor{keyword}{true});}
+\DoxyCodeLine{155 }
+\DoxyCodeLine{156     cout << \textcolor{stringliteral}{"\(\backslash\)nGenerating an initial policy..."} << endl;}
+\DoxyCodeLine{157     g\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{158     g\_policy-\/>update\_policy(regression\_steps);}
+\DoxyCodeLine{159 }
+\DoxyCodeLine{160     \textcolor{keywordflow}{if} (g\_sample\_for\_depth1\_deadends)}
+\DoxyCodeLine{161         sample\_for\_depth1\_deadends(engine-\/>get\_plan(), \textcolor{keyword}{new} \mbox{\hyperlink{classPartialState}{PartialState}}(g\_initial\_state()));}
 \DoxyCodeLine{162 }
-\DoxyCodeLine{165     \textcolor{comment}{// the resilient algorithm start from here, previously is cloned from the original prp.}}
-\DoxyCodeLine{166 }
+\DoxyCodeLine{163 }
+\DoxyCodeLine{166     \textcolor{comment}{// the resilient algorithm start from here, previously code is cloned from the original prp}}
 \DoxyCodeLine{167     \textcolor{comment}{// save the first policy as the original policy}}
 \DoxyCodeLine{168     \textcolor{comment}{// g\_policy during the execution will contain all the other branches too}}
 \DoxyCodeLine{169     g\_original\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
@@ -280,162 +284,150 @@ Resilient Alghoritm $\ast$
 \DoxyCodeLine{178     \textcolor{keywordflow}{for} (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)}
 \DoxyCodeLine{179     \{}
 \DoxyCodeLine{180         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_max\_faults);}
-\DoxyCodeLine{181 }
-\DoxyCodeLine{182         std::set<Operator> post\_actions;}
-\DoxyCodeLine{183         post\_actions.insert(*(*it));}
-\DoxyCodeLine{184         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node\_f = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_max\_faults -\/ 1, post\_actions);}
-\DoxyCodeLine{185 }
-\DoxyCodeLine{186         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{187         \{}
-\DoxyCodeLine{188             cout << \textcolor{stringliteral}{"\(\backslash\)nPushing nodes of the initial policy:"} << endl;}
-\DoxyCodeLine{189             res\_node.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
-\DoxyCodeLine{190             res\_node\_f.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
-\DoxyCodeLine{191         \}}
-\DoxyCodeLine{192 }
-\DoxyCodeLine{193         nodes.push(res\_node);}
-\DoxyCodeLine{194         nodes.push(res\_node\_f);}
-\DoxyCodeLine{195 }
-\DoxyCodeLine{196         current = g\_state\_registry-\/>get\_successor\_state(current, *(*it));}
-\DoxyCodeLine{197     \}}
+\DoxyCodeLine{181         std::set<Operator> post\_actions;}
+\DoxyCodeLine{182         post\_actions.insert(*(*it));}
+\DoxyCodeLine{183         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node\_f = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_max\_faults -\/ 1, post\_actions);}
+\DoxyCodeLine{184         nodes.push(res\_node);}
+\DoxyCodeLine{185         nodes.push(res\_node\_f);}
+\DoxyCodeLine{186         current = g\_state\_registry-\/>get\_successor\_state(current, *(*it));}
+\DoxyCodeLine{187     \}}
+\DoxyCodeLine{188 }
+\DoxyCodeLine{189     \textcolor{comment}{//cout << "\(\backslash\)nInitial policy:" << endl;}}
+\DoxyCodeLine{190     \textcolor{comment}{//g\_policy-\/>dump();}}
+\DoxyCodeLine{191 }
+\DoxyCodeLine{192     \textcolor{comment}{/*}}
+\DoxyCodeLine{193 \textcolor{comment}{    cout << "PPPPPPPPPPP" << endl;}}
+\DoxyCodeLine{194 \textcolor{comment}{    for (int i = 0; i < g\_operators.size(); i++)\{}}
+\DoxyCodeLine{195 \textcolor{comment}{        cout << g\_operators[i].get\_nondet\_name() << endl;}}
+\DoxyCodeLine{196 \textcolor{comment}{}}
+\DoxyCodeLine{197 \textcolor{comment}{    \}*/}}
 \DoxyCodeLine{198 }
-\DoxyCodeLine{199     cout << \textcolor{stringliteral}{"\(\backslash\)nInitial policy:"} << endl;}
-\DoxyCodeLine{200     g\_policy-\/>dump();}
-\DoxyCodeLine{201 }
-\DoxyCodeLine{202     \textcolor{comment}{// main while loop of the algorithm, basically 1:1 with the pseudocode}}
-\DoxyCodeLine{203     \textcolor{keywordtype}{int} iteration = 1;}
-\DoxyCodeLine{204     \textcolor{keywordflow}{while} (!nodes.empty())}
-\DoxyCodeLine{205     \{}
-\DoxyCodeLine{206         \mbox{\hyperlink{classResilientNode}{ResilientNode}} current\_node = nodes.top();}
-\DoxyCodeLine{207         nodes.pop();}
-\DoxyCodeLine{208         g\_current\_faults = current\_node.get\_k();}
-\DoxyCodeLine{209         g\_current\_forbidden\_ops = current\_node.get\_deactivated\_op();}
-\DoxyCodeLine{210 }
-\DoxyCodeLine{211         k\_v\_pair current\_pair = std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops);}
-\DoxyCodeLine{212 }
-\DoxyCodeLine{213         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{214         \{}
-\DoxyCodeLine{215             cout << \textcolor{stringliteral}{"\(\backslash\)n-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"} << endl;}
-\DoxyCodeLine{216             cout << \textcolor{stringliteral}{"\(\backslash\)nIteration:"} << iteration << endl;}
-\DoxyCodeLine{217             cout << \textcolor{stringliteral}{"Current node:"} << endl;}
-\DoxyCodeLine{218             current\_node.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
-\DoxyCodeLine{219         \}}
-\DoxyCodeLine{220 }
-\DoxyCodeLine{221         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{resilient__planner_8cc_aa6a18ede93ebee32f9d8ede050060bfc}{resiliency\_check}}(current\_node))}
-\DoxyCodeLine{222         \{}
-\DoxyCodeLine{223             \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{224                 cout << \textcolor{stringliteral}{"\(\backslash\)nFailed resiliency check.\(\backslash\)n"}}
-\DoxyCodeLine{225                      << endl;}
-\DoxyCodeLine{226 }
-\DoxyCodeLine{227             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{resilient__planner_8cc_ac9b775db41306409b3ee8cfcdfcb139a}{replan}}(current\_node, engine))}
-\DoxyCodeLine{228             \{}
-\DoxyCodeLine{229                 \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{230                     cout << \textcolor{stringliteral}{"\(\backslash\)nFailed replanning."} << endl;}
-\DoxyCodeLine{231 }
-\DoxyCodeLine{232                 \mbox{\hyperlink{resilient__planner_8cc_acf3e8f7fc237373f6dde0b5476d42819}{add\_fault\_model\_deadend}}(current\_node);}
-\DoxyCodeLine{233             \}}
+\DoxyCodeLine{199     \textcolor{comment}{// main while loop of the algorithm, basically 1:1 with the pseudocode}}
+\DoxyCodeLine{200     \textcolor{keywordtype}{int} iteration = 1;}
+\DoxyCodeLine{201     \textcolor{keywordflow}{while} (!nodes.empty())}
+\DoxyCodeLine{202     \{}
+\DoxyCodeLine{203         \mbox{\hyperlink{classResilientNode}{ResilientNode}} current\_node = nodes.top();}
+\DoxyCodeLine{204         nodes.pop();}
+\DoxyCodeLine{205         g\_current\_faults = current\_node.get\_k();}
+\DoxyCodeLine{206         g\_current\_forbidden\_ops = current\_node.get\_deactivated\_op();}
+\DoxyCodeLine{207 }
+\DoxyCodeLine{208         k\_v\_pair current\_pair = std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops);}
+\DoxyCodeLine{209         }
+\DoxyCodeLine{210         \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{211         \{}
+\DoxyCodeLine{212             cout << \textcolor{stringliteral}{"\(\backslash\)n-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/"} << endl;}
+\DoxyCodeLine{213             cout << \textcolor{stringliteral}{"\(\backslash\)nIteration:"} << iteration << endl;}
+\DoxyCodeLine{214             cout << \textcolor{stringliteral}{"Current node:"} << endl;}
+\DoxyCodeLine{215             current\_node.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
+\DoxyCodeLine{216         \}}
+\DoxyCodeLine{217 }
+\DoxyCodeLine{218         \textcolor{keywordflow}{if} (!\mbox{\hyperlink{resilient__planner_8cc_aa6a18ede93ebee32f9d8ede050060bfc}{resiliency\_check}}(current\_node))}
+\DoxyCodeLine{219         \{}
+\DoxyCodeLine{220             \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{221                 cout << \textcolor{stringliteral}{"\(\backslash\)nFailed resiliency check.\(\backslash\)n"}}
+\DoxyCodeLine{222                      << endl;}
+\DoxyCodeLine{223 }
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225             \textcolor{keywordflow}{if} (!\mbox{\hyperlink{resilient__planner_8cc_ac9b775db41306409b3ee8cfcdfcb139a}{replan}}(current\_node, engine))}
+\DoxyCodeLine{226             \{}
+\DoxyCodeLine{227 }
+\DoxyCodeLine{228                 \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{229                     cout << \textcolor{stringliteral}{"\(\backslash\)nFailed replanning."} << endl;}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231                 \mbox{\hyperlink{resilient__planner_8cc_acf3e8f7fc237373f6dde0b5476d42819}{add\_fault\_model\_deadend}}(current\_node);}
+\DoxyCodeLine{232             \}}
+\DoxyCodeLine{233             }
 \DoxyCodeLine{234             \textcolor{keywordflow}{else}}
 \DoxyCodeLine{235             \{}
-\DoxyCodeLine{236                 \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{237                     cout << \textcolor{stringliteral}{"Successfull replanning"} << endl;}
-\DoxyCodeLine{238 }
-\DoxyCodeLine{239                 \mbox{\hyperlink{classState}{State}} current = g\_initial\_state();}
-\DoxyCodeLine{240                 std::vector<const Operator *> plan = engine-\/>get\_plan();}
-\DoxyCodeLine{241 }
-\DoxyCodeLine{242                 \textcolor{keywordflow}{if} (current\_node.get\_k() >= 1)}
-\DoxyCodeLine{243                 \{}
-\DoxyCodeLine{244                     \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{245                         cout << \textcolor{stringliteral}{"\(\backslash\)nPushing nodes:\(\backslash\)n"}}
-\DoxyCodeLine{246                              << endl;}
-\DoxyCodeLine{247 }
-\DoxyCodeLine{248                     \textcolor{keywordflow}{for} (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)}
-\DoxyCodeLine{249                     \{}
-\DoxyCodeLine{250                         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_current\_faults, g\_current\_forbidden\_ops);}
-\DoxyCodeLine{251 }
-\DoxyCodeLine{252                         std::set<Operator> post\_actions = g\_current\_forbidden\_ops;}
-\DoxyCodeLine{253                         post\_actions.insert(*(*it));}
-\DoxyCodeLine{254                         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node\_f = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_current\_faults -\/ 1, post\_actions);}
-\DoxyCodeLine{255 }
-\DoxyCodeLine{256                         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{257                         \{}
-\DoxyCodeLine{258                             res\_node.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
-\DoxyCodeLine{259                             res\_node\_f.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
-\DoxyCodeLine{260                             cout << \textcolor{stringliteral}{"\(\backslash\)n"}}
-\DoxyCodeLine{261                                  << endl;}
-\DoxyCodeLine{262                         \}}
+\DoxyCodeLine{236 }
+\DoxyCodeLine{237                 \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{238                     cout << \textcolor{stringliteral}{"Successfull replanning"} << endl;}
+\DoxyCodeLine{239 }
+\DoxyCodeLine{240                 \mbox{\hyperlink{classState}{State}} current = g\_initial\_state();}
+\DoxyCodeLine{241                 std::vector<const Operator *> plan = engine-\/>get\_plan();}
+\DoxyCodeLine{242 }
+\DoxyCodeLine{243                 \textcolor{keywordflow}{if} (current\_node.get\_k() >= 1)}
+\DoxyCodeLine{244                 \{}
+\DoxyCodeLine{245                     \textcolor{keywordflow}{for} (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)}
+\DoxyCodeLine{246                     \{}
+\DoxyCodeLine{247                         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_current\_faults, g\_current\_forbidden\_ops);}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{249                         std::set<Operator> post\_actions = g\_current\_forbidden\_ops;}
+\DoxyCodeLine{250                         post\_actions.insert(*(*it));}
+\DoxyCodeLine{251                         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node\_f = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, g\_current\_faults -\/ 1, post\_actions);}
+\DoxyCodeLine{252 }
+\DoxyCodeLine{253                         nodes.push(res\_node);}
+\DoxyCodeLine{254                         nodes.push(res\_node\_f);}
+\DoxyCodeLine{255                         current = g\_state\_registry-\/>get\_successor\_state(current, *(*it));}
+\DoxyCodeLine{256                     \}}
+\DoxyCodeLine{257                 \}}
+\DoxyCodeLine{258                 \textcolor{keywordflow}{else}}
+\DoxyCodeLine{259                 \{}
+\DoxyCodeLine{260                     \textcolor{keywordflow}{for} (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)}
+\DoxyCodeLine{261                     \{}
+\DoxyCodeLine{262                         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, 0, current\_node.get\_deactivated\_op());}
 \DoxyCodeLine{263 }
-\DoxyCodeLine{264                         nodes.push(res\_node);}
-\DoxyCodeLine{265                         nodes.push(res\_node\_f);}
-\DoxyCodeLine{266                         current = g\_state\_registry-\/>get\_successor\_state(current, *(*it));}
-\DoxyCodeLine{267                     \}}
-\DoxyCodeLine{268                 \}}
-\DoxyCodeLine{269                 \textcolor{keywordflow}{else}}
-\DoxyCodeLine{270                 \{}
-\DoxyCodeLine{271                     \textcolor{keywordflow}{for} (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)}
-\DoxyCodeLine{272                     \{}
-\DoxyCodeLine{273                         \mbox{\hyperlink{classResilientNode}{ResilientNode}} res\_node = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(current, 0, current\_node.get\_deactivated\_op());}
-\DoxyCodeLine{274                         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{275                         \{}
-\DoxyCodeLine{276                             cout << \textcolor{stringliteral}{"Pushing to R"} << endl;}
-\DoxyCodeLine{277                             res\_node.\mbox{\hyperlink{classResilientNode_a0a6346d921999789bf74c4d71ab1fc8a}{dump}}();}
-\DoxyCodeLine{278                         \}}
-\DoxyCodeLine{279                         resilient\_nodes.push\_back(res\_node);}
-\DoxyCodeLine{280                         current = g\_state\_registry-\/>get\_successor\_state(current, *(*it));}
-\DoxyCodeLine{281                     \}}
-\DoxyCodeLine{282                 \}}
-\DoxyCodeLine{283 }
-\DoxyCodeLine{284                 regression\_steps.clear();}
-\DoxyCodeLine{285                 regression\_steps = perform\_regression(engine-\/>get\_plan(), g\_matched\_policy, 0, \textcolor{keyword}{true});}
+\DoxyCodeLine{264                         resilient\_nodes.push\_back(res\_node);}
+\DoxyCodeLine{265                         current = g\_state\_registry-\/>get\_successor\_state(current, *(*it));}
+\DoxyCodeLine{266                     \}}
+\DoxyCodeLine{267                 \}}
+\DoxyCodeLine{268 }
+\DoxyCodeLine{269                 regression\_steps.clear();}
+\DoxyCodeLine{270                 regression\_steps = perform\_regression(engine-\/>get\_plan(), g\_matched\_policy, 0, \textcolor{keyword}{true});}
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272                 \mbox{\hyperlink{classPolicy}{Policy}} *resilient\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
+\DoxyCodeLine{273                 resilient\_policy-\/>update\_policy(regression\_steps);}
+\DoxyCodeLine{274                 g\_resilient\_policies.insert(std::make\_pair(std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops), resilient\_policy));}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276                 g\_policy-\/>update\_policy(regression\_steps);}
+\DoxyCodeLine{277             \} }
+\DoxyCodeLine{278         \}}
+\DoxyCodeLine{279         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{280         \{}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282             \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{283                 cout << \textcolor{stringliteral}{"\(\backslash\)nSuccessfull resiliency check.\(\backslash\)n"}}
+\DoxyCodeLine{284                      << endl;}
+\DoxyCodeLine{285         \}}
 \DoxyCodeLine{286 }
-\DoxyCodeLine{287                 \mbox{\hyperlink{classPolicy}{Policy}} *resilient\_policy = \textcolor{keyword}{new} \mbox{\hyperlink{classPolicy}{Policy}}();}
-\DoxyCodeLine{288                 resilient\_policy-\/>update\_policy(regression\_steps);}
-\DoxyCodeLine{289                 g\_resilient\_policies.insert(std::make\_pair(std::make\_pair(g\_current\_faults, g\_current\_forbidden\_ops), resilient\_policy));}
-\DoxyCodeLine{290 }
-\DoxyCodeLine{291                 g\_policy-\/>update\_policy(regression\_steps);}
-\DoxyCodeLine{292             \}}
-\DoxyCodeLine{293         \}}
-\DoxyCodeLine{294         \textcolor{keywordflow}{else}}
-\DoxyCodeLine{295         \{}
-\DoxyCodeLine{296             \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{297                 cout << \textcolor{stringliteral}{"\(\backslash\)nSuccessfull resiliency check.\(\backslash\)n"}}
-\DoxyCodeLine{298                      << endl;}
-\DoxyCodeLine{299         \}}
-\DoxyCodeLine{300 }
-\DoxyCodeLine{301         iteration++;}
-\DoxyCodeLine{302     \}}
-\DoxyCodeLine{303 }
-\DoxyCodeLine{304     \textcolor{keywordflow}{if} (\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, initial\_node))}
-\DoxyCodeLine{305     \{}
-\DoxyCodeLine{306         \mbox{\hyperlink{resilient__planner_8cc_ad058227fc490e93e440cb97b1c2051f5}{print\_results}}();}
-\DoxyCodeLine{307     \}}
-\DoxyCodeLine{308     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{309     \{}
-\DoxyCodeLine{310         cout << \textcolor{stringliteral}{"\(\backslash\)nInitial state is a deadend, problem is not "} << g\_max\_faults << \textcolor{stringliteral}{"-\/resilient!\(\backslash\)n"}}
-\DoxyCodeLine{311              << endl;}
-\DoxyCodeLine{312     \}}
-\DoxyCodeLine{313 }
-\DoxyCodeLine{314     \textcolor{keywordflow}{if} (1 == g\_dump\_policy)}
-\DoxyCodeLine{315     \{}
-\DoxyCodeLine{316         cout << \textcolor{stringliteral}{"Dumping the policy and fsaps..."} << endl;}
-\DoxyCodeLine{317         ofstream outfile;}
-\DoxyCodeLine{318 }
-\DoxyCodeLine{319         outfile.open(\textcolor{stringliteral}{"policy.out"}, ios::out);}
-\DoxyCodeLine{320         g\_policy-\/>generate\_cpp\_input(outfile);}
-\DoxyCodeLine{321         outfile.close();}
-\DoxyCodeLine{322 }
-\DoxyCodeLine{323         outfile.open(\textcolor{stringliteral}{"policy.fsap"}, ios::out);}
-\DoxyCodeLine{324         g\_deadend\_policy-\/>generate\_cpp\_input(outfile);}
-\DoxyCodeLine{325         outfile.close();}
-\DoxyCodeLine{326     \}}
-\DoxyCodeLine{327     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (2 == g\_dump\_policy)}
-\DoxyCodeLine{328     \{}
-\DoxyCodeLine{329         cout << \textcolor{stringliteral}{"Dumping the policy and fsaps..."} << endl;}
-\DoxyCodeLine{330         g\_policy-\/>dump\_human\_policy();}
-\DoxyCodeLine{331         g\_deadend\_policy-\/>dump\_human\_policy(\textcolor{keyword}{true});}
-\DoxyCodeLine{332     \}}
-\DoxyCodeLine{333 }
-\DoxyCodeLine{334     g\_timer.stop();}
-\DoxyCodeLine{335     \mbox{\hyperlink{resilient__planner_8cc_ad5edd47cc26a1609925da2b1c1dec9e6}{print\_timings}}();}
-\DoxyCodeLine{336 \}}
+\DoxyCodeLine{287         iteration++;}
+\DoxyCodeLine{288         \textcolor{keywordflow}{if} (g\_max\_iterations > 0 \&\& iteration > g\_max\_iterations)}
+\DoxyCodeLine{289             \textcolor{keywordflow}{break};}
+\DoxyCodeLine{290     \}}
+\DoxyCodeLine{291 }
+\DoxyCodeLine{292     \textcolor{keywordflow}{if} (\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, initial\_node))}
+\DoxyCodeLine{293     \{}
+\DoxyCodeLine{294         \mbox{\hyperlink{resilient__planner_8cc_ad058227fc490e93e440cb97b1c2051f5}{print\_results}}();}
+\DoxyCodeLine{295     \}}
+\DoxyCodeLine{296     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{297     \{}
+\DoxyCodeLine{298         cout << \textcolor{stringliteral}{"\(\backslash\)nInitial state is a deadend, problem is not "} << g\_max\_faults << \textcolor{stringliteral}{"-\/resilient!\(\backslash\)n"}}
+\DoxyCodeLine{299              << endl;}
+\DoxyCodeLine{300     \}}
+\DoxyCodeLine{301 }
+\DoxyCodeLine{302     \textcolor{keywordflow}{if} (1 == g\_dump\_policy)}
+\DoxyCodeLine{303     \{}
+\DoxyCodeLine{304         cout << \textcolor{stringliteral}{"Dumping the policy and fsaps..."} << endl;}
+\DoxyCodeLine{305         ofstream outfile;}
+\DoxyCodeLine{306 }
+\DoxyCodeLine{307         outfile.open(\textcolor{stringliteral}{"policy.out"}, ios::out);}
+\DoxyCodeLine{308         g\_policy-\/>generate\_cpp\_input(outfile);}
+\DoxyCodeLine{309         outfile.close();}
+\DoxyCodeLine{310 }
+\DoxyCodeLine{311         outfile.open(\textcolor{stringliteral}{"policy.fsap"}, ios::out);}
+\DoxyCodeLine{312         g\_deadend\_policy-\/>generate\_cpp\_input(outfile);}
+\DoxyCodeLine{313         outfile.close();}
+\DoxyCodeLine{314     \}}
+\DoxyCodeLine{315     \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (2 == g\_dump\_policy)}
+\DoxyCodeLine{316     \{}
+\DoxyCodeLine{317         cout << \textcolor{stringliteral}{"Dumping the policy and fsaps..."} << endl;}
+\DoxyCodeLine{318         g\_policy-\/>dump\_human\_policy();}
+\DoxyCodeLine{319         g\_deadend\_policy-\/>dump\_human\_policy(\textcolor{keyword}{true});}
+\DoxyCodeLine{320     \}}
+\DoxyCodeLine{321 }
+\DoxyCodeLine{322     g\_timer.stop();}
+\DoxyCodeLine{323     \mbox{\hyperlink{resilient__planner_8cc_ad5edd47cc26a1609925da2b1c1dec9e6}{print\_timings}}();}
+\DoxyCodeLine{324 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{resilient__planner_8cc_ac9b775db41306409b3ee8cfcdfcb139a}\label{resilient__planner_8cc_ac9b775db41306409b3ee8cfcdfcb139a}} 
@@ -460,68 +452,66 @@ True if the replan succeds, false otherwise.
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{403 \{}
-\DoxyCodeLine{404     \textcolor{keywordtype}{bool} verbose = \textcolor{keyword}{false};}
-\DoxyCodeLine{405 }
-\DoxyCodeLine{406     \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{407     \{}
-\DoxyCodeLine{408         cout << \textcolor{stringliteral}{"Replanning... "} << endl;}
-\DoxyCodeLine{409         \mbox{\hyperlink{resilient__planner_8cc_a170f8ea599c0fa6efcd4e5a35cc460a3}{resource\_usage}}(\textcolor{stringliteral}{"Before replan"});}
-\DoxyCodeLine{410     \}}
-\DoxyCodeLine{411 }
-\DoxyCodeLine{412     \mbox{\hyperlink{classPartialState}{PartialState}} current\_state = \mbox{\hyperlink{classPartialState}{PartialState}}(current\_node.get\_state());}
-\DoxyCodeLine{413 }
-\DoxyCodeLine{414     \textcolor{keywordflow}{if} (is\_deadend(current\_state))}
-\DoxyCodeLine{415     \{}
-\DoxyCodeLine{416         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{417             cout << \textcolor{stringliteral}{"\(\backslash\)nDetected deadend"} << endl;}
-\DoxyCodeLine{418         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{419     \}}
-\DoxyCodeLine{420 }
-\DoxyCodeLine{421     \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{422         cout << \textcolor{stringliteral}{"\(\backslash\)nCreating initial state."} << endl;}
+\DoxyCodeLine{392 \{}
+\DoxyCodeLine{393     \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{394     \{}
+\DoxyCodeLine{395         cout << \textcolor{stringliteral}{"Replanning... "} << endl;}
+\DoxyCodeLine{396         \textcolor{comment}{//resource\_usage("Before replan");}}
+\DoxyCodeLine{397     \}}
+\DoxyCodeLine{398 }
+\DoxyCodeLine{399     \mbox{\hyperlink{classPartialState}{PartialState}} current\_state = \mbox{\hyperlink{classPartialState}{PartialState}}(current\_node.get\_state());}
+\DoxyCodeLine{400 }
+\DoxyCodeLine{401     \textcolor{keywordflow}{if} (is\_deadend(current\_state))}
+\DoxyCodeLine{402     \{}
+\DoxyCodeLine{403         \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{404             cout << \textcolor{stringliteral}{"\(\backslash\)nDetected deadend"} << endl;}
+\DoxyCodeLine{405         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{406     \}}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{408     \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{409         cout << \textcolor{stringliteral}{"\(\backslash\)nCreating initial state."} << endl;}
+\DoxyCodeLine{410 }
+\DoxyCodeLine{411     \textcolor{comment}{// set the initial state as the state in the current node}}
+\DoxyCodeLine{412     g\_state\_registry-\/>reset\_initial\_state();}
+\DoxyCodeLine{413     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < g\_variable\_name.size(); i++)}
+\DoxyCodeLine{414         g\_initial\_state\_data[i] = current\_state[i];}
+\DoxyCodeLine{415 }
+\DoxyCodeLine{416     \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{417         cout << \textcolor{stringliteral}{"Creating new engine."} << endl;}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419     \mbox{\hyperlink{resilient__planner_8cc_a6c341899d3b36330fc1636b8d78acdcc}{reset\_goal}}();}
+\DoxyCodeLine{420     g\_timer\_engine\_init.resume();}
+\DoxyCodeLine{421     engine-\/>\mbox{\hyperlink{classSearchEngine_ac26c460dfa1bdd798aa50ebeae28d6f9}{reset}}();}
+\DoxyCodeLine{422     g\_timer\_engine\_init.stop();}
 \DoxyCodeLine{423 }
-\DoxyCodeLine{424     \textcolor{comment}{// set the initial state as the state in the current node}}
-\DoxyCodeLine{425     g\_state\_registry-\/>reset\_initial\_state();}
-\DoxyCodeLine{426     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < g\_variable\_name.size(); i++)}
-\DoxyCodeLine{427         g\_initial\_state\_data[i] = current\_state[i];}
-\DoxyCodeLine{428 }
-\DoxyCodeLine{429     \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{430         cout << \textcolor{stringliteral}{"Creating new engine."} << endl;}
-\DoxyCodeLine{431 }
-\DoxyCodeLine{432     \mbox{\hyperlink{resilient__planner_8cc_a6c341899d3b36330fc1636b8d78acdcc}{reset\_goal}}();}
-\DoxyCodeLine{433     g\_timer\_engine\_init.resume();}
-\DoxyCodeLine{434     engine-\/>\mbox{\hyperlink{classSearchEngine_ac26c460dfa1bdd798aa50ebeae28d6f9}{reset}}();}
-\DoxyCodeLine{435     g\_timer\_engine\_init.stop();}
-\DoxyCodeLine{436 }
-\DoxyCodeLine{437     \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{438         cout << \textcolor{stringliteral}{"Searching for a solution."} << endl;}
-\DoxyCodeLine{439 }
-\DoxyCodeLine{440     g\_timer\_search.resume();}
-\DoxyCodeLine{441     engine-\/>search();}
-\DoxyCodeLine{442     g\_timer\_search.stop();}
-\DoxyCodeLine{443 }
-\DoxyCodeLine{444     \textcolor{keywordflow}{if} (engine-\/>found\_solution())}
+\DoxyCodeLine{424     \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{425         cout << \textcolor{stringliteral}{"Searching for a solution."} << endl;}
+\DoxyCodeLine{426 }
+\DoxyCodeLine{427     g\_timer\_search.resume();}
+\DoxyCodeLine{428     engine-\/>search();}
+\DoxyCodeLine{429     g\_timer\_search.stop();}
+\DoxyCodeLine{430 }
+\DoxyCodeLine{431     \textcolor{keywordflow}{if} (engine-\/>found\_solution())}
+\DoxyCodeLine{432     \{}
+\DoxyCodeLine{433         cout << \textcolor{stringliteral}{"Solution found"} << endl;}
+\DoxyCodeLine{434         \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{435         \{}
+\DoxyCodeLine{436             engine-\/>save\_plan\_if\_necessary();}
+\DoxyCodeLine{437             engine-\/>statistics();}
+\DoxyCodeLine{438             engine-\/>heuristic\_statistics();}
+\DoxyCodeLine{439             \textcolor{comment}{//resource\_usage("After replan");}}
+\DoxyCodeLine{440         \}}
+\DoxyCodeLine{441 }
+\DoxyCodeLine{442         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{443     \}}
+\DoxyCodeLine{444     \textcolor{keywordflow}{else}}
 \DoxyCodeLine{445     \{}
-\DoxyCodeLine{446         cout << \textcolor{stringliteral}{"Solution found"} << endl;}
-\DoxyCodeLine{447         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{448         \{}
-\DoxyCodeLine{449             engine-\/>save\_plan\_if\_necessary();}
-\DoxyCodeLine{450             engine-\/>statistics();}
-\DoxyCodeLine{451             engine-\/>heuristic\_statistics();}
-\DoxyCodeLine{452             \mbox{\hyperlink{resilient__planner_8cc_a170f8ea599c0fa6efcd4e5a35cc460a3}{resource\_usage}}(\textcolor{stringliteral}{"After replan"});}
-\DoxyCodeLine{453         \}}
-\DoxyCodeLine{454 }
-\DoxyCodeLine{455         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{456     \}}
-\DoxyCodeLine{457     \textcolor{keywordflow}{else}}
-\DoxyCodeLine{458     \{}
-\DoxyCodeLine{459         \textcolor{keywordflow}{if} (verbose)}
-\DoxyCodeLine{460             cout << \textcolor{stringliteral}{"Replanning failed!"} << endl;}
-\DoxyCodeLine{461 }
-\DoxyCodeLine{462         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{463     \}}
-\DoxyCodeLine{464 \}}
+\DoxyCodeLine{446         \textcolor{keywordflow}{if} (g\_verbose)}
+\DoxyCodeLine{447             cout << \textcolor{stringliteral}{"Replanning failed!"} << endl;}
+\DoxyCodeLine{448 }
+\DoxyCodeLine{449         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{450     \}}
+\DoxyCodeLine{451 \}}
 
 \end{DoxyCode}
 \mbox{\Hypertarget{resilient__planner_8cc_aa6a18ede93ebee32f9d8ede050060bfc}\label{resilient__planner_8cc_aa6a18ede93ebee32f9d8ede050060bfc}} 
@@ -540,55 +530,56 @@ True if the node is resilient, false otherwise.
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{345 \{}
-\DoxyCodeLine{346     \textcolor{keywordflow}{if} (resilient\_nodes.empty())}
-\DoxyCodeLine{347         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{348 }
-\DoxyCodeLine{349     \mbox{\hyperlink{classPartialState}{PartialState}} state\_to\_check = \mbox{\hyperlink{classPartialState}{PartialState}}(node.get\_state());}
-\DoxyCodeLine{350 }
-\DoxyCodeLine{351     \textcolor{keywordflow}{if} (\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, node))}
-\DoxyCodeLine{352         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{353 }
-\DoxyCodeLine{354     std::set<Operator> next\_actions;}
-\DoxyCodeLine{355     next\_actions.clear();}
-\DoxyCodeLine{356     list<PolicyItem *> current\_policy = g\_policy-\/>get\_items();}
-\DoxyCodeLine{357     \mbox{\hyperlink{structPolicyItem}{PolicyItem}} *goal\_step = NULL;}
-\DoxyCodeLine{358 }
-\DoxyCodeLine{359     \textcolor{comment}{// implementation of getPolicyActions(P,s) in the pseudocode}}
-\DoxyCodeLine{360     \textcolor{keywordflow}{for} (std::list<PolicyItem *>::iterator it = current\_policy.begin(); it != current\_policy.end(); ++it)}
-\DoxyCodeLine{361     \{}
-\DoxyCodeLine{362         \mbox{\hyperlink{structRegressionStep}{RegressionStep}} *reg\_step = \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{structRegressionStep}{RegressionStep}} *\textcolor{keyword}{>}(*it);}
-\DoxyCodeLine{363         \textcolor{keywordflow}{if} (!reg\_step-\/>is\_goal)}
-\DoxyCodeLine{364         \{}
-\DoxyCodeLine{365             \mbox{\hyperlink{classPartialState}{PartialState}} policy\_state = \mbox{\hyperlink{classPartialState}{PartialState}}(*reg\_step-\/>state);}
-\DoxyCodeLine{366 }
-\DoxyCodeLine{367             \textcolor{keywordflow}{if} ((*reg\_step-\/>state).implies(state\_to\_check) \&\& !\mbox{\hyperlink{resilient__planner_8cc_a1563020df158bf32be6add7f56bb2859}{find\_in\_op\_set}}(node.get\_deactivated\_op(), reg\_step-\/>get\_op()))}
-\DoxyCodeLine{368                 next\_actions.insert(reg\_step-\/>get\_op());}
-\DoxyCodeLine{369         \}}
-\DoxyCodeLine{370         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (reg\_step-\/>is\_goal)}
-\DoxyCodeLine{371             goal\_step = reg\_step;}
-\DoxyCodeLine{372     \}}
-\DoxyCodeLine{373 }
-\DoxyCodeLine{374     \mbox{\hyperlink{classState}{State}} state = node.get\_state();}
-\DoxyCodeLine{375     \mbox{\hyperlink{classStateRegistry}{StateRegistry}} *registry = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classStateRegistry}{StateRegistry}} *\textcolor{keyword}{>}(\&state.get\_registry());}
-\DoxyCodeLine{376 }
-\DoxyCodeLine{377     \textcolor{keywordflow}{for} (std::set<Operator>::iterator it\_o = next\_actions.begin(); it\_o != next\_actions.end(); ++it\_o)}
-\DoxyCodeLine{378     \{}
-\DoxyCodeLine{379         \mbox{\hyperlink{classState}{State}} successor = registry-\/>get\_successor\_state(node.get\_state(), *it\_o);}
-\DoxyCodeLine{380         \mbox{\hyperlink{classPartialState}{PartialState}} successor\_p = \mbox{\hyperlink{classPartialState}{PartialState}}(successor);}
-\DoxyCodeLine{381         \mbox{\hyperlink{classResilientNode}{ResilientNode}} successor\_r = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(successor, node.get\_k(), node.get\_deactivated\_op()); \textcolor{comment}{// <s[a], k, V>}}
-\DoxyCodeLine{382 }
-\DoxyCodeLine{383         std::set<Operator> forbidden\_plus\_current = node.get\_deactivated\_op();}
-\DoxyCodeLine{384         forbidden\_plus\_current.insert(*it\_o);}
-\DoxyCodeLine{385         \mbox{\hyperlink{classResilientNode}{ResilientNode}} current\_r = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(node.get\_state(), node.get\_k() -\/ 1, forbidden\_plus\_current); \textcolor{comment}{// <s, k-\/1, V U \{a\}>}}
-\DoxyCodeLine{386 }
-\DoxyCodeLine{387         \textcolor{keywordflow}{if} ((\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, successor\_r) || (*goal\_step-\/>state).implies(successor\_p)) \&\& (\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, current\_r)))}
-\DoxyCodeLine{388         \{}
-\DoxyCodeLine{389             resilient\_nodes.push\_back(node);}
-\DoxyCodeLine{390             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
-\DoxyCodeLine{391         \}}
-\DoxyCodeLine{392     \}}
-\DoxyCodeLine{393     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
-\DoxyCodeLine{394 \}}
+\DoxyCodeLine{333 \{}
+\DoxyCodeLine{334     \textcolor{keywordflow}{if} (resilient\_nodes.empty())}
+\DoxyCodeLine{335         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{336 }
+\DoxyCodeLine{337     \mbox{\hyperlink{classPartialState}{PartialState}} state\_to\_check = \mbox{\hyperlink{classPartialState}{PartialState}}(node.get\_state());}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339     \textcolor{keywordflow}{if} (\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, node))}
+\DoxyCodeLine{340         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{341 }
+\DoxyCodeLine{342     std::set<Operator> next\_actions;}
+\DoxyCodeLine{343     next\_actions.clear();}
+\DoxyCodeLine{344     list<PolicyItem *> current\_policy = g\_policy-\/>get\_items();}
+\DoxyCodeLine{345     \mbox{\hyperlink{structPolicyItem}{PolicyItem}} *goal\_step = NULL;}
+\DoxyCodeLine{346 }
+\DoxyCodeLine{347     \textcolor{comment}{// implementation of getPolicyActions(P,s) in the pseudocode}}
+\DoxyCodeLine{348     \textcolor{keywordflow}{for} (std::list<PolicyItem *>::iterator it = current\_policy.begin(); it != current\_policy.end(); ++it)}
+\DoxyCodeLine{349     \{}
+\DoxyCodeLine{350         \mbox{\hyperlink{structRegressionStep}{RegressionStep}} *reg\_step = \textcolor{keyword}{dynamic\_cast<}\mbox{\hyperlink{structRegressionStep}{RegressionStep}} *\textcolor{keyword}{>}(*it);}
+\DoxyCodeLine{351         \textcolor{keywordflow}{if} (!reg\_step-\/>is\_goal)}
+\DoxyCodeLine{352         \{}
+\DoxyCodeLine{353             \mbox{\hyperlink{classPartialState}{PartialState}} policy\_state = \mbox{\hyperlink{classPartialState}{PartialState}}(*reg\_step-\/>state);}
+\DoxyCodeLine{354 }
+\DoxyCodeLine{355             \textcolor{keywordflow}{if} ((*reg\_step-\/>state).implies(state\_to\_check) \&\& !\mbox{\hyperlink{resilient__planner_8cc_a1563020df158bf32be6add7f56bb2859}{find\_in\_op\_set}}(node.get\_deactivated\_op(), reg\_step-\/>get\_op()))}
+\DoxyCodeLine{356                 next\_actions.insert(reg\_step-\/>get\_op());}
+\DoxyCodeLine{357         \}}
+\DoxyCodeLine{358         \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (reg\_step-\/>is\_goal)}
+\DoxyCodeLine{359             goal\_step = reg\_step;}
+\DoxyCodeLine{360 }
+\DoxyCodeLine{361     \}}
+\DoxyCodeLine{362 }
+\DoxyCodeLine{363     \mbox{\hyperlink{classState}{State}} state = node.get\_state();}
+\DoxyCodeLine{364     \mbox{\hyperlink{classStateRegistry}{StateRegistry}} *registry = \textcolor{keyword}{const\_cast<}\mbox{\hyperlink{classStateRegistry}{StateRegistry}} *\textcolor{keyword}{>}(\&state.get\_registry());}
+\DoxyCodeLine{365 }
+\DoxyCodeLine{366     \textcolor{keywordflow}{for} (std::set<Operator>::iterator it\_o = next\_actions.begin(); it\_o != next\_actions.end(); ++it\_o)}
+\DoxyCodeLine{367     \{}
+\DoxyCodeLine{368         \mbox{\hyperlink{classState}{State}} successor = registry-\/>get\_successor\_state(node.get\_state(), *it\_o);}
+\DoxyCodeLine{369         \mbox{\hyperlink{classPartialState}{PartialState}} successor\_p = \mbox{\hyperlink{classPartialState}{PartialState}}(successor);}
+\DoxyCodeLine{370         \mbox{\hyperlink{classResilientNode}{ResilientNode}} successor\_r = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(successor, node.get\_k(), node.get\_deactivated\_op()); \textcolor{comment}{// <s[a], k, V>}}
+\DoxyCodeLine{371 }
+\DoxyCodeLine{372         std::set<Operator> forbidden\_plus\_current = node.get\_deactivated\_op();}
+\DoxyCodeLine{373         forbidden\_plus\_current.insert(*it\_o);}
+\DoxyCodeLine{374         \mbox{\hyperlink{classResilientNode}{ResilientNode}} current\_r = \mbox{\hyperlink{classResilientNode}{ResilientNode}}(node.get\_state(), node.get\_k() -\/ 1, forbidden\_plus\_current); \textcolor{comment}{// <s, k-\/1, V U \{a\}>}}
+\DoxyCodeLine{375 }
+\DoxyCodeLine{376         \textcolor{keywordflow}{if} ((\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, successor\_r) || (*goal\_step-\/>state).implies(successor\_p)) \&\& (\mbox{\hyperlink{resilient__planner_8cc_ab1256e3cad8fc870f75a94254b6aea49}{find\_in\_nodes\_list}}(resilient\_nodes, current\_r)))}
+\DoxyCodeLine{377         \{}
+\DoxyCodeLine{378             resilient\_nodes.push\_back(node);}
+\DoxyCodeLine{379             \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{380         \}}
+\DoxyCodeLine{381     \}}
+\DoxyCodeLine{382     \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{383 \}}
 
 \end{DoxyCode}

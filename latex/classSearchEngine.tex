@@ -122,7 +122,11 @@ const \mbox{\hyperlink{classOptions}{Options}} $\ast$ {\bfseries options}
 \doxysubsubsection{\texorpdfstring{reset()}{reset()}}
 {\footnotesize\ttfamily void Search\+Engine\+::reset (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
 
-For resilient planner\+: we need to keep the old state refistries in order to be able to recognize states that have been generated in previous replanning As long as a state is in a node in the nodes stack, its register must also be kept in memory otherwise the state can\textquotesingle{}t be recognized correctly
+For resilient planner\+: we need to keep the old state registries in order to be able to recognize states that have been generated in previous replanning As long as a state is in a node in the nodes stack, its register must also be kept in memory otherwise the state can\textquotesingle{}t be recognized correctly
+
+Reimplemented in \mbox{\hyperlink{classLazySearch_a0237d0322118a5e2d4939a179826158a}{Lazy\+Search}}.
+
+
 \begin{DoxyCode}{0}
 \DoxyCodeLine{31 \{}
 \DoxyCodeLine{32     solved = \textcolor{keyword}{false};}

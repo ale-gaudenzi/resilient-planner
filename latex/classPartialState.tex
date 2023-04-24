@@ -60,9 +60,41 @@ bool {\bfseries operator$<$} (const \mbox{\hyperlink{classPartialState}{Partial\
 \mbox{\Hypertarget{classPartialState_a50c4a62ad676ee232bde04f2da10ba34}\label{classPartialState_a50c4a62ad676ee232bde04f2da10ba34}} 
 size\+\_\+t {\bfseries hash} () const
 \item 
+bool \mbox{\hyperlink{classPartialState_add05ac14a78557f1e11cdfdf557b893c}{implies}} (\mbox{\hyperlink{classPartialState}{Partial\+State}} \&other)
+\begin{DoxyCompactList}\small\item\em Checks if the state passed implies this state. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classPartialState_add05ac14a78557f1e11cdfdf557b893c}\label{classPartialState_add05ac14a78557f1e11cdfdf557b893c}} 
-bool {\bfseries implies} (\mbox{\hyperlink{classPartialState}{Partial\+State}} \&other)
-\end{DoxyCompactItemize}
+\index{PartialState@{PartialState}!implies@{implies}}
+\index{implies@{implies}!PartialState@{PartialState}}
+\doxysubsubsection{\texorpdfstring{implies()}{implies()}}
+{\footnotesize\ttfamily bool Partial\+State\+::implies (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classPartialState}{Partial\+State}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+Checks if the state passed implies this state. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & the state to check against \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the other state implies this state, false otherwise 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{196 \{}
+\DoxyCodeLine{197     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < g\_variable\_domain.size(); i++)}
+\DoxyCodeLine{198     \{}
+\DoxyCodeLine{199         \textcolor{keywordflow}{if} ((vars[i] != -\/1) \&\& (vars[i] != other.vars[i]))}
+\DoxyCodeLine{200             \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{201     \}}
+\DoxyCodeLine{202     \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{203 \}}
+
+\end{DoxyCode}
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
