@@ -677,7 +677,7 @@ void print_resilient_plan(bool to_file)
     PartialState policy_state;
     int i = 0;
 
-    while (!goal.is_implied(partial_state) && i < 10)
+    while (!goal.is_implied(partial_state))
     {
         StateRegistry *registry = const_cast<StateRegistry *>(&state.get_registry());
 
@@ -686,7 +686,7 @@ void print_resilient_plan(bool to_file)
             RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
             policy_state = PartialState(*reg_step->state);
 
-            if (!reg_step->is_goal)
+            if (!reg_step->is_goal) 
             {
                 if (policy_state.is_implied(partial_state))
                 {
