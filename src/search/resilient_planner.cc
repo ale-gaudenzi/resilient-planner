@@ -657,6 +657,8 @@ void print_resilient_nodes()
 void print_resilient_plan(bool to_file)
 {
     std::list<ResilientNode> resilient_nodes_k;
+
+    // Consider only the resilient nodes with k = max_faults to speed up later check
     for (std::list<ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
     {
         if (it->get_k() == g_max_faults)
@@ -673,39 +675,34 @@ void print_resilient_plan(bool to_file)
     std::set<Operator> next_actions;
     PolicyItem *goal_step = current_policy.front();
     PartialState goal = PartialState(*goal_step->state);
-
     PartialState policy_state;
-    int i = 0;
+
+    // Consider the state registry of the initial state, since it is the same for all states
+    // found by registry.successor() in sequence
+    StateRegistry *registry = const_cast<StateRegistry *>(&state.get_registry());
 
     while (!goal.is_implied(partial_state))
     {
-        StateRegistry *registry = const_cast<StateRegistry *>(&state.get_registry());
-
         for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
         {
             RegressionStep *reg_step = dynamic_cast<RegressionStep *>(*it);
             policy_state = PartialState(*reg_step->state);
 
-            if (!reg_step->is_goal) 
+            if (!reg_step->is_goal && policy_state.is_implied(partial_state))
             {
-                if (policy_state.is_implied(partial_state))
-                {
-                    State successor = registry->get_successor_state(state, *reg_step->op);
-                    PartialState successor_p = (PartialState)successor;
-                    ResilientNode successor_node = ResilientNode(successor, g_max_faults);
-                    successor_node.dump();
+                State successor = registry->get_successor_state(state, *reg_step->op);
+                PartialState successor_p = (PartialState)successor;
+                ResilientNode successor_node = ResilientNode(successor, g_max_faults);
 
-                    if (find_in_nodes_list(resilient_nodes_k, successor_node) || goal.is_implied(successor_p))
-                    {
-                        plan.insert(*reg_step->op);
-                        state = successor;
-                        partial_state = successor_p;
-                        break;
-                    }
+                if (find_in_nodes_list(resilient_nodes_k, successor_node) || goal.is_implied(successor_p))
+                {
+                    plan.insert(*reg_step->op);
+                    state = successor;
+                    partial_state = successor_p;
+                    break;
                 }
             }
         }
-        i++;
     }
 
     if (to_file)
@@ -724,11 +721,6 @@ void print_resilient_plan(bool to_file)
         for (std::set<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
             cout << it->get_nondet_name() << endl;
         cout << "\n\n--------------------------------------------------------------------" << endl;
-    }
-
-    if (to_file)
-    {
-        cout << "AA" << endl;
     }
 }
 
