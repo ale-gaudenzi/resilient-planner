@@ -196,6 +196,8 @@ int main(int argc, const char **argv)
 
     cout << "\nRunning resilient algorithm..." << endl;
 
+    int replan_counter = 0;
+
     // main while loop of the algorithm, basically 1:1 with the pseudocode
     int iteration = 1;
     while (!nodes.empty())
@@ -229,9 +231,9 @@ int main(int argc, const char **argv)
 
                 add_fault_model_deadend(current_node);
             }
-
             else
             {
+                replan_counter++;
                 if (g_verbose)
                     cout << "Successfull replanning" << endl;
 
@@ -291,10 +293,8 @@ int main(int argc, const char **argv)
     {
         if (g_dump_branches) // mettere opzione per i branches
             print_branches();
-
         if (g_dump_global_policy)
             print_policy();
-
         if (g_dump_resilient_nodes)
             print_resilient_nodes();
 
@@ -306,25 +306,14 @@ int main(int argc, const char **argv)
              << endl;
     }
 
-    if (1 == g_dump_policy)
-    {
-        cout << "Dumping the policy and fsaps..." << endl;
-        ofstream outfile;
-
-        outfile.open("policy.out", ios::out);
-        g_policy->generate_cpp_input(outfile);
-        outfile.close();
-
-        outfile.open("policy.fsap", ios::out);
-        g_deadend_policy->generate_cpp_input(outfile);
-        outfile.close();
-    }
-    else if (2 == g_dump_policy)
-    {
-        cout << "Dumping the policy and fsaps..." << endl;
-        g_policy->dump_human_policy();
-        g_deadend_policy->dump_human_policy(true);
-    }
+    cout << "\nResilient algorithm terminated.\n"
+         << endl;
+    cout << "Iterations: " << iteration << endl;
+    cout << "Replanning: " << replan_counter << endl;
+    cout << "Forbidden action-operator pairs: " << g_fault_models.size() << endl;
+    cout << "Deadends: " << g_deadend_states->get_size() << endl;
+    cout << "Resilient nodes: " << resilient_nodes.size() << endl;
+    cout << "Actions planned: " << g_policy->get_size() << endl;
 
     g_timer.stop();
     print_timings();
@@ -622,6 +611,8 @@ void print_branches()
 /// @brief Print time statistics
 void print_timings()
 {
+    cout << "\n--------------------------------------------------------------------\n"
+         << endl;
     cout << "\n                  -{ Timing Statistics }-\n"
          << endl;
     cout << "         Engine Initialization: " << g_timer_engine_init << endl;
