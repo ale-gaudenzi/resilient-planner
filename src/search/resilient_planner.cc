@@ -659,7 +659,7 @@ void print_resilient_plan(bool to_file)
         }
     }
 
-    std::set<Operator> plan;
+    std::list<Operator> plan;
     State state = g_initial_state();
     PartialState partial_state = (PartialState)state;
     list<PolicyItem *> current_policy = g_policy->get_items();
@@ -687,7 +687,7 @@ void print_resilient_plan(bool to_file)
 
                 if (find_in_nodes_list(resilient_nodes_k, successor_node) || goal.is_implied(successor_p))
                 {
-                    plan.insert(*reg_step->op);
+                    plan.push_back(*reg_step->op);
                     state = successor;
                     partial_state = successor_p;
                     break;
@@ -700,7 +700,7 @@ void print_resilient_plan(bool to_file)
     {
         ofstream plan_file;
         plan_file.open("resilient_plan");
-        for (std::set<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
+        for (std::list<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
             plan_file << it->get_nondet_name() << endl;
     }
     else
@@ -709,7 +709,7 @@ void print_resilient_plan(bool to_file)
             << "\n\n--------------------------------------------------------------------" << endl;
         cout << "\n                  -{ Resilient plan }-\n"
              << endl;
-        for (std::set<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
+        for (std::list<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
             cout << it->get_nondet_name() << endl;
         cout << "\n\n--------------------------------------------------------------------" << endl;
     }
