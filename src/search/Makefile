@@ -51,12 +51,12 @@ HEADERS = \
           utilities.h \
           weighted_evaluator.h \
           resilient_node.h \
-          \
           open_lists/alternation_open_list.h \
           open_lists/open_list_buckets.h \
           open_lists/pareto_open_list.h \
           open_lists/standard_scalar_open_list.h \
           open_lists/tiebreaking_open_list.h \
+          
 
 ## Each of the following "HEADERS += ..." constructs defines a
 ## "plugin" feature that can be enabled or disabled by simply
@@ -130,6 +130,7 @@ HEADERS += policy-repair/regression.h \
            policy-repair/partial_state.h \
 
 SHELL = /bin/bash
+CXXFLAGS=-std=c++11 
 
 #SOURCES = planner.cc $(HEADERS:%.h=%.cc)
 SOURCES = resilient_planner.cc $(HEADERS:%.h=%.cc)
@@ -180,8 +181,9 @@ TARGET_DEBUG    = $(TARGET)$(TARGET_SUFFIX_DEBUG)
 OBJECTS_PROFILE = $(SOURCES:%.cc=.obj/%$(OBJECT_SUFFIX_PROFILE).o)
 TARGET_PROFILE  = $(TARGET)$(TARGET_SUFFIX_PROFILE)
 
-CC     = g++
-DEPEND = g++ -MM
+CC     = g++ #-std=c++11
+DEPEND = g++ -MM #-std=c++11
+
 
 ## CCOPT, LINKOPT, POSTLINKOPT are options for compiler and linker
 ## that are used for all three targets (release, debug, and profile).
@@ -190,6 +192,7 @@ DEPEND = g++ -MM
 CCOPT = -Iext
 CCOPT += -g
 CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
+CFLAGS += -std=c++11
 
 ## The following lines contain workarounds for bugs when
 ## cross-compiling to 64 bit on 32-bit systems using gcc 4.4 or gcc
@@ -216,7 +219,7 @@ endif
 LINKOPT  = -g
 LINKOPT +=
 
-POSTLINKOPT =
+POSTLINKOPT = 
 
 ## Additional specialized options for the various targets follow.
 ## In release mode, we link statically since this makes it more likely
@@ -230,11 +233,11 @@ CCOPT_RELEASE  = -O3 -DNDEBUG -fomit-frame-pointer
 CCOPT_DEBUG    = -O3
 CCOPT_PROFILE  = -O3 -pg
 
-LINKOPT_RELEASE =
+LINKOPT_RELEASE = 
 LINKOPT_DEBUG    =
 LINKOPT_PROFILE  = -pg
 
-POSTLINKOPT_RELEASE =
+POSTLINKOPT_RELEASE = 
 POSTLINKOPT_DEBUG   =
 POSTLINKOPT_PROFILE =
 

@@ -1024,3 +1024,10 @@ void Policy::dump_state_op()
         rs->dump_state_op();
     }
 }
+
+PartialState  Policy::get_initial_state()
+{
+    list<PolicyItem *>::reverse_iterator op_iter = all_items.rbegin();
+    RegressionStep *rs = (RegressionStep *)(*op_iter);
+    return rs->get_state();
+}

@@ -60,7 +60,7 @@ public:
     void dump() const;
     void dump_state_op();
     void dump_simple();
-    
+
     void generate_cpp_input(ofstream &outfile) const;
 
     void update_policy(list<PolicyItem *> &reg_items);
@@ -91,6 +91,7 @@ public:
     void copy_relevant_items(list<PolicyItem *> &items, bool checksc=false);
 
     list<PolicyItem *> get_items() { return all_items; };
+    PartialState get_initial_state();
 };
 
 

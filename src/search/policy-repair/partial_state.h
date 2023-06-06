@@ -41,7 +41,7 @@ public:
     bool operator<(const PartialState &other) const;
     size_t hash() const;
     bool is_implied(PartialState &other);
-
+    int * get_vars() const { return vars; }
 };
 
 #endif

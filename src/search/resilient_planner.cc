@@ -14,6 +14,7 @@
 #include "search_engine.h"
 
 #include <iostream>
+#include <fstream>
 #include <list>
 #include <new>
 #include <string>
@@ -21,6 +22,8 @@
 #include <stack>
 #include <tr1/functional>
 #include <sys/resource.h>
+
+#include <iostream>
 
 using namespace std;
 
@@ -33,6 +36,7 @@ void print_timings();
 void print_policy();
 void print_resilient_nodes();
 void print_resilient_plan(bool to_file);
+void print_json();
 
 bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
 bool find_in_op_set(std::set<Operator> set, Operator op);
@@ -299,6 +303,7 @@ int main(int argc, const char **argv)
             print_resilient_nodes();
 
         print_resilient_plan(g_plan_to_file);
+        // print_json();
     }
     else
     {
@@ -431,7 +436,6 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->save_plan_if_necessary();
             engine->statistics();
             engine->heuristic_statistics();
-            // resource_usage("After replan");
         }
 
         return true;
@@ -580,31 +584,47 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
 /// @brief Print first base policy found and other branches generated from replanning
 void print_branches()
 {
-    cout << "\n\n--------------------------------------------------------------------" << endl;
-    cout << "\n                  -{ Base policy without faults}-\n"
-         << endl;
-    cout << "--------------------------------------------------------------------\n"
-         << endl;
-
-    g_original_policy->dump_simple();
-
-    cout << "\n--------------------------------------------------------------------" << endl;
-    cout << "\n                  -{ Alternative policies }-\n"
-         << endl;
-    cout << "--------------------------------------------------------------------" << endl;
+    ofstream plan_file;
+    plan_file.open("branches");
 
     int i = 1;
     for (std::map<k_v_pair, Policy *>::iterator it = g_resilient_policies.begin(); it != g_resilient_policies.end(); ++it)
     {
-        cout << "\n-{ Branch number " << i << " }-\n"
-             << endl;
-        cout << "Remaining faults : " << it->first.first << endl;
-        cout << "\nFailed operator : " << endl;
+        plan_file << "#" << i << endl;
+        plan_file << "Remaining faults : \n"
+                  << it->first.first << endl;
+        plan_file << "Failed operators : " << endl;
         for (std::set<Operator>::iterator it_o = it->first.second.begin(); it_o != it->first.second.end(); ++it_o)
-            cout << it_o->get_nondet_name() << endl;
-        it->second->dump_simple();
+            plan_file << it_o->get_nondet_name() << endl;
+
+        plan_file << "State : " << endl;
+        PartialState s = it->second->get_initial_state();
+        int * vars = s.get_vars();
+        for (int i = 0; i < g_variable_domain.size(); i++)
+        {
+            if (-1 != vars[i])
+            {
+                const string &fact_name = g_fact_names[i][vars[i]];
+                if (fact_name != "<none of those>")
+                    plan_file << fact_name << endl;
+                else
+                    plan_file << "[" << g_variable_name[i] << "] None of those." << endl;
+            }
+        }
+
+
+        plan_file << "Plan : " << endl;
+        list<PolicyItem *> policy = it->second->get_items();
+        for (list<PolicyItem *>::reverse_iterator op_iter = policy.rbegin();
+             op_iter != policy.rend(); ++op_iter)
+        {
+            RegressionStep *rs = (RegressionStep *)(*op_iter);
+            if (!rs->is_goal)
+            {
+                plan_file << rs->op->get_nondet_name() << endl;
+            }
+        }
         i++;
-        cout << "\n--------------------------------------------------------------" << endl;
     }
 }
 
@@ -723,3 +743,4 @@ void resource_usage(string o = "")
     getrusage(who, &usage);
     cout << "\n MEM USAGE " << o << " " << usage.ru_maxrss << " " << usage.ru_idrss << " " << usage.ru_isrss << "\n";
 }
+
