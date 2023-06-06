@@ -23,6 +23,7 @@
 #include <tr1/functional>
 #include <sys/resource.h>
 
+
 #include <iostream>
 
 using namespace std;
@@ -626,6 +627,7 @@ void print_branches()
         }
         i++;
     }
+    plan_file << "#" << endl;
 }
 
 /// @brief Print time statistics
@@ -743,4 +745,3 @@ void resource_usage(string o = "")
     getrusage(who, &usage);
     cout << "\n MEM USAGE " << o << " " << usage.ru_maxrss << " " << usage.ru_idrss << " " << usage.ru_isrss << "\n";
 }
-
