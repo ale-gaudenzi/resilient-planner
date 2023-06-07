@@ -18,6 +18,7 @@
 #include "policy-repair/deadend.h"
 #include "state_id.h"
 
+#include <sys/resource.h>
 #include <cstdlib>
 #include <iostream>
 #include <fstream>
@@ -611,5 +612,25 @@ bool g_plan_to_file = false;
 bool g_dump_branches = false;
 bool g_dump_global_policy = false;
 bool g_dump_resilient_nodes = false;
+bool g_dump_memory_replan_progression = false;
 
+int g_iteration = 0;
 int g_max_iterations = -1;
+
+long g_mem_initial = 0;
+long g_mem_initial_policy_search = 0;
+long g_mem_pre_alg = 0;
+long g_mem_post_alg = 0;
+long g_mem_max_replan = 0;
+
+int g_replan_counter = 0;
+
+/// @brief Print memory usage in a particural moment
+long mem_usage()
+{
+    int who = RUSAGE_SELF;
+    struct rusage usage;
+    getrusage(who, &usage);
+    return usage.ru_maxrss;
+}
+

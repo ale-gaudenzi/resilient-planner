@@ -309,6 +309,7 @@ int LazySearch::step()
             search_progress.inc_dead_ends();
         }
     }
+
     return fetch_next_state();
 }
 

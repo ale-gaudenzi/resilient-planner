@@ -431,6 +431,11 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_dump_resilient_nodes = (atoi(argv[i]) == 1);
         }
+        else if (arg.compare("--print-memory-replan-progression") == 0)
+        {
+            ++i;
+            g_dump_memory_replan_progression = (atoi(argv[i]) == 1);
+        }
         else if (arg.compare("--verbose") == 0)
         {
             ++i;

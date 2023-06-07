@@ -49,7 +49,7 @@ void exit_handler(int, void *) {
 #elif OPERATING_SYSTEM == OSX
 void exit_handler() {
 #endif
-    print_peak_memory();
+    //print_peak_memory();
 }
 #endif
 
@@ -109,7 +109,7 @@ void signal_handler(int signal_number) {
     if (handler_in_progress)
         raise(signal_number);
     handler_in_progress = 1;
-    print_peak_memory();
+    //print_peak_memory();
     cout << "caught signal " << signal_number << " -- exiting" << endl;
     signal(signal_number, SIG_DFL);
     raise(signal_number);

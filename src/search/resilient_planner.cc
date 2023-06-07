@@ -21,8 +21,6 @@
 #include <vector>
 #include <stack>
 #include <tr1/functional>
-#include <sys/resource.h>
-
 
 #include <iostream>
 
@@ -37,11 +35,12 @@ void print_timings();
 void print_policy();
 void print_resilient_nodes();
 void print_resilient_plan(bool to_file);
-void print_json();
+void print_memory();
+void print_statistics();
 
 bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
 bool find_in_op_set(std::set<Operator> set, Operator op);
-void resource_usage(string o);
+long mem_usage();
 
 std::list<ResilientNode> resilient_nodes;
 std::stack<ResilientNode> nodes;
@@ -78,6 +77,7 @@ int main(int argc, const char **argv)
     // once in dry-run mode, to check for simple input errors,
     // then in normal mode
     g_timer_engine_init.resume();
+    g_mem_initial = mem_usage();
     try
     {
         OptionParser::parse_cmd_line(argc, argv, true);
@@ -172,6 +172,7 @@ int main(int argc, const char **argv)
     if (g_sample_for_depth1_deadends)
         sample_for_depth1_deadends(engine->get_plan(), new PartialState(g_initial_state()));
 
+    g_mem_initial_policy_search = mem_usage();
     /***********************
      * Resilient Alghoritm *
      ***********************/
@@ -201,10 +202,10 @@ int main(int argc, const char **argv)
 
     cout << "\nRunning resilient algorithm..." << endl;
 
-    int replan_counter = 0;
+    g_replan_counter = 0;
 
     // main while loop of the algorithm, basically 1:1 with the pseudocode
-    int iteration = 1;
+    g_iteration = 1;
     while (!nodes.empty())
     {
         ResilientNode current_node = nodes.top();
@@ -217,7 +218,7 @@ int main(int argc, const char **argv)
         if (g_verbose)
         {
             cout << "\n----------------------------------------" << endl;
-            cout << "\nIteration:" << iteration << endl;
+            cout << "\nIteration:" << g_iteration << endl;
             cout << "Current node:" << endl;
             current_node.dump();
         }
@@ -230,7 +231,6 @@ int main(int argc, const char **argv)
 
             if (!replan(current_node, engine))
             {
-
                 if (g_verbose)
                     cout << "\nFailed replanning." << endl;
 
@@ -238,7 +238,7 @@ int main(int argc, const char **argv)
             }
             else
             {
-                replan_counter++;
+                g_replan_counter++;
                 if (g_verbose)
                     cout << "Successfull replanning" << endl;
 
@@ -289,22 +289,21 @@ int main(int argc, const char **argv)
                      << endl;
         }
 
-        iteration++;
-        if (g_max_iterations > 0 && iteration > g_max_iterations)
+        g_iteration++;
+        if (g_max_iterations > 0 && g_iteration > g_max_iterations)
             break;
     }
 
     if (find_in_nodes_list(resilient_nodes, initial_node))
     {
-        if (g_dump_branches) // mettere opzione per i branches
+        if (g_dump_branches)
             print_branches();
         if (g_dump_global_policy)
             print_policy();
         if (g_dump_resilient_nodes)
             print_resilient_nodes();
-
+        
         print_resilient_plan(g_plan_to_file);
-        // print_json();
     }
     else
     {
@@ -312,17 +311,15 @@ int main(int argc, const char **argv)
              << endl;
     }
 
-    cout << "\nResilient algorithm terminated.\n"
-         << endl;
-    cout << "Iterations: " << iteration << endl;
-    cout << "Replanning: " << replan_counter << endl;
-    cout << "Forbidden action-operator pairs: " << g_fault_models.size() << endl;
-    cout << "Deadends: " << g_deadend_states->get_size() << endl;
-    cout << "Resilient nodes: " << resilient_nodes.size() << endl;
-    cout << "Actions planned: " << g_policy->get_size() << endl;
+    g_mem_post_alg = mem_usage();
+
+
+    print_statistics();
+
 
     g_timer.stop();
     print_timings();
+    print_memory();
 }
 
 /// Checks if the given node is resilient, using the current global policy to find the applicable next actions
@@ -426,8 +423,14 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
         cout << "Searching for a solution." << endl;
 
     g_timer_search.resume();
+
     engine->search();
+
+    if(g_dump_memory_replan_progression)
+        cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
+
     g_timer_search.stop();
+
 
     if (engine->found_solution())
     {
@@ -438,14 +441,12 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
             engine->statistics();
             engine->heuristic_statistics();
         }
-
         return true;
     }
     else
     {
         if (g_verbose)
             cout << "Replanning failed!" << endl;
-
         return false;
     }
 }
@@ -468,8 +469,6 @@ void add_fault_model_deadend(ResilientNode node)
 
     for (int j = 0; j < reg_items.size(); j++)
     {
-        // cout << "Adding in de_items:" << endl;
-        // reg_items[j]->dump();
         RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
         de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state),
                                              ro->op->nondet_index));
@@ -600,7 +599,7 @@ void print_branches()
 
         plan_file << "State : " << endl;
         PartialState s = it->second->get_initial_state();
-        int * vars = s.get_vars();
+        int *vars = s.get_vars();
         for (int i = 0; i < g_variable_domain.size(); i++)
         {
             if (-1 != vars[i])
@@ -612,7 +611,6 @@ void print_branches()
                     plan_file << "[" << g_variable_name[i] << "] None of those." << endl;
             }
         }
-
 
         plan_file << "Plan : " << endl;
         list<PolicyItem *> policy = it->second->get_items();
@@ -630,17 +628,45 @@ void print_branches()
     plan_file << "#" << endl;
 }
 
+/// @brief Print statistics
+void print_statistics()
+{
+    cout << "\n                      -{ Statistics }-\n"
+         << endl;
+    cout << "                    Iterations: " << g_iteration << endl;
+    cout << "                    Replanning: " << g_replan_counter << endl;
+    cout << "               Forbidden pairs: " << g_fault_models.size() << endl;
+    cout << "                      Deadends: " << g_deadend_states->get_size() << endl;
+    cout << "               Resilient nodes: " << resilient_nodes.size() << endl;
+    cout << "               Actions planned: " << g_policy->get_size() << endl;
+
+    cout << "\n--------------------------------------------------------------------"
+         << endl;
+}
+
 /// @brief Print time statistics
 void print_timings()
 {
-    cout << "\n--------------------------------------------------------------------\n"
-         << endl;
     cout << "\n                  -{ Timing Statistics }-\n"
          << endl;
     cout << "         Engine Initialization: " << g_timer_engine_init << endl;
     cout << "                   Search Time: " << g_timer_search << endl;
     cout << "           Policy Construction: " << g_timer_policy_build << endl;
     cout << "                    Total time: " << g_timer << endl;
+    cout << "\n--------------------------------------------------------------------"
+         << endl;
+}
+
+/// @brief Print memory statistics
+void print_memory()
+{
+    cout << "\n                  -{ Memory Statistics }-\n"
+         << endl;
+    cout << "                         Start: " << g_mem_initial << " KB" << endl;
+    cout << "                Initial policy: " << g_mem_initial_policy_search << " KB" << endl;
+    cout << "                     Algorithm: " << g_mem_post_alg << " KB" << endl;
+    cout << "                          Peak: " << get_peak_memory_in_kb() << " KB" << endl;
+
     cout << "\n--------------------------------------------------------------------\n"
          << endl;
 }
@@ -677,7 +703,6 @@ void print_resilient_plan(bool to_file)
         if (it->get_k() == g_max_faults)
         {
             resilient_nodes_k.push_back(*it);
-            it->dump();
         }
     }
 
@@ -737,11 +762,3 @@ void print_resilient_plan(bool to_file)
     }
 }
 
-/// @brief Print memory usage in a particural moment
-void resource_usage(string o = "")
-{
-    int who = RUSAGE_SELF;
-    struct rusage usage;
-    getrusage(who, &usage);
-    cout << "\n MEM USAGE " << o << " " << usage.ru_maxrss << " " << usage.ru_idrss << " " << usage.ru_isrss << "\n";
-}

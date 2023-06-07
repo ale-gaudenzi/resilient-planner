@@ -86,11 +86,16 @@ void SearchEngine::search()
     Timer timer;
     // int i = 1;
     // cout << "Step " << i << endl;
+
+   // cout << "memory pre replan " << g_replan_counter + 1 << ": " << mem_usage() << endl;
+
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
     {
         // i++;
         // cout << "Step " << i << endl;
     };
+
+
 
     if (g_timer_jit() < g_jic_limit)
     {

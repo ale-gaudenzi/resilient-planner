@@ -2,32 +2,891 @@
 Remaining faults : 
 0
 Failed operators : 
-fly plane1 city0 city1
-fly plane1 city0 city2
+move node0-0 node1-0
 State : 
-Atom at(plane1, city0)
+Atom at-robot(node0-0)
+Atom holding(key0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
 Plan : 
-fly plane1 city0 city3
-fly plane1 city3 city1
+move node0-0 node0-1
+move node0-1 node1-1
+move node1-1 node2-1
+move node2-1 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
 #2
 Remaining faults : 
 0
 Failed operators : 
-fly plane1 city0 city1
-fly plane1 city2 city1
+move node1-0 node0-0
 State : 
-Atom at(plane1, city2)
+Atom at-robot(node1-0)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
 Plan : 
-fly plane1 city2 city3
-fly plane1 city3 city1
+move node1-0 node1-1
+move node1-1 node1-2
+move node1-2 node0-2
+move node0-2 node0-1
+move node0-1 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node1-1
+move node1-1 node2-1
+move node2-1 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
 #3
 Remaining faults : 
-1
+0
 Failed operators : 
-fly plane1 city0 city1
+move node1-0 node2-0
 State : 
-Atom at(plane1, city0)
+Atom at-robot(node1-0)
+Atom holding(key0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
 Plan : 
-fly plane1 city0 city2
-fly plane1 city2 city1
+move node1-0 node1-1
+move node1-1 node2-1
+move node2-1 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
+#4
+Remaining faults : 
+0
+Failed operators : 
+move node1-1 node1-0
+State : 
+Atom at-robot(node1-1)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node1-1 node0-1
+move node0-1 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node2-1
+move node2-1 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
+#5
+Remaining faults : 
+0
+Failed operators : 
+move node2-0 node3-0
+State : 
+Atom at-robot(node2-0)
+Atom holding(key0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node2-0 node2-1
+move node2-1 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
+#6
+Remaining faults : 
+0
+Failed operators : 
+move node2-1 node1-1
+State : 
+Atom at-robot(node2-1)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node2-1 node2-2
+move node2-2 node2-3
+move node2-3 node1-3
+move node1-3 node1-2
+move node1-2 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
+#7
+Remaining faults : 
+0
+Failed operators : 
+move node3-0 node4-0
+State : 
+Atom at-robot(node3-0)
+Atom holding(key0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node3-0 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
+#8
+Remaining faults : 
+0
+Failed operators : 
+move node3-1 node2-1
+State : 
+Atom at-robot(node3-1)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node3-1 node3-0
+move node3-0 node2-0
+move node2-0 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#9
+Remaining faults : 
+0
+Failed operators : 
+move node3-2 node4-2
+State : 
+Atom at-robot(node3-2)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node3-2 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#10
+Remaining faults : 
+0
+Failed operators : 
+move node4-0 node4-1
+State : 
+Atom at-robot(node4-0)
+Atom holding(key0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node4-0 node3-0
+move node3-0 node3-1
+move node3-1 node4-1
+putdown node4-1 key0
+#11
+Remaining faults : 
+0
+Failed operators : 
+move node4-1 node3-1
+State : 
+Atom at-robot(node4-1)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node4-1 node4-0
+move node4-0 node3-0
+move node3-0 node2-0
+move node2-0 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#12
+Remaining faults : 
+0
+Failed operators : 
+move node4-2 node3-2
+State : 
+Atom open(node3-2)
+Atom at-robot(node4-2)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom holding(key8)
+Plan : 
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node3-2
+putdown node3-2 key8
+move node3-2 node2-2
+move node2-2 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#13
+Remaining faults : 
+0
+Failed operators : 
+move node4-2 node4-1
+State : 
+Atom open(node3-2)
+Atom at-robot(node4-2)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node4-2 node3-2
+move node3-2 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#14
+Remaining faults : 
+0
+Failed operators : 
+move node4-2 node4-3
+State : 
+Atom open(node3-2)
+Atom locked(node3-3)
+Atom at-robot(node4-2)
+Atom open(node4-2)
+Atom open(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-2 node3-2
+unlock node3-2 node3-3 key4 triangle
+move node3-2 node3-3
+move node3-3 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node3-3
+move node3-3 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#15
+Remaining faults : 
+0
+Failed operators : 
+move node4-3 node4-2
+State : 
+Atom open(node3-2)
+Atom locked(node3-3)
+Atom at-robot(node4-3)
+Atom open(node4-2)
+Atom at(key4, node4-3)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom holding(key8)
+Plan : 
+pickup-and-loose node4-3 key4 key8
+unlock node4-3 node3-3 key4 triangle
+pickup-and-loose node4-3 key8 key4
+move node4-3 node3-3
+move node3-3 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#16
+Remaining faults : 
+0
+Failed operators : 
+move node4-4 node4-3
+State : 
+Atom locked(node3-2)
+Atom open(node3-4)
+Atom at-robot(node4-4)
+Atom locked(node4-2)
+Atom open(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-4 node3-4
+move node3-4 node2-4
+move node2-4 node2-3
+move node2-3 node2-2
+move node2-2 node2-1
+move node2-1 node3-1
+unlock node3-1 node3-2 key4 triangle
+move node3-1 node4-1
+unlock node4-1 node4-2 key4 triangle
+move node4-1 node4-2
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#17
+Remaining faults : 
+0
+Failed operators : 
+move node4-5 node4-4
+State : 
+Atom locked(node3-2)
+Atom at-robot(node4-5)
+Atom locked(node4-2)
+Atom locked(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-5 node3-5
+move node3-5 node2-5
+move node2-5 node2-4
+move node2-4 node2-3
+move node2-3 node2-2
+move node2-2 node2-1
+move node2-1 node3-1
+unlock node3-1 node3-2 key4 triangle
+move node3-1 node4-1
+unlock node4-1 node4-2 key4 triangle
+move node4-1 node4-2
+unlock node4-2 node4-3 key4 triangle
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#18
+Remaining faults : 
+0
+Failed operators : 
+move node5-5 node4-5
+State : 
+Atom locked(node3-2)
+Atom locked(node3-4)
+Atom at-robot(node5-5)
+Atom locked(node4-2)
+Atom locked(node4-3)
+Atom locked(node4-4)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node5-5 node5-4
+unlock node5-4 node4-4 key4 triangle
+move node5-4 node4-4
+unlock node4-4 node3-4 key4 triangle
+move node4-4 node3-4
+move node3-4 node2-4
+move node2-4 node2-3
+move node2-3 node2-2
+move node2-2 node2-1
+move node2-1 node3-1
+unlock node3-1 node3-2 key4 triangle
+move node3-1 node4-1
+unlock node4-1 node4-2 key4 triangle
+move node4-1 node4-2
+unlock node4-2 node4-3 key4 triangle
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#19
+Remaining faults : 
+0
+Failed operators : 
+pickup node0-0 key0
+State : 
+Atom at-robot(node0-0)
+Atom at(key2, node0-1)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node0-0 node0-1
+pickup node0-1 key2
+move node0-1 node0-0
+pickup-and-loose node0-0 key0 key2
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#20
+Remaining faults : 
+0
+Failed operators : 
+pickup node5-5 key4
+State : 
+Atom locked(node3-2)
+Atom locked(node3-3)
+Atom at-robot(node5-5)
+Atom locked(node4-3)
+Atom at(key3, node1-5)
+Atom arm-empty()
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node5-5 node4-5
+move node4-5 node3-5
+move node3-5 node2-5
+move node2-5 node1-5
+pickup node1-5 key3
+move node1-5 node1-4
+move node1-4 node1-3
+move node1-3 node1-2
+move node1-2 node2-2
+move node2-2 node2-1
+move node2-1 node3-1
+putdown node3-1 key3
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+move node4-1 node3-1
+pickup node3-1 key3
+unlock node3-1 node3-2 key3 triangle
+move node3-1 node3-2
+unlock node3-2 node3-3 key3 triangle
+move node3-2 node3-3
+unlock node3-3 node4-3 key3 triangle
+putdown node3-3 key3
+move node3-3 node4-3
+pickup node4-3 key8
+move node4-3 node3-3
+move node3-3 node3-2
+putdown node3-2 key8
+#21
+Remaining faults : 
+0
+Failed operators : 
+pickup-and-loose node4-3 key8 key4
+State : 
+Atom open(node3-2)
+Atom at-robot(node4-3)
+Atom open(node4-2)
+Atom open(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-3 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup-and-loose node0-0 key0 key4
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+move node4-1 node4-2
+move node4-2 node4-3
+pickup node4-3 key8
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+#22
+Remaining faults : 
+0
+Failed operators : 
+putdown node3-2 key8
+State : 
+Atom open(node3-2)
+Atom at-robot(node3-2)
+Atom open(node4-2)
+Atom at(key2, node0-1)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom holding(key8)
+Plan : 
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node0-1
+pickup-and-loose node0-1 key2 key8
+move node0-1 node1-1
+move node1-1 node2-1
+move node2-1 node3-1
+move node3-1 node3-2
+putdown node3-2 key2
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node0-1
+pickup node0-1 key8
+move node0-1 node1-1
+move node1-1 node2-1
+move node2-1 node3-1
+move node3-1 node3-2
+pickup-and-loose node3-2 key2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup-and-loose node0-0 key0 key2
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#23
+Remaining faults : 
+0
+Failed operators : 
+putdown node4-1 key0
+State : 
+Atom at-robot(node4-1)
+Atom at(key7, node5-1)
+Atom holding(key0)
+Atom at(key5, node4-2)
+Atom at(key8, node3-2)
+Plan : 
+move node4-1 node5-1
+pickup-and-loose node5-1 key7 key0
+move node5-1 node4-1
+putdown node4-1 key7
+move node4-1 node5-1
+pickup node5-1 key0
+move node5-1 node4-1
+pickup-and-loose node4-1 key7 key0
+#24
+Remaining faults : 
+0
+Failed operators : 
+unlock node4-2 node3-2 key4 triangle
+State : 
+Atom locked(node3-2)
+Atom at-robot(node4-2)
+Atom open(node4-2)
+Atom open(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-2 node4-1
+move node4-1 node3-1
+unlock node3-1 node3-2 key4 triangle
+move node3-1 node4-1
+move node4-1 node4-2
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#25
+Remaining faults : 
+0
+Failed operators : 
+unlock node4-3 node4-2 key4 triangle
+State : 
+Atom locked(node3-2)
+Atom locked(node3-3)
+Atom at-robot(node4-3)
+Atom open(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+unlock node4-3 node3-3 key4 triangle
+move node4-3 node3-3
+unlock node3-3 node3-2 key4 triangle
+move node3-3 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node3-3
+move node3-3 node3-2
+putdown node3-2 key8
+move node3-2 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#26
+Remaining faults : 
+0
+Failed operators : 
+unlock node4-4 node3-4 key4 triangle
+State : 
+Atom locked(node3-2)
+Atom locked(node3-3)
+Atom at-robot(node4-4)
+Atom locked(node4-2)
+Atom locked(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-4 node4-5
+move node4-5 node3-5
+move node3-5 node2-5
+move node2-5 node2-4
+move node2-4 node2-3
+unlock node2-3 node3-3 key4 triangle
+move node2-3 node2-2
+unlock node2-2 node3-2 key4 triangle
+move node2-2 node3-2
+move node3-2 node3-3
+unlock node3-3 node4-3 key4 triangle
+move node3-3 node3-2
+move node3-2 node3-1
+move node3-1 node4-1
+unlock node4-1 node4-2 key4 triangle
+move node4-1 node4-2
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#27
+Remaining faults : 
+0
+Failed operators : 
+unlock node4-4 node4-3 key4 triangle
+State : 
+Atom locked(node3-2)
+Atom locked(node3-3)
+Atom open(node3-4)
+Atom at-robot(node4-4)
+Atom locked(node4-2)
+Atom locked(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-4 node3-4
+unlock node3-4 node3-3 key4 triangle
+move node3-4 node3-3
+unlock node3-3 node3-2 key4 triangle
+unlock node3-3 node4-3 key4 triangle
+move node3-3 node3-2
+move node3-2 node3-1
+move node3-1 node4-1
+unlock node4-1 node4-2 key4 triangle
+move node4-1 node4-2
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
+#28
+Remaining faults : 
+0
+Failed operators : 
+unlock node4-5 node4-4 key4 triangle
+State : 
+Atom locked(node3-2)
+Atom locked(node3-3)
+Atom at-robot(node4-5)
+Atom locked(node4-2)
+Atom locked(node4-3)
+Atom holding(key4)
+Atom at(key0, node0-0)
+Atom at(key5, node4-2)
+Atom at(key8, node4-3)
+Plan : 
+move node4-5 node3-5
+move node3-5 node2-5
+move node2-5 node2-4
+move node2-4 node2-3
+unlock node2-3 node3-3 key4 triangle
+move node2-3 node2-2
+unlock node2-2 node3-2 key4 triangle
+move node2-2 node3-2
+move node3-2 node3-3
+unlock node3-3 node4-3 key4 triangle
+move node3-3 node3-2
+move node3-2 node3-1
+move node3-1 node4-1
+unlock node4-1 node4-2 key4 triangle
+move node4-1 node4-2
+move node4-2 node4-3
+pickup-and-loose node4-3 key8 key4
+move node4-3 node4-2
+move node4-2 node3-2
+putdown node3-2 key8
+move node3-2 node4-2
+move node4-2 node4-1
+move node4-1 node3-1
+move node3-1 node2-1
+move node2-1 node1-1
+move node1-1 node1-0
+move node1-0 node0-0
+pickup node0-0 key0
+move node0-0 node1-0
+move node1-0 node2-0
+move node2-0 node3-0
+move node3-0 node4-0
+move node4-0 node4-1
+putdown node4-1 key0
 #
