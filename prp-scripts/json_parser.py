@@ -46,9 +46,8 @@ with open(sys.argv[1], 'r') as branches_file:
 original_stdout = sys.stdout
 with open('branches.json', 'w') as f:
     sys.stdout = f
-    for line in j:
-        json_line = json.dumps(line)
-        print(json_line)
+    j_dump = json.dumps(j)
+    print(j_dump)
     sys.stdout = original_stdout 
 
 
