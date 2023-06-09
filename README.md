@@ -38,5 +38,8 @@ cd src/
 --dump-resilient-nodes 1/0
     Print all resilient nodes found
 
+--print-memory-replan-progression 1/0
+    Print memory usage for every replan
+
 ```
 

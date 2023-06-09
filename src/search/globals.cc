@@ -600,8 +600,8 @@ int g_max_faults;
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
 size_t g_current_forbidden_hash;
-std::map<k_v_pair, Policy *> g_fault_models;
 std::map<k_v_pair, Policy *> g_resilient_policies;
+std::map<k_v_pair, Policy *> g_fault_models;
 bool g_use_resilient_planner = true;
 Policy *g_original_policy;
 
@@ -614,7 +614,7 @@ bool g_dump_global_policy = false;
 bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;
 
-int g_iteration = 0;
+
 int g_max_iterations = -1;
 
 long g_mem_initial = 0;
@@ -622,8 +622,6 @@ long g_mem_initial_policy_search = 0;
 long g_mem_pre_alg = 0;
 long g_mem_post_alg = 0;
 long g_mem_max_replan = 0;
-
-int g_replan_counter = 0;
 
 /// @brief Print memory usage in a particural moment
 long mem_usage()
