@@ -623,6 +623,9 @@ long g_mem_pre_alg = 0;
 long g_mem_post_alg = 0;
 long g_mem_max_replan = 0;
 
+Timer g_timer_cycle;
+Timer g_timer_extraction;
+
 /// @brief Print memory usage in a particural moment
 long mem_usage()
 {

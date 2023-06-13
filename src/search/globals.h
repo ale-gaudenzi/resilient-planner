@@ -196,6 +196,8 @@ extern long g_mem_initial_policy_search;
 extern long g_mem_pre_alg;
 extern long g_mem_post_alg;
 
+extern Timer g_timer_cycle;
+extern Timer g_timer_extraction;
 
 long mem_usage();
 
