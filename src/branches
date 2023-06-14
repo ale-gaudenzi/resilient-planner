@@ -4,761 +4,310 @@ Remaining faults :
 Failed operators : 
 board person1 plane1 city3
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
 Atom at(plane1, city3)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city2)
-Atom in(person5, plane1)
-Atom in(person4, plane2)
-Atom at(person3, city3)
+Atom fuel-level(plane1, fl5)
+Atom at(person4, city3)
+Atom at(person3, city0)
+Atom at(person2, city0)
 Atom at(person1, city3)
 Plan : 
-fly plane1 city3 city2 fl1 fl0
-debark person5 plane1 city2
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city3 fl2 fl1
+refuel plane2 city2 fl0 fl1
+fly plane1 city3 city0 fl5 fl4
+board person2 plane1 city0
+board person3 plane1 city0
+fly plane1 city0 city3 fl4 fl3
+debark person2 plane1 city3
+debark person3 plane1 city3
+refuel plane2 city2 fl1 fl2
+fly plane2 city2 city3 fl2 fl1
 board person1 plane2 city3
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
+fly plane2 city3 city2 fl1 fl0
 debark person1 plane2 city2
-fly plane2 city2 city1 fl1 fl0
 #2
 Remaining faults : 
 0
 Failed operators : 
-board person1 plane2 city3
+board person2 plane1 city0
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city3)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
 Atom at(person4, city3)
-Atom at(person3, city3)
-Atom at(person1, city3)
+Atom in(person3, plane1)
+Atom at(person2, city0)
+Atom in(person1, plane1)
 Plan : 
-refuel plane1 city2 fl0 fl1
-fly plane1 city2 city3 fl1 fl0
-board person1 plane1 city3
-refuel plane1 city3 fl0 fl1
-fly plane1 city3 city2 fl1 fl0
+fly plane1 city0 city2 fl4 fl3
 debark person1 plane1 city2
-fly plane2 city3 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
-debark person5 plane2 city2
-fly plane2 city2 city1 fl1 fl0
+fly plane1 city2 city3 fl3 fl2
+debark person3 plane1 city3
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city0 fl1 fl0
+board person2 plane2 city0
+refuel plane2 city0 fl0 fl1
+fly plane2 city0 city3 fl1 fl0
+debark person2 plane2 city3
 #3
 Remaining faults : 
 0
 Failed operators : 
-board person4 plane2 city1
+board person3 plane1 city0
 State : 
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city0)
-Atom at(person5, city3)
-Atom at(person4, city1)
-Atom at(person3, city3)
-Atom at(person1, city3)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city3)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane1)
 Plan : 
-refuel plane1 city2 fl1 fl2
-fly plane1 city2 city1 fl2 fl1
-board person4 plane1 city1
-fly plane1 city1 city3 fl1 fl0
-board person1 plane1 city3
-debark person4 plane1 city3
-board person5 plane1 city3
-refuel plane1 city3 fl0 fl1
-fly plane1 city3 city0 fl1 fl0
-board person6 plane1 city0
-refuel plane1 city0 fl0 fl1
-fly plane1 city0 city2 fl1 fl0
+board person2 plane1 city0
+fly plane1 city0 city2 fl4 fl3
 debark person1 plane1 city2
-debark person5 plane1 city2
-debark person6 plane1 city2
+fly plane1 city2 city3 fl3 fl2
+debark person2 plane1 city3
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city0 fl1 fl0
+board person3 plane2 city0
+refuel plane2 city0 fl0 fl1
+fly plane2 city0 city3 fl1 fl0
+debark person3 plane2 city3
 #4
 Remaining faults : 
 0
 Failed operators : 
-board person5 plane1 city3
+board person4 plane1 city1
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city3)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city2)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl6)
+Atom at(person4, city1)
+Atom at(person3, city0)
+Atom at(person2, city0)
 Atom at(person1, city3)
 Plan : 
+fly plane1 city1 city0 fl6 fl5
+board person3 plane1 city0
+board person2 plane1 city0
+fly plane1 city0 city2 fl5 fl4
+fly plane1 city2 city3 fl4 fl3
 board person1 plane1 city3
-fly plane1 city3 city2 fl1 fl0
+debark person2 plane1 city3
+debark person3 plane1 city3
+fly plane1 city3 city2 fl3 fl2
 debark person1 plane1 city2
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city3 fl2 fl1
-debark person4 plane2 city3
-board person5 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
-debark person5 plane2 city2
+refuel plane2 city2 fl0 fl1
 fly plane2 city2 city1 fl1 fl0
+board person4 plane2 city1
+refuel plane2 city1 fl0 fl1
+fly plane2 city1 city3 fl1 fl0
+debark person4 plane2 city3
 #5
 Remaining faults : 
 0
 Failed operators : 
-board person5 plane2 city3
+debark person1 plane1 city2
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city3)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
 Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom at(person5, city3)
-Atom in(person4, plane2)
+Atom fuel-level(plane1, fl2)
+Atom at(person4, city3)
 Atom at(person3, city3)
-Atom at(person1, city3)
+Atom at(person2, city3)
+Atom in(person1, plane1)
 Plan : 
-board person1 plane2 city3
-debark person4 plane2 city3
-refuel plane1 city2 fl0 fl1
-fly plane1 city2 city3 fl1 fl0
-board person5 plane1 city3
-refuel plane1 city3 fl0 fl1
-fly plane1 city3 city2 fl1 fl0
-debark person5 plane1 city2
-fly plane2 city3 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
+fly plane1 city2 city0 fl2 fl1
+debark person1 plane1 city0
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city0 fl1 fl0
+board person1 plane2 city0
+refuel plane2 city0 fl0 fl1
+fly plane2 city0 city2 fl1 fl0
 debark person1 plane2 city2
-fly plane2 city2 city1 fl1 fl0
 #6
 Remaining faults : 
 0
 Failed operators : 
-board person6 plane1 city0
+debark person2 plane1 city3
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city0)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city0)
-Atom at(person5, city3)
-Atom in(person4, plane2)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city3)
 Atom at(person3, city3)
-Atom at(person1, city3)
+Atom in(person2, plane1)
+Atom in(person1, plane1)
 Plan : 
-fly plane1 city0 city0 fl1 fl0
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-board person1 plane2 city3
-debark person4 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city0 fl1 fl0
-board person6 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
-debark person1 plane2 city2
-debark person5 plane2 city2
-debark person6 plane2 city2
-fly plane2 city2 city1 fl1 fl0
+fly plane1 city3 city2 fl3 fl2
+debark person2 plane1 city2
+board person2 plane2 city2
+debark person1 plane1 city2
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city3 fl1 fl0
+debark person2 plane2 city3
 #7
 Remaining faults : 
 0
 Failed operators : 
-debark person1 plane1 city2
+debark person3 plane1 city3
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom at(person5, city2)
-Atom in(person4, plane2)
-Atom at(person3, city3)
+Atom at(plane2, city2)
+Atom fuel-level(plane2, fl0)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom in(person2, plane1)
 Atom in(person1, plane1)
 Plan : 
-refuel plane1 city2 fl0 fl1
-fly plane1 city2 city0 fl1 fl0
-debark person1 plane1 city0
-fly plane2 city1 city0 fl1 fl0
-board person1 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
-debark person1 plane2 city2
-fly plane2 city2 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city3 fl2 fl1
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
+debark person2 plane1 city3
+fly plane1 city3 city2 fl3 fl2
+debark person3 plane1 city2
+board person3 plane2 city2
+debark person1 plane1 city2
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city3 fl1 fl0
+debark person3 plane2 city3
 #8
 Remaining faults : 
 0
 Failed operators : 
-debark person1 plane2 city2
+debark person4 plane1 city3
 State : 
-Atom fuel-level(plane2, fl1)
 Atom at(plane2, city2)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom at(person5, city2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
+Atom fuel-level(plane2, fl0)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl5)
+Atom in(person4, plane1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city3)
 Plan : 
-refuel plane1 city2 fl0 fl1
-fly plane2 city2 city0 fl1 fl0
-debark person1 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city1 fl1 fl0
-fly plane1 city2 city0 fl1 fl0
-board person1 plane1 city0
-refuel plane1 city0 fl0 fl1
-fly plane1 city0 city2 fl1 fl0
+board person1 plane1 city3
+fly plane1 city3 city0 fl5 fl4
+board person3 plane1 city0
+board person2 plane1 city0
+fly plane1 city0 city2 fl4 fl3
+debark person4 plane1 city2
+board person4 plane2 city2
 debark person1 plane1 city2
+fly plane1 city2 city3 fl3 fl2
+debark person3 plane1 city3
+debark person2 plane1 city3
+refuel plane2 city2 fl0 fl1
+fly plane2 city2 city3 fl1 fl0
+debark person4 plane2 city3
 #9
 Remaining faults : 
 0
 Failed operators : 
-debark person4 plane2 city3
+fly plane1 city0 city3 fl4 fl3
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city3)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
+Atom at(plane1, city0)
+Atom fuel-level(plane1, fl4)
+Atom at(person4, city3)
+Atom in(person3, plane1)
+Atom in(person2, plane1)
+Atom in(person1, plane1)
 Plan : 
-board person1 plane2 city3
-refuel plane1 city2 fl0 fl1
-fly plane2 city3 city2 fl1 fl0
-debark person4 plane2 city2
-board person4 plane1 city2
-debark person1 plane2 city2
-debark person5 plane2 city2
-fly plane1 city2 city3 fl1 fl0
-debark person4 plane1 city3
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
+fly plane1 city0 city2 fl4 fl3
+debark person1 plane1 city2
+fly plane1 city2 city0 fl3 fl2
+fly plane1 city0 city3 fl2 fl1
+debark person3 plane1 city3
+debark person2 plane1 city3
 #10
 Remaining faults : 
 0
 Failed operators : 
-debark person5 plane1 city2
+fly plane1 city1 city3 fl6 fl5
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane1)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom in(person1, plane1)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl6)
+Atom in(person4, plane1)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom at(person1, city3)
 Plan : 
+fly plane1 city1 city0 fl6 fl5
+board person3 plane1 city0
+board person2 plane1 city0
+fly plane1 city0 city3 fl5 fl4
+debark person4 plane1 city3
+debark person3 plane1 city3
+debark person2 plane1 city3
+board person1 plane1 city3
+fly plane1 city3 city0 fl4 fl3
+fly plane1 city0 city2 fl3 fl2
 debark person1 plane1 city2
-refuel plane1 city2 fl0 fl1
-fly plane1 city2 city0 fl1 fl0
-debark person5 plane1 city0
-fly plane2 city1 city0 fl1 fl0
-board person5 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city3 fl1 fl0
-debark person4 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city1 fl1 fl0
-refuel plane2 city1 fl0 fl1
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city2 fl2 fl1
-debark person5 plane2 city2
-fly plane2 city2 city1 fl1 fl0
 #11
 Remaining faults : 
 0
 Failed operators : 
-debark person5 plane2 city2
+fly plane1 city3 city0 fl5 fl4
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city2)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
+Atom at(plane1, city3)
+Atom fuel-level(plane1, fl5)
 Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
+Atom at(person3, city0)
+Atom at(person2, city0)
+Atom in(person1, plane1)
 Plan : 
-debark person1 plane2 city2
-refuel plane1 city2 fl0 fl1
-fly plane2 city2 city0 fl1 fl0
-debark person5 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city1 fl1 fl0
-fly plane1 city2 city0 fl1 fl0
-board person5 plane1 city0
-refuel plane1 city0 fl0 fl1
-fly plane1 city0 city2 fl1 fl0
-debark person5 plane1 city2
+fly plane1 city3 city1 fl5 fl4
+fly plane1 city1 city3 fl4 fl3
+fly plane1 city3 city0 fl3 fl2
+board person3 plane1 city0
+board person2 plane1 city0
+fly plane1 city0 city2 fl2 fl1
+debark person1 plane1 city2
+fly plane1 city2 city3 fl1 fl0
+debark person3 plane1 city3
+debark person2 plane1 city3
 #12
 Remaining faults : 
 0
 Failed operators : 
-debark person6 plane1 city2
+fly plane1 city3 city2 fl3 fl2
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom in(person6, plane1)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-debark person4 plane2 city3
-board person1 plane2 city3
-refuel plane1 city2 fl0 fl1
-fly plane1 city2 city0 fl1 fl0
-debark person6 plane1 city0
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city0 fl1 fl0
-board person6 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-debark person6 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#13
-Remaining faults : 
-0
-Failed operators : 
-fly plane1 city0 city2 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city0)
-Atom fuel-level(plane1, fl1)
-Atom in(person6, plane1)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-fly plane1 city0 city3 fl1 fl0
-board person5 plane1 city3
-board person1 plane1 city3
-refuel plane1 city3 fl0 fl1
-fly plane1 city3 city2 fl1 fl0
-debark person6 plane1 city2
-debark person5 plane1 city2
-debark person1 plane1 city2
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city3 fl2 fl1
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-#14
-Remaining faults : 
-0
-Failed operators : 
-fly plane1 city2 city0 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city0)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-fly plane1 city2 city1 fl1 fl0
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-debark person4 plane2 city3
-board person1 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city0 fl1 fl0
-board person6 plane2 city0
-refuel plane2 city0 fl0 fl1
-fly plane2 city0 city2 fl1 fl0
-debark person6 plane2 city2
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#15
-Remaining faults : 
-0
-Failed operators : 
-fly plane1 city2 city3 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city2)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-debark person4 plane2 city3
-board person1 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#16
-Remaining faults : 
-0
-Failed operators : 
-fly plane1 city3 city2 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
 Atom at(plane1, city3)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city2)
-Atom in(person5, plane1)
-Atom in(person4, plane2)
+Atom fuel-level(plane1, fl3)
+Atom at(person4, city3)
 Atom at(person3, city3)
+Atom at(person2, city3)
 Atom in(person1, plane1)
 Plan : 
-refuel plane1 city3 fl1 fl2
-fly plane1 city3 city0 fl2 fl1
-fly plane1 city0 city2 fl1 fl0
-debark person5 plane1 city2
+fly plane1 city3 city0 fl3 fl2
+fly plane1 city0 city2 fl2 fl1
 debark person1 plane1 city2
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city3 fl2 fl1
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-#17
-Remaining faults : 
-0
-Failed operators : 
-fly plane2 city1 city2 fl2 fl1
-State : 
-Atom fuel-level(plane2, fl2)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
-Plan : 
-refuel plane1 city2 fl0 fl1
-fly plane2 city1 city0 fl2 fl1
-fly plane2 city0 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#18
-Remaining faults : 
-0
-Failed operators : 
-fly plane2 city1 city3 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-refuel plane1 city2 fl0 fl1
-fly plane1 city2 city3 fl1 fl0
-board person5 plane1 city3
-board person1 plane1 city3
-refuel plane1 city3 fl0 fl1
-fly plane1 city3 city2 fl1 fl0
-debark person5 plane1 city2
-debark person1 plane1 city2
-refuel plane2 city1 fl1 fl2
-fly plane2 city1 city3 fl2 fl1
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-#19
-Remaining faults : 
-0
-Failed operators : 
-fly plane2 city1 city3 fl2 fl1
-State : 
-Atom fuel-level(plane2, fl2)
-Atom at(plane2, city1)
-Atom at(person6, city2)
-Atom at(person5, city2)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city2)
-Plan : 
-refuel plane2 city1 fl2 fl3
-fly plane2 city1 city0 fl3 fl2
-fly plane2 city0 city3 fl2 fl1
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-#20
-Remaining faults : 
-0
-Failed operators : 
-fly plane2 city2 city1 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city2)
-Atom at(person6, city2)
-Atom at(person5, city2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom at(person1, city2)
-Plan : 
-refuel plane2 city2 fl1 fl2
-fly plane2 city2 city0 fl2 fl1
-fly plane2 city0 city1 fl1 fl0
-#21
-Remaining faults : 
-0
-Failed operators : 
-fly plane2 city3 city1 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city3)
-Atom at(person6, city2)
-Atom in(person5, plane2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
-Plan : 
-refuel plane2 city3 fl1 fl2
-fly plane2 city3 city2 fl2 fl1
-debark person5 plane2 city2
-debark person1 plane2 city2
-fly plane2 city2 city1 fl1 fl0
-#22
-Remaining faults : 
-0
-Failed operators : 
-fly plane2 city3 city2 fl1 fl0
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city3)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
-Plan : 
-fly plane2 city3 city1 fl1 fl0
-refuel plane1 city2 fl0 fl1
-refuel plane2 city1 fl0 fl1
-fly plane2 city1 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#23
-Remaining faults : 
-0
-Failed operators : 
-refuel plane1 city0 fl0 fl1
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(person6, city0)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-debark person4 plane2 city3
-board person1 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-refuel plane2 city2 fl1 fl2
-fly plane2 city2 city0 fl2 fl1
-board person6 plane2 city0
-fly plane2 city0 city2 fl1 fl0
-debark person6 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#24
-Remaining faults : 
-0
-Failed operators : 
-refuel plane1 city2 fl0 fl1
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom at(person6, city2)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-debark person4 plane2 city1
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-board person1 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-board person4 plane2 city1
-refuel plane2 city1 fl0 fl1
-board person5 plane1 city2
-fly plane2 city1 city3 fl1 fl0
-refuel plane2 city3 fl0 fl1
-debark person5 plane1 city2
-debark person4 plane2 city3
-fly plane2 city3 city1 fl1 fl0
-#25
-Remaining faults : 
-0
-Failed operators : 
-refuel plane1 city3 fl0 fl1
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city3)
-Atom at(person6, city2)
-Atom at(person5, city3)
-Atom in(person4, plane2)
-Atom at(person3, city3)
-Atom at(person1, city3)
-Plan : 
-fly plane2 city1 city3 fl1 fl0
-board person5 plane2 city3
-debark person4 plane2 city3
-board person1 plane2 city3
-refuel plane2 city3 fl0 fl1
-fly plane2 city3 city2 fl1 fl0
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#26
-Remaining faults : 
-0
-Failed operators : 
-refuel plane2 city1 fl0 fl1
-State : 
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
-Plan : 
-refuel plane1 city2 fl0 fl1
-debark person5 plane2 city1
-debark person1 plane2 city1
-fly plane1 city2 city1 fl1 fl0
-refuel plane1 city1 fl0 fl1
-board person5 plane1 city1
-board person1 plane1 city1
-fly plane1 city1 city2 fl1 fl0
-debark person5 plane1 city2
-debark person1 plane1 city2
-#27
-Remaining faults : 
-0
-Failed operators : 
-refuel plane2 city1 fl1 fl2
-State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl0)
-Atom at(person6, city2)
-Atom in(person5, plane2)
-Atom at(person4, city3)
-Atom at(person3, city3)
-Atom in(person1, plane2)
-Plan : 
-board person6 plane1 city2
-fly plane2 city1 city2 fl1 fl0
-refuel plane1 city2 fl0 fl1
-debark person6 plane1 city2
-debark person5 plane2 city2
-debark person1 plane2 city2
-refuel plane2 city2 fl0 fl1
-fly plane2 city2 city1 fl1 fl0
-#28
+#13
 Remaining faults : 
 1
 Failed operators : 
 State : 
-Atom fuel-level(plane2, fl1)
-Atom at(plane2, city1)
-Atom at(plane1, city2)
-Atom fuel-level(plane1, fl1)
-Atom at(person6, city0)
-Atom at(person5, city3)
+Atom at(plane1, city1)
+Atom fuel-level(plane1, fl6)
 Atom at(person4, city1)
-Atom at(person3, city3)
+Atom at(person3, city0)
+Atom at(person2, city0)
 Atom at(person1, city3)
 Plan : 
-board person4 plane2 city1
-fly plane1 city2 city0 fl1 fl0
-refuel plane1 city0 fl0 fl1
-board person6 plane1 city0
-fly plane1 city0 city2 fl1 fl0
-debark person6 plane1 city2
-fly plane2 city1 city3 fl1 fl0
-refuel plane2 city3 fl0 fl1
-board person5 plane2 city3
-debark person4 plane2 city3
-board person1 plane2 city3
-fly plane2 city3 city2 fl1 fl0
-refuel plane2 city2 fl0 fl1
-debark person5 plane2 city2
-debark person1 plane2 city2
-fly plane2 city2 city1 fl1 fl0
+board person4 plane1 city1
+fly plane1 city1 city3 fl6 fl5
+debark person4 plane1 city3
+board person1 plane1 city3
+fly plane1 city3 city0 fl5 fl4
+board person3 plane1 city0
+board person2 plane1 city0
+fly plane1 city0 city3 fl4 fl3
+debark person3 plane1 city3
+debark person2 plane1 city3
+fly plane1 city3 city2 fl3 fl2
+debark person1 plane1 city2
 #

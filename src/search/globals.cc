@@ -601,7 +601,6 @@ int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
 size_t g_current_forbidden_hash;
 std::map<k_v_pair, Policy *> g_resilient_policies;
-std::map<k_v_pair, Policy *> g_fault_models;
 bool g_use_resilient_planner = true;
 Policy *g_original_policy;
 
@@ -609,7 +608,7 @@ std::vector<Operator> g_operators_backup;
 
 bool g_verbose = false;
 bool g_plan_to_file = false;
-bool g_dump_branches = false;
+bool g_dump_branches;
 bool g_dump_global_policy = false;
 bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;

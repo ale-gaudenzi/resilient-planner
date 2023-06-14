@@ -40,6 +40,7 @@ with open(sys.argv[1], 'r') as branches_file:
             j_item['p'] = p
 
         j.append(j_item)
+
     j.pop(-1)
 
 
@@ -52,3 +53,7 @@ with open('branches.json', 'w') as f:
 
 
 
+with open('branches.json', 'r') as f:
+    j_read = json.loads(f.read())
+    print(j_read)
+    sys.stdout = original_stdout
