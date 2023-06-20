@@ -403,7 +403,6 @@ SearchEngine *OptionParser::parse_cmd_line(
         else if (arg.compare("--resilient") == 0)
         {
             ++i;
-            g_use_resilient_planner = true;
             g_max_faults = atoi(argv[i]);
         }
         else if (arg.compare("--max-iterations") == 0)

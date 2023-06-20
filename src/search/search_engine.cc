@@ -40,8 +40,6 @@ void SearchEngine::reset()
      * As long as a state is in a node in the nodes stack, its register must also be kept in memory
      * otherwise the state can't be recognized correctly
      */
-    if (!g_use_resilient_planner)
-        delete g_state_registry;
 
     g_state_registry = new StateRegistry;
 

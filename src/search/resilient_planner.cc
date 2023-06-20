@@ -28,6 +28,11 @@ bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
 std::list<Operator> extract_solution();
 void update_non_resilient_nodes(ResilientNode node);
+void add_fault_model_deadend(ResilientNode node);
+bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
+bool find_in_op_set(std::set<Operator> set, Operator op);
+long mem_usage();
+
 void print_branches();
 void print_timings();
 void print_policy();
@@ -35,11 +40,8 @@ void print_resilient_nodes();
 void print_plan(bool to_file, std::list<Operator> plan);
 void print_memory();
 void print_statistics();
-bool find_in_nodes_list(std::list<ResilientNode> set, ResilientNode node);
-bool find_in_op_set(std::set<Operator> set, Operator op);
-long mem_usage();
 
-std::list<ResilientNode> resilient_nodes;
+std::list<ResilientNode> resilient_nodes; //maybe set
 std::list<ResilientNode> non_resilient_nodes;
 std::stack<ResilientNode> open;
 int max_dimension_open = 0;
@@ -156,6 +158,7 @@ int main(int argc, const char **argv)
                 successful_resiliency_check++;
 
                 resilient_nodes.push_back(current_node);
+
                 if (g_verbose)
                     cout << "\nSuccessfull resiliency check." << endl;
             }
@@ -168,6 +171,8 @@ int main(int argc, const char **argv)
                 {
                     if (g_verbose)
                         cout << "\nFailed replanning." << endl;
+                    add_fault_model_deadend(current_node);
+
                     update_non_resilient_nodes(current_node);
                 }
                 else
@@ -178,6 +183,7 @@ int main(int argc, const char **argv)
 
                     State current = g_initial_state();
                     std::vector<const Operator *> plan = engine->get_plan();
+
                     if (current_node.get_k() >= 1)
                     {
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
@@ -208,13 +214,13 @@ int main(int argc, const char **argv)
                     }
 
                     regression_steps.clear();
-                    regression_steps = perform_regression(engine->get_plan(), g_matched_policy, 0, true);
+                    regression_steps = perform_regression(plan, g_matched_policy, 0, true);
+
+                    g_policy->update_policy(regression_steps);
 
                     Policy *resilient_policy = new Policy();
                     resilient_policy->update_policy(regression_steps);
                     g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
-
-                    g_policy->update_policy(regression_steps);
                 }
             }
         }
@@ -241,8 +247,7 @@ int main(int argc, const char **argv)
             print_resilient_nodes();
 
         g_timer_extraction.resume();
-        list<Operator> solution = extract_solution();
-        print_plan(g_plan_to_file, solution);
+        print_plan(g_plan_to_file, extract_solution());
         g_timer_extraction.stop();
     }
     else
@@ -256,6 +261,8 @@ int main(int argc, const char **argv)
     g_timer.stop();
     print_timings();
     print_memory();
+
+    g_policy->dump_human_policy();
 }
 
 /// Checks if the given node is resilient, using the current global policy to find the applicable next actions
@@ -327,6 +334,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     g_timer_engine_init.resume();
     engine->reset();
     g_timer_engine_init.stop();
+    
     g_timer_search.resume();
     engine->search();
     g_timer_search.stop();
@@ -482,6 +490,60 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
             return true;
 
     return false;
+}
+
+/// @brief Regress the state contained in node and add every state-action pair Regr(s,A)
+/// to the fault model policy map indexed by the current (k,V).
+/// @param node Node containing the state to regress and the current (k,V).
+void add_fault_model_deadend(ResilientNode node)
+{
+    State state = node.get_state();
+    list<PolicyItem *> de_items;
+
+    PartialState *dummy_state = new PartialState();
+
+    PartialState *de_state = new PartialState(state);
+    generalize_deadend(*de_state);
+
+    vector<PolicyItem *> reg_items;
+    g_regressable_ops->generate_applicable_items(*de_state, reg_items, true, g_regress_only_relevant_deadends);
+
+    for (int j = 0; j < reg_items.size(); j++)
+    {
+        // cout << "Adding in de_items:" << endl;
+        // reg_items[j]->dump();
+        RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
+        de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state),
+                                             ro->op->nondet_index));
+    }
+
+    delete dummy_state;
+    Policy *current_deadend_policy = new Policy();
+
+    current_deadend_policy->update_policy(de_items);
+    g_fault_models.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), current_deadend_policy));
+
+    std::set<Operator> v = node.get_deactivated_op();
+    for (std::set<Operator>::iterator it = v.begin(); it != v.end(); ++it)
+    {
+        std::set<Operator> forbidden_minus_a = g_current_forbidden_ops;
+        forbidden_minus_a.erase(*it);
+
+        Policy *s_a = new Policy();
+        list<PolicyItem *> s_a_item;
+
+        s_a_item.push_back(new NondetDeadend(new PartialState(state), it->nondet_index));
+
+        if (g_fault_models.find(std::make_pair(g_current_faults + 1, forbidden_minus_a)) != g_fault_models.end())
+        {
+            g_fault_models.find(std::make_pair(g_current_faults + 1, forbidden_minus_a))->second->update_policy(s_a_item);
+        }
+        else
+        {
+            s_a->update_policy(s_a_item);
+            g_fault_models.insert(std::make_pair(std::make_pair(g_current_faults + 1, forbidden_minus_a), s_a));
+        }
+    }
 }
 
 /// @brief Print all the plans generate by replan function

@@ -957,6 +957,7 @@ bool regstep_compare(PolicyItem *first, PolicyItem *second)
 {
     return *((RegressionStep *)first) < *((RegressionStep *)second);
 }
+
 void Policy::dump_human_policy(bool fsap)
 {
 

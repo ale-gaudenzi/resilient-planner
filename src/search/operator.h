@@ -161,6 +161,8 @@ public:
     mutable bool marker1, marker2; // HACK! HACK!
 
     int get_cost() const {return cost; }
+
+    int get_id() const {return nondet_index; }
 };
 
 #endif

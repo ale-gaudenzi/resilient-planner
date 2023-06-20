@@ -51,9 +51,6 @@ bool test_goal(const State &state)
     * we test only if we reached the goal, otherwise it stop immediately
     * because the current initial state is always already in the policy
     */
-    if (!g_use_resilient_planner)
-        if (g_policy && !(g_policy->empty()))
-            return test_policy(state);
 
     for (int i = 0; i < g_goal.size(); i++)
     {
@@ -599,9 +596,9 @@ StateRegistry *g_state_registry = 0;
 int g_max_faults; 
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
-size_t g_current_forbidden_hash;
 std::map<k_v_pair, Policy *> g_resilient_policies;
-bool g_use_resilient_planner = true;
+std::map<k_v_pair, Policy *> g_fault_models;
+
 Policy *g_original_policy;
 
 std::vector<Operator> g_operators_backup;
@@ -612,7 +609,6 @@ bool g_dump_branches;
 bool g_dump_global_policy = false;
 bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;
-
 
 int g_max_iterations = -1;
 

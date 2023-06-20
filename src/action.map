@@ -1,0 +1,2187 @@
+
+fly_city4_city0_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city0))']
+
+fly_city1_city2_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city2))']
+
+fly_city4_city0_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city0))']
+
+fly_city1_city2_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city2))']
+
+fly_city4_city0_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city0))']
+
+fly_city6_city2_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city2))']
+
+fly_city4_city0_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city0))']
+
+fly_city2_city2_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city2))']
+
+fly_city0_city3_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city3))']
+
+fly_city3_city0_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city0))']
+
+fly_city0_city0_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city0))']
+
+fly_city0_city0_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city0))']
+
+fly_plane1_city5_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city5))']
+
+fly_plane1_city5_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city5))']
+
+fly_city5_city0_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city0))']
+
+fly_plane1_city0_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city0))']
+
+fly_plane1_city2_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city2))']
+
+fly_city5_city2_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city2))']
+
+fly_city1_city1_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city1))']
+
+fly_city6_city4_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city4))']
+
+fly_city3_city0_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city0))']
+
+fly_city6_city1_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city1_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city5_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city1_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city1_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city1_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city1_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city1_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city1))']
+
+fly_city7_city7_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city7))']
+
+fly_city3_city0_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city0))']
+
+fly_city1_city2_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city2))']
+
+fly_city3_city3_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city3))']
+
+fly_city3_city3_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city3))']
+
+fly_city7_city0_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city0))']
+
+fly_city5_city0_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city0))']
+
+fly_city5_city0_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city0))']
+
+fly_city7_city0_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city0))']
+
+fly_city5_city0_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city0))']
+
+fly_city7_city0_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city0))']
+
+fly_city7_city0_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city0))']
+
+fly_city7_city0_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city0))']
+
+fly_city1_city7_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city7))']
+
+fly_city1_city7_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city7))']
+
+fly_city0_city1_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city1))']
+
+fly_city0_city1_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city1))']
+
+fly_city7_city5_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city5))']
+
+fly_city7_city5_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city5))']
+
+fly_city2_city4_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city4))']
+
+fly_city4_city6_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city6))']
+
+fly_city2_city4_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city4))']
+
+fly_city5_city5_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city5))']
+
+fly_city5_city5_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city5))']
+
+fly_city5_city5_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city5))']
+
+fly_city4_city6_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city6))']
+
+fly_city5_city5_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city5))']
+
+fly_city5_city5_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city5))']
+
+fly_city5_city5_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city5))']
+
+fly_city5_city5_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city5))']
+
+fly_city2_city4_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city4))']
+
+fly_city2_city4_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city4))']
+
+fly_city2_city4_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city4))']
+
+fly_city2_city4_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city4))']
+
+fly_city3_city7_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city7))']
+
+fly_city1_city2_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city2))']
+
+fly_city4_city2_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city2))']
+
+fly_city1_city2_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city2))']
+
+fly_city4_city2_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city2))']
+
+fly_city2_city0_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city0))']
+
+fly_city2_city0_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city0))']
+
+fly_city4_city2_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city2))']
+
+fly_city4_city2_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city2))']
+
+fly_city6_city5_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city5))']
+
+fly_city6_city5_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city5))']
+
+fly_city2_city0_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city0))']
+
+fly_city0_city1_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city1))']
+
+fly_plane1_city6_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city6))']
+
+fly_city0_city6_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city6_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city6))']
+
+fly_city0_city0_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city0))']
+
+fly_city4_city2_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city2))']
+
+fly_city0_city2_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city2))']
+
+fly_city1_city6_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city6))']
+
+fly_city7_plane1_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city3_city6_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city6))']
+
+fly_city3_city6_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city6))']
+
+fly_city0_city4_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city4_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city4))']
+
+fly_city5_city4_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city4))']
+
+fly_city5_city4_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city4))']
+
+fly_city5_city4_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city4))']
+
+fly_city5_city4_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city4))']
+
+fly_city5_city4_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city4))']
+
+fly_city5_city4_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city4))']
+
+fly_city6_city2_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city2))']
+
+fly_city5_city4_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city4))']
+
+fly_city1_city3_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city3))']
+
+fly_city1_city3_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city3))']
+
+fly_city7_city1_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city1))']
+
+fly_city7_city1_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city1))']
+
+fly_city7_city4_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city4))']
+
+fly_city7_city4_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city4))']
+
+fly_city7_city4_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city4))']
+
+fly_city7_city4_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city4))']
+
+fly_city7_city1_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city1))']
+
+fly_city7_city1_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city1))']
+
+fly_city0_city7_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city7_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city7))']
+
+fly_city7_city2_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city2))']
+
+fly_plane1_city4_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city4))']
+
+fly_plane1_city2_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city2))']
+
+fly_city6_city3_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city3))']
+
+fly_city4_city1_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city1))']
+
+fly_city3_city5_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city5))']
+
+fly_city3_city5_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city5))']
+
+fly_city3_city0_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city0))']
+
+fly_city3_city5_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city5))']
+
+fly_city3_city5_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city5))']
+
+fly_city3_city5_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city5))']
+
+fly_city3_city5_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city5))']
+
+fly_city3_city5_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city5))']
+
+fly_city1_city4_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city4))']
+
+fly_city7_city4_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city4))']
+
+fly_city6_city3_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city3))']
+
+fly_city6_city3_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city3))']
+
+fly_city3_plane1_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city6_plane1_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city6_plane1_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 plane1))']
+
+fly_city5_city3_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city3))']
+
+fly_city5_city3_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city3))']
+
+fly_plane1_city7_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city7))']
+
+fly_plane1_city7_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city7))']
+
+fly_city2_city2_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city2))']
+
+fly_city2_city2_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city2))']
+
+fly_city2_city2_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city2))']
+
+fly_city2_city2_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city2))']
+
+fly_city2_city2_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city2))']
+
+fly_city2_city2_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city2))']
+
+fly_city2_city2_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city2))']
+
+fly_city4_city0_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city0))']
+
+fly_city3_city2_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city2))']
+
+fly_city3_city2_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city2))']
+
+fly_city5_city1_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city1))']
+
+fly_city0_city2_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city2))']
+
+fly_city7_city3_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city3))']
+
+fly_city2_plane1_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city5_city1_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city1))']
+
+fly_city5_city1_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city1))']
+
+fly_city7_plane1_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city7_plane1_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city7_plane1_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city7_plane1_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city7_plane1_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city7_plane1_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city7_plane1_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city1_city4_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city4))']
+
+fly_city1_city4_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city4))']
+
+fly_city1_plane1_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city2_plane1_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city2_plane1_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city2_city3_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city3))']
+
+fly_city1_city4_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city4))']
+
+fly_city5_city2_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city2))']
+
+fly_city5_city2_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city2))']
+
+fly_city2_plane1_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city2_city1_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city1))']
+
+fly_city1_city4_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city4))']
+
+fly_plane1_city0_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city0))']
+
+fly_city3_plane1_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city3_plane1_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 plane1))']
+
+fly_city4_city6_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city6))']
+
+fly_city2_city2_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city2))']
+
+fly_city6_city1_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city1))']
+
+fly_city6_city6_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city6))']
+
+fly_city6_city2_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city2))']
+
+fly_city6_city6_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city6))']
+
+fly_city6_city6_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city6))']
+
+fly_city6_city6_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city6))']
+
+fly_city6_city6_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city6))']
+
+fly_city6_city6_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city6))']
+
+fly_city6_city2_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city2))']
+
+fly_city2_city3_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city3))']
+
+fly_plane1_city2_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city2))']
+
+fly_plane1_city2_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city2))']
+
+fly_plane1_city2_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city2))']
+
+fly_city4_city1_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city1))']
+
+fly_city4_city7_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city7))']
+
+fly_plane1_city2_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city2))']
+
+fly_plane1_city2_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city2))']
+
+fly_plane1_city2_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city2))']
+
+fly_city6_city2_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city2))']
+
+fly_city3_city2_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city2))']
+
+fly_city4_city4_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city4))']
+
+fly_city2_city3_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city3))']
+
+fly_city4_city1_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city1))']
+
+fly_city4_city7_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city7))']
+
+fly_city6_city7_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city7))']
+
+fly_city5_city4_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city4))']
+
+fly_city2_city1_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city1))']
+
+fly_city4_city3_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city3))']
+
+fly_city2_city1_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city1))']
+
+fly_city2_city1_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city1))']
+
+fly_city4_city3_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city3))']
+
+fly_city4_city3_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city3))']
+
+fly_city2_city1_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city1))']
+
+fly_city4_city3_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city3))']
+
+fly_city1_city4_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city4))']
+
+fly_city4_city1_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city1))']
+
+fly_city6_city1_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city1))']
+
+fly_city3_city3_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city3))']
+
+fly_city5_city6_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city6))']
+
+fly_city7_city4_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city4))']
+
+fly_city5_city6_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city6))']
+
+fly_city4_city6_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city6))']
+
+fly_city2_city4_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city4))']
+
+fly_city4_city6_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city6))']
+
+fly_city2_city4_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city4))']
+
+fly_city4_city6_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city6))']
+
+fly_city4_city6_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city6))']
+
+fly_city4_city6_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city6))']
+
+fly_city4_city6_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city6))']
+
+fly_city7_city1_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city1))']
+
+fly_city1_plane1_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city1_plane1_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city1_plane1_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city7_city1_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city1))']
+
+fly_city1_plane1_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city1_plane1_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city1_plane1_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city1_plane1_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 plane1))']
+
+fly_plane1_city4_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city4))']
+
+fly_city7_city1_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city1))']
+
+fly_city0_city5_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city5))']
+
+fly_city1_city2_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city2))']
+
+fly_city7_city1_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city1))']
+
+fly_city4_plane1_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city1_city7_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city7))']
+
+fly_city4_plane1_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city2_city5_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city5))']
+
+fly_city5_plane1_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city4_city0_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city0))']
+
+fly_city3_city1_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city1))']
+
+fly_city3_city1_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city1))']
+
+fly_city2_city4_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city4))']
+
+fly_city4_city7_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city7))']
+
+fly_city2_city6_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city6))']
+
+fly_city2_city5_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city5))']
+
+fly_city0_city6_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city6))']
+
+fly_city1_city2_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city2))']
+
+fly_city4_city7_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city7))']
+
+fly_city2_city5_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city5))']
+
+fly_city2_city3_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city3))']
+
+fly_city2_city3_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city3))']
+
+fly_city2_city3_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city3))']
+
+fly_city4_city1_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city1))']
+
+fly_city6_city2_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city2))']
+
+fly_city2_city3_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city3))']
+
+fly_city2_city3_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city3))']
+
+fly_city6_city2_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city2))']
+
+fly_city6_city2_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city2))']
+
+fly_city4_city7_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city7))']
+
+fly_city2_city5_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city5))']
+
+fly_city1_city2_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city2))']
+
+fly_city2_city5_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city5))']
+
+fly_city3_city6_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city6))']
+
+fly_city5_city7_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city7))']
+
+fly_city2_city5_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city5))']
+
+fly_city4_city7_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city7))']
+
+fly_city2_city5_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city5))']
+
+fly_city4_city7_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city7))']
+
+fly_city2_city5_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city5))']
+
+fly_city2_city5_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city5))']
+
+fly_city4_city7_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city7))']
+
+fly_city4_city7_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city7))']
+
+fly_city5_city4_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city4))']
+
+fly_city2_city6_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city6))']
+
+fly_city3_city0_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city0))']
+
+fly_city2_city6_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city6))']
+
+fly_city4_city4_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city4))']
+
+fly_city2_city6_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city6))']
+
+fly_city4_city4_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city4))']
+
+fly_city2_city6_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city6))']
+
+fly_city4_city4_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city4))']
+
+fly_city3_city0_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city0))']
+
+fly_city1_city5_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city5))']
+
+fly_city1_city5_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city5))']
+
+fly_city0_city3_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city3))']
+
+fly_city0_city3_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city3))']
+
+fly_city1_city0_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city0))']
+
+fly_city1_city0_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city0))']
+
+fly_city0_city3_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city3))']
+
+fly_city0_city3_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city3))']
+
+fly_city1_city0_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city0))']
+
+fly_city0_city3_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city3))']
+
+fly_city4_city5_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city5))']
+
+fly_city2_city3_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city3))']
+
+fly_city5_city0_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city0))']
+
+fly_city7_city0_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city0))']
+
+fly_plane1_city4_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city4))']
+
+fly_plane1_city4_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city4))']
+
+fly_plane1_city4_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city4))']
+
+fly_plane1_city4_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city4))']
+
+fly_plane1_city4_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city4))']
+
+fly_city3_city5_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city5))']
+
+fly_plane1_city4_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city4))']
+
+fly_plane1_city4_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city4))']
+
+fly_city1_city0_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city0))']
+
+fly_city5_city0_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city0))']
+
+fly_city7_city1_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city1))']
+
+fly_city7_city3_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city3))']
+
+fly_city6_city2_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city2))']
+
+fly_city7_city0_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city0))']
+
+fly_city5_city0_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city0))']
+
+fly_city7_plane1_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 plane1))']
+
+fly_city0_plane1_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city5_city0_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city0))']
+
+fly_city6_city7_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city7_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city7))']
+
+fly_city6_city0_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city0))']
+
+fly_city6_city0_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city0))']
+
+fly_city2_city7_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city7))']
+
+fly_city7_city3_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city3))']
+
+fly_city6_city6_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city6))']
+
+fly_city0_city2_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city2))']
+
+fly_city0_city2_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city2))']
+
+fly_city0_city7_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city7))']
+
+fly_city0_city2_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city2))']
+
+fly_city0_city2_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city2))']
+
+fly_city0_city2_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city2))']
+
+fly_city0_city2_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city2))']
+
+fly_city0_city2_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city2))']
+
+fly_city7_city3_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city3))']
+
+fly_city6_city6_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city6))']
+
+fly_city1_city3_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city3))']
+
+fly_city5_city6_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city6))']
+
+fly_city7_city3_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city3))']
+
+fly_city1_city6_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city6))']
+
+fly_city2_city6_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city6))']
+
+fly_city1_city6_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city6))']
+
+fly_city1_city6_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city6))']
+
+fly_city1_city6_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city6))']
+
+fly_city1_city6_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city6))']
+
+fly_city1_city6_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city6))']
+
+fly_city1_city6_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city6))']
+
+fly_city3_city0_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city0))']
+
+fly_city7_city5_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city5))']
+
+fly_city3_city0_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city0))']
+
+fly_city4_city2_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city2))']
+
+fly_city3_city0_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city0))']
+
+fly_city7_city3_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city3))']
+
+fly_city4_city4_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city4))']
+
+fly_plane1_city7_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city7))']
+
+fly_plane1_city7_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city7))']
+
+fly_plane1_city7_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city7))']
+
+fly_plane1_city7_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city7))']
+
+fly_plane1_city7_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city7))']
+
+fly_city2_city6_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city6))']
+
+fly_plane1_city7_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city7))']
+
+fly_plane1_city7_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city7))']
+
+fly_city4_city4_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city4))']
+
+fly_city5_plane1_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city5_plane1_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 plane1))']
+
+fly_city7_city0_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city0))']
+
+fly_plane1_city2_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city2))']
+
+fly_city7_city4_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city4))']
+
+fly_city1_city2_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city2))']
+
+fly_city3_city5_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city5))']
+
+fly_city5_city5_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city5))']
+
+fly_city7_city6_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city6))']
+
+fly_city7_city6_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city6))']
+
+fly_city5_city6_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city6))']
+
+fly_city1_city0_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city0))']
+
+fly_city5_city6_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city6))']
+
+fly_city5_city6_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city6))']
+
+fly_city5_city6_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city6))']
+
+fly_city5_city6_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city6))']
+
+fly_city5_city6_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city6))']
+
+fly_city1_city0_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city0))']
+
+fly_city4_plane1_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city4_plane1_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city4_plane1_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city4_plane1_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city4_plane1_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city4_plane1_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city7_city3_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city3))']
+
+fly_city7_city3_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city3))']
+
+fly_city0_city3_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city3))']
+
+fly_city1_city0_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city0))']
+
+fly_city2_city6_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city6))']
+
+fly_city1_city0_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city0))']
+
+fly_city2_city7_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city7))']
+
+fly_city1_plane1_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 plane1))']
+
+fly_city0_city3_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city3))']
+
+fly_city4_city5_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city5))']
+
+fly_city1_city0_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city0))']
+
+fly_city4_city5_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city5))']
+
+fly_city0_plane1_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city0_plane1_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city0_plane1_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city0_plane1_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city7_city6_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city6))']
+
+fly_city0_plane1_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city0_plane1_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city0_plane1_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city4_city5_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city5))']
+
+fly_city2_city7_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city7))']
+
+fly_city1_city1_city4:
+1: [] -> ['at(city1 city4)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city7:
+1: [] -> ['at(city1 city7)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city0:
+1: [] -> ['at(city1 city0)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city1:
+1: [] -> ['at(city1 city1)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city1))']
+
+fly_city1_city1_city3:
+1: [] -> ['at(city1 city3)'] / [] -> ['not(at(city1 city1))']
+
+fly_city2_city0_plane1:
+1: [] -> ['at(city2 plane1)'] / [] -> ['not(at(city2 city0))']
+
+fly_city2_city7_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city7))']
+
+fly_city3_city4_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city4))']
+
+fly_plane1_city5_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city5))']
+
+fly_city3_city4_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city4))']
+
+fly_city3_city4_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city4))']
+
+fly_city0_plane1_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 plane1))']
+
+fly_city3_city4_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city4))']
+
+fly_city3_city4_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city4))']
+
+fly_city3_city4_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city4))']
+
+fly_city3_city4_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city4))']
+
+fly_city3_city4_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city4))']
+
+fly_city2_city6_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city6))']
+
+fly_city5_city7_city2:
+1: [] -> ['at(city5 city2)'] / [] -> ['not(at(city5 city7))']
+
+fly_city5_city7_city3:
+1: [] -> ['at(city5 city3)'] / [] -> ['not(at(city5 city7))']
+
+fly_city5_city7_city0:
+1: [] -> ['at(city5 city0)'] / [] -> ['not(at(city5 city7))']
+
+fly_city5_city7_city1:
+1: [] -> ['at(city5 city1)'] / [] -> ['not(at(city5 city7))']
+
+fly_city5_city7_city6:
+1: [] -> ['at(city5 city6)'] / [] -> ['not(at(city5 city7))']
+
+fly_city5_city7_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city7))']
+
+fly_city3_city4_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city4))']
+
+fly_city5_city7_city5:
+1: [] -> ['at(city5 city5)'] / [] -> ['not(at(city5 city7))']
+
+fly_city7_city4_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city4))']
+
+fly_city7_city4_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city4))']
+
+fly_city6_city4_city6:
+1: [] -> ['at(city6 city6)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city7:
+1: [] -> ['at(city6 city7)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city4:
+1: [] -> ['at(city6 city4)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city5:
+1: [] -> ['at(city6 city5)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city2:
+1: [] -> ['at(city6 city2)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city3:
+1: [] -> ['at(city6 city3)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city0:
+1: [] -> ['at(city6 city0)'] / [] -> ['not(at(city6 city4))']
+
+fly_city6_city4_city1:
+1: [] -> ['at(city6 city1)'] / [] -> ['not(at(city6 city4))']
+
+fly_city1_city5_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city5))']
+
+fly_city6_plane1_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 plane1))']
+
+fly_plane1_plane1_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_city2_city0_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city0))']
+
+fly_city7_city0_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city0))']
+
+fly_city6_city0_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city0))']
+
+fly_plane1_city1_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city1))']
+
+fly_city5_city7_city4:
+1: [] -> ['at(city5 city4)'] / [] -> ['not(at(city5 city7))']
+
+fly_plane1_plane1_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_city4_city4_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city4))']
+
+fly_city4_plane1_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 plane1))']
+
+fly_city7_city3_plane1:
+1: [] -> ['at(city7 plane1)'] / [] -> ['not(at(city7 city3))']
+
+fly_city4_city3_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city3))']
+
+fly_city2_city1_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city1))']
+
+fly_city3_city1_plane1:
+1: [] -> ['at(city3 plane1)'] / [] -> ['not(at(city3 city1))']
+
+fly_city4_city4_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city4))']
+
+fly_city4_city3_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city3))']
+
+fly_plane1_city3_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city3))']
+
+fly_plane1_city3_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city3))']
+
+fly_city2_city1_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city1))']
+
+fly_city4_city1_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city1))']
+
+fly_city2_city7_city6:
+1: [] -> ['at(city2 city6)'] / [] -> ['not(at(city2 city7))']
+
+fly_city2_city1_city2:
+1: [] -> ['at(city2 city2)'] / [] -> ['not(at(city2 city1))']
+
+fly_plane1_city6_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city6))']
+
+fly_plane1_city6_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city6))']
+
+fly_city2_city1_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city1))']
+
+fly_city3_city7_city4:
+1: [] -> ['at(city3 city4)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city5:
+1: [] -> ['at(city3 city5)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city6:
+1: [] -> ['at(city3 city6)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city7:
+1: [] -> ['at(city3 city7)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city0:
+1: [] -> ['at(city3 city0)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city1:
+1: [] -> ['at(city3 city1)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city2:
+1: [] -> ['at(city3 city2)'] / [] -> ['not(at(city3 city7))']
+
+fly_city3_city7_city3:
+1: [] -> ['at(city3 city3)'] / [] -> ['not(at(city3 city7))']
+
+fly_city4_city1_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city1))']
+
+fly_city4_city4_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city4))']
+
+fly_city2_plane1_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city2_plane1_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city2_plane1_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city1_city4_city2:
+1: [] -> ['at(city1 city2)'] / [] -> ['not(at(city1 city4))']
+
+fly_city1_city4_city5:
+1: [] -> ['at(city1 city5)'] / [] -> ['not(at(city1 city4))']
+
+fly_city2_plane1_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city2_plane1_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 plane1))']
+
+fly_city1_city4_city6:
+1: [] -> ['at(city1 city6)'] / [] -> ['not(at(city1 city4))']
+
+fly_city4_city3_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city3))']
+
+fly_city5_city5_city7:
+1: [] -> ['at(city5 city7)'] / [] -> ['not(at(city5 city5))']
+
+fly_plane1_city0_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city0))']
+
+fly_city5_city0_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city0))']
+
+fly_plane1_plane1_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_plane1_plane1_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_plane1_plane1_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_plane1_plane1_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_city2_city0_city0:
+1: [] -> ['at(city2 city0)'] / [] -> ['not(at(city2 city0))']
+
+fly_plane1_plane1_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_plane1_plane1_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_plane1_plane1_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 plane1))']
+
+fly_city7_city2_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city2))']
+
+fly_city7_city2_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city2))']
+
+fly_city4_city1_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city1))']
+
+fly_city1_city6_plane1:
+1: [] -> ['at(city1 plane1)'] / [] -> ['not(at(city1 city6))']
+
+fly_city0_city3_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city3))']
+
+fly_plane1_city3_plane1:
+1: [] -> ['at(plane1 plane1)'] / [] -> ['not(at(plane1 city3))']
+
+fly_city5_city3_plane1:
+1: [] -> ['at(city5 plane1)'] / [] -> ['not(at(city5 city3))']
+
+fly_city4_city5_plane1:
+1: [] -> ['at(city4 plane1)'] / [] -> ['not(at(city4 city5))']
+
+fly_city6_city6_plane1:
+1: [] -> ['at(city6 plane1)'] / [] -> ['not(at(city6 city6))']
+
+fly_city4_city3_city4:
+1: [] -> ['at(city4 city4)'] / [] -> ['not(at(city4 city3))']
+
+fly_plane1_city1_city6:
+1: [] -> ['at(plane1 city6)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city0:
+1: [] -> ['at(plane1 city0)'] / [] -> ['not(at(plane1 city1))']
+
+fly_plane1_city1_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city1))']
+
+fly_city4_city1_city7:
+1: [] -> ['at(city4 city7)'] / [] -> ['not(at(city4 city1))']
+
+fly_city4_city5_city5:
+1: [] -> ['at(city4 city5)'] / [] -> ['not(at(city4 city5))']
+
+fly_city2_city7_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city7))']
+
+fly_city2_city7_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city7))']
+
+fly_city4_city5_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city5))']
+
+fly_city2_city7_city1:
+1: [] -> ['at(city2 city1)'] / [] -> ['not(at(city2 city7))']
+
+fly_city4_city5_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city5))']
+
+fly_city2_city7_city3:
+1: [] -> ['at(city2 city3)'] / [] -> ['not(at(city2 city7))']
+
+fly_city4_city5_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city5))']
+
+fly_city7_city7_city0:
+1: [] -> ['at(city7 city0)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city1:
+1: [] -> ['at(city7 city1)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city2:
+1: [] -> ['at(city7 city2)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city3:
+1: [] -> ['at(city7 city3)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city4:
+1: [] -> ['at(city7 city4)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city5:
+1: [] -> ['at(city7 city5)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city6:
+1: [] -> ['at(city7 city6)'] / [] -> ['not(at(city7 city7))']
+
+fly_city7_city7_city7:
+1: [] -> ['at(city7 city7)'] / [] -> ['not(at(city7 city7))']
+
+fly_city0_city4_plane1:
+1: [] -> ['at(city0 plane1)'] / [] -> ['not(at(city0 city4))']
+
+fly_city0_city5_city1:
+1: [] -> ['at(city0 city1)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city0:
+1: [] -> ['at(city0 city0)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city3:
+1: [] -> ['at(city0 city3)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city2:
+1: [] -> ['at(city0 city2)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city5:
+1: [] -> ['at(city0 city5)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city4:
+1: [] -> ['at(city0 city4)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city7:
+1: [] -> ['at(city0 city7)'] / [] -> ['not(at(city0 city5))']
+
+fly_city0_city5_city6:
+1: [] -> ['at(city0 city6)'] / [] -> ['not(at(city0 city5))']
+
+fly_plane1_city0_city7:
+1: [] -> ['at(plane1 city7)'] / [] -> ['not(at(plane1 city0))']
+
+fly_city4_city2_city6:
+1: [] -> ['at(city4 city6)'] / [] -> ['not(at(city4 city2))']
+
+fly_plane1_city0_city5:
+1: [] -> ['at(plane1 city5)'] / [] -> ['not(at(plane1 city0))']
+
+fly_plane1_city0_city4:
+1: [] -> ['at(plane1 city4)'] / [] -> ['not(at(plane1 city0))']
+
+fly_plane1_city0_city3:
+1: [] -> ['at(plane1 city3)'] / [] -> ['not(at(plane1 city0))']
+
+fly_plane1_city0_city2:
+1: [] -> ['at(plane1 city2)'] / [] -> ['not(at(plane1 city0))']
+
+fly_plane1_city0_city1:
+1: [] -> ['at(plane1 city1)'] / [] -> ['not(at(plane1 city0))']
+
+fly_city2_city0_city7:
+1: [] -> ['at(city2 city7)'] / [] -> ['not(at(city2 city0))']
+
+fly_city2_city0_city4:
+1: [] -> ['at(city2 city4)'] / [] -> ['not(at(city2 city0))']
+
+fly_city4_city0_city0:
+1: [] -> ['at(city4 city0)'] / [] -> ['not(at(city4 city0))']
+
+fly_city2_city0_city5:
+1: [] -> ['at(city2 city5)'] / [] -> ['not(at(city2 city0))']
+
+fly_city4_city0_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city0))']
+
+fly_city4_city3_city1:
+1: [] -> ['at(city4 city1)'] / [] -> ['not(at(city4 city3))']
+
+fly_city4_city2_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city2))']
+
+fly_city4_city0_city2:
+1: [] -> ['at(city4 city2)'] / [] -> ['not(at(city4 city0))']
+
+fly_city4_city2_city3:
+1: [] -> ['at(city4 city3)'] / [] -> ['not(at(city4 city2))']

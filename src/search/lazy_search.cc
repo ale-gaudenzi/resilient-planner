@@ -132,17 +132,15 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
      * For resilient planner
      * Remove from preferred operators the ones in V
      */
-    if (g_use_resilient_planner)
+    for (int i = 0; i < preferred_operators.size(); i++)
     {
-        for (int i = 0; i < preferred_operators.size(); i++)
+        if (g_current_forbidden_ops.find(*preferred_operators[i]) != g_current_forbidden_ops.end())
         {
-            if (g_current_forbidden_ops.find(*preferred_operators[i]) != g_current_forbidden_ops.end())
-            {
-                preferred_operators.erase(preferred_operators.begin() + i);
-                i--;
-            }
+            preferred_operators.erase(preferred_operators.begin() + i);
+            i--;
         }
     }
+    
 
     if (succ_mode == pref_first)
     {
