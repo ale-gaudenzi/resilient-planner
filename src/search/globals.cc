@@ -597,7 +597,7 @@ int g_max_faults;
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
 std::map<k_v_pair, Policy *> g_resilient_policies;
-std::map<k_v_pair, Policy *> g_fault_models;
+std::map<k_v_pair, Policy *> g_non_resilient_deadends;
 
 Policy *g_original_policy;
 

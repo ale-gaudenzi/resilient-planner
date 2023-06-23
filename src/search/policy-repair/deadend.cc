@@ -103,7 +103,6 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
         // For each operator, create a new deadend avoidance pair
         for (int j = 0; j < reg_items.size(); j++)
         {
-
             RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
 
             de_items.push_back(new NondetDeadend(
@@ -180,9 +179,9 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
          * we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
          * and add them to the deadends of the current search
          */
-        if (g_fault_models.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_fault_models.end())
+        if (g_non_resilient_deadends.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_non_resilient_deadends.end())
         {
-            Policy *current_forbidden = g_fault_models[std::make_pair(g_current_faults, g_current_forbidden_ops)];
+            Policy *current_forbidden = g_non_resilient_deadends[std::make_pair(g_current_faults, g_current_forbidden_ops)];
             current_forbidden->generate_applicable_items(curr, reg_items, false, false);
         }
         
@@ -208,12 +207,10 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
              */
             if (0 == forbidden.count(orig_ops[i]->nondet_index) && g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end())
             {
-                debug = false;
-
+                ops.push_back(orig_ops[i]);   
+                            
                 if (debug)
                     cout << "Allowing operator " << orig_ops[i]->get_name() << endl;
-                
-                ops.push_back(orig_ops[i]);
             }
 
             else

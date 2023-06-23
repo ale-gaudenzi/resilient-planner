@@ -131,6 +131,8 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
     /**
      * For resilient planner
      * Remove from preferred operators the ones in V
+     * we have already ignored them in the DeadendAwareSuccessorGenerator but
+     * it seems that the heuristic still has them in its preferred_operators
      */
     for (int i = 0; i < preferred_operators.size(); i++)
     {
@@ -141,7 +143,6 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
         }
     }
     
-
     if (succ_mode == pref_first)
     {
         for (int i = 0; i < preferred_operators.size(); i++)
