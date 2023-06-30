@@ -37,7 +37,6 @@ int State::operator[](int index) const
 
 void State::dump_pddl() const
 {
-    //cout << "State " << id << endl;
     for (int i = 0; i < g_variable_domain.size(); i++)
     {
         const string &fact_name = g_fact_names[i][(*this)[i]];

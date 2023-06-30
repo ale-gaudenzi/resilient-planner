@@ -101,8 +101,12 @@ struct RegressionStep : PolicyItem {
     }
 };
 
+
 void generate_regressable_ops();
 
 list<PolicyItem *> perform_regression(const SearchEngine::Plan &plan, RegressionStep *goal_step, int distance, bool create_goal = false);
+
+
+
 
 #endif

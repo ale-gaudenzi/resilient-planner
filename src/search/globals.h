@@ -30,6 +30,7 @@ class DeadendAwareSuccessorGenerator;
 class RegressionStep;
 class NondetDeadend;
 class StateID;
+class ResilientNode;
 
 bool test_goal(const State &state);
 bool test_policy(const State &state);
@@ -199,5 +200,7 @@ extern Timer g_timer_cycle;
 extern Timer g_timer_extraction;
 
 long mem_usage();
+bool find_in_op_set(std::set<Operator> op_set, Operator op);
+bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node);
 
 #endif

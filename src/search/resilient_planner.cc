@@ -12,6 +12,7 @@
 #include "policy-repair/partial_state.h"
 #include "resilient_node.h"
 #include "search_engine.h"
+#include "resilient_policy.h"
 
 #include <iostream>
 #include <fstream>
@@ -179,7 +180,7 @@ int main(int argc, const char **argv)
                         cout << "\nFailed replanning." << endl;
 
                     // If replanning fails, add current node to deadend and not resilient sets
-                    add_non_resilient_deadends(current_node); // S downarrow 
+                    add_non_resilient_deadends(current_node); // S downarrow
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
                 else
@@ -230,7 +231,7 @@ int main(int argc, const char **argv)
                     // Perform regression over the computed plan
                     regression_steps.clear();
                     regression_steps = perform_regression(plan, g_matched_policy, 0, true);
-                    
+
                     // Update global policy with the new plan
                     g_policy->update_policy(regression_steps);
 
@@ -284,6 +285,15 @@ int main(int argc, const char **argv)
     print_memory();
 
     g_policy->dump_human_policy();
+
+    list<PolicyItem *> pol = g_policy->get_items();
+    PolicyItem *goal_step = pol.front();
+    PartialState goal = PartialState(*goal_step->state);
+    PartialState policy_state;
+
+    ResilientPolicy res_policy;
+    res_policy.extract_policy(g_initial_state(), goal, g_max_faults, resilient_nodes);
+    res_policy.dump();
 }
 
 /// Checks if the given node is resilient, using the current global policy to find the applicable next actions
@@ -458,59 +468,6 @@ void update_non_resilient_nodes(ResilientNode node)
         }
     }
     return;
-}
-
-/// @brief Check if the node is present in the resilient nodes list, using the custom minority and equality operators.
-bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node)
-{
-    if (set.size() != 0)
-    {
-        bool found;
-        for (std::set<ResilientNode>::iterator it = set.begin(); it != set.end(); ++it)
-        {
-            found = true;
-            for (int i = 0; i < g_variable_domain.size(); i++)
-            {
-                const string &fact_name1 = g_fact_names[i][(it->get_state())[i]];
-                const string &fact_name2 = g_fact_names[i][(node.get_state())[i]];
-                if (fact_name1 != "<none of those>" && fact_name2 != "<none of those>" && fact_name1.compare(fact_name2) != 0)
-                    found = false;
-            }
-
-            if (it->get_k() != node.get_k())
-                found = false;
-
-            if (it->get_deactivated_op().size() != node.get_deactivated_op().size())
-                found = false;
-
-            std::set<Operator> prova = it->get_deactivated_op();
-            for (std::set<Operator>::iterator it_o = prova.begin(); it_o != prova.end(); ++it_o)
-            {
-                bool equal_op = false;
-                if (find_in_op_set(node.get_deactivated_op(), *it_o))
-                    equal_op = true;
-                if (!equal_op)
-                    found = false;
-            }
-            if (found)
-                return true;
-        }
-        return false;
-    }
-    return false;
-}
-
-/// @brief Check if the operator is present in the operator set.
-bool find_in_op_set(std::set<Operator> op_set, Operator op)
-{
-    if (op_set.empty())
-        return false;
-
-    for (std::set<Operator>::iterator it = op_set.begin(); it != op_set.end(); ++it)
-        if (it->get_nondet_name() == op.get_nondet_name())
-            return true;
-
-    return false;
 }
 
 /// @brief Regress the state contained in node and add every state-action pair Regr(s,A)

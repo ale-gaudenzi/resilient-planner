@@ -92,6 +92,7 @@ public:
 
     list<PolicyItem *> get_items() { return all_items; };
     PartialState get_initial_state();
+
 };
 
 

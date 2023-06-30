@@ -18,6 +18,8 @@
 #include "policy-repair/deadend.h"
 #include "state_id.h"
 
+#include "resilient_node.h"
+
 #include <sys/resource.h>
 #include <cstdlib>
 #include <iostream>
@@ -628,5 +630,58 @@ long mem_usage()
     struct rusage usage;
     getrusage(who, &usage);
     return usage.ru_maxrss;
+}
+
+/// @brief Check if the node is present in the resilient nodes list, using the custom minority and equality operators.
+bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node)
+{
+    if (set.size() != 0)
+    {
+        bool found;
+        for (std::set<ResilientNode>::iterator it = set.begin(); it != set.end(); ++it)
+        {
+            found = true;
+            for (int i = 0; i < g_variable_domain.size(); i++)
+            {
+                const string &fact_name1 = g_fact_names[i][(it->get_state())[i]];
+                const string &fact_name2 = g_fact_names[i][(node.get_state())[i]];
+                if (fact_name1 != "<none of those>" && fact_name2 != "<none of those>" && fact_name1.compare(fact_name2) != 0)
+                    found = false;
+            }
+
+            if (it->get_k() != node.get_k())
+                found = false;
+
+            if (it->get_deactivated_op().size() != node.get_deactivated_op().size())
+                found = false;
+
+            std::set<Operator> prova = it->get_deactivated_op();
+            for (std::set<Operator>::iterator it_o = prova.begin(); it_o != prova.end(); ++it_o)
+            {
+                bool equal_op = false;
+                if (find_in_op_set(node.get_deactivated_op(), *it_o))
+                    equal_op = true;
+                if (!equal_op)
+                    found = false;
+            }
+            if (found)
+                return true;
+        }
+        return false;
+    }
+    return false;
+}
+
+/// @brief Check if the operator is present in the operator set.
+bool find_in_op_set(std::set<Operator> op_set, Operator op)
+{
+    if (op_set.empty())
+        return false;
+
+    for (std::set<Operator>::iterator it = op_set.begin(); it != op_set.end(); ++it)
+        if (it->get_nondet_name() == op.get_nondet_name())
+            return true;
+
+    return false;
 }
 

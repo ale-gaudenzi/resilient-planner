@@ -22,7 +22,7 @@ void RegressionStep::dump() const
     cout << "" << endl;
 }
 
-void RegressionStep::dump_state_op() 
+void RegressionStep::dump_state_op()
 {
     cout << "Regression Step (" << this << ")" << endl;
     if (!is_goal)
@@ -39,7 +39,8 @@ void RegressionStep::dump_state_op()
 
 void RegressionStep::dump_simple()
 {
-    if(!is_goal) {
+    if (!is_goal)
+    {
         cout << op->get_nondet_name() << endl;
     }
 }
@@ -49,7 +50,7 @@ string RegressionStep::get_name()
     if (is_goal)
         return "goal / SC / d=0";
     else
-        return op->get_nondet_name() + " / " + (is_sc ? "SC" : "NSC") + " / d=" + static_cast<ostringstream *>(&(ostringstream() << distance))->str();
+        return op->get_nondet_name() + " / " + (is_sc ? "SC" : "NSC") + " / d=" + static_cast<ostringstream *>( &(ostringstream() << distance) )->str();
 }
 
 string RegressionStep::get_op_name()

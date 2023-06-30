@@ -19,7 +19,8 @@
  policy-repair/../relaxation_heuristic.h \
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
- ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h
+ ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h \
+ resilient_policy.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -139,7 +140,7 @@
  policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
  policy-repair/../policy-repair/policy.h \
  policy-repair/../policy-repair/regression.h policy-repair/regression.h \
- policy-repair/deadend.h
+ policy-repair/deadend.h resilient_node.h
 .obj/heuristic.release.o: heuristic.cc heuristic.h scalar_evaluator.h evaluator.h \
  operator_cost.h policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h operator.h \
@@ -495,6 +496,28 @@
 .obj/resilient_node.release.o: resilient_node.cc resilient_node.h operator.h globals.h \
  policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h
+.obj/resilient_policy.release.o: resilient_policy.cc resilient_policy.h operator.h \
+ globals.h policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h \
+ resilient_node.h policy-repair/policy.h policy-repair/regression.h \
+ policy-repair/../globals.h policy-repair/../operator.h \
+ policy-repair/../search_engine.h policy-repair/../operator.h \
+ policy-repair/../search_space.h policy-repair/../state.h \
+ policy-repair/../search_node_info.h policy-repair/../operator_cost.h \
+ policy-repair/../per_state_information.h policy-repair/../globals.h \
+ policy-repair/../segmented_vector.h policy-repair/../utilities.h \
+ policy-repair/../state_registry.h policy-repair/../search_progress.h \
+ policy-repair/../timer.h policy-repair/../heuristic.h \
+ policy-repair/../scalar_evaluator.h policy-repair/../evaluator.h \
+ policy-repair/../policy-repair/partial_state.h policy-repair/policy.h \
+ policy-repair/partial_state.h policy-repair/simulator.h \
+ policy-repair/../rng.h policy-repair/deadend.h \
+ policy-repair/../successor_generator.h \
+ policy-repair/../additive_heuristic.h policy-repair/../priority_queue.h \
+ policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
+ policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
+ policy-repair/../policy-repair/policy.h \
+ policy-repair/../policy-repair/regression.h
 .obj/open_lists/alternation_open_list.release.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.release.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.release.o: open_lists/pareto_open_list.cc
@@ -1551,7 +1574,8 @@
  policy-repair/../relaxation_heuristic.h \
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
- ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h
+ ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h \
+ resilient_policy.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -1671,7 +1695,7 @@
  policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
  policy-repair/../policy-repair/policy.h \
  policy-repair/../policy-repair/regression.h policy-repair/regression.h \
- policy-repair/deadend.h
+ policy-repair/deadend.h resilient_node.h
 .obj/heuristic.debug.o: heuristic.cc heuristic.h scalar_evaluator.h evaluator.h \
  operator_cost.h policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h operator.h \
@@ -2027,6 +2051,28 @@
 .obj/resilient_node.debug.o: resilient_node.cc resilient_node.h operator.h globals.h \
  policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h
+.obj/resilient_policy.debug.o: resilient_policy.cc resilient_policy.h operator.h \
+ globals.h policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h \
+ resilient_node.h policy-repair/policy.h policy-repair/regression.h \
+ policy-repair/../globals.h policy-repair/../operator.h \
+ policy-repair/../search_engine.h policy-repair/../operator.h \
+ policy-repair/../search_space.h policy-repair/../state.h \
+ policy-repair/../search_node_info.h policy-repair/../operator_cost.h \
+ policy-repair/../per_state_information.h policy-repair/../globals.h \
+ policy-repair/../segmented_vector.h policy-repair/../utilities.h \
+ policy-repair/../state_registry.h policy-repair/../search_progress.h \
+ policy-repair/../timer.h policy-repair/../heuristic.h \
+ policy-repair/../scalar_evaluator.h policy-repair/../evaluator.h \
+ policy-repair/../policy-repair/partial_state.h policy-repair/policy.h \
+ policy-repair/partial_state.h policy-repair/simulator.h \
+ policy-repair/../rng.h policy-repair/deadend.h \
+ policy-repair/../successor_generator.h \
+ policy-repair/../additive_heuristic.h policy-repair/../priority_queue.h \
+ policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
+ policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
+ policy-repair/../policy-repair/policy.h \
+ policy-repair/../policy-repair/regression.h
 .obj/open_lists/alternation_open_list.debug.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.debug.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.debug.o: open_lists/pareto_open_list.cc
@@ -3083,7 +3129,8 @@
  policy-repair/../relaxation_heuristic.h \
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
- ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h
+ ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h \
+ resilient_policy.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -3203,7 +3250,7 @@
  policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
  policy-repair/../policy-repair/policy.h \
  policy-repair/../policy-repair/regression.h policy-repair/regression.h \
- policy-repair/deadend.h
+ policy-repair/deadend.h resilient_node.h
 .obj/heuristic.profile.o: heuristic.cc heuristic.h scalar_evaluator.h evaluator.h \
  operator_cost.h policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h operator.h \
@@ -3559,6 +3606,28 @@
 .obj/resilient_node.profile.o: resilient_node.cc resilient_node.h operator.h globals.h \
  policy-repair/partial_state.h policy-repair/../state.h \
  policy-repair/../int_packer.h policy-repair/../state_id.h
+.obj/resilient_policy.profile.o: resilient_policy.cc resilient_policy.h operator.h \
+ globals.h policy-repair/partial_state.h policy-repair/../state.h \
+ policy-repair/../int_packer.h policy-repair/../state_id.h \
+ resilient_node.h policy-repair/policy.h policy-repair/regression.h \
+ policy-repair/../globals.h policy-repair/../operator.h \
+ policy-repair/../search_engine.h policy-repair/../operator.h \
+ policy-repair/../search_space.h policy-repair/../state.h \
+ policy-repair/../search_node_info.h policy-repair/../operator_cost.h \
+ policy-repair/../per_state_information.h policy-repair/../globals.h \
+ policy-repair/../segmented_vector.h policy-repair/../utilities.h \
+ policy-repair/../state_registry.h policy-repair/../search_progress.h \
+ policy-repair/../timer.h policy-repair/../heuristic.h \
+ policy-repair/../scalar_evaluator.h policy-repair/../evaluator.h \
+ policy-repair/../policy-repair/partial_state.h policy-repair/policy.h \
+ policy-repair/partial_state.h policy-repair/simulator.h \
+ policy-repair/../rng.h policy-repair/deadend.h \
+ policy-repair/../successor_generator.h \
+ policy-repair/../additive_heuristic.h policy-repair/../priority_queue.h \
+ policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
+ policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
+ policy-repair/../policy-repair/policy.h \
+ policy-repair/../policy-repair/regression.h
 .obj/open_lists/alternation_open_list.profile.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.profile.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.profile.o: open_lists/pareto_open_list.cc

@@ -195,9 +195,8 @@ size_t PartialState::hash() const
 bool PartialState::is_implied(PartialState &other)
 {
     for (int i = 0; i < g_variable_domain.size(); i++)
-    {
         if ((vars[i] != -1) && (vars[i] != other.vars[i]))
             return false;
-    }
+    
     return true;
 }
