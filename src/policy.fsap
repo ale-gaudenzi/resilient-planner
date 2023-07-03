@@ -1,6 +1,0 @@
-
-If holds: var2:1 var1:2 var0:0
-Forbid: goal / SC / d=0
-
-If holds: var3:1 var2:0 var1:2 var0:0
-Forbid: fly plane1 city0 city1 fl1 fl0 / NSC / d=1

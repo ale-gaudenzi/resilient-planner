@@ -1,5 +1,5 @@
 #0
-Node: 0x20bc940
+Node: 0x24a6270
 Atom at(plane1, city0)
 k: 3
 deactivated_op: 
@@ -8,7 +8,7 @@ Action:
 fly plane1 city0 city1 (fly plane1 city0 city1): [Atom at(plane1, city0) -> Atom at(plane1, city1)]
 
 #1
-Node: 0x20cf880
+Node: 0x24b47c0
 Atom at(plane1, city0)
 k: 2
 deactivated_op: 
@@ -18,7 +18,7 @@ Action:
 fly plane1 city0 city3 (fly plane1 city0 city3): [Atom at(plane1, city0) -> Atom at(plane1, city3)]
 
 #2
-Node: 0x20d0180
+Node: 0x24b50c0
 Atom at(plane1, city0)
 k: 1
 deactivated_op: 
@@ -29,7 +29,7 @@ Action:
 fly plane1 city0 city2 (fly plane1 city0 city2): [Atom at(plane1, city0) -> Atom at(plane1, city2)]
 
 #3
-Node: 0x20cfb50
+Node: 0x24b4a90
 Atom at(plane1, city0)
 k: 0
 deactivated_op: 
@@ -41,7 +41,7 @@ Action:
 fly plane1 city0 city4 (fly plane1 city0 city4): [Atom at(plane1, city0) -> Atom at(plane1, city4)]
 
 #4
-Node: 0x20d1080
+Node: 0x24b5fc0
 Atom at(plane1, city4)
 k: 0
 deactivated_op: 
@@ -53,7 +53,7 @@ Action:
 fly plane1 city4 city1 (fly plane1 city4 city1): [Atom at(plane1, city4) -> Atom at(plane1, city1)]
 
 #5
-Node: 0x20d11a0
+Node: 0x24b60e0
 Atom at(plane1, city2)
 k: 1
 deactivated_op: 
@@ -64,7 +64,7 @@ Action:
 fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
 
 #6
-Node: 0x20d1860
+Node: 0x24b67a0
 Atom at(plane1, city2)
 k: 0
 deactivated_op: 
@@ -76,7 +76,7 @@ Action:
 fly plane1 city2 city3 (fly plane1 city2 city3): [Atom at(plane1, city2) -> Atom at(plane1, city3)]
 
 #7
-Node: 0x20d1eb0
+Node: 0x24b6df0
 Atom at(plane1, city3)
 k: 0
 deactivated_op: 
@@ -88,7 +88,7 @@ Action:
 fly plane1 city3 city1 (fly plane1 city3 city1): [Atom at(plane1, city3) -> Atom at(plane1, city1)]
 
 #8
-Node: 0x20d1fd0
+Node: 0x24b6f10
 Atom at(plane1, city3)
 k: 2
 deactivated_op: 
@@ -98,7 +98,7 @@ Action:
 fly plane1 city3 city1 (fly plane1 city3 city1): [Atom at(plane1, city3) -> Atom at(plane1, city1)]
 
 #9
-Node: 0x20d20f0
+Node: 0x24b7030
 Atom at(plane1, city3)
 k: 1
 deactivated_op: 
@@ -109,7 +109,7 @@ Action:
 fly plane1 city3 city2 (fly plane1 city3 city2): [Atom at(plane1, city3) -> Atom at(plane1, city2)]
 
 #10
-Node: 0x20d0b60
+Node: 0x24b5aa0
 Atom at(plane1, city3)
 k: 0
 deactivated_op: 
@@ -121,7 +121,7 @@ Action:
 fly plane1 city3 city4 (fly plane1 city3 city4): [Atom at(plane1, city3) -> Atom at(plane1, city4)]
 
 #11
-Node: 0x20d2e70
+Node: 0x24b7db0
 Atom at(plane1, city4)
 k: 0
 deactivated_op: 
@@ -133,7 +133,7 @@ Action:
 fly plane1 city4 city1 (fly plane1 city4 city1): [Atom at(plane1, city4) -> Atom at(plane1, city1)]
 
 #12
-Node: 0x20d2a10
+Node: 0x24b7950
 Atom at(plane1, city2)
 k: 1
 deactivated_op: 
@@ -144,7 +144,7 @@ Action:
 fly plane1 city2 city1 (fly plane1 city2 city1): [Atom at(plane1, city2) -> Atom at(plane1, city1)]
 
 #13
-Node: 0x20d3650
+Node: 0x24b8590
 Atom at(plane1, city2)
 k: 0
 deactivated_op: 
@@ -156,7 +156,7 @@ Action:
 fly plane1 city2 city4 (fly plane1 city2 city4): [Atom at(plane1, city2) -> Atom at(plane1, city4)]
 
 #14
-Node: 0x20d3a40
+Node: 0x24b8980
 Atom at(plane1, city4)
 k: 0
 deactivated_op: 

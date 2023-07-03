@@ -30,8 +30,6 @@ bool replan(ResilientNode current_node, SearchEngine *engine);
 std::list<Operator> extract_solution();
 void update_non_resilient_nodes(ResilientNode node);
 void add_non_resilient_deadends(ResilientNode node);
-bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node);
-bool find_in_op_set(std::set<Operator> set, Operator op);
 long mem_usage();
 
 void print_branches();
@@ -180,7 +178,7 @@ int main(int argc, const char **argv)
                         cout << "\nFailed replanning." << endl;
 
                     // If replanning fails, add current node to deadend and not resilient sets
-                    add_non_resilient_deadends(current_node); // S downarrow
+                    add_non_resilient_deadends(current_node); // S downarrow 
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
                 else
@@ -231,7 +229,7 @@ int main(int argc, const char **argv)
                     // Perform regression over the computed plan
                     regression_steps.clear();
                     regression_steps = perform_regression(plan, g_matched_policy, 0, true);
-
+                    
                     // Update global policy with the new plan
                     g_policy->update_policy(regression_steps);
 
@@ -284,15 +282,9 @@ int main(int argc, const char **argv)
     print_timings();
     print_memory();
 
-    g_policy->dump_human_policy();
 
-    list<PolicyItem *> pol = g_policy->get_items();
-    PolicyItem *goal_step = pol.front();
-    PartialState goal = PartialState(*goal_step->state);
-    PartialState policy_state;
-
-    ResilientPolicy res_policy;
-    res_policy.extract_policy(g_initial_state(), goal, g_max_faults, resilient_nodes);
+    ResilientPolicy res_policy = ResilientPolicy();
+    res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
     res_policy.dump();
 }
 
