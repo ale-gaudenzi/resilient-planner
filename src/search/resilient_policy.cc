@@ -82,9 +82,8 @@ void ResilientPolicy::dump()
     {
         cout << "#" << i++ << endl;
         it->first.dump();
-        cout << "\nAction:" << endl;
-        it->second.dump();
-        cout << endl;
+        cout << "Action:" << endl;
+        cout << it->second.get_nondet_name() << endl;
     }
 
     cout.rdbuf(coutbuf);

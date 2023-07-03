@@ -36,9 +36,7 @@ void ResilientNode::dump() const
     cout << "k: " << k << endl;
     cout << "deactivated_op: " << endl;
     for (set<Operator>::iterator it = deactivated_op.begin(); it != deactivated_op.end(); it++)
-    {
-        it->dump();
-    }
+        cout << it->get_nondet_name() << endl;
 }
 
 /// @brief Custom equality operator

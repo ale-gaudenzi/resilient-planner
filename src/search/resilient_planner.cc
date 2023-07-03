@@ -282,8 +282,7 @@ int main(int argc, const char **argv)
     print_timings();
     print_memory();
 
-
-    ResilientPolicy res_policy = ResilientPolicy();
+    ResilientPolicy res_policy = ResilientPolicy();    
     res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
     res_policy.dump();
 }
