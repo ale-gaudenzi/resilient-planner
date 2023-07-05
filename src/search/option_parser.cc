@@ -420,10 +420,10 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_dump_branches = (atoi(argv[i]) == 1);
         }
-        else if (arg.compare("--dump-global-policy") == 0)
+        else if (arg.compare("--dump-resilient-policy") == 0)
         {
             ++i;
-            g_dump_global_policy = (atoi(argv[i]) == 1);
+            g_dump_resilient_policy = (atoi(argv[i]) == 1);
         }
         else if (arg.compare("--dump-resilient-nodes") == 0)
         {

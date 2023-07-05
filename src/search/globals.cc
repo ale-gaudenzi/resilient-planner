@@ -50,9 +50,9 @@ DeadendTuple::~DeadendTuple() { delete prev_state; }
 bool test_goal(const State &state)
 {
     /** For resilient planner:
-    * we test only if we reached the goal, otherwise it stop immediately
-    * because the current initial state is always already in the policy
-    */
+     * we test only if we reached the goal, otherwise it stop immediately
+     * because the current initial state is always already in the policy
+     */
 
     for (int i = 0; i < g_goal.size(); i++)
     {
@@ -592,10 +592,10 @@ string g_plan_filename = "sas_plan";
 RandomNumberGenerator g_rng(2011); // Use an arbitrary default seed.
 StateRegistry *g_state_registry = 0;
 
-/* Resiliency 
-*  structure and variables added for resilient planning algorithm
-*/
-int g_max_faults; 
+/* Resiliency
+ *  structure and variables added for resilient planning algorithm
+ */
+int g_max_faults;
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
 std::map<k_v_pair, Policy *> g_resilient_policies;
@@ -608,7 +608,7 @@ std::vector<Operator> g_operators_backup;
 bool g_verbose = false;
 bool g_plan_to_file = false;
 bool g_dump_branches;
-bool g_dump_global_policy = false;
+bool g_dump_resilient_policy = false;
 bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;
 
@@ -618,10 +618,11 @@ long g_mem_initial = 0;
 long g_mem_initial_policy_search = 0;
 long g_mem_pre_alg = 0;
 long g_mem_post_alg = 0;
+long g_mem_extraction = 0;
 long g_mem_max_replan = 0;
-
 Timer g_timer_cycle;
 Timer g_timer_extraction;
+Timer g_timer_extract_policy;
 
 /// @brief Print memory usage in a particural moment
 long mem_usage()
@@ -664,12 +665,19 @@ bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node)
                 if (!equal_op)
                     found = false;
             }
-            if (found)
+            if (found){
                 return true;
+            }
         }
         return false;
     }
     return false;
+    
+/*
+    for (std::set<ResilientNode>::iterator it = set.begin(); it != set.end(); ++it)
+        if (it->get_id() == node.get_id())
+            return true;
+    return false;*/
 }
 
 /// @brief Check if the operator is present in the operator set.
@@ -684,4 +692,3 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
 
     return false;
 }
-

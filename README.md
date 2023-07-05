@@ -9,8 +9,7 @@ cd src/
 ## Examples
 ```
 /src/resplanner /problems/simpletravel/domain.pddl /problems/simpletravel/pfile1 --resilient 1
-/src/resplanner /problems/simpletravel/domain.pddl /problems/satellite/p7 --resilient 1 --plan-to-file 1 
-
+/src/resplanner /problems/simpletravel/domain.pddl /problems/satellite/5 --resilient 2
 ```
 
 ## Usage
@@ -30,16 +29,15 @@ cd src/
     Dump the resilient plan to a file
 
 --dump-branches 1/0
-    Print branches of the replan
+    Print branches of the replan to a JSON file
 
---dump-global-policy 1/0
-    Print final policy
+--dump-resilient-policy 1/0
+    Print resilient policy to a JSON file
 
 --dump-resilient-nodes 1/0
     Print all resilient nodes found
 
 --print-memory-replan-progression 1/0
     Print memory usage for every replan
-
 ```
 

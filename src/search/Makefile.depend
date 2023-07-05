@@ -20,7 +20,7 @@
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h \
- resilient_policy.h
+ resilient_policy.h json.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -517,12 +517,13 @@
  policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
  policy-repair/../policy-repair/policy.h \
- policy-repair/../policy-repair/regression.h
+ policy-repair/../policy-repair/regression.h json.h
 .obj/open_lists/alternation_open_list.release.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.release.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.release.o: open_lists/pareto_open_list.cc
 .obj/open_lists/standard_scalar_open_list.release.o: open_lists/standard_scalar_open_list.cc
 .obj/open_lists/tiebreaking_open_list.release.o: open_lists/tiebreaking_open_list.cc
+.obj/json.release.o: json.cc json.h
 .obj/additive_heuristic.release.o: additive_heuristic.cc additive_heuristic.h \
  priority_queue.h relaxation_heuristic.h heuristic.h scalar_evaluator.h \
  evaluator.h operator_cost.h policy-repair/partial_state.h \
@@ -1575,7 +1576,7 @@
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h \
- resilient_policy.h
+ resilient_policy.h json.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -2072,12 +2073,13 @@
  policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
  policy-repair/../policy-repair/policy.h \
- policy-repair/../policy-repair/regression.h
+ policy-repair/../policy-repair/regression.h json.h
 .obj/open_lists/alternation_open_list.debug.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.debug.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.debug.o: open_lists/pareto_open_list.cc
 .obj/open_lists/standard_scalar_open_list.debug.o: open_lists/standard_scalar_open_list.cc
 .obj/open_lists/tiebreaking_open_list.debug.o: open_lists/tiebreaking_open_list.cc
+.obj/json.debug.o: json.cc json.h
 .obj/additive_heuristic.debug.o: additive_heuristic.cc additive_heuristic.h \
  priority_queue.h relaxation_heuristic.h heuristic.h scalar_evaluator.h \
  evaluator.h operator_cost.h policy-repair/partial_state.h \
@@ -3130,7 +3132,7 @@
  policy-repair/../policy-repair/partial_state.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/regression.h \
  ext/tree_util.hh ext/tree.hh timer.h search_engine.h resilient_node.h \
- resilient_policy.h
+ resilient_policy.h json.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h policy-repair/partial_state.h policy-repair/../state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -3627,12 +3629,13 @@
  policy-repair/../relaxation_heuristic.h policy-repair/jit.h \
  policy-repair/../option_parser.h policy-repair/../option_parser_util.h \
  policy-repair/../policy-repair/policy.h \
- policy-repair/../policy-repair/regression.h
+ policy-repair/../policy-repair/regression.h json.h
 .obj/open_lists/alternation_open_list.profile.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.profile.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.profile.o: open_lists/pareto_open_list.cc
 .obj/open_lists/standard_scalar_open_list.profile.o: open_lists/standard_scalar_open_list.cc
 .obj/open_lists/tiebreaking_open_list.profile.o: open_lists/tiebreaking_open_list.cc
+.obj/json.profile.o: json.cc json.h
 .obj/additive_heuristic.profile.o: additive_heuristic.cc additive_heuristic.h \
  priority_queue.h relaxation_heuristic.h heuristic.h scalar_evaluator.h \
  evaluator.h operator_cost.h policy-repair/partial_state.h \

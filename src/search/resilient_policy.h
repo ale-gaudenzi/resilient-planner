@@ -20,6 +20,7 @@ public:
     void add_item(ResilientNode node, Operator op);
     void extract_policy(State initial_state, PartialState goal, int K, set<ResilientNode> resilient_set);
     void dump();
+    void dump_json();
 };
 
 #endif

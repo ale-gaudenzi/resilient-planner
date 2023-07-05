@@ -6,11 +6,12 @@
 
 using namespace std;
 
-class ResilientNode{
+class ResilientNode
+{
     State state;
     int k;
     std::set<Operator> deactivated_op;
-
+    long int id;
     ResilientNode();
 
 public:
@@ -20,23 +21,37 @@ public:
 
     void dump() const;
 
-    State get_state() const {
+    State get_state() const
+    {
         return state;
     }
 
-    int get_k() const {
+    int get_k() const
+    {
         return k;
     }
 
-    std::set<Operator> get_deactivated_op() const {
+    long int get_id() const
+    {
+        return id;
+    }
+
+    std::set<Operator> get_deactivated_op() const
+    {
         return deactivated_op;
     }
 
-    bool operator==(const ResilientNode &other) const;
-    bool operator<(const ResilientNode &other) const;
-
-    bool operator!=(const ResilientNode &other) const {
-        return !(*this == other);
+    bool operator==(const ResilientNode &other) const
+    {
+        return this->id == other.id;
+    }
+    bool operator<(const ResilientNode &other) const
+    {
+        return this->id < other.id;
+    }
+    bool operator!=(const ResilientNode &other) const
+    {
+        return this->id != other.id;
     }
 };
 

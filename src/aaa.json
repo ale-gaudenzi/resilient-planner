@@ -1,0 +1,814 @@
+[
+    {
+        "id": 0,
+        "state": [
+            "Atom at(plane1, city0)"
+        ],
+        "k": 6,
+        "deactivated_op": [],
+        "action": "fly plane1 city0 city1"
+    },
+    {
+        "id": 1,
+        "state": [
+            "Atom at(plane1, city0)"
+        ],
+        "k": 5,
+        "deactivated_op": [
+            "fly plane1 city0 city1"
+        ],
+        "action": "fly plane1 city0 city6"
+    },
+    {
+        "id": 2,
+        "state": [
+            "Atom at(plane1, city0)"
+        ],
+        "k": 4,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city0 city5"
+    },
+    {
+        "id": 3,
+        "state": [
+            "Atom at(plane1, city0)"
+        ],
+        "k": 3,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city0 city4"
+    },
+    {
+        "id": 4,
+        "state": [
+            "Atom at(plane1, city0)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city0 city3"
+    },
+    {
+        "id": 5,
+        "state": [
+            "Atom at(plane1, city0)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city3",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city0 city2"
+    },
+    {
+        "id": 6,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city3",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city2 city1"
+    },
+    {
+        "id": 7,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city3 city1"
+    },
+    {
+        "id": 8,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 3,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city4 city1"
+    },
+    {
+        "id": 9,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 4,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city6"
+        ],
+        "action": "fly plane1 city5 city1"
+    },
+    {
+        "id": 10,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city3",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city2 city1"
+        ],
+        "action": "fly plane1 city2 city3"
+    },
+    {
+        "id": 11,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city3 city1"
+        ],
+        "action": "fly plane1 city2 city1"
+    },
+    {
+        "id": 12,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city3 city1"
+        ],
+        "action": "fly plane1 city3 city2"
+    },
+    {
+        "id": 13,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city4 city1"
+        ],
+        "action": "fly plane1 city2 city1"
+    },
+    {
+        "id": 14,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city4 city1"
+        ],
+        "action": "fly plane1 city4 city2"
+    },
+    {
+        "id": 15,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city2 city1",
+            "fly plane1 city3 city1"
+        ],
+        "action": "fly plane1 city2 city4"
+    },
+    {
+        "id": 16,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city2 city1",
+            "fly plane1 city4 city1"
+        ],
+        "action": "fly plane1 city2 city3"
+    },
+    {
+        "id": 17,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 4,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city4 city1"
+    },
+    {
+        "id": 18,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city2 city1",
+            "fly plane1 city4 city1"
+        ],
+        "action": "fly plane1 city3 city1"
+    },
+    {
+        "id": 19,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city4",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city3 city1",
+            "fly plane1 city3 city2"
+        ],
+        "action": "fly plane1 city3 city4"
+    },
+    {
+        "id": 20,
+        "state": [
+            "Atom at(plane1, city6)"
+        ],
+        "k": 4,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city6 city4"
+    },
+    {
+        "id": 21,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city2 city1",
+            "fly plane1 city2 city3",
+            "fly plane1 city4 city1"
+        ],
+        "action": "fly plane1 city2 city5"
+    },
+    {
+        "id": 22,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city2"
+        ],
+        "action": "fly plane1 city3 city1"
+    },
+    {
+        "id": 23,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city2"
+        ],
+        "action": "fly plane1 city4 city3"
+    },
+    {
+        "id": 24,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city2 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city4 city1"
+        ],
+        "action": "fly plane1 city3 city5"
+    },
+    {
+        "id": 25,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 3,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city4 city5"
+    },
+    {
+        "id": 26,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 3,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city5 city1"
+    },
+    {
+        "id": 27,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city3 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city2"
+        ],
+        "action": "fly plane1 city3 city2"
+    },
+    {
+        "id": 28,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 3,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city3 city1"
+    },
+    {
+        "id": 29,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city0 city5",
+            "fly plane1 city0 city6",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city2",
+            "fly plane1 city4 city3"
+        ],
+        "action": "fly plane1 city4 city5"
+    },
+    {
+        "id": 30,
+        "state": [
+            "Atom at(plane1, city6)"
+        ],
+        "k": 3,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city6 city3"
+    },
+    {
+        "id": 31,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city5",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city3 city1"
+    },
+    {
+        "id": 32,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city5",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city4 city3"
+    },
+    {
+        "id": 33,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city3 city5"
+    },
+    {
+        "id": 34,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city1"
+    },
+    {
+        "id": 35,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city5",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city3 city5"
+    },
+    {
+        "id": 36,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city2 city1"
+    },
+    {
+        "id": 37,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city5",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city5 city1"
+    },
+    {
+        "id": 38,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city3 city5",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city3 city4"
+    },
+    {
+        "id": 39,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city3 city5",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city4 city1"
+    },
+    {
+        "id": 40,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city5 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city2 city1"
+    },
+    {
+        "id": 41,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city2 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city2 city5"
+    },
+    {
+        "id": 42,
+        "state": [
+            "Atom at(plane1, city6)"
+        ],
+        "k": 2,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city6 city2"
+    },
+    {
+        "id": 43,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city3 city5",
+            "fly plane1 city4 city1",
+            "fly plane1 city4 city5",
+            "fly plane1 city6 city1"
+        ],
+        "action": "fly plane1 city3 city2"
+    },
+    {
+        "id": 44,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city5 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city2"
+    },
+    {
+        "id": 45,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city2 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city1"
+    },
+    {
+        "id": 46,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city3 city4",
+            "fly plane1 city3 city5",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city3 city2"
+    },
+    {
+        "id": 47,
+        "state": [
+            "Atom at(plane1, city3)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city2 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city5 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city3 city4"
+    },
+    {
+        "id": 48,
+        "state": [
+            "Atom at(plane1, city2)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city2 city1",
+            "fly plane1 city2 city5",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city2 city4"
+    },
+    {
+        "id": 49,
+        "state": [
+            "Atom at(plane1, city4)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city3 city5",
+            "fly plane1 city4 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city4 city2"
+    },
+    {
+        "id": 50,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city2",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city1"
+    },
+    {
+        "id": 51,
+        "state": [
+            "Atom at(plane1, city6)"
+        ],
+        "k": 1,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city2",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city6 city5"
+    },
+    {
+        "id": 52,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city3 city1",
+            "fly plane1 city5 city1",
+            "fly plane1 city5 city2",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city4"
+    },
+    {
+        "id": 53,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city2 city1",
+            "fly plane1 city5 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city3"
+    },
+    {
+        "id": 54,
+        "state": [
+            "Atom at(plane1, city5)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city5 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city2",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4"
+        ],
+        "action": "fly plane1 city5 city4"
+    },
+    {
+        "id": 55,
+        "state": [
+            "Atom at(plane1, city6)"
+        ],
+        "k": 0,
+        "deactivated_op": [
+            "fly plane1 city0 city1",
+            "fly plane1 city6 city1",
+            "fly plane1 city6 city2",
+            "fly plane1 city6 city3",
+            "fly plane1 city6 city4",
+            "fly plane1 city6 city5"
+        ],
+        "action": "fly plane1 city6 city7"
+    }
+]

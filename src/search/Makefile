@@ -57,7 +57,7 @@ HEADERS = \
           open_lists/pareto_open_list.h \
           open_lists/standard_scalar_open_list.h \
           open_lists/tiebreaking_open_list.h \
-          
+		  json.h \
 
 ## Each of the following "HEADERS += ..." constructs defines a
 ## "plugin" feature that can be enabled or disabled by simply
@@ -131,7 +131,7 @@ HEADERS += policy-repair/regression.h \
            policy-repair/partial_state.h \
 
 SHELL = /bin/bash
-CXXFLAGS=-std=c++11 
+CXXFLAGS= -std=c++11 
 
 #SOURCES = planner.cc $(HEADERS:%.h=%.cc)
 SOURCES = resilient_planner.cc $(HEADERS:%.h=%.cc)
@@ -182,8 +182,8 @@ TARGET_DEBUG    = $(TARGET)$(TARGET_SUFFIX_DEBUG)
 OBJECTS_PROFILE = $(SOURCES:%.cc=.obj/%$(OBJECT_SUFFIX_PROFILE).o)
 TARGET_PROFILE  = $(TARGET)$(TARGET_SUFFIX_PROFILE)
 
-CC     = g++ #-std=c++11
-DEPEND = g++ -MM #-std=c++11
+CC     = g++ 
+DEPEND = g++ -MM 
 
 
 ## CCOPT, LINKOPT, POSTLINKOPT are options for compiler and linker
@@ -193,7 +193,6 @@ DEPEND = g++ -MM #-std=c++11
 CCOPT = -Iext
 CCOPT += -g
 CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
-CFLAGS += -std=c++11
 
 ## The following lines contain workarounds for bugs when
 ## cross-compiling to 64 bit on 32-bit systems using gcc 4.4 or gcc
@@ -230,9 +229,9 @@ POSTLINKOPT =
 ## NOTE: This precludes some uses of exceptions.
 ##        For details, see man gcc on -static-libgcc.
 
-CCOPT_RELEASE  = -O3 -DNDEBUG -fomit-frame-pointer
-CCOPT_DEBUG    = -O3
-CCOPT_PROFILE  = -O3 -pg
+COPT_RELEASE  = -03 -DNDEBUG -fomit-frame-pointer
+CCOPT_DEBUG    = -03
+CCOPT_PROFILE  = -03 -pg
 
 LINKOPT_RELEASE = 
 LINKOPT_DEBUG    =

@@ -170,7 +170,6 @@ extern Timer g_timer_policy_eval;
 extern Timer g_timer_policy_use;
 extern Timer g_timer_jit;
 
-
 /** Resiliency 
 *  structure and variables added for resilient planning algorithm
 */
@@ -187,7 +186,7 @@ extern bool g_verbose;
 extern int g_max_iterations;
 extern bool g_plan_to_file;
 extern bool g_dump_branches;
-extern bool g_dump_global_policy;
+extern bool g_dump_resilient_policy;
 extern bool g_dump_resilient_nodes;
 extern bool g_dump_memory_replan_progression;
 
@@ -195,9 +194,12 @@ extern long g_mem_initial;
 extern long g_mem_initial_policy_search;
 extern long g_mem_pre_alg;
 extern long g_mem_post_alg;
+extern long g_mem_extraction;
 
 extern Timer g_timer_cycle;
 extern Timer g_timer_extraction;
+extern Timer g_timer_extract_policy;
+
 
 long mem_usage();
 bool find_in_op_set(std::set<Operator> op_set, Operator op);
