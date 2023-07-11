@@ -12,21 +12,32 @@ Operator ResilientPolicy::get_successor(ResilientNode node)
 
 void ResilientPolicy::add_item(ResilientNode node, Operator op)
 {
-    if (policy.find(node) == policy.end())
-        policy.insert(make_pair(node, op));
+    // if (policy.find(node) == policy.end())
+    // {
+    /*cout << "\nAdding to policy:" << endl;
+    node.dump();
+    cout << "Action:" << endl;
+    cout << op.get_name() << endl;*/
+    policy.insert(make_pair(node, op));
+    //}
 }
 
 void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int K, set<ResilientNode> resilient_nodes)
 {
-    stack<ResilientNode> open;
-    open.push(ResilientNode(initial_state, K));
-
+    list<ResilientNode> open;
+    open.push_back(ResilientNode(initial_state, K, set<Operator>()));
+    int i = 0;
+    int counter = 0;
+    list<PolicyItem *> current_policy = g_policy->get_items();
     while (!open.empty())
     {
-        ResilientNode node = open.top();
-        open.pop();
+        // cout << "\n------------" << endl;
+        // cout << "#" << i << "\n" << endl;
 
-        list<PolicyItem *> current_policy = g_policy->get_items();
+        ResilientNode node = open.front();
+        open.pop_front();
+        // node.dump();
+
         PartialState state = (PartialState)node.get_state();
         std::set<Operator> next_actions;
 
@@ -43,30 +54,75 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
             }
         }
 
+        // cout << "\nNext actions:" << endl;
+        // for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+        //     cout << it_o->get_name() << endl;
+
         StateRegistry *registry = const_cast<StateRegistry *>(&(node.get_state()).get_registry());
+        bool found = false;
 
         for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
         {
             State successor = registry->get_successor_state(node.get_state(), *it_o);
             ResilientNode successor_node = ResilientNode(successor, node.get_k(), node.get_deactivated_op()); // <s[a], k, V>
 
-            if (find_in_nodes_set(resilient_nodes, successor_node) && (policy.find(successor_node) == policy.end()))
+            // cout << "\nSuccessor:" << endl;
+            // successor_node.dump();
+
+            if ((find_in_nodes_set(resilient_nodes, successor_node)) || ((PartialState)successor).is_implied(goal))
             {
-                add_item(node, *it_o);
+                found = true;
+                /*
+                                cout << "--> Found" << endl;
+                                node.dump();
+                                cout << "Action:" << endl;
+                                cout << it_o->get_name() << endl;
+                                cout << "----" << endl;*/
 
-                if (!((PartialState)successor).is_implied(goal))
-                    open.push(successor_node);
-
-                if (node.get_k() > 0)
+                if (policy.find(successor_node) == policy.end())
                 {
-                    std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
-                    forbidden_plus_current.insert(*it_o);
-                    ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
-                    open.push(current_r);
+                    add_item(node, *it_o);
+
+                    if (!((PartialState)successor).is_implied(goal))
+                    {
+                        open.push_back(successor_node);
+                        // cout << "\nGoal not implied, added to open" << endl;
+                    }
+
+                    if (node.get_k() > 0)
+                    {
+                        std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
+                        forbidden_plus_current.insert(*it_o);
+                        ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
+                        open.push_back(current_r);
+                        // cout << "\nK > 0, added to open" << endl;
+                        // current_r.dump();
+                    }
                 }
+
                 break;
             }
         }
+
+        if (!found)
+        {
+            /*
+            cout << "\n--> Not found, node #" << i << endl;
+            node.dump();
+            cout << "Actions:" << endl;
+            for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+                cout << it_o->get_name() << endl;
+            */
+
+            counter += 1;
+        }
+        i++;
+    }
+
+    cout << "\n\n--------------------------------------------------------------------\n\n";
+    if (counter > 0)
+    {
+        cout << "Total not found: " << counter << endl;
     }
 }
 
@@ -77,6 +133,7 @@ void ResilientPolicy::dump()
     cout.rdbuf(out.rdbuf());
 
     int i = 0;
+
     for (std::map<ResilientNode, Operator>::iterator it = policy.begin(); it != policy.end(); ++it)
     {
         cout << "#" << i++ << endl;
@@ -92,12 +149,13 @@ void ResilientPolicy::dump_json()
 {
     jobject dump = jobject();
     vector<jobject> items;
-
     int i = 0;
+
     for (std::map<ResilientNode, Operator>::iterator it = policy.begin(); it != policy.end(); ++it)
     {
         jobject item = jobject();
-        item["id"] = ++i;
+        item["#"] = ++i;
+        item["id"] = it->first.get_id();
 
         vector<string> state;
         for (int j = 0; j < g_variable_domain.size(); j++)

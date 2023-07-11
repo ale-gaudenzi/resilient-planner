@@ -1,0 +1,267 @@
+begin_version
+3
+end_version
+begin_metric
+0
+end_metric
+1
+begin_variable
+var0
+-1
+5
+Atom at(plane1, city0)
+Atom at(plane1, city1)
+Atom at(plane1, city2)
+Atom at(plane1, city3)
+Atom at(plane1, city4)
+end_variable
+0
+begin_state
+0
+end_state
+begin_goal
+1
+0 1
+end_goal
+20
+begin_operator
+fly plane1 city0 city1
+0
+1
+0 0 0 1
+0
+end_operator
+begin_operator
+fly plane1 city0 city2
+0
+1
+0 0 0 2
+0
+end_operator
+begin_operator
+fly plane1 city0 city3
+0
+1
+0 0 0 3
+0
+end_operator
+begin_operator
+fly plane1 city0 city4
+0
+1
+0 0 0 4
+0
+end_operator
+begin_operator
+fly plane1 city1 city0
+0
+1
+0 0 1 0
+0
+end_operator
+begin_operator
+fly plane1 city1 city2
+0
+1
+0 0 1 2
+0
+end_operator
+begin_operator
+fly plane1 city1 city3
+0
+1
+0 0 1 3
+0
+end_operator
+begin_operator
+fly plane1 city1 city4
+0
+1
+0 0 1 4
+0
+end_operator
+begin_operator
+fly plane1 city2 city0
+0
+1
+0 0 2 0
+0
+end_operator
+begin_operator
+fly plane1 city2 city1
+0
+1
+0 0 2 1
+0
+end_operator
+begin_operator
+fly plane1 city2 city3
+0
+1
+0 0 2 3
+0
+end_operator
+begin_operator
+fly plane1 city2 city4
+0
+1
+0 0 2 4
+0
+end_operator
+begin_operator
+fly plane1 city3 city0
+0
+1
+0 0 3 0
+0
+end_operator
+begin_operator
+fly plane1 city3 city1
+0
+1
+0 0 3 1
+0
+end_operator
+begin_operator
+fly plane1 city3 city2
+0
+1
+0 0 3 2
+0
+end_operator
+begin_operator
+fly plane1 city3 city4
+0
+1
+0 0 3 4
+0
+end_operator
+begin_operator
+fly plane1 city4 city0
+0
+1
+0 0 4 0
+0
+end_operator
+begin_operator
+fly plane1 city4 city1
+0
+1
+0 0 4 1
+0
+end_operator
+begin_operator
+fly plane1 city4 city2
+0
+1
+0 0 4 2
+0
+end_operator
+begin_operator
+fly plane1 city4 city3
+0
+1
+0 0 4 3
+0
+end_operator
+0
+begin_SG
+switch 0
+check 0
+check 4
+0
+1
+2
+3
+check 4
+4
+5
+6
+7
+check 4
+8
+9
+10
+11
+check 4
+12
+13
+14
+15
+check 4
+16
+17
+18
+19
+check 0
+end_SG
+begin_DTG
+4
+1
+0
+0
+2
+1
+0
+3
+2
+0
+4
+3
+0
+4
+0
+4
+0
+2
+5
+0
+3
+6
+0
+4
+7
+0
+4
+0
+8
+0
+1
+9
+0
+3
+10
+0
+4
+11
+0
+4
+0
+12
+0
+1
+13
+0
+2
+14
+0
+4
+15
+0
+4
+0
+16
+0
+1
+17
+0
+2
+18
+0
+3
+19
+0
+end_DTG
+begin_CG
+0
+end_CG

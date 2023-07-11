@@ -16,8 +16,8 @@ class ResilientNode
 
 public:
     ResilientNode(State state_, int k_, std::set<Operator> deactivated_op_);
-    ResilientNode(State state_, int k_);
-    ResilientNode(State state_);
+    //ResilientNode(State state_, int k_);
+    //ResilientNode(State state_);
 
     void dump() const;
 
@@ -31,7 +31,7 @@ public:
         return k;
     }
 
-    long int get_id() const
+    size_t get_id() const
     {
         return id;
     }

@@ -638,46 +638,12 @@ bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node)
 {
     if (set.size() != 0)
     {
-        bool found;
         for (std::set<ResilientNode>::iterator it = set.begin(); it != set.end(); ++it)
-        {
-            found = true;
-            for (int i = 0; i < g_variable_domain.size(); i++)
-            {
-                const string &fact_name1 = g_fact_names[i][(it->get_state())[i]];
-                const string &fact_name2 = g_fact_names[i][(node.get_state())[i]];
-                if (fact_name1 != "<none of those>" && fact_name2 != "<none of those>" && fact_name1.compare(fact_name2) != 0)
-                    found = false;
-            }
-
-            if (it->get_k() != node.get_k())
-                found = false;
-
-            if (it->get_deactivated_op().size() != node.get_deactivated_op().size())
-                found = false;
-
-            std::set<Operator> prova = it->get_deactivated_op();
-            for (std::set<Operator>::iterator it_o = prova.begin(); it_o != prova.end(); ++it_o)
-            {
-                bool equal_op = false;
-                if (find_in_op_set(node.get_deactivated_op(), *it_o))
-                    equal_op = true;
-                if (!equal_op)
-                    found = false;
-            }
-            if (found){
+            if (node.get_id() == it->get_id())
                 return true;
-            }
-        }
-        return false;
     }
+
     return false;
-    
-/*
-    for (std::set<ResilientNode>::iterator it = set.begin(); it != set.end(); ++it)
-        if (it->get_id() == node.get_id())
-            return true;
-    return false;*/
 }
 
 /// @brief Check if the operator is present in the operator set.
@@ -692,3 +658,5 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
 
     return false;
 }
+
+bool g_test = false;

@@ -133,7 +133,7 @@ int main(int argc, const char **argv)
      ***********************/
 
     // Create initial node and pushing to open stack
-    ResilientNode initial_node = ResilientNode(g_initial_state(), g_max_faults);
+    ResilientNode initial_node = ResilientNode(g_initial_state(), g_max_faults, std::set<Operator>());
     open.push(initial_node);
 
     g_timer_cycle.resume();
@@ -213,6 +213,12 @@ int main(int argc, const char **argv)
                             open.push(res_node);
                             open.push(res_node_f);
 
+                            if(g_verbose)
+                            {
+                                cout << "\nPushing in the stack with adjuntive failed:" << endl;
+                                res_node_f.dump();
+                            }
+
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
                         // Add goal to resilient nodes
@@ -242,6 +248,11 @@ int main(int argc, const char **argv)
                     Policy *resilient_policy = new Policy();
                     resilient_policy->update_policy(regression_steps);
                     g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
+                    if(g_verbose)
+                    {
+                        cout << "Plan:" << endl;
+                        resilient_policy->dump_simple();
+                    }
                 }
             }
         }
@@ -294,6 +305,8 @@ int main(int argc, const char **argv)
     g_timer.stop();
     print_timings();
     print_memory();
+
+    //g_policy->dump();
 }
 
 /// Checks if the given node is resilient, using the current global policy to find the applicable next actions
@@ -412,7 +425,7 @@ std::list<Operator> extract_solution()
             {
                 State successor = registry->get_successor_state(state, *reg_step->op);
                 PartialState successor_p = (PartialState)successor;
-                ResilientNode successor_node = ResilientNode(successor, g_max_faults);
+                ResilientNode successor_node = ResilientNode(successor, g_max_faults, std::set<Operator>());
                 if (find_in_nodes_set(resilient_nodes_k, successor_node) || goal.is_implied(successor_p))
                 {
                     plan.push_back(*reg_step->op);

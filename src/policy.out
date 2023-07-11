@@ -1,0 +1,33 @@
+
+If holds: var0:1
+Execute: goal / SC / d=0
+
+If holds: var0:1
+Execute: goal / SC / d=0
+
+If holds: var0:1
+Execute: goal / SC / d=0
+
+If holds: var0:1
+Execute: goal / SC / d=0
+
+If holds: var0:0
+Execute: fly plane1 city0 city1 / NSC / d=1
+
+If holds: var0:2
+Execute: fly plane1 city2 city1 / NSC / d=1
+
+If holds: var0:3
+Execute: fly plane1 city3 city1 / NSC / d=1
+
+If holds: var0:3
+Execute: fly plane1 city3 city1 / NSC / d=1
+
+If holds: var0:0
+Execute: fly plane1 city0 city2 / NSC / d=2
+
+If holds: var0:2
+Execute: fly plane1 city2 city3 / NSC / d=2
+
+If holds: var0:0
+Execute: fly plane1 city0 city3 / NSC / d=2
