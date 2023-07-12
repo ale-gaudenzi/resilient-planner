@@ -48,9 +48,10 @@ protected:
     }
 
     // No implementation to prevent default construction
-    State();
 
 public:
+    State();
+
     ~State();
 
     StateID get_id() const

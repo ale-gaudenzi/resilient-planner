@@ -20,6 +20,7 @@ class PartialState : public StateInterface {
 
 public:
     PartialState(); // Creates a state with -1 values for everything
+    PartialState(std::vector<std::pair<int, int> > values); // Creates a state with the given values
     PartialState(const StateInterface &state);
     PartialState(const PartialState &state);
     PartialState(const PartialState &predecessor, const Operator &op, bool progress=true, PartialState *context=NULL);

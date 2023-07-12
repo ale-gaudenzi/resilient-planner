@@ -200,10 +200,8 @@ extern Timer g_timer_cycle;
 extern Timer g_timer_extraction;
 extern Timer g_timer_extract_policy;
 
-
 long mem_usage();
 bool find_in_op_set(std::set<Operator> op_set, Operator op);
-bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node);
 
 extern bool g_test;
 

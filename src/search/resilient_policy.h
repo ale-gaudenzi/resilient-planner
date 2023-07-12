@@ -6,6 +6,7 @@
 #include "policy-repair/policy.h"
 #include "globals.h"
 
+#include <tr1/unordered_map>
 #include <set>
 
 using namespace std;
@@ -18,7 +19,7 @@ public:
 
     Operator get_successor(ResilientNode node);
     void add_item(ResilientNode node, Operator op);
-    void extract_policy(State initial_state, PartialState goal, int K, set<ResilientNode> resilient_set);
+    void extract_policy(State initial_state, PartialState goal, int K, std::tr1::unordered_map<int, ResilientNode> resilient_set);
     void dump();
     void dump_json();
 };

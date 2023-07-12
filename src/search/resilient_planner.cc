@@ -24,6 +24,7 @@
 #include <vector>
 #include <stack>
 #include <tr1/functional>
+#include <tr1/unordered_map>
 
 using namespace std;
 using namespace json;
@@ -43,8 +44,8 @@ void print_plan(bool to_file, std::list<Operator> plan);
 void print_memory();
 void print_statistics();
 
-std::set<ResilientNode> resilient_nodes;
-std::set<ResilientNode> non_resilient_nodes;
+std::tr1::unordered_map<int, ResilientNode> resilient_nodes;
+std::tr1::unordered_map<int, ResilientNode> non_resilient_nodes;
 std::stack<ResilientNode> open;
 
 int max_dimension_open = 0;
@@ -161,12 +162,12 @@ int main(int argc, const char **argv)
         }
 
         // Check if node is already in R sets
-        if (!find_in_nodes_set(resilient_nodes, current_node) && !find_in_nodes_set(non_resilient_nodes, current_node))
+        if (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end() && non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end())
         {
             if (resiliency_check(current_node))
             {
                 successful_resiliency_check++;
-                resilient_nodes.insert(current_node);
+                resilient_nodes.insert(make_pair(current_node.get_id(), current_node));
 
                 if (g_verbose)
                     cout << "\nSuccessfull resiliency check." << endl;
@@ -213,7 +214,7 @@ int main(int argc, const char **argv)
                             open.push(res_node);
                             open.push(res_node_f);
 
-                            if(g_verbose)
+                            if (g_verbose)
                             {
                                 cout << "\nPushing in the stack with adjuntive failed:" << endl;
                                 res_node_f.dump();
@@ -223,7 +224,7 @@ int main(int argc, const char **argv)
                         }
                         // Add goal to resilient nodes
                         ResilientNode tau = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
-                        resilient_nodes.insert(tau);
+                        resilient_nodes.insert(make_pair(tau.get_id(), tau));
                     }
                     else // k = 0
                     {
@@ -231,7 +232,7 @@ int main(int argc, const char **argv)
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                            resilient_nodes.insert(res_node);
+                            resilient_nodes.insert(make_pair(res_node.get_id(), res_node));
 
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
@@ -248,7 +249,7 @@ int main(int argc, const char **argv)
                     Policy *resilient_policy = new Policy();
                     resilient_policy->update_policy(regression_steps);
                     g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
-                    if(g_verbose)
+                    if (g_verbose)
                     {
                         cout << "Plan:" << endl;
                         resilient_policy->dump_simple();
@@ -270,7 +271,7 @@ int main(int argc, const char **argv)
     g_timer_cycle.stop();
 
     // Verify if initial node is resilient
-    if (find_in_nodes_set(resilient_nodes, initial_node))
+    if (resilient_nodes.find(initial_node.get_id()) != resilient_nodes.end())
     {
         cout << "\nInitial state is resilient, problem is " << g_max_faults << "-resilient!"
              << endl;
@@ -305,8 +306,6 @@ int main(int argc, const char **argv)
     g_timer.stop();
     print_timings();
     print_memory();
-
-    //g_policy->dump();
 }
 
 /// Checks if the given node is resilient, using the current global policy to find the applicable next actions
@@ -352,7 +351,7 @@ bool resiliency_check(ResilientNode node)
         forbidden_plus_current.insert(*it_o);
         ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
 
-        if (find_in_nodes_set(resilient_nodes, successor_r) && find_in_nodes_set(resilient_nodes, current_r))
+        if (resilient_nodes.find(successor_r.get_id()) != resilient_nodes.end() && resilient_nodes.find(current_r.get_id()) != resilient_nodes.end())
             return true;
     }
     return false;
@@ -396,9 +395,9 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 std::list<Operator> extract_solution()
 {
     // Consider only the resilient nodes with k = max_faults to speed up later checks
-    std::set<ResilientNode> resilient_nodes_k;
-    for (std::set<ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
-        if (it->get_k() == g_max_faults)
+    std::tr1::unordered_map<int, ResilientNode> resilient_nodes_k;
+    for (std::tr1::unordered_map<int, ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
+        if (it->second.get_k() == g_max_faults)
             resilient_nodes_k.insert(*it);
 
     std::list<Operator> plan;
@@ -408,6 +407,7 @@ std::list<Operator> extract_solution()
     std::set<Operator> next_actions;
     PolicyItem *goal_step = current_policy.front();
     PartialState goal = PartialState(*goal_step->state);
+
     PartialState policy_state;
 
     // Consider the state registry of the initial state, since it is the same for all states
@@ -426,7 +426,7 @@ std::list<Operator> extract_solution()
                 State successor = registry->get_successor_state(state, *reg_step->op);
                 PartialState successor_p = (PartialState)successor;
                 ResilientNode successor_node = ResilientNode(successor, g_max_faults, std::set<Operator>());
-                if (find_in_nodes_set(resilient_nodes_k, successor_node) || goal.is_implied(successor_p))
+                if (resilient_nodes_k.find(successor_node.get_id()) != resilient_nodes_k.end() || goal.is_implied(successor_p))
                 {
                     plan.push_back(*reg_step->op);
                     state = successor;
@@ -443,7 +443,8 @@ std::list<Operator> extract_solution()
 /// @param node Deadend node to insert in the list non-resilient nodes.
 void update_non_resilient_nodes(ResilientNode node)
 {
-    non_resilient_nodes.insert(node);
+    // non_resilient_nodes.insert(node);
+    non_resilient_nodes.insert(make_pair(node.get_id(), node));
     if (node.get_deactivated_op().size() != 0)
     {
         vector<std::set<Operator> > subsets;
@@ -477,7 +478,8 @@ void update_non_resilient_nodes(ResilientNode node)
             set<Operator> subset = subsets[i];
             int k1 = node.get_k() + (node.get_deactivated_op().size() - subset.size());
             ResilientNode to_add = ResilientNode(node.get_state(), k1, subset);
-            non_resilient_nodes.insert(to_add);
+            // non_resilient_nodes.insert(to_add);
+            non_resilient_nodes.insert(make_pair(to_add.get_id(), to_add));
         }
     }
     return;
@@ -581,7 +583,7 @@ void dump_branches()
 
         items.push_back(item);
     }
-    
+
     dump["items"] = items;
     std::string serial = (std::string)dump["items"];
     ofstream policy_file;
@@ -651,9 +653,9 @@ void print_resilient_nodes()
 {
     cout << "\n                  -{ Resilient nodes }-\n"
          << endl;
-    for (std::set<ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
+    for (std::tr1::unordered_map<int, ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
     {
-        it->dump();
+        it->second.dump();
         cout << endl;
     }
     cout << "\n--------------------------------------------------------------------\n"
@@ -665,9 +667,9 @@ void print_non_resilient_nodes()
 {
     cout << "\n                -{ Non resilient nodes }-\n"
          << endl;
-    for (std::set<ResilientNode>::iterator it = non_resilient_nodes.begin(); it != non_resilient_nodes.end(); ++it)
+    for (std::tr1::unordered_map<int, ResilientNode>::iterator it = non_resilient_nodes.begin(); it != non_resilient_nodes.end(); ++it)
     {
-        it->dump();
+        it->second.dump();
         cout << endl;
     }
     cout << "\n--------------------------------------------------------------------\n"

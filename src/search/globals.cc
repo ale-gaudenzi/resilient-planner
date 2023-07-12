@@ -55,12 +55,8 @@ bool test_goal(const State &state)
      */
 
     for (int i = 0; i < g_goal.size(); i++)
-    {
         if (state[g_goal[i].first] != g_goal[i].second)
-        {
             return false;
-        }
-    }
 
     g_matched_distance = 0;
 
@@ -633,18 +629,6 @@ long mem_usage()
     return usage.ru_maxrss;
 }
 
-/// @brief Check if the node is present in the resilient nodes list, using the custom minority and equality operators.
-bool find_in_nodes_set(std::set<ResilientNode> set, ResilientNode node)
-{
-    if (set.size() != 0)
-    {
-        for (std::set<ResilientNode>::iterator it = set.begin(); it != set.end(); ++it)
-            if (node.get_id() == it->get_id())
-                return true;
-    }
-
-    return false;
-}
 
 /// @brief Check if the operator is present in the operator set.
 bool find_in_op_set(std::set<Operator> op_set, Operator op)
@@ -658,5 +642,7 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
 
     return false;
 }
+
+
 
 bool g_test = false;
