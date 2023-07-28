@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cassert>
 #include <limits>
-#include "../scalar_evaluator.h"
+#include "../evaluators/scalar_evaluator.h"
 #include "../option_parser.h"
 using namespace std;
 

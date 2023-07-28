@@ -1,7 +1,0 @@
-<map id="SearchNodeInfo" name="SearchNodeInfo">
-<area shape="rect" id="node1" title=" " alt="" coords="70,260,195,287"/>
-<area shape="rect" id="node2" href="$classStateID.html" title=" " alt="" coords="5,171,76,197"/>
-<area shape="rect" id="node3" href="$classOperator.html" title=" " alt="" coords="185,171,264,197"/>
-<area shape="rect" id="node4" href="$classPartialState.html" title=" " alt="" coords="176,81,273,108"/>
-<area shape="rect" id="node5" href="$classStateInterface.html" title=" " alt="" coords="167,5,282,32"/>
-</map>

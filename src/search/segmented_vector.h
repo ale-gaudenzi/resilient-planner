@@ -8,7 +8,6 @@
 
 #include "utilities.h"
 
-
 /*
   SegmentedVector is a vector-like class with the following advantages over
   vector:

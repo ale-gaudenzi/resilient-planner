@@ -1,7 +1,7 @@
 #ifndef OPEN_LISTS_OPEN_LIST_H
 #define OPEN_LISTS_OPEN_LIST_H
 
-#include "../evaluator.h"
+#include "../evaluators/evaluator.h"
 #include <vector>
 
 template<class Entry>

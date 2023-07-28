@@ -27,8 +27,6 @@ If NT shall be predefinable:
   should add an explanation to OptionParser::usage().
 */
 
-
-
 #include <vector>
 #include <string>
 #include <iostream>
@@ -38,9 +36,9 @@ If NT shall be predefinable:
 #include <map>
 #include <memory>
 #include "option_parser_util.h"
-#include "heuristic.h"
-#include "policy-repair/policy.h"
-#include "policy-repair/regression.h"
+#include "heuristics/heuristic.h"
+#include "policy.h"
+#include "regression.h"
 
 class OptionParser;
 class LandmarkGraph;

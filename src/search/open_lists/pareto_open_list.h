@@ -2,7 +2,7 @@
 #define OPEN_LISTS_PARETO_OPEN_LIST_H
 
 #include "open_list.h"
-#include "../evaluator.h"
+#include "../evaluators/evaluator.h"
 #include "../option_parser.h"
 
 #include <deque>

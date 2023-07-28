@@ -15,30 +15,29 @@ OS=auto
 HEADERS = \
           axioms.h \
           causal_graph.h \
-          combining_evaluator.h \
+          evaluators/combining_evaluator.h \
           domain_transition_graph.h \
-          eager_search.h \
-          enforced_hill_climbing_search.h \
+          search_engines/eager_search.h \
+          search_engines/enforced_hill_climbing_search.h \
           exact_timer.h \
-          g_evaluator.h \
+          evaluators/g_evaluator.h \
           globals.h \
-          heuristic.h \
+          heuristics/heuristic.h \
           int_packer.h \
-          ipc_max_heuristic.h \
-          iterated_search.h \
-          lazy_search.h \
-          legacy_causal_graph.h \
-          max_evaluator.h \
+          heuristics/ipc_max_heuristic.h \
+          search_engines/iterated_search.h \
+          search_engines/lazy_search.h \
+          evaluators/max_evaluator.h \
           operator.h \
           operator_cost.h \
           option_parser.h \
           option_parser_util.h \
           segmented_vector.h \
           per_state_information.h \
-          pref_evaluator.h \
-          relaxation_heuristic.h \
+          evaluators/pref_evaluator.h \
+          heuristics/relaxation_heuristic.h \
           rng.h \
-          search_engine.h \
+          search_engines/search_engine.h \
           search_node_info.h \
           search_progress.h \
           search_space.h \
@@ -46,10 +45,10 @@ HEADERS = \
           state_id.h \
           state_registry.h \
           successor_generator.h \
-          sum_evaluator.h \
+          evaluators/sum_evaluator.h \
           timer.h \
           utilities.h \
-          weighted_evaluator.h \
+          evaluators/weighted_evaluator.h \
           resilient_node.h \
 		  resilient_policy.h \
           open_lists/alternation_open_list.h \
@@ -57,7 +56,12 @@ HEADERS = \
           open_lists/pareto_open_list.h \
           open_lists/standard_scalar_open_list.h \
           open_lists/tiebreaking_open_list.h \
-		  json.h \
+		  ext/json.h \
+		  print_utils.h \
+		  regression.h \
+          policy.h \
+          deadend.h \
+          partial_state.h \
 
 ## Each of the following "HEADERS += ..." constructs defines a
 ## "plugin" feature that can be enabled or disabled by simply
@@ -67,25 +71,13 @@ HEADERS = \
 ## rebuild after such a change. Deleting the executable and running
 ## "make" to relink is enough; no need to do a complete rebuild.
 
-HEADERS += additive_heuristic.h
-HEADERS += blind_search_heuristic.h
-HEADERS += cea_heuristic.h
-HEADERS += cg_heuristic.h cg_cache.h
-HEADERS += ff_heuristic.h
-HEADERS += goal_count_heuristic.h
-HEADERS += hm_heuristic.h
-# HEADERS += lm_cut_heuristic.h
-HEADERS += max_heuristic.h
-
-HEADERS += merge_and_shrink/abstraction.h \
-           merge_and_shrink/label_reducer.h \
-           merge_and_shrink/merge_and_shrink_heuristic.h \
-           merge_and_shrink/shrink_bisimulation.h \
-           merge_and_shrink/shrink_bucket_based.h \
-           merge_and_shrink/shrink_fh.h \
-           merge_and_shrink/shrink_random.h \
-           merge_and_shrink/shrink_strategy.h \
-           merge_and_shrink/variable_order_finder.h \
+HEADERS += heuristics/additive_heuristic.h
+HEADERS += heuristics/blind_search_heuristic.h
+HEADERS += heuristics/cea_heuristic.h
+HEADERS += heuristics/ff_heuristic.h
+HEADERS += heuristics/goal_count_heuristic.h
+HEADERS += heuristics/hm_heuristic.h
+HEADERS += heuristics/max_heuristic.h
 
 # HEADERS += landmarks/exploration.h \
 #            landmarks/h_m_landmarks.h \
@@ -111,24 +103,7 @@ HEADERS += merge_and_shrink/abstraction.h \
 #            learning/probe_state_space_sample.h \
 #            learning/selective_max_heuristic.h \
 #            learning/state_space_sample.h \
-#            learning/state_vars_feature_extractor.h \
-
-HEADERS += pdbs/canonical_pdbs_heuristic.h \
-           pdbs/dominance_pruner.h \
-           pdbs/match_tree.h \
-           pdbs/max_cliques.h \
-           pdbs/pattern_generation_edelkamp.h \
-           pdbs/pattern_generation_haslum.h \
-           pdbs/pdb_heuristic.h \
-           pdbs/util.h \
-           pdbs/zero_one_pdbs_heuristic.h \
-
-HEADERS += policy-repair/regression.h \
-           policy-repair/policy.h \
-           policy-repair/simulator.h \
-           policy-repair/jit.h \
-           policy-repair/deadend.h \
-           policy-repair/partial_state.h \
+#            learning/state_vars_feature_extractor.h \ is ambiguousC/C++(
 
 SHELL = /bin/bash
 CXXFLAGS= -std=c++11 

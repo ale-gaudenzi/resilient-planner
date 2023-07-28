@@ -6,20 +6,16 @@
 #include "ext/tree_util.hh"
 #include "timer.h"
 #include "utilities.h"
-#include "search_engine.h"
-#include "policy-repair/regression.h"
-#include "policy-repair/policy.h"
-#include "policy-repair/partial_state.h"
+#include "search_engines/search_engine.h"
+#include "regression.h"
+#include "policy.h"
+#include "partial_state.h"
 #include "resilient_node.h"
-#include "search_engine.h"
 #include "resilient_policy.h"
+#include "print_utils.h"
 
-#include "json.h"
-
-#include <iostream>
-#include <fstream>
+#include <math.h>
 #include <list>
-#include <new>
 #include <string>
 #include <vector>
 #include <stack>
@@ -27,32 +23,16 @@
 #include <tr1/unordered_map>
 
 using namespace std;
-using namespace json;
 
 bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
 std::list<Operator> extract_solution();
 void update_non_resilient_nodes(ResilientNode node);
 void add_non_resilient_deadends(ResilientNode node);
-long mem_usage();
-
-void dump_branches();
-void print_timings();
-void print_policy();
-void print_resilient_nodes();
-void print_plan(bool to_file, std::list<Operator> plan);
-void print_memory();
-void print_statistics();
 
 std::tr1::unordered_map<int, ResilientNode> resilient_nodes;
 std::tr1::unordered_map<int, ResilientNode> non_resilient_nodes;
 std::stack<ResilientNode> open;
-
-int max_dimension_open = 0;
-int replan_counter = 0;
-int successful_replan = 0;
-int successful_resiliency_check = 0;
-int iteration = 0;
 
 int main(int argc, const char **argv)
 {
@@ -71,25 +51,20 @@ int main(int argc, const char **argv)
     g_policy = new Policy();
     list<PolicyItem *> regression_steps;
 
-    g_timer_regression.stop();
     g_timer_engine_init.stop();
-    g_timer_search.stop();
-    g_timer_policy_build.stop();
-    g_timer_policy_use.stop();
-
-    g_timer_regression.reset();
     g_timer_engine_init.reset();
+    g_timer_search.stop();
     g_timer_search.reset();
+    g_timer_policy_build.stop();
     g_timer_policy_build.reset();
-    g_timer_policy_use.reset();
-    g_mem_initial = mem_usage();
-
     g_timer_cycle.stop();
-    g_timer_extraction.stop();
-    g_timer_extract_policy.stop();
     g_timer_cycle.reset();
+    g_timer_extraction.stop();
     g_timer_extraction.reset();
+    g_timer_extract_policy.stop();
     g_timer_extract_policy.reset();
+
+    g_mem_initial = mem_usage();
 
     // The input will be parsed twice:
     // once in dry-run mode, to check for simple input errors,
@@ -120,12 +95,11 @@ int main(int argc, const char **argv)
         (g_optimized_scd && g_jic_limit == 0) ||
         (g_forgetpolicy && g_jic_limit > 0))
     {
-        cout << "\n  Parameter Error: Make sure that the set of parameters is consistent.\n"
-             << endl;
+        cout << "\n  Parameter Error: Make sure that the set of parameters is consistent.\n\n";
         exit(0);
     }
 
-    cout << "Total allotted time (s): " << g_jic_limit << endl;
+    cout << "Total allotted time0(s): " << g_jic_limit << endl;
 
     g_operators_backup = g_operators;
 
@@ -142,9 +116,9 @@ int main(int argc, const char **argv)
     // Start main loop
     while (!open.empty())
     {
-        iteration++;
-        if (open.size() > max_dimension_open)
-            max_dimension_open = open.size();
+        g_iteration++;
+        if (open.size() > g_max_dimension_open)
+            g_max_dimension_open = open.size();
 
         ResilientNode current_node = open.top();
         open.pop();
@@ -156,7 +130,7 @@ int main(int argc, const char **argv)
         if (g_verbose)
         {
             cout << "\n----------------------------------------" << endl;
-            cout << "\nIteration:" << iteration << endl;
+            cout << "\nIteration:" << g_iteration << endl;
             cout << "\nCurrent node:" << endl;
             current_node.dump();
         }
@@ -166,7 +140,7 @@ int main(int argc, const char **argv)
         {
             if (resiliency_check(current_node))
             {
-                successful_resiliency_check++;
+                g_successful_resiliency_check++;
                 resilient_nodes.insert(make_pair(current_node.get_id(), current_node));
 
                 if (g_verbose)
@@ -189,7 +163,7 @@ int main(int argc, const char **argv)
                 }
                 else
                 {
-                    successful_replan++;
+                    g_successful_replan++;
                     if (g_verbose)
                         cout << "Successfull replanning" << endl;
 
@@ -258,7 +232,7 @@ int main(int argc, const char **argv)
             }
         }
 
-        if (g_max_iterations > 0 && iteration >= g_max_iterations)
+        if (g_max_iterations > 0 && g_iteration >= g_max_iterations)
             break;
 
         if (g_verbose)
@@ -277,7 +251,7 @@ int main(int argc, const char **argv)
              << endl;
 
         if (g_dump_branches)
-            dump_branches();
+            print_branches();
 
         g_timer_extraction.resume();
         print_plan(g_plan_to_file, extract_solution());
@@ -291,17 +265,17 @@ int main(int argc, const char **argv)
             g_timer_extract_policy.resume();
             res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
             g_timer_extract_policy.stop();
-            res_policy.dump_json();
+            print_resilient_policy_json(res_policy.get_policy());
             g_mem_extraction = mem_usage();
         }
+
         if (g_dump_resilient_nodes)
-            print_resilient_nodes();
+            print_resilient_nodes(resilient_nodes);
     }
     else
-        cout << "\nInitial state is a deadend, problem is not " << g_max_faults << "-resilient!"
-             << endl;
+        cout << "\nInitial state is a deadend, problem is not " << g_max_faults << "-resilient!\n";
 
-    print_statistics();
+    print_statistics(resilient_nodes.size(), non_resilient_nodes.size());
 
     g_timer.stop();
     print_timings();
@@ -331,7 +305,6 @@ bool resiliency_check(ResilientNode node)
         if (!reg_step->is_goal)
         {
             PartialState policy_state = PartialState(*reg_step->state);
-
             if ((*reg_step->state).is_implied(state_to_check) && !find_in_op_set(node.get_deactivated_op(), reg_step->get_op()))
                 next_actions.insert(reg_step->get_op());
         }
@@ -383,7 +356,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     g_timer_search.stop();
 
     if (g_dump_memory_replan_progression)
-        cout << "Memory at replan #" << replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
+        cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
 
     return engine->found_solution();
 }
@@ -526,175 +499,11 @@ void add_non_resilient_deadends(ResilientNode node)
         s_a_item.push_back(new NondetDeadend(new PartialState(state), it->nondet_index));
 
         if (g_non_resilient_deadends.find(std::make_pair(g_current_faults + 1, forbidden_minus_a)) != g_non_resilient_deadends.end())
-        {
             g_non_resilient_deadends.find(std::make_pair(g_current_faults + 1, forbidden_minus_a))->second->update_policy(s_a_item);
-        }
         else
         {
             s_a->update_policy(s_a_item);
             g_non_resilient_deadends.insert(std::make_pair(std::make_pair(g_current_faults + 1, forbidden_minus_a), s_a));
         }
-    }
-}
-
-/// @brief Print all the plans generate by replan function
-void dump_branches()
-{
-    jobject dump = jobject();
-    vector<jobject> items;
-
-    int i = 1;
-    for (std::map<k_v_pair, Policy *>::iterator it = g_resilient_policies.begin(); it != g_resilient_policies.end(); ++it)
-    {
-        jobject item = jobject();
-        item["id"] = ++i;
-
-        vector<string> state;
-        PartialState s = it->second->get_initial_state();
-        int *vars = s.get_vars();
-        for (int i = 0; i < g_variable_domain.size(); i++)
-        {
-            if (-1 != vars[i])
-            {
-                const string &fact_name = g_fact_names[i][vars[i]];
-                if (fact_name != "<none of those>")
-                    state.push_back(fact_name);
-            }
-        }
-        item["state"] = state;
-
-        item["k"] = it->first.first;
-
-        vector<string> forbidden_op_names;
-        for (std::set<Operator>::iterator it_o = it->first.second.begin(); it_o != it->first.second.end(); ++it_o)
-            forbidden_op_names.push_back(it_o->get_nondet_name());
-        item["forbidden"] = forbidden_op_names;
-
-        vector<string> plan_op_names;
-        list<PolicyItem *> policy = it->second->get_items();
-        for (list<PolicyItem *>::reverse_iterator op_iter = policy.rbegin();
-             op_iter != policy.rend(); ++op_iter)
-        {
-            RegressionStep *rs = (RegressionStep *)(*op_iter);
-            if (!rs->is_goal)
-                plan_op_names.push_back(rs->op->get_nondet_name());
-        }
-        item["plan"] = plan_op_names;
-
-        items.push_back(item);
-    }
-
-    dump["items"] = items;
-    std::string serial = (std::string)dump["items"];
-    ofstream policy_file;
-    policy_file.open("branches.json");
-    policy_file << serial;
-}
-
-/// @brief Print statistics
-void print_statistics()
-{
-    cout << "\n\n--------------------------------------------------------------------" << endl;
-    cout << "\n                      -{ Statistics }-\n"
-         << endl;
-    cout << "                    Iterations: " << iteration << endl;
-    cout << "   Successful resiliency check: " << successful_resiliency_check << endl;
-    cout << "             Successful replan: " << successful_replan << endl;
-    cout << "                      Deadends: " << g_deadend_states->get_size() << endl;
-    cout << "               Resilient nodes: " << resilient_nodes.size() << endl;
-    cout << "           Non-resilient nodes: " << non_resilient_nodes.size() << endl;
-    cout << "               Actions planned: " << g_policy->get_size() << endl;
-    cout << "      Max dimension open stack: " << max_dimension_open << endl;
-    cout << "\n--------------------------------------------------------------------"
-         << endl;
-}
-
-/// @brief Print time statistics
-void print_timings()
-{
-    cout << "\n                  -{ Timing Statistics }-\n"
-         << endl;
-    cout << "         Engine Initialization: " << g_timer_engine_init << endl;
-    cout << "                   Search Time: " << g_timer_search << endl;
-    cout << "           Policy Construction: " << g_timer_policy_build << endl;
-    cout << "                    Main cycle: " << g_timer_cycle << endl;
-    cout << "     Resilient plan extraction: " << g_timer_extraction << endl;
-    cout << "   Resilient policy extraction: " << g_timer_extract_policy << endl;
-    cout << "                    Total time: " << g_timer << endl;
-    cout << "\n--------------------------------------------------------------------"
-         << endl;
-}
-
-/// @brief Print memory statistics
-void print_memory()
-{
-    cout << "\n                  -{ Memory Statistics }-\n"
-         << endl;
-    cout << "                         Start: " << g_mem_initial << " KB" << endl;
-    cout << "                     Algorithm: " << g_mem_post_alg << " KB" << endl;
-    cout << "             Policy extraction: " << g_mem_extraction << " KB" << endl;
-    cout << "                          Peak: " << get_peak_memory_in_kb() << " KB" << endl;
-    cout << "\n--------------------------------------------------------------------\n"
-         << endl;
-}
-
-/// @brief Print the global policy
-void print_policy()
-{
-    cout << "\n                  -{ Global policy }-\n"
-         << endl;
-    g_policy->dump_state_op();
-    cout << "\n--------------------------------------------------------------------\n"
-         << endl;
-}
-
-/// @brief Print all resilient nodes
-void print_resilient_nodes()
-{
-    cout << "\n                  -{ Resilient nodes }-\n"
-         << endl;
-    for (std::tr1::unordered_map<int, ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
-    {
-        it->second.dump();
-        cout << endl;
-    }
-    cout << "\n--------------------------------------------------------------------\n"
-         << endl;
-}
-
-/// @brief Print all non resilient nodes
-void print_non_resilient_nodes()
-{
-    cout << "\n                -{ Non resilient nodes }-\n"
-         << endl;
-    for (std::tr1::unordered_map<int, ResilientNode>::iterator it = non_resilient_nodes.begin(); it != non_resilient_nodes.end(); ++it)
-    {
-        it->second.dump();
-        cout << endl;
-    }
-    cout << "\n--------------------------------------------------------------------\n"
-         << endl;
-}
-
-/// @brief Print a plan
-/// @param to_file print to output or to file
-/// @param plan the plan to print
-void print_plan(bool to_file, std::list<Operator> plan)
-{
-    if (to_file)
-    {
-        ofstream plan_file;
-        plan_file.open("resilient_plan");
-        for (std::list<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
-            plan_file << it->get_nondet_name() << endl;
-    }
-    else
-    {
-        cout
-            << "\n\n--------------------------------------------------------------------" << endl;
-        cout << "\n                  -{ Resilient plan }-\n"
-             << endl;
-        for (std::list<Operator>::iterator it = plan.begin(); it != plan.end(); ++it)
-            cout << it->get_nondet_name() << endl;
     }
 }

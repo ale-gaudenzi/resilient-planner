@@ -3,9 +3,8 @@
 #include "axioms.h"
 #include "causal_graph.h"
 #include "domain_transition_graph.h"
-#include "heuristic.h"
+#include "heuristics/heuristic.h"
 #include "int_packer.h"
-#include "legacy_causal_graph.h"
 #include "operator.h"
 #include "rng.h"
 #include "state.h"
@@ -13,9 +12,9 @@
 #include "successor_generator.h"
 #include "timer.h"
 #include "utilities.h"
-#include "policy-repair/policy.h"
-#include "policy-repair/regression.h"
-#include "policy-repair/deadend.h"
+#include "policy.h"
+#include "regression.h"
+#include "deadend.h"
 #include "state_id.h"
 
 #include "resilient_node.h"
@@ -337,7 +336,6 @@ void read_everything(istream &in)
     g_successor_generator_orig = read_successor_generator(in);
     check_magic(in, "end_SG");
     DomainTransitionGraph::read_all(in);
-    g_legacy_causal_graph = new LegacyCausalGraph(in);
 
     // NOTE: causal graph is computed from the problem specification,
     // so must be built after the problem has been read in.
@@ -510,7 +508,6 @@ vector<Operator> g_axioms;
 AxiomEvaluator *g_axiom_evaluator;
 vector<DomainTransitionGraph *> g_transition_graphs;
 CausalGraph *g_causal_graph;
-LegacyCausalGraph *g_legacy_causal_graph;
 
 SuccessorGenerator *g_successor_generator_orig; // Renamed so the ops can be pruned based on deadends
 DeadendAwareSuccessorGenerator *g_successor_generator;
@@ -620,6 +617,12 @@ Timer g_timer_cycle;
 Timer g_timer_extraction;
 Timer g_timer_extract_policy;
 
+int g_iteration = 0;
+int g_successful_resiliency_check = 0;
+int g_successful_replan = 0;
+int g_max_dimension_open = 0;
+int g_replan_counter = 0;
+
 /// @brief Print memory usage in a particural moment
 long mem_usage()
 {
@@ -643,6 +646,3 @@ bool find_in_op_set(std::set<Operator> op_set, Operator op)
     return false;
 }
 
-
-
-bool g_test = false;

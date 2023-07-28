@@ -118,10 +118,6 @@ POSTLINKOPT =
 ## NOTE: This precludes some uses of exceptions.
 ##        For details, see man gcc on -static-libgcc.
 
-CCOPT_RELEASE  = -11 -DNDEBUG -fomit-frame-pointer
-CCOPT_DEBUG    = -11
-CCOPT_PROFILE  = -11 -pg
-
 LINKOPT_RELEASE =
 LINKOPT_DEBUG    =
 LINKOPT_PROFILE  = -pg

@@ -81,5 +81,6 @@
         "variant": "cpp",
         "strstream": "cpp"
     },
-    "C_Cpp.errorSquiggles": "enabled"
+    "C_Cpp.errorSquiggles": "enabled",
+    "C_Cpp.dimInactiveRegions": false
 }

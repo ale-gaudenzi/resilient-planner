@@ -1,1 +1,17 @@
+.vscode
+
+src/elapsed.time
+src/log
+src/output
+src/output.sas
+src/resilient_policy.json
+src/resilient_nodes
+src/Makefile.depend
+
+src/search/.obj
+src/search/Makefile.depend
 src/search/downward-release
+
+src/preprocess/.obj
+src/preprocess/Makefile.depend
+src/preprocess/preprocess

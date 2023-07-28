@@ -1,6 +1,0 @@
-<map id="LandmarkCountHeuristic" name="LandmarkCountHeuristic">
-<area shape="rect" id="node1" title=" " alt="" coords="5,229,188,256"/>
-<area shape="rect" id="node2" href="$classHeuristic.html" title=" " alt="" coords="57,155,137,181"/>
-<area shape="rect" id="node3" href="$classScalarEvaluator.html" title=" " alt="" coords="35,80,159,107"/>
-<area shape="rect" id="node4" href="$classEvaluator.html" title=" " alt="" coords="55,5,139,32"/>
-</map>

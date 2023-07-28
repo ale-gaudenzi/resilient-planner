@@ -1,4 +1,0 @@
-<map id="tree&lt; T, tree_node_allocator &gt;::sibling_iterator" name="tree&lt; T, tree_node_allocator &gt;::sibling_iterator">
-<area shape="rect" id="node1" title="Iterator which traverses only the nodes which are siblings of each other." alt="" coords="27,95,179,151"/>
-<area shape="rect" id="node2" href="$classtree_1_1iterator__base.html" title="Base class for iterators, only pointers stored, no traversal logic." alt="" coords="5,5,200,47"/>
-</map>

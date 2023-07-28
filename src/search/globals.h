@@ -14,7 +14,6 @@ class AxiomEvaluator;
 class CausalGraph;
 class DomainTransitionGraph;
 class IntPacker;
-class LegacyCausalGraph;
 class Operator;
 class RandomNumberGenerator;
 class State;
@@ -87,7 +86,6 @@ extern std::vector<Operator> g_axioms;
 extern AxiomEvaluator *g_axiom_evaluator;
 extern std::vector<DomainTransitionGraph *> g_transition_graphs;
 extern CausalGraph *g_causal_graph;
-extern LegacyCausalGraph *g_legacy_causal_graph;
 extern Timer g_timer;
 extern std::string g_plan_filename;
 extern RandomNumberGenerator g_rng;
@@ -196,6 +194,12 @@ extern long g_mem_pre_alg;
 extern long g_mem_post_alg;
 extern long g_mem_extraction;
 
+extern int g_iteration;
+extern int g_successful_resiliency_check;
+extern int g_successful_replan;
+extern int g_max_dimension_open;
+extern int g_replan_counter;
+
 extern Timer g_timer_cycle;
 extern Timer g_timer_extraction;
 extern Timer g_timer_extract_policy;
@@ -203,6 +207,5 @@ extern Timer g_timer_extract_policy;
 long mem_usage();
 bool find_in_op_set(std::set<Operator> op_set, Operator op);
 
-extern bool g_test;
 
 #endif

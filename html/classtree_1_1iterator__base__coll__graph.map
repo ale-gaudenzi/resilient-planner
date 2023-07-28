@@ -1,4 +1,0 @@
-<map id="tree&lt; T, tree_node_allocator &gt;::iterator_base" name="tree&lt; T, tree_node_allocator &gt;::iterator_base">
-<area shape="rect" id="node1" title="Base class for iterators, only pointers stored, no traversal logic." alt="" coords="5,95,200,136"/>
-<area shape="rect" id="node2" href="$classtree__node__.html" title="A node in the tree, combining links to other nodes as well as the actual data." alt="" coords="37,5,169,32"/>
-</map>

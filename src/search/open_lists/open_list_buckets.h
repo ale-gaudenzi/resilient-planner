@@ -2,7 +2,7 @@
 #define OPEN_LISTS_OPEN_LIST_BUCKETS_H
 
 #include "open_list.h"
-#include "../scalar_evaluator.h"
+#include "../evaluators/scalar_evaluator.h"
 
 #include <deque>
 #include <utility>

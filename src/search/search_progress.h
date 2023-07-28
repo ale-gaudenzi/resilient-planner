@@ -3,7 +3,7 @@
 
 #include "globals.h"
 #include "timer.h"
-#include "heuristic.h"
+#include "heuristics/heuristic.h"
 
 /**
  * This class is a class that helps track search progress.

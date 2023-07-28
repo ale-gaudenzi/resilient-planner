@@ -1,8 +1,0 @@
-<map id="RegressionStep" name="RegressionStep">
-<area shape="rect" id="node1" title=" " alt="" coords="37,261,159,288"/>
-<area shape="rect" id="node2" href="$structPolicyItem.html" title=" " alt="" coords="122,171,213,197"/>
-<area shape="rect" id="node3" href="$classPartialState.html" title=" " alt="" coords="33,81,131,108"/>
-<area shape="rect" id="node6" href="$classOperator.html" title=" " alt="" coords="5,171,84,197"/>
-<area shape="rect" id="node4" href="$classStateInterface.html" title=" " alt="" coords="25,5,139,32"/>
-<area shape="rect" id="node5" href="$classPolicy.html" title=" " alt="" coords="205,81,266,108"/>
-</map>

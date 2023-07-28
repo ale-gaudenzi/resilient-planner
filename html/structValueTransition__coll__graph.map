@@ -1,9 +1,0 @@
-<map id="ValueTransition" name="ValueTransition">
-<area shape="rect" id="node1" title=" " alt="" coords="156,439,277,465"/>
-<area shape="rect" id="node2" href="$structValueNode.html" title=" " alt="" coords="171,349,263,376"/>
-<area shape="rect" id="node3" href="$structValueTransitionLabel.html" title=" " alt="" coords="5,260,161,287"/>
-<area shape="rect" id="node4" href="$classOperator.html" title=" " alt="" coords="44,171,123,197"/>
-<area shape="rect" id="node5" href="$classPartialState.html" title=" " alt="" coords="35,81,132,108"/>
-<area shape="rect" id="node6" href="$classStateInterface.html" title=" " alt="" coords="26,5,141,32"/>
-<area shape="rect" id="node7" href="$classDomainTransitionGraph.html" title=" " alt="" coords="185,260,360,287"/>
-</map>

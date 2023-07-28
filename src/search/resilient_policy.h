@@ -3,7 +3,7 @@
 
 #include "operator.h"
 #include "resilient_node.h"
-#include "policy-repair/policy.h"
+#include "policy.h"
 #include "globals.h"
 
 #include <tr1/unordered_map>
@@ -12,16 +12,17 @@
 using namespace std;
 
 class ResilientPolicy
-{
+{    
+private:
+    map<ResilientNode, Operator> policy;
+
 
 public:
-    map<ResilientNode, Operator> policy;
 
     Operator get_successor(ResilientNode node);
     void add_item(ResilientNode node, Operator op);
     void extract_policy(State initial_state, PartialState goal, int K, std::tr1::unordered_map<int, ResilientNode> resilient_set);
-    void dump();
-    void dump_json();
+    map<ResilientNode, Operator> get_policy() { return policy; }
 };
 
 #endif
