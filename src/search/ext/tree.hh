@@ -1,26 +1,3 @@
-
-//	STL-like templated tree class.
-//
-// Copyright (C) 2001-2009 Kasper Peeters <kasper.peeters@aei.mpg.de>
-// Distributed under the GNU General Public License version 3,
-// (eventually to be changed to the Boost Software License).
-
-/** \mainpage tree.hh
-    \author   Kasper Peeters
-    \version  2.65
-    \date     03-Apr-2009
-    \see      http://www.aei.mpg.de/~peekas/tree/
-    \see      http://www.aei.mpg.de/~peekas/tree/ChangeLog
-
-   The tree.hh library for C++ provides an STL-like container class
-   for n-ary trees, templated over the data stored at the
-   nodes. Various types of iterators are provided (post-order,
-   pre-order, and others). Where possible the access methods are
-   compatible with the STL or alternative algorithms are
-   available. 
-*/
-
-
 #ifndef tree_hh_
 #define tree_hh_
 

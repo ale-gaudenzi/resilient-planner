@@ -4,17 +4,28 @@
 using namespace json;
 using namespace std;
 
+/// Return the applicable next operator of the given node.
+/// @param node The node to find the successor operator to.
+/// @return The applicable operator.
 Operator ResilientPolicy::get_successor(ResilientNode node)
 {
     return policy.find(node)->second;
 }
 
+/// Add an item to the policy, checking if it is already present.
+/// @param node the node to add to the policy.
+/// @param op the operator corresponding to the node.
 void ResilientPolicy::add_item(ResilientNode node, Operator op)
 {
     if(policy.find(node) == policy.end())
         policy.insert(make_pair(node, op));
 }
 
+/// Extract the resilient policy from the global policy.
+/// @param initial_state The first state of the policy.
+/// @param goal The last state of the policy.
+/// @param K The resilience parameter.
+/// @param resilient_nodes The set of resilient nodes.
 void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int K, std::tr1::unordered_map<int, ResilientNode> resilient_nodes)
 {
     list<ResilientNode> open;
@@ -62,7 +73,6 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
                 {
                     add_item(node, *it_o);
 
-                    //if (!((PartialState)successor).is_implied(goal))
                     if(!goal.is_implied(successor_p))
                         open.push_back(successor_node);
                     
@@ -80,7 +90,6 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
 
         if (!found)
         {
-            
             cout << "\nNode not found at iteration #" << i << endl;
             node.dump();
             cout << "next_actions:" << endl;

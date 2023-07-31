@@ -2,14 +2,13 @@
 
 ## Build
 ```
-cd src/
-./build_all
+./src/build_all
 ```
 
 ## Examples
 ```
-/src/resplanner /problems/simpletravel/domain.pddl /problems/simpletravel/pfile1 --resilient 1
-/src/resplanner /problems/simpletravel/domain.pddl /problems/satellite/5 --resilient 2
+/src/resplanner /benchmarks/IPC/zenotravel/domain.pddl /benchmarks/IPC/zenotravel/pfile1 --resilient 1 --dump-resilient-policy 1
+/src/resplanner /benchmarks/Res/rockect/domain.pddl /benchmarks/Res/rocket/pfilep1.pddl --resilient 2 --dump-resilient-policy 1 --dump-resilient-nodes 1
 ```
 
 ## Usage
@@ -41,3 +40,7 @@ cd src/
     Print memory usage for every replan
 ```
 
+## Documentation
+```
+The full documentation can be found [here](html/index.html).
+```
