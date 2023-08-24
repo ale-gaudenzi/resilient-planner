@@ -1,9 +1,0 @@
-<map id="cea_heuristic::LocalTransition" name="cea_heuristic::LocalTransition">
-<area shape="rect" id="node1" title=" " alt="" coords="234,349,447,376"/>
-<area shape="rect" id="node2" href="$structcea__heuristic_1_1LocalProblemNode.html" title=" " alt="" coords="111,453,349,480"/>
-<area shape="rect" id="node3" href="$structcea__heuristic_1_1LocalProblem.html" title=" " alt="" coords="5,349,209,376"/>
-<area shape="rect" id="node4" href="$structValueTransitionLabel.html" title=" " alt="" coords="263,260,419,287"/>
-<area shape="rect" id="node5" href="$classOperator.html" title=" " alt="" coords="301,171,380,197"/>
-<area shape="rect" id="node6" href="$classPartialState.html" title=" " alt="" coords="292,81,389,108"/>
-<area shape="rect" id="node7" href="$classStateInterface.html" title=" " alt="" coords="283,5,398,32"/>
-</map>

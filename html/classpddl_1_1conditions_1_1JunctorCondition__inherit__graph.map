@@ -1,7 +1,0 @@
-<map id="pddl.conditions.JunctorCondition" name="pddl.conditions.JunctorCondition">
-<area shape="rect" id="node1" title=" " alt="" coords="103,155,335,181"/>
-<area shape="rect" id="node4" href="$classpddl_1_1conditions_1_1Conjunction.html" title=" " alt="" coords="5,229,208,256"/>
-<area shape="rect" id="node5" href="$classpddl_1_1conditions_1_1Disjunction.html" title=" " alt="" coords="233,229,431,256"/>
-<area shape="rect" id="node2" href="$classpddl_1_1conditions_1_1Condition.html" title=" " alt="" coords="125,80,312,107"/>
-<area shape="rect" id="node3" title=" " alt="" coords="187,5,250,32"/>
-</map>

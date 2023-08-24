@@ -1,4 +1,0 @@
-<map id="tree&lt; T, tree_node_allocator &gt;::post_order_iterator" name="tree&lt; T, tree_node_allocator &gt;::post_order_iterator">
-<area shape="rect" id="node1" title="Depth&#45;first iterator, first accessing the children, then the node itself." alt="" coords="13,95,192,151"/>
-<area shape="rect" id="node2" href="$classtree_1_1iterator__base.html" title="Base class for iterators, only pointers stored, no traversal logic." alt="" coords="5,5,200,47"/>
-</map>

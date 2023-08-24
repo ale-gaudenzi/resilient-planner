@@ -1,6 +1,0 @@
-<map id="BlindSearchHeuristic" name="BlindSearchHeuristic">
-<area shape="rect" id="node1" title=" " alt="" coords="5,229,163,256"/>
-<area shape="rect" id="node2" href="$classHeuristic.html" title=" " alt="" coords="44,155,124,181"/>
-<area shape="rect" id="node3" href="$classScalarEvaluator.html" title=" " alt="" coords="22,80,146,107"/>
-<area shape="rect" id="node4" href="$classEvaluator.html" title=" " alt="" coords="42,5,126,32"/>
-</map>

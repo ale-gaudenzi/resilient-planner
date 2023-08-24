@@ -1,9 +1,0 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$classtree_1_1iterator__base.html" title="Base class for iterators, only pointers stored, no traversal logic." alt="" coords="5,203,200,245"/>
-<area shape="rect" id="node2" href="$classtree_1_1breadth__first__queued__iterator.html" title="Breadth&#45;first iterator, using a queue." alt="" coords="261,5,425,61"/>
-<area shape="rect" id="node3" href="$classtree_1_1fixed__depth__iterator.html" title="Iterator which traverses only the nodes at a given depth from the root." alt="" coords="271,85,415,141"/>
-<area shape="rect" id="node4" href="$classtree_1_1leaf__iterator.html" title="Iterator which traverses only the leaves." alt="" coords="248,166,437,207"/>
-<area shape="rect" id="node5" href="$classtree_1_1post__order__iterator.html" title="Depth&#45;first iterator, first accessing the children, then the node itself." alt="" coords="253,232,432,288"/>
-<area shape="rect" id="node6" href="$classtree_1_1pre__order__iterator.html" title="Depth&#45;first iterator, first accessing the node, then its children." alt="" coords="257,312,428,368"/>
-<area shape="rect" id="node7" href="$classtree_1_1sibling__iterator.html" title="Iterator which traverses only the nodes which are siblings of each other." alt="" coords="267,392,419,448"/>
-</map>
