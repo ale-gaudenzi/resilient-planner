@@ -12,15 +12,12 @@
 using namespace std;
 
 class ResilientPolicy
-{    
+{
 private:
     map<ResilientNode, Operator> policy;
 
-
 public:
-
-    Operator get_successor(ResilientNode node);
-    void add_item(ResilientNode node, Operator op);
+    Operator get_successor(ResilientNode node) { return policy.find(node)->second; };
     void extract_policy(State initial_state, PartialState goal, int K, std::tr1::unordered_map<int, ResilientNode> resilient_set);
     map<ResilientNode, Operator> get_policy() { return policy; }
 };
