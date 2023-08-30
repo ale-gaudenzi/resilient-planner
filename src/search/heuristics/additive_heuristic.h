@@ -6,7 +6,8 @@
 #include "../partial_state.h"
 #include <cassert>
 
-class AdditiveHeuristic : public RelaxationHeuristic {
+class AdditiveHeuristic : public RelaxationHeuristic
+{
     /* Costs larger than MAX_COST_VALUE are clamped to max_value. The
        precise value (100M) is a bit of a hack, since other parts of
        the code don't reliably check against overflow as of this
@@ -24,9 +25,11 @@ class AdditiveHeuristic : public RelaxationHeuristic {
     bool relaxed_exploration(bool include_forbidden);
     void mark_preferred_operators(const State &state, Proposition *goal);
 
-    void enqueue_if_necessary(Proposition *prop, int cost, UnaryOperator *op) {
+    void enqueue_if_necessary(Proposition *prop, int cost, UnaryOperator *op)
+    {
         assert(cost >= 0);
-        if (prop->cost == -1 || prop->cost > cost) {
+        if (prop->cost == -1 || prop->cost > cost)
+        {
             prop->cost = cost;
             prop->reached_by = op;
             queue.push(cost, prop);
@@ -34,17 +37,20 @@ class AdditiveHeuristic : public RelaxationHeuristic {
         assert(prop->cost != -1 && prop->cost <= cost);
     }
 
-    void increase_cost(int &cost, int amount) {
+    void increase_cost(int &cost, int amount)
+    {
         assert(cost >= 0);
         assert(amount >= 0);
         cost += amount;
-        if (cost > MAX_COST_VALUE) {
+        if (cost > MAX_COST_VALUE)
+        {
             write_overflow_warning();
             cost = MAX_COST_VALUE;
         }
     }
 
     void write_overflow_warning();
+
 protected:
     virtual void initialize();
     virtual int compute_heuristic(const State &state);
@@ -52,7 +58,7 @@ protected:
 public:
     AdditiveHeuristic(const Options &options);
     ~AdditiveHeuristic();
-    
+
     // Common part of h^add and h^ff computation.
     int compute_add_and_ff(const StateInterface &state);
 };

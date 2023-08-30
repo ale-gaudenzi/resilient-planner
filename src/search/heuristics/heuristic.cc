@@ -52,6 +52,7 @@ void Heuristic::evaluate(const State &state) {
     }
 
     preferred_operators.clear();
+
     for (int i = 0; i < g_operators.size(); i++)
         g_operators[i].unmark();
 
@@ -61,7 +62,7 @@ void Heuristic::evaluate(const State &state) {
 
     for (int i = 0; i < preferred_operators.size(); i++)
         preferred_operators[i]->unmark();
-        
+    
     assert(heuristic == DEAD_END || heuristic >= 0);
 
     if (heuristic == DEAD_END) {

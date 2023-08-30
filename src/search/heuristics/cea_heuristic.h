@@ -48,6 +48,7 @@ public:
     ContextEnhancedAdditiveHeuristic(const Options &opts);
     ~ContextEnhancedAdditiveHeuristic();
     virtual bool dead_ends_are_reliable() const;
+
 };
 }
 

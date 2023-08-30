@@ -79,7 +79,7 @@ void LazySearch::set_pref_operator_heuristics(
 void LazySearch::initialize()
 {
     // TODO children classes should output which kind of search
-    if(g_verbose)
+    if (g_verbose)
         cout << "Conducting lazy best first search, (real) bound = " << bound << endl;
 
     // Only set up the heuristics on the first go
@@ -142,7 +142,7 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
             i--;
         }
     }
-    
+
     if (succ_mode == pref_first)
     {
         for (int i = 0; i < preferred_operators.size(); i++)
@@ -245,9 +245,7 @@ int LazySearch::step()
         StateID dummy_id = current_predecessor_id;
         // HACK! HACK! we do this because SearchNode has no default/copy constructor
         if (dummy_id == StateID::no_state)
-        {
             dummy_id = g_initial_state().get_id();
-        }
 
         State parent_state = g_state_registry->lookup_state(dummy_id);
         SearchNode parent_node = search_space.get_node(parent_state);
@@ -255,9 +253,7 @@ int LazySearch::step()
         for (int i = 0; i < heuristics.size(); i++)
         {
             if (current_operator != NULL)
-            {
                 heuristics[i]->reach_state(parent_state, *current_operator, current_state);
-            }
             heuristics[i]->evaluate(current_state);
         }
 
@@ -270,7 +266,7 @@ int LazySearch::step()
             // We use the value of the first heuristic, because SearchSpace only
             // supported storing one heuristic value
             int h = heuristics[0]->get_value();
-            // cout << "h: " << h << endl;
+
             if (reopen)
             {
                 node.reopen(parent_node, current_operator);

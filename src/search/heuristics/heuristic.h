@@ -64,6 +64,7 @@ public:
     // for policy handling
     virtual void reset() { 
         preferred_operators.clear();
+        
         // for resilient
         initialize();
     }

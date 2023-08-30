@@ -22,7 +22,9 @@ BlindSearchHeuristic::~BlindSearchHeuristic() {
 }
 
 void BlindSearchHeuristic::initialize() {
-    cout << "Initializing blind search heuristic..." << endl;
+    if(g_verbose){
+        cout << "Initializing blind search heuristic..." << endl;
+    }
 }
 
 int BlindSearchHeuristic::compute_heuristic(const State &state) {

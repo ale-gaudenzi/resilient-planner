@@ -21,36 +21,6 @@ SEARCH="$BASEDIR/search/downward"
 # Settings
 INV_TIME_LIMIT="300"
 
-# Check for citation request
-if [ "--citation" = "$1" ]; then
-  echo "
-@inproceedings{muise12icapsfond,
-  author = {Christian Muise and Sheila A McIlraith and J Christopher Beck},
-  title = {Improved Non-deterministic Planning by Exploiting State Relevance},
-  booktitle = {The 22nd International Conference on Automated Planning and Scheduling (ICAPS)},
-  year = {2012},
-  subdiscipline = {Artificial Intelligence},
-  type = {Conference Proceedings}
-}
-
-@inproceedings{muise-aaai-14,
-  title={Computing Contingent Plans via Fully Observable Non-Deterministic Planning},
-  author={Muise, Christian and Belle, Vaishak and McIlraith, Sheila A.},
-  booktitle={The 28th AAAI Conference on Artificial Intelligence},
-  year={2014},
-  url={http://www.haz.ca/papers/muise-aaai-14.pdf}
-}
-
-@inproceedings{muise-icaps-14,
-  title={Non-Deterministic Planning With Conditional Effects},
-  author={Muise, Christian and McIlraith, Sheila A. and Belle, Vaishak},
-  booktitle={The 24th International Conference on Automated Planning and Scheduling},
-  year={2014},
-  url={http://www.haz.ca/papers/muise-icaps-14.pdf}
-}
-"
-  exit 1
-fi
 
 # Need to explicitly ask for GNU time (from MacPorts) on Mac OS X.
 if [[ "$(uname)" == "Darwin" ]]; then

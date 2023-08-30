@@ -360,6 +360,7 @@ void ContextEnhancedAdditiveHeuristic::mark_helpful_transitions(
         if (first_on_path->target_cost == first_on_path->action_cost) {
             // Transition possibly applicable.
             const Operator *op = first_on_path->label->op;
+
             if (g_min_action_cost != 0 || op->is_applicable(state)) {
                 // If there are no zero-cost actions, the target_cost/
                 // action_cost test above already guarantees applicability.
@@ -386,8 +387,9 @@ void ContextEnhancedAdditiveHeuristic::mark_helpful_transitions(
 }
 
 void ContextEnhancedAdditiveHeuristic::initialize() {
-    assert(goal_problem == 0);
-    cout << "Initializing context-enhanced additive heuristic..." << endl;
+    // assert(goal_problem == 0);
+    if(g_verbose)
+        cout << "Initializing context-enhanced additive heuristic..." << endl;
 
     int num_variables = g_variable_domain.size();
 

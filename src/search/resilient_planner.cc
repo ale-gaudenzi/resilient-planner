@@ -98,7 +98,6 @@ int main(int argc, const char **argv)
         cout << "\n  Parameter Error: Make sure that the set of parameters is consistent.\n\n";
         exit(0);
     }
-
     cout << "Total allotted time0(s): " << g_jic_limit << endl;
 
     g_operators_backup = g_operators;
@@ -151,11 +150,12 @@ int main(int argc, const char **argv)
                 if (g_verbose)
                     cout << "\nFailed resiliency check." << endl;
 
+
                 // Replan function return true if successfull, the plan is stored in engine object
                 if (!replan(current_node, engine))
                 {
-                    if (g_verbose)
-                        cout << "\nFailed replanning." << endl;
+                    //if (g_verbose)
+                    cout << "\n ---->>> Failed replanning." << endl;
 
                     // If replanning fails, add current node to deadend and not resilient sets
                     add_non_resilient_deadends(current_node); // S downarrow
@@ -339,10 +339,7 @@ bool resiliency_check(ResilientNode node)
 bool replan(ResilientNode current_node, SearchEngine *engine)
 {
     PartialState current_state = PartialState(current_node.get_state());
-
-    if (is_deadend(current_state))
-        return false;
-
+    
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
         g_initial_state_data[i] = current_state[i];
@@ -463,6 +460,7 @@ void update_non_resilient_nodes(ResilientNode node)
 /// @param node Node containing the state to regress and the current (k,V).
 void add_non_resilient_deadends(ResilientNode node)
 {
+    cout << "AAA" << endl;
     State state = node.get_state();
     list<PolicyItem *> de_items;
 

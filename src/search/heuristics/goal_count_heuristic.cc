@@ -16,7 +16,8 @@ GoalCountHeuristic::~GoalCountHeuristic() {
 }
 
 void GoalCountHeuristic::initialize() {
-    cout << "Initializing goal count heuristic..." << endl;
+    if(g_verbose)
+        cout << "Initializing goal count heuristic..." << endl;
 }
 
 int GoalCountHeuristic::compute_heuristic(const State &state) {

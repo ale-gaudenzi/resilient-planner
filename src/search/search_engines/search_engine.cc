@@ -44,9 +44,7 @@ void SearchEngine::reset()
     g_state_registry = new StateRegistry;
 
     for (int i = 0; i < g_operators.size(); i++)
-    {
         g_operators[i].unmark();
-    }
 }
 
 void SearchEngine::statistics() const
@@ -72,28 +70,12 @@ void SearchEngine::set_plan(const Plan &p)
 
 void SearchEngine::search()
 {
-
-    if (g_record_online_deadends)
-    {
-        g_found_deadends.clear();
-        delete g_temporary_deadends;
-        g_temporary_deadends = new Policy();
-    }
-
     initialize();
     Timer timer;
-    // int i = 1;
-    // cout << "Step " << i << endl;
-
-   // cout << "memory pre replan " << g_replan_counter + 1 << ": " << mem_usage() << endl;
 
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
     {
-        // i++;
-        // cout << "Step " << i << endl;
     };
-
-
 
     if (g_timer_jit() < g_jic_limit)
     {

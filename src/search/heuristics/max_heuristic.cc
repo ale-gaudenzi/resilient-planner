@@ -34,7 +34,8 @@ HSPMaxHeuristic::~HSPMaxHeuristic() {
 
 // initialization
 void HSPMaxHeuristic::initialize() {
-    cout << "Initializing HSP max heuristic..." << endl;
+    if(g_verbose)
+        cout << "Initializing HSP max heuristic..." << endl;
     RelaxationHeuristic::initialize();
 }
 
