@@ -235,56 +235,6 @@
  heuristics/../heuristics/heuristic.h \
  heuristics/../heuristics/../partial_state.h
 .obj/int_packer.release.o: int_packer.cc int_packer.h
-.obj/heuristics/ipc_max_heuristic.release.o: heuristics/ipc_max_heuristic.cc \
- heuristics/ipc_max_heuristic.h heuristics/heuristic.h \
- heuristics/../evaluators/scalar_evaluator.h \
- heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
- heuristics/../partial_state.h heuristics/../state.h \
- heuristics/../int_packer.h heuristics/../state_id.h \
- heuristics/../option_parser.h heuristics/../option_parser_util.h \
- heuristics/../utilities.h heuristics/../heuristics/heuristic.h \
- heuristics/../policy.h heuristics/../regression.h \
- heuristics/../globals.h heuristics/../operator.h \
- heuristics/../partial_state.h \
- heuristics/../search_engines/search_engine.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../search_space.h \
- heuristics/../search_engines/../state.h \
- heuristics/../search_engines/../search_node_info.h \
- heuristics/../search_engines/../state_id.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../operator_cost.h \
- heuristics/../search_engines/../per_state_information.h \
- heuristics/../search_engines/../globals.h \
- heuristics/../search_engines/../segmented_vector.h \
- heuristics/../search_engines/../utilities.h \
- heuristics/../search_engines/../state_registry.h \
- heuristics/../search_engines/../int_packer.h \
- heuristics/../search_engines/../search_progress.h \
- heuristics/../search_engines/../timer.h \
- heuristics/../search_engines/../heuristics/heuristic.h \
- heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
- heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h \
- heuristics/../heuristics/priority_queue.h \
- heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
- heuristics/../open_lists/standard_scalar_open_list.h \
- heuristics/../open_lists/open_list.h \
- heuristics/../open_lists/../evaluators/evaluator.h \
- heuristics/../open_lists/../option_parser.h \
- heuristics/../open_lists/standard_scalar_open_list.cc \
- heuristics/../open_lists/../evaluators/scalar_evaluator.h \
- heuristics/../open_lists/open_list_buckets.h \
- heuristics/../open_lists/open_list_buckets.cc \
- heuristics/../open_lists/tiebreaking_open_list.h \
- heuristics/../open_lists/tiebreaking_open_list.cc \
- heuristics/../open_lists/alternation_open_list.h \
- heuristics/../open_lists/../plugin.h \
- heuristics/../open_lists/alternation_open_list.cc \
- heuristics/../open_lists/pareto_open_list.h \
- heuristics/../open_lists/pareto_open_list.cc
 .obj/search_engines/iterated_search.release.o: search_engines/iterated_search.cc \
  search_engines/iterated_search.h search_engines/search_engine.h \
  search_engines/../operator.h search_engines/../globals.h \
@@ -1400,56 +1350,6 @@
  heuristics/../heuristics/heuristic.h \
  heuristics/../heuristics/../partial_state.h
 .obj/int_packer.debug.o: int_packer.cc int_packer.h
-.obj/heuristics/ipc_max_heuristic.debug.o: heuristics/ipc_max_heuristic.cc \
- heuristics/ipc_max_heuristic.h heuristics/heuristic.h \
- heuristics/../evaluators/scalar_evaluator.h \
- heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
- heuristics/../partial_state.h heuristics/../state.h \
- heuristics/../int_packer.h heuristics/../state_id.h \
- heuristics/../option_parser.h heuristics/../option_parser_util.h \
- heuristics/../utilities.h heuristics/../heuristics/heuristic.h \
- heuristics/../policy.h heuristics/../regression.h \
- heuristics/../globals.h heuristics/../operator.h \
- heuristics/../partial_state.h \
- heuristics/../search_engines/search_engine.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../search_space.h \
- heuristics/../search_engines/../state.h \
- heuristics/../search_engines/../search_node_info.h \
- heuristics/../search_engines/../state_id.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../operator_cost.h \
- heuristics/../search_engines/../per_state_information.h \
- heuristics/../search_engines/../globals.h \
- heuristics/../search_engines/../segmented_vector.h \
- heuristics/../search_engines/../utilities.h \
- heuristics/../search_engines/../state_registry.h \
- heuristics/../search_engines/../int_packer.h \
- heuristics/../search_engines/../search_progress.h \
- heuristics/../search_engines/../timer.h \
- heuristics/../search_engines/../heuristics/heuristic.h \
- heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
- heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h \
- heuristics/../heuristics/priority_queue.h \
- heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
- heuristics/../open_lists/standard_scalar_open_list.h \
- heuristics/../open_lists/open_list.h \
- heuristics/../open_lists/../evaluators/evaluator.h \
- heuristics/../open_lists/../option_parser.h \
- heuristics/../open_lists/standard_scalar_open_list.cc \
- heuristics/../open_lists/../evaluators/scalar_evaluator.h \
- heuristics/../open_lists/open_list_buckets.h \
- heuristics/../open_lists/open_list_buckets.cc \
- heuristics/../open_lists/tiebreaking_open_list.h \
- heuristics/../open_lists/tiebreaking_open_list.cc \
- heuristics/../open_lists/alternation_open_list.h \
- heuristics/../open_lists/../plugin.h \
- heuristics/../open_lists/alternation_open_list.cc \
- heuristics/../open_lists/pareto_open_list.h \
- heuristics/../open_lists/pareto_open_list.cc
 .obj/search_engines/iterated_search.debug.o: search_engines/iterated_search.cc \
  search_engines/iterated_search.h search_engines/search_engine.h \
  search_engines/../operator.h search_engines/../globals.h \
@@ -2565,56 +2465,6 @@
  heuristics/../heuristics/heuristic.h \
  heuristics/../heuristics/../partial_state.h
 .obj/int_packer.profile.o: int_packer.cc int_packer.h
-.obj/heuristics/ipc_max_heuristic.profile.o: heuristics/ipc_max_heuristic.cc \
- heuristics/ipc_max_heuristic.h heuristics/heuristic.h \
- heuristics/../evaluators/scalar_evaluator.h \
- heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
- heuristics/../partial_state.h heuristics/../state.h \
- heuristics/../int_packer.h heuristics/../state_id.h \
- heuristics/../option_parser.h heuristics/../option_parser_util.h \
- heuristics/../utilities.h heuristics/../heuristics/heuristic.h \
- heuristics/../policy.h heuristics/../regression.h \
- heuristics/../globals.h heuristics/../operator.h \
- heuristics/../partial_state.h \
- heuristics/../search_engines/search_engine.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../search_space.h \
- heuristics/../search_engines/../state.h \
- heuristics/../search_engines/../search_node_info.h \
- heuristics/../search_engines/../state_id.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../operator_cost.h \
- heuristics/../search_engines/../per_state_information.h \
- heuristics/../search_engines/../globals.h \
- heuristics/../search_engines/../segmented_vector.h \
- heuristics/../search_engines/../utilities.h \
- heuristics/../search_engines/../state_registry.h \
- heuristics/../search_engines/../int_packer.h \
- heuristics/../search_engines/../search_progress.h \
- heuristics/../search_engines/../timer.h \
- heuristics/../search_engines/../heuristics/heuristic.h \
- heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
- heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h \
- heuristics/../heuristics/priority_queue.h \
- heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
- heuristics/../open_lists/standard_scalar_open_list.h \
- heuristics/../open_lists/open_list.h \
- heuristics/../open_lists/../evaluators/evaluator.h \
- heuristics/../open_lists/../option_parser.h \
- heuristics/../open_lists/standard_scalar_open_list.cc \
- heuristics/../open_lists/../evaluators/scalar_evaluator.h \
- heuristics/../open_lists/open_list_buckets.h \
- heuristics/../open_lists/open_list_buckets.cc \
- heuristics/../open_lists/tiebreaking_open_list.h \
- heuristics/../open_lists/tiebreaking_open_list.cc \
- heuristics/../open_lists/alternation_open_list.h \
- heuristics/../open_lists/../plugin.h \
- heuristics/../open_lists/alternation_open_list.cc \
- heuristics/../open_lists/pareto_open_list.h \
- heuristics/../open_lists/pareto_open_list.cc
 .obj/search_engines/iterated_search.profile.o: search_engines/iterated_search.cc \
  search_engines/iterated_search.h search_engines/search_engine.h \
  search_engines/../operator.h search_engines/../globals.h \

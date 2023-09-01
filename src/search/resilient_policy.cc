@@ -19,7 +19,7 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
     list<PolicyItem *> current_policy = g_policy->get_items();
 
     while (!open.empty())
-    {        
+    {
         bool found = false;
 
         ResilientNode node = open.front();
@@ -44,11 +44,10 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
         if (policy.find(node) != policy.end())
         {
             found = true;
-            break;
         }
         else
         {
-            for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+            for (std::set<Operator>::reverse_iterator it_o = next_actions.rbegin(); it_o != next_actions.rend(); ++it_o)
             {
                 State successor = registry->get_successor_state(node.get_state(), *it_o);
                 ResilientNode successor_node = ResilientNode(successor, node.get_k(), node.get_deactivated_op()); // <s[a], k, V>
@@ -97,7 +96,7 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
     }
 
     if (not_found_counter > 0)
-        cout << "\nResilient policy created, but " << not_found_counter << " nodes not found." << endl;
+        cout << "\n\nResilient policy created, but " << not_found_counter << " nodes not found." << endl;
     else
-        cout << "\nResilient policy created, " << policy.size() << " nodes found." << endl;
+        cout << "\n\nResilient policy created, " << policy.size() << " nodes found." << endl;
 }

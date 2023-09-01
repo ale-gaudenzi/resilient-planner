@@ -24,7 +24,6 @@ HEADERS = \
           globals.h \
           heuristics/heuristic.h \
           int_packer.h \
-          heuristics/ipc_max_heuristic.h \
           search_engines/iterated_search.h \
           search_engines/lazy_search.h \
           evaluators/max_evaluator.h \
