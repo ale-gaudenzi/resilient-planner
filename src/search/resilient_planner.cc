@@ -335,7 +335,7 @@ bool resiliency_check(ResilientNode node)
 /// @param engine The search engine originally created.
 /// @return True if the replan succeds, false otherwise.
 bool replan(ResilientNode current_node, SearchEngine *engine)
-{
+{ 
     PartialState current_state = PartialState(current_node.get_state());
     
     g_state_registry->reset_initial_state();
@@ -460,11 +460,14 @@ void add_non_resilient_deadends(ResilientNode node)
 {
     State state = node.get_state();
     list<PolicyItem *> de_items;
-
     PartialState *dummy_state = new PartialState();
 
     PartialState *de_state = new PartialState(state);
-    generalize_deadend(*de_state);
+
+    // Removed generalization in order to use other heuristics than FF and ADD.
+    // Need to investigate further if it's useful for performance
+    // and it will be worth to generalize to other heuristics.
+    // generalize_deadend(*de_state); 
 
     vector<PolicyItem *> reg_items;
     g_regressable_ops->generate_applicable_items(*de_state, reg_items, true, g_regress_only_relevant_deadends);

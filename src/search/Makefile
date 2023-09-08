@@ -61,6 +61,7 @@ HEADERS = \
           policy.h \
           deadend.h \
           partial_state.h \
+          heuristics/lm_cut_heuristic.h \
 
 ## Each of the following "HEADERS += ..." constructs defines a
 ## "plugin" feature that can be enabled or disabled by simply

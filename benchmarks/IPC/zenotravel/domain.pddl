@@ -6,7 +6,8 @@
 		(next ?l1 ?l2)(aircraft ?p)
 		(person ?x)
 		(city ?x)
-		(flevel ?x))
+		(flevel ?x)
+	)
 	(:action board
 		:parameters ( ?p ?a ?c)
 		:precondition (and (person ?p) (aircraft ?a) (city ?c) (at ?p ?c) (at ?a ?c))

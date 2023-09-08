@@ -16,8 +16,8 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- ext/tree_util.hh ext/tree.hh timer.h resilient_node.h resilient_policy.h \
- print_utils.h
+ heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
+ resilient_node.h resilient_policy.h print_utils.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -56,6 +56,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../successor_generator.h search_engines/../deadend.h \
  search_engines/../evaluators/g_evaluator.h \
  search_engines/../evaluators/scalar_evaluator.h \
@@ -108,6 +109,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../heuristics/heuristic.h \
  search_engines/../evaluators/pref_evaluator.h search_engines/../plugin.h \
  search_engines/../open_lists/standard_scalar_open_list.h \
@@ -165,7 +167,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -199,7 +202,7 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- resilient_node.h
+ heuristics/cea_heuristic.h resilient_node.h
 .obj/heuristics/heuristic.release.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -233,7 +236,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h
 .obj/int_packer.release.o: int_packer.cc int_packer.h
 .obj/search_engines/iterated_search.release.o: search_engines/iterated_search.cc \
  search_engines/iterated_search.h search_engines/search_engine.h \
@@ -258,7 +262,8 @@
  search_engines/../heuristics/additive_heuristic.h \
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
- search_engines/../heuristics/heuristic.h search_engines/../plugin.h \
+ search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h search_engines/../plugin.h \
  search_engines/../open_lists/standard_scalar_open_list.h \
  search_engines/../open_lists/open_list.h \
  search_engines/../open_lists/../evaluators/evaluator.h \
@@ -306,6 +311,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../evaluators/sum_evaluator.h \
  search_engines/../evaluators/combining_evaluator.h \
  search_engines/../evaluators/weighted_evaluator.h \
@@ -364,7 +370,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -399,7 +406,8 @@
  search_engines/../heuristics/heuristic.h \
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
- heuristics/relaxation_heuristic.h heuristics/heuristic.h
+ heuristics/relaxation_heuristic.h heuristics/heuristic.h \
+ heuristics/cea_heuristic.h
 .obj/option_parser.release.o: option_parser.cc globals.h option_parser.h \
  option_parser_util.h utilities.h heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
@@ -419,7 +427,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- ext/tree_util.hh ext/tree.hh plugin.h \
+ heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh plugin.h \
  open_lists/standard_scalar_open_list.h open_lists/open_list.h \
  open_lists/../evaluators/evaluator.h open_lists/../option_parser.h \
  open_lists/standard_scalar_open_list.cc \
@@ -481,6 +489,7 @@
  evaluators/../open_lists/../heuristics/priority_queue.h \
  evaluators/../open_lists/../heuristics/relaxation_heuristic.h \
  evaluators/../open_lists/../heuristics/heuristic.h \
+ evaluators/../open_lists/../heuristics/cea_heuristic.h \
  evaluators/../open_lists/standard_scalar_open_list.cc \
  evaluators/../open_lists/../evaluators/scalar_evaluator.h \
  evaluators/../open_lists/open_list_buckets.h \
@@ -538,8 +547,10 @@
  search_engines/../heuristics/additive_heuristic.h \
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
- search_engines/../heuristics/heuristic.h search_engines/search_engine.h \
- search_engines/../timer.h search_engines/../deadend.h
+ search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
+ search_engines/search_engine.h search_engines/../timer.h \
+ search_engines/../deadend.h
 .obj/search_node_info.release.o: search_node_info.cc search_node_info.h state_id.h \
  operator.h globals.h partial_state.h state.h int_packer.h
 .obj/search_progress.release.o: search_progress.cc search_progress.h globals.h timer.h \
@@ -595,7 +606,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -648,7 +660,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -685,7 +698,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h ext/json.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h ext/json.h
 .obj/open_lists/alternation_open_list.release.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.release.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.release.o: open_lists/pareto_open_list.cc
@@ -711,7 +724,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h ext/json.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h ext/json.h
 .obj/regression.release.o: regression.cc regression.h globals.h state.h int_packer.h \
  state_id.h operator.h partial_state.h search_engines/search_engine.h \
  search_engines/../operator.h search_engines/../search_space.h \
@@ -730,7 +743,8 @@
  search_engines/../operator_cost.h policy.h deadend.h \
  successor_generator.h heuristics/additive_heuristic.h \
  heuristics/priority_queue.h heuristics/relaxation_heuristic.h \
- heuristics/heuristic.h heuristics/../partial_state.h
+ heuristics/heuristic.h heuristics/../partial_state.h \
+ heuristics/cea_heuristic.h
 .obj/policy.release.o: policy.cc operator.h globals.h partial_state.h state.h \
  int_packer.h state_id.h policy.h regression.h \
  search_engines/search_engine.h search_engines/../operator.h \
@@ -749,7 +763,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h
 .obj/deadend.release.o: deadend.cc deadend.h regression.h globals.h state.h \
  int_packer.h state_id.h operator.h partial_state.h \
  search_engines/search_engine.h search_engines/../operator.h \
@@ -768,9 +782,61 @@
  search_engines/../operator_cost.h policy.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h
 .obj/partial_state.release.o: partial_state.cc partial_state.h state.h int_packer.h \
  state_id.h axioms.h globals.h operator.h utilities.h
+.obj/heuristics/lm_cut_heuristic.release.o: heuristics/lm_cut_heuristic.cc \
+ heuristics/lm_cut_heuristic.h heuristics/heuristic.h \
+ heuristics/../evaluators/scalar_evaluator.h \
+ heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
+ heuristics/../partial_state.h heuristics/../state.h \
+ heuristics/../int_packer.h heuristics/../state_id.h \
+ heuristics/priority_queue.h heuristics/../globals.h \
+ heuristics/../operator.h heuristics/../globals.h \
+ heuristics/../partial_state.h heuristics/../option_parser.h \
+ heuristics/../option_parser_util.h heuristics/../utilities.h \
+ heuristics/../heuristics/heuristic.h heuristics/../policy.h \
+ heuristics/../regression.h heuristics/../operator.h \
+ heuristics/../search_engines/search_engine.h \
+ heuristics/../search_engines/../operator.h \
+ heuristics/../search_engines/../search_space.h \
+ heuristics/../search_engines/../state.h \
+ heuristics/../search_engines/../search_node_info.h \
+ heuristics/../search_engines/../state_id.h \
+ heuristics/../search_engines/../operator.h \
+ heuristics/../search_engines/../operator_cost.h \
+ heuristics/../search_engines/../per_state_information.h \
+ heuristics/../search_engines/../globals.h \
+ heuristics/../search_engines/../segmented_vector.h \
+ heuristics/../search_engines/../utilities.h \
+ heuristics/../search_engines/../state_registry.h \
+ heuristics/../search_engines/../int_packer.h \
+ heuristics/../search_engines/../search_progress.h \
+ heuristics/../search_engines/../timer.h \
+ heuristics/../search_engines/../heuristics/heuristic.h \
+ heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
+ heuristics/../successor_generator.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/priority_queue.h \
+ heuristics/../heuristics/relaxation_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
+ heuristics/../open_lists/standard_scalar_open_list.h \
+ heuristics/../open_lists/open_list.h \
+ heuristics/../open_lists/../evaluators/evaluator.h \
+ heuristics/../open_lists/../option_parser.h \
+ heuristics/../open_lists/standard_scalar_open_list.cc \
+ heuristics/../open_lists/../evaluators/scalar_evaluator.h \
+ heuristics/../open_lists/open_list_buckets.h \
+ heuristics/../open_lists/open_list_buckets.cc \
+ heuristics/../open_lists/tiebreaking_open_list.h \
+ heuristics/../open_lists/tiebreaking_open_list.cc \
+ heuristics/../open_lists/alternation_open_list.h \
+ heuristics/../open_lists/../plugin.h \
+ heuristics/../open_lists/alternation_open_list.cc \
+ heuristics/../open_lists/pareto_open_list.h \
+ heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
 .obj/heuristics/additive_heuristic.release.o: heuristics/additive_heuristic.cc \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
@@ -802,7 +868,10 @@
  heuristics/../search_engines/../heuristics/heuristic.h \
  heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
  heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h heuristics/../plugin.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/priority_queue.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -852,7 +921,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -902,7 +972,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -949,7 +1020,10 @@
  heuristics/../search_engines/../heuristics/heuristic.h \
  heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
  heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h heuristics/../plugin.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/priority_queue.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -999,7 +1073,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -1048,7 +1123,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -1097,7 +1173,9 @@
  heuristics/../heuristics/additive_heuristic.h \
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -1131,8 +1209,8 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- ext/tree_util.hh ext/tree.hh timer.h resilient_node.h resilient_policy.h \
- print_utils.h
+ heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
+ resilient_node.h resilient_policy.h print_utils.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -1171,6 +1249,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../successor_generator.h search_engines/../deadend.h \
  search_engines/../evaluators/g_evaluator.h \
  search_engines/../evaluators/scalar_evaluator.h \
@@ -1223,6 +1302,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../heuristics/heuristic.h \
  search_engines/../evaluators/pref_evaluator.h search_engines/../plugin.h \
  search_engines/../open_lists/standard_scalar_open_list.h \
@@ -1280,7 +1360,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -1314,7 +1395,7 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- resilient_node.h
+ heuristics/cea_heuristic.h resilient_node.h
 .obj/heuristics/heuristic.debug.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -1348,7 +1429,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h
 .obj/int_packer.debug.o: int_packer.cc int_packer.h
 .obj/search_engines/iterated_search.debug.o: search_engines/iterated_search.cc \
  search_engines/iterated_search.h search_engines/search_engine.h \
@@ -1373,7 +1455,8 @@
  search_engines/../heuristics/additive_heuristic.h \
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
- search_engines/../heuristics/heuristic.h search_engines/../plugin.h \
+ search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h search_engines/../plugin.h \
  search_engines/../open_lists/standard_scalar_open_list.h \
  search_engines/../open_lists/open_list.h \
  search_engines/../open_lists/../evaluators/evaluator.h \
@@ -1421,6 +1504,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../evaluators/sum_evaluator.h \
  search_engines/../evaluators/combining_evaluator.h \
  search_engines/../evaluators/weighted_evaluator.h \
@@ -1479,7 +1563,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -1514,7 +1599,8 @@
  search_engines/../heuristics/heuristic.h \
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
- heuristics/relaxation_heuristic.h heuristics/heuristic.h
+ heuristics/relaxation_heuristic.h heuristics/heuristic.h \
+ heuristics/cea_heuristic.h
 .obj/option_parser.debug.o: option_parser.cc globals.h option_parser.h \
  option_parser_util.h utilities.h heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
@@ -1534,7 +1620,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- ext/tree_util.hh ext/tree.hh plugin.h \
+ heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh plugin.h \
  open_lists/standard_scalar_open_list.h open_lists/open_list.h \
  open_lists/../evaluators/evaluator.h open_lists/../option_parser.h \
  open_lists/standard_scalar_open_list.cc \
@@ -1596,6 +1682,7 @@
  evaluators/../open_lists/../heuristics/priority_queue.h \
  evaluators/../open_lists/../heuristics/relaxation_heuristic.h \
  evaluators/../open_lists/../heuristics/heuristic.h \
+ evaluators/../open_lists/../heuristics/cea_heuristic.h \
  evaluators/../open_lists/standard_scalar_open_list.cc \
  evaluators/../open_lists/../evaluators/scalar_evaluator.h \
  evaluators/../open_lists/open_list_buckets.h \
@@ -1653,8 +1740,10 @@
  search_engines/../heuristics/additive_heuristic.h \
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
- search_engines/../heuristics/heuristic.h search_engines/search_engine.h \
- search_engines/../timer.h search_engines/../deadend.h
+ search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
+ search_engines/search_engine.h search_engines/../timer.h \
+ search_engines/../deadend.h
 .obj/search_node_info.debug.o: search_node_info.cc search_node_info.h state_id.h \
  operator.h globals.h partial_state.h state.h int_packer.h
 .obj/search_progress.debug.o: search_progress.cc search_progress.h globals.h timer.h \
@@ -1710,7 +1799,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -1763,7 +1853,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -1800,7 +1891,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h ext/json.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h ext/json.h
 .obj/open_lists/alternation_open_list.debug.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.debug.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.debug.o: open_lists/pareto_open_list.cc
@@ -1826,7 +1917,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h ext/json.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h ext/json.h
 .obj/regression.debug.o: regression.cc regression.h globals.h state.h int_packer.h \
  state_id.h operator.h partial_state.h search_engines/search_engine.h \
  search_engines/../operator.h search_engines/../search_space.h \
@@ -1845,7 +1936,8 @@
  search_engines/../operator_cost.h policy.h deadend.h \
  successor_generator.h heuristics/additive_heuristic.h \
  heuristics/priority_queue.h heuristics/relaxation_heuristic.h \
- heuristics/heuristic.h heuristics/../partial_state.h
+ heuristics/heuristic.h heuristics/../partial_state.h \
+ heuristics/cea_heuristic.h
 .obj/policy.debug.o: policy.cc operator.h globals.h partial_state.h state.h \
  int_packer.h state_id.h policy.h regression.h \
  search_engines/search_engine.h search_engines/../operator.h \
@@ -1864,7 +1956,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h
 .obj/deadend.debug.o: deadend.cc deadend.h regression.h globals.h state.h \
  int_packer.h state_id.h operator.h partial_state.h \
  search_engines/search_engine.h search_engines/../operator.h \
@@ -1883,9 +1975,61 @@
  search_engines/../operator_cost.h policy.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h
 .obj/partial_state.debug.o: partial_state.cc partial_state.h state.h int_packer.h \
  state_id.h axioms.h globals.h operator.h utilities.h
+.obj/heuristics/lm_cut_heuristic.debug.o: heuristics/lm_cut_heuristic.cc \
+ heuristics/lm_cut_heuristic.h heuristics/heuristic.h \
+ heuristics/../evaluators/scalar_evaluator.h \
+ heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
+ heuristics/../partial_state.h heuristics/../state.h \
+ heuristics/../int_packer.h heuristics/../state_id.h \
+ heuristics/priority_queue.h heuristics/../globals.h \
+ heuristics/../operator.h heuristics/../globals.h \
+ heuristics/../partial_state.h heuristics/../option_parser.h \
+ heuristics/../option_parser_util.h heuristics/../utilities.h \
+ heuristics/../heuristics/heuristic.h heuristics/../policy.h \
+ heuristics/../regression.h heuristics/../operator.h \
+ heuristics/../search_engines/search_engine.h \
+ heuristics/../search_engines/../operator.h \
+ heuristics/../search_engines/../search_space.h \
+ heuristics/../search_engines/../state.h \
+ heuristics/../search_engines/../search_node_info.h \
+ heuristics/../search_engines/../state_id.h \
+ heuristics/../search_engines/../operator.h \
+ heuristics/../search_engines/../operator_cost.h \
+ heuristics/../search_engines/../per_state_information.h \
+ heuristics/../search_engines/../globals.h \
+ heuristics/../search_engines/../segmented_vector.h \
+ heuristics/../search_engines/../utilities.h \
+ heuristics/../search_engines/../state_registry.h \
+ heuristics/../search_engines/../int_packer.h \
+ heuristics/../search_engines/../search_progress.h \
+ heuristics/../search_engines/../timer.h \
+ heuristics/../search_engines/../heuristics/heuristic.h \
+ heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
+ heuristics/../successor_generator.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/priority_queue.h \
+ heuristics/../heuristics/relaxation_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
+ heuristics/../open_lists/standard_scalar_open_list.h \
+ heuristics/../open_lists/open_list.h \
+ heuristics/../open_lists/../evaluators/evaluator.h \
+ heuristics/../open_lists/../option_parser.h \
+ heuristics/../open_lists/standard_scalar_open_list.cc \
+ heuristics/../open_lists/../evaluators/scalar_evaluator.h \
+ heuristics/../open_lists/open_list_buckets.h \
+ heuristics/../open_lists/open_list_buckets.cc \
+ heuristics/../open_lists/tiebreaking_open_list.h \
+ heuristics/../open_lists/tiebreaking_open_list.cc \
+ heuristics/../open_lists/alternation_open_list.h \
+ heuristics/../open_lists/../plugin.h \
+ heuristics/../open_lists/alternation_open_list.cc \
+ heuristics/../open_lists/pareto_open_list.h \
+ heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
 .obj/heuristics/additive_heuristic.debug.o: heuristics/additive_heuristic.cc \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
@@ -1917,7 +2061,10 @@
  heuristics/../search_engines/../heuristics/heuristic.h \
  heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
  heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h heuristics/../plugin.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/priority_queue.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -1967,7 +2114,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -2017,7 +2165,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -2064,7 +2213,10 @@
  heuristics/../search_engines/../heuristics/heuristic.h \
  heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
  heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h heuristics/../plugin.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/priority_queue.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -2114,7 +2266,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -2163,7 +2316,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -2212,7 +2366,9 @@
  heuristics/../heuristics/additive_heuristic.h \
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -2246,8 +2402,8 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- ext/tree_util.hh ext/tree.hh timer.h resilient_node.h resilient_policy.h \
- print_utils.h
+ heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
+ resilient_node.h resilient_policy.h print_utils.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -2286,6 +2442,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../successor_generator.h search_engines/../deadend.h \
  search_engines/../evaluators/g_evaluator.h \
  search_engines/../evaluators/scalar_evaluator.h \
@@ -2338,6 +2495,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../heuristics/heuristic.h \
  search_engines/../evaluators/pref_evaluator.h search_engines/../plugin.h \
  search_engines/../open_lists/standard_scalar_open_list.h \
@@ -2395,7 +2553,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -2429,7 +2588,7 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- resilient_node.h
+ heuristics/cea_heuristic.h resilient_node.h
 .obj/heuristics/heuristic.profile.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -2463,7 +2622,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h
 .obj/int_packer.profile.o: int_packer.cc int_packer.h
 .obj/search_engines/iterated_search.profile.o: search_engines/iterated_search.cc \
  search_engines/iterated_search.h search_engines/search_engine.h \
@@ -2488,7 +2648,8 @@
  search_engines/../heuristics/additive_heuristic.h \
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
- search_engines/../heuristics/heuristic.h search_engines/../plugin.h \
+ search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h search_engines/../plugin.h \
  search_engines/../open_lists/standard_scalar_open_list.h \
  search_engines/../open_lists/open_list.h \
  search_engines/../open_lists/../evaluators/evaluator.h \
@@ -2536,6 +2697,7 @@
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
  search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
  search_engines/../evaluators/sum_evaluator.h \
  search_engines/../evaluators/combining_evaluator.h \
  search_engines/../evaluators/weighted_evaluator.h \
@@ -2594,7 +2756,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -2629,7 +2792,8 @@
  search_engines/../heuristics/heuristic.h \
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
- heuristics/relaxation_heuristic.h heuristics/heuristic.h
+ heuristics/relaxation_heuristic.h heuristics/heuristic.h \
+ heuristics/cea_heuristic.h
 .obj/option_parser.profile.o: option_parser.cc globals.h option_parser.h \
  option_parser_util.h utilities.h heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
@@ -2649,7 +2813,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- ext/tree_util.hh ext/tree.hh plugin.h \
+ heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh plugin.h \
  open_lists/standard_scalar_open_list.h open_lists/open_list.h \
  open_lists/../evaluators/evaluator.h open_lists/../option_parser.h \
  open_lists/standard_scalar_open_list.cc \
@@ -2711,6 +2875,7 @@
  evaluators/../open_lists/../heuristics/priority_queue.h \
  evaluators/../open_lists/../heuristics/relaxation_heuristic.h \
  evaluators/../open_lists/../heuristics/heuristic.h \
+ evaluators/../open_lists/../heuristics/cea_heuristic.h \
  evaluators/../open_lists/standard_scalar_open_list.cc \
  evaluators/../open_lists/../evaluators/scalar_evaluator.h \
  evaluators/../open_lists/open_list_buckets.h \
@@ -2768,8 +2933,10 @@
  search_engines/../heuristics/additive_heuristic.h \
  search_engines/../heuristics/priority_queue.h \
  search_engines/../heuristics/relaxation_heuristic.h \
- search_engines/../heuristics/heuristic.h search_engines/search_engine.h \
- search_engines/../timer.h search_engines/../deadend.h
+ search_engines/../heuristics/heuristic.h \
+ search_engines/../heuristics/cea_heuristic.h \
+ search_engines/search_engine.h search_engines/../timer.h \
+ search_engines/../deadend.h
 .obj/search_node_info.profile.o: search_node_info.cc search_node_info.h state_id.h \
  operator.h globals.h partial_state.h state.h int_packer.h
 .obj/search_progress.profile.o: search_progress.cc search_progress.h globals.h timer.h \
@@ -2825,7 +2992,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -2878,7 +3046,8 @@
  evaluators/../heuristics/additive_heuristic.h \
  evaluators/../heuristics/priority_queue.h \
  evaluators/../heuristics/relaxation_heuristic.h \
- evaluators/../heuristics/heuristic.h evaluators/../plugin.h \
+ evaluators/../heuristics/heuristic.h \
+ evaluators/../heuristics/cea_heuristic.h evaluators/../plugin.h \
  evaluators/../open_lists/standard_scalar_open_list.h \
  evaluators/../open_lists/open_list.h \
  evaluators/../open_lists/../evaluators/evaluator.h \
@@ -2915,7 +3084,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h ext/json.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h ext/json.h
 .obj/open_lists/alternation_open_list.profile.o: open_lists/alternation_open_list.cc
 .obj/open_lists/open_list_buckets.profile.o: open_lists/open_list_buckets.cc
 .obj/open_lists/pareto_open_list.profile.o: open_lists/pareto_open_list.cc
@@ -2941,7 +3110,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h ext/json.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h ext/json.h
 .obj/regression.profile.o: regression.cc regression.h globals.h state.h int_packer.h \
  state_id.h operator.h partial_state.h search_engines/search_engine.h \
  search_engines/../operator.h search_engines/../search_space.h \
@@ -2960,7 +3129,8 @@
  search_engines/../operator_cost.h policy.h deadend.h \
  successor_generator.h heuristics/additive_heuristic.h \
  heuristics/priority_queue.h heuristics/relaxation_heuristic.h \
- heuristics/heuristic.h heuristics/../partial_state.h
+ heuristics/heuristic.h heuristics/../partial_state.h \
+ heuristics/cea_heuristic.h
 .obj/policy.profile.o: policy.cc operator.h globals.h partial_state.h state.h \
  int_packer.h state_id.h policy.h regression.h \
  search_engines/search_engine.h search_engines/../operator.h \
@@ -2979,7 +3149,7 @@
  search_engines/../operator_cost.h deadend.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h
 .obj/deadend.profile.o: deadend.cc deadend.h regression.h globals.h state.h \
  int_packer.h state_id.h operator.h partial_state.h \
  search_engines/search_engine.h search_engines/../operator.h \
@@ -2998,9 +3168,61 @@
  search_engines/../operator_cost.h policy.h successor_generator.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/../partial_state.h
+ heuristics/../partial_state.h heuristics/cea_heuristic.h
 .obj/partial_state.profile.o: partial_state.cc partial_state.h state.h int_packer.h \
  state_id.h axioms.h globals.h operator.h utilities.h
+.obj/heuristics/lm_cut_heuristic.profile.o: heuristics/lm_cut_heuristic.cc \
+ heuristics/lm_cut_heuristic.h heuristics/heuristic.h \
+ heuristics/../evaluators/scalar_evaluator.h \
+ heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
+ heuristics/../partial_state.h heuristics/../state.h \
+ heuristics/../int_packer.h heuristics/../state_id.h \
+ heuristics/priority_queue.h heuristics/../globals.h \
+ heuristics/../operator.h heuristics/../globals.h \
+ heuristics/../partial_state.h heuristics/../option_parser.h \
+ heuristics/../option_parser_util.h heuristics/../utilities.h \
+ heuristics/../heuristics/heuristic.h heuristics/../policy.h \
+ heuristics/../regression.h heuristics/../operator.h \
+ heuristics/../search_engines/search_engine.h \
+ heuristics/../search_engines/../operator.h \
+ heuristics/../search_engines/../search_space.h \
+ heuristics/../search_engines/../state.h \
+ heuristics/../search_engines/../search_node_info.h \
+ heuristics/../search_engines/../state_id.h \
+ heuristics/../search_engines/../operator.h \
+ heuristics/../search_engines/../operator_cost.h \
+ heuristics/../search_engines/../per_state_information.h \
+ heuristics/../search_engines/../globals.h \
+ heuristics/../search_engines/../segmented_vector.h \
+ heuristics/../search_engines/../utilities.h \
+ heuristics/../search_engines/../state_registry.h \
+ heuristics/../search_engines/../int_packer.h \
+ heuristics/../search_engines/../search_progress.h \
+ heuristics/../search_engines/../timer.h \
+ heuristics/../search_engines/../heuristics/heuristic.h \
+ heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
+ heuristics/../successor_generator.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/priority_queue.h \
+ heuristics/../heuristics/relaxation_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
+ heuristics/../open_lists/standard_scalar_open_list.h \
+ heuristics/../open_lists/open_list.h \
+ heuristics/../open_lists/../evaluators/evaluator.h \
+ heuristics/../open_lists/../option_parser.h \
+ heuristics/../open_lists/standard_scalar_open_list.cc \
+ heuristics/../open_lists/../evaluators/scalar_evaluator.h \
+ heuristics/../open_lists/open_list_buckets.h \
+ heuristics/../open_lists/open_list_buckets.cc \
+ heuristics/../open_lists/tiebreaking_open_list.h \
+ heuristics/../open_lists/tiebreaking_open_list.cc \
+ heuristics/../open_lists/alternation_open_list.h \
+ heuristics/../open_lists/../plugin.h \
+ heuristics/../open_lists/alternation_open_list.cc \
+ heuristics/../open_lists/pareto_open_list.h \
+ heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
 .obj/heuristics/additive_heuristic.profile.o: heuristics/additive_heuristic.cc \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
@@ -3032,7 +3254,10 @@
  heuristics/../search_engines/../heuristics/heuristic.h \
  heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
  heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h heuristics/../plugin.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/priority_queue.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -3082,7 +3307,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -3132,7 +3358,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -3179,7 +3406,10 @@
  heuristics/../search_engines/../heuristics/heuristic.h \
  heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
  heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h heuristics/../plugin.h \
+ heuristics/../heuristics/additive_heuristic.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h \
+ heuristics/../heuristics/priority_queue.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -3229,7 +3459,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -3278,7 +3509,8 @@
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
  heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \
@@ -3327,7 +3559,9 @@
  heuristics/../heuristics/additive_heuristic.h \
  heuristics/../heuristics/priority_queue.h \
  heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/../partial_state.h heuristics/../plugin.h \
+ heuristics/../heuristics/../partial_state.h \
+ heuristics/../heuristics/cea_heuristic.h \
+ heuristics/../heuristics/heuristic.h heuristics/../plugin.h \
  heuristics/../open_lists/standard_scalar_open_list.h \
  heuristics/../open_lists/open_list.h \
  heuristics/../open_lists/../evaluators/evaluator.h \

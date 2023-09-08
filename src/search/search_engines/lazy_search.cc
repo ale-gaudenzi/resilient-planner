@@ -59,10 +59,8 @@ void LazySearch::reset()
     open_list->clear();
 
     for (int i = 0; i < heuristics.size(); i++)
-    {
         heuristics[i]->reset();
-    }
-
+    
     /**
      * For resilient planner
      * Restore the original operators after heuristic reinitialization
@@ -85,9 +83,7 @@ void LazySearch::initialize()
     // Only set up the heuristics on the first go
 
     if (was_initialized)
-    {
         return;
-    }
     else
         was_initialized = true;
 

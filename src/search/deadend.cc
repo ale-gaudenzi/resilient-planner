@@ -9,15 +9,14 @@ bool is_deadend(PartialState &state)
     //  a strong cyclic solution. If we /are/ using forbidden operators
     //  in the computation, it still prunes those that aren't applicable
     //  now, and have no chance of becoming applicable.
-    ((AdditiveHeuristic *)g_heuristic_for_reachability)->compute_forbidden(state);
-    ((AdditiveHeuristic *)g_heuristic_for_reachability)->reset();
+    g_heuristic_for_reachability->compute_forbidden(state);
+    g_heuristic_for_reachability->reset();
     return (-1 == ((AdditiveHeuristic *)g_heuristic_for_reachability)->compute_add_and_ff(state));
 }
 
 bool generalize_deadend(PartialState &state)
 {
     bool debug = false;
-
     // If the whole state isn't recognized as a deadend, then don't bother
     //  looking for a subset of the state
     if (!is_deadend(state))

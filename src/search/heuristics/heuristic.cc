@@ -10,44 +10,55 @@
 using namespace std;
 
 Heuristic::Heuristic(const Options &opts)
-    : cost_type(OperatorCost(opts.get_enum("cost_type"))) {
+    : cost_type(OperatorCost(opts.get_enum("cost_type")))
+{
     heuristic = NOT_INITIALIZED;
 
     is_unit_cost = true;
-    for (size_t i = 0; i < g_operators.size(); ++i) {
-        if (get_adjusted_cost(g_operators[i]) != 1) {
+    for (size_t i = 0; i < g_operators.size(); ++i)
+    {
+        if (get_adjusted_cost(g_operators[i]) != 1)
+        {
             is_unit_cost = false;
             break;
         }
     }
 }
 
-Heuristic::~Heuristic() {
+Heuristic::~Heuristic()
+{
 }
 
-void Heuristic::set_preferred(const Operator *op) {
-    if (!op->is_marked()) {
+void Heuristic::set_preferred(const Operator *op)
+{
+    if (!op->is_marked())
+    {
         op->mark();
         if (0 == forbidden_ops.count(op->nondet_index))
             preferred_operators.push_back(op);
     }
 }
 
-void Heuristic::compute_forbidden(const StateInterface &state) {
-    if (g_detect_deadends) {
+void Heuristic::compute_forbidden(const StateInterface &state)
+{
+    if (g_detect_deadends)
+    {
         forbidden_ops.clear();
         vector<PolicyItem *> reg_items;
         g_deadend_policy->generate_applicable_items(state, reg_items, false, false);
-        for (int i = 0; i < reg_items.size(); i++) {
-            //cout << "Forbidding:" << endl;
-            //cout << ((NondetDeadend*)(reg_items[i]))->op_name << endl;
-            forbidden_ops.insert(((NondetDeadend*)(reg_items[i]))->op_index);
+        for (int i = 0; i < reg_items.size(); i++)
+        {
+            // cout << "Forbidding:" << endl;
+            // cout << ((NondetDeadend*)(reg_items[i]))->op_name << endl;
+            forbidden_ops.insert(((NondetDeadend *)(reg_items[i]))->op_index);
         }
     }
 }
 
-void Heuristic::evaluate(const State &state) {
-    if (heuristic == NOT_INITIALIZED){
+void Heuristic::evaluate(const State &state)
+{
+    if (heuristic == NOT_INITIALIZED)
+    {
         initialize();
     }
 
@@ -62,10 +73,11 @@ void Heuristic::evaluate(const State &state) {
 
     for (int i = 0; i < preferred_operators.size(); i++)
         preferred_operators[i]->unmark();
-    
+
     assert(heuristic == DEAD_END || heuristic >= 0);
 
-    if (heuristic == DEAD_END) {
+    if (heuristic == DEAD_END)
+    {
         // It is ok to have preferred operators in dead-end states.
         // This allows a heuristic to mark preferred operators on-the-fly,
         // selecting the first ones before it is clear that all goals
@@ -74,7 +86,8 @@ void Heuristic::evaluate(const State &state) {
     }
 
 #ifndef NDEBUG
-    if (heuristic != DEAD_END) {
+    if (heuristic != DEAD_END)
+    {
         for (int i = 0; i < preferred_operators.size(); i++)
             assert(preferred_operators[i]->is_applicable(state));
     }
@@ -82,11 +95,13 @@ void Heuristic::evaluate(const State &state) {
     evaluator_value = heuristic;
 }
 
-bool Heuristic::is_dead_end() const {
+bool Heuristic::is_dead_end() const
+{
     return evaluator_value == DEAD_END;
 }
 
-int Heuristic::get_heuristic() {
+int Heuristic::get_heuristic()
+{
     // The -1 value for dead ends is an implementation detail which is
     // not supposed to leak. Thus, calling this for dead ends is an
     // error. Call "is_dead_end()" first.
@@ -110,7 +125,8 @@ int Heuristic::get_heuristic() {
     return heuristic;
 }
 
-void Heuristic::get_preferred_operators(std::vector<const Operator *> &result) {
+void Heuristic::get_preferred_operators(std::vector<const Operator *> &result)
+{
     assert(heuristic >= 0);
     result.insert(result.end(),
                   preferred_operators.begin(),
@@ -118,38 +134,46 @@ void Heuristic::get_preferred_operators(std::vector<const Operator *> &result) {
 }
 
 bool Heuristic::reach_state(const State & /*parent_state*/,
-                            const Operator & /*op*/, const State & /*state*/) {
+                            const Operator & /*op*/, const State & /*state*/)
+{
     return false;
 }
 
-int Heuristic::get_value() const {
+int Heuristic::get_value() const
+{
     return evaluator_value;
 }
 
-void Heuristic::evaluate(int, bool) {
+void Heuristic::evaluate(int, bool)
+{
     return;
     // if this is called, evaluate(const State &state) or set_evaluator_value(int val)
     // should already have been called
 }
 
-bool Heuristic::dead_end_is_reliable() const {
+bool Heuristic::dead_end_is_reliable() const
+{
     return dead_ends_are_reliable();
 }
 
-void Heuristic::set_evaluator_value(int val) {
+void Heuristic::set_evaluator_value(int val)
+{
     evaluator_value = val;
 }
 
-int Heuristic::get_adjusted_cost(const Operator &op) const {
+int Heuristic::get_adjusted_cost(const Operator &op) const
+{
     return get_adjusted_action_cost(op, cost_type);
 }
 
-void Heuristic::add_options_to_parser(OptionParser &parser) {
+void Heuristic::add_options_to_parser(OptionParser &parser)
+{
     ::add_cost_type_option_to_parser(parser);
 }
 
-//this solution to get default values seems not optimal:
-Options Heuristic::default_options() {
+// this solution to get default values seems not optimal:
+Options Heuristic::default_options()
+{
     Options opts = Options();
     opts.set<int>("cost_type", 0);
     return opts;

@@ -10,6 +10,7 @@
 #include "policy.h"
 #include "successor_generator.h"
 #include "heuristics/additive_heuristic.h"
+#include "heuristics/cea_heuristic.h"
 
 void update_deadends(vector< DeadendTuple * > &failed_states);
 

@@ -38,7 +38,8 @@ class Options;
    more operators.
 */
 
-enum PropositionStatus {
+enum PropositionStatus
+{
     UNREACHED = 0,
     REACHED = 1,
     GOAL_ZONE = 2,
@@ -57,7 +58,8 @@ const int COST_MULTIPLIER = 1;
    see the effect, though.
  */
 
-struct RelaxedOperator {
+struct RelaxedOperator
+{
     const Operator *op;
     std::vector<RelaxedProposition *> precondition;
     std::vector<RelaxedProposition *> effects;
@@ -70,13 +72,15 @@ struct RelaxedOperator {
     RelaxedOperator(const std::vector<RelaxedProposition *> &pre,
                     const std::vector<RelaxedProposition *> &eff,
                     const Operator *the_op, int base)
-        : op(the_op), precondition(pre), effects(eff), base_cost(base) {
+        : op(the_op), precondition(pre), effects(eff), base_cost(base)
+    {
     }
 
     inline void update_h_max_supporter();
 };
 
-struct RelaxedProposition {
+struct RelaxedProposition
+{
     std::vector<RelaxedOperator *> precondition_of;
     std::vector<RelaxedOperator *> effect_of;
 
@@ -100,11 +104,13 @@ struct RelaxedProposition {
        without explicit depth tie-breaking, then decide.
     */
 
-    RelaxedProposition() {
+    RelaxedProposition()
+    {
     }
 };
 
-class LandmarkCutHeuristic : public Heuristic {
+class LandmarkCutHeuristic : public Heuristic
+{
     std::vector<RelaxedOperator> relaxed_operators;
     std::vector<std::vector<RelaxedProposition> > propositions;
     RelaxedProposition artificial_precondition;
@@ -125,9 +131,11 @@ class LandmarkCutHeuristic : public Heuristic {
     void second_exploration(const State &state, std::vector<RelaxedProposition *> &queue,
                             std::vector<RelaxedOperator *> &cut);
 
-    void enqueue_if_necessary(RelaxedProposition *prop, int cost) {
+    void enqueue_if_necessary(RelaxedProposition *prop, int cost)
+    {
         assert(cost >= 0);
-        if (prop->status == UNREACHED || prop->h_max_cost > cost) {
+        if (prop->status == UNREACHED || prop->h_max_cost > cost)
+        {
             prop->status = REACHED;
             prop->h_max_cost = cost;
             priority_queue.push(cost, prop);
@@ -136,12 +144,14 @@ class LandmarkCutHeuristic : public Heuristic {
 
     void mark_goal_plateau(RelaxedProposition *subgoal);
     void validate_h_max() const;
+
 public:
     LandmarkCutHeuristic(const Options &opts);
     virtual ~LandmarkCutHeuristic();
 };
 
-inline void RelaxedOperator::update_h_max_supporter() {
+inline void RelaxedOperator::update_h_max_supporter()
+{
     assert(!unsatisfied_preconditions);
     for (int i = 0; i < precondition.size(); i++)
         if (precondition[i]->h_max_cost > h_max_supporter->h_max_cost)

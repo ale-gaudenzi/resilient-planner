@@ -42,7 +42,6 @@ public:
     bool found_solution() const;
     const Plan &get_plan() const;
     void search();
-    void search_with_forbidden(set<Operator> forbidden_op);
 
     SearchProgress get_search_progress() const {return search_progress; }
     void set_bound(int b) {bound = b; }
