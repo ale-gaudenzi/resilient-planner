@@ -35,7 +35,7 @@ void LandmarkCutHeuristic::initialize()
     artificial_goal = RelaxedProposition();
 
     // Build propositions.
-    num_propositions = 2; //artificial goal and artificial precondition
+    num_propositions = 2; // artificial goal and artificial precondition
     propositions.resize(g_variable_domain.size());
     for (int var = 0; var < g_variable_domain.size(); var++)
     {
@@ -46,9 +46,9 @@ void LandmarkCutHeuristic::initialize()
 
     // Build relaxed operators for operators and axioms, ignoring forbidden for resilient
     for (int i = 0; i < g_operators.size(); i++)
-        if (g_current_forbidden_ops.find(g_operators[i]) == g_current_forbidden_ops.end()) 
+        if (g_current_forbidden_ops.find(g_operators[i]) == g_current_forbidden_ops.end())
             build_relaxed_operator(g_operators[i]);
-    
+
     // Build artificial goal proposition and operator.
     vector<RelaxedProposition *> goal_op_pre, goal_op_eff;
     for (int i = 0; i < g_goal.size(); i++)
@@ -105,13 +105,11 @@ void LandmarkCutHeuristic::setup_exploration_queue()
     priority_queue.clear();
 
     for (int var = 0; var < propositions.size(); var++)
-    {
         for (int value = 0; value < propositions[var].size(); value++)
         {
             RelaxedProposition &prop = propositions[var][value];
             prop.status = UNREACHED;
         }
-    }
 
     artificial_goal.status = UNREACHED;
     artificial_precondition.status = UNREACHED;
@@ -302,45 +300,6 @@ void LandmarkCutHeuristic::mark_goal_plateau(RelaxedProposition *subgoal)
     }
 }
 
-void LandmarkCutHeuristic::validate_h_max() const
-{
-#ifndef NDEBUG
-    // Using conditional compilation to avoid complaints about unused
-    // variables when using NDEBUG. This whole code does nothing useful
-    // when assertions are switched off anyway.
-    for (int i = 0; i < relaxed_operators.size(); i++)
-    {
-        const RelaxedOperator *op = &relaxed_operators[i];
-        const vector<RelaxedProposition *> &prec = op->precondition;
-        if (op->unsatisfied_preconditions)
-        {
-            bool reachable = true;
-            for (int j = 0; j < prec.size(); j++)
-            {
-                if (prec[j]->status == UNREACHED)
-                {
-                    reachable = false;
-                    break;
-                }
-            }
-            assert(!reachable);
-            assert(!op->h_max_supporter);
-        }
-        else
-        {
-            assert(op->h_max_supporter);
-            int h_max_cost = op->h_max_supporter_cost;
-            assert(h_max_cost == op->h_max_supporter->h_max_cost);
-            for (int j = 0; j < prec.size(); j++)
-            {
-                assert(prec[j]->status != UNREACHED);
-                assert(prec[j]->h_max_cost <= h_max_cost);
-            }
-        }
-    }
-#endif
-}
-
 int LandmarkCutHeuristic::compute_heuristic(const State &state)
 {
     // TODO: Possibly put back in some kind of preferred operator mechanism.
@@ -350,17 +309,17 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
         op.cost = op.base_cost * COST_MULTIPLIER;
     }
 
-    // cout << "*" << flush;
     int total_cost = 0;
 
     // The following two variables could be declared inside the loop
     // ("second_exploration_queue" even inside second_exploration),
     // but having them here saves reallocations and hence provides a
     // measurable speed boost.
+
     vector<RelaxedOperator *> cut;
     vector<RelaxedProposition *> second_exploration_queue;
+
     first_exploration(state);
-    // validate_h_max();  // too expensive to use even in regular debug mode
     if (artificial_goal.status == UNREACHED)
         return DEAD_END;
 
@@ -368,49 +327,18 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
     while (artificial_goal.h_max_cost != 0)
     {
         num_iterations++;
-        // cout << "h_max = " << artificial_goal.h_max_cost << "..." << endl;
-        // cout << "total_cost = " << total_cost << "..." << endl;
         mark_goal_plateau(&artificial_goal);
         assert(cut.empty());
         second_exploration(state, second_exploration_queue, cut);
         assert(!cut.empty());
         int cut_cost = numeric_limits<int>::max();
         for (int i = 0; i < cut.size(); i++)
-        {
-            cut_cost = min(cut_cost, cut[i]->cost);
-            if (COST_MULTIPLIER > 1)
-            {
-                /* We're using this "if" here because COST_MULTIPLIER
-                   is currently a global constant and usually 1, which
-                   allows the optimizer to get rid of this additional
-                   minimization (which is always correct, but not
-                   necessary if COST_MULTIPLIER == 1.
-
-                   If COST_MULTIPLIER turns into an option, this code
-                   should be changed. I would assume that the savings
-                   by the "if" are negligible anyway, but this should
-                   be tested.
-
-                   The whole cut cost computation could also be made
-                   more efficient in the unit-cost case, where all
-                   cuts have cost 1 and the cost decrement could be
-                   moved directly to the place where the actions for
-                   the cut are collected; indeed, we would not need to
-                   collect the cut in a vector at all. But again, I
-                   doubt this would have a huge impact, and it would
-                   only be applicable in the unit-cost (or zero- and
-                   unit-cost) case.
-                */
-                cut_cost = min(cut_cost, cut[i]->base_cost);
-            }
-        }
+            cut_cost = min(cut_cost, cut[i]->base_cost);
         for (int i = 0; i < cut.size(); i++)
             cut[i]->cost -= cut_cost;
-        // cout << "{" << cut_cost << "}" << flush;
         total_cost += cut_cost;
 
         first_exploration_incremental(cut);
-        // validate_h_max();  // too expensive to use even in regular debug mode
         // TODO: Need better name for all explorations; e.g. this could
         //       be "recompute_h_max"; second_exploration could be
         //       "mark_zones" or whatever.
@@ -422,18 +350,31 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
         //       need a per-round reinitialization.
         for (int var = 0; var < propositions.size(); var++)
         {
+            //cout << endl;
+            //cout << "proposition # " << var << endl;
             for (int value = 0; value < propositions[var].size(); value++)
             {
                 RelaxedProposition &prop = propositions[var][value];
-                if (prop.status == GOAL_ZONE || prop.status == BEFORE_GOAL_ZONE)
+                if (prop.status == GOAL_ZONE)
+                {
+                    //for (vector<RelaxedOperator *>::iterator it = prop.effect_of.begin(); it != prop.effect_of.end(); ++it)
+                    //    cout << (*it)->op->get_nondet_name() << endl;
+                    if(prop.effect_of.size() < g_current_faults){
+                        cout << "----> PRUNING! PROBLEMA NON RESILIENTE " << endl;
+                        cout << "time " << g_timer << endl;
+                    }
+
                     prop.status = REACHED;
+                }
+                else if (prop.status == BEFORE_GOAL_ZONE)
+                {
+                    prop.status = REACHED;
+                }
             }
         }
         artificial_goal.status = REACHED;
         artificial_precondition.status = REACHED;
     }
-    // cout << "[" << total_cost << "]" << flush;
-    // cout << "**************************" << endl;
     return (total_cost + COST_MULTIPLIER - 1) / COST_MULTIPLIER;
 }
 

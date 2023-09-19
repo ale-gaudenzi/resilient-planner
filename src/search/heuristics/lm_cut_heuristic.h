@@ -143,7 +143,6 @@ class LandmarkCutHeuristic : public Heuristic
     }
 
     void mark_goal_plateau(RelaxedProposition *subgoal);
-    void validate_h_max() const;
 
 public:
     LandmarkCutHeuristic(const Options &opts);

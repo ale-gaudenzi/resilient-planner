@@ -24,11 +24,10 @@ RelaxationHeuristic::~RelaxationHeuristic()
 void RelaxationHeuristic::reset()
 {
     Heuristic::reset();
+
     // Rebuild the goal propositions (there may be a new goal)
     for (int i = 0; i < goal_propositions.size(); i++)
-    {
         goal_propositions[i]->is_goal = false;
-    }
 
     goal_propositions.clear();
 
@@ -43,9 +42,9 @@ void RelaxationHeuristic::reset()
 // initialization
 void RelaxationHeuristic::initialize()
 {
-    /**
-     * For resilient, we need to reset the heuristic at the beginning of each search
-     */
+    // for resilient
+    // we need to reset the heuristic at the beginning of each search
+    // so we clear everything at every initialize call    
     unary_operators.clear();
     propositions.clear();
     goal_propositions.clear();
@@ -54,10 +53,8 @@ void RelaxationHeuristic::initialize()
     int prop_id = 0;
     propositions.resize(g_variable_domain.size());
     for (int var = 0; var < g_variable_domain.size(); var++)
-    {
         for (int value = 0; value < g_variable_domain[var]; value++)
             propositions[var].push_back(Proposition(prop_id++, var, value));
-    }
 
     // Build goal propositions.
     for (int i = 0; i < g_goal.size(); i++)
@@ -73,10 +70,7 @@ void RelaxationHeuristic::initialize()
     for (int i = 0; i < g_axioms.size(); i++)
         build_unary_operators(g_axioms[i], -1);
 
-    // Simplify unary operators.
-    // cout << " !! Warning: Disabling the simplification of unary operators !!" << endl;
-    // cout << " !!           to keep the non-deterministic planning sound.  !!" << endl;
-    // simplify();
+    simplify();
 
     // Cross-reference unary operators.
     for (int i = 0; i < unary_operators.size(); i++)
@@ -93,12 +87,14 @@ void RelaxationHeuristic::build_unary_operators(const Operator &op, int op_no)
     const vector<Prevail> &prevail = op.get_prevail();
     const vector<PrePost> &pre_post = op.get_pre_post();
     vector<Proposition *> precondition;
+
     for (int i = 0; i < prevail.size(); i++)
     {
         assert(prevail[i].var >= 0 && prevail[i].var < g_variable_domain.size());
         assert(prevail[i].prev >= 0 && prevail[i].prev < g_variable_domain[prevail[i].var]);
         precondition.push_back(&propositions[prevail[i].var][prevail[i].prev]);
     }
+
     for (int i = 0; i < pre_post.size(); i++)
     {
         if (pre_post[i].pre != -1)
@@ -108,6 +104,7 @@ void RelaxationHeuristic::build_unary_operators(const Operator &op, int op_no)
             precondition.push_back(&propositions[pre_post[i].var][pre_post[i].pre]);
         }
     }
+
     for (int i = 0; i < pre_post.size(); i++)
     {
         assert(pre_post[i].var >= 0 && pre_post[i].var < g_variable_domain.size());

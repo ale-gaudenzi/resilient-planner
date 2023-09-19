@@ -11,7 +11,8 @@ class State;
 class Proposition;
 class UnaryOperator;
 
-struct UnaryOperator {
+struct UnaryOperator
+{
     int operator_no; // -1 for axioms; index into g_operators otherwise
     std::vector<Proposition *> precondition;
     Proposition *effect;
@@ -26,7 +27,8 @@ struct UnaryOperator {
           base_cost(base), unsatisfied_preconditions(0), cost(0) {}
 };
 
-struct Proposition {
+struct Proposition
+{
     bool is_goal;
     int id, var, val;
     std::vector<UnaryOperator *> precondition_of;
@@ -35,7 +37,8 @@ struct Proposition {
     UnaryOperator *reached_by;
     bool marked; // used when computing preferred operators for h^add and h^FF
 
-    Proposition(int id_, int var_, int val_) {
+    Proposition(int id_, int var_, int val_)
+    {
         id = id_;
         var = var_;
         val = val_;
@@ -46,9 +49,11 @@ struct Proposition {
     }
 };
 
-class RelaxationHeuristic : public Heuristic {
+class RelaxationHeuristic : public Heuristic
+{
     void build_unary_operators(const Operator &op, int operator_no);
     void simplify();
+
 protected:
     std::vector<UnaryOperator> unary_operators;
     std::vector<std::vector<Proposition> > propositions;
@@ -56,6 +61,7 @@ protected:
 
     virtual void initialize();
     virtual int compute_heuristic(const State &state) = 0;
+
 public:
     RelaxationHeuristic(const Options &options);
     virtual ~RelaxationHeuristic();

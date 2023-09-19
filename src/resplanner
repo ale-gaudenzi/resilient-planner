@@ -38,12 +38,6 @@ if [[ "$#" -lt 2 ]]; then
     usage
 fi
 
-IPC="ipc"
-if [[ "$1" == "debug" ]]; then
-    IPC="debug $IPC"
-    shift
-fi
-
 echo "1. Running translator"
 if [[ -e "$2" ]]; then
     echo "Second argument is a file name: use two translator arguments."
@@ -61,7 +55,7 @@ $TIME --append "$PREPROCESS" < output.sas
 echo
 
 echo "3. Running search"
-echo "$SEARCH" "$IPC" policy-repair < output "$@"
-"$SEARCH" $IPC policy-repair < output "$@"
+echo "$SEARCH" policy-repair < output "$@"
+"$SEARCH" policy-repair < output "$@"
 echo
 

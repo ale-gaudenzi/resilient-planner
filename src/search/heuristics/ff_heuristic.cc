@@ -29,7 +29,6 @@ void FFHeuristic::reset()
     relaxed_plan.resize(g_operators.size(), false);
 }
 
-// initialization
 void FFHeuristic::initialize()
 {
     if (g_verbose)
@@ -42,15 +41,19 @@ void FFHeuristic::mark_preferred_operators_and_relaxed_plan(
     const State &state, Proposition *goal)
 {
     if (!goal->marked)
-    { // Only consider each subgoal once.
+    {
+        // Only consider each subgoal once.
         goal->marked = true;
         UnaryOperator *unary_op = goal->reached_by;
         if (unary_op)
-        { // We have not yet chained back to a start node.
+        {
+            // We have not yet chained back to a start node.
             for (int i = 0; i < unary_op->precondition.size(); i++)
                 mark_preferred_operators_and_relaxed_plan(
                     state, unary_op->precondition[i]);
+
             int operator_no = unary_op->operator_no;
+
             if (operator_no != -1)
             {
                 // This is not an axiom.
@@ -73,9 +76,7 @@ void FFHeuristic::mark_preferred_operators_and_relaxed_plan(
 
 int FFHeuristic::compute_heuristic(const State &state)
 {
-    if (g_detect_deadends &&
-        (g_deadend_states->check_match(state) ||
-         g_temporary_deadends->check_match(state)))
+    if (g_detect_deadends && (g_deadend_states->check_match(state) || g_temporary_deadends->check_match(state)))
         return DEAD_END;
 
     int h_add = compute_add_and_ff(state);
@@ -86,9 +87,7 @@ int FFHeuristic::compute_heuristic(const State &state)
             PartialState *de = new PartialState(state);
             if (g_generalize_deadends)
                 generalize_deadend(*de);
-
             g_temporary_deadends->add_item(new NondetDeadend(de));
-
             // HAZ: For now, we forget about trying to record the context
             //      for the deadend. This means that we may not have any
             //      forbidden state-action pairs created.

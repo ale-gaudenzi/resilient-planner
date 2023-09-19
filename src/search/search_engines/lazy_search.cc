@@ -151,10 +151,10 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
         }
 
         for (int i = 0; i < all_operators.size(); i++)
+        {
             if (!all_operators[i]->is_marked())
-            {
                 ops.push_back(all_operators[i]);
-            }
+        }
     }
     else
     {
@@ -257,6 +257,7 @@ int LazySearch::step()
         search_progress.inc_evaluations(heuristics.size());
         open_list->evaluate(current_g, false);
 
+
         if (!open_list->is_dead_end())
         {
             // We use the value of the first heuristic, because SearchSpace only
@@ -268,13 +269,11 @@ int LazySearch::step()
                 node.reopen(parent_node, current_operator);
                 search_progress.inc_reopened();
             }
-
             else if (current_predecessor_id == StateID::no_state)
             {
                 node.open_initial(h);
                 search_progress.get_initial_h_values();
             }
-
             else
             {
                 node.open(h, parent_node, current_operator);
@@ -283,14 +282,11 @@ int LazySearch::step()
             node.close();
 
             if (check_goal_and_set_plan(current_state))
-            {
                 return SOLVED;
-            }
-
+        
             if (search_progress.check_h_progress(current_g))
-            {
                 reward_progress();
-            }
+            
             generate_successors();
             search_progress.inc_expanded();
         }

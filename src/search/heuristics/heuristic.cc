@@ -47,20 +47,14 @@ void Heuristic::compute_forbidden(const StateInterface &state)
         vector<PolicyItem *> reg_items;
         g_deadend_policy->generate_applicable_items(state, reg_items, false, false);
         for (int i = 0; i < reg_items.size(); i++)
-        {
-            // cout << "Forbidding:" << endl;
-            // cout << ((NondetDeadend*)(reg_items[i]))->op_name << endl;
             forbidden_ops.insert(((NondetDeadend *)(reg_items[i]))->op_index);
-        }
     }
 }
 
 void Heuristic::evaluate(const State &state)
 {
     if (heuristic == NOT_INITIALIZED)
-    {
         initialize();
-    }
 
     preferred_operators.clear();
 
@@ -87,11 +81,10 @@ void Heuristic::evaluate(const State &state)
 
 #ifndef NDEBUG
     if (heuristic != DEAD_END)
-    {
         for (int i = 0; i < preferred_operators.size(); i++)
             assert(preferred_operators[i]->is_applicable(state));
-    }
 #endif
+
     evaluator_value = heuristic;
 }
 

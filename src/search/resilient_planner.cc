@@ -116,6 +116,7 @@ int main(int argc, const char **argv)
     while (!open.empty())
     {
         g_iteration++;
+        
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
 
@@ -338,6 +339,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 { 
     PartialState current_state = PartialState(current_node.get_state());
     
+    // Reset initial state to the one contained in the node
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
         g_initial_state_data[i] = current_state[i];
@@ -411,7 +413,6 @@ std::list<Operator> extract_solution()
 /// @param node Deadend node to insert in the list non-resilient nodes.
 void update_non_resilient_nodes(ResilientNode node)
 {
-    // non_resilient_nodes.insert(node);
     non_resilient_nodes.insert(make_pair(node.get_id(), node));
     if (node.get_deactivated_op().size() != 0)
     {
@@ -430,7 +431,6 @@ void update_non_resilient_nodes(ResilientNode node)
         int set_size = node.get_deactivated_op().size();
         int pow_set_size = pow(2, set_size);
         int counter, j;
-
         for (counter = 0; counter < pow_set_size; counter++)
         {
             set<Operator> current;
@@ -446,7 +446,6 @@ void update_non_resilient_nodes(ResilientNode node)
             set<Operator> subset = subsets[i];
             int k1 = node.get_k() + (node.get_deactivated_op().size() - subset.size());
             ResilientNode to_add = ResilientNode(node.get_state(), k1, subset);
-            // non_resilient_nodes.insert(to_add);
             non_resilient_nodes.insert(make_pair(to_add.get_id(), to_add));
         }
     }

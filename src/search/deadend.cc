@@ -157,7 +157,6 @@ void update_deadends(vector<DeadendTuple *> &failed_states)
 
 void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterface &_curr, vector<const Operator *> &ops)
 {
-    //bool verbose = false;
     if (g_detect_deadends && g_deadend_policy)
     {
         PartialState curr = PartialState(_curr);
@@ -184,7 +183,6 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
             current_forbidden->generate_applicable_items(curr, reg_items, false, false);
         }
         
-
         set<int> forbidden;
         for (int i = 0; i < reg_items.size(); i++)
         {
@@ -204,6 +202,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
             /** For resilient planner:
              * we don't push back the operator if it is forbidden (= found in current node V)
              */
+            
             if (0 == forbidden.count(orig_ops[i]->nondet_index) && g_current_forbidden_ops.find(*orig_ops[i]) == g_current_forbidden_ops.end())
             {
                 ops.push_back(orig_ops[i]);   

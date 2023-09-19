@@ -70,11 +70,19 @@ void SearchEngine::set_plan(const Plan &p)
 
 void SearchEngine::search()
 {
+    bool verbose_step = false;
+    int i = 0;
+
     initialize();
     Timer timer;
 
+    if (verbose_step)
+        cout << "--> STEP # " << i++ << endl;
+    
     while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
     {
+        if (verbose_step)
+            cout << "--> STEP # " << i++ << endl;
     };
 
     if (g_timer_jit() < g_jic_limit)
