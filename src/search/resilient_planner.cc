@@ -116,7 +116,7 @@ int main(int argc, const char **argv)
     while (!open.empty())
     {
         g_iteration++;
-        
+
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
 
@@ -154,7 +154,7 @@ int main(int argc, const char **argv)
                 // Replan function return true if successfull, the plan is stored in engine object
                 if (!replan(current_node, engine))
                 {
-                    if(g_verbose)
+                    if (g_verbose)
                         cout << "\nFailed replan." << endl;
                     // If replanning fails, add current node to deadend and not resilient sets
                     add_non_resilient_deadends(current_node); // S downarrow
@@ -336,9 +336,9 @@ bool resiliency_check(ResilientNode node)
 /// @param engine The search engine originally created.
 /// @return True if the replan succeds, false otherwise.
 bool replan(ResilientNode current_node, SearchEngine *engine)
-{ 
+{
     PartialState current_state = PartialState(current_node.get_state());
-    
+
     // Reset initial state to the one contained in the node
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
@@ -355,7 +355,13 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     if (g_dump_memory_replan_progression)
         cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
 
-    return engine->found_solution();
+    if (g_pruning_stop)
+    {
+        g_pruning_stop = false;
+        return false;
+    }
+    else
+        return engine->found_solution();
 }
 
 /// @brief Extract the final resilient plan, starting by the initial state
@@ -466,7 +472,7 @@ void add_non_resilient_deadends(ResilientNode node)
     // Removed generalization in order to use other heuristics than FF and ADD.
     // Need to investigate further if it's useful for performance
     // and it will be worth to generalize to other heuristics.
-    // generalize_deadend(*de_state); 
+    // generalize_deadend(*de_state);
 
     vector<PolicyItem *> reg_items;
     g_regressable_ops->generate_applicable_items(*de_state, reg_items, true, g_regress_only_relevant_deadends);

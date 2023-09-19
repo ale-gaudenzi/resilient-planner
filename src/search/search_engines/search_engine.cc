@@ -79,7 +79,7 @@ void SearchEngine::search()
     if (verbose_step)
         cout << "--> STEP # " << i++ << endl;
     
-    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
+    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit) && !g_pruning_stop)
     {
         if (verbose_step)
             cout << "--> STEP # " << i++ << endl;

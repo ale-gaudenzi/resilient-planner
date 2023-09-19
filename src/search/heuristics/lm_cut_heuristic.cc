@@ -350,18 +350,16 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
         //       need a per-round reinitialization.
         for (int var = 0; var < propositions.size(); var++)
         {
-            //cout << endl;
-            //cout << "proposition # " << var << endl;
             for (int value = 0; value < propositions[var].size(); value++)
             {
                 RelaxedProposition &prop = propositions[var][value];
                 if (prop.status == GOAL_ZONE)
                 {
-                    //for (vector<RelaxedOperator *>::iterator it = prop.effect_of.begin(); it != prop.effect_of.end(); ++it)
-                    //    cout << (*it)->op->get_nondet_name() << endl;
-                    if(prop.effect_of.size() < g_current_faults){
-                        cout << "----> PRUNING! PROBLEMA NON RESILIENTE " << endl;
-                        cout << "time " << g_timer << endl;
+                    // For resilient planner
+                    if (prop.effect_of.size() < g_current_faults)
+                    {
+                        cout << "----> PRUNING! STATO NON RESILIENTE " << endl;
+                        g_pruning_stop = true;
                     }
 
                     prop.status = REACHED;
