@@ -40,7 +40,11 @@ void LandmarkCutHeuristic::initialize()
     for (int var = 0; var < g_variable_domain.size(); var++)
     {
         for (int value = 0; value < g_variable_domain[var]; value++)
-            propositions[var].push_back(RelaxedProposition());
+        {
+            RelaxedProposition prop = RelaxedProposition();
+            prop.name = g_fact_names[var][value];
+            propositions[var].push_back(prop);
+        }
         num_propositions += g_variable_domain[var];
     }
 
@@ -328,14 +332,19 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
     {
         num_iterations++;
         mark_goal_plateau(&artificial_goal);
+
         assert(cut.empty());
         second_exploration(state, second_exploration_queue, cut);
         assert(!cut.empty());
+
         int cut_cost = numeric_limits<int>::max();
+
         for (int i = 0; i < cut.size(); i++)
             cut_cost = min(cut_cost, cut[i]->base_cost);
+
         for (int i = 0; i < cut.size(); i++)
             cut[i]->cost -= cut_cost;
+
         total_cost += cut_cost;
 
         first_exploration_incremental(cut);
@@ -353,27 +362,35 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
             for (int value = 0; value < propositions[var].size(); value++)
             {
                 RelaxedProposition &prop = propositions[var][value];
-                if (prop.status == GOAL_ZONE)
-                {
-                    // For resilient planner
-                    if (prop.effect_of.size() < g_current_faults)
-                    {
-                        cout << "----> PRUNING! STATO NON RESILIENTE " << endl;
-                        g_pruning_stop = true;
-                    }
+                if (prop.status == GOAL_ZONE || prop.status == BEFORE_GOAL_ZONE)
+                    prop.status = REACHED;
 
-                    prop.status = REACHED;
-                }
-                else if (prop.status == BEFORE_GOAL_ZONE)
-                {
-                    prop.status = REACHED;
-                }
+                check_resiliency_prop(var, value, prop);
             }
         }
         artificial_goal.status = REACHED;
         artificial_precondition.status = REACHED;
     }
     return (total_cost + COST_MULTIPLIER - 1) / COST_MULTIPLIER;
+}
+
+/// @brief Check if the proposition need to be pruned because make impossible the resiliency of the goal.
+/// If the proposition is a goal and it is not in the initial state, then it is necessary to check if the
+/// number of faults is greater than the number of effects of the proposition, setting the global variable
+/// g_pruning_prop to true if it is the case.
+void LandmarkCutHeuristic::check_resiliency_prop(int var, int value, RelaxedProposition &prop)
+{
+    if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && g_initial_state_data[var] != value)
+    {
+        if (g_current_faults >= prop.effect_of.size())
+        {
+            cout << "\nK = " << g_current_faults << endl;
+            cout << prop.name << endl;
+            for (int i = 0; i < prop.effect_of.size(); i++)
+                cout << "   " << (prop.effect_of[i])->op->get_nondet_name() << endl;
+            g_pruning_prop = true;
+        }
+    }
 }
 
 /* TODO:

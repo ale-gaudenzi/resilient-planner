@@ -77,12 +77,12 @@ void SearchEngine::search()
     Timer timer;
 
     if (verbose_step)
-        cout << "--> STEP # " << i++ << endl;
+        cout << "STEP # " << i++ << endl;
     
-    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit) && !g_pruning_stop)
+    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit) && !g_pruning_prop)// && i < 1)
     {
         if (verbose_step)
-            cout << "--> STEP # " << i++ << endl;
+            cout << "STEP # " << i++ << endl;
     };
 
     if (g_timer_jit() < g_jic_limit)

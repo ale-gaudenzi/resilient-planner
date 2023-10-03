@@ -187,7 +187,7 @@ extern bool g_dump_branches;
 extern bool g_dump_resilient_policy;
 extern bool g_dump_resilient_nodes;
 extern bool g_dump_memory_replan_progression;
-extern bool g_pruning_stop;
+extern bool g_pruning_prop;
 
 extern long g_mem_initial;
 extern long g_mem_initial_policy_search;

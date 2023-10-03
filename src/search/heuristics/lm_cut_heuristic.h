@@ -83,7 +83,7 @@ struct RelaxedProposition
 {
     std::vector<RelaxedOperator *> precondition_of;
     std::vector<RelaxedOperator *> effect_of;
-
+    string name; // for debugging
     PropositionStatus status;
     int h_max_cost;
     /* TODO: Also add the rpg depth? The Python implementation used
@@ -143,6 +143,7 @@ class LandmarkCutHeuristic : public Heuristic
     }
 
     void mark_goal_plateau(RelaxedProposition *subgoal);
+    void check_resiliency_prop(int var, int value, RelaxedProposition &prop);
 
 public:
     LandmarkCutHeuristic(const Options &opts);

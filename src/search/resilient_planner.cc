@@ -116,7 +116,7 @@ int main(int argc, const char **argv)
     while (!open.empty())
     {
         g_iteration++;
-
+                
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
 
@@ -355,9 +355,9 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
     if (g_dump_memory_replan_progression)
         cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
 
-    if (g_pruning_stop)
+    if (g_pruning_prop)
     {
-        g_pruning_stop = false;
+        g_pruning_prop = false;
         return false;
     }
     else
