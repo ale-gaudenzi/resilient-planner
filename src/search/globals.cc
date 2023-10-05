@@ -604,7 +604,6 @@ bool g_dump_branches;
 bool g_dump_resilient_policy = false;
 bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;
-bool g_pruning_prop = false;
 
 int g_max_iterations = -1;
 

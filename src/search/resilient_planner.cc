@@ -354,14 +354,8 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 
     if (g_dump_memory_replan_progression)
         cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
-
-    if (g_pruning_prop)
-    {
-        g_pruning_prop = false;
-        return false;
-    }
-    else
-        return engine->found_solution();
+ 
+    return engine->found_solution();
 }
 
 /// @brief Extract the final resilient plan, starting by the initial state

@@ -48,10 +48,12 @@ void LandmarkCutHeuristic::initialize()
         num_propositions += g_variable_domain[var];
     }
 
-    // Build relaxed operators for operators and axioms, ignoring forbidden for resilient
+    // Build relaxed operators asserting that forbidden operators aren't in g_operators
     for (int i = 0; i < g_operators.size(); i++)
-        if (g_current_forbidden_ops.find(g_operators[i]) == g_current_forbidden_ops.end())
-            build_relaxed_operator(g_operators[i]);
+    {
+        assert(g_current_forbidden_ops.find(g_operators[i]) == g_current_forbidden_ops.end());
+        build_relaxed_operator(g_operators[i]);
+    }
 
     // Build artificial goal proposition and operator.
     vector<RelaxedProposition *> goal_op_pre, goal_op_eff;
@@ -364,33 +366,19 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
                 RelaxedProposition &prop = propositions[var][value];
                 if (prop.status == GOAL_ZONE || prop.status == BEFORE_GOAL_ZONE)
                     prop.status = REACHED;
-
-                check_resiliency_prop(var, value, prop);
+                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() &&
+                    g_initial_state_data[var] != value &&
+                    g_current_faults >= prop.effect_of.size())
+                {
+                    cout << "\nPRUNING PROP: " << prop.name << endl;
+                    return DEAD_END;
+                }
             }
         }
         artificial_goal.status = REACHED;
         artificial_precondition.status = REACHED;
     }
     return (total_cost + COST_MULTIPLIER - 1) / COST_MULTIPLIER;
-}
-
-/// @brief Check if the proposition need to be pruned because make impossible the resiliency of the goal.
-/// If the proposition is a goal and it is not in the initial state, then it is necessary to check if the
-/// number of faults is greater than the number of effects of the proposition, setting the global variable
-/// g_pruning_prop to true if it is the case.
-void LandmarkCutHeuristic::check_resiliency_prop(int var, int value, RelaxedProposition &prop)
-{
-    if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && g_initial_state_data[var] != value)
-    {
-        if (g_current_faults >= prop.effect_of.size())
-        {
-            cout << "\nK = " << g_current_faults << endl;
-            cout << prop.name << endl;
-            for (int i = 0; i < prop.effect_of.size(); i++)
-                cout << "   " << (prop.effect_of[i])->op->get_nondet_name() << endl;
-            g_pruning_prop = true;
-        }
-    }
 }
 
 /* TODO:
@@ -402,7 +390,6 @@ void LandmarkCutHeuristic::check_resiliency_prop(int var, int value, RelaxedProp
    e.g. use a different tie-breaking rule in every round to spread out the
    values a bit.
  */
-
 static Heuristic *_parse(OptionParser &parser)
 {
     parser.document_synopsis("Landmark-cut heuristic", "");

@@ -107,14 +107,6 @@ int FFHeuristic::compute_heuristic(const State &state)
         mark_preferred_operators_and_relaxed_plan(state, goal_propositions[i]);
     }
 
-    // For resilient planner
-    /*
-    if (reaching.size() < g_current_faults)
-    {
-        cout << "----> PRUNING! STATO NON RESILIENTE " << endl;
-        g_pruning_prop = true;
-    }*/
-
     int h_ff = 0;
 
     for (int op_no = 0; op_no < relaxed_plan.size(); op_no++)

@@ -38,13 +38,8 @@ void LazySearch::reset()
      * Removing operators in V from g_operators before reinitializing the heuristic
      */
     for (int i = 0; i < g_operators.size(); i++)
-    {
         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-        {
-            g_operators.erase(g_operators.begin() + i);
-            i--;
-        }
-    }
+            g_operators.erase(g_operators.begin() + i--);
 
     SearchEngine::reset();
     initialize();
@@ -81,7 +76,6 @@ void LazySearch::initialize()
         cout << "Conducting lazy best first search, (real) bound = " << bound << endl;
 
     // Only set up the heuristics on the first go
-
     if (was_initialized)
         return;
     else
@@ -251,6 +245,13 @@ int LazySearch::step()
             if (current_operator != NULL)
                 heuristics[i]->reach_state(parent_state, *current_operator, current_state);
             heuristics[i]->evaluate(current_state);
+            
+            if (heuristics[i]->is_dead_end())
+            {
+                node.mark_as_dead_end();
+                search_progress.inc_dead_ends();
+                return fetch_next_state();
+            }
         }
 
         search_progress.inc_evaluated_states();

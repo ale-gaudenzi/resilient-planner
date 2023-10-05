@@ -40,7 +40,6 @@ void SearchEngine::reset()
      * As long as a state is in a node in the nodes stack, its register must also be kept in memory
      * otherwise the state can't be recognized correctly
      */
-
     g_state_registry = new StateRegistry;
 
     for (int i = 0; i < g_operators.size(); i++)
@@ -79,7 +78,7 @@ void SearchEngine::search()
     if (verbose_step)
         cout << "STEP # " << i++ << endl;
     
-    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit) && !g_pruning_prop)// && i < 1)
+    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
     {
         if (verbose_step)
             cout << "STEP # " << i++ << endl;
