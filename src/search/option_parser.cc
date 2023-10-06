@@ -440,6 +440,11 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_verbose = (atoi(argv[i]) == 1);
         }
+        else if (arg.compare("--pruning") == 0)
+        {
+            ++i;
+            g_pruning = (atoi(argv[i]) == 1);
+        }
         else
         {
             cerr << "unknown option " << arg << endl

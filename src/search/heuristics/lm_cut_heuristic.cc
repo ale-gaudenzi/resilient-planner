@@ -366,12 +366,16 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
                 RelaxedProposition &prop = propositions[var][value];
                 if (prop.status == GOAL_ZONE || prop.status == BEFORE_GOAL_ZONE)
                     prop.status = REACHED;
-                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() &&
-                    g_initial_state_data[var] != value &&
-                    g_current_faults >= prop.effect_of.size())
+
+                if (g_pruning)
                 {
-                    cout << "\nPRUNING PROP: " << prop.name << endl;
-                    return DEAD_END;
+                    if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() &&
+                        g_initial_state_data[var] != value &&
+                        g_current_faults >= prop.effect_of.size())
+                    {
+                        cout << "\nPRUNING PROP: " << prop.name << endl;
+                        return DEAD_END;
+                    }
                 }
             }
         }
