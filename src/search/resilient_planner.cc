@@ -157,6 +157,7 @@ int main(int argc, const char **argv)
                     if (g_verbose)
                         cout << "\nFailed replan." << endl;
                     // If replanning fails, add current node to deadend and not resilient sets
+                    g_dead_states.insert(current_node.get_state().get_id());
                     add_non_resilient_deadends(current_node); // S downarrow
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
@@ -182,7 +183,7 @@ int main(int argc, const char **argv)
                             std::set<Operator> post_actions = g_current_forbidden_ops;
                             post_actions.insert(*(*it)); // *it = pi_i
                             ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
-
+                            
                             // Push new nodes in the stack
                             open.push(res_node);
                             open.push(res_node_f);

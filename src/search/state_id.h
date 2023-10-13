@@ -31,6 +31,10 @@ public:
         return value == other.value;
     }
 
+    bool operator<(const StateID &other) const {
+        return value < other.value;
+    }
+
     bool operator!=(const StateID &other) const {
         return !(*this == other);
     }

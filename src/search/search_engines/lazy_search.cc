@@ -186,6 +186,12 @@ void LazySearch::generate_successors()
     }
 }
 
+// int LazySearch::possible_number_actions(const State s) const{
+//     vector<const Operator *> applicable_ops;
+//     g_successor_generator->generate_applicable_ops(s, applicable_ops);
+//     return applicable_ops.size()
+// }
+
 int LazySearch::fetch_next_state()
 {
     if (open_list->empty())
@@ -219,6 +225,18 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
+    if (g_dead_states.find(current_state.get_id()) != g_dead_states.end()) {
+        node.mark_as_dead_end();
+    }
+
+
+    vector<const Operator *> applicable_ops;
+    // g_successor_generator->generate_applicable_ops(current_state, applicable_ops);
+    // cout << applicable_ops.size() << endl;
+    // for (int i=0; i < applicable_ops.size(); i++) {
+
+    //     cout << i << applicable_ops[i]->get_name() << endl;
+    // }
 
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
 
