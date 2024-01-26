@@ -144,6 +144,7 @@ class LandmarkCutHeuristic : public Heuristic
 
     void mark_goal_plateau(RelaxedProposition *subgoal);
     void check_resiliency_prop(int var, int value, RelaxedProposition &prop);
+    // void mark_resiliant_state_as_goal(State state);
 
 public:
     LandmarkCutHeuristic(const Options &opts);

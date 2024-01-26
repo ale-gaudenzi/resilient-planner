@@ -58,8 +58,7 @@ const State &StateRegistry::get_initial_state()
     if (cached_initial_state == 0)
     {
         PackedStateBin *buffer = new PackedStateBin[g_state_packer->get_num_bins()];
-        for (size_t i = 0; i < g_initial_state_data.size(); ++i)
-        {
+        for (size_t i = 0; i < g_initial_state_data.size(); ++i){
             g_state_packer->set(buffer, i, g_initial_state_data[i]);
         }
         g_axiom_evaluator->evaluate(buffer);

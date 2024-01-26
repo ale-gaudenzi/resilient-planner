@@ -69,6 +69,7 @@ public:
 
     void dump_pddl() const;
     void dump_fdr() const;
+    string get_string_key() const;
 };
 
 #endif

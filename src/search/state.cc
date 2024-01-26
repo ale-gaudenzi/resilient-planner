@@ -52,7 +52,6 @@ void State::dump_fdr() const
              << (*this)[i] << endl;
 }
 
-
 bool State::operator==(const State &other) const
 {
     for (int i = 0; i < g_variable_domain.size(); i++)
@@ -63,4 +62,13 @@ bool State::operator==(const State &other) const
             return false;
     }
     return true;
+}
+
+string State::get_string_key() const {
+    string state_string = "";
+    for (int i = 0; i < g_variable_domain.size(); i++)
+    {
+        state_string = state_string + g_fact_names[i][(*this)[i]];
+    }
+    return state_string;
 }

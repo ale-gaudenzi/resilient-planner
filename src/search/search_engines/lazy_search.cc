@@ -37,9 +37,6 @@ void LazySearch::reset()
      * For resilient planner
      * Removing operators in V from g_operators before reinitializing the heuristic
      */
-    for (int i = 0; i < g_operators.size(); i++)
-        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-            g_operators.erase(g_operators.begin() + i--);
 
     SearchEngine::reset();
     initialize();
@@ -226,24 +223,14 @@ int LazySearch::step()
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
     if (g_dead_states.find(current_state.get_id()) != g_dead_states.end()) {
-        node.mark_as_dead_end();
+        node.mark_as_dead_end();    
+        search_progress.inc_dead_ends();
     }
-
-
-    vector<const Operator *> applicable_ops;
-    // g_successor_generator->generate_applicable_ops(current_state, applicable_ops);
-    // cout << applicable_ops.size() << endl;
-    // for (int i=0; i < applicable_ops.size(); i++) {
-
-    //     cout << i << applicable_ops[i]->get_name() << endl;
-    // }
 
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
 
-    if (node.is_new() || reopen)
-    {
-        if (g_force_limit_states || (g_plan_locally_limited && g_limit_states))
-        {
+    if (node.is_new() || reopen){
+        if (g_force_limit_states || (g_plan_locally_limited && g_limit_states)){
             if (state_count > g_limit_states_max)
                 return FAILED;
             else
@@ -258,14 +245,12 @@ int LazySearch::step()
         State parent_state = g_state_registry->lookup_state(dummy_id);
         SearchNode parent_node = search_space.get_node(parent_state);
 
-        for (int i = 0; i < heuristics.size(); i++)
-        {
+        for (int i = 0; i < heuristics.size(); i++){
             if (current_operator != NULL)
                 heuristics[i]->reach_state(parent_state, *current_operator, current_state);
             heuristics[i]->evaluate(current_state);
             
-            if (heuristics[i]->is_dead_end())
-            {
+            if (heuristics[i]->is_dead_end()){
                 node.mark_as_dead_end();
                 search_progress.inc_dead_ends();
                 return fetch_next_state();
@@ -300,8 +285,16 @@ int LazySearch::step()
 
             node.close();
 
-            if (check_goal_and_set_plan(current_state))
+
+            // if(g_safe_states.find(current_state.get_string_key()) != g_safe_states.end()){
+            //     prune_and_set_plan(current_state);
+            //     return SOLVED;
+            // }
+
+            if (check_goal_and_set_plan(current_state)){
                 return SOLVED;
+            }
+                
         
             if (search_progress.check_h_progress(current_g))
                 reward_progress();
@@ -309,8 +302,7 @@ int LazySearch::step()
             generate_successors();
             search_progress.inc_expanded();
         }
-        else
-        {
+        else{
             node.mark_as_dead_end();
             search_progress.inc_dead_ends();
         }

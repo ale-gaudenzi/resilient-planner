@@ -23,6 +23,70 @@
 #include <tr1/unordered_map>
 
 using namespace std;
+class RelaxedProposition;
+class RelaxedOperator;
+/// @brief Try to replan from the state contained in current_node to the goal.
+/// The search engine is resetted and not recreated to avoid the overhead of the initialization.
+/// The plan is saved inside the engine object and can be retrieved from it.
+/// @param current_node The node containing the state to replan from.
+/// @param engine The search engine originally created.
+/// @return True if the replan succeds, false otherwise.
+enum PropositionStatus
+{
+    UNREACHED = 0,
+    REACHED = 1,
+    GOAL_ZONE = 2,
+    BEFORE_GOAL_ZONE = 3
+};
+struct RelaxedOperator
+{
+    const Operator *op;
+    std::vector<RelaxedProposition *> precondition;
+    std::vector<RelaxedProposition *> effects;
+    int base_cost; // 0 for axioms, 1 for regular operators
+
+    int cost;
+    int unsatisfied_preconditions;
+    int h_max_supporter_cost; // h_max_cost of h_max_supporter
+    RelaxedProposition *h_max_supporter;
+    RelaxedOperator(const std::vector<RelaxedProposition *> &pre,
+                    const std::vector<RelaxedProposition *> &eff,
+                    const Operator *the_op, int base)
+        : op(the_op), precondition(pre), effects(eff), base_cost(base)
+    {
+    }
+
+    inline void update_h_max_supporter();
+};
+struct RelaxedProposition
+{
+    std::vector<RelaxedOperator *> precondition_of;
+    std::vector<RelaxedOperator *> effect_of;
+    string name; // for debugging
+    PropositionStatus status;
+    int h_max_cost;
+    /* TODO: Also add the rpg depth? The Python implementation used
+       this for tie breaking, and it led to better landmark extraction
+       than just using the cost. However, the Python implementation
+       used a heap for the priority queue whereas we use a bucket
+       implementation [NOTE: no longer true], which automatically gets
+       a lot of tie-breaking by depth anyway (although not complete
+       tie-breaking on depth -- if we add a proposition from
+       cost/depth (4, 9) with (+1,+1), we'll process it before one
+       which is added from cost/depth (5,5) with (+0,+1). The
+       disadvantage of using depth is that we would need a more
+       complicated open queue implementation -- however, in the unit
+       action cost case, we might exploit that we never need to keep
+       more than the current and next cost layer in memory, and simply
+       use two bucket vectors (for two costs, and arbitrarily many
+       depths). See if the init h values degrade compared to Python
+       without explicit depth tie-breaking, then decide.
+    */
+
+    RelaxedProposition()
+    {
+    }
+};
 
 bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
@@ -109,7 +173,6 @@ int main(int argc, const char **argv)
     // Create initial node and pushing to open stack
     ResilientNode initial_node = ResilientNode(g_initial_state(), g_max_faults, std::set<Operator>());
     open.push(initial_node);
-
     g_timer_cycle.resume();
 
     // Start main loop
@@ -140,6 +203,7 @@ int main(int argc, const char **argv)
         {
             if (resiliency_check(current_node))
             {
+
                 g_successful_resiliency_check++;
                 resilient_nodes.insert(make_pair(current_node.get_id(), current_node));
 
@@ -171,6 +235,10 @@ int main(int argc, const char **argv)
                     State current = g_initial_state();
                     std::vector<const Operator *> plan = engine->get_plan();
 
+                    // for (int i=0; i < plan.size(); i++) {
+                    //     cout << i << plan[i]->get_name() << endl;
+                    // }
+
                     if (current_node.get_k() >= 1)
                     {
                         // Iterate over the plan to create the new nodes to push in the stack
@@ -201,20 +269,22 @@ int main(int argc, const char **argv)
                         resilient_nodes.insert(make_pair(tau.get_id(), tau));
                     }
                     else // k = 0
-                    {
-                        // Iterate over the plan to insert new nodes in resilient set
+                    {   
+                        // TODO
+                        g_safe_states.insert(std::make_pair(current_node.get_state().get_string_key(), std::make_pair(current_node.get_state(), plan)));
+                        // cout << "piano ******************" << endl;
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
+                            // cout << (*it)->get_name() << endl;
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
-                            resilient_nodes.insert(make_pair(res_node.get_id(), res_node));
-
+                            resilient_nodes.insert(std::make_pair(res_node.get_id(), res_node));
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
                     }
 
-                    // Perform regression over the computed plan
                     regression_steps.clear();
                     regression_steps = perform_regression(plan, g_matched_policy, 0, true);
+
 
                     // Update global policy with the new plan
                     g_policy->update_policy(regression_steps);
@@ -223,6 +293,7 @@ int main(int argc, const char **argv)
                     Policy *resilient_policy = new Policy();
                     resilient_policy->update_policy(regression_steps);
                     g_resilient_policies.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), resilient_policy));
+
                     if (g_verbose)
                     {
                         cout << "Plan:" << endl;
@@ -330,16 +401,66 @@ bool resiliency_check(ResilientNode node)
     return false;
 }
 
-/// @brief Try to replan from the state contained in current_node to the goal.
-/// The search engine is resetted and not recreated to avoid the overhead of the initialization.
-/// The plan is saved inside the engine object and can be retrieved from it.
-/// @param current_node The node containing the state to replan from.
-/// @param engine The search engine originally created.
-/// @return True if the replan succeds, false otherwise.
-bool replan(ResilientNode current_node, SearchEngine *engine)
-{
+bool replan(ResilientNode current_node, SearchEngine *engine){
     PartialState current_state = PartialState(current_node.get_state());
-
+    for (int i = 0; i < g_operators.size(); i++)
+        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+            g_operators.erase(g_operators.begin() + i--);
+    if (g_pruning){
+        std::vector<std::vector<RelaxedProposition> > propositions;
+        std::vector<RelaxedOperator> relaxed_operators;
+        propositions.resize(g_variable_domain.size());
+        for (int var = 0; var < propositions.size(); var++){
+            for (int var = 0; var < g_variable_domain.size(); var++)
+            {
+                for (int value = 0; value < g_variable_domain[var]; value++){
+                    RelaxedProposition prop = RelaxedProposition();
+                    prop.name = g_fact_names[var][value];
+                    propositions[var].push_back(prop);
+                }
+            }
+        }
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+            const vector<Prevail> &prevail = g_operators[i].get_prevail();
+            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+            vector<RelaxedProposition *> precondition;
+            vector<RelaxedProposition *> effects;
+            for (int i = 0; i < prevail.size(); i++)
+                precondition.push_back(&propositions[prevail[i].var][prevail[i].prev]);
+            for (int i = 0; i < pre_post.size(); i++)
+            {
+                if (pre_post[i].pre != -1)
+                    precondition.push_back(&propositions[pre_post[i].var][pre_post[i].pre]);
+                effects.push_back(&propositions[pre_post[i].var][pre_post[i].post]);
+            }
+            RelaxedProposition artificial_precondition;
+            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+            relaxed_operators.push_back(relaxed_op);
+        }
+        for (int i = 0; i < relaxed_operators.size(); i++)
+        {
+            RelaxedOperator *op = &relaxed_operators[i];
+            for (int j = 0; j < op->precondition.size(); j++)
+                op->precondition[j]->precondition_of.push_back(op);
+            for (int j = 0; j < op->effects.size(); j++)
+                op->effects[j]->effect_of.push_back(op);
+        }
+        for (int var = 0; var < propositions.size(); var++){
+            for (int value = 0; value < propositions[var].size(); value++){
+                RelaxedProposition &prop = propositions[var][value];
+                {
+                    std::vector<RelaxedOperator *> precondition_of;
+                    std::vector<RelaxedOperator *> effect_of;                 
+                    if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && 
+                            current_state[var] != value && g_current_faults >= prop.effect_of.size()){
+                        cout << "\nPRUNING PROP: " << prop.name << endl;
+                        return false;
+                    }
+                }
+            }
+        }
+    }
     // Reset initial state to the one contained in the node
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
@@ -355,7 +476,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 
     if (g_dump_memory_replan_progression)
         cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
- 
+
     return engine->found_solution();
 }
 
@@ -363,6 +484,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine)
 /// and choosing only actions that lead to resilient states until the goal
 /// is reached.
 /// @return The plan extracted.
+
 std::list<Operator> extract_solution()
 {
     // Consider only the resilient nodes with k = max_faults to speed up later checks
@@ -370,7 +492,6 @@ std::list<Operator> extract_solution()
     for (std::tr1::unordered_map<int, ResilientNode>::iterator it = resilient_nodes.begin(); it != resilient_nodes.end(); ++it)
         if (it->second.get_k() == g_max_faults)
             resilient_nodes_k.insert(*it);
-
     std::list<Operator> plan;
     State state = g_initial_state();
     PartialState partial_state = (PartialState)state;
@@ -378,9 +499,8 @@ std::list<Operator> extract_solution()
     std::set<Operator> next_actions;
     PolicyItem *goal_step = current_policy.front();
     PartialState goal = PartialState(*goal_step->state);
-
     PartialState policy_state;
-
+    
     // Consider the state registry of the initial state, since it is the same for all states
     // found by registry.successor() in sequence
     StateRegistry *registry = const_cast<StateRegistry *>(&state.get_registry());

@@ -12,11 +12,9 @@ using namespace std;
 
 SearchEngine::SearchEngine(const Options &opts)
     : search_space(OperatorCost(opts.get_enum("cost_type"))),
-      cost_type(OperatorCost(opts.get_enum("cost_type")))
-{
+      cost_type(OperatorCost(opts.get_enum("cost_type"))){
     solved = false;
-    if (opts.get<int>("bound") < 0)
-    {
+    if (opts.get<int>("bound") < 0){
         cerr << "error: negative cost bound " << opts.get<int>("bound") << endl;
         exit_with(EXIT_INPUT_ERROR);
     }
@@ -50,25 +48,21 @@ void SearchEngine::statistics() const
 {
 }
 
-bool SearchEngine::found_solution() const
-{
+bool SearchEngine::found_solution() const{
     return solved;
 }
 
-const SearchEngine::Plan &SearchEngine::get_plan() const
-{
+const SearchEngine::Plan &SearchEngine::get_plan() const{
     assert(solved);
     return plan;
 }
 
-void SearchEngine::set_plan(const Plan &p)
-{
+void SearchEngine::set_plan(const Plan &p){
     solved = true;
     plan = p;
 }
 
-void SearchEngine::search()
-{
+void SearchEngine::search(){
     bool verbose_step = false;
     int i = 0;
 
@@ -78,23 +72,18 @@ void SearchEngine::search()
     if (verbose_step)
         cout << "STEP # " << i++ << endl;
     
-    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit))
-    {
+    while ((step() == IN_PROGRESS) && (g_timer_jit() < g_jic_limit)){
         if (verbose_step)
             cout << "STEP # " << i++ << endl;
     };
 
-    if (g_timer_jit() < g_jic_limit)
-    {
-        if (g_record_online_deadends && !g_limit_states && g_found_deadends.size() > 0)
-        {
+    if (g_timer_jit() < g_jic_limit){
+        if (g_record_online_deadends && !g_limit_states && g_found_deadends.size() > 0){
             g_replan_detected_deadends = true;
             update_deadends(g_found_deadends);
         }
-        if (search_progress.get_generated() > 2)
-        {
-            if (g_verbose)
-            {
+        if (search_progress.get_generated() > 2){
+            if (g_verbose){
                 cout << "Generated " << search_progress.get_generated() << " state(s)." << endl;
                 if (g_record_online_deadends && !g_limit_states)
                     cout << "Dead ends: " << search_progress.get_deadend_states() << " state(s). ("
@@ -107,15 +96,23 @@ void SearchEngine::search()
             cout << "Actual search time: " << timer
                  << " [t=" << g_timer << "]" << endl;
     }
-    else
-    {
+    else{
         g_replan_detected_deadends = true; // Just in case there is a risk to mark this as solved
         cout << "Killing search due to time limits." << endl;
     }
 }
 
-bool SearchEngine::check_goal_and_set_plan(const State &state)
-{
+// TODO avevo provato a fare un pruning piu carino basato sugli stati ma è pessimo
+// bool SearchEngine::prune_and_set_plan(const State &state){
+//     Plan plan;
+//     search_space.trace_path(state, plan);
+//     Plan partial_plan = g_safe_states.at(state.get_string_key()).second;
+//     plan.insert(plan.end(), partial_plan.begin(), partial_plan.end());
+//     set_plan(plan);
+//     return true;
+// }
+
+bool SearchEngine::check_goal_and_set_plan(const State &state){
     if (test_goal(state))
     {
         if (!g_silent_planning)
@@ -128,19 +125,16 @@ bool SearchEngine::check_goal_and_set_plan(const State &state)
     return false;
 }
 
-void SearchEngine::save_plan_if_necessary() const
-{
+void SearchEngine::save_plan_if_necessary() const{
     if (found_solution())
         save_plan(get_plan(), 0);
 }
 
-int SearchEngine::get_adjusted_cost(const Operator &op) const
-{
+int SearchEngine::get_adjusted_cost(const Operator &op) const{
     return get_adjusted_action_cost(op, cost_type);
 }
 
-void SearchEngine::add_options_to_parser(OptionParser &parser)
-{
+void SearchEngine::add_options_to_parser(OptionParser &parser){
     ::add_cost_type_option_to_parser(parser);
     parser.add_option<int>(
         "bound",

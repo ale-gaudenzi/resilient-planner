@@ -37,6 +37,7 @@ void LandmarkCutHeuristic::initialize()
     // Build propositions.
     num_propositions = 2; // artificial goal and artificial precondition
     propositions.resize(g_variable_domain.size());
+
     for (int var = 0; var < g_variable_domain.size(); var++)
     {
         for (int value = 0; value < g_variable_domain[var]; value++)
@@ -44,11 +45,12 @@ void LandmarkCutHeuristic::initialize()
             RelaxedProposition prop = RelaxedProposition();
             prop.name = g_fact_names[var][value];
             propositions[var].push_back(prop);
+
         }
         num_propositions += g_variable_domain[var];
     }
 
-    // Build relaxed operators asserting that forbidden operators aren't in g_operators
+
     for (int i = 0; i < g_operators.size(); i++)
     {
         assert(g_current_forbidden_ops.find(g_operators[i]) == g_current_forbidden_ops.end());
@@ -75,6 +77,12 @@ void LandmarkCutHeuristic::initialize()
         for (int j = 0; j < op->effects.size(); j++)
             op->effects[j]->effect_of.push_back(op);
     }
+    // map<string, pair<State, std::vector<const Operator *> > >::iterator state = g_safe_states.begin();
+    // while (state != g_safe_states.end())
+    // {
+    //     mark_resiliant_state_as_goal(state->second.first);
+    //     state++;
+    // }
 }
 
 void LandmarkCutHeuristic::build_relaxed_operator(const Operator &op)
@@ -290,6 +298,20 @@ void LandmarkCutHeuristic::second_exploration(
     }
 }
 
+
+// void LandmarkCutHeuristic::mark_resiliant_state_as_goal(State state){
+//     assert(priority_queue.empty());
+//     setup_exploration_queue();
+//     setup_exploration_queue_state(state);
+//     while (!priority_queue.empty())
+//     {
+//         pair<int, RelaxedProposition *> top_pair = priority_queue.pop();
+//         RelaxedProposition *prop = top_pair.second;
+//         mark_goal_plateau(prop);
+//     }
+// }
+
+
 void LandmarkCutHeuristic::mark_goal_plateau(RelaxedProposition *subgoal)
 {
     // NOTE: subgoal can be null if we got here via recursion through
@@ -366,17 +388,16 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
                 RelaxedProposition &prop = propositions[var][value];
                 if (prop.status == GOAL_ZONE || prop.status == BEFORE_GOAL_ZONE)
                     prop.status = REACHED;
-
-                if (g_pruning)
-                {
-                    if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() &&
-                        g_initial_state_data[var] != value &&
-                        g_current_faults >= prop.effect_of.size())
-                    {
-                        cout << "\nPRUNING PROP: " << prop.name << endl;
-                        return DEAD_END;
-                    }
-                }
+                // if (g_pruning)
+                // {
+                //     if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() &&
+                //         g_initial_state_data[var] != value && 
+                //         g_current_faults >= prop.effect_of.size())
+                //     {
+                //         cout << "\nPRUNING PROP: " << prop.name << endl;
+                //         return DEAD_END;
+                //     }
+                // }
             }
         }
         artificial_goal.status = REACHED;

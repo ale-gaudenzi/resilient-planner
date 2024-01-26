@@ -1,0 +1,5 @@
+(move r1 jfk paris fl6 fl5)
+(load avrim r1 paris)
+(move r1 paris jfk fl5 fl4)
+(unload avrim r1 jfk)
+; cost = 4 (unit cost)
