@@ -30,7 +30,9 @@ void SearchEngine::reset()
     solved = false;
 
     search_progress.reset();
+
     search_space.reset();
+
 
     /** For resilient planner:
      * we need to keep the old state registries in order to
@@ -38,7 +40,9 @@ void SearchEngine::reset()
      * As long as a state is in a node in the nodes stack, its register must also be kept in memory
      * otherwise the state can't be recognized correctly
      */
+
     g_state_registry = new StateRegistry;
+
 
     for (int i = 0; i < g_operators.size(); i++)
         g_operators[i].unmark();
@@ -65,10 +69,11 @@ void SearchEngine::set_plan(const Plan &p){
 void SearchEngine::search(){
     bool verbose_step = false;
     int i = 0;
+    
 
     initialize();
-    Timer timer;
 
+    Timer timer;
     if (verbose_step)
         cout << "STEP # " << i++ << endl;
     

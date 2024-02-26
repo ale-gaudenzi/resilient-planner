@@ -97,6 +97,7 @@ void LazySearch::initialize()
     {
         heuristics.push_back(*it);
     }
+
     assert(!heuristics.empty());
 }
 
@@ -168,6 +169,7 @@ void LazySearch::generate_successors()
 
     for (int i = 0; i < operators.size(); i++)
     {
+
         int new_g = current_g + get_adjusted_cost(*operators[i]);
         int new_real_g = current_real_g + operators[i]->get_cost();
         bool is_preferred = operators[i]->is_marked();
@@ -197,19 +199,15 @@ int LazySearch::fetch_next_state()
             cout << "Completely explored state space -- no solution!" << endl;
         return FAILED;
     }
-
     OpenListEntryLazy next = open_list->remove_min();
-
     current_predecessor_id = next.first;
     current_operator = next.second;
     State current_predecessor = g_state_registry->lookup_state(current_predecessor_id);
     assert(current_operator->is_applicable(current_predecessor));
     current_state = g_state_registry->get_successor_state(current_predecessor, *current_operator);
-
     SearchNode pred_node = search_space.get_node(current_predecessor);
     current_g = pred_node.get_g() + get_adjusted_cost(*current_operator);
     current_real_g = pred_node.get_real_g() + current_operator->get_cost();
-
     return IN_PROGRESS;
 }
 

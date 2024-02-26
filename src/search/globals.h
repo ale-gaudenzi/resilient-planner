@@ -9,6 +9,7 @@
 #include <stack>
 #include <utility>
 
+
 class Axiom;
 class AxiomEvaluator;
 class CausalGraph;
@@ -30,6 +31,9 @@ class RegressionStep;
 class NondetDeadend;
 class StateID;
 class ResilientNode;
+class LandmarkGraph;
+class LandmarkFactoryZhuGivan;
+class Options;
 
 bool test_goal(const State &state);
 bool test_policy(const State &state);
@@ -186,6 +190,13 @@ extern std::map<std::string, state_plan_pair > g_safe_states; //fast test for de
 
 
 extern std::vector<Operator> g_operators_backup;
+
+// TODO test per usare i landmark
+extern LandmarkGraph *landmark_graph;
+extern LandmarkFactoryZhuGivan *landmark_factory;
+extern Options landmark_generator_options;
+
+
 extern bool g_verbose;
 extern int g_max_iterations;
 extern bool g_plan_to_file;
@@ -194,6 +205,7 @@ extern bool g_dump_resilient_policy;
 extern bool g_dump_resilient_nodes;
 extern bool g_dump_memory_replan_progression;
 extern bool g_pruning;
+extern bool g_landmark_pruning;
 
 extern long g_mem_initial;
 extern long g_mem_initial_policy_search;

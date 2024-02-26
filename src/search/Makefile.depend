@@ -17,7 +17,14 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h resilient_policy.h print_utils.h
+ resilient_node.h resilient_policy.h print_utils.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/exploration.h landmarks/../option_parser.h \
+ landmarks/h_m_landmarks.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -202,7 +209,7 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/cea_heuristic.h resilient_node.h
+ heuristics/cea_heuristic.h option_parser_util.h resilient_node.h
 .obj/heuristics/heuristic.release.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -1191,6 +1198,610 @@
  heuristics/../open_lists/alternation_open_list.cc \
  heuristics/../open_lists/pareto_open_list.h \
  heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
+.obj/landmarks/exploration.release.o: landmarks/exploration.cc landmarks/exploration.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h \
+ landmarks/../heuristics/../int_packer.h \
+ landmarks/../heuristics/../state_id.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h
+.obj/landmarks/h_m_landmarks.release.o: landmarks/h_m_landmarks.cc landmarks/h_m_landmarks.h \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc landmarks/../exact_timer.h
+.obj/landmarks/lama_ff_synergy.release.o: landmarks/lama_ff_synergy.cc \
+ landmarks/lama_ff_synergy.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h \
+ landmarks/../heuristics/../int_packer.h \
+ landmarks/../heuristics/../state_id.h landmarks/exploration.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/landmark_count_heuristic.h landmarks/../state.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h \
+ landmarks/../option_parser.h landmarks/../option_parser_util.h \
+ landmarks/../utilities.h landmarks/../heuristics/heuristic.h \
+ landmarks/../policy.h landmarks/../regression.h landmarks/../state.h \
+ landmarks/../operator.h landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/landmark_status_manager.h landmarks/../per_state_information.h \
+ landmarks/landmark_cost_assignment.h landmarks/../operator_cost.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc \
+ landmarks/landmark_factory_rpg_sasp.h landmarks/landmark_factory.h \
+ landmarks/../search_engines/search_engine.h
+.obj/landmarks/landmark_cost_assignment.release.o: landmarks/landmark_cost_assignment.cc \
+ landmarks/landmark_cost_assignment.h landmarks/../globals.h \
+ landmarks/../operator_cost.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h
+.obj/landmarks/landmark_count_heuristic.release.o: landmarks/landmark_count_heuristic.cc \
+ landmarks/landmark_count_heuristic.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/exploration.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/../option_parser.h landmarks/../option_parser_util.h \
+ landmarks/../utilities.h landmarks/../heuristics/heuristic.h \
+ landmarks/../policy.h landmarks/../regression.h landmarks/../state.h \
+ landmarks/../operator.h landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/landmark_status_manager.h landmarks/../per_state_information.h \
+ landmarks/landmark_cost_assignment.h landmarks/../operator_cost.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc \
+ landmarks/../successor_generator.h landmarks/../deadend.h
+.obj/landmarks/landmark_status_manager.release.o: landmarks/landmark_status_manager.cc \
+ landmarks/landmark_status_manager.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/../per_state_information.h
+.obj/landmarks/landmark_graph_merged.release.o: landmarks/landmark_graph_merged.cc \
+ landmarks/landmark_graph_merged.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_graph.release.o: landmarks/landmark_graph.cc landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../exact_timer.h \
+ landmarks/../state.h
+.obj/landmarks/landmark_factory.release.o: landmarks/landmark_factory.cc \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../exact_timer.h \
+ landmarks/util.h
+.obj/landmarks/landmark_factory_rpg_exhaust.release.o: landmarks/landmark_factory_rpg_exhaust.cc \
+ landmarks/landmark_factory_rpg_exhaust.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../state.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_factory_rpg_sasp.release.o: landmarks/landmark_factory_rpg_sasp.cc \
+ landmarks/landmark_factory_rpg_sasp.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/../search_engines/search_engine.h landmarks/util.h \
+ landmarks/../state.h landmarks/../domain_transition_graph.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_factory_zhu_givan.release.o: landmarks/landmark_factory_zhu_givan.cc \
+ landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../state.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/util.release.o: landmarks/util.cc landmarks/util.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h
 .obj/resilient_planner.debug.o: resilient_planner.cc globals.h operator.h \
  partial_state.h state.h int_packer.h state_id.h option_parser.h \
  option_parser_util.h utilities.h heuristics/heuristic.h \
@@ -1210,7 +1821,14 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h resilient_policy.h print_utils.h
+ resilient_node.h resilient_policy.h print_utils.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/exploration.h landmarks/../option_parser.h \
+ landmarks/h_m_landmarks.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -1395,7 +2013,7 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/cea_heuristic.h resilient_node.h
+ heuristics/cea_heuristic.h option_parser_util.h resilient_node.h
 .obj/heuristics/heuristic.debug.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -2384,6 +3002,610 @@
  heuristics/../open_lists/alternation_open_list.cc \
  heuristics/../open_lists/pareto_open_list.h \
  heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
+.obj/landmarks/exploration.debug.o: landmarks/exploration.cc landmarks/exploration.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h \
+ landmarks/../heuristics/../int_packer.h \
+ landmarks/../heuristics/../state_id.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h
+.obj/landmarks/h_m_landmarks.debug.o: landmarks/h_m_landmarks.cc landmarks/h_m_landmarks.h \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc landmarks/../exact_timer.h
+.obj/landmarks/lama_ff_synergy.debug.o: landmarks/lama_ff_synergy.cc \
+ landmarks/lama_ff_synergy.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h \
+ landmarks/../heuristics/../int_packer.h \
+ landmarks/../heuristics/../state_id.h landmarks/exploration.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/landmark_count_heuristic.h landmarks/../state.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h \
+ landmarks/../option_parser.h landmarks/../option_parser_util.h \
+ landmarks/../utilities.h landmarks/../heuristics/heuristic.h \
+ landmarks/../policy.h landmarks/../regression.h landmarks/../state.h \
+ landmarks/../operator.h landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/landmark_status_manager.h landmarks/../per_state_information.h \
+ landmarks/landmark_cost_assignment.h landmarks/../operator_cost.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc \
+ landmarks/landmark_factory_rpg_sasp.h landmarks/landmark_factory.h \
+ landmarks/../search_engines/search_engine.h
+.obj/landmarks/landmark_cost_assignment.debug.o: landmarks/landmark_cost_assignment.cc \
+ landmarks/landmark_cost_assignment.h landmarks/../globals.h \
+ landmarks/../operator_cost.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h
+.obj/landmarks/landmark_count_heuristic.debug.o: landmarks/landmark_count_heuristic.cc \
+ landmarks/landmark_count_heuristic.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/exploration.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/../option_parser.h landmarks/../option_parser_util.h \
+ landmarks/../utilities.h landmarks/../heuristics/heuristic.h \
+ landmarks/../policy.h landmarks/../regression.h landmarks/../state.h \
+ landmarks/../operator.h landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/landmark_status_manager.h landmarks/../per_state_information.h \
+ landmarks/landmark_cost_assignment.h landmarks/../operator_cost.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc \
+ landmarks/../successor_generator.h landmarks/../deadend.h
+.obj/landmarks/landmark_status_manager.debug.o: landmarks/landmark_status_manager.cc \
+ landmarks/landmark_status_manager.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/../per_state_information.h
+.obj/landmarks/landmark_graph_merged.debug.o: landmarks/landmark_graph_merged.cc \
+ landmarks/landmark_graph_merged.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_graph.debug.o: landmarks/landmark_graph.cc landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../exact_timer.h \
+ landmarks/../state.h
+.obj/landmarks/landmark_factory.debug.o: landmarks/landmark_factory.cc \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../exact_timer.h \
+ landmarks/util.h
+.obj/landmarks/landmark_factory_rpg_exhaust.debug.o: landmarks/landmark_factory_rpg_exhaust.cc \
+ landmarks/landmark_factory_rpg_exhaust.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../state.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_factory_rpg_sasp.debug.o: landmarks/landmark_factory_rpg_sasp.cc \
+ landmarks/landmark_factory_rpg_sasp.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/../search_engines/search_engine.h landmarks/util.h \
+ landmarks/../state.h landmarks/../domain_transition_graph.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_factory_zhu_givan.debug.o: landmarks/landmark_factory_zhu_givan.cc \
+ landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../state.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/util.debug.o: landmarks/util.cc landmarks/util.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h
 .obj/resilient_planner.profile.o: resilient_planner.cc globals.h operator.h \
  partial_state.h state.h int_packer.h state_id.h option_parser.h \
  option_parser_util.h utilities.h heuristics/heuristic.h \
@@ -2403,7 +3625,14 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h resilient_policy.h print_utils.h
+ resilient_node.h resilient_policy.h print_utils.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/exploration.h landmarks/../option_parser.h \
+ landmarks/h_m_landmarks.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -2588,7 +3817,7 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/cea_heuristic.h resilient_node.h
+ heuristics/cea_heuristic.h option_parser_util.h resilient_node.h
 .obj/heuristics/heuristic.profile.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -3577,3 +4806,607 @@
  heuristics/../open_lists/alternation_open_list.cc \
  heuristics/../open_lists/pareto_open_list.h \
  heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
+.obj/landmarks/exploration.profile.o: landmarks/exploration.cc landmarks/exploration.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h \
+ landmarks/../heuristics/../int_packer.h \
+ landmarks/../heuristics/../state_id.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h
+.obj/landmarks/h_m_landmarks.profile.o: landmarks/h_m_landmarks.cc landmarks/h_m_landmarks.h \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc landmarks/../exact_timer.h
+.obj/landmarks/lama_ff_synergy.profile.o: landmarks/lama_ff_synergy.cc \
+ landmarks/lama_ff_synergy.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h \
+ landmarks/../heuristics/../int_packer.h \
+ landmarks/../heuristics/../state_id.h landmarks/exploration.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/landmark_count_heuristic.h landmarks/../state.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h \
+ landmarks/../option_parser.h landmarks/../option_parser_util.h \
+ landmarks/../utilities.h landmarks/../heuristics/heuristic.h \
+ landmarks/../policy.h landmarks/../regression.h landmarks/../state.h \
+ landmarks/../operator.h landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/landmark_status_manager.h landmarks/../per_state_information.h \
+ landmarks/landmark_cost_assignment.h landmarks/../operator_cost.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc \
+ landmarks/landmark_factory_rpg_sasp.h landmarks/landmark_factory.h \
+ landmarks/../search_engines/search_engine.h
+.obj/landmarks/landmark_cost_assignment.profile.o: landmarks/landmark_cost_assignment.cc \
+ landmarks/landmark_cost_assignment.h landmarks/../globals.h \
+ landmarks/../operator_cost.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h
+.obj/landmarks/landmark_count_heuristic.profile.o: landmarks/landmark_count_heuristic.cc \
+ landmarks/landmark_count_heuristic.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h \
+ landmarks/../heuristics/../state.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/exploration.h \
+ landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
+ landmarks/landmark_types.h landmarks/../utilities.h \
+ landmarks/../option_parser.h landmarks/../option_parser_util.h \
+ landmarks/../utilities.h landmarks/../heuristics/heuristic.h \
+ landmarks/../policy.h landmarks/../regression.h landmarks/../state.h \
+ landmarks/../operator.h landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/landmark_status_manager.h landmarks/../per_state_information.h \
+ landmarks/landmark_cost_assignment.h landmarks/../operator_cost.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc \
+ landmarks/../successor_generator.h landmarks/../deadend.h
+.obj/landmarks/landmark_status_manager.profile.o: landmarks/landmark_status_manager.cc \
+ landmarks/landmark_status_manager.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/../per_state_information.h
+.obj/landmarks/landmark_graph_merged.profile.o: landmarks/landmark_graph_merged.cc \
+ landmarks/landmark_graph_merged.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_graph.profile.o: landmarks/landmark_graph.cc landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../exact_timer.h \
+ landmarks/../state.h
+.obj/landmarks/landmark_factory.profile.o: landmarks/landmark_factory.cc \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../exact_timer.h \
+ landmarks/util.h
+.obj/landmarks/landmark_factory_rpg_exhaust.profile.o: landmarks/landmark_factory_rpg_exhaust.cc \
+ landmarks/landmark_factory_rpg_exhaust.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../state.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_factory_rpg_sasp.profile.o: landmarks/landmark_factory_rpg_sasp.cc \
+ landmarks/landmark_factory_rpg_sasp.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h \
+ landmarks/../search_engines/search_engine.h landmarks/util.h \
+ landmarks/../state.h landmarks/../domain_transition_graph.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/landmark_factory_zhu_givan.profile.o: landmarks/landmark_factory_zhu_givan.cc \
+ landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
+ landmarks/landmark_graph.h landmarks/../operator.h \
+ landmarks/../globals.h landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h landmarks/../state.h \
+ landmarks/../plugin.h \
+ landmarks/../open_lists/standard_scalar_open_list.h \
+ landmarks/../open_lists/open_list.h \
+ landmarks/../open_lists/../evaluators/evaluator.h \
+ landmarks/../open_lists/../option_parser.h \
+ landmarks/../open_lists/standard_scalar_open_list.cc \
+ landmarks/../open_lists/../evaluators/scalar_evaluator.h \
+ landmarks/../open_lists/open_list_buckets.h \
+ landmarks/../open_lists/open_list_buckets.cc \
+ landmarks/../open_lists/tiebreaking_open_list.h \
+ landmarks/../open_lists/tiebreaking_open_list.cc \
+ landmarks/../open_lists/alternation_open_list.h \
+ landmarks/../open_lists/../plugin.h \
+ landmarks/../open_lists/alternation_open_list.cc \
+ landmarks/../open_lists/pareto_open_list.h \
+ landmarks/../open_lists/pareto_open_list.cc
+.obj/landmarks/util.profile.o: landmarks/util.cc landmarks/util.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/../globals.h \
+ landmarks/../partial_state.h landmarks/../state.h \
+ landmarks/../int_packer.h landmarks/../state_id.h \
+ landmarks/exploration.h landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/../evaluators/scalar_evaluator.h \
+ landmarks/../heuristics/../evaluators/evaluator.h \
+ landmarks/../heuristics/../operator_cost.h \
+ landmarks/../heuristics/../partial_state.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/../option_parser.h \
+ landmarks/../option_parser_util.h landmarks/../utilities.h \
+ landmarks/../heuristics/heuristic.h landmarks/../policy.h \
+ landmarks/../regression.h landmarks/../operator.h \
+ landmarks/../search_engines/search_engine.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../search_space.h \
+ landmarks/../search_engines/../state.h \
+ landmarks/../search_engines/../search_node_info.h \
+ landmarks/../search_engines/../state_id.h \
+ landmarks/../search_engines/../operator.h \
+ landmarks/../search_engines/../operator_cost.h \
+ landmarks/../search_engines/../per_state_information.h \
+ landmarks/../search_engines/../globals.h \
+ landmarks/../search_engines/../segmented_vector.h \
+ landmarks/../search_engines/../utilities.h \
+ landmarks/../search_engines/../state_registry.h \
+ landmarks/../search_engines/../int_packer.h \
+ landmarks/../search_engines/../search_progress.h \
+ landmarks/../search_engines/../timer.h \
+ landmarks/../search_engines/../heuristics/heuristic.h \
+ landmarks/../search_engines/../operator_cost.h landmarks/../deadend.h \
+ landmarks/../successor_generator.h \
+ landmarks/../heuristics/additive_heuristic.h \
+ landmarks/../heuristics/priority_queue.h \
+ landmarks/../heuristics/relaxation_heuristic.h \
+ landmarks/../heuristics/heuristic.h \
+ landmarks/../heuristics/cea_heuristic.h

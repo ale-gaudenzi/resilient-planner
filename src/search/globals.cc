@@ -16,6 +16,7 @@
 #include "regression.h"
 #include "deadend.h"
 #include "state_id.h"
+#include "option_parser_util.h"
 
 #include "resilient_node.h"
 
@@ -292,8 +293,10 @@ void read_operators(istream &in)
 {
     int count;
     in >> count;
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < count; i++){
         g_operators.push_back(Operator(in, false));
+    }
+    
 }
 
 void read_axioms(istream &in)
@@ -328,7 +331,6 @@ void read_everything(istream &in)
     }
     check_magic(in, "end_state");
     g_default_axiom_values = g_initial_state_data;
-
     read_goal(in);
     read_operators(in);
     read_axioms(in);
@@ -336,7 +338,6 @@ void read_everything(istream &in)
     g_successor_generator_orig = read_successor_generator(in);
     check_magic(in, "end_SG");
     DomainTransitionGraph::read_all(in);
-
     // NOTE: causal graph is computed from the problem specification,
     // so must be built after the problem has been read in.
     g_causal_graph = new CausalGraph;
@@ -348,7 +349,6 @@ void read_everything(istream &in)
          << g_state_packer->get_num_bins() *
                 g_state_packer->get_bin_size_in_bytes()
          << endl;
-
     // NOTE: state registry stores the sizes of the state, so must be
     // built after the problem has been read in.
     g_state_registry = new StateRegistry;
@@ -596,6 +596,11 @@ std::map<std::string, state_plan_pair > g_safe_states;
 std::map<k_v_pair, Policy *> g_resilient_policies;
 std::map<k_v_pair, Policy *> g_non_resilient_deadends;
 
+// TODO test per usare i landmark
+LandmarkGraph *landmark_graph;
+Options landmark_generator_options;
+LandmarkFactoryZhuGivan *landmark_factory;
+
 Policy *g_original_policy;
 
 std::vector<Operator> g_operators_backup;
@@ -607,6 +612,7 @@ bool g_dump_resilient_policy = false;
 bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;
 bool g_pruning = false;
+bool g_landmark_pruning = false;
 
 int g_max_iterations = -1;
 

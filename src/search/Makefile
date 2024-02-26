@@ -79,19 +79,19 @@ HEADERS += heuristics/goal_count_heuristic.h
 HEADERS += heuristics/hm_heuristic.h
 HEADERS += heuristics/max_heuristic.h
 
-# HEADERS += landmarks/exploration.h \
-#            landmarks/h_m_landmarks.h \
-#            landmarks/lama_ff_synergy.h \
-#            landmarks/landmark_cost_assignment.h \
-#            landmarks/landmark_count_heuristic.h \
-#            landmarks/landmark_status_manager.h \
-#            landmarks/landmark_graph_merged.h \
-#            landmarks/landmark_graph.h \
-#            landmarks/landmark_factory.h \
-#            landmarks/landmark_factory_rpg_exhaust.h \
-#            landmarks/landmark_factory_rpg_sasp.h \
-#            landmarks/landmark_factory_zhu_givan.h \
-#            landmarks/util.h \
+HEADERS += landmarks/exploration.h \
+           landmarks/h_m_landmarks.h \
+           landmarks/lama_ff_synergy.h \
+           landmarks/landmark_cost_assignment.h \
+           landmarks/landmark_count_heuristic.h \
+           landmarks/landmark_status_manager.h \
+           landmarks/landmark_graph_merged.h \
+           landmarks/landmark_graph.h \
+           landmarks/landmark_factory.h \
+           landmarks/landmark_factory_rpg_exhaust.h \
+           landmarks/landmark_factory_rpg_sasp.h \
+           landmarks/landmark_factory_zhu_givan.h \
+           landmarks/util.h \
 
 # HEADERS += learning/AODE.h \
 #            learning/classifier.h \

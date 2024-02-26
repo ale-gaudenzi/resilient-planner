@@ -29,8 +29,10 @@ void LandmarkCutHeuristic::initialize()
 
     // For resilient
     // Clear all data structures of the previous initialization
+
     relaxed_operators.clear();
     propositions.clear();
+
     artificial_precondition = RelaxedProposition();
     artificial_goal = RelaxedProposition();
 
@@ -57,6 +59,7 @@ void LandmarkCutHeuristic::initialize()
         build_relaxed_operator(g_operators[i]);
     }
 
+
     // Build artificial goal proposition and operator.
     vector<RelaxedProposition *> goal_op_pre, goal_op_eff;
     for (int i = 0; i < g_goal.size(); i++)
@@ -76,6 +79,7 @@ void LandmarkCutHeuristic::initialize()
             op->precondition[j]->precondition_of.push_back(op);
         for (int j = 0; j < op->effects.size(); j++)
             op->effects[j]->effect_of.push_back(op);
+
     }
     // map<string, pair<State, std::vector<const Operator *> > >::iterator state = g_safe_states.begin();
     // while (state != g_safe_states.end())
@@ -114,6 +118,7 @@ void LandmarkCutHeuristic::add_relaxed_operator(
 }
 
 // heuristic computation
+// sembra che generi quello che deve valutare segnando come UNREACHED le proposizioni e contando le precondizioni per ogni operazione (come eurusticav )
 void LandmarkCutHeuristic::setup_exploration_queue()
 {
     priority_queue.clear();
@@ -157,6 +162,14 @@ void LandmarkCutHeuristic::first_exploration(const State &state)
         pair<int, RelaxedProposition *> top_pair = priority_queue.pop();
         int popped_cost = top_pair.first;
         RelaxedProposition *prop = top_pair.second;
+        //TODO
+        // const vector<RelaxedOperator *> &opppp = prop->precondition_of;        
+        // for (int i = 0; i < opppp.size(); i++)
+        // {
+        //     RelaxedOperator *xd = opppp[i];
+        //     cout << xd->op->get_name() << endl;
+        // }
+
         int prop_cost = prop->h_max_cost;
         assert(prop_cost <= popped_cost);
         if (prop_cost < popped_cost)
