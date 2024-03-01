@@ -628,6 +628,12 @@ Timer g_timer_extract_policy;
 
 int g_iteration = 0;
 int g_successful_resiliency_check = 0;
+
+
+int g_pruning_landmarks = 0;
+int g_pruning_goals = 0;
+int g_replanning = 0;
+
 int g_successful_replan = 0;
 int g_max_dimension_open = 0;
 int g_replan_counter = 0;

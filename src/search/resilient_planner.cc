@@ -109,8 +109,10 @@ bool replan(ResilientNode current_node, SearchEngine *engine);
 std::list<Operator> extract_solution();
 void update_non_resilient_nodes(ResilientNode node);
 void add_non_resilient_deadends(ResilientNode node);
+// PartialState partial_state_to_goal(const Operator* operator_to_goal);
 
 std::tr1::unordered_map<int, ResilientNode> resilient_nodes;
+// std::tr1::unordered_map<int, pair<PartialState, int> > resilient_partial_states;
 std::tr1::unordered_map<int, ResilientNode> non_resilient_nodes;
 std::stack<ResilientNode> open;
 std::vector<std::vector<RelaxedProposition> > propositions;
@@ -262,7 +264,6 @@ int main(int argc, const char **argv)
                     std::vector<const Operator *> plan = engine->get_plan();
                     if (current_node.get_k() >= 1)
                     {
-                        // Iterate over the plan to create the new nodes to push in the stack
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
                             // Create node <tau_i-1, k, V>
@@ -288,6 +289,8 @@ int main(int argc, const char **argv)
                         // Add goal to resilient nodes
                         ResilientNode tau = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
                         resilient_nodes.insert(make_pair(tau.get_id(), tau));
+                        // resilient_partial_states.insert(make_pair(partial_state_to_goal() ,g_current_faults))
+                        
                     }
                     else // k = 0
                     {   
@@ -420,6 +423,23 @@ bool resiliency_check(ResilientNode node)
     return false;
 }
 
+
+//the idea behind this function is generate a partial state to goal
+// PartialState partial_state_to_goal(const Operator *operator_to_goal){
+//     PartialState regression_state = PartialState();
+//     for (int i = 0; i < g_goal.size(); i++){
+//         regression_state[g_goal[i].first] = g_goal[i].second;
+//     }
+//     cout << "dentro regressione" << endl;
+//     regression_state.dump_pddl();
+//     for (size_t i = 0; i < operator_to_goal->get_pre_post().size(); ++i)
+//     {
+//         const PrePost &pre_post = operator_to_goal->get_pre_post()[i];
+//         regression_state[pre_post.var] = pre_post.post;
+//     }
+//     return regression_state;
+// }
+
 bool replan(ResilientNode current_node, SearchEngine *engine){
     PartialState current_state = PartialState(current_node.get_state());
     g_state_registry->reset_initial_state();
@@ -498,26 +518,29 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
                     if (landmarks.size() == 0)
                     {
                         // cout << "\nNO LANDMARKS FOUND. PRUNING STATE" << endl;
+                        g_pruning_landmarks++;
                         return false;
                     }
-                    if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults > prop.effect_of.size())
+                    if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
                     {
                         // cout << "\nPRUNING PROP FOR LANDMARK FACT: " << prop.name << endl;
-                        cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+                        // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+                        g_pruning_landmarks++;
                         return false;
                     }
                 }
-                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults > prop.effect_of.size())
+                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
                 {
                     // cout << "\nPRUNING PROP FOR GOAL FACT: " << prop.name << endl;
-                    cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+                    // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+                    g_pruning_goals++;
                     return false;
                 }
             }
         }
     }
     // Reset initial state to the one contained in the node
-
+    g_replanning++;
     g_timer_engine_init.resume();
     g_timer_engine_init.stop();
 
@@ -528,7 +551,6 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
 
     if (g_dump_memory_replan_progression)
         cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
-
     return engine->found_solution();
 }
 

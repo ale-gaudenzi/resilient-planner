@@ -217,6 +217,10 @@ extern int g_iteration;
 extern int g_successful_resiliency_check;
 extern int g_successful_replan;
 
+extern int g_pruning_landmarks;
+extern int g_pruning_goals;
+extern int g_replanning;
+
 extern int g_max_dimension_open;
 extern int g_replan_counter;
 

@@ -69,7 +69,7 @@ void print_branches()
 void print_statistics(int resilient_nodes_size, int non_resilient_nodes_size)
 {
     cout << "\n\n--------------------------------------------------------------------" << endl;
-    cout << "\n                      -{ Statistics }-\n\n";
+    cout << "\n                      -{ Statistics }-\n\n" << endl;
     cout << "                    Iterations: " << g_iteration << endl;
     cout << "   Successful resiliency check: " << g_successful_resiliency_check << endl;
     cout << "             Successful replan: " << g_successful_replan << endl;
@@ -78,6 +78,12 @@ void print_statistics(int resilient_nodes_size, int non_resilient_nodes_size)
     cout << "           Non-resilient nodes: " << non_resilient_nodes_size << endl;
     cout << "               Actions planned: " << g_policy->get_size() << endl;
     cout << "      Max dimension open stack: " << g_max_dimension_open << endl;
+    cout << "\n\n--------------------------------------------------------------------" << endl;
+    cout << "\n                      -{ Pruning }-\n" << endl;
+    cout << "             Landmarks pruning: " << g_pruning_landmarks << endl;
+    cout << "                 Goals pruning: " << g_pruning_goals << endl;
+    cout << "                    No pruning: " << g_replanning << endl;
+    cout << "                         TOTAL: " << (g_pruning_landmarks+g_pruning_goals+g_replanning) << endl;
     cout << "\n--------------------------------------------------------------------\n";
 }
 
