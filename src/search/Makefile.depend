@@ -341,7 +341,19 @@
  search_engines/../open_lists/../plugin.h \
  search_engines/../open_lists/alternation_open_list.cc \
  search_engines/../open_lists/pareto_open_list.h \
- search_engines/../open_lists/pareto_open_list.cc
+ search_engines/../open_lists/pareto_open_list.cc \
+ search_engines/../landmarks/landmark_factory_zhu_givan.h \
+ search_engines/../landmarks/landmark_factory.h \
+ search_engines/../landmarks/landmark_graph.h \
+ search_engines/../landmarks/../operator.h \
+ search_engines/../landmarks/exploration.h \
+ search_engines/../landmarks/../heuristics/heuristic.h \
+ search_engines/../landmarks/../globals.h \
+ search_engines/../landmarks/../heuristics/priority_queue.h \
+ search_engines/../landmarks/landmark_types.h \
+ search_engines/../landmarks/../utilities.h \
+ search_engines/../landmarks/../option_parser.h \
+ search_engines/../landmarks/h_m_landmarks.h
 .obj/evaluators/max_evaluator.release.o: evaluators/max_evaluator.cc evaluators/max_evaluator.h \
  evaluators/combining_evaluator.h evaluators/scalar_evaluator.h \
  evaluators/evaluator.h evaluators/../option_parser.h \
@@ -2145,7 +2157,19 @@
  search_engines/../open_lists/../plugin.h \
  search_engines/../open_lists/alternation_open_list.cc \
  search_engines/../open_lists/pareto_open_list.h \
- search_engines/../open_lists/pareto_open_list.cc
+ search_engines/../open_lists/pareto_open_list.cc \
+ search_engines/../landmarks/landmark_factory_zhu_givan.h \
+ search_engines/../landmarks/landmark_factory.h \
+ search_engines/../landmarks/landmark_graph.h \
+ search_engines/../landmarks/../operator.h \
+ search_engines/../landmarks/exploration.h \
+ search_engines/../landmarks/../heuristics/heuristic.h \
+ search_engines/../landmarks/../globals.h \
+ search_engines/../landmarks/../heuristics/priority_queue.h \
+ search_engines/../landmarks/landmark_types.h \
+ search_engines/../landmarks/../utilities.h \
+ search_engines/../landmarks/../option_parser.h \
+ search_engines/../landmarks/h_m_landmarks.h
 .obj/evaluators/max_evaluator.debug.o: evaluators/max_evaluator.cc evaluators/max_evaluator.h \
  evaluators/combining_evaluator.h evaluators/scalar_evaluator.h \
  evaluators/evaluator.h evaluators/../option_parser.h \
@@ -3949,7 +3973,19 @@
  search_engines/../open_lists/../plugin.h \
  search_engines/../open_lists/alternation_open_list.cc \
  search_engines/../open_lists/pareto_open_list.h \
- search_engines/../open_lists/pareto_open_list.cc
+ search_engines/../open_lists/pareto_open_list.cc \
+ search_engines/../landmarks/landmark_factory_zhu_givan.h \
+ search_engines/../landmarks/landmark_factory.h \
+ search_engines/../landmarks/landmark_graph.h \
+ search_engines/../landmarks/../operator.h \
+ search_engines/../landmarks/exploration.h \
+ search_engines/../landmarks/../heuristics/heuristic.h \
+ search_engines/../landmarks/../globals.h \
+ search_engines/../landmarks/../heuristics/priority_queue.h \
+ search_engines/../landmarks/landmark_types.h \
+ search_engines/../landmarks/../utilities.h \
+ search_engines/../landmarks/../option_parser.h \
+ search_engines/../landmarks/h_m_landmarks.h
 .obj/evaluators/max_evaluator.profile.o: evaluators/max_evaluator.cc evaluators/max_evaluator.h \
  evaluators/combining_evaluator.h evaluators/scalar_evaluator.h \
  evaluators/evaluator.h evaluators/../option_parser.h \

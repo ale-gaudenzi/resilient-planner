@@ -206,6 +206,8 @@ extern bool g_dump_resilient_nodes;
 extern bool g_dump_memory_replan_progression;
 extern bool g_pruning;
 extern bool g_landmark_pruning;
+extern bool g_search_pruning;
+
 
 extern long g_mem_initial;
 extern long g_mem_initial_policy_search;

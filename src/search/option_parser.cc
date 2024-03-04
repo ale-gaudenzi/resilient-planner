@@ -450,6 +450,11 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_landmark_pruning = (atoi(argv[i]) == 1);
         }
+        else if (arg.compare("--search_pruning") == 0)
+        {
+            ++i;
+            g_search_pruning = (atoi(argv[i]) == 1);
+        }
         else
         {
             cerr << "unknown option " << arg << endl

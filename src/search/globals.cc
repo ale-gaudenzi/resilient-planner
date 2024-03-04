@@ -613,6 +613,7 @@ bool g_dump_resilient_nodes = false;
 bool g_dump_memory_replan_progression = false;
 bool g_pruning = false;
 bool g_landmark_pruning = false;
+bool g_search_pruning  = false;
 
 int g_max_iterations = -1;
 
@@ -630,9 +631,11 @@ int g_iteration = 0;
 int g_successful_resiliency_check = 0;
 
 
+
 int g_pruning_landmarks = 0;
 int g_pruning_goals = 0;
 int g_replanning = 0;
+
 
 int g_successful_replan = 0;
 int g_max_dimension_open = 0;
