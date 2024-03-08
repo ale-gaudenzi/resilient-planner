@@ -179,47 +179,47 @@ void LazySearch::initialize()
         heuristics.push_back(*it);
     }
 
-    if (g_search_pruning)
-    {
+    // if (g_search_pruning)
+    // {
 
-        propositions.resize(g_variable_domain.size());
-        for (int var = 0; var < g_variable_domain.size(); var++)
-        {
-            for (int value = 0; value < g_variable_domain[var]; value++)
-            {
-                RelaxedProposition prop = RelaxedProposition();
-                prop.name = g_fact_names[var][value];
-                propositions[var].push_back(prop);
-            }
-        }
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-            const vector<Prevail> &prevail = g_operators[i].get_prevail();
-            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
-            vector<RelaxedProposition *> precondition;
-            vector<RelaxedProposition *> effects;
-            for (int j = 0; j < prevail.size(); j++)
-                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-            for (int j = 0; j < pre_post.size(); j++)
-            {
-                if (pre_post[j].pre != -1)
-                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
-                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
-            }
-            RelaxedProposition artificial_precondition;
-            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
-            relaxed_operators.push_back(relaxed_op);
-        }
-        for (int i = 0; i < relaxed_operators.size(); i++)
-        {
-            RelaxedOperator *op = &relaxed_operators[i];
-            for (int j = 0; j < op->precondition.size(); j++)
-                op->precondition[j]->precondition_of.push_back(op);
-            for (int j = 0; j < op->effects.size(); j++){
-                op->effects[j]->effect_of.push_back(op);
-            }
-        }
-    }
+    //     propositions.resize(g_variable_domain.size());
+    //     for (int var = 0; var < g_variable_domain.size(); var++)
+    //     {
+    //         for (int value = 0; value < g_variable_domain[var]; value++)
+    //         {
+    //             RelaxedProposition prop = RelaxedProposition();
+    //             prop.name = g_fact_names[var][value];
+    //             propositions[var].push_back(prop);
+    //         }
+    //     }
+    //     for (int i = 0; i < g_operators.size(); i++)
+    //     {
+    //         const vector<Prevail> &prevail = g_operators[i].get_prevail();
+    //         const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+    //         vector<RelaxedProposition *> precondition;
+    //         vector<RelaxedProposition *> effects;
+    //         for (int j = 0; j < prevail.size(); j++)
+    //             precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
+    //         for (int j = 0; j < pre_post.size(); j++)
+    //         {
+    //             if (pre_post[j].pre != -1)
+    //                 precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
+    //             effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
+    //         }
+    //         RelaxedProposition artificial_precondition;
+    //         RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+    //         relaxed_operators.push_back(relaxed_op);
+    //     }
+    //     for (int i = 0; i < relaxed_operators.size(); i++)
+    //     {
+    //         RelaxedOperator *op = &relaxed_operators[i];
+    //         for (int j = 0; j < op->precondition.size(); j++)
+    //             op->precondition[j]->precondition_of.push_back(op);
+    //         for (int j = 0; j < op->effects.size(); j++){
+    //             op->effects[j]->effect_of.push_back(op);
+    //         }
+    //     }
+    // }
     assert(!heuristics.empty());
 }
 
@@ -347,53 +347,53 @@ int LazySearch::step()
         search_progress.inc_dead_ends();
     }
 
-    if (g_search_pruning)
-    {
-            //TODO attenzione togliere
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-            {
-                g_operators.erase(g_operators.begin() + i);
-                i--;
-            }
-        }
-        std::vector<pair<int, int> > landmarks;
-        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-        landmarks = landmarks_graph->extract_landmarks();
-        g_operators = g_operators_backup;
-        int pruning = 0;
-        for (int var = 0; var < propositions.size(); var++)
-        {
-            if (pruning == 0){
-                for (int value = 0; value < propositions[var].size(); value++){
-                    RelaxedProposition &prop = propositions[var][value];
-                    if (landmarks.size() == 0)
-                        {
-                            // cout << "\nNO LANDMARKS FOUND. PRUNING STATE" << endl;
-                            g_pruning_landmarks++;
-                            node.mark_as_dead_end();    
-                            search_progress.inc_dead_ends();
-                            pruning = 1;
-                            break;
-                        }
-                    if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-                        {
-                            // cout << "\nPRUNING PROP FOR LANDMARK FACT: " << prop.name << endl;
-                            // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
-                            g_pruning_landmarks++;
-                            node.mark_as_dead_end();    
-                            search_progress.inc_dead_ends();
-                            pruning = 1;
-                            break;
-                        }
-                }
-            } else{
-                break;
-            }
-        }
-    }
+    // if (g_search_pruning)
+    // {
+    //         //TODO attenzione togliere
+    //     for (int i = 0; i < g_operators.size(); i++)
+    //     {
+    //     if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+    //         {
+    //             g_operators.erase(g_operators.begin() + i);
+    //             i--;
+    //         }
+    //     }
+    //     std::vector<pair<int, int> > landmarks;
+    //     LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+    //     LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+    //     landmarks = landmarks_graph->extract_landmarks();
+    //     g_operators = g_operators_backup;
+    //     int pruning = 0;
+    //     for (int var = 0; var < propositions.size(); var++)
+    //     {
+    //         if (pruning == 0){
+    //             for (int value = 0; value < propositions[var].size(); value++){
+    //                 RelaxedProposition &prop = propositions[var][value];
+    //                 if (landmarks.size() == 0)
+    //                     {
+    //                         // cout << "\nNO LANDMARKS FOUND. PRUNING STATE" << endl;
+    //                         g_pruning_landmarks++;
+    //                         node.mark_as_dead_end();    
+    //                         search_progress.inc_dead_ends();
+    //                         pruning = 1;
+    //                         break;
+    //                     }
+    //                 if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+    //                     {
+    //                         // cout << "\nPRUNING PROP FOR LANDMARK FACT: " << prop.name << endl;
+    //                         // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+    //                         g_pruning_landmarks++;
+    //                         node.mark_as_dead_end();    
+    //                         search_progress.inc_dead_ends();
+    //                         pruning = 1;
+    //                         break;
+    //                     }
+    //             }
+    //         } else{
+    //             break;
+    //         }
+    //     }
+    // }
 
 
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();

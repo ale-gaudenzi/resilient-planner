@@ -109,7 +109,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine);
 std::list<Operator> extract_solution();
 void update_non_resilient_nodes(ResilientNode node);
 void add_non_resilient_deadends(ResilientNode node);
-// PartialState partial_state_to_goal(const Operator* operator_to_goal);
+std::vector<PartialState> partial_state_to_goal(std::vector<const Operator *> plan);
 
 std::tr1::unordered_map<int, ResilientNode> resilient_nodes;
 // std::tr1::unordered_map<int, pair<PartialState, int> > resilient_partial_states;
@@ -261,9 +261,37 @@ int main(int argc, const char **argv)
 
                     // Save current initial state in a variable and computed plan for iteration
                     State current = g_initial_state();
+                    std::vector<PartialState> partial_states;
+                    PartialState first_regression_state;
+                    PartialState current_regression_state;
                     std::vector<const Operator *> plan = engine->get_plan();
                     if (current_node.get_k() >= 1)
                     {
+                        for (int i = 0; i < g_goal.size(); i++)
+                        {
+                            first_regression_state[g_goal[i].first] = g_goal[i].second;
+                        }
+                        for (size_t i = 0; i < plan[plan.size() - 1]->get_pre_post().size(); ++i)
+                        {
+                            const PrePost &pre_post = plan[plan.size()-1]->get_pre_post()[i];
+                            first_regression_state[pre_post.var] = pre_post.pre;
+                        }
+                        first_regression_state.dump_pddl();
+                        partial_states.push_back(first_regression_state);
+
+                        for (int i = plan.size(); i > 1; --i)
+                        {
+                            const Operator* oper = plan[i - 2];
+                            for (size_t i = 0; i < oper->get_pre_post().size(); ++i)
+                            {
+                                const PrePost &pre_post = oper->get_pre_post()[i];
+                                first_regression_state[pre_post.var] = pre_post.pre;
+                            }
+                            partial_states.push_back(first_regression_state);
+                            first_regression_state.dump_pddl();
+                        }
+                        return partial_states;
+
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
                             // Create node <tau_i-1, k, V>
@@ -289,6 +317,18 @@ int main(int argc, const char **argv)
                         // Add goal to resilient nodes
                         ResilientNode tau = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
                         resilient_nodes.insert(make_pair(tau.get_id(), tau));
+                        vector<PartialState> ps = partial_state_to_goal(plan);
+
+                        PartialState first_ps = ps[0];
+
+
+
+                        PartialState current_ps = PartialState(current);
+                        current.dump_pddl();
+                        cout << "stato implica il ps? " << current_ps.is_implied(first_ps) << endl;
+                        cout << "viceversa? " << first_ps.is_implied(current_ps) << endl;
+
+
                         // resilient_partial_states.insert(make_pair(partial_state_to_goal() ,g_current_faults))
                         
                     }
@@ -424,21 +464,36 @@ bool resiliency_check(ResilientNode node)
 }
 
 
-//the idea behind this function is generate a partial state to goal
-// PartialState partial_state_to_goal(const Operator *operator_to_goal){
-//     PartialState regression_state = PartialState();
-//     for (int i = 0; i < g_goal.size(); i++){
-//         regression_state[g_goal[i].first] = g_goal[i].second;
-//     }
-//     cout << "dentro regressione" << endl;
-//     regression_state.dump_pddl();
-//     for (size_t i = 0; i < operator_to_goal->get_pre_post().size(); ++i)
-//     {
-//         const PrePost &pre_post = operator_to_goal->get_pre_post()[i];
-//         regression_state[pre_post.var] = pre_post.post;
-//     }
-//     return regression_state;
-// }
+// the idea behind this function is generate a partial state to goal
+std::vector<PartialState> partial_state_to_goal(std::vector<const Operator *> plan){
+    std::vector<PartialState> partial_states;
+    PartialState first_regression_state;
+    PartialState current_regression_state;
+    for (int i = 0; i < g_goal.size(); i++)
+    {
+        first_regression_state[g_goal[i].first] = g_goal[i].second;
+    }
+    for (size_t i = 0; i < plan[plan.size() - 1]->get_pre_post().size(); ++i)
+    {
+        const PrePost &pre_post = plan[plan.size()-1]->get_pre_post()[i];
+        first_regression_state[pre_post.var] = pre_post.pre;
+    }
+    first_regression_state.dump_pddl();
+    partial_states.push_back(first_regression_state);
+
+    for (int i = plan.size(); i > 1; --i)
+    {
+        const Operator* oper = plan[i - 2];
+        for (size_t i = 0; i < oper->get_pre_post().size(); ++i)
+        {
+            const PrePost &pre_post = oper->get_pre_post()[i];
+            first_regression_state[pre_post.var] = pre_post.pre;
+        }
+        partial_states.push_back(first_regression_state);
+        first_regression_state.dump_pddl();
+    }
+    return partial_states;
+}
 
 bool replan(ResilientNode current_node, SearchEngine *engine){
     PartialState current_state = PartialState(current_node.get_state());
@@ -451,93 +506,93 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
             g_operators.erase(g_operators.begin() + i--);
     }
     engine->reset();
-    // if (g_pruning)
-    // {
-    //     std::vector<std::vector<RelaxedProposition> > propositions;
-    //     std::vector<RelaxedOperator> relaxed_operators;
-    //     propositions.resize(g_variable_domain.size());
-    //     for (int var = 0; var < g_variable_domain.size(); var++)
-    //     {
-    //         for (int value = 0; value < g_variable_domain[var]; value++)
-    //         {
-    //             RelaxedProposition prop = RelaxedProposition();
-    //             prop.name = g_fact_names[var][value];
-    //             propositions[var].push_back(prop);
-    //         }
-    //     }
-    //     for (int i = 0; i < g_operators.size(); i++)
-    //     {
-    //         const vector<Prevail> &prevail = g_operators[i].get_prevail();
-    //         const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
-    //         vector<RelaxedProposition *> precondition;
-    //         vector<RelaxedProposition *> effects;
-    //         for (int j = 0; j < prevail.size(); j++)
-    //             precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-    //         for (int j = 0; j < pre_post.size(); j++)
-    //         {
-    //             if (pre_post[j].pre != -1)
-    //                 precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
-    //             effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
-    //         }
-    //         RelaxedProposition artificial_precondition;
-    //         RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
-    //         relaxed_operators.push_back(relaxed_op);
-    //     }
-    //     for (int i = 0; i < relaxed_operators.size(); i++)
-    //     {
-    //         RelaxedOperator *op = &relaxed_operators[i];
-    //         for (int j = 0; j < op->precondition.size(); j++)
-    //             op->precondition[j]->precondition_of.push_back(op);
-    //         for (int j = 0; j < op->effects.size(); j++){
-    //             op->effects[j]->effect_of.push_back(op);
-    //         }
-    //     }
-    //     std::vector<pair<int, int> > landmarks;
-    //     if (g_landmark_pruning)
-    //     {
-    //         for (int i = 0; i < g_operators.size(); i++)
-    //         {
-    //         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-    //             {
-    //                 g_operators.erase(g_operators.begin() + i);
-    //                 i--;
-    //             }
-    //         }
-    //         LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-    //         LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-    //         landmarks = landmarks_graph->extract_landmarks();
-    //         g_operators = g_operators_backup;
-    //     }
-    //     for (int var = 0; var < propositions.size(); var++)
-    //     {
-    //         for (int value = 0; value < propositions[var].size(); value++){
-    //             RelaxedProposition &prop = propositions[var][value];
-    //             if(g_landmark_pruning)
-    //             {
-    //                 if (landmarks.size() == 0)
-    //                 {
-    //                     // cout << "\nNO LANDMARKS FOUND. PRUNING STATE" << endl;
-    //                     g_pruning_landmarks++;
-    //                     return false;
-    //                 }
-    //                 if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-    //                 {
-    //                     // cout << "\nPRUNING PROP FOR LANDMARK FACT: " << prop.name << endl;
-    //                     // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
-    //                     g_pruning_landmarks++;
-    //                     return false;
-    //                 }
-    //             }
-    //             if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-    //             {
-    //                 // cout << "\nPRUNING PROP FOR GOAL FACT: " << prop.name << endl;
-    //                 // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
-    //                 g_pruning_goals++;
-    //                 return false;
-    //             }
-    //         }
-    //     }
-    // }
+    if (g_pruning)
+    {
+        std::vector<std::vector<RelaxedProposition> > propositions;
+        std::vector<RelaxedOperator> relaxed_operators;
+        propositions.resize(g_variable_domain.size());
+        for (int var = 0; var < g_variable_domain.size(); var++)
+        {
+            for (int value = 0; value < g_variable_domain[var]; value++)
+            {
+                RelaxedProposition prop = RelaxedProposition();
+                prop.name = g_fact_names[var][value];
+                propositions[var].push_back(prop);
+            }
+        }
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+            const vector<Prevail> &prevail = g_operators[i].get_prevail();
+            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+            vector<RelaxedProposition *> precondition;
+            vector<RelaxedProposition *> effects;
+            for (int j = 0; j < prevail.size(); j++)
+                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
+            for (int j = 0; j < pre_post.size(); j++)
+            {
+                if (pre_post[j].pre != -1)
+                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
+                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
+            }
+            RelaxedProposition artificial_precondition;
+            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+            relaxed_operators.push_back(relaxed_op);
+        }
+        for (int i = 0; i < relaxed_operators.size(); i++)
+        {
+            RelaxedOperator *op = &relaxed_operators[i];
+            for (int j = 0; j < op->precondition.size(); j++)
+                op->precondition[j]->precondition_of.push_back(op);
+            for (int j = 0; j < op->effects.size(); j++){
+                op->effects[j]->effect_of.push_back(op);
+            }
+        }
+        std::vector<pair<int, int> > landmarks;
+        if (g_landmark_pruning)
+        {
+            for (int i = 0; i < g_operators.size(); i++)
+            {
+            if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+                {
+                    g_operators.erase(g_operators.begin() + i);
+                    i--;
+                }
+            }
+            LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+            LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+            landmarks = landmarks_graph->extract_landmarks();
+            g_operators = g_operators_backup;
+        }
+        for (int var = 0; var < propositions.size(); var++)
+        {
+            for (int value = 0; value < propositions[var].size(); value++){
+                RelaxedProposition &prop = propositions[var][value];
+                if(g_landmark_pruning)
+                {
+                    if (landmarks.size() == 0)
+                    {
+                        // cout << "\nNO LANDMARKS FOUND. PRUNING STATE" << endl;
+                        g_pruning_landmarks++;
+                        return false;
+                    }
+                    if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                    {
+                        // cout << "\nPRUNING PROP FOR LANDMARK FACT: " << prop.name << endl;
+                        // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+                        g_pruning_landmarks++;
+                        return false;
+                    }
+                }
+                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                {
+                    // cout << "\nPRUNING PROP FOR GOAL FACT: " << prop.name << endl;
+                    // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
+                    g_pruning_goals++;
+                    return false;
+                }
+            }
+        }
+    }
     // Reset initial state to the one contained in the node
     g_replanning++;
     g_timer_engine_init.resume();
