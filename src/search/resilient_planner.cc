@@ -261,37 +261,9 @@ int main(int argc, const char **argv)
 
                     // Save current initial state in a variable and computed plan for iteration
                     State current = g_initial_state();
-                    std::vector<PartialState> partial_states;
-                    PartialState first_regression_state;
-                    PartialState current_regression_state;
                     std::vector<const Operator *> plan = engine->get_plan();
                     if (current_node.get_k() >= 1)
                     {
-                        for (int i = 0; i < g_goal.size(); i++)
-                        {
-                            first_regression_state[g_goal[i].first] = g_goal[i].second;
-                        }
-                        for (size_t i = 0; i < plan[plan.size() - 1]->get_pre_post().size(); ++i)
-                        {
-                            const PrePost &pre_post = plan[plan.size()-1]->get_pre_post()[i];
-                            first_regression_state[pre_post.var] = pre_post.pre;
-                        }
-                        first_regression_state.dump_pddl();
-                        partial_states.push_back(first_regression_state);
-
-                        for (int i = plan.size(); i > 1; --i)
-                        {
-                            const Operator* oper = plan[i - 2];
-                            for (size_t i = 0; i < oper->get_pre_post().size(); ++i)
-                            {
-                                const PrePost &pre_post = oper->get_pre_post()[i];
-                                first_regression_state[pre_post.var] = pre_post.pre;
-                            }
-                            partial_states.push_back(first_regression_state);
-                            first_regression_state.dump_pddl();
-                        }
-                        return partial_states;
-
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
                             // Create node <tau_i-1, k, V>
@@ -321,8 +293,6 @@ int main(int argc, const char **argv)
 
                         PartialState first_ps = ps[0];
 
-
-
                         PartialState current_ps = PartialState(current);
                         current.dump_pddl();
                         cout << "stato implica il ps? " << current_ps.is_implied(first_ps) << endl;
@@ -335,7 +305,7 @@ int main(int argc, const char **argv)
                     else // k = 0
                     {   
                         // TODO
-                        g_safe_states.insert(std::make_pair(current_node.get_state().get_string_key(), std::make_pair(current_node.get_state(), plan)));
+                        // g_safe_states.insert(std::make_pair(current_node.get_state().get_string_key(), std::make_pair(current_node.get_state(), plan)));
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
