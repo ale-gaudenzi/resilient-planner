@@ -82,6 +82,7 @@ struct RelaxedProposition
 };
 std::vector<std::vector<RelaxedProposition> > propositions;
 std::vector<RelaxedOperator> relaxed_operators;
+std::vector<pair<int, int> > landmarks;
 typedef __gnu_cxx::hash_set<std::pair<int, int>, hash_int_pair> lm_set;
 class plan_graph_node {
 public:
@@ -218,6 +219,18 @@ void LazySearch::initialize()
                 op->effects[j]->effect_of.push_back(op);
             }
         }
+                for (int i = 0; i < g_operators.size(); i++)
+        {
+        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+            {
+                g_operators.erase(g_operators.begin() + i);
+                i--;
+            }
+        }
+        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+        landmarks = landmarks_graph->extract_landmarks();
+        g_operators = g_operators_backup;
     }
     assert(!heuristics.empty());
 }
@@ -346,67 +359,26 @@ int LazySearch::step()
         search_progress.inc_dead_ends();
     }
     if(g_pruning_during_planning){
+
         for (int var = 0; var < propositions.size(); var++)
         {
             for (int value = 0; value < propositions[var].size(); value++){
                 RelaxedProposition &prop = propositions[var][value];
-                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                if (landmarks.size() == 0)
                 {
                     g_pruning_during_planning_value++;
-                    node.mark_as_dead_end();    
-                    search_progress.inc_dead_ends();
-                    break;
+                    return false;
+                }
+                if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                {
+                    cout << prop.name << endl;
+                    current_state.dump_pddl();
+                    g_pruning_during_planning_value++;
+                    return false;
                 }
             }
         }
     }
-    // if (g_search_pruning)
-    // {
-    //         //TODO attenzione togliere
-    //     for (int i = 0; i < g_operators.size(); i++)
-    //     {
-    //     if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-    //         {
-    //             g_operators.erase(g_operators.begin() + i);
-    //             i--;
-    //         }
-    //     }
-    //     std::vector<pair<int, int> > landmarks;
-    //     LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-    //     LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-    //     landmarks = landmarks_graph->extract_landmarks();
-    //     g_operators = g_operators_backup;
-    //     int pruning = 0;
-    //     for (int var = 0; var < propositions.size(); var++)
-    //     {
-    //         if (pruning == 0){
-    //             for (int value = 0; value < propositions[var].size(); value++){
-    //                 RelaxedProposition &prop = propositions[var][value];
-    //                 if (landmarks.size() == 0)
-    //                     {
-    //                         // cout << "\nNO LANDMARKS FOUND. PRUNING STATE" << endl;
-    //                         g_pruning_landmarks++;
-    //                         node.mark_as_dead_end();    
-    //                         search_progress.inc_dead_ends();
-    //                         pruning = 1;
-    //                         break;
-    //                     }
-    //                 if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-    //                     {
-    //                         // cout << "\nPRUNING PROP FOR LANDMARK FACT: " << prop.name << endl;
-    //                         // cout << "only " << prop.effect_of.size() << " possible actions\n" << endl;
-    //                         g_pruning_landmarks++;
-    //                         node.mark_as_dead_end();    
-    //                         search_progress.inc_dead_ends();
-    //                         pruning = 1;
-    //                         break;
-    //                     }
-    //             }
-    //         } else{
-    //             break;
-    //         }
-    //     }
-    // }
 
 
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();

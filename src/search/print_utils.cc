@@ -79,7 +79,7 @@ void print_statistics(int resilient_nodes_size, int non_resilient_nodes_size)
     cout << "               Actions planned: " << g_policy->get_size() << endl;
     cout << "      Max dimension open stack: " << g_max_dimension_open << endl;
     cout << "\n\n--------------------------------------------------------------------" << endl;
-    cout << "\n                      -{ Goal Pruning }-\n" << endl;
+    cout << "\n                      -{ Landmarks Pruning }-\n" << endl;
     cout << "                    Before all: " << g_pruning_before_all_value << endl;
     cout << "               Before planning: " << g_pruning_before_planning_value << endl;
     cout << "               During planning: " << g_pruning_during_planning_value << endl;

@@ -243,13 +243,24 @@ int main(int argc, const char **argv)
                 op->effects[j]->effect_of.push_back(op);
             }
         }
-        for (int var = 0; var < propositions.size(); var++){
+        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+        std::vector<pair<int, int> > landmarks;
+        landmarks = landmarks_graph->extract_landmarks();
+        g_operators = g_operators_backup;
+        for (int var = 0; var < propositions.size(); var++)
+        {
             for (int value = 0; value < propositions[var].size(); value++){
                 RelaxedProposition &prop = propositions[var][value];
-                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size()){
-                    g_pruning_goals++;
+                if (landmarks.size() == 0)
+                {
+                    g_pruning_before_all_value++;
                     std::stack<ResilientNode> open;
-                    g_pruning_before_all++;
+                }
+                if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                {
+                    g_pruning_before_all_value++;
+                    std::stack<ResilientNode> open;
                 }
             }
         }
@@ -557,11 +568,29 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
                 op->effects[j]->effect_of.push_back(op);
             }
         }
+        std::vector<pair<int, int> > landmarks;
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+            {
+                g_operators.erase(g_operators.begin() + i);
+                i--;
+            }
+        }
+        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+        landmarks = landmarks_graph->extract_landmarks();
+        g_operators = g_operators_backup;
         for (int var = 0; var < propositions.size(); var++)
         {
             for (int value = 0; value < propositions[var].size(); value++){
                 RelaxedProposition &prop = propositions[var][value];
-                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                if (landmarks.size() == 0)
+                {
+                    g_pruning_before_planning_value++;
+                    return false;
+                }
+                else if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
                 {
                     g_pruning_before_planning_value++;
                     return false;
@@ -569,7 +598,6 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
             }
         }
     }
-    // Reset initial state to the one contained in the node
     g_replanning++;
     g_timer_engine_init.resume();
     g_timer_engine_init.stop();
@@ -582,6 +610,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
         cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
     return engine->found_solution();
 }
+
 /// @brief Extract the final resilient plan, starting by the initial state
 /// and choosing only actions that lead to resilient states until the goal
 /// is reached.
