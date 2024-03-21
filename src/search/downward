@@ -19,7 +19,6 @@ echo "$PLANNER" \
 "$PLANNER" \
     --heuristic "h=lmcut(cost_type=1)" \
     --search "lazy_greedy([h], preferred=[h])" \
-    --landmarks "l=lm_zg()"\
     --random-seed $SEED \
     "$@" < $TEMPFILE
             

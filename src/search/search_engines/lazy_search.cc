@@ -179,47 +179,46 @@ void LazySearch::initialize()
         heuristics.push_back(*it);
     }
 
-    // if (g_search_pruning)
-    // {
-
-    //     propositions.resize(g_variable_domain.size());
-    //     for (int var = 0; var < g_variable_domain.size(); var++)
-    //     {
-    //         for (int value = 0; value < g_variable_domain[var]; value++)
-    //         {
-    //             RelaxedProposition prop = RelaxedProposition();
-    //             prop.name = g_fact_names[var][value];
-    //             propositions[var].push_back(prop);
-    //         }
-    //     }
-    //     for (int i = 0; i < g_operators.size(); i++)
-    //     {
-    //         const vector<Prevail> &prevail = g_operators[i].get_prevail();
-    //         const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
-    //         vector<RelaxedProposition *> precondition;
-    //         vector<RelaxedProposition *> effects;
-    //         for (int j = 0; j < prevail.size(); j++)
-    //             precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-    //         for (int j = 0; j < pre_post.size(); j++)
-    //         {
-    //             if (pre_post[j].pre != -1)
-    //                 precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
-    //             effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
-    //         }
-    //         RelaxedProposition artificial_precondition;
-    //         RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
-    //         relaxed_operators.push_back(relaxed_op);
-    //     }
-    //     for (int i = 0; i < relaxed_operators.size(); i++)
-    //     {
-    //         RelaxedOperator *op = &relaxed_operators[i];
-    //         for (int j = 0; j < op->precondition.size(); j++)
-    //             op->precondition[j]->precondition_of.push_back(op);
-    //         for (int j = 0; j < op->effects.size(); j++){
-    //             op->effects[j]->effect_of.push_back(op);
-    //         }
-    //     }
-    // }
+    if (g_pruning_during_planning)
+    {
+        propositions.resize(g_variable_domain.size());
+        for (int var = 0; var < g_variable_domain.size(); var++)
+        {
+            for (int value = 0; value < g_variable_domain[var]; value++)
+            {
+                RelaxedProposition prop = RelaxedProposition();
+                prop.name = g_fact_names[var][value];
+                propositions[var].push_back(prop);
+            }
+        }
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+            const vector<Prevail> &prevail = g_operators[i].get_prevail();
+            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+            vector<RelaxedProposition *> precondition;
+            vector<RelaxedProposition *> effects;
+            for (int j = 0; j < prevail.size(); j++)
+                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
+            for (int j = 0; j < pre_post.size(); j++)
+            {
+                if (pre_post[j].pre != -1)
+                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
+                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
+            }
+            RelaxedProposition artificial_precondition;
+            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+            relaxed_operators.push_back(relaxed_op);
+        }
+        for (int i = 0; i < relaxed_operators.size(); i++)
+        {
+            RelaxedOperator *op = &relaxed_operators[i];
+            for (int j = 0; j < op->precondition.size(); j++)
+                op->precondition[j]->precondition_of.push_back(op);
+            for (int j = 0; j < op->effects.size(); j++){
+                op->effects[j]->effect_of.push_back(op);
+            }
+        }
+    }
     assert(!heuristics.empty());
 }
 
@@ -346,7 +345,21 @@ int LazySearch::step()
         node.mark_as_dead_end();    
         search_progress.inc_dead_ends();
     }
-
+    if(g_pruning_during_planning){
+        for (int var = 0; var < propositions.size(); var++)
+        {
+            for (int value = 0; value < propositions[var].size(); value++){
+                RelaxedProposition &prop = propositions[var][value];
+                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                {
+                    g_pruning_during_planning_value++;
+                    node.mark_as_dead_end();    
+                    search_progress.inc_dead_ends();
+                    break;
+                }
+            }
+        }
+    }
     // if (g_search_pruning)
     // {
     //         //TODO attenzione togliere

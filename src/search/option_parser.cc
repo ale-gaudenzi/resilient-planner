@@ -445,6 +445,21 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_pruning = (atoi(argv[i]) == 1);
         }
+        else if (arg.compare("--g_all") == 0)
+        {
+            ++i;
+            g_pruning_before_all = (atoi(argv[i]) == 1);
+        }
+        else if (arg.compare("--g_before_p") == 0)
+        {
+            ++i;
+            g_pruning_before_planning = (atoi(argv[i]) == 1);
+        }
+        else if (arg.compare("--g_during_p") == 0)
+        {
+            ++i;
+            g_pruning_during_planning = (atoi(argv[i]) == 1);
+        }
         else if (arg.compare("--landmark_pruning") == 0)
         {
             ++i;

@@ -614,6 +614,9 @@ bool g_dump_memory_replan_progression = false;
 bool g_pruning = false;
 bool g_landmark_pruning = false;
 bool g_search_pruning  = false;
+bool g_pruning_before_all = false;
+bool g_pruning_during_planning = false;
+bool g_pruning_before_planning = false;
 
 int g_max_iterations = -1;
 
@@ -636,6 +639,9 @@ int g_pruning_landmarks = 0;
 int g_pruning_goals = 0;
 int g_replanning = 0;
 
+int g_pruning_before_all_value = 0;
+int g_pruning_before_planning_value = 0;
+int g_pruning_during_planning_value = 0;
 
 int g_successful_replan = 0;
 int g_max_dimension_open = 0;

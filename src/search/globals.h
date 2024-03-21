@@ -205,6 +205,9 @@ extern bool g_dump_resilient_policy;
 extern bool g_dump_resilient_nodes;
 extern bool g_dump_memory_replan_progression;
 extern bool g_pruning;
+extern bool g_pruning_before_all;
+extern bool g_pruning_before_planning;
+extern bool g_pruning_during_planning;
 extern bool g_landmark_pruning;
 extern bool g_search_pruning;
 
@@ -222,6 +225,10 @@ extern int g_successful_replan;
 extern int g_pruning_landmarks;
 extern int g_pruning_goals;
 extern int g_replanning;
+
+extern int g_pruning_before_all_value;
+extern int g_pruning_before_planning_value;
+extern int g_pruning_during_planning_value;
 
 extern int g_max_dimension_open;
 extern int g_replan_counter;
