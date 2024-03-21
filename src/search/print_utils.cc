@@ -82,9 +82,9 @@ void print_statistics(int resilient_nodes_size, int non_resilient_nodes_size)
     cout << "\n                      -{ Landmarks Pruning }-\n" << endl;
     cout << "                    Before all: " << g_pruning_before_all_value << endl;
     cout << "               Before planning: " << g_pruning_before_planning_value << endl;
-    cout << "               During planning: " << g_pruning_during_planning_value << endl;
+    cout << "               During planning: " << g_pruning_during_planning_value << endl; //ovviamente questi non sono nodi veri ma deadend during the search
     cout << "                    No pruning: " << g_replanning << endl;
-    cout << "                         TOTAL: " << (g_pruning_before_all_value+g_pruning_before_planning_value+g_pruning_during_planning_value+g_replanning) << endl;
+    cout << "                         TOTAL: " << (g_pruning_before_all_value+g_pruning_before_planning_value+g_replanning) << endl;
     cout << "\n--------------------------------------------------------------------\n";
 }
 

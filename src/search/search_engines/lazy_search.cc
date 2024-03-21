@@ -359,22 +359,28 @@ int LazySearch::step()
         search_progress.inc_dead_ends();
     }
     if(g_pruning_during_planning){
-
-        for (int var = 0; var < propositions.size(); var++)
-        {
-            for (int value = 0; value < propositions[var].size(); value++){
+        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+        std::vector<pair<int, int> > landmarks;
+        landmarks = landmarks_graph->extract_landmarks();
+        g_operators = g_operators_backup;
+        if (landmarks.size() == 0){
+            g_pruning_during_planning_value++;
+            node.mark_as_dead_end();    
+            search_progress.inc_dead_ends();
+        }
+        else{
+            for (int pos = 0; pos < landmarks.size(); pos++){
+                std::pair<int, int> landmark = landmarks[pos];
+                int var = landmark.first;
+                int value = landmark.second;
                 RelaxedProposition &prop = propositions[var][value];
-                if (landmarks.size() == 0)
+                if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
                 {
                     g_pruning_during_planning_value++;
-                    return false;
-                }
-                if (std::find(landmarks.begin(), landmarks.end(), make_pair(var, value)) != landmarks.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-                {
-                    cout << prop.name << endl;
-                    current_state.dump_pddl();
-                    g_pruning_during_planning_value++;
-                    return false;
+                    node.mark_as_dead_end();    
+                    search_progress.inc_dead_ends();
+                    return 0;
                 }
             }
         }
