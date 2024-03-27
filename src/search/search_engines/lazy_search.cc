@@ -359,6 +359,14 @@ int LazySearch::step()
         search_progress.inc_dead_ends();
     }
     if(g_pruning_during_planning){
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+            if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+                {
+                    g_operators.erase(g_operators.begin() + i);
+                    i--;
+                }
+        }
         LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
         LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
         std::vector<pair<int, int> > landmarks;
