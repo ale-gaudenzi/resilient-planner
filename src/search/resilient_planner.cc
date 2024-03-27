@@ -243,12 +243,14 @@ int main(int argc, const char **argv)
                 op->effects[j]->effect_of.push_back(op);
             }
         }
-        for (int var = 0; var < propositions.size(); var++){
+        cout << "size " << propositions.size();
+        for (int var = 0; var < propositions.size(); var++)
+        {
             for (int value = 0; value < propositions[var].size(); value++){
                 RelaxedProposition &prop = propositions[var][value];
-                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size()){
+                if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_max_faults >= prop.effect_of.size()){
                     g_pruning_goals++;
-                    std::stack<ResilientNode> open;
+                    open.pop();
                     g_pruning_before_all++;
                 }
             }
@@ -557,12 +559,15 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
                 op->effects[j]->effect_of.push_back(op);
             }
         }
+        cout << "size " << propositions.size() << endl;
         for (int var = 0; var < propositions.size(); var++)
         {
             for (int value = 0; value < propositions[var].size(); value++){
                 RelaxedProposition &prop = propositions[var][value];
                 if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() && current_state[var] != value && g_current_faults >= prop.effect_of.size())
                 {
+                    cout << var << " " << value << " " << current_state[var] << " " << g_current_faults << " " << prop.effect_of.size() << endl;
+                    cout << (current_state[var] != value) << endl;
                     g_pruning_before_planning_value++;
                     return false;
                 }
