@@ -347,7 +347,7 @@ int LazySearch::fetch_next_state()
 
 int LazySearch::step()
 {
-    // Invariants:
+    // Invariant:
     // - current_state is the next state for which we want to compute the heuristic.
     // - current_predecessor is a permanent pointer to the predecessor of that state.
     // - current_operator is the operator which leads to current_state from predecessor.
@@ -388,7 +388,7 @@ int LazySearch::step()
                     g_pruning_during_planning_value++;
                     node.mark_as_dead_end();    
                     search_progress.inc_dead_ends();
-                    return 0;
+                    break;
                 }
             }
         }
