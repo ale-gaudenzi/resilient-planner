@@ -278,7 +278,9 @@ int main(int argc, const char **argv)
         // Check if node is already in R sets
         // current_node.dump();
         if (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end() && non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end()){
-            if (resiliency_check(current_node)){
+            if (resiliency_check(current_node))
+            {
+                cout << "resilient check" << endl;
                 g_successful_resiliency_check++;
                 resilient_nodes.insert(make_pair(current_node.get_id(), current_node));
                 if (g_verbose)
@@ -291,8 +293,6 @@ int main(int argc, const char **argv)
                 if (!replan(current_node, engine)){
                     if (g_verbose)
                         cout << "\nFailed replan." << endl;
-                    // If replanning fails, add current node to deadend and not resilient sets
-                    g_dead_states.insert(current_node.get_state().get_id());
                     add_non_resilient_deadends(current_node); // S downarrow
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
@@ -540,7 +540,8 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
         std::vector<pair<int, int> > landmarks;
         landmarks = landmarks_graph->extract_landmarks();
         g_operators = g_operators_backup;
-        if (landmarks.size() == 0){
+        if (landmarks.size() == 0)
+        {
             g_pruning_before_planning_value++;
             return false;
         }
@@ -558,7 +559,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
             }
         }
     }
-     g_replanning++;
+    g_replanning++;
     g_timer_engine_init.resume();
     g_timer_engine_init.stop();
 
@@ -682,22 +683,11 @@ void add_non_resilient_deadends(ResilientNode node)
     //TODO mio
     vector<PolicyItem *> reg_items;
     g_regressable_ops->generate_applicable_items(*de_state, reg_items, true, g_regress_only_relevant_deadends);
-    // de_state->dump_pddl();
-    // for (int j = 0; j < reg_items.size(); j++){
-    //     RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
-    //     ro->dump();
-    // }
-
-        for (int j = 0; j < reg_items.size(); j++)
-        {
-            RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
-            // cout << "ààààà" << endl;
-            // ro->dump();
-            // cout << "++++" << endl;
-            // PartialState *ps = new PartialState(*de_state, *(ro->op), false, dummy_state);
-            // ps->dump_pddl();
-            de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state), ro->op->nondet_index));
-        }
+    for (int j = 0; j < reg_items.size(); j++)
+    {
+        RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
+        de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state), ro->op->nondet_index));
+    }
 
     delete dummy_state;
     Policy *current_deadend_policy = new Policy();
