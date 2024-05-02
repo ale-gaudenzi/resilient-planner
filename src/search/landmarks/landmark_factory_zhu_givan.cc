@@ -91,7 +91,6 @@ LandmarkFactoryZhuGivan::proposition_layer LandmarkFactoryZhuGivan::build_relaxe
 
     proposition_layer current_prop_layer;
     hash_set<int> triggered(g_operators.size() + g_axioms.size());
-    // set initial layer
     const State &initial_state = g_initial_state();
     current_prop_layer.resize(g_variable_domain.size());
     for (unsigned i = 0; i < g_variable_domain.size(); i++) {

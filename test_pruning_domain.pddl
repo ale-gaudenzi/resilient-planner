@@ -3,7 +3,6 @@
     (start)
     (a)
     (b)
-    (c)
     (goal)
 )
 (:action move_from_init_to_b
@@ -25,15 +24,6 @@
 	)
 )
 
-(:action move_from_init_to_c
-	:parameters ()
-	:precondition (and
-		(start)
-	)
-	:effect (and
-		(c)(goal)
-	)
-)
 
 (:action move_from_a_to_goal
 	:parameters ()
@@ -50,7 +40,6 @@
 	:effect (and
 		(not (a))
 		(not(b))
-		(not(c))
 	)
 )
 
@@ -64,13 +53,4 @@
 	)
 )
 
-(:action move_from_c_to_goal
-	:parameters ()
-	:precondition(and
-		(c)(goal)
-    )
-	:effect (and
-		(not (start))
-	)
-)
 )

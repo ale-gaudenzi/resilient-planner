@@ -1,0 +1,5 @@
+(hold a1 pencil)
+(open k0 a0)
+(put_in_knapsack k0 a1 pencil)
+(close k0 a0)
+; cost = 4 (unit cost)

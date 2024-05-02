@@ -354,8 +354,14 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
-    // if (g_dead_states.find(current_state.get_id()) != g_dead_states.end()) {
-    //     node.mark_as_dead_end();    
+    for (size_t i = 0; i < g_dead_states.size(); ++i) {
+        if (current_state == g_dead_states[i]){
+            node.mark_as_dead_end();
+            search_progress.inc_dead_ends();
+        }
+    }
+    // if (g_dead_states.find(current_state) != g_dead_states.end()) {
+    //     node.mark_as_dead_end();
     //     search_progress.inc_dead_ends();
     // }
     if(g_pruning_during_planning){
@@ -372,24 +378,16 @@ int LazySearch::step()
         std::vector<pair<int, int> > landmarks;
         landmarks = landmarks_graph->extract_landmarks();
         g_operators = g_operators_backup;
-        if (landmarks.size() == 0){
-            g_pruning_during_planning_value++;
-            node.mark_as_dead_end();    
-            search_progress.inc_dead_ends();
-        }
-        else{
-            for (int pos = 0; pos < landmarks.size(); pos++){
-                std::pair<int, int> landmark = landmarks[pos];
-                int var = landmark.first;
-                int value = landmark.second;
-                RelaxedProposition &prop = propositions[var][value];
-                if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-                {
-                    g_pruning_during_planning_value++;
-                    node.mark_as_dead_end();    
-                    search_progress.inc_dead_ends();
-                    break;
-                }
+        for (int pos = 0; pos < landmarks.size(); pos++){
+            std::pair<int, int> landmark = landmarks[pos];
+            int var = landmark.first;
+            int value = landmark.second;
+            RelaxedProposition &prop = propositions[var][value];
+            if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+            {
+                g_pruning_during_planning_value++;
+                node.mark_as_dead_end();
+                break;
             }
         }
     }
@@ -453,11 +451,6 @@ int LazySearch::step()
 
             node.close();
 
-
-            // if(g_safe_states.find(current_state.get_string_key()) != g_safe_states.end()){
-            //     prune_and_set_plan(current_state);
-            //     return SOLVED;
-            // }
 
             if (check_goal_and_set_plan(current_state)){
                 return SOLVED;
