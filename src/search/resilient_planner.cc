@@ -259,6 +259,8 @@ int main(int argc, const char **argv)
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
         ResilientNode current_node = open.top();
+        cout << "************" << endl;
+        cout << "size open = " << open.size() << endl;
         open.pop();
         // Store current k and V in globals to use them later during replanning
         g_current_faults = current_node.get_k();
@@ -270,8 +272,12 @@ int main(int argc, const char **argv)
             current_node.dump();
         }
         // Check if node is already in R sets
-        // current_node.dump();
-        if (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end() && non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end()){
+        cout << "current node: " << open.size() << endl;
+        current_node.dump();
+        cout << "Rcheck_up = " << (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end()) << "Rcheck_down = " << (non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end()) << endl;
+        cout << "Rcheck_up = " << resilient_nodes.size() << "Rcheck_down = " << non_resilient_nodes.size() << endl;
+        if (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end() && non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end())
+        {
             if (resiliency_check(current_node))
             {
                 g_successful_resiliency_check++;
@@ -296,6 +302,7 @@ int main(int argc, const char **argv)
                     // Save current initial state in a variable and computed plan for iteration
                     State current = g_initial_state();
                     std::vector<const Operator *> plan = engine->get_plan();
+                    cout << "---REPLAN---" << endl;
                     if (current_node.get_k() >= 1)
                     {
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
@@ -304,6 +311,7 @@ int main(int argc, const char **argv)
                             ResilientNode res_node = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
                             // Create node <tau_i-1, k - 1, V U {pi_i}>
                             std::set<Operator> post_actions = g_current_forbidden_ops;
+                            cout << (*it)->get_name() << endl;
                             post_actions.insert(*(*it)); // *it = pi_i
                             ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
                             // Push new nodes in the stack
@@ -328,6 +336,7 @@ int main(int argc, const char **argv)
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
                             resilient_nodes.insert(std::make_pair(res_node.get_id(), res_node));
                             current = g_state_registry->get_successor_state(current, *(*it));
+                            cout << (*it)->get_name() << endl;
                         }
                         ResilientNode tau = ResilientNode(current, 0, current_node.get_deactivated_op());
                         resilient_nodes.insert(make_pair(tau.get_id(), tau));
@@ -347,6 +356,7 @@ int main(int argc, const char **argv)
                 }
             }
         }
+        cout << "************" << endl;
         if (g_max_iterations > 0 && g_iteration >= g_max_iterations)
             break;
         if (g_verbose){
@@ -673,9 +683,9 @@ void add_non_resilient_deadends(ResilientNode node)
     // generalize_deadend(*de_state);
     vector<PolicyItem *> reg_items;
     g_regressable_ops->generate_applicable_items(*de_state, reg_items, true, g_regress_only_relevant_deadends);
-    if(node.get_k() == g_max_faults && node.get_deactivated_op().size() == 0){
-        g_dead_states.push_back(state);
-    }
+    // if(node.get_k() == g_max_faults && node.get_deactivated_op().size() == 0){
+    //     g_dead_states.push_back(state);
+    // }
 
     for (int j = 0; j < reg_items.size(); j++)
     {

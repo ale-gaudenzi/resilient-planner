@@ -37,12 +37,6 @@
     :precondition (and (not(is_close ?k)))
     :effect (is_close ?k)
   )
-  ; (:action close_2
-  ;   :parameters (?k - knapsack)
-  ;   :precondition (and (not(is_close ?k)))
-  ;   :effect (is_close ?k)
-  ; )
-
 
   (:action put_in_knapsack_0
     :parameters (?k - knapsack ?o - items)

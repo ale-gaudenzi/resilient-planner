@@ -1,56 +1,104 @@
 (define (domain blocks)
 (:predicates
-    (start)
     (a)
     (b)
-    (goal)
+    (c)
+    (d)
+    (e)
+    (f)
+    (g)
+    (h)
 )
-(:action move_from_init_to_b
+(:action first_0
 	:parameters ()
 	:precondition (and
-		(start)
+		(a)
 	)
 	:effect (and
-		(b)(goal)
+		(not(a))(b)
 	)
 )
-(:action move_from_init_to_a
+
+(:action first_1
 	:parameters ()
 	:precondition (and
-		(start)
+		(a)
 	)
 	:effect (and
-		(a)(goal)
+		(not(a))(c)
 	)
 )
 
-
-(:action move_from_a_to_goal
+(:action second_0
 	:parameters ()
-	:precondition 
-		(and (a)(goal))
+	:precondition (and
+		(b)
+	)
 	:effect (and
-		(not (start))
+		(not(b))(d)
 	)
 )
-
-(:action del_par
+(:action second_1
 	:parameters ()
-	:precondition (and )
+	:precondition (and
+		(b)
+	)
 	:effect (and
-		(not (a))
-		(not(b))
+		(not(b))(e)
 	)
 )
-
-
-(:action move_from_b_to_goal
+(:action second_2
 	:parameters ()
-	:precondition 
-		(and (b)(goal))
+	:precondition (and
+		(c)
+	)
 	:effect (and
-		(not (start))
+		(not(c))(f)
 	)
 )
-
+(:action second_3
+	:parameters ()
+	:precondition (and
+		(c)
+	)
+	:effect (and
+		(not(c))(h)
+	)
+)
+(:action third_0
+	:parameters ()
+	:precondition (and
+		(d)
+	)
+	:effect (and
+		(not(d))(g)
+	)
+)
+(:action third_1
+	:parameters ()
+	:precondition (and
+		(e)
+	)
+	:effect (and
+		(not(e))(g)
+	)
+)
+(:action third_2
+	:parameters ()
+	:precondition (and
+		(f)
+	)
+	:effect (and
+		(not(f))(g)
+	)
+)
+(:action third_3
+	:parameters ()
+	:precondition (and
+		(h)
+	)
+	:effect (and
+		(not(h))(g)
+	)
+)
 )
