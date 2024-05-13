@@ -376,23 +376,23 @@ int main(int argc, const char **argv)
             print_branches();
 
         g_timer_extraction.resume();
-        print_plan(g_plan_to_file, extract_solution());
+        // print_plan(g_plan_to_file, extract_solution());
         g_timer_extraction.stop();
 
         g_mem_post_alg = mem_usage();
 
-        if (g_dump_resilient_policy)
-        {
-            ResilientPolicy res_policy = ResilientPolicy();
-            g_timer_extract_policy.resume();
-            res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
-            g_timer_extract_policy.stop();
-            print_resilient_policy_json(res_policy.get_policy());
-            g_mem_extraction = mem_usage();
-        }
+        // if (g_dump_resilient_policy)
+        // {
+        //     ResilientPolicy res_policy = ResilientPolicy();
+        //     g_timer_extract_policy.resume();
+        //     res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
+        //     g_timer_extract_policy.stop();
+        //     print_resilient_policy_json(res_policy.get_policy());
+        //     g_mem_extraction = mem_usage();
+        // }
 
-        if (g_dump_resilient_nodes)
-            print_resilient_nodes(resilient_nodes);
+        // if (g_dump_resilient_nodes)
+        //     print_resilient_nodes(resilient_nodes);
     }
     else
         cout << "\nInitial state is a deadend, problem is not " << g_max_faults << "-resilient!\n";
