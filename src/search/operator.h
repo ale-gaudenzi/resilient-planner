@@ -102,6 +102,7 @@ class Operator {
     std::vector<PrePost> pre_post;     // var, old-val, new-val, effect conditions
     std::string name;
     std::string nondet_name;
+    bool safe;
     int cost;
 
     mutable bool marked; // Used for short-term marking of preferred operators
@@ -111,6 +112,7 @@ public:
     Operator(std::istream &in, bool is_axiom);
     void dump() const;
     std::string get_name() const {return name; }
+    bool is_safe() const {return safe; }
     std::string get_nondet_name() const {return nondet_name; }
     
     int nondet_index;

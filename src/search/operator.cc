@@ -46,10 +46,14 @@ Operator::Operator(istream &in, bool axiom) {
         // The nondet name is the original name of the non-deterministic action
         if (name.find("_DETDUP") == string::npos) {
             nondet_name = name;
-        } else {
-            nondet_name = name.substr(0, name.find("_DETDUP")) + name.substr(name.find(" "), string::npos);
+            safe = true;
+            marked = true;
         }
-        
+        else
+        {
+            nondet_name = name.substr(0, name.find("_DETDUP")) + name.substr(name.find(" "), string::npos);
+            safe = false;
+        }
     } else {
         name = "<axiom>";
         cost = 0;

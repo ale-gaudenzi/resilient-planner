@@ -1,104 +1,56 @@
 (define (domain blocks)
-(:predicates
-    (a)
-    (b)
-    (c)
-    (d)
-    (e)
-    (f)
-    (g)
-    (h)
-)
-(:action first_0
-	:parameters ()
-	:precondition (and
+	(:predicates
 		(a)
-	)
-	:effect (and
-		(not(a))(b)
-	)
-)
-
-(:action first_1
-	:parameters ()
-	:precondition (and
-		(a)
-	)
-	:effect (and
-		(not(a))(c)
-	)
-)
-
-(:action second_0
-	:parameters ()
-	:precondition (and
 		(b)
-	)
-	:effect (and
-		(not(b))(d)
-	)
-)
-(:action second_1
-	:parameters ()
-	:precondition (and
-		(b)
-	)
-	:effect (and
-		(not(b))(e)
-	)
-)
-(:action second_2
-	:parameters ()
-	:precondition (and
 		(c)
+		(g)
+		(x)
+		(failure)
 	)
-	:effect (and
-		(not(c))(f)
+
+	(:action m_1
+		:parameters ()
+		:precondition (and
+			(a)
+		)
+		:effect (and (not(a))(b))
 	)
-)
-(:action second_3
-	:parameters ()
-	:precondition (and
-		(c)
+	(:action m_2
+		:parameters ()
+		:precondition (and
+			(b)
+		)
+		:effect (oneof
+			(and (not(b))(g))
+			(and (failure))
+		)
 	)
-	:effect (and
-		(not(c))(h)
+	(:action m_3
+		:parameters ()
+		:precondition (and
+			(b)
+		)
+		:effect (oneof
+			(and (not(b))(c))
+			(and (failure))
+		)
 	)
-)
-(:action third_0
-	:parameters ()
-	:precondition (and
-		(d)
+	(:action m_4
+		:parameters ()
+		:precondition (and
+			(c)
+		)
+		:effect (oneof
+			(and (not(c))(g))
+			(and (failure))
+		)
 	)
-	:effect (and
-		(not(d))(g)
+
+	(:action m_5
+		:parameters ()
+		:precondition (and
+			(g)
+		)
+		:effect (and (not(g))(x))
 	)
-)
-(:action third_1
-	:parameters ()
-	:precondition (and
-		(e)
-	)
-	:effect (and
-		(not(e))(g)
-	)
-)
-(:action third_2
-	:parameters ()
-	:precondition (and
-		(f)
-	)
-	:effect (and
-		(not(f))(g)
-	)
-)
-(:action third_3
-	:parameters ()
-	:precondition (and
-		(h)
-	)
-	:effect (and
-		(not(h))(g)
-	)
-)
 )

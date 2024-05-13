@@ -50,7 +50,7 @@ struct RelaxedOperator
     std::vector<RelaxedProposition *> precondition;
     std::vector<RelaxedProposition *> effects;
     int base_cost; // 0 for axioms, 1 for regular operators
-
+    bool safe;
     int cost;
     int unsatisfied_preconditions;
     int h_max_supporter_cost; // h_max_cost of h_max_supporter
@@ -58,7 +58,7 @@ struct RelaxedOperator
     RelaxedOperator(const std::vector<RelaxedProposition *> &pre,
                     const std::vector<RelaxedProposition *> &eff,
                     const Operator *the_op, int base)
-        : op(the_op), precondition(pre), effects(eff), base_cost(base)
+        : op(the_op), precondition(pre), effects(eff), base_cost(base), safe(false)
     {
     }
 
@@ -70,6 +70,7 @@ struct RelaxedProposition
     std::vector<RelaxedOperator *> effect_of;
     string name; // for debugging
     PropositionStatus status;
+    bool safe;
     int h_max_cost;
     /* TODO: Also add the rpg depth? The Python implementation used
        this for tie breaking, and it led to better landmark extraction
@@ -190,6 +191,10 @@ int main(int argc, const char **argv)
     cout << "Total allotted time (s): " << g_jic_limit << endl;
 
     g_operators_backup = g_operators;
+    //  for (size_t i = 0; i < g_operators_backup.size(); ++i) {
+    //     cout << "Name: " << g_operators_backup[i].get_name() << endl;
+    //     cout << "is safe = " << g_operators_backup[i].is_safe() << endl;
+    //  }
 
     /***********************
      * Resilient Alghoritm *
@@ -200,7 +205,7 @@ int main(int argc, const char **argv)
     open.push(initial_node);
     g_timer_cycle.resume();
 
-    //INIZIO CALCOLO AZIONI PER PRUNING
+    //TODO: il pruning solo per alcuni fatti e landmark, non tutti, non ha senso!
     if(g_pruning_before_all){
         PartialState current_state = PartialState(initial_node.get_state());
         std::vector<std::vector<RelaxedProposition> > propositions;
@@ -209,6 +214,7 @@ int main(int argc, const char **argv)
         for (int var = 0; var < g_variable_domain.size(); var++){
             for (int value = 0; value < g_variable_domain[var]; value++){
                 RelaxedProposition prop = RelaxedProposition();
+                prop.safe = false;
                 prop.name = g_fact_names[var][value];
                 propositions[var].push_back(prop);
             }
@@ -227,14 +233,19 @@ int main(int argc, const char **argv)
             }
             RelaxedProposition artificial_precondition;
             RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+            if (g_operators[i].is_safe())
+                relaxed_op.safe = true;
             relaxed_operators.push_back(relaxed_op);
         }
         for (int i = 0; i < relaxed_operators.size(); i++){
             RelaxedOperator *op = &relaxed_operators[i];
             for (int j = 0; j < op->precondition.size(); j++)
                 op->precondition[j]->precondition_of.push_back(op);
-            for (int j = 0; j < op->effects.size(); j++)
+            for (int j = 0; j < op->effects.size(); j++){
                 op->effects[j]->effect_of.push_back(op);
+                if (op->safe)
+                    op->effects[j]->safe = true;
+            }
         }
         LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
         LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
@@ -246,11 +257,13 @@ int main(int argc, const char **argv)
             int var = landmark.first;
             int value = landmark.second;
             RelaxedProposition &prop = propositions[var][value];
-            if (current_state[var] != -1 && current_state[var] != value && g_max_faults >= prop.effect_of.size())
-            {
-                g_pruning_before_all_value++;
-                open.pop();
-                break;
+            if (!prop.safe){
+                if (current_state[var] != -1 && current_state[var] != value && g_max_faults >= prop.effect_of.size())
+                {
+                    g_pruning_before_all_value++;
+                    open.pop();
+                    break;
+                }
             }
         }
     }
@@ -259,10 +272,9 @@ int main(int argc, const char **argv)
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
         ResilientNode current_node = open.top();
-        cout << "************" << endl;
-        cout << "size open = " << open.size() << endl;
+        // cout << "dim open = " << open.size() << endl;
         open.pop();
-        // Store current k and V in globals to use them later during replanning
+        // current_node.dump();
         g_current_faults = current_node.get_k();
         g_current_forbidden_ops = current_node.get_deactivated_op();
         if (g_verbose){
@@ -271,11 +283,6 @@ int main(int argc, const char **argv)
             cout << "\nCurrent node:" << endl;
             current_node.dump();
         }
-        // Check if node is already in R sets
-        cout << "current node: " << open.size() << endl;
-        current_node.dump();
-        cout << "Rcheck_up = " << (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end()) << "Rcheck_down = " << (non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end()) << endl;
-        cout << "Rcheck_up = " << resilient_nodes.size() << "Rcheck_down = " << non_resilient_nodes.size() << endl;
         if (resilient_nodes.find(current_node.get_id()) == resilient_nodes.end() && non_resilient_nodes.find(current_node.get_id()) == non_resilient_nodes.end())
         {
             if (resiliency_check(current_node))
@@ -292,17 +299,16 @@ int main(int argc, const char **argv)
                 if (!replan(current_node, engine)){
                     if (g_verbose)
                         cout << "\nFailed replan." << endl;
-                    // add_non_resilient_deadends(current_node); // S downarrow
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
                 else{
+                    // cout << "PLAN" << endl;
                     g_successful_replan++;
                     if (g_verbose)
                         cout << "Successfull replanning" << endl;
                     // Save current initial state in a variable and computed plan for iteration
                     State current = g_initial_state();
                     std::vector<const Operator *> plan = engine->get_plan();
-                    cout << "---REPLAN---" << endl;
                     if (current_node.get_k() >= 1)
                     {
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
@@ -310,17 +316,13 @@ int main(int argc, const char **argv)
                             // Create node <tau_i-1, k, V>
                             ResilientNode res_node = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
                             // Create node <tau_i-1, k - 1, V U {pi_i}>
-                            std::set<Operator> post_actions = g_current_forbidden_ops;
-                            cout << (*it)->get_name() << endl;
-                            post_actions.insert(*(*it)); // *it = pi_i
-                            ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
-                            // Push new nodes in the stack
                             open.push(res_node);
-                            open.push(res_node_f);
-                            if (g_verbose)
+                            if (!(*it)->is_safe())
                             {
-                                cout << "\nPushing in the stack with adjuntive failed:" << endl;
-                                res_node_f.dump();
+                                std::set<Operator> post_actions = g_current_forbidden_ops;
+                                post_actions.insert(*(*it)); // *it = pi_i
+                                ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
+                                open.push(res_node_f);
                             }
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
@@ -333,10 +335,10 @@ int main(int argc, const char **argv)
                         // g_safe_states.insert(std::make_pair(current_node.get_state().get_string_key(), std::make_pair(current_node.get_state(), plan)));
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
+                            // cout << (*it)->get_name() << endl;
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
                             resilient_nodes.insert(std::make_pair(res_node.get_id(), res_node));
                             current = g_state_registry->get_successor_state(current, *(*it));
-                            cout << (*it)->get_name() << endl;
                         }
                         ResilientNode tau = ResilientNode(current, 0, current_node.get_deactivated_op());
                         resilient_nodes.insert(make_pair(tau.get_id(), tau));
@@ -356,7 +358,6 @@ int main(int argc, const char **argv)
                 }
             }
         }
-        cout << "************" << endl;
         if (g_max_iterations > 0 && g_iteration >= g_max_iterations)
             break;
         if (g_verbose){
@@ -411,6 +412,10 @@ int main(int argc, const char **argv)
 /// @return True if the node is resilient, false otherwise.
 bool resiliency_check(ResilientNode node)
 {
+    // if (have_safe_action){
+
+    // }
+        
     if (resilient_nodes.empty())
         return false;
 
@@ -445,6 +450,10 @@ bool resiliency_check(ResilientNode node)
         forbidden_plus_current.insert(*it_o);
         ResilientNode current_r = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V U {a}>
 
+        if(it_o->is_safe())
+            if (resilient_nodes.find(successor_r.get_id()) != resilient_nodes.end())
+                return true;
+
         if (resilient_nodes.find(successor_r.get_id()) != resilient_nodes.end() && resilient_nodes.find(current_r.get_id()) != resilient_nodes.end())
             return true;
     }
@@ -466,7 +475,6 @@ std::vector<PartialState> partial_state_to_goal(std::vector<const Operator *> pl
         const PrePost &pre_post = plan[plan.size()-1]->get_pre_post()[i];
         first_regression_state[pre_post.var] = pre_post.pre;
     }
-    first_regression_state.dump_pddl();
     partial_states.push_back(first_regression_state);
 
     for (int i = plan.size(); i > 1; --i)
@@ -513,31 +521,32 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
                 propositions[var].push_back(prop);
             }
         }
-        for (int i = 0; i < g_operators.size(); i++)
-        {
+        for (int i = 0; i < g_operators.size(); i++){
             const vector<Prevail> &prevail = g_operators[i].get_prevail();
             const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
             vector<RelaxedProposition *> precondition;
             vector<RelaxedProposition *> effects;
             for (int j = 0; j < prevail.size(); j++)
                 precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-            for (int j = 0; j < pre_post.size(); j++)
-            {
+            for (int j = 0; j < pre_post.size(); j++){
                 if (pre_post[j].pre != -1)
                     precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
                 effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
             }
             RelaxedProposition artificial_precondition;
             RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+            if (g_operators[i].is_safe())
+                relaxed_op.safe = true;
             relaxed_operators.push_back(relaxed_op);
         }
-        for (int i = 0; i < relaxed_operators.size(); i++)
-        {
+        for (int i = 0; i < relaxed_operators.size(); i++){
             RelaxedOperator *op = &relaxed_operators[i];
             for (int j = 0; j < op->precondition.size(); j++)
                 op->precondition[j]->precondition_of.push_back(op);
             for (int j = 0; j < op->effects.size(); j++){
                 op->effects[j]->effect_of.push_back(op);
+                if (op->safe)
+                    op->effects[j]->safe = true;
             }
         }
         LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
@@ -545,15 +554,18 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
         std::vector<pair<int, int> > landmarks;
         landmarks = landmarks_graph->extract_landmarks();
         g_operators = g_operators_backup;
-        for (int pos = 0; pos < landmarks.size(); pos++){
+        for (int pos = 0; pos < landmarks.size(); pos++)
+        {
             std::pair<int, int> landmark = landmarks[pos];
             int var = landmark.first;
             int value = landmark.second;
             RelaxedProposition &prop = propositions[var][value];
-            if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-            {
-                g_pruning_before_planning_value++;
-                return false;
+            if (!prop.safe){
+                if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+                {
+                    g_pruning_before_planning_value++;
+                    return false;
+                }
             }
         }
     }
@@ -624,9 +636,11 @@ std::list<Operator> extract_solution()
 /// @param node Deadend node to insert in the list non-resilient nodes.
 void update_non_resilient_nodes(ResilientNode node)
 {
-    ResilientNode this_node = ResilientNode(node.get_state(), node.get_id(), node.get_deactivated_op());
+    ResilientNode this_node = ResilientNode(node.get_state(), node.get_k(), node.get_deactivated_op());
+
     non_resilient_nodes.insert(make_pair(node.get_id(), node));
     add_non_resilient_deadends(this_node);
+
     if (node.get_deactivated_op().size() != 0)
     {
         vector<std::set<Operator> > subsets;

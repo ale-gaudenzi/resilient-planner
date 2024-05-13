@@ -672,6 +672,7 @@ def main():
                 if effect.literal.negated:
                     del action.effects[index]
 
+
     sas_task = pddl_to_sas(task)
 
     assert len(sas_task.operators) == len(set([o.name for o in sas_task.operators])), \
