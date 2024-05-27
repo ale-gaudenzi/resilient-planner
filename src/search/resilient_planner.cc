@@ -103,7 +103,7 @@ public:
             return !labels.empty();
         }
 };
-
+bool prune_check(ResilientNode node);
 bool resiliency_check(ResilientNode node);
 bool replan(ResilientNode current_node, SearchEngine *engine);
 std::list<Operator> extract_solution();
@@ -307,8 +307,15 @@ int main(int argc, const char **argv)
                             post_actions.insert(*(*it)); // *it = pi_i
                             ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
                             // Push new nodes in the stack
-                            open.push(res_node);
-                            open.push(res_node_f);
+
+                            if(g_pruning_before_planning && prune_check(res_node)){
+                                update_non_resilient_nodes(res_node);
+                                update_non_resilient_nodes(res_node_f);
+                            }
+                            else{
+                                open.push(res_node);
+                                open.push(res_node_f);
+                            }
                             if (g_verbose)
                             {
                                 cout << "\nPushing in the stack with adjuntive failed:" << endl;
@@ -399,6 +406,82 @@ int main(int argc, const char **argv)
 /// It also add the node to resilient_nodes list if the check succeds.
 /// @param node The node to check if is resilient or not.
 /// @return True if the node is resilient, false otherwise.
+
+bool prune_check(ResilientNode node){
+    PartialState current_state = PartialState(node.get_state());
+    g_state_registry->reset_initial_state();
+    for (int i = 0; i < g_variable_name.size(); i++)
+        g_initial_state_data[i] = current_state[i];
+    for (int i = 0; i < g_operators.size(); i++)
+    {
+        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+            g_operators.erase(g_operators.begin() + i--);
+    }
+    if (g_pruning_before_planning){
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+            g_operators.erase(g_operators.begin() + i--);
+        }
+        std::vector<std::vector<RelaxedProposition> > propositions;
+        std::vector<RelaxedOperator> relaxed_operators;
+        propositions.resize(g_variable_domain.size());
+        for (int var = 0; var < g_variable_domain.size(); var++)
+        {
+            for (int value = 0; value < g_variable_domain[var]; value++)
+            {
+                RelaxedProposition prop = RelaxedProposition();
+                prop.name = g_fact_names[var][value];
+                propositions[var].push_back(prop);
+            }
+        }
+        for (int i = 0; i < g_operators.size(); i++)
+        {
+            const vector<Prevail> &prevail = g_operators[i].get_prevail();
+            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+            vector<RelaxedProposition *> precondition;
+            vector<RelaxedProposition *> effects;
+            for (int j = 0; j < prevail.size(); j++)
+                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
+            for (int j = 0; j < pre_post.size(); j++)
+            {
+                if (pre_post[j].pre != -1)
+                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
+                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
+            }
+            RelaxedProposition artificial_precondition;
+            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+            relaxed_operators.push_back(relaxed_op);
+        }
+        for (int i = 0; i < relaxed_operators.size(); i++)
+        {
+            RelaxedOperator *op = &relaxed_operators[i];
+            for (int j = 0; j < op->precondition.size(); j++)
+                op->precondition[j]->precondition_of.push_back(op);
+            for (int j = 0; j < op->effects.size(); j++){
+                op->effects[j]->effect_of.push_back(op);
+            }
+        }
+        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+        std::vector<pair<int, int> > landmarks;
+        landmarks = landmarks_graph->extract_landmarks();
+        g_operators = g_operators_backup;
+        for (int pos = 0; pos < landmarks.size(); pos++){
+            std::pair<int, int> landmark = landmarks[pos];
+            int var = landmark.first;
+            int value = landmark.second;
+            RelaxedProposition &prop = propositions[var][value];
+            if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+            {
+                g_pruning_before_planning_value++;
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 bool resiliency_check(ResilientNode node)
 {
     if (resilient_nodes.empty())
@@ -484,69 +567,69 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
             g_operators.erase(g_operators.begin() + i--);
     }
     engine->reset();
-    if (g_pruning_before_planning)
-    {
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-            g_operators.erase(g_operators.begin() + i--);
-        }
-        std::vector<std::vector<RelaxedProposition> > propositions;
-        std::vector<RelaxedOperator> relaxed_operators;
-        propositions.resize(g_variable_domain.size());
-        for (int var = 0; var < g_variable_domain.size(); var++)
-        {
-            for (int value = 0; value < g_variable_domain[var]; value++)
-            {
-                RelaxedProposition prop = RelaxedProposition();
-                prop.name = g_fact_names[var][value];
-                propositions[var].push_back(prop);
-            }
-        }
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-            const vector<Prevail> &prevail = g_operators[i].get_prevail();
-            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
-            vector<RelaxedProposition *> precondition;
-            vector<RelaxedProposition *> effects;
-            for (int j = 0; j < prevail.size(); j++)
-                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-            for (int j = 0; j < pre_post.size(); j++)
-            {
-                if (pre_post[j].pre != -1)
-                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
-                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
-            }
-            RelaxedProposition artificial_precondition;
-            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
-            relaxed_operators.push_back(relaxed_op);
-        }
-        for (int i = 0; i < relaxed_operators.size(); i++)
-        {
-            RelaxedOperator *op = &relaxed_operators[i];
-            for (int j = 0; j < op->precondition.size(); j++)
-                op->precondition[j]->precondition_of.push_back(op);
-            for (int j = 0; j < op->effects.size(); j++){
-                op->effects[j]->effect_of.push_back(op);
-            }
-        }
-        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-        std::vector<pair<int, int> > landmarks;
-        landmarks = landmarks_graph->extract_landmarks();
-        g_operators = g_operators_backup;
-        for (int pos = 0; pos < landmarks.size(); pos++){
-            std::pair<int, int> landmark = landmarks[pos];
-            int var = landmark.first;
-            int value = landmark.second;
-            RelaxedProposition &prop = propositions[var][value];
-            if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-            {
-                g_pruning_before_planning_value++;
-                return false;
-            }
-        }
-    }
+    // if (false)
+    // {
+    //     for (int i = 0; i < g_operators.size(); i++)
+    //     {
+    //     if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
+    //         g_operators.erase(g_operators.begin() + i--);
+    //     }
+    //     std::vector<std::vector<RelaxedProposition> > propositions;
+    //     std::vector<RelaxedOperator> relaxed_operators;
+    //     propositions.resize(g_variable_domain.size());
+    //     for (int var = 0; var < g_variable_domain.size(); var++)
+    //     {
+    //         for (int value = 0; value < g_variable_domain[var]; value++)
+    //         {
+    //             RelaxedProposition prop = RelaxedProposition();
+    //             prop.name = g_fact_names[var][value];
+    //             propositions[var].push_back(prop);
+    //         }
+    //     }
+    //     for (int i = 0; i < g_operators.size(); i++)
+    //     {
+    //         const vector<Prevail> &prevail = g_operators[i].get_prevail();
+    //         const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+    //         vector<RelaxedProposition *> precondition;
+    //         vector<RelaxedProposition *> effects;
+    //         for (int j = 0; j < prevail.size(); j++)
+    //             precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
+    //         for (int j = 0; j < pre_post.size(); j++)
+    //         {
+    //             if (pre_post[j].pre != -1)
+    //                 precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
+    //             effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
+    //         }
+    //         RelaxedProposition artificial_precondition;
+    //         RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+    //         relaxed_operators.push_back(relaxed_op);
+    //     }
+    //     for (int i = 0; i < relaxed_operators.size(); i++)
+    //     {
+    //         RelaxedOperator *op = &relaxed_operators[i];
+    //         for (int j = 0; j < op->precondition.size(); j++)
+    //             op->precondition[j]->precondition_of.push_back(op);
+    //         for (int j = 0; j < op->effects.size(); j++){
+    //             op->effects[j]->effect_of.push_back(op);
+    //         }
+    //     }
+    //     LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+    //     LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+    //     std::vector<pair<int, int> > landmarks;
+    //     landmarks = landmarks_graph->extract_landmarks();
+    //     g_operators = g_operators_backup;
+    //     for (int pos = 0; pos < landmarks.size(); pos++){
+    //         std::pair<int, int> landmark = landmarks[pos];
+    //         int var = landmark.first;
+    //         int value = landmark.second;
+    //         RelaxedProposition &prop = propositions[var][value];
+    //         if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
+    //         {
+    //             g_pruning_before_planning_value++;
+    //             return false;
+    //         }
+    //     }
+    // }
     g_replanning++;
     g_timer_engine_init.resume();
     g_timer_engine_init.stop();

@@ -142,7 +142,7 @@ public:
     }
 
 private:
-    Predefinitions<T>() {}
+    Predefinitions() {}
     static Predefinitions<T> *instance_;
     std::map<std::string, T> predefined;
 };
