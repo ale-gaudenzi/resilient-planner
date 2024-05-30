@@ -157,8 +157,6 @@ int main(int argc, const char **argv)
                     if (g_verbose)
                         cout << "\nFailed replan." << endl;
                     // If replanning fails, add current node to deadend and not resilient sets
-                    g_dead_states.insert(current_node.get_state().get_id());
-                    add_non_resilient_deadends(current_node); // S downarrow
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
                 else
@@ -414,7 +412,9 @@ std::list<Operator> extract_solution()
 /// @param node Deadend node to insert in the list non-resilient nodes.
 void update_non_resilient_nodes(ResilientNode node)
 {
+    ResilientNode this_node = ResilientNode(node.get_state(), node.get_id(), node.get_deactivated_op());
     non_resilient_nodes.insert(make_pair(node.get_id(), node));
+    add_non_resilient_deadends(this_node);
     if (node.get_deactivated_op().size() != 0)
     {
         vector<std::set<Operator> > subsets;
@@ -448,6 +448,7 @@ void update_non_resilient_nodes(ResilientNode node)
             int k1 = node.get_k() + (node.get_deactivated_op().size() - subset.size());
             ResilientNode to_add = ResilientNode(node.get_state(), k1, subset);
             non_resilient_nodes.insert(make_pair(to_add.get_id(), to_add));
+            add_non_resilient_deadends(to_add);
         }
     }
     return;
@@ -468,40 +469,40 @@ void add_non_resilient_deadends(ResilientNode node)
     // Need to investigate further if it's useful for performance
     // and it will be worth to generalize to other heuristics.
     // generalize_deadend(*de_state);
-
+    
     vector<PolicyItem *> reg_items;
     g_regressable_ops->generate_applicable_items(*de_state, reg_items, true, g_regress_only_relevant_deadends);
 
     for (int j = 0; j < reg_items.size(); j++)
     {
         RegressableOperator *ro = (RegressableOperator *)(reg_items[j]);
-        de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state),
-                                             ro->op->nondet_index));
+        de_items.push_back(new NondetDeadend(new PartialState(*de_state, *(ro->op), false, dummy_state), ro->op->nondet_index));
     }
 
     delete dummy_state;
     Policy *current_deadend_policy = new Policy();
-
+    if (g_non_resilient_deadends.find(std::make_pair(node.get_k(), node.get_deactivated_op())) != g_non_resilient_deadends.end()){
+        current_deadend_policy = g_non_resilient_deadends[std::make_pair(node.get_k(), node.get_deactivated_op())];
+    }
     current_deadend_policy->update_policy(de_items);
-    g_non_resilient_deadends.insert(std::make_pair(std::make_pair(g_current_faults, g_current_forbidden_ops), current_deadend_policy));
+    g_non_resilient_deadends.insert(std::make_pair(std::make_pair(node.get_k(), node.get_deactivated_op()), current_deadend_policy));
 
     std::set<Operator> v = node.get_deactivated_op();
     for (std::set<Operator>::iterator it = v.begin(); it != v.end(); ++it)
     {
-        std::set<Operator> forbidden_minus_a = g_current_forbidden_ops;
+        std::set<Operator> forbidden_minus_a = node.get_deactivated_op();
         forbidden_minus_a.erase(*it);
-
         Policy *s_a = new Policy();
         list<PolicyItem *> s_a_item;
 
         s_a_item.push_back(new NondetDeadend(new PartialState(state), it->nondet_index));
 
-        if (g_non_resilient_deadends.find(std::make_pair(g_current_faults + 1, forbidden_minus_a)) != g_non_resilient_deadends.end())
-            g_non_resilient_deadends.find(std::make_pair(g_current_faults + 1, forbidden_minus_a))->second->update_policy(s_a_item);
+        if (g_non_resilient_deadends.find(std::make_pair(node.get_k() + 1, forbidden_minus_a)) != g_non_resilient_deadends.end())
+            g_non_resilient_deadends.find(std::make_pair(node.get_k() + 1, forbidden_minus_a))->second->update_policy(s_a_item);
         else
         {
             s_a->update_policy(s_a_item);
-            g_non_resilient_deadends.insert(std::make_pair(std::make_pair(g_current_faults + 1, forbidden_minus_a), s_a));
+            g_non_resilient_deadends.insert(std::make_pair(std::make_pair(node.get_k() + 1, forbidden_minus_a), s_a));
         }
     }
 }
