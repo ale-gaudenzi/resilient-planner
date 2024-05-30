@@ -591,7 +591,6 @@ StateRegistry *g_state_registry = 0;
 int g_max_faults;
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
-std::vector<State> g_dead_states;
 std::map<std::string, state_plan_pair > g_safe_states;
 std::map<k_v_pair, Policy *> g_resilient_policies;
 std::map<k_v_pair, Policy *> g_non_resilient_deadends;

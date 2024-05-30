@@ -354,16 +354,7 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
-    for (size_t i = 0; i < g_dead_states.size(); ++i) {
-        if (current_state == g_dead_states[i]){
-            node.mark_as_dead_end();
-            search_progress.inc_dead_ends();
-        }
-    }
-    // if (g_dead_states.find(current_state) != g_dead_states.end()) {
-    //     node.mark_as_dead_end();
-    //     search_progress.inc_dead_ends();
-    // }
+
     if(g_pruning_during_planning){
         for (int i = 0; i < g_operators.size(); i++)
         {
