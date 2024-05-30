@@ -328,10 +328,6 @@ int main(int argc, const char **argv)
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
                         // Add goal to resilient nodes
-                        if(!g_pruning_before_planning){
-                            ResilientNode tau = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
-                            resilient_nodes.insert(make_pair(tau.get_id(), tau));
-                        }
                         if(!prune){
                             ResilientNode tau = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
                             resilient_nodes.insert(make_pair(tau.get_id(), tau));
