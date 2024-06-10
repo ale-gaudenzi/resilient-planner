@@ -595,6 +595,7 @@ std::vector<State> g_dead_states;
 std::map<std::string, state_plan_pair > g_safe_states;
 std::map<k_v_pair, Policy *> g_resilient_policies;
 std::map<k_v_pair, Policy *> g_non_resilient_deadends;
+std::vector<std::string> safe_actions;
 
 // TODO test per usare i landmark
 LandmarkGraph *landmark_graph;

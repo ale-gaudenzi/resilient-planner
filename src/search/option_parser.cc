@@ -219,6 +219,17 @@ SearchEngine *OptionParser::parse_cmd_line(
             OptionParser p(argv[i], dry_run);
             engine = p.start_parsing<SearchEngine *>();
         }
+        else if (arg.compare("--safe_actions") == 0)
+        {
+            ++i;
+            string input_sage_actions = argv[i];
+            std::stringstream ss(input_sage_actions);
+            std::string action;
+            while (std::getline(ss, action, ' '))
+            {
+                safe_actions.push_back(action);
+            }
+        }
         else if (arg.compare("--random-seed") == 0)
         {
             ++i;

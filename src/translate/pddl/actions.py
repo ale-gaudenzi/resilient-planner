@@ -56,7 +56,7 @@ class Action(object):
             if 1 == len(cost_eff_pairs):
                 cost_eff_pairs = [(cost_eff_pairs[0][0], cost_eff_pairs[0][1], '')]
             else:
-                cost_eff_pairs = [(cost_eff_pairs[i][0], cost_eff_pairs[0][1], "_DETDUP_%d" % i) for i in range(len(cost_eff_pairs))]
+                cost_eff_pairs = [(cost_eff_pairs[i][0], cost_eff_pairs[i][1], "_DETDUP_%d" % i) for i in range(len(cost_eff_pairs))]
         except ValueError as e:
             raise SystemExit("Error in Action %s\nReason: %s." % (name, e))
         for rest in iterator:

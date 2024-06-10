@@ -162,7 +162,7 @@ def parse_domain(domain_pddl):
             axiom = axioms.Axiom.parse(entry)
             the_axioms.append(axiom)
         else:
-            action_copies = [actions.Action.parse(entry)[0]]
+            action_copies = actions.Action.parse(entry)
             the_actions.extend(action_copies)
     yield the_actions
     yield the_axioms

@@ -113,6 +113,8 @@ public:
     void dump() const;
     std::string get_name() const {return name; }
     bool is_safe() const {return safe; }
+    void set_safe(bool new_safe) { safe = new_safe; }
+    void set_marked(bool new_marked) { marked = new_marked; }
     std::string get_nondet_name() const {return nondet_name; }
     
     int nondet_index;

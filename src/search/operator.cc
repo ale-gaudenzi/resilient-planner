@@ -46,8 +46,7 @@ Operator::Operator(istream &in, bool axiom) {
         // The nondet name is the original name of the non-deterministic action
         if (name.find("_DETDUP") == string::npos) {
             nondet_name = name;
-            safe = true;
-            marked = true;
+            safe = false;
         }
         else
         {
