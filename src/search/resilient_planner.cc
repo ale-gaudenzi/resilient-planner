@@ -198,7 +198,7 @@ int main(int argc, const char **argv)
     g_timer_cycle.resume();
 
     //INIZIO CALCOLO AZIONI PER PRUNING
-    if(g_pruning_before_all){
+    if(g_pruning_before_all || g_pruning){
         PartialState current_state = PartialState(initial_node.get_state());
         std::vector<std::vector<RelaxedProposition> > propositions;
         std::vector<RelaxedOperator> relaxed_operators;
@@ -305,7 +305,7 @@ int main(int argc, const char **argv)
                             post_actions.insert(*(*it)); // *it = pi_i
                             ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
                             // Push new nodes in the stack
-                            if(g_pruning_before_planning){
+                            if(g_pruning_before_planning || g_pruning){
                                 if(prune_check(res_node)){
                                     update_non_resilient_nodes(res_node);
                                     update_non_resilient_nodes(res_node_f);
@@ -423,7 +423,7 @@ bool prune_check(ResilientNode node){
         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
             g_operators.erase(g_operators.begin() + i--);
     }
-    if (g_pruning_before_planning){
+    if (g_pruning_before_planning || g_pruning){
         for (int i = 0; i < g_operators.size(); i++)
         {
         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
