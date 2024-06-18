@@ -205,6 +205,8 @@ int main(int argc, const char **argv)
      * Resilient Alghoritm *
      ***********************/
 
+    State static_initial_state = g_initial_state();
+
     // Create initial node and pushing to open stack
     ResilientNode initial_node = ResilientNode(g_initial_state(), g_max_faults, std::set<Operator>());
     open.push(initial_node);
@@ -361,8 +363,6 @@ int main(int argc, const char **argv)
                         }
                     }
                     else {
-                        // TODO
-                        // g_safe_states.insert(std::make_pair(current_node.get_state().get_string_key(), std::make_pair(current_node.get_state(), plan)));
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
@@ -414,7 +414,7 @@ int main(int argc, const char **argv)
         {
             ResilientPolicy res_policy = ResilientPolicy();
             g_timer_extract_policy.resume();
-            res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
+            res_policy.extract_policy(static_initial_state, *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
             g_timer_extract_policy.stop();
             print_resilient_policy_json(res_policy.get_policy());
             g_mem_extraction = mem_usage();
