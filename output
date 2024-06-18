@@ -4,9 +4,9 @@ end_version
 begin_metric
 0
 end_metric
-22
+21
 begin_variable
-var13
+var12
 -1
 12
 Atom holding(a1, a)
@@ -23,7 +23,7 @@ Atom on(a, i)
 Atom ontable(a)
 end_variable
 begin_variable
-var14
+var13
 -1
 12
 Atom holding(a1, b)
@@ -40,7 +40,7 @@ Atom on(b, i)
 Atom ontable(b)
 end_variable
 begin_variable
-var15
+var14
 -1
 12
 Atom holding(a1, c)
@@ -57,7 +57,7 @@ Atom on(c, i)
 Atom ontable(c)
 end_variable
 begin_variable
-var16
+var15
 -1
 12
 Atom holding(a1, d)
@@ -74,7 +74,7 @@ Atom on(d, i)
 Atom ontable(d)
 end_variable
 begin_variable
-var17
+var16
 -1
 12
 Atom holding(a1, e)
@@ -91,7 +91,7 @@ Atom on(e, i)
 Atom ontable(e)
 end_variable
 begin_variable
-var18
+var17
 -1
 12
 Atom holding(a1, f)
@@ -108,7 +108,7 @@ Atom on(f, i)
 Atom ontable(f)
 end_variable
 begin_variable
-var19
+var18
 -1
 12
 Atom holding(a1, g)
@@ -125,7 +125,7 @@ Atom on(g, i)
 Atom ontable(g)
 end_variable
 begin_variable
-var20
+var19
 -1
 12
 Atom holding(a1, h)
@@ -191,7 +191,7 @@ Atom clear(g)
 NegatedAtom clear(g)
 end_variable
 begin_variable
-var10
+var9
 -1
 2
 Atom handempty(a1)
@@ -205,14 +205,14 @@ Atom clear(h)
 NegatedAtom clear(h)
 end_variable
 begin_variable
-var11
+var10
 -1
 2
 Atom handempty(a2)
 NegatedAtom handempty(a2)
 end_variable
 begin_variable
-var12
+var11
 -1
 2
 Atom handempty(a3)
@@ -226,7 +226,7 @@ Atom clear(i)
 NegatedAtom clear(i)
 end_variable
 begin_variable
-var21
+var20
 -1
 12
 Atom holding(a1, i)
@@ -241,13 +241,6 @@ Atom on(i, f)
 Atom on(i, g)
 Atom on(i, h)
 Atom ontable(i)
-end_variable
-begin_variable
-var9
--1
-2
-Atom failure()
-NegatedAtom failure()
 end_variable
 12
 begin_mutex_group
@@ -446,13 +439,12 @@ begin_state
 0
 1
 6
-1
 end_state
 begin_goal
 1
 20 8
 end_goal
-702
+486
 begin_operator
 pick-up a1 a
 0
@@ -940,7 +932,7 @@ put-down a3 i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a b
+stack a1 a b
 0
 4
 0 8 -1 0
@@ -950,7 +942,7 @@ stack_DETDUP_0 a1 a b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a c
+stack a1 a c
 0
 4
 0 8 -1 0
@@ -960,7 +952,7 @@ stack_DETDUP_0 a1 a c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a d
+stack a1 a d
 0
 4
 0 8 -1 0
@@ -970,7 +962,7 @@ stack_DETDUP_0 a1 a d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a e
+stack a1 a e
 0
 4
 0 8 -1 0
@@ -980,7 +972,7 @@ stack_DETDUP_0 a1 a e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a f
+stack a1 a f
 0
 4
 0 8 -1 0
@@ -990,7 +982,7 @@ stack_DETDUP_0 a1 a f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a g
+stack a1 a g
 0
 4
 0 8 -1 0
@@ -1000,7 +992,7 @@ stack_DETDUP_0 a1 a g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a h
+stack a1 a h
 0
 4
 0 8 -1 0
@@ -1010,7 +1002,7 @@ stack_DETDUP_0 a1 a h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a i
+stack a1 a i
 0
 4
 0 8 -1 0
@@ -1020,7 +1012,7 @@ stack_DETDUP_0 a1 a i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b a
+stack a1 b a
 0
 4
 0 8 0 1
@@ -1030,7 +1022,7 @@ stack_DETDUP_0 a1 b a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b c
+stack a1 b c
 0
 4
 0 9 -1 0
@@ -1040,7 +1032,7 @@ stack_DETDUP_0 a1 b c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b d
+stack a1 b d
 0
 4
 0 9 -1 0
@@ -1050,7 +1042,7 @@ stack_DETDUP_0 a1 b d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b e
+stack a1 b e
 0
 4
 0 9 -1 0
@@ -1060,7 +1052,7 @@ stack_DETDUP_0 a1 b e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b f
+stack a1 b f
 0
 4
 0 9 -1 0
@@ -1070,7 +1062,7 @@ stack_DETDUP_0 a1 b f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b g
+stack a1 b g
 0
 4
 0 9 -1 0
@@ -1080,7 +1072,7 @@ stack_DETDUP_0 a1 b g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b h
+stack a1 b h
 0
 4
 0 9 -1 0
@@ -1090,7 +1082,7 @@ stack_DETDUP_0 a1 b h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b i
+stack a1 b i
 0
 4
 0 9 -1 0
@@ -1100,7 +1092,7 @@ stack_DETDUP_0 a1 b i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c a
+stack a1 c a
 0
 4
 0 8 0 1
@@ -1110,7 +1102,7 @@ stack_DETDUP_0 a1 c a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c b
+stack a1 c b
 0
 4
 0 9 0 1
@@ -1120,7 +1112,7 @@ stack_DETDUP_0 a1 c b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c d
+stack a1 c d
 0
 4
 0 10 -1 0
@@ -1130,7 +1122,7 @@ stack_DETDUP_0 a1 c d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c e
+stack a1 c e
 0
 4
 0 10 -1 0
@@ -1140,7 +1132,7 @@ stack_DETDUP_0 a1 c e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c f
+stack a1 c f
 0
 4
 0 10 -1 0
@@ -1150,7 +1142,7 @@ stack_DETDUP_0 a1 c f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c g
+stack a1 c g
 0
 4
 0 10 -1 0
@@ -1160,7 +1152,7 @@ stack_DETDUP_0 a1 c g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c h
+stack a1 c h
 0
 4
 0 10 -1 0
@@ -1170,7 +1162,7 @@ stack_DETDUP_0 a1 c h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c i
+stack a1 c i
 0
 4
 0 10 -1 0
@@ -1180,7 +1172,7 @@ stack_DETDUP_0 a1 c i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d a
+stack a1 d a
 0
 4
 0 8 0 1
@@ -1190,7 +1182,7 @@ stack_DETDUP_0 a1 d a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d b
+stack a1 d b
 0
 4
 0 9 0 1
@@ -1200,7 +1192,7 @@ stack_DETDUP_0 a1 d b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d c
+stack a1 d c
 0
 4
 0 10 0 1
@@ -1210,7 +1202,7 @@ stack_DETDUP_0 a1 d c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d e
+stack a1 d e
 0
 4
 0 11 -1 0
@@ -1220,7 +1212,7 @@ stack_DETDUP_0 a1 d e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d f
+stack a1 d f
 0
 4
 0 11 -1 0
@@ -1230,7 +1222,7 @@ stack_DETDUP_0 a1 d f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d g
+stack a1 d g
 0
 4
 0 11 -1 0
@@ -1240,7 +1232,7 @@ stack_DETDUP_0 a1 d g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d h
+stack a1 d h
 0
 4
 0 11 -1 0
@@ -1250,7 +1242,7 @@ stack_DETDUP_0 a1 d h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d i
+stack a1 d i
 0
 4
 0 11 -1 0
@@ -1260,7 +1252,7 @@ stack_DETDUP_0 a1 d i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e a
+stack a1 e a
 0
 4
 0 8 0 1
@@ -1270,7 +1262,7 @@ stack_DETDUP_0 a1 e a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e b
+stack a1 e b
 0
 4
 0 9 0 1
@@ -1280,7 +1272,7 @@ stack_DETDUP_0 a1 e b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e c
+stack a1 e c
 0
 4
 0 10 0 1
@@ -1290,7 +1282,7 @@ stack_DETDUP_0 a1 e c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e d
+stack a1 e d
 0
 4
 0 11 0 1
@@ -1300,7 +1292,7 @@ stack_DETDUP_0 a1 e d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e f
+stack a1 e f
 0
 4
 0 12 -1 0
@@ -1310,7 +1302,7 @@ stack_DETDUP_0 a1 e f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e g
+stack a1 e g
 0
 4
 0 12 -1 0
@@ -1320,7 +1312,7 @@ stack_DETDUP_0 a1 e g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e h
+stack a1 e h
 0
 4
 0 12 -1 0
@@ -1330,7 +1322,7 @@ stack_DETDUP_0 a1 e h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e i
+stack a1 e i
 0
 4
 0 12 -1 0
@@ -1340,7 +1332,7 @@ stack_DETDUP_0 a1 e i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f a
+stack a1 f a
 0
 4
 0 8 0 1
@@ -1350,7 +1342,7 @@ stack_DETDUP_0 a1 f a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f b
+stack a1 f b
 0
 4
 0 9 0 1
@@ -1360,7 +1352,7 @@ stack_DETDUP_0 a1 f b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f c
+stack a1 f c
 0
 4
 0 10 0 1
@@ -1370,7 +1362,7 @@ stack_DETDUP_0 a1 f c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f d
+stack a1 f d
 0
 4
 0 11 0 1
@@ -1380,7 +1372,7 @@ stack_DETDUP_0 a1 f d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f e
+stack a1 f e
 0
 4
 0 12 0 1
@@ -1390,7 +1382,7 @@ stack_DETDUP_0 a1 f e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f g
+stack a1 f g
 0
 4
 0 13 -1 0
@@ -1400,7 +1392,7 @@ stack_DETDUP_0 a1 f g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f h
+stack a1 f h
 0
 4
 0 13 -1 0
@@ -1410,7 +1402,7 @@ stack_DETDUP_0 a1 f h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f i
+stack a1 f i
 0
 4
 0 13 -1 0
@@ -1420,7 +1412,7 @@ stack_DETDUP_0 a1 f i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g a
+stack a1 g a
 0
 4
 0 8 0 1
@@ -1430,7 +1422,7 @@ stack_DETDUP_0 a1 g a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g b
+stack a1 g b
 0
 4
 0 9 0 1
@@ -1440,7 +1432,7 @@ stack_DETDUP_0 a1 g b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g c
+stack a1 g c
 0
 4
 0 10 0 1
@@ -1450,7 +1442,7 @@ stack_DETDUP_0 a1 g c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g d
+stack a1 g d
 0
 4
 0 11 0 1
@@ -1460,7 +1452,7 @@ stack_DETDUP_0 a1 g d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g e
+stack a1 g e
 0
 4
 0 12 0 1
@@ -1470,7 +1462,7 @@ stack_DETDUP_0 a1 g e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g f
+stack a1 g f
 0
 4
 0 13 0 1
@@ -1480,7 +1472,7 @@ stack_DETDUP_0 a1 g f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g h
+stack a1 g h
 0
 4
 0 14 -1 0
@@ -1490,7 +1482,7 @@ stack_DETDUP_0 a1 g h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g i
+stack a1 g i
 0
 4
 0 14 -1 0
@@ -1500,7 +1492,7 @@ stack_DETDUP_0 a1 g i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h a
+stack a1 h a
 0
 4
 0 8 0 1
@@ -1510,7 +1502,7 @@ stack_DETDUP_0 a1 h a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h b
+stack a1 h b
 0
 4
 0 9 0 1
@@ -1520,7 +1512,7 @@ stack_DETDUP_0 a1 h b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h c
+stack a1 h c
 0
 4
 0 10 0 1
@@ -1530,7 +1522,7 @@ stack_DETDUP_0 a1 h c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h d
+stack a1 h d
 0
 4
 0 11 0 1
@@ -1540,7 +1532,7 @@ stack_DETDUP_0 a1 h d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h e
+stack a1 h e
 0
 4
 0 12 0 1
@@ -1550,7 +1542,7 @@ stack_DETDUP_0 a1 h e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h f
+stack a1 h f
 0
 4
 0 13 0 1
@@ -1560,7 +1552,7 @@ stack_DETDUP_0 a1 h f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h g
+stack a1 h g
 0
 4
 0 14 0 1
@@ -1570,7 +1562,7 @@ stack_DETDUP_0 a1 h g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h i
+stack a1 h i
 0
 4
 0 16 -1 0
@@ -1580,7 +1572,7 @@ stack_DETDUP_0 a1 h i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i a
+stack a1 i a
 0
 4
 0 8 0 1
@@ -1590,7 +1582,7 @@ stack_DETDUP_0 a1 i a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i b
+stack a1 i b
 0
 4
 0 9 0 1
@@ -1600,7 +1592,7 @@ stack_DETDUP_0 a1 i b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i c
+stack a1 i c
 0
 4
 0 10 0 1
@@ -1610,7 +1602,7 @@ stack_DETDUP_0 a1 i c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i d
+stack a1 i d
 0
 4
 0 11 0 1
@@ -1620,7 +1612,7 @@ stack_DETDUP_0 a1 i d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i e
+stack a1 i e
 0
 4
 0 12 0 1
@@ -1630,7 +1622,7 @@ stack_DETDUP_0 a1 i e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i f
+stack a1 i f
 0
 4
 0 13 0 1
@@ -1640,7 +1632,7 @@ stack_DETDUP_0 a1 i f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i g
+stack a1 i g
 0
 4
 0 14 0 1
@@ -1650,7 +1642,7 @@ stack_DETDUP_0 a1 i g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i h
+stack a1 i h
 0
 4
 0 16 0 1
@@ -1660,7 +1652,7 @@ stack_DETDUP_0 a1 i h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a b
+stack a2 a b
 0
 4
 0 8 -1 0
@@ -1670,7 +1662,7 @@ stack_DETDUP_0 a2 a b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a c
+stack a2 a c
 0
 4
 0 8 -1 0
@@ -1680,7 +1672,7 @@ stack_DETDUP_0 a2 a c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a d
+stack a2 a d
 0
 4
 0 8 -1 0
@@ -1690,7 +1682,7 @@ stack_DETDUP_0 a2 a d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a e
+stack a2 a e
 0
 4
 0 8 -1 0
@@ -1700,7 +1692,7 @@ stack_DETDUP_0 a2 a e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a f
+stack a2 a f
 0
 4
 0 8 -1 0
@@ -1710,7 +1702,7 @@ stack_DETDUP_0 a2 a f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a g
+stack a2 a g
 0
 4
 0 8 -1 0
@@ -1720,7 +1712,7 @@ stack_DETDUP_0 a2 a g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a h
+stack a2 a h
 0
 4
 0 8 -1 0
@@ -1730,7 +1722,7 @@ stack_DETDUP_0 a2 a h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a i
+stack a2 a i
 0
 4
 0 8 -1 0
@@ -1740,7 +1732,7 @@ stack_DETDUP_0 a2 a i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b a
+stack a2 b a
 0
 4
 0 8 0 1
@@ -1750,7 +1742,7 @@ stack_DETDUP_0 a2 b a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b c
+stack a2 b c
 0
 4
 0 9 -1 0
@@ -1760,7 +1752,7 @@ stack_DETDUP_0 a2 b c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b d
+stack a2 b d
 0
 4
 0 9 -1 0
@@ -1770,7 +1762,7 @@ stack_DETDUP_0 a2 b d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b e
+stack a2 b e
 0
 4
 0 9 -1 0
@@ -1780,7 +1772,7 @@ stack_DETDUP_0 a2 b e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b f
+stack a2 b f
 0
 4
 0 9 -1 0
@@ -1790,7 +1782,7 @@ stack_DETDUP_0 a2 b f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b g
+stack a2 b g
 0
 4
 0 9 -1 0
@@ -1800,7 +1792,7 @@ stack_DETDUP_0 a2 b g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b h
+stack a2 b h
 0
 4
 0 9 -1 0
@@ -1810,7 +1802,7 @@ stack_DETDUP_0 a2 b h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b i
+stack a2 b i
 0
 4
 0 9 -1 0
@@ -1820,7 +1812,7 @@ stack_DETDUP_0 a2 b i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c a
+stack a2 c a
 0
 4
 0 8 0 1
@@ -1830,7 +1822,7 @@ stack_DETDUP_0 a2 c a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c b
+stack a2 c b
 0
 4
 0 9 0 1
@@ -1840,7 +1832,7 @@ stack_DETDUP_0 a2 c b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c d
+stack a2 c d
 0
 4
 0 10 -1 0
@@ -1850,7 +1842,7 @@ stack_DETDUP_0 a2 c d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c e
+stack a2 c e
 0
 4
 0 10 -1 0
@@ -1860,7 +1852,7 @@ stack_DETDUP_0 a2 c e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c f
+stack a2 c f
 0
 4
 0 10 -1 0
@@ -1870,7 +1862,7 @@ stack_DETDUP_0 a2 c f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c g
+stack a2 c g
 0
 4
 0 10 -1 0
@@ -1880,7 +1872,7 @@ stack_DETDUP_0 a2 c g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c h
+stack a2 c h
 0
 4
 0 10 -1 0
@@ -1890,7 +1882,7 @@ stack_DETDUP_0 a2 c h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c i
+stack a2 c i
 0
 4
 0 10 -1 0
@@ -1900,7 +1892,7 @@ stack_DETDUP_0 a2 c i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d a
+stack a2 d a
 0
 4
 0 8 0 1
@@ -1910,7 +1902,7 @@ stack_DETDUP_0 a2 d a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d b
+stack a2 d b
 0
 4
 0 9 0 1
@@ -1920,7 +1912,7 @@ stack_DETDUP_0 a2 d b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d c
+stack a2 d c
 0
 4
 0 10 0 1
@@ -1930,7 +1922,7 @@ stack_DETDUP_0 a2 d c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d e
+stack a2 d e
 0
 4
 0 11 -1 0
@@ -1940,7 +1932,7 @@ stack_DETDUP_0 a2 d e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d f
+stack a2 d f
 0
 4
 0 11 -1 0
@@ -1950,7 +1942,7 @@ stack_DETDUP_0 a2 d f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d g
+stack a2 d g
 0
 4
 0 11 -1 0
@@ -1960,7 +1952,7 @@ stack_DETDUP_0 a2 d g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d h
+stack a2 d h
 0
 4
 0 11 -1 0
@@ -1970,7 +1962,7 @@ stack_DETDUP_0 a2 d h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d i
+stack a2 d i
 0
 4
 0 11 -1 0
@@ -1980,7 +1972,7 @@ stack_DETDUP_0 a2 d i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e a
+stack a2 e a
 0
 4
 0 8 0 1
@@ -1990,7 +1982,7 @@ stack_DETDUP_0 a2 e a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e b
+stack a2 e b
 0
 4
 0 9 0 1
@@ -2000,7 +1992,7 @@ stack_DETDUP_0 a2 e b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e c
+stack a2 e c
 0
 4
 0 10 0 1
@@ -2010,7 +2002,7 @@ stack_DETDUP_0 a2 e c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e d
+stack a2 e d
 0
 4
 0 11 0 1
@@ -2020,7 +2012,7 @@ stack_DETDUP_0 a2 e d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e f
+stack a2 e f
 0
 4
 0 12 -1 0
@@ -2030,7 +2022,7 @@ stack_DETDUP_0 a2 e f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e g
+stack a2 e g
 0
 4
 0 12 -1 0
@@ -2040,7 +2032,7 @@ stack_DETDUP_0 a2 e g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e h
+stack a2 e h
 0
 4
 0 12 -1 0
@@ -2050,7 +2042,7 @@ stack_DETDUP_0 a2 e h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e i
+stack a2 e i
 0
 4
 0 12 -1 0
@@ -2060,7 +2052,7 @@ stack_DETDUP_0 a2 e i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f a
+stack a2 f a
 0
 4
 0 8 0 1
@@ -2070,7 +2062,7 @@ stack_DETDUP_0 a2 f a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f b
+stack a2 f b
 0
 4
 0 9 0 1
@@ -2080,7 +2072,7 @@ stack_DETDUP_0 a2 f b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f c
+stack a2 f c
 0
 4
 0 10 0 1
@@ -2090,7 +2082,7 @@ stack_DETDUP_0 a2 f c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f d
+stack a2 f d
 0
 4
 0 11 0 1
@@ -2100,7 +2092,7 @@ stack_DETDUP_0 a2 f d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f e
+stack a2 f e
 0
 4
 0 12 0 1
@@ -2110,7 +2102,7 @@ stack_DETDUP_0 a2 f e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f g
+stack a2 f g
 0
 4
 0 13 -1 0
@@ -2120,7 +2112,7 @@ stack_DETDUP_0 a2 f g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f h
+stack a2 f h
 0
 4
 0 13 -1 0
@@ -2130,7 +2122,7 @@ stack_DETDUP_0 a2 f h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f i
+stack a2 f i
 0
 4
 0 13 -1 0
@@ -2140,7 +2132,7 @@ stack_DETDUP_0 a2 f i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g a
+stack a2 g a
 0
 4
 0 8 0 1
@@ -2150,7 +2142,7 @@ stack_DETDUP_0 a2 g a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g b
+stack a2 g b
 0
 4
 0 9 0 1
@@ -2160,7 +2152,7 @@ stack_DETDUP_0 a2 g b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g c
+stack a2 g c
 0
 4
 0 10 0 1
@@ -2170,7 +2162,7 @@ stack_DETDUP_0 a2 g c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g d
+stack a2 g d
 0
 4
 0 11 0 1
@@ -2180,7 +2172,7 @@ stack_DETDUP_0 a2 g d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g e
+stack a2 g e
 0
 4
 0 12 0 1
@@ -2190,7 +2182,7 @@ stack_DETDUP_0 a2 g e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g f
+stack a2 g f
 0
 4
 0 13 0 1
@@ -2200,7 +2192,7 @@ stack_DETDUP_0 a2 g f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g h
+stack a2 g h
 0
 4
 0 14 -1 0
@@ -2210,7 +2202,7 @@ stack_DETDUP_0 a2 g h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g i
+stack a2 g i
 0
 4
 0 14 -1 0
@@ -2220,7 +2212,7 @@ stack_DETDUP_0 a2 g i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h a
+stack a2 h a
 0
 4
 0 8 0 1
@@ -2230,7 +2222,7 @@ stack_DETDUP_0 a2 h a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h b
+stack a2 h b
 0
 4
 0 9 0 1
@@ -2240,7 +2232,7 @@ stack_DETDUP_0 a2 h b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h c
+stack a2 h c
 0
 4
 0 10 0 1
@@ -2250,7 +2242,7 @@ stack_DETDUP_0 a2 h c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h d
+stack a2 h d
 0
 4
 0 11 0 1
@@ -2260,7 +2252,7 @@ stack_DETDUP_0 a2 h d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h e
+stack a2 h e
 0
 4
 0 12 0 1
@@ -2270,7 +2262,7 @@ stack_DETDUP_0 a2 h e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h f
+stack a2 h f
 0
 4
 0 13 0 1
@@ -2280,7 +2272,7 @@ stack_DETDUP_0 a2 h f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h g
+stack a2 h g
 0
 4
 0 14 0 1
@@ -2290,7 +2282,7 @@ stack_DETDUP_0 a2 h g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h i
+stack a2 h i
 0
 4
 0 16 -1 0
@@ -2300,7 +2292,7 @@ stack_DETDUP_0 a2 h i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i a
+stack a2 i a
 0
 4
 0 8 0 1
@@ -2310,7 +2302,7 @@ stack_DETDUP_0 a2 i a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i b
+stack a2 i b
 0
 4
 0 9 0 1
@@ -2320,7 +2312,7 @@ stack_DETDUP_0 a2 i b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i c
+stack a2 i c
 0
 4
 0 10 0 1
@@ -2330,7 +2322,7 @@ stack_DETDUP_0 a2 i c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i d
+stack a2 i d
 0
 4
 0 11 0 1
@@ -2340,7 +2332,7 @@ stack_DETDUP_0 a2 i d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i e
+stack a2 i e
 0
 4
 0 12 0 1
@@ -2350,7 +2342,7 @@ stack_DETDUP_0 a2 i e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i f
+stack a2 i f
 0
 4
 0 13 0 1
@@ -2360,7 +2352,7 @@ stack_DETDUP_0 a2 i f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i g
+stack a2 i g
 0
 4
 0 14 0 1
@@ -2370,7 +2362,7 @@ stack_DETDUP_0 a2 i g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i h
+stack a2 i h
 0
 4
 0 16 0 1
@@ -2380,7 +2372,7 @@ stack_DETDUP_0 a2 i h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a b
+stack a3 a b
 0
 4
 0 8 -1 0
@@ -2390,7 +2382,7 @@ stack_DETDUP_0 a3 a b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a c
+stack a3 a c
 0
 4
 0 8 -1 0
@@ -2400,7 +2392,7 @@ stack_DETDUP_0 a3 a c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a d
+stack a3 a d
 0
 4
 0 8 -1 0
@@ -2410,7 +2402,7 @@ stack_DETDUP_0 a3 a d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a e
+stack a3 a e
 0
 4
 0 8 -1 0
@@ -2420,7 +2412,7 @@ stack_DETDUP_0 a3 a e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a f
+stack a3 a f
 0
 4
 0 8 -1 0
@@ -2430,7 +2422,7 @@ stack_DETDUP_0 a3 a f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a g
+stack a3 a g
 0
 4
 0 8 -1 0
@@ -2440,7 +2432,7 @@ stack_DETDUP_0 a3 a g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a h
+stack a3 a h
 0
 4
 0 8 -1 0
@@ -2450,7 +2442,7 @@ stack_DETDUP_0 a3 a h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a i
+stack a3 a i
 0
 4
 0 8 -1 0
@@ -2460,7 +2452,7 @@ stack_DETDUP_0 a3 a i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b a
+stack a3 b a
 0
 4
 0 8 0 1
@@ -2470,7 +2462,7 @@ stack_DETDUP_0 a3 b a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b c
+stack a3 b c
 0
 4
 0 9 -1 0
@@ -2480,7 +2472,7 @@ stack_DETDUP_0 a3 b c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b d
+stack a3 b d
 0
 4
 0 9 -1 0
@@ -2490,7 +2482,7 @@ stack_DETDUP_0 a3 b d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b e
+stack a3 b e
 0
 4
 0 9 -1 0
@@ -2500,7 +2492,7 @@ stack_DETDUP_0 a3 b e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b f
+stack a3 b f
 0
 4
 0 9 -1 0
@@ -2510,7 +2502,7 @@ stack_DETDUP_0 a3 b f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b g
+stack a3 b g
 0
 4
 0 9 -1 0
@@ -2520,7 +2512,7 @@ stack_DETDUP_0 a3 b g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b h
+stack a3 b h
 0
 4
 0 9 -1 0
@@ -2530,7 +2522,7 @@ stack_DETDUP_0 a3 b h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b i
+stack a3 b i
 0
 4
 0 9 -1 0
@@ -2540,7 +2532,7 @@ stack_DETDUP_0 a3 b i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c a
+stack a3 c a
 0
 4
 0 8 0 1
@@ -2550,7 +2542,7 @@ stack_DETDUP_0 a3 c a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c b
+stack a3 c b
 0
 4
 0 9 0 1
@@ -2560,7 +2552,7 @@ stack_DETDUP_0 a3 c b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c d
+stack a3 c d
 0
 4
 0 10 -1 0
@@ -2570,7 +2562,7 @@ stack_DETDUP_0 a3 c d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c e
+stack a3 c e
 0
 4
 0 10 -1 0
@@ -2580,7 +2572,7 @@ stack_DETDUP_0 a3 c e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c f
+stack a3 c f
 0
 4
 0 10 -1 0
@@ -2590,7 +2582,7 @@ stack_DETDUP_0 a3 c f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c g
+stack a3 c g
 0
 4
 0 10 -1 0
@@ -2600,7 +2592,7 @@ stack_DETDUP_0 a3 c g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c h
+stack a3 c h
 0
 4
 0 10 -1 0
@@ -2610,7 +2602,7 @@ stack_DETDUP_0 a3 c h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c i
+stack a3 c i
 0
 4
 0 10 -1 0
@@ -2620,7 +2612,7 @@ stack_DETDUP_0 a3 c i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d a
+stack a3 d a
 0
 4
 0 8 0 1
@@ -2630,7 +2622,7 @@ stack_DETDUP_0 a3 d a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d b
+stack a3 d b
 0
 4
 0 9 0 1
@@ -2640,7 +2632,7 @@ stack_DETDUP_0 a3 d b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d c
+stack a3 d c
 0
 4
 0 10 0 1
@@ -2650,7 +2642,7 @@ stack_DETDUP_0 a3 d c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d e
+stack a3 d e
 0
 4
 0 11 -1 0
@@ -2660,7 +2652,7 @@ stack_DETDUP_0 a3 d e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d f
+stack a3 d f
 0
 4
 0 11 -1 0
@@ -2670,7 +2662,7 @@ stack_DETDUP_0 a3 d f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d g
+stack a3 d g
 0
 4
 0 11 -1 0
@@ -2680,7 +2672,7 @@ stack_DETDUP_0 a3 d g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d h
+stack a3 d h
 0
 4
 0 11 -1 0
@@ -2690,7 +2682,7 @@ stack_DETDUP_0 a3 d h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d i
+stack a3 d i
 0
 4
 0 11 -1 0
@@ -2700,7 +2692,7 @@ stack_DETDUP_0 a3 d i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e a
+stack a3 e a
 0
 4
 0 8 0 1
@@ -2710,7 +2702,7 @@ stack_DETDUP_0 a3 e a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e b
+stack a3 e b
 0
 4
 0 9 0 1
@@ -2720,7 +2712,7 @@ stack_DETDUP_0 a3 e b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e c
+stack a3 e c
 0
 4
 0 10 0 1
@@ -2730,7 +2722,7 @@ stack_DETDUP_0 a3 e c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e d
+stack a3 e d
 0
 4
 0 11 0 1
@@ -2740,7 +2732,7 @@ stack_DETDUP_0 a3 e d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e f
+stack a3 e f
 0
 4
 0 12 -1 0
@@ -2750,7 +2742,7 @@ stack_DETDUP_0 a3 e f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e g
+stack a3 e g
 0
 4
 0 12 -1 0
@@ -2760,7 +2752,7 @@ stack_DETDUP_0 a3 e g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e h
+stack a3 e h
 0
 4
 0 12 -1 0
@@ -2770,7 +2762,7 @@ stack_DETDUP_0 a3 e h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e i
+stack a3 e i
 0
 4
 0 12 -1 0
@@ -2780,7 +2772,7 @@ stack_DETDUP_0 a3 e i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f a
+stack a3 f a
 0
 4
 0 8 0 1
@@ -2790,7 +2782,7 @@ stack_DETDUP_0 a3 f a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f b
+stack a3 f b
 0
 4
 0 9 0 1
@@ -2800,7 +2792,7 @@ stack_DETDUP_0 a3 f b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f c
+stack a3 f c
 0
 4
 0 10 0 1
@@ -2810,7 +2802,7 @@ stack_DETDUP_0 a3 f c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f d
+stack a3 f d
 0
 4
 0 11 0 1
@@ -2820,7 +2812,7 @@ stack_DETDUP_0 a3 f d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f e
+stack a3 f e
 0
 4
 0 12 0 1
@@ -2830,7 +2822,7 @@ stack_DETDUP_0 a3 f e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f g
+stack a3 f g
 0
 4
 0 13 -1 0
@@ -2840,7 +2832,7 @@ stack_DETDUP_0 a3 f g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f h
+stack a3 f h
 0
 4
 0 13 -1 0
@@ -2850,7 +2842,7 @@ stack_DETDUP_0 a3 f h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f i
+stack a3 f i
 0
 4
 0 13 -1 0
@@ -2860,7 +2852,7 @@ stack_DETDUP_0 a3 f i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g a
+stack a3 g a
 0
 4
 0 8 0 1
@@ -2870,7 +2862,7 @@ stack_DETDUP_0 a3 g a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g b
+stack a3 g b
 0
 4
 0 9 0 1
@@ -2880,7 +2872,7 @@ stack_DETDUP_0 a3 g b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g c
+stack a3 g c
 0
 4
 0 10 0 1
@@ -2890,7 +2882,7 @@ stack_DETDUP_0 a3 g c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g d
+stack a3 g d
 0
 4
 0 11 0 1
@@ -2900,7 +2892,7 @@ stack_DETDUP_0 a3 g d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g e
+stack a3 g e
 0
 4
 0 12 0 1
@@ -2910,7 +2902,7 @@ stack_DETDUP_0 a3 g e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g f
+stack a3 g f
 0
 4
 0 13 0 1
@@ -2920,7 +2912,7 @@ stack_DETDUP_0 a3 g f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g h
+stack a3 g h
 0
 4
 0 14 -1 0
@@ -2930,7 +2922,7 @@ stack_DETDUP_0 a3 g h
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g i
+stack a3 g i
 0
 4
 0 14 -1 0
@@ -2940,7 +2932,7 @@ stack_DETDUP_0 a3 g i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h a
+stack a3 h a
 0
 4
 0 8 0 1
@@ -2950,7 +2942,7 @@ stack_DETDUP_0 a3 h a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h b
+stack a3 h b
 0
 4
 0 9 0 1
@@ -2960,7 +2952,7 @@ stack_DETDUP_0 a3 h b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h c
+stack a3 h c
 0
 4
 0 10 0 1
@@ -2970,7 +2962,7 @@ stack_DETDUP_0 a3 h c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h d
+stack a3 h d
 0
 4
 0 11 0 1
@@ -2980,7 +2972,7 @@ stack_DETDUP_0 a3 h d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h e
+stack a3 h e
 0
 4
 0 12 0 1
@@ -2990,7 +2982,7 @@ stack_DETDUP_0 a3 h e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h f
+stack a3 h f
 0
 4
 0 13 0 1
@@ -3000,7 +2992,7 @@ stack_DETDUP_0 a3 h f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h g
+stack a3 h g
 0
 4
 0 14 0 1
@@ -3010,7 +3002,7 @@ stack_DETDUP_0 a3 h g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h i
+stack a3 h i
 0
 4
 0 16 -1 0
@@ -3020,7 +3012,7 @@ stack_DETDUP_0 a3 h i
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i a
+stack a3 i a
 0
 4
 0 8 0 1
@@ -3030,7 +3022,7 @@ stack_DETDUP_0 a3 i a
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i b
+stack a3 i b
 0
 4
 0 9 0 1
@@ -3040,7 +3032,7 @@ stack_DETDUP_0 a3 i b
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i c
+stack a3 i c
 0
 4
 0 10 0 1
@@ -3050,7 +3042,7 @@ stack_DETDUP_0 a3 i c
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i d
+stack a3 i d
 0
 4
 0 11 0 1
@@ -3060,7 +3052,7 @@ stack_DETDUP_0 a3 i d
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i e
+stack a3 i e
 0
 4
 0 12 0 1
@@ -3070,7 +3062,7 @@ stack_DETDUP_0 a3 i e
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i f
+stack a3 i f
 0
 4
 0 13 0 1
@@ -3080,7 +3072,7 @@ stack_DETDUP_0 a3 i f
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i g
+stack a3 i g
 0
 4
 0 14 0 1
@@ -3090,1957 +3082,13 @@ stack_DETDUP_0 a3 i g
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 i h
+stack a3 i h
 0
 4
 0 16 0 1
 0 19 -1 0
 0 18 -1 0
 0 20 2 10
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a b
-2
-9 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a c
-2
-10 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a d
-2
-11 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a e
-2
-12 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a f
-2
-13 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a g
-2
-14 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a h
-2
-16 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a i
-2
-19 0
-0 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b a
-2
-8 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b c
-2
-10 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b d
-2
-11 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b e
-2
-12 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b f
-2
-13 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b g
-2
-14 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b h
-2
-16 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b i
-2
-19 0
-1 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c a
-2
-8 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c b
-2
-9 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c d
-2
-11 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c e
-2
-12 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c f
-2
-13 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c g
-2
-14 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c h
-2
-16 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c i
-2
-19 0
-2 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d a
-2
-8 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d b
-2
-9 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d c
-2
-10 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d e
-2
-12 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d f
-2
-13 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d g
-2
-14 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d h
-2
-16 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d i
-2
-19 0
-3 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e a
-2
-8 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e b
-2
-9 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e c
-2
-10 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e d
-2
-11 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e f
-2
-13 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e g
-2
-14 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e h
-2
-16 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e i
-2
-19 0
-4 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f a
-2
-8 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f b
-2
-9 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f c
-2
-10 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f d
-2
-11 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f e
-2
-12 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f g
-2
-14 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f h
-2
-16 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f i
-2
-19 0
-5 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g a
-2
-8 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g b
-2
-9 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g c
-2
-10 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g d
-2
-11 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g e
-2
-12 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g f
-2
-13 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g h
-2
-16 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g i
-2
-19 0
-6 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h a
-2
-8 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h b
-2
-9 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h c
-2
-10 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h d
-2
-11 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h e
-2
-12 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h f
-2
-13 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h g
-2
-14 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h i
-2
-19 0
-7 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i a
-2
-8 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i b
-2
-9 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i c
-2
-10 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i d
-2
-11 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i e
-2
-12 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i f
-2
-13 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i g
-2
-14 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i h
-2
-16 0
-20 0
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a b
-2
-9 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a c
-2
-10 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a d
-2
-11 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a e
-2
-12 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a f
-2
-13 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a g
-2
-14 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a h
-2
-16 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a i
-2
-19 0
-0 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b a
-2
-8 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b c
-2
-10 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b d
-2
-11 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b e
-2
-12 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b f
-2
-13 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b g
-2
-14 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b h
-2
-16 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b i
-2
-19 0
-1 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c a
-2
-8 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c b
-2
-9 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c d
-2
-11 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c e
-2
-12 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c f
-2
-13 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c g
-2
-14 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c h
-2
-16 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c i
-2
-19 0
-2 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d a
-2
-8 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d b
-2
-9 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d c
-2
-10 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d e
-2
-12 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d f
-2
-13 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d g
-2
-14 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d h
-2
-16 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d i
-2
-19 0
-3 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e a
-2
-8 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e b
-2
-9 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e c
-2
-10 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e d
-2
-11 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e f
-2
-13 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e g
-2
-14 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e h
-2
-16 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e i
-2
-19 0
-4 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f a
-2
-8 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f b
-2
-9 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f c
-2
-10 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f d
-2
-11 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f e
-2
-12 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f g
-2
-14 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f h
-2
-16 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f i
-2
-19 0
-5 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g a
-2
-8 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g b
-2
-9 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g c
-2
-10 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g d
-2
-11 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g e
-2
-12 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g f
-2
-13 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g h
-2
-16 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g i
-2
-19 0
-6 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h a
-2
-8 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h b
-2
-9 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h c
-2
-10 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h d
-2
-11 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h e
-2
-12 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h f
-2
-13 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h g
-2
-14 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h i
-2
-19 0
-7 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i a
-2
-8 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i b
-2
-9 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i c
-2
-10 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i d
-2
-11 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i e
-2
-12 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i f
-2
-13 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i g
-2
-14 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i h
-2
-16 0
-20 1
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a b
-2
-9 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a c
-2
-10 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a d
-2
-11 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a e
-2
-12 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a f
-2
-13 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a g
-2
-14 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a h
-2
-16 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a i
-2
-19 0
-0 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b a
-2
-8 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b c
-2
-10 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b d
-2
-11 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b e
-2
-12 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b f
-2
-13 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b g
-2
-14 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b h
-2
-16 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b i
-2
-19 0
-1 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c a
-2
-8 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c b
-2
-9 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c d
-2
-11 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c e
-2
-12 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c f
-2
-13 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c g
-2
-14 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c h
-2
-16 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c i
-2
-19 0
-2 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d a
-2
-8 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d b
-2
-9 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d c
-2
-10 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d e
-2
-12 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d f
-2
-13 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d g
-2
-14 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d h
-2
-16 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d i
-2
-19 0
-3 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e a
-2
-8 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e b
-2
-9 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e c
-2
-10 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e d
-2
-11 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e f
-2
-13 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e g
-2
-14 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e h
-2
-16 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e i
-2
-19 0
-4 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f a
-2
-8 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f b
-2
-9 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f c
-2
-10 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f d
-2
-11 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f e
-2
-12 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f g
-2
-14 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f h
-2
-16 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f i
-2
-19 0
-5 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g a
-2
-8 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g b
-2
-9 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g c
-2
-10 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g d
-2
-11 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g e
-2
-12 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g f
-2
-13 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g h
-2
-16 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g i
-2
-19 0
-6 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h a
-2
-8 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h b
-2
-9 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h c
-2
-10 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h d
-2
-11 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h e
-2
-12 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h f
-2
-13 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h g
-2
-14 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h i
-2
-19 0
-7 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i a
-2
-8 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i b
-2
-9 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i c
-2
-10 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i d
-2
-11 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i e
-2
-12 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i f
-2
-13 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i g
-2
-14 0
-20 2
-1
-0 21 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i h
-2
-16 0
-20 2
-1
-0 21 -1 0
 0
 end_operator
 begin_operator
@@ -7215,21 +5263,21 @@ check 0
 check 0
 check 0
 check 1
-486
+270
 check 1
-487
+271
 check 1
-488
+272
 check 1
-489
+273
 check 1
-490
+274
 check 1
-491
+275
 check 1
-492
+276
 check 1
-493
+277
 check 1
 0
 check 0
@@ -7242,21 +5290,21 @@ check 0
 check 0
 check 0
 check 1
-558
+342
 check 1
-559
+343
 check 1
-560
+344
 check 1
-561
+345
 check 1
-562
+346
 check 1
-563
+347
 check 1
-564
+348
 check 1
-565
+349
 check 1
 9
 check 0
@@ -7269,36 +5317,33 @@ check 0
 check 0
 check 0
 check 1
-630
+414
 check 1
-631
+415
 check 1
-632
+416
 check 1
-633
+417
 check 1
-634
+418
 check 1
-635
+419
 check 1
-636
+420
 check 1
-637
+421
 check 1
 18
 check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 62
-278
-check 2
+check 1
 134
-350
-check 2
+check 1
 206
-422
 check 0
 check 0
 check 0
@@ -7310,15 +5355,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 70
-286
-check 2
+check 1
 142
-358
-check 2
+check 1
 214
-430
 check 0
 check 0
 check 0
@@ -7330,15 +5372,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 78
-294
-check 2
+check 1
 150
-366
-check 2
+check 1
 222
-438
 check 0
 check 0
 check 0
@@ -7350,15 +5389,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 86
-302
-check 2
+check 1
 158
-374
-check 2
+check 1
 230
-446
 check 0
 check 0
 check 0
@@ -7370,15 +5406,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 94
-310
-check 2
+check 1
 166
-382
-check 2
+check 1
 238
-454
 check 0
 check 0
 check 0
@@ -7390,15 +5423,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 102
-318
-check 2
+check 1
 174
-390
-check 2
+check 1
 246
-462
 check 0
 check 0
 check 0
@@ -7410,15 +5440,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 110
-326
-check 2
+check 1
 182
-398
-check 2
+check 1
 254
-470
 check 0
 check 0
 check 0
@@ -7430,15 +5457,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 118
-334
-check 2
+check 1
 190
-406
-check 2
+check 1
 262
-478
 check 0
 check 0
 check 0
@@ -7460,21 +5484,21 @@ check 0
 check 0
 check 0
 check 1
-494
+278
 check 1
-495
+279
 check 1
-496
+280
 check 1
-497
+281
 check 1
-498
+282
 check 1
-499
+283
 check 1
-500
+284
 check 1
-501
+285
 check 1
 1
 check 0
@@ -7487,21 +5511,21 @@ check 0
 check 0
 check 0
 check 1
-566
+350
 check 1
-567
+351
 check 1
-568
+352
 check 1
-569
+353
 check 1
-570
+354
 check 1
-571
+355
 check 1
-572
+356
 check 1
-573
+357
 check 1
 10
 check 0
@@ -7514,36 +5538,33 @@ check 0
 check 0
 check 0
 check 1
-638
+422
 check 1
-639
+423
 check 1
-640
+424
 check 1
-641
+425
 check 1
-642
+426
 check 1
-643
+427
 check 1
-644
+428
 check 1
-645
+429
 check 1
 19
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 54
-270
-check 2
+check 1
 126
-342
-check 2
+check 1
 198
-414
 check 0
 check 0
 check 0
@@ -7555,15 +5576,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 71
-287
-check 2
+check 1
 143
-359
-check 2
+check 1
 215
-431
 check 0
 check 0
 check 0
@@ -7575,15 +5593,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 79
-295
-check 2
+check 1
 151
-367
-check 2
+check 1
 223
-439
 check 0
 check 0
 check 0
@@ -7595,15 +5610,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 87
-303
-check 2
+check 1
 159
-375
-check 2
+check 1
 231
-447
 check 0
 check 0
 check 0
@@ -7615,15 +5627,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 95
-311
-check 2
+check 1
 167
-383
-check 2
+check 1
 239
-455
 check 0
 check 0
 check 0
@@ -7635,15 +5644,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 103
-319
-check 2
+check 1
 175
-391
-check 2
+check 1
 247
-463
 check 0
 check 0
 check 0
@@ -7655,15 +5661,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 111
-327
-check 2
+check 1
 183
-399
-check 2
+check 1
 255
-471
 check 0
 check 0
 check 0
@@ -7675,15 +5678,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 119
-335
-check 2
+check 1
 191
-407
-check 2
+check 1
 263
-479
 check 0
 check 0
 check 0
@@ -7705,21 +5705,21 @@ check 0
 check 0
 check 0
 check 1
-502
+286
 check 1
-503
+287
 check 1
-504
+288
 check 1
-505
+289
 check 1
-506
+290
 check 1
-507
+291
 check 1
-508
+292
 check 1
-509
+293
 check 1
 2
 check 0
@@ -7732,21 +5732,21 @@ check 0
 check 0
 check 0
 check 1
-574
+358
 check 1
-575
+359
 check 1
-576
+360
 check 1
-577
+361
 check 1
-578
+362
 check 1
-579
+363
 check 1
-580
+364
 check 1
-581
+365
 check 1
 11
 check 0
@@ -7759,36 +5759,33 @@ check 0
 check 0
 check 0
 check 1
-646
+430
 check 1
-647
+431
 check 1
-648
+432
 check 1
-649
+433
 check 1
-650
+434
 check 1
-651
+435
 check 1
-652
+436
 check 1
-653
+437
 check 1
 20
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 55
-271
-check 2
+check 1
 127
-343
-check 2
+check 1
 199
-415
 check 0
 check 0
 check 0
@@ -7800,15 +5797,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 63
-279
-check 2
+check 1
 135
-351
-check 2
+check 1
 207
-423
 check 0
 check 0
 check 0
@@ -7820,15 +5814,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 80
-296
-check 2
+check 1
 152
-368
-check 2
+check 1
 224
-440
 check 0
 check 0
 check 0
@@ -7840,15 +5831,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 88
-304
-check 2
+check 1
 160
-376
-check 2
+check 1
 232
-448
 check 0
 check 0
 check 0
@@ -7860,15 +5848,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 96
-312
-check 2
+check 1
 168
-384
-check 2
+check 1
 240
-456
 check 0
 check 0
 check 0
@@ -7880,15 +5865,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 104
-320
-check 2
+check 1
 176
-392
-check 2
+check 1
 248
-464
 check 0
 check 0
 check 0
@@ -7900,15 +5882,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 112
-328
-check 2
+check 1
 184
-400
-check 2
+check 1
 256
-472
 check 0
 check 0
 check 0
@@ -7920,15 +5899,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 120
-336
-check 2
+check 1
 192
-408
-check 2
+check 1
 264
-480
 check 0
 check 0
 check 0
@@ -7950,21 +5926,21 @@ check 0
 check 0
 check 0
 check 1
-510
+294
 check 1
-511
+295
 check 1
-512
+296
 check 1
-513
+297
 check 1
-514
+298
 check 1
-515
+299
 check 1
-516
+300
 check 1
-517
+301
 check 1
 3
 check 0
@@ -7977,21 +5953,21 @@ check 0
 check 0
 check 0
 check 1
-582
+366
 check 1
-583
+367
 check 1
-584
+368
 check 1
-585
+369
 check 1
-586
+370
 check 1
-587
+371
 check 1
-588
+372
 check 1
-589
+373
 check 1
 12
 check 0
@@ -8004,36 +5980,33 @@ check 0
 check 0
 check 0
 check 1
-654
+438
 check 1
-655
+439
 check 1
-656
+440
 check 1
-657
+441
 check 1
-658
+442
 check 1
-659
+443
 check 1
-660
+444
 check 1
-661
+445
 check 1
 21
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 56
-272
-check 2
+check 1
 128
-344
-check 2
+check 1
 200
-416
 check 0
 check 0
 check 0
@@ -8045,15 +6018,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 64
-280
-check 2
+check 1
 136
-352
-check 2
+check 1
 208
-424
 check 0
 check 0
 check 0
@@ -8065,15 +6035,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 72
-288
-check 2
+check 1
 144
-360
-check 2
+check 1
 216
-432
 check 0
 check 0
 check 0
@@ -8085,15 +6052,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 89
-305
-check 2
+check 1
 161
-377
-check 2
+check 1
 233
-449
 check 0
 check 0
 check 0
@@ -8105,15 +6069,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 97
-313
-check 2
+check 1
 169
-385
-check 2
+check 1
 241
-457
 check 0
 check 0
 check 0
@@ -8125,15 +6086,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 105
-321
-check 2
+check 1
 177
-393
-check 2
+check 1
 249
-465
 check 0
 check 0
 check 0
@@ -8145,15 +6103,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 113
-329
-check 2
+check 1
 185
-401
-check 2
+check 1
 257
-473
 check 0
 check 0
 check 0
@@ -8165,15 +6120,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 121
-337
-check 2
+check 1
 193
-409
-check 2
+check 1
 265
-481
 check 0
 check 0
 check 0
@@ -8195,21 +6147,21 @@ check 0
 check 0
 check 0
 check 1
-518
+302
 check 1
-519
+303
 check 1
-520
+304
 check 1
-521
+305
 check 1
-522
+306
 check 1
-523
+307
 check 1
-524
+308
 check 1
-525
+309
 check 1
 4
 check 0
@@ -8222,21 +6174,21 @@ check 0
 check 0
 check 0
 check 1
-590
+374
 check 1
-591
+375
 check 1
-592
+376
 check 1
-593
+377
 check 1
-594
+378
 check 1
-595
+379
 check 1
-596
+380
 check 1
-597
+381
 check 1
 13
 check 0
@@ -8249,36 +6201,33 @@ check 0
 check 0
 check 0
 check 1
-662
+446
 check 1
-663
+447
 check 1
-664
+448
 check 1
-665
+449
 check 1
-666
+450
 check 1
-667
+451
 check 1
-668
+452
 check 1
-669
+453
 check 1
 22
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 57
-273
-check 2
+check 1
 129
-345
-check 2
+check 1
 201
-417
 check 0
 check 0
 check 0
@@ -8290,15 +6239,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 65
-281
-check 2
+check 1
 137
-353
-check 2
+check 1
 209
-425
 check 0
 check 0
 check 0
@@ -8310,15 +6256,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 73
-289
-check 2
+check 1
 145
-361
-check 2
+check 1
 217
-433
 check 0
 check 0
 check 0
@@ -8330,15 +6273,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 81
-297
-check 2
+check 1
 153
-369
-check 2
+check 1
 225
-441
 check 0
 check 0
 check 0
@@ -8350,15 +6290,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 98
-314
-check 2
+check 1
 170
-386
-check 2
+check 1
 242
-458
 check 0
 check 0
 check 0
@@ -8370,15 +6307,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 106
-322
-check 2
+check 1
 178
-394
-check 2
+check 1
 250
-466
 check 0
 check 0
 check 0
@@ -8390,15 +6324,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 114
-330
-check 2
+check 1
 186
-402
-check 2
+check 1
 258
-474
 check 0
 check 0
 check 0
@@ -8410,15 +6341,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 122
-338
-check 2
+check 1
 194
-410
-check 2
+check 1
 266
-482
 check 0
 check 0
 check 0
@@ -8440,21 +6368,21 @@ check 0
 check 0
 check 0
 check 1
-526
+310
 check 1
-527
+311
 check 1
-528
+312
 check 1
-529
+313
 check 1
-530
+314
 check 1
-531
+315
 check 1
-532
+316
 check 1
-533
+317
 check 1
 5
 check 0
@@ -8467,21 +6395,21 @@ check 0
 check 0
 check 0
 check 1
-598
+382
 check 1
-599
+383
 check 1
-600
+384
 check 1
-601
+385
 check 1
-602
+386
 check 1
-603
+387
 check 1
-604
+388
 check 1
-605
+389
 check 1
 14
 check 0
@@ -8494,36 +6422,33 @@ check 0
 check 0
 check 0
 check 1
-670
+454
 check 1
-671
+455
 check 1
-672
+456
 check 1
-673
+457
 check 1
-674
+458
 check 1
-675
+459
 check 1
-676
+460
 check 1
-677
+461
 check 1
 23
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 58
-274
-check 2
+check 1
 130
-346
-check 2
+check 1
 202
-418
 check 0
 check 0
 check 0
@@ -8535,15 +6460,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 66
-282
-check 2
+check 1
 138
-354
-check 2
+check 1
 210
-426
 check 0
 check 0
 check 0
@@ -8555,15 +6477,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 74
-290
-check 2
+check 1
 146
-362
-check 2
+check 1
 218
-434
 check 0
 check 0
 check 0
@@ -8575,15 +6494,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 82
-298
-check 2
+check 1
 154
-370
-check 2
+check 1
 226
-442
 check 0
 check 0
 check 0
@@ -8595,15 +6511,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 90
-306
-check 2
+check 1
 162
-378
-check 2
+check 1
 234
-450
 check 0
 check 0
 check 0
@@ -8615,15 +6528,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 107
-323
-check 2
+check 1
 179
-395
-check 2
+check 1
 251
-467
 check 0
 check 0
 check 0
@@ -8635,15 +6545,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 115
-331
-check 2
+check 1
 187
-403
-check 2
+check 1
 259
-475
 check 0
 check 0
 check 0
@@ -8655,15 +6562,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 123
-339
-check 2
+check 1
 195
-411
-check 2
+check 1
 267
-483
 check 0
 check 0
 check 0
@@ -8685,21 +6589,21 @@ check 0
 check 0
 check 0
 check 1
-534
+318
 check 1
-535
+319
 check 1
-536
+320
 check 1
-537
+321
 check 1
-538
+322
 check 1
-539
+323
 check 1
-540
+324
 check 1
-541
+325
 check 1
 6
 check 0
@@ -8712,21 +6616,21 @@ check 0
 check 0
 check 0
 check 1
-606
+390
 check 1
-607
+391
 check 1
-608
+392
 check 1
-609
+393
 check 1
-610
+394
 check 1
-611
+395
 check 1
-612
+396
 check 1
-613
+397
 check 1
 15
 check 0
@@ -8739,36 +6643,33 @@ check 0
 check 0
 check 0
 check 1
-678
+462
 check 1
-679
+463
 check 1
-680
+464
 check 1
-681
+465
 check 1
-682
+466
 check 1
-683
+467
 check 1
-684
+468
 check 1
-685
+469
 check 1
 24
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 59
-275
-check 2
+check 1
 131
-347
-check 2
+check 1
 203
-419
 check 0
 check 0
 check 0
@@ -8780,15 +6681,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 67
-283
-check 2
+check 1
 139
-355
-check 2
+check 1
 211
-427
 check 0
 check 0
 check 0
@@ -8800,15 +6698,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 75
-291
-check 2
+check 1
 147
-363
-check 2
+check 1
 219
-435
 check 0
 check 0
 check 0
@@ -8820,15 +6715,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 83
-299
-check 2
+check 1
 155
-371
-check 2
+check 1
 227
-443
 check 0
 check 0
 check 0
@@ -8840,15 +6732,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 91
-307
-check 2
+check 1
 163
-379
-check 2
+check 1
 235
-451
 check 0
 check 0
 check 0
@@ -8860,15 +6749,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 99
-315
-check 2
+check 1
 171
-387
-check 2
+check 1
 243
-459
 check 0
 check 0
 check 0
@@ -8880,15 +6766,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 116
-332
-check 2
+check 1
 188
-404
-check 2
+check 1
 260
-476
 check 0
 check 0
 check 0
@@ -8900,15 +6783,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 124
-340
-check 2
+check 1
 196
-412
-check 2
+check 1
 268
-484
 check 0
 check 0
 check 0
@@ -8930,21 +6810,21 @@ check 0
 check 0
 check 0
 check 1
-542
+326
 check 1
-543
+327
 check 1
-544
+328
 check 1
-545
+329
 check 1
-546
+330
 check 1
-547
+331
 check 1
-548
+332
 check 1
-549
+333
 check 1
 7
 check 0
@@ -8957,21 +6837,21 @@ check 0
 check 0
 check 0
 check 1
-614
+398
 check 1
-615
+399
 check 1
-616
+400
 check 1
-617
+401
 check 1
-618
+402
 check 1
-619
+403
 check 1
-620
+404
 check 1
-621
+405
 check 1
 16
 check 0
@@ -8984,36 +6864,33 @@ check 0
 check 0
 check 0
 check 1
-686
+470
 check 1
-687
+471
 check 1
-688
+472
 check 1
-689
+473
 check 1
-690
+474
 check 1
-691
+475
 check 1
-692
+476
 check 1
-693
+477
 check 1
 25
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 60
-276
-check 2
+check 1
 132
-348
-check 2
+check 1
 204
-420
 check 0
 check 0
 check 0
@@ -9025,15 +6902,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 68
-284
-check 2
+check 1
 140
-356
-check 2
+check 1
 212
-428
 check 0
 check 0
 check 0
@@ -9045,15 +6919,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 76
-292
-check 2
+check 1
 148
-364
-check 2
+check 1
 220
-436
 check 0
 check 0
 check 0
@@ -9065,15 +6936,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 84
-300
-check 2
+check 1
 156
-372
-check 2
+check 1
 228
-444
 check 0
 check 0
 check 0
@@ -9085,15 +6953,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 92
-308
-check 2
+check 1
 164
-380
-check 2
+check 1
 236
-452
 check 0
 check 0
 check 0
@@ -9105,15 +6970,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 100
-316
-check 2
+check 1
 172
-388
-check 2
+check 1
 244
-460
 check 0
 check 0
 check 0
@@ -9125,15 +6987,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 108
-324
-check 2
+check 1
 180
-396
-check 2
+check 1
 252
-468
 check 0
 check 0
 check 0
@@ -9145,15 +7004,12 @@ check 0
 check 0
 switch 20
 check 0
-check 2
+check 1
 125
-341
-check 2
+check 1
 197
-413
-check 2
+check 1
 269
-485
 check 0
 check 0
 check 0
@@ -9175,21 +7031,21 @@ check 0
 check 0
 check 0
 check 1
-550
+334
 check 1
-551
+335
 check 1
-552
+336
 check 1
-553
+337
 check 1
-554
+338
 check 1
-555
+339
 check 1
-556
+340
 check 1
-557
+341
 check 1
 8
 check 0
@@ -9202,21 +7058,21 @@ check 0
 check 0
 check 0
 check 1
-622
+406
 check 1
-623
+407
 check 1
-624
+408
 check 1
-625
+409
 check 1
-626
+410
 check 1
-627
+411
 check 1
-628
+412
 check 1
-629
+413
 check 1
 17
 check 0
@@ -9229,36 +7085,33 @@ check 0
 check 0
 check 0
 check 1
-694
+478
 check 1
-695
+479
 check 1
-696
+480
 check 1
-697
+481
 check 1
-698
+482
 check 1
-699
+483
 check 1
-700
+484
 check 1
-701
+485
 check 1
 26
 check 0
 check 0
 switch 0
 check 0
-check 2
+check 1
 61
-277
-check 2
+check 1
 133
-349
-check 2
+check 1
 205
-421
 check 0
 check 0
 check 0
@@ -9270,15 +7123,12 @@ check 0
 check 0
 switch 1
 check 0
-check 2
+check 1
 69
-285
-check 2
+check 1
 141
-357
-check 2
+check 1
 213
-429
 check 0
 check 0
 check 0
@@ -9290,15 +7140,12 @@ check 0
 check 0
 switch 2
 check 0
-check 2
+check 1
 77
-293
-check 2
+check 1
 149
-365
-check 2
+check 1
 221
-437
 check 0
 check 0
 check 0
@@ -9310,15 +7157,12 @@ check 0
 check 0
 switch 3
 check 0
-check 2
+check 1
 85
-301
-check 2
+check 1
 157
-373
-check 2
+check 1
 229
-445
 check 0
 check 0
 check 0
@@ -9330,15 +7174,12 @@ check 0
 check 0
 switch 4
 check 0
-check 2
+check 1
 93
-309
-check 2
+check 1
 165
-381
-check 2
+check 1
 237
-453
 check 0
 check 0
 check 0
@@ -9350,15 +7191,12 @@ check 0
 check 0
 switch 5
 check 0
-check 2
+check 1
 101
-317
-check 2
+check 1
 173
-389
-check 2
+check 1
 245
-461
 check 0
 check 0
 check 0
@@ -9370,15 +7208,12 @@ check 0
 check 0
 switch 6
 check 0
-check 2
+check 1
 109
-325
-check 2
+check 1
 181
-397
-check 2
+check 1
 253
-469
 check 0
 check 0
 check 0
@@ -9390,15 +7225,12 @@ check 0
 check 0
 switch 7
 check 0
-check 2
+check 1
 117
-333
-check 2
+check 1
 189
-405
-check 2
+check 1
 261
-477
 check 0
 check 0
 check 0
@@ -9676,129 +7508,129 @@ begin_DTG
 0
 3
 0
-486
+270
 2
 8 0
 15 0
 1
-558
+342
 2
 8 0
 17 0
 2
-630
+414
 2
 8 0
 18 0
 3
 0
-487
+271
 2
 8 0
 15 0
 1
-559
+343
 2
 8 0
 17 0
 2
-631
+415
 2
 8 0
 18 0
 3
 0
-488
+272
 2
 8 0
 15 0
 1
-560
+344
 2
 8 0
 17 0
 2
-632
+416
 2
 8 0
 18 0
 3
 0
-489
+273
 2
 8 0
 15 0
 1
-561
+345
 2
 8 0
 17 0
 2
-633
+417
 2
 8 0
 18 0
 3
 0
-490
+274
 2
 8 0
 15 0
 1
-562
+346
 2
 8 0
 17 0
 2
-634
+418
 2
 8 0
 18 0
 3
 0
-491
+275
 2
 8 0
 15 0
 1
-563
+347
 2
 8 0
 17 0
 2
-635
+419
 2
 8 0
 18 0
 3
 0
-492
+276
 2
 8 0
 15 0
 1
-564
+348
 2
 8 0
 17 0
 2
-636
+420
 2
 8 0
 18 0
 3
 0
-493
+277
 2
 8 0
 15 0
 1
-565
+349
 2
 8 0
 17 0
 2
-637
+421
 2
 8 0
 18 0
@@ -9930,129 +7762,129 @@ begin_DTG
 0
 3
 0
-494
+278
 2
 9 0
 15 0
 1
-566
+350
 2
 9 0
 17 0
 2
-638
+422
 2
 9 0
 18 0
 3
 0
-495
+279
 2
 9 0
 15 0
 1
-567
+351
 2
 9 0
 17 0
 2
-639
+423
 2
 9 0
 18 0
 3
 0
-496
+280
 2
 9 0
 15 0
 1
-568
+352
 2
 9 0
 17 0
 2
-640
+424
 2
 9 0
 18 0
 3
 0
-497
+281
 2
 9 0
 15 0
 1
-569
+353
 2
 9 0
 17 0
 2
-641
+425
 2
 9 0
 18 0
 3
 0
-498
+282
 2
 9 0
 15 0
 1
-570
+354
 2
 9 0
 17 0
 2
-642
+426
 2
 9 0
 18 0
 3
 0
-499
+283
 2
 9 0
 15 0
 1
-571
+355
 2
 9 0
 17 0
 2
-643
+427
 2
 9 0
 18 0
 3
 0
-500
+284
 2
 9 0
 15 0
 1
-572
+356
 2
 9 0
 17 0
 2
-644
+428
 2
 9 0
 18 0
 3
 0
-501
+285
 2
 9 0
 15 0
 1
-573
+357
 2
 9 0
 17 0
 2
-645
+429
 2
 9 0
 18 0
@@ -10184,129 +8016,129 @@ begin_DTG
 0
 3
 0
-502
+286
 2
 10 0
 15 0
 1
-574
+358
 2
 10 0
 17 0
 2
-646
+430
 2
 10 0
 18 0
 3
 0
-503
+287
 2
 10 0
 15 0
 1
-575
+359
 2
 10 0
 17 0
 2
-647
+431
 2
 10 0
 18 0
 3
 0
-504
+288
 2
 10 0
 15 0
 1
-576
+360
 2
 10 0
 17 0
 2
-648
+432
 2
 10 0
 18 0
 3
 0
-505
+289
 2
 10 0
 15 0
 1
-577
+361
 2
 10 0
 17 0
 2
-649
+433
 2
 10 0
 18 0
 3
 0
-506
+290
 2
 10 0
 15 0
 1
-578
+362
 2
 10 0
 17 0
 2
-650
+434
 2
 10 0
 18 0
 3
 0
-507
+291
 2
 10 0
 15 0
 1
-579
+363
 2
 10 0
 17 0
 2
-651
+435
 2
 10 0
 18 0
 3
 0
-508
+292
 2
 10 0
 15 0
 1
-580
+364
 2
 10 0
 17 0
 2
-652
+436
 2
 10 0
 18 0
 3
 0
-509
+293
 2
 10 0
 15 0
 1
-581
+365
 2
 10 0
 17 0
 2
-653
+437
 2
 10 0
 18 0
@@ -10438,129 +8270,129 @@ begin_DTG
 0
 3
 0
-510
+294
 2
 11 0
 15 0
 1
-582
+366
 2
 11 0
 17 0
 2
-654
+438
 2
 11 0
 18 0
 3
 0
-511
+295
 2
 11 0
 15 0
 1
-583
+367
 2
 11 0
 17 0
 2
-655
+439
 2
 11 0
 18 0
 3
 0
-512
+296
 2
 11 0
 15 0
 1
-584
+368
 2
 11 0
 17 0
 2
-656
+440
 2
 11 0
 18 0
 3
 0
-513
+297
 2
 11 0
 15 0
 1
-585
+369
 2
 11 0
 17 0
 2
-657
+441
 2
 11 0
 18 0
 3
 0
-514
+298
 2
 11 0
 15 0
 1
-586
+370
 2
 11 0
 17 0
 2
-658
+442
 2
 11 0
 18 0
 3
 0
-515
+299
 2
 11 0
 15 0
 1
-587
+371
 2
 11 0
 17 0
 2
-659
+443
 2
 11 0
 18 0
 3
 0
-516
+300
 2
 11 0
 15 0
 1
-588
+372
 2
 11 0
 17 0
 2
-660
+444
 2
 11 0
 18 0
 3
 0
-517
+301
 2
 11 0
 15 0
 1
-589
+373
 2
 11 0
 17 0
 2
-661
+445
 2
 11 0
 18 0
@@ -10692,129 +8524,129 @@ begin_DTG
 0
 3
 0
-518
+302
 2
 12 0
 15 0
 1
-590
+374
 2
 12 0
 17 0
 2
-662
+446
 2
 12 0
 18 0
 3
 0
-519
+303
 2
 12 0
 15 0
 1
-591
+375
 2
 12 0
 17 0
 2
-663
+447
 2
 12 0
 18 0
 3
 0
-520
+304
 2
 12 0
 15 0
 1
-592
+376
 2
 12 0
 17 0
 2
-664
+448
 2
 12 0
 18 0
 3
 0
-521
+305
 2
 12 0
 15 0
 1
-593
+377
 2
 12 0
 17 0
 2
-665
+449
 2
 12 0
 18 0
 3
 0
-522
+306
 2
 12 0
 15 0
 1
-594
+378
 2
 12 0
 17 0
 2
-666
+450
 2
 12 0
 18 0
 3
 0
-523
+307
 2
 12 0
 15 0
 1
-595
+379
 2
 12 0
 17 0
 2
-667
+451
 2
 12 0
 18 0
 3
 0
-524
+308
 2
 12 0
 15 0
 1
-596
+380
 2
 12 0
 17 0
 2
-668
+452
 2
 12 0
 18 0
 3
 0
-525
+309
 2
 12 0
 15 0
 1
-597
+381
 2
 12 0
 17 0
 2
-669
+453
 2
 12 0
 18 0
@@ -10946,129 +8778,129 @@ begin_DTG
 0
 3
 0
-526
+310
 2
 13 0
 15 0
 1
-598
+382
 2
 13 0
 17 0
 2
-670
+454
 2
 13 0
 18 0
 3
 0
-527
+311
 2
 13 0
 15 0
 1
-599
+383
 2
 13 0
 17 0
 2
-671
+455
 2
 13 0
 18 0
 3
 0
-528
+312
 2
 13 0
 15 0
 1
-600
+384
 2
 13 0
 17 0
 2
-672
+456
 2
 13 0
 18 0
 3
 0
-529
+313
 2
 13 0
 15 0
 1
-601
+385
 2
 13 0
 17 0
 2
-673
+457
 2
 13 0
 18 0
 3
 0
-530
+314
 2
 13 0
 15 0
 1
-602
+386
 2
 13 0
 17 0
 2
-674
+458
 2
 13 0
 18 0
 3
 0
-531
+315
 2
 13 0
 15 0
 1
-603
+387
 2
 13 0
 17 0
 2
-675
+459
 2
 13 0
 18 0
 3
 0
-532
+316
 2
 13 0
 15 0
 1
-604
+388
 2
 13 0
 17 0
 2
-676
+460
 2
 13 0
 18 0
 3
 0
-533
+317
 2
 13 0
 15 0
 1
-605
+389
 2
 13 0
 17 0
 2
-677
+461
 2
 13 0
 18 0
@@ -11200,129 +9032,129 @@ begin_DTG
 0
 3
 0
-534
+318
 2
 14 0
 15 0
 1
-606
+390
 2
 14 0
 17 0
 2
-678
+462
 2
 14 0
 18 0
 3
 0
-535
+319
 2
 14 0
 15 0
 1
-607
+391
 2
 14 0
 17 0
 2
-679
+463
 2
 14 0
 18 0
 3
 0
-536
+320
 2
 14 0
 15 0
 1
-608
+392
 2
 14 0
 17 0
 2
-680
+464
 2
 14 0
 18 0
 3
 0
-537
+321
 2
 14 0
 15 0
 1
-609
+393
 2
 14 0
 17 0
 2
-681
+465
 2
 14 0
 18 0
 3
 0
-538
+322
 2
 14 0
 15 0
 1
-610
+394
 2
 14 0
 17 0
 2
-682
+466
 2
 14 0
 18 0
 3
 0
-539
+323
 2
 14 0
 15 0
 1
-611
+395
 2
 14 0
 17 0
 2
-683
+467
 2
 14 0
 18 0
 3
 0
-540
+324
 2
 14 0
 15 0
 1
-612
+396
 2
 14 0
 17 0
 2
-684
+468
 2
 14 0
 18 0
 3
 0
-541
+325
 2
 14 0
 15 0
 1
-613
+397
 2
 14 0
 17 0
 2
-685
+469
 2
 14 0
 18 0
@@ -11454,129 +9286,129 @@ begin_DTG
 0
 3
 0
-542
+326
 2
 16 0
 15 0
 1
-614
+398
 2
 16 0
 17 0
 2
-686
+470
 2
 16 0
 18 0
 3
 0
-543
+327
 2
 16 0
 15 0
 1
-615
+399
 2
 16 0
 17 0
 2
-687
+471
 2
 16 0
 18 0
 3
 0
-544
+328
 2
 16 0
 15 0
 1
-616
+400
 2
 16 0
 17 0
 2
-688
+472
 2
 16 0
 18 0
 3
 0
-545
+329
 2
 16 0
 15 0
 1
-617
+401
 2
 16 0
 17 0
 2
-689
+473
 2
 16 0
 18 0
 3
 0
-546
+330
 2
 16 0
 15 0
 1
-618
+402
 2
 16 0
 17 0
 2
-690
+474
 2
 16 0
 18 0
 3
 0
-547
+331
 2
 16 0
 15 0
 1
-619
+403
 2
 16 0
 17 0
 2
-691
+475
 2
 16 0
 18 0
 3
 0
-548
+332
 2
 16 0
 15 0
 1
-620
+404
 2
 16 0
 17 0
 2
-692
+476
 2
 16 0
 18 0
 3
 0
-549
+333
 2
 16 0
 15 0
 1
-621
+405
 2
 16 0
 17 0
 2
-693
+477
 2
 16 0
 18 0
@@ -11696,67 +9528,67 @@ begin_DTG
 1
 20 2
 1
-564
+348
 2
 17 0
 0 9
 1
-630
+414
 2
 18 0
 0 3
 1
-565
+349
 2
 17 0
 0 10
 1
-561
+345
 2
 17 0
 0 6
 1
-563
+347
 2
 17 0
 0 8
 1
-562
+346
 2
 17 0
 0 7
 1
-637
+421
 2
 18 0
 0 10
 1
-631
+415
 2
 18 0
 0 4
 1
-632
+416
 2
 18 0
 0 5
 1
-633
+417
 2
 18 0
 0 6
 1
-634
+418
 2
 18 0
 0 7
 1
-635
+419
 2
 18 0
 0 8
 1
-636
+420
 2
 18 0
 0 9
@@ -11766,57 +9598,57 @@ begin_DTG
 15 0
 0 11
 1
-560
+344
 2
 17 0
 0 5
 1
-559
+343
 2
 17 0
 0 4
 1
-558
+342
 2
 17 0
 0 3
 1
-493
+277
 2
 15 0
 0 10
 1
-492
+276
 2
 15 0
 0 9
 1
-491
+275
 2
 15 0
 0 8
 1
-490
+274
 2
 15 0
 0 7
 1
-489
+273
 2
 15 0
 0 6
 1
-488
+272
 2
 15 0
 0 5
 1
-487
+271
 2
 15 0
 0 4
 1
-486
+270
 2
 15 0
 0 3
@@ -11844,145 +9676,145 @@ begin_DTG
 1
 0 0
 0
-598
+382
 3
 13 0
 17 0
 5 3
 0
-606
+390
 3
 14 0
 17 0
 6 3
 0
-614
+398
 3
 16 0
 17 0
 7 3
 0
-622
+406
 3
 19 0
 17 0
 20 3
 0
-638
+422
 3
 9 0
 18 0
 1 3
 0
-646
+430
 3
 10 0
 18 0
 2 3
 0
-654
+438
 3
 11 0
 18 0
 3 3
 0
-662
+446
 3
 12 0
 18 0
 4 3
 0
-670
+454
 3
 13 0
 18 0
 5 3
 0
-678
+462
 3
 14 0
 18 0
 6 3
 0
-686
+470
 3
 16 0
 18 0
 7 3
 0
-694
+478
 3
 19 0
 18 0
 20 3
 0
-590
+374
 3
 12 0
 17 0
 4 3
 0
-582
+366
 3
 11 0
 17 0
 3 3
 0
-574
+358
 3
 10 0
 17 0
 2 3
 0
-566
+350
 3
 9 0
 17 0
 1 3
 0
-550
+334
 3
 19 0
 15 0
 20 3
 0
-542
+326
 3
 16 0
 15 0
 7 3
 0
-534
+318
 3
 14 0
 15 0
 6 3
 0
-526
+310
 3
 13 0
 15 0
 5 3
 0
-518
+302
 3
 12 0
 15 0
 4 3
 0
-510
+294
 3
 11 0
 15 0
 3 3
 0
-502
+286
 3
 10 0
 15 0
 2 3
 0
-494
+278
 3
 9 0
 15 0
@@ -12087,67 +9919,67 @@ begin_DTG
 1
 20 2
 1
-572
+356
 2
 17 0
 1 9
 1
-638
+422
 2
 18 0
 1 3
 1
-573
+357
 2
 17 0
 1 10
 1
-569
+353
 2
 17 0
 1 6
 1
-571
+355
 2
 17 0
 1 8
 1
-570
+354
 2
 17 0
 1 7
 1
-645
+429
 2
 18 0
 1 10
 1
-639
+423
 2
 18 0
 1 4
 1
-640
+424
 2
 18 0
 1 5
 1
-641
+425
 2
 18 0
 1 6
 1
-642
+426
 2
 18 0
 1 7
 1
-643
+427
 2
 18 0
 1 8
 1
-644
+428
 2
 18 0
 1 9
@@ -12157,57 +9989,57 @@ begin_DTG
 15 0
 1 11
 1
-568
+352
 2
 17 0
 1 5
 1
-567
+351
 2
 17 0
 1 4
 1
-566
+350
 2
 17 0
 1 3
 1
-501
+285
 2
 15 0
 1 10
 1
-500
+284
 2
 15 0
 1 9
 1
-499
+283
 2
 15 0
 1 8
 1
-498
+282
 2
 15 0
 1 7
 1
-497
+281
 2
 15 0
 1 6
 1
-496
+280
 2
 15 0
 1 5
 1
-495
+279
 2
 15 0
 1 4
 1
-494
+278
 2
 15 0
 1 3
@@ -12235,145 +10067,145 @@ begin_DTG
 1
 1 0
 0
-599
+383
 3
 13 0
 17 0
 5 4
 0
-607
+391
 3
 14 0
 17 0
 6 4
 0
-615
+399
 3
 16 0
 17 0
 7 4
 0
-623
+407
 3
 19 0
 17 0
 20 4
 0
-630
+414
 3
 8 0
 18 0
 0 3
 0
-647
+431
 3
 10 0
 18 0
 2 4
 0
-655
+439
 3
 11 0
 18 0
 3 4
 0
-663
+447
 3
 12 0
 18 0
 4 4
 0
-671
+455
 3
 13 0
 18 0
 5 4
 0
-679
+463
 3
 14 0
 18 0
 6 4
 0
-687
+471
 3
 16 0
 18 0
 7 4
 0
-695
+479
 3
 19 0
 18 0
 20 4
 0
-591
+375
 3
 12 0
 17 0
 4 4
 0
-583
+367
 3
 11 0
 17 0
 3 4
 0
-575
+359
 3
 10 0
 17 0
 2 4
 0
-558
+342
 3
 8 0
 17 0
 0 3
 0
-551
+335
 3
 19 0
 15 0
 20 4
 0
-543
+327
 3
 16 0
 15 0
 7 4
 0
-535
+319
 3
 14 0
 15 0
 6 4
 0
-527
+311
 3
 13 0
 15 0
 5 4
 0
-519
+303
 3
 12 0
 15 0
 4 4
 0
-511
+295
 3
 11 0
 15 0
 3 4
 0
-503
+287
 3
 10 0
 15 0
 2 4
 0
-486
+270
 3
 8 0
 15 0
@@ -12478,67 +10310,67 @@ begin_DTG
 1
 20 2
 1
-580
+364
 2
 17 0
 2 9
 1
-646
+430
 2
 18 0
 2 3
 1
-581
+365
 2
 17 0
 2 10
 1
-577
+361
 2
 17 0
 2 6
 1
-579
+363
 2
 17 0
 2 8
 1
-578
+362
 2
 17 0
 2 7
 1
-653
+437
 2
 18 0
 2 10
 1
-647
+431
 2
 18 0
 2 4
 1
-648
+432
 2
 18 0
 2 5
 1
-649
+433
 2
 18 0
 2 6
 1
-650
+434
 2
 18 0
 2 7
 1
-651
+435
 2
 18 0
 2 8
 1
-652
+436
 2
 18 0
 2 9
@@ -12548,57 +10380,57 @@ begin_DTG
 15 0
 2 11
 1
-576
+360
 2
 17 0
 2 5
 1
-575
+359
 2
 17 0
 2 4
 1
-574
+358
 2
 17 0
 2 3
 1
-509
+293
 2
 15 0
 2 10
 1
-508
+292
 2
 15 0
 2 9
 1
-507
+291
 2
 15 0
 2 8
 1
-506
+290
 2
 15 0
 2 7
 1
-505
+289
 2
 15 0
 2 6
 1
-504
+288
 2
 15 0
 2 5
 1
-503
+287
 2
 15 0
 2 4
 1
-502
+286
 2
 15 0
 2 3
@@ -12626,145 +10458,145 @@ begin_DTG
 1
 2 0
 0
-600
+384
 3
 13 0
 17 0
 5 5
 0
-608
+392
 3
 14 0
 17 0
 6 5
 0
-616
+400
 3
 16 0
 17 0
 7 5
 0
-624
+408
 3
 19 0
 17 0
 20 5
 0
-631
+415
 3
 8 0
 18 0
 0 4
 0
-639
+423
 3
 9 0
 18 0
 1 4
 0
-656
+440
 3
 11 0
 18 0
 3 5
 0
-664
+448
 3
 12 0
 18 0
 4 5
 0
-672
+456
 3
 13 0
 18 0
 5 5
 0
-680
+464
 3
 14 0
 18 0
 6 5
 0
-688
+472
 3
 16 0
 18 0
 7 5
 0
-696
+480
 3
 19 0
 18 0
 20 5
 0
-592
+376
 3
 12 0
 17 0
 4 5
 0
-584
+368
 3
 11 0
 17 0
 3 5
 0
-567
+351
 3
 9 0
 17 0
 1 4
 0
-559
+343
 3
 8 0
 17 0
 0 4
 0
-552
+336
 3
 19 0
 15 0
 20 5
 0
-544
+328
 3
 16 0
 15 0
 7 5
 0
-536
+320
 3
 14 0
 15 0
 6 5
 0
-528
+312
 3
 13 0
 15 0
 5 5
 0
-520
+304
 3
 12 0
 15 0
 4 5
 0
-512
+296
 3
 11 0
 15 0
 3 5
 0
-495
+279
 3
 9 0
 15 0
 1 4
 0
-487
+271
 3
 8 0
 15 0
@@ -12869,67 +10701,67 @@ begin_DTG
 1
 20 2
 1
-588
+372
 2
 17 0
 3 9
 1
-654
+438
 2
 18 0
 3 3
 1
-589
+373
 2
 17 0
 3 10
 1
-585
+369
 2
 17 0
 3 6
 1
-587
+371
 2
 17 0
 3 8
 1
-586
+370
 2
 17 0
 3 7
 1
-661
+445
 2
 18 0
 3 10
 1
-655
+439
 2
 18 0
 3 4
 1
-656
+440
 2
 18 0
 3 5
 1
-657
+441
 2
 18 0
 3 6
 1
-658
+442
 2
 18 0
 3 7
 1
-659
+443
 2
 18 0
 3 8
 1
-660
+444
 2
 18 0
 3 9
@@ -12939,57 +10771,57 @@ begin_DTG
 15 0
 3 11
 1
-584
+368
 2
 17 0
 3 5
 1
-583
+367
 2
 17 0
 3 4
 1
-582
+366
 2
 17 0
 3 3
 1
-517
+301
 2
 15 0
 3 10
 1
-516
+300
 2
 15 0
 3 9
 1
-515
+299
 2
 15 0
 3 8
 1
-514
+298
 2
 15 0
 3 7
 1
-513
+297
 2
 15 0
 3 6
 1
-512
+296
 2
 15 0
 3 5
 1
-511
+295
 2
 15 0
 3 4
 1
-510
+294
 2
 15 0
 3 3
@@ -13017,145 +10849,145 @@ begin_DTG
 1
 3 0
 0
-601
+385
 3
 13 0
 17 0
 5 6
 0
-609
+393
 3
 14 0
 17 0
 6 6
 0
-617
+401
 3
 16 0
 17 0
 7 6
 0
-625
+409
 3
 19 0
 17 0
 20 6
 0
-632
+416
 3
 8 0
 18 0
 0 5
 0
-640
+424
 3
 9 0
 18 0
 1 5
 0
-648
+432
 3
 10 0
 18 0
 2 5
 0
-665
+449
 3
 12 0
 18 0
 4 6
 0
-673
+457
 3
 13 0
 18 0
 5 6
 0
-681
+465
 3
 14 0
 18 0
 6 6
 0
-689
+473
 3
 16 0
 18 0
 7 6
 0
-697
+481
 3
 19 0
 18 0
 20 6
 0
-593
+377
 3
 12 0
 17 0
 4 6
 0
-576
+360
 3
 10 0
 17 0
 2 5
 0
-568
+352
 3
 9 0
 17 0
 1 5
 0
-560
+344
 3
 8 0
 17 0
 0 5
 0
-553
+337
 3
 19 0
 15 0
 20 6
 0
-545
+329
 3
 16 0
 15 0
 7 6
 0
-537
+321
 3
 14 0
 15 0
 6 6
 0
-529
+313
 3
 13 0
 15 0
 5 6
 0
-521
+305
 3
 12 0
 15 0
 4 6
 0
-504
+288
 3
 10 0
 15 0
 2 5
 0
-496
+280
 3
 9 0
 15 0
 1 5
 0
-488
+272
 3
 8 0
 15 0
@@ -13260,67 +11092,67 @@ begin_DTG
 1
 20 2
 1
-596
+380
 2
 17 0
 4 9
 1
-662
+446
 2
 18 0
 4 3
 1
-597
+381
 2
 17 0
 4 10
 1
-593
+377
 2
 17 0
 4 6
 1
-595
+379
 2
 17 0
 4 8
 1
-594
+378
 2
 17 0
 4 7
 1
-669
+453
 2
 18 0
 4 10
 1
-663
+447
 2
 18 0
 4 4
 1
-664
+448
 2
 18 0
 4 5
 1
-665
+449
 2
 18 0
 4 6
 1
-666
+450
 2
 18 0
 4 7
 1
-667
+451
 2
 18 0
 4 8
 1
-668
+452
 2
 18 0
 4 9
@@ -13330,57 +11162,57 @@ begin_DTG
 15 0
 4 11
 1
-592
+376
 2
 17 0
 4 5
 1
-591
+375
 2
 17 0
 4 4
 1
-590
+374
 2
 17 0
 4 3
 1
-525
+309
 2
 15 0
 4 10
 1
-524
+308
 2
 15 0
 4 9
 1
-523
+307
 2
 15 0
 4 8
 1
-522
+306
 2
 15 0
 4 7
 1
-521
+305
 2
 15 0
 4 6
 1
-520
+304
 2
 15 0
 4 5
 1
-519
+303
 2
 15 0
 4 4
 1
-518
+302
 2
 15 0
 4 3
@@ -13408,145 +11240,145 @@ begin_DTG
 1
 4 0
 0
-602
+386
 3
 13 0
 17 0
 5 7
 0
-610
+394
 3
 14 0
 17 0
 6 7
 0
-618
+402
 3
 16 0
 17 0
 7 7
 0
-626
+410
 3
 19 0
 17 0
 20 7
 0
-633
+417
 3
 8 0
 18 0
 0 6
 0
-641
+425
 3
 9 0
 18 0
 1 6
 0
-649
+433
 3
 10 0
 18 0
 2 6
 0
-657
+441
 3
 11 0
 18 0
 3 6
 0
-674
+458
 3
 13 0
 18 0
 5 7
 0
-682
+466
 3
 14 0
 18 0
 6 7
 0
-690
+474
 3
 16 0
 18 0
 7 7
 0
-698
+482
 3
 19 0
 18 0
 20 7
 0
-585
+369
 3
 11 0
 17 0
 3 6
 0
-577
+361
 3
 10 0
 17 0
 2 6
 0
-569
+353
 3
 9 0
 17 0
 1 6
 0
-561
+345
 3
 8 0
 17 0
 0 6
 0
-554
+338
 3
 19 0
 15 0
 20 7
 0
-546
+330
 3
 16 0
 15 0
 7 7
 0
-538
+322
 3
 14 0
 15 0
 6 7
 0
-530
+314
 3
 13 0
 15 0
 5 7
 0
-513
+297
 3
 11 0
 15 0
 3 6
 0
-505
+289
 3
 10 0
 15 0
 2 6
 0
-497
+281
 3
 9 0
 15 0
 1 6
 0
-489
+273
 3
 8 0
 15 0
@@ -13651,67 +11483,67 @@ begin_DTG
 1
 20 2
 1
-604
+388
 2
 17 0
 5 9
 1
-670
+454
 2
 18 0
 5 3
 1
-605
+389
 2
 17 0
 5 10
 1
-601
+385
 2
 17 0
 5 6
 1
-603
+387
 2
 17 0
 5 8
 1
-602
+386
 2
 17 0
 5 7
 1
-677
+461
 2
 18 0
 5 10
 1
-671
+455
 2
 18 0
 5 4
 1
-672
+456
 2
 18 0
 5 5
 1
-673
+457
 2
 18 0
 5 6
 1
-674
+458
 2
 18 0
 5 7
 1
-675
+459
 2
 18 0
 5 8
 1
-676
+460
 2
 18 0
 5 9
@@ -13721,57 +11553,57 @@ begin_DTG
 15 0
 5 11
 1
-600
+384
 2
 17 0
 5 5
 1
-599
+383
 2
 17 0
 5 4
 1
-598
+382
 2
 17 0
 5 3
 1
-533
+317
 2
 15 0
 5 10
 1
-532
+316
 2
 15 0
 5 9
 1
-531
+315
 2
 15 0
 5 8
 1
-530
+314
 2
 15 0
 5 7
 1
-529
+313
 2
 15 0
 5 6
 1
-528
+312
 2
 15 0
 5 5
 1
-527
+311
 2
 15 0
 5 4
 1
-526
+310
 2
 15 0
 5 3
@@ -13799,145 +11631,145 @@ begin_DTG
 1
 5 0
 0
-594
+378
 3
 12 0
 17 0
 4 7
 0
-611
+395
 3
 14 0
 17 0
 6 8
 0
-619
+403
 3
 16 0
 17 0
 7 8
 0
-627
+411
 3
 19 0
 17 0
 20 8
 0
-634
+418
 3
 8 0
 18 0
 0 7
 0
-642
+426
 3
 9 0
 18 0
 1 7
 0
-650
+434
 3
 10 0
 18 0
 2 7
 0
-658
+442
 3
 11 0
 18 0
 3 7
 0
-666
+450
 3
 12 0
 18 0
 4 7
 0
-683
+467
 3
 14 0
 18 0
 6 8
 0
-691
+475
 3
 16 0
 18 0
 7 8
 0
-699
+483
 3
 19 0
 18 0
 20 8
 0
-586
+370
 3
 11 0
 17 0
 3 7
 0
-578
+362
 3
 10 0
 17 0
 2 7
 0
-570
+354
 3
 9 0
 17 0
 1 7
 0
-562
+346
 3
 8 0
 17 0
 0 7
 0
-555
+339
 3
 19 0
 15 0
 20 8
 0
-547
+331
 3
 16 0
 15 0
 7 8
 0
-539
+323
 3
 14 0
 15 0
 6 8
 0
-522
+306
 3
 12 0
 15 0
 4 7
 0
-514
+298
 3
 11 0
 15 0
 3 7
 0
-506
+290
 3
 10 0
 15 0
 2 7
 0
-498
+282
 3
 9 0
 15 0
 1 7
 0
-490
+274
 3
 8 0
 15 0
@@ -14042,67 +11874,67 @@ begin_DTG
 1
 20 2
 1
-612
+396
 2
 17 0
 6 9
 1
-678
+462
 2
 18 0
 6 3
 1
-613
+397
 2
 17 0
 6 10
 1
-609
+393
 2
 17 0
 6 6
 1
-611
+395
 2
 17 0
 6 8
 1
-610
+394
 2
 17 0
 6 7
 1
-685
+469
 2
 18 0
 6 10
 1
-679
+463
 2
 18 0
 6 4
 1
-680
+464
 2
 18 0
 6 5
 1
-681
+465
 2
 18 0
 6 6
 1
-682
+466
 2
 18 0
 6 7
 1
-683
+467
 2
 18 0
 6 8
 1
-684
+468
 2
 18 0
 6 9
@@ -14112,57 +11944,57 @@ begin_DTG
 15 0
 6 11
 1
-608
+392
 2
 17 0
 6 5
 1
-607
+391
 2
 17 0
 6 4
 1
-606
+390
 2
 17 0
 6 3
 1
-541
+325
 2
 15 0
 6 10
 1
-540
+324
 2
 15 0
 6 9
 1
-539
+323
 2
 15 0
 6 8
 1
-538
+322
 2
 15 0
 6 7
 1
-537
+321
 2
 15 0
 6 6
 1
-536
+320
 2
 15 0
 6 5
 1
-535
+319
 2
 15 0
 6 4
 1
-534
+318
 2
 15 0
 6 3
@@ -14190,145 +12022,145 @@ begin_DTG
 1
 6 0
 0
-595
+379
 3
 12 0
 17 0
 4 8
 0
-603
+387
 3
 13 0
 17 0
 5 8
 0
-620
+404
 3
 16 0
 17 0
 7 9
 0
-628
+412
 3
 19 0
 17 0
 20 9
 0
-635
+419
 3
 8 0
 18 0
 0 8
 0
-643
+427
 3
 9 0
 18 0
 1 8
 0
-651
+435
 3
 10 0
 18 0
 2 8
 0
-659
+443
 3
 11 0
 18 0
 3 8
 0
-667
+451
 3
 12 0
 18 0
 4 8
 0
-675
+459
 3
 13 0
 18 0
 5 8
 0
-692
+476
 3
 16 0
 18 0
 7 9
 0
-700
+484
 3
 19 0
 18 0
 20 9
 0
-587
+371
 3
 11 0
 17 0
 3 8
 0
-579
+363
 3
 10 0
 17 0
 2 8
 0
-571
+355
 3
 9 0
 17 0
 1 8
 0
-563
+347
 3
 8 0
 17 0
 0 8
 0
-556
+340
 3
 19 0
 15 0
 20 9
 0
-548
+332
 3
 16 0
 15 0
 7 9
 0
-531
+315
 3
 13 0
 15 0
 5 8
 0
-523
+307
 3
 12 0
 15 0
 4 8
 0
-515
+299
 3
 11 0
 15 0
 3 8
 0
-507
+291
 3
 10 0
 15 0
 2 8
 0
-499
+283
 3
 9 0
 15 0
 1 8
 0
-491
+275
 3
 8 0
 15 0
@@ -14337,267 +12169,267 @@ end_DTG
 begin_DTG
 81
 1
-527
+311
 2
 13 0
 5 4
 1
-537
+321
 2
 14 0
 6 6
 1
-536
+320
 2
 14 0
 6 5
 1
-535
+319
 2
 14 0
 6 4
 1
-534
+318
 2
 14 0
 6 3
 1
-533
+317
 2
 13 0
 5 10
 1
-532
+316
 2
 13 0
 5 9
 1
-531
+315
 2
 13 0
 5 8
 1
-530
+314
 2
 13 0
 5 7
 1
-529
+313
 2
 13 0
 5 6
 1
-528
+312
 2
 13 0
 5 5
 1
-538
+322
 2
 14 0
 6 7
 1
-526
+310
 2
 13 0
 5 3
 1
-525
+309
 2
 12 0
 4 10
 1
-524
+308
 2
 12 0
 4 9
 1
-523
+307
 2
 12 0
 4 8
 1
-522
+306
 2
 12 0
 4 7
 1
-521
+305
 2
 12 0
 4 6
 1
-520
+304
 2
 12 0
 4 5
 1
-519
+303
 2
 12 0
 4 4
 1
-518
+302
 2
 12 0
 4 3
 1
-548
+332
 2
 16 0
 7 9
 1
-557
+341
 2
 19 0
 20 10
 1
-556
+340
 2
 19 0
 20 9
 1
-555
+339
 2
 19 0
 20 8
 1
-554
+338
 2
 19 0
 20 7
 1
-553
+337
 2
 19 0
 20 6
 1
-552
+336
 2
 19 0
 20 5
 1
-551
+335
 2
 19 0
 20 4
 1
-550
+334
 2
 19 0
 20 3
 1
-549
+333
 2
 16 0
 7 10
 1
-517
+301
 2
 11 0
 3 10
 1
-547
+331
 2
 16 0
 7 8
 1
-546
+330
 2
 16 0
 7 7
 1
-545
+329
 2
 16 0
 7 6
 1
-544
+328
 2
 16 0
 7 5
 1
-543
+327
 2
 16 0
 7 4
 1
-542
+326
 2
 16 0
 7 3
 1
-541
+325
 2
 14 0
 6 10
 1
-540
+324
 2
 14 0
 6 9
 1
-539
+323
 2
 14 0
 6 8
 1
-487
+271
 2
 8 0
 0 4
 1
-496
+280
 2
 9 0
 1 5
 1
-495
+279
 2
 9 0
 1 4
 1
-494
+278
 2
 9 0
 1 3
 1
-493
+277
 2
 8 0
 0 10
 1
-492
+276
 2
 8 0
 0 9
 1
-491
+275
 2
 8 0
 0 8
 1
-490
+274
 2
 8 0
 0 7
 1
-489
+273
 2
 8 0
 0 6
 1
-488
+272
 2
 8 0
 0 5
 1
-497
+281
 2
 9 0
 1 6
 1
-486
+270
 2
 8 0
 0 3
@@ -14642,52 +12474,52 @@ begin_DTG
 9 0
 1 11
 1
-507
+291
 2
 10 0
 2 8
 1
-516
+300
 2
 11 0
 3 9
 1
-515
+299
 2
 11 0
 3 8
 1
-514
+298
 2
 11 0
 3 7
 1
-513
+297
 2
 11 0
 3 6
 1
-512
+296
 2
 11 0
 3 5
 1
-511
+295
 2
 11 0
 3 4
 1
-510
+294
 2
 11 0
 3 3
 1
-509
+293
 2
 10 0
 2 10
 1
-508
+292
 2
 10 0
 2 9
@@ -14697,47 +12529,47 @@ begin_DTG
 8 0
 0 11
 1
-506
+290
 2
 10 0
 2 7
 1
-505
+289
 2
 10 0
 2 6
 1
-504
+288
 2
 10 0
 2 5
 1
-503
+287
 2
 10 0
 2 4
 1
-502
+286
 2
 10 0
 2 3
 1
-501
+285
 2
 9 0
 1 10
 1
-500
+284
 2
 9 0
 1 9
 1
-499
+283
 2
 9 0
 1 8
 1
-498
+282
 2
 9 0
 1 7
@@ -14878,67 +12710,67 @@ begin_DTG
 1
 20 2
 1
-620
+404
 2
 17 0
 7 9
 1
-686
+470
 2
 18 0
 7 3
 1
-621
+405
 2
 17 0
 7 10
 1
-617
+401
 2
 17 0
 7 6
 1
-619
+403
 2
 17 0
 7 8
 1
-618
+402
 2
 17 0
 7 7
 1
-693
+477
 2
 18 0
 7 10
 1
-687
+471
 2
 18 0
 7 4
 1
-688
+472
 2
 18 0
 7 5
 1
-689
+473
 2
 18 0
 7 6
 1
-690
+474
 2
 18 0
 7 7
 1
-691
+475
 2
 18 0
 7 8
 1
-692
+476
 2
 18 0
 7 9
@@ -14948,57 +12780,57 @@ begin_DTG
 15 0
 7 11
 1
-616
+400
 2
 17 0
 7 5
 1
-615
+399
 2
 17 0
 7 4
 1
-614
+398
 2
 17 0
 7 3
 1
-549
+333
 2
 15 0
 7 10
 1
-548
+332
 2
 15 0
 7 9
 1
-547
+331
 2
 15 0
 7 8
 1
-546
+330
 2
 15 0
 7 7
 1
-545
+329
 2
 15 0
 7 6
 1
-544
+328
 2
 15 0
 7 5
 1
-543
+327
 2
 15 0
 7 4
 1
-542
+326
 2
 15 0
 7 3
@@ -15026,145 +12858,145 @@ begin_DTG
 1
 7 0
 0
-596
+380
 3
 12 0
 17 0
 4 9
 0
-604
+388
 3
 13 0
 17 0
 5 9
 0
-612
+396
 3
 14 0
 17 0
 6 9
 0
-629
+413
 3
 19 0
 17 0
 20 10
 0
-636
+420
 3
 8 0
 18 0
 0 9
 0
-644
+428
 3
 9 0
 18 0
 1 9
 0
-652
+436
 3
 10 0
 18 0
 2 9
 0
-660
+444
 3
 11 0
 18 0
 3 9
 0
-668
+452
 3
 12 0
 18 0
 4 9
 0
-676
+460
 3
 13 0
 18 0
 5 9
 0
-684
+468
 3
 14 0
 18 0
 6 9
 0
-701
+485
 3
 19 0
 18 0
 20 10
 0
-588
+372
 3
 11 0
 17 0
 3 9
 0
-580
+364
 3
 10 0
 17 0
 2 9
 0
-572
+356
 3
 9 0
 17 0
 1 9
 0
-564
+348
 3
 8 0
 17 0
 0 9
 0
-557
+341
 3
 19 0
 15 0
 20 10
 0
-540
+324
 3
 14 0
 15 0
 6 9
 0
-532
+316
 3
 13 0
 15 0
 5 9
 0
-524
+308
 3
 12 0
 15 0
 4 9
 0
-516
+300
 3
 11 0
 15 0
 3 9
 0
-508
+292
 3
 10 0
 15 0
 2 9
 0
-500
+284
 3
 9 0
 15 0
 1 9
 0
-492
+276
 3
 8 0
 15 0
@@ -15173,267 +13005,267 @@ end_DTG
 begin_DTG
 81
 1
-599
+383
 2
 13 0
 5 4
 1
-609
+393
 2
 14 0
 6 6
 1
-608
+392
 2
 14 0
 6 5
 1
-607
+391
 2
 14 0
 6 4
 1
-606
+390
 2
 14 0
 6 3
 1
-605
+389
 2
 13 0
 5 10
 1
-604
+388
 2
 13 0
 5 9
 1
-603
+387
 2
 13 0
 5 8
 1
-602
+386
 2
 13 0
 5 7
 1
-601
+385
 2
 13 0
 5 6
 1
-600
+384
 2
 13 0
 5 5
 1
-610
+394
 2
 14 0
 6 7
 1
-598
+382
 2
 13 0
 5 3
 1
-597
+381
 2
 12 0
 4 10
 1
-596
+380
 2
 12 0
 4 9
 1
-595
+379
 2
 12 0
 4 8
 1
-594
+378
 2
 12 0
 4 7
 1
-593
+377
 2
 12 0
 4 6
 1
-592
+376
 2
 12 0
 4 5
 1
-591
+375
 2
 12 0
 4 4
 1
-590
+374
 2
 12 0
 4 3
 1
-620
+404
 2
 16 0
 7 9
 1
-629
+413
 2
 19 0
 20 10
 1
-628
+412
 2
 19 0
 20 9
 1
-627
+411
 2
 19 0
 20 8
 1
-626
+410
 2
 19 0
 20 7
 1
-625
+409
 2
 19 0
 20 6
 1
-624
+408
 2
 19 0
 20 5
 1
-623
+407
 2
 19 0
 20 4
 1
-622
+406
 2
 19 0
 20 3
 1
-621
+405
 2
 16 0
 7 10
 1
-589
+373
 2
 11 0
 3 10
 1
-619
+403
 2
 16 0
 7 8
 1
-618
+402
 2
 16 0
 7 7
 1
-617
+401
 2
 16 0
 7 6
 1
-616
+400
 2
 16 0
 7 5
 1
-615
+399
 2
 16 0
 7 4
 1
-614
+398
 2
 16 0
 7 3
 1
-613
+397
 2
 14 0
 6 10
 1
-612
+396
 2
 14 0
 6 9
 1
-611
+395
 2
 14 0
 6 8
 1
-559
+343
 2
 8 0
 0 4
 1
-568
+352
 2
 9 0
 1 5
 1
-567
+351
 2
 9 0
 1 4
 1
-566
+350
 2
 9 0
 1 3
 1
-565
+349
 2
 8 0
 0 10
 1
-564
+348
 2
 8 0
 0 9
 1
-563
+347
 2
 8 0
 0 8
 1
-562
+346
 2
 8 0
 0 7
 1
-561
+345
 2
 8 0
 0 6
 1
-560
+344
 2
 8 0
 0 5
 1
-569
+353
 2
 9 0
 1 6
 1
-558
+342
 2
 8 0
 0 3
@@ -15478,52 +13310,52 @@ begin_DTG
 9 0
 1 11
 1
-579
+363
 2
 10 0
 2 8
 1
-588
+372
 2
 11 0
 3 9
 1
-587
+371
 2
 11 0
 3 8
 1
-586
+370
 2
 11 0
 3 7
 1
-585
+369
 2
 11 0
 3 6
 1
-584
+368
 2
 11 0
 3 5
 1
-583
+367
 2
 11 0
 3 4
 1
-582
+366
 2
 11 0
 3 3
 1
-581
+365
 2
 10 0
 2 10
 1
-580
+364
 2
 10 0
 2 9
@@ -15533,47 +13365,47 @@ begin_DTG
 8 0
 0 11
 1
-578
+362
 2
 10 0
 2 7
 1
-577
+361
 2
 10 0
 2 6
 1
-576
+360
 2
 10 0
 2 5
 1
-575
+359
 2
 10 0
 2 4
 1
-574
+358
 2
 10 0
 2 3
 1
-573
+357
 2
 9 0
 1 10
 1
-572
+356
 2
 9 0
 1 9
 1
-571
+355
 2
 9 0
 1 8
 1
-570
+354
 2
 9 0
 1 7
@@ -15618,267 +13450,267 @@ end_DTG
 begin_DTG
 81
 1
-671
+455
 2
 13 0
 5 4
 1
-681
+465
 2
 14 0
 6 6
 1
-680
+464
 2
 14 0
 6 5
 1
-679
+463
 2
 14 0
 6 4
 1
-678
+462
 2
 14 0
 6 3
 1
-677
+461
 2
 13 0
 5 10
 1
-676
+460
 2
 13 0
 5 9
 1
-675
+459
 2
 13 0
 5 8
 1
-674
+458
 2
 13 0
 5 7
 1
-673
+457
 2
 13 0
 5 6
 1
-672
+456
 2
 13 0
 5 5
 1
-682
+466
 2
 14 0
 6 7
 1
-670
+454
 2
 13 0
 5 3
 1
-669
+453
 2
 12 0
 4 10
 1
-668
+452
 2
 12 0
 4 9
 1
-667
+451
 2
 12 0
 4 8
 1
-666
+450
 2
 12 0
 4 7
 1
-665
+449
 2
 12 0
 4 6
 1
-664
+448
 2
 12 0
 4 5
 1
-663
+447
 2
 12 0
 4 4
 1
-662
+446
 2
 12 0
 4 3
 1
-692
+476
 2
 16 0
 7 9
 1
-701
+485
 2
 19 0
 20 10
 1
-700
+484
 2
 19 0
 20 9
 1
-699
+483
 2
 19 0
 20 8
 1
-698
+482
 2
 19 0
 20 7
 1
-697
+481
 2
 19 0
 20 6
 1
-696
+480
 2
 19 0
 20 5
 1
-695
+479
 2
 19 0
 20 4
 1
-694
+478
 2
 19 0
 20 3
 1
-693
+477
 2
 16 0
 7 10
 1
-661
+445
 2
 11 0
 3 10
 1
-691
+475
 2
 16 0
 7 8
 1
-690
+474
 2
 16 0
 7 7
 1
-689
+473
 2
 16 0
 7 6
 1
-688
+472
 2
 16 0
 7 5
 1
-687
+471
 2
 16 0
 7 4
 1
-686
+470
 2
 16 0
 7 3
 1
-685
+469
 2
 14 0
 6 10
 1
-684
+468
 2
 14 0
 6 9
 1
-683
+467
 2
 14 0
 6 8
 1
-631
+415
 2
 8 0
 0 4
 1
-640
+424
 2
 9 0
 1 5
 1
-639
+423
 2
 9 0
 1 4
 1
-638
+422
 2
 9 0
 1 3
 1
-637
+421
 2
 8 0
 0 10
 1
-636
+420
 2
 8 0
 0 9
 1
-635
+419
 2
 8 0
 0 8
 1
-634
+418
 2
 8 0
 0 7
 1
-633
+417
 2
 8 0
 0 6
 1
-632
+416
 2
 8 0
 0 5
 1
-641
+425
 2
 9 0
 1 6
 1
-630
+414
 2
 8 0
 0 3
@@ -15923,52 +13755,52 @@ begin_DTG
 9 0
 1 11
 1
-651
+435
 2
 10 0
 2 8
 1
-660
+444
 2
 11 0
 3 9
 1
-659
+443
 2
 11 0
 3 8
 1
-658
+442
 2
 11 0
 3 7
 1
-657
+441
 2
 11 0
 3 6
 1
-656
+440
 2
 11 0
 3 5
 1
-655
+439
 2
 11 0
 3 4
 1
-654
+438
 2
 11 0
 3 3
 1
-653
+437
 2
 10 0
 2 10
 1
-652
+436
 2
 10 0
 2 9
@@ -15978,47 +13810,47 @@ begin_DTG
 8 0
 0 11
 1
-650
+434
 2
 10 0
 2 7
 1
-649
+433
 2
 10 0
 2 6
 1
-648
+432
 2
 10 0
 2 5
 1
-647
+431
 2
 10 0
 2 4
 1
-646
+430
 2
 10 0
 2 3
 1
-645
+429
 2
 9 0
 1 10
 1
-644
+428
 2
 9 0
 1 9
 1
-643
+427
 2
 9 0
 1 8
 1
-642
+426
 2
 9 0
 1 7
@@ -16159,67 +13991,67 @@ begin_DTG
 1
 7 2
 1
-628
+412
 2
 17 0
 20 9
 1
-694
+478
 2
 18 0
 20 3
 1
-629
+413
 2
 17 0
 20 10
 1
-625
+409
 2
 17 0
 20 6
 1
-627
+411
 2
 17 0
 20 8
 1
-626
+410
 2
 17 0
 20 7
 1
-701
+485
 2
 18 0
 20 10
 1
-695
+479
 2
 18 0
 20 4
 1
-696
+480
 2
 18 0
 20 5
 1
-697
+481
 2
 18 0
 20 6
 1
-698
+482
 2
 18 0
 20 7
 1
-699
+483
 2
 18 0
 20 8
 1
-700
+484
 2
 18 0
 20 9
@@ -16229,57 +14061,57 @@ begin_DTG
 15 0
 20 11
 1
-624
+408
 2
 17 0
 20 5
 1
-623
+407
 2
 17 0
 20 4
 1
-622
+406
 2
 17 0
 20 3
 1
-557
+341
 2
 15 0
 20 10
 1
-556
+340
 2
 15 0
 20 9
 1
-555
+339
 2
 15 0
 20 8
 1
-554
+338
 2
 15 0
 20 7
 1
-553
+337
 2
 15 0
 20 6
 1
-552
+336
 2
 15 0
 20 5
 1
-551
+335
 2
 15 0
 20 4
 1
-550
+334
 2
 15 0
 20 3
@@ -16307,145 +14139,145 @@ begin_DTG
 1
 20 0
 0
-597
+381
 3
 12 0
 17 0
 4 10
 0
-605
+389
 3
 13 0
 17 0
 5 10
 0
-613
+397
 3
 14 0
 17 0
 6 10
 0
-621
+405
 3
 16 0
 17 0
 7 10
 0
-637
+421
 3
 8 0
 18 0
 0 10
 0
-645
+429
 3
 9 0
 18 0
 1 10
 0
-653
+437
 3
 10 0
 18 0
 2 10
 0
-661
+445
 3
 11 0
 18 0
 3 10
 0
-669
+453
 3
 12 0
 18 0
 4 10
 0
-677
+461
 3
 13 0
 18 0
 5 10
 0
-685
+469
 3
 14 0
 18 0
 6 10
 0
-693
+477
 3
 16 0
 18 0
 7 10
 0
-589
+373
 3
 11 0
 17 0
 3 10
 0
-581
+365
 3
 10 0
 17 0
 2 10
 0
-573
+357
 3
 9 0
 17 0
 1 10
 0
-565
+349
 3
 8 0
 17 0
 0 10
 0
-549
+333
 3
 16 0
 15 0
 7 10
 0
-541
+325
 3
 14 0
 15 0
 6 10
 0
-533
+317
 3
 13 0
 15 0
 5 10
 0
-525
+309
 3
 12 0
 15 0
 4 10
 0
-517
+301
 3
 11 0
 15 0
 3 10
 0
-509
+293
 3
 10 0
 15 0
 2 10
 0
-501
+285
 3
 9 0
 15 0
 1 10
 0
-493
+277
 3
 8 0
 15 0
@@ -16562,129 +14394,129 @@ begin_DTG
 0
 3
 0
-550
+334
 2
 19 0
 15 0
 1
-622
+406
 2
 19 0
 17 0
 2
-694
+478
 2
 19 0
 18 0
 3
 0
-551
+335
 2
 19 0
 15 0
 1
-623
+407
 2
 19 0
 17 0
 2
-695
+479
 2
 19 0
 18 0
 3
 0
-552
+336
 2
 19 0
 15 0
 1
-624
+408
 2
 19 0
 17 0
 2
-696
+480
 2
 19 0
 18 0
 3
 0
-553
+337
 2
 19 0
 15 0
 1
-625
+409
 2
 19 0
 17 0
 2
-697
+481
 2
 19 0
 18 0
 3
 0
-554
+338
 2
 19 0
 15 0
 1
-626
+410
 2
 19 0
 17 0
 2
-698
+482
 2
 19 0
 18 0
 3
 0
-555
+339
 2
 19 0
 15 0
 1
-627
+411
 2
 19 0
 17 0
 2
-699
+483
 2
 19 0
 18 0
 3
 0
-556
+340
 2
 19 0
 15 0
 1
-628
+412
 2
 19 0
 17 0
 2
-700
+484
 2
 19 0
 18 0
 3
 0
-557
+341
 2
 19 0
 15 0
 1
-629
+413
 2
 19 0
 17 0
 2
-701
+485
 2
 19 0
 18 0
@@ -16705,1092 +14537,8 @@ begin_DTG
 19 0
 18 0
 end_DTG
-begin_DTG
-0
-216
-0
-419
-2
-14 0
-0 2
-0
-406
-2
-8 0
-20 1
-0
-407
-2
-9 0
-20 1
-0
-408
-2
-10 0
-20 1
-0
-409
-2
-11 0
-20 1
-0
-410
-2
-12 0
-20 1
-0
-411
-2
-13 0
-20 1
-0
-412
-2
-14 0
-20 1
-0
-413
-2
-16 0
-20 1
-0
-414
-2
-9 0
-0 2
-0
-415
-2
-10 0
-0 2
-0
-416
-2
-11 0
-0 2
-0
-417
-2
-12 0
-0 2
-0
-418
-2
-13 0
-0 2
-0
-405
-2
-19 0
-7 1
-0
-420
-2
-16 0
-0 2
-0
-421
-2
-19 0
-0 2
-0
-422
-2
-8 0
-1 2
-0
-423
-2
-10 0
-1 2
-0
-424
-2
-11 0
-1 2
-0
-425
-2
-12 0
-1 2
-0
-426
-2
-13 0
-1 2
-0
-427
-2
-14 0
-1 2
-0
-428
-2
-16 0
-1 2
-0
-429
-2
-19 0
-1 2
-0
-430
-2
-8 0
-2 2
-0
-431
-2
-9 0
-2 2
-0
-392
-2
-10 0
-6 1
-0
-379
-2
-14 0
-4 1
-0
-380
-2
-16 0
-4 1
-0
-381
-2
-19 0
-4 1
-0
-382
-2
-8 0
-5 1
-0
-383
-2
-9 0
-5 1
-0
-384
-2
-10 0
-5 1
-0
-385
-2
-11 0
-5 1
-0
-386
-2
-12 0
-5 1
-0
-387
-2
-14 0
-5 1
-0
-388
-2
-16 0
-5 1
-0
-389
-2
-19 0
-5 1
-0
-390
-2
-8 0
-6 1
-0
-391
-2
-9 0
-6 1
-0
-432
-2
-11 0
-2 2
-0
-393
-2
-11 0
-6 1
-0
-394
-2
-12 0
-6 1
-0
-395
-2
-13 0
-6 1
-0
-396
-2
-16 0
-6 1
-0
-397
-2
-19 0
-6 1
-0
-398
-2
-8 0
-7 1
-0
-399
-2
-9 0
-7 1
-0
-400
-2
-10 0
-7 1
-0
-401
-2
-11 0
-7 1
-0
-402
-2
-12 0
-7 1
-0
-403
-2
-13 0
-7 1
-0
-404
-2
-14 0
-7 1
-0
-473
-2
-11 0
-7 2
-0
-460
-2
-16 0
-5 2
-0
-461
-2
-19 0
-5 2
-0
-462
-2
-8 0
-6 2
-0
-463
-2
-9 0
-6 2
-0
-464
-2
-10 0
-6 2
-0
-465
-2
-11 0
-6 2
-0
-466
-2
-12 0
-6 2
-0
-467
-2
-13 0
-6 2
-0
-468
-2
-16 0
-6 2
-0
-469
-2
-19 0
-6 2
-0
-470
-2
-8 0
-7 2
-0
-471
-2
-9 0
-7 2
-0
-472
-2
-10 0
-7 2
-0
-459
-2
-14 0
-5 2
-0
-474
-2
-12 0
-7 2
-0
-475
-2
-13 0
-7 2
-0
-476
-2
-14 0
-7 2
-0
-477
-2
-19 0
-7 2
-0
-478
-2
-8 0
-20 2
-0
-479
-2
-9 0
-20 2
-0
-480
-2
-10 0
-20 2
-0
-481
-2
-11 0
-20 2
-0
-482
-2
-12 0
-20 2
-0
-483
-2
-13 0
-20 2
-0
-484
-2
-14 0
-20 2
-0
-485
-2
-16 0
-20 2
-0
-446
-2
-8 0
-4 2
-0
-433
-2
-12 0
-2 2
-0
-434
-2
-13 0
-2 2
-0
-435
-2
-14 0
-2 2
-0
-436
-2
-16 0
-2 2
-0
-437
-2
-19 0
-2 2
-0
-438
-2
-8 0
-3 2
-0
-439
-2
-9 0
-3 2
-0
-440
-2
-10 0
-3 2
-0
-441
-2
-12 0
-3 2
-0
-442
-2
-13 0
-3 2
-0
-443
-2
-14 0
-3 2
-0
-444
-2
-16 0
-3 2
-0
-445
-2
-19 0
-3 2
-0
-378
-2
-13 0
-4 1
-0
-447
-2
-9 0
-4 2
-0
-448
-2
-10 0
-4 2
-0
-449
-2
-11 0
-4 2
-0
-450
-2
-13 0
-4 2
-0
-451
-2
-14 0
-4 2
-0
-452
-2
-16 0
-4 2
-0
-453
-2
-19 0
-4 2
-0
-454
-2
-8 0
-5 2
-0
-455
-2
-9 0
-5 2
-0
-456
-2
-10 0
-5 2
-0
-457
-2
-11 0
-5 2
-0
-458
-2
-12 0
-5 2
-0
-311
-2
-9 0
-5 0
-0
-298
-2
-13 0
-3 0
-0
-299
-2
-14 0
-3 0
-0
-300
-2
-16 0
-3 0
-0
-301
-2
-19 0
-3 0
-0
-302
-2
-8 0
-4 0
-0
-303
-2
-9 0
-4 0
-0
-304
-2
-10 0
-4 0
-0
-305
-2
-11 0
-4 0
-0
-306
-2
-13 0
-4 0
-0
-307
-2
-14 0
-4 0
-0
-308
-2
-16 0
-4 0
-0
-309
-2
-19 0
-4 0
-0
-310
-2
-8 0
-5 0
-0
-297
-2
-12 0
-3 0
-0
-312
-2
-10 0
-5 0
-0
-313
-2
-11 0
-5 0
-0
-314
-2
-12 0
-5 0
-0
-315
-2
-14 0
-5 0
-0
-316
-2
-16 0
-5 0
-0
-317
-2
-19 0
-5 0
-0
-318
-2
-8 0
-6 0
-0
-319
-2
-9 0
-6 0
-0
-320
-2
-10 0
-6 0
-0
-321
-2
-11 0
-6 0
-0
-322
-2
-12 0
-6 0
-0
-323
-2
-13 0
-6 0
-0
-284
-2
-16 0
-1 0
-0
-271
-2
-10 0
-0 0
-0
-272
-2
-11 0
-0 0
-0
-273
-2
-12 0
-0 0
-0
-274
-2
-13 0
-0 0
-0
-275
-2
-14 0
-0 0
-0
-276
-2
-16 0
-0 0
-0
-277
-2
-19 0
-0 0
-0
-278
-2
-8 0
-1 0
-0
-279
-2
-10 0
-1 0
-0
-280
-2
-11 0
-1 0
-0
-281
-2
-12 0
-1 0
-0
-282
-2
-13 0
-1 0
-0
-283
-2
-14 0
-1 0
-0
-324
-2
-16 0
-6 0
-0
-285
-2
-19 0
-1 0
-0
-286
-2
-8 0
-2 0
-0
-287
-2
-9 0
-2 0
-0
-288
-2
-11 0
-2 0
-0
-289
-2
-12 0
-2 0
-0
-290
-2
-13 0
-2 0
-0
-291
-2
-14 0
-2 0
-0
-292
-2
-16 0
-2 0
-0
-293
-2
-19 0
-2 0
-0
-294
-2
-8 0
-3 0
-0
-295
-2
-9 0
-3 0
-0
-296
-2
-10 0
-3 0
-0
-365
-2
-19 0
-2 1
-0
-352
-2
-11 0
-1 1
-0
-353
-2
-12 0
-1 1
-0
-354
-2
-13 0
-1 1
-0
-355
-2
-14 0
-1 1
-0
-356
-2
-16 0
-1 1
-0
-357
-2
-19 0
-1 1
-0
-358
-2
-8 0
-2 1
-0
-359
-2
-9 0
-2 1
-0
-360
-2
-11 0
-2 1
-0
-361
-2
-12 0
-2 1
-0
-362
-2
-13 0
-2 1
-0
-363
-2
-14 0
-2 1
-0
-364
-2
-16 0
-2 1
-0
-351
-2
-10 0
-1 1
-0
-366
-2
-8 0
-3 1
-0
-367
-2
-9 0
-3 1
-0
-368
-2
-10 0
-3 1
-0
-369
-2
-12 0
-3 1
-0
-370
-2
-13 0
-3 1
-0
-371
-2
-14 0
-3 1
-0
-372
-2
-16 0
-3 1
-0
-373
-2
-19 0
-3 1
-0
-374
-2
-8 0
-4 1
-0
-375
-2
-9 0
-4 1
-0
-376
-2
-10 0
-4 1
-0
-377
-2
-11 0
-4 1
-0
-338
-2
-12 0
-20 0
-0
-325
-2
-19 0
-6 0
-0
-326
-2
-8 0
-7 0
-0
-327
-2
-9 0
-7 0
-0
-328
-2
-10 0
-7 0
-0
-329
-2
-11 0
-7 0
-0
-330
-2
-12 0
-7 0
-0
-331
-2
-13 0
-7 0
-0
-332
-2
-14 0
-7 0
-0
-333
-2
-19 0
-7 0
-0
-334
-2
-8 0
-20 0
-0
-335
-2
-9 0
-20 0
-0
-336
-2
-10 0
-20 0
-0
-337
-2
-11 0
-20 0
-0
-270
-2
-9 0
-0 0
-0
-339
-2
-13 0
-20 0
-0
-340
-2
-14 0
-20 0
-0
-341
-2
-16 0
-20 0
-0
-342
-2
-9 0
-0 1
-0
-343
-2
-10 0
-0 1
-0
-344
-2
-11 0
-0 1
-0
-345
-2
-12 0
-0 1
-0
-346
-2
-13 0
-0 1
-0
-347
-2
-14 0
-0 1
-0
-348
-2
-16 0
-0 1
-0
-349
-2
-19 0
-0 1
-0
-350
-2
-8 0
-1 1
-end_DTG
 begin_CG
-13
+12
 8 54
 9 6
 10 6
@@ -17800,11 +14548,10 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 54
 10 6
@@ -17814,11 +14561,10 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 6
 10 54
@@ -17828,11 +14574,10 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 6
 10 6
@@ -17842,11 +14587,10 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 6
 10 6
@@ -17856,11 +14600,10 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 6
 10 6
@@ -17870,11 +14613,10 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 6
 10 6
@@ -17884,11 +14626,10 @@ begin_CG
 14 54
 16 6
 19 6
-21 24
 15 18
 17 18
 18 18
-13
+12
 8 6
 9 6
 10 6
@@ -17898,11 +14639,10 @@ begin_CG
 14 6
 16 54
 19 6
-21 24
 15 18
 17 18
 18 18
-21
+20
 9 6
 10 6
 11 6
@@ -17911,7 +14651,6 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -17924,7 +14663,7 @@ begin_CG
 6 3
 7 3
 20 3
-21
+20
 8 6
 10 6
 11 6
@@ -17933,7 +14672,6 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -17946,7 +14684,7 @@ begin_CG
 6 3
 7 3
 20 3
-21
+20
 8 6
 9 6
 11 6
@@ -17955,7 +14693,6 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -17968,7 +14705,7 @@ begin_CG
 6 3
 7 3
 20 3
-21
+20
 8 6
 9 6
 10 6
@@ -17977,7 +14714,6 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -17990,7 +14726,7 @@ begin_CG
 6 3
 7 3
 20 3
-21
+20
 8 6
 9 6
 10 6
@@ -17999,7 +14735,6 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -18012,7 +14747,7 @@ begin_CG
 6 3
 7 3
 20 3
-21
+20
 8 6
 9 6
 10 6
@@ -18021,7 +14756,6 @@ begin_CG
 14 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -18034,7 +14768,7 @@ begin_CG
 6 3
 7 3
 20 3
-21
+20
 8 6
 9 6
 10 6
@@ -18043,7 +14777,6 @@ begin_CG
 13 6
 16 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -18075,7 +14808,7 @@ begin_CG
 6 9
 7 9
 20 9
-21
+20
 8 6
 9 6
 10 6
@@ -18084,7 +14817,6 @@ begin_CG
 13 6
 14 6
 19 6
-21 24
 15 17
 17 17
 18 17
@@ -18135,7 +14867,7 @@ begin_CG
 6 9
 7 9
 20 9
-21
+20
 8 6
 9 6
 10 6
@@ -18144,7 +14876,6 @@ begin_CG
 13 6
 14 6
 16 6
-21 24
 15 17
 17 17
 18 17
@@ -18157,7 +14888,7 @@ begin_CG
 6 3
 7 3
 20 27
-13
+12
 8 6
 9 6
 10 6
@@ -18167,9 +14898,7 @@ begin_CG
 14 6
 16 6
 19 54
-21 24
 15 18
 17 18
 18 18
-0
 end_CG

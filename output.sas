@@ -4,7 +4,7 @@ end_version
 begin_metric
 0
 end_metric
-22
+21
 begin_variable
 var0
 -1
@@ -72,32 +72,25 @@ begin_variable
 var9
 -1
 2
-Atom failure()
-NegatedAtom failure()
-end_variable
-begin_variable
-var10
--1
-2
 Atom handempty(a1)
 NegatedAtom handempty(a1)
 end_variable
 begin_variable
-var11
+var10
 -1
 2
 Atom handempty(a2)
 NegatedAtom handempty(a2)
 end_variable
 begin_variable
-var12
+var11
 -1
 2
 Atom handempty(a3)
 NegatedAtom handempty(a3)
 end_variable
 begin_variable
-var13
+var12
 -1
 12
 Atom holding(a1, a)
@@ -114,7 +107,7 @@ Atom on(a, i)
 Atom ontable(a)
 end_variable
 begin_variable
-var14
+var13
 -1
 12
 Atom holding(a1, b)
@@ -131,7 +124,7 @@ Atom on(b, i)
 Atom ontable(b)
 end_variable
 begin_variable
-var15
+var14
 -1
 12
 Atom holding(a1, c)
@@ -148,7 +141,7 @@ Atom on(c, i)
 Atom ontable(c)
 end_variable
 begin_variable
-var16
+var15
 -1
 12
 Atom holding(a1, d)
@@ -165,7 +158,7 @@ Atom on(d, i)
 Atom ontable(d)
 end_variable
 begin_variable
-var17
+var16
 -1
 12
 Atom holding(a1, e)
@@ -182,7 +175,7 @@ Atom on(e, i)
 Atom ontable(e)
 end_variable
 begin_variable
-var18
+var17
 -1
 12
 Atom holding(a1, f)
@@ -199,7 +192,7 @@ Atom on(f, i)
 Atom ontable(f)
 end_variable
 begin_variable
-var19
+var18
 -1
 12
 Atom holding(a1, g)
@@ -216,7 +209,7 @@ Atom on(g, i)
 Atom ontable(g)
 end_variable
 begin_variable
-var20
+var19
 -1
 12
 Atom holding(a1, h)
@@ -233,7 +226,7 @@ Atom on(h, i)
 Atom ontable(h)
 end_variable
 begin_variable
-var21
+var20
 -1
 12
 Atom holding(a1, i)
@@ -253,9 +246,10 @@ end_variable
 begin_mutex_group
 12
 0 0
-13 0
-13 1
-13 2
+12 0
+12 1
+12 2
+13 3
 14 3
 15 3
 16 3
@@ -263,119 +257,119 @@ begin_mutex_group
 18 3
 19 3
 20 3
-21 3
 end_mutex_group
 begin_mutex_group
 12
 1 0
-14 0
-14 1
-14 2
-13 3
+13 0
+13 1
+13 2
+12 3
+14 4
 15 4
 16 4
 17 4
 18 4
 19 4
 20 4
-21 4
 end_mutex_group
 begin_mutex_group
 12
 2 0
-15 0
-15 1
-15 2
+14 0
+14 1
+14 2
+12 4
 13 4
-14 4
+15 5
 16 5
 17 5
 18 5
 19 5
 20 5
-21 5
 end_mutex_group
 begin_mutex_group
 12
 3 0
-16 0
-16 1
-16 2
+15 0
+15 1
+15 2
+12 5
 13 5
 14 5
-15 5
+16 6
 17 6
 18 6
 19 6
 20 6
-21 6
 end_mutex_group
 begin_mutex_group
 12
 4 0
-17 0
-17 1
-17 2
+16 0
+16 1
+16 2
+12 6
 13 6
 14 6
 15 6
-16 6
+17 7
 18 7
 19 7
 20 7
-21 7
 end_mutex_group
 begin_mutex_group
 12
 5 0
-18 0
-18 1
-18 2
+17 0
+17 1
+17 2
+12 7
 13 7
 14 7
 15 7
 16 7
-17 7
+18 8
 19 8
 20 8
-21 8
 end_mutex_group
 begin_mutex_group
 12
 6 0
-19 0
-19 1
-19 2
+18 0
+18 1
+18 2
+12 8
 13 8
 14 8
 15 8
 16 8
 17 8
-18 8
+19 9
 20 9
-21 9
 end_mutex_group
 begin_mutex_group
 12
 7 0
-20 0
-20 1
-20 2
+19 0
+19 1
+19 2
+12 9
 13 9
 14 9
 15 9
 16 9
 17 9
 18 9
-19 9
-21 10
+20 10
 end_mutex_group
 begin_mutex_group
 12
 8 0
-21 0
-21 1
-21 2
+20 0
+20 1
+20 2
+12 10
 13 10
 14 10
 15 10
@@ -383,11 +377,11 @@ begin_mutex_group
 17 10
 18 10
 19 10
-20 10
 end_mutex_group
 begin_mutex_group
 10
-10 0
+9 0
+12 0
 13 0
 14 0
 15 0
@@ -396,11 +390,11 @@ begin_mutex_group
 18 0
 19 0
 20 0
-21 0
 end_mutex_group
 begin_mutex_group
 10
-11 0
+10 0
+12 1
 13 1
 14 1
 15 1
@@ -409,11 +403,11 @@ begin_mutex_group
 18 1
 19 1
 20 1
-21 1
 end_mutex_group
 begin_mutex_group
 10
-12 0
+11 0
+12 2
 13 2
 14 2
 15 2
@@ -422,7 +416,21 @@ begin_mutex_group
 18 2
 19 2
 20 2
-21 2
+end_mutex_group
+begin_mutex_group
+12
+12 0
+12 1
+12 2
+12 3
+12 4
+12 5
+12 6
+12 7
+12 8
+12 9
+12 10
+12 11
 end_mutex_group
 begin_mutex_group
 12
@@ -544,21 +552,6 @@ begin_mutex_group
 20 10
 20 11
 end_mutex_group
-begin_mutex_group
-12
-21 0
-21 1
-21 2
-21 3
-21 4
-21 5
-21 6
-21 7
-21 8
-21 9
-21 10
-21 11
-end_mutex_group
 begin_state
 0
 1
@@ -568,7 +561,6 @@ begin_state
 0
 1
 0
-1
 1
 0
 0
@@ -585,16 +577,16 @@ begin_state
 end_state
 begin_goal
 1
-21 8
+20 8
 end_goal
-702
+486
 begin_operator
 pick-up a1 a
 0
 3
 0 0 0 1
-0 10 0 1
-0 13 11 0
+0 9 0 1
+0 12 11 0
 0
 end_operator
 begin_operator
@@ -602,8 +594,8 @@ pick-up a1 b
 0
 3
 0 1 0 1
-0 10 0 1
-0 14 11 0
+0 9 0 1
+0 13 11 0
 0
 end_operator
 begin_operator
@@ -611,8 +603,8 @@ pick-up a1 c
 0
 3
 0 2 0 1
-0 10 0 1
-0 15 11 0
+0 9 0 1
+0 14 11 0
 0
 end_operator
 begin_operator
@@ -620,8 +612,8 @@ pick-up a1 d
 0
 3
 0 3 0 1
-0 10 0 1
-0 16 11 0
+0 9 0 1
+0 15 11 0
 0
 end_operator
 begin_operator
@@ -629,8 +621,8 @@ pick-up a1 e
 0
 3
 0 4 0 1
-0 10 0 1
-0 17 11 0
+0 9 0 1
+0 16 11 0
 0
 end_operator
 begin_operator
@@ -638,8 +630,8 @@ pick-up a1 f
 0
 3
 0 5 0 1
-0 10 0 1
-0 18 11 0
+0 9 0 1
+0 17 11 0
 0
 end_operator
 begin_operator
@@ -647,8 +639,8 @@ pick-up a1 g
 0
 3
 0 6 0 1
-0 10 0 1
-0 19 11 0
+0 9 0 1
+0 18 11 0
 0
 end_operator
 begin_operator
@@ -656,8 +648,8 @@ pick-up a1 h
 0
 3
 0 7 0 1
-0 10 0 1
-0 20 11 0
+0 9 0 1
+0 19 11 0
 0
 end_operator
 begin_operator
@@ -665,8 +657,8 @@ pick-up a1 i
 0
 3
 0 8 0 1
-0 10 0 1
-0 21 11 0
+0 9 0 1
+0 20 11 0
 0
 end_operator
 begin_operator
@@ -674,8 +666,8 @@ pick-up a2 a
 0
 3
 0 0 0 1
-0 11 0 1
-0 13 11 1
+0 10 0 1
+0 12 11 1
 0
 end_operator
 begin_operator
@@ -683,8 +675,8 @@ pick-up a2 b
 0
 3
 0 1 0 1
-0 11 0 1
-0 14 11 1
+0 10 0 1
+0 13 11 1
 0
 end_operator
 begin_operator
@@ -692,8 +684,8 @@ pick-up a2 c
 0
 3
 0 2 0 1
-0 11 0 1
-0 15 11 1
+0 10 0 1
+0 14 11 1
 0
 end_operator
 begin_operator
@@ -701,8 +693,8 @@ pick-up a2 d
 0
 3
 0 3 0 1
-0 11 0 1
-0 16 11 1
+0 10 0 1
+0 15 11 1
 0
 end_operator
 begin_operator
@@ -710,8 +702,8 @@ pick-up a2 e
 0
 3
 0 4 0 1
-0 11 0 1
-0 17 11 1
+0 10 0 1
+0 16 11 1
 0
 end_operator
 begin_operator
@@ -719,8 +711,8 @@ pick-up a2 f
 0
 3
 0 5 0 1
-0 11 0 1
-0 18 11 1
+0 10 0 1
+0 17 11 1
 0
 end_operator
 begin_operator
@@ -728,8 +720,8 @@ pick-up a2 g
 0
 3
 0 6 0 1
-0 11 0 1
-0 19 11 1
+0 10 0 1
+0 18 11 1
 0
 end_operator
 begin_operator
@@ -737,8 +729,8 @@ pick-up a2 h
 0
 3
 0 7 0 1
-0 11 0 1
-0 20 11 1
+0 10 0 1
+0 19 11 1
 0
 end_operator
 begin_operator
@@ -746,8 +738,8 @@ pick-up a2 i
 0
 3
 0 8 0 1
-0 11 0 1
-0 21 11 1
+0 10 0 1
+0 20 11 1
 0
 end_operator
 begin_operator
@@ -755,8 +747,8 @@ pick-up a3 a
 0
 3
 0 0 0 1
-0 12 0 1
-0 13 11 2
+0 11 0 1
+0 12 11 2
 0
 end_operator
 begin_operator
@@ -764,8 +756,8 @@ pick-up a3 b
 0
 3
 0 1 0 1
-0 12 0 1
-0 14 11 2
+0 11 0 1
+0 13 11 2
 0
 end_operator
 begin_operator
@@ -773,8 +765,8 @@ pick-up a3 c
 0
 3
 0 2 0 1
-0 12 0 1
-0 15 11 2
+0 11 0 1
+0 14 11 2
 0
 end_operator
 begin_operator
@@ -782,8 +774,8 @@ pick-up a3 d
 0
 3
 0 3 0 1
-0 12 0 1
-0 16 11 2
+0 11 0 1
+0 15 11 2
 0
 end_operator
 begin_operator
@@ -791,8 +783,8 @@ pick-up a3 e
 0
 3
 0 4 0 1
-0 12 0 1
-0 17 11 2
+0 11 0 1
+0 16 11 2
 0
 end_operator
 begin_operator
@@ -800,8 +792,8 @@ pick-up a3 f
 0
 3
 0 5 0 1
-0 12 0 1
-0 18 11 2
+0 11 0 1
+0 17 11 2
 0
 end_operator
 begin_operator
@@ -809,8 +801,8 @@ pick-up a3 g
 0
 3
 0 6 0 1
-0 12 0 1
-0 19 11 2
+0 11 0 1
+0 18 11 2
 0
 end_operator
 begin_operator
@@ -818,8 +810,8 @@ pick-up a3 h
 0
 3
 0 7 0 1
-0 12 0 1
-0 20 11 2
+0 11 0 1
+0 19 11 2
 0
 end_operator
 begin_operator
@@ -827,8 +819,8 @@ pick-up a3 i
 0
 3
 0 8 0 1
-0 12 0 1
-0 21 11 2
+0 11 0 1
+0 20 11 2
 0
 end_operator
 begin_operator
@@ -836,8 +828,8 @@ put-down a1 a
 0
 3
 0 0 -1 0
-0 10 -1 0
-0 13 0 11
+0 9 -1 0
+0 12 0 11
 0
 end_operator
 begin_operator
@@ -845,8 +837,8 @@ put-down a1 b
 0
 3
 0 1 -1 0
-0 10 -1 0
-0 14 0 11
+0 9 -1 0
+0 13 0 11
 0
 end_operator
 begin_operator
@@ -854,8 +846,8 @@ put-down a1 c
 0
 3
 0 2 -1 0
-0 10 -1 0
-0 15 0 11
+0 9 -1 0
+0 14 0 11
 0
 end_operator
 begin_operator
@@ -863,8 +855,8 @@ put-down a1 d
 0
 3
 0 3 -1 0
-0 10 -1 0
-0 16 0 11
+0 9 -1 0
+0 15 0 11
 0
 end_operator
 begin_operator
@@ -872,8 +864,8 @@ put-down a1 e
 0
 3
 0 4 -1 0
-0 10 -1 0
-0 17 0 11
+0 9 -1 0
+0 16 0 11
 0
 end_operator
 begin_operator
@@ -881,8 +873,8 @@ put-down a1 f
 0
 3
 0 5 -1 0
-0 10 -1 0
-0 18 0 11
+0 9 -1 0
+0 17 0 11
 0
 end_operator
 begin_operator
@@ -890,8 +882,8 @@ put-down a1 g
 0
 3
 0 6 -1 0
-0 10 -1 0
-0 19 0 11
+0 9 -1 0
+0 18 0 11
 0
 end_operator
 begin_operator
@@ -899,8 +891,8 @@ put-down a1 h
 0
 3
 0 7 -1 0
-0 10 -1 0
-0 20 0 11
+0 9 -1 0
+0 19 0 11
 0
 end_operator
 begin_operator
@@ -908,8 +900,8 @@ put-down a1 i
 0
 3
 0 8 -1 0
-0 10 -1 0
-0 21 0 11
+0 9 -1 0
+0 20 0 11
 0
 end_operator
 begin_operator
@@ -917,8 +909,8 @@ put-down a2 a
 0
 3
 0 0 -1 0
-0 11 -1 0
-0 13 1 11
+0 10 -1 0
+0 12 1 11
 0
 end_operator
 begin_operator
@@ -926,8 +918,8 @@ put-down a2 b
 0
 3
 0 1 -1 0
-0 11 -1 0
-0 14 1 11
+0 10 -1 0
+0 13 1 11
 0
 end_operator
 begin_operator
@@ -935,8 +927,8 @@ put-down a2 c
 0
 3
 0 2 -1 0
-0 11 -1 0
-0 15 1 11
+0 10 -1 0
+0 14 1 11
 0
 end_operator
 begin_operator
@@ -944,8 +936,8 @@ put-down a2 d
 0
 3
 0 3 -1 0
-0 11 -1 0
-0 16 1 11
+0 10 -1 0
+0 15 1 11
 0
 end_operator
 begin_operator
@@ -953,8 +945,8 @@ put-down a2 e
 0
 3
 0 4 -1 0
-0 11 -1 0
-0 17 1 11
+0 10 -1 0
+0 16 1 11
 0
 end_operator
 begin_operator
@@ -962,8 +954,8 @@ put-down a2 f
 0
 3
 0 5 -1 0
-0 11 -1 0
-0 18 1 11
+0 10 -1 0
+0 17 1 11
 0
 end_operator
 begin_operator
@@ -971,8 +963,8 @@ put-down a2 g
 0
 3
 0 6 -1 0
-0 11 -1 0
-0 19 1 11
+0 10 -1 0
+0 18 1 11
 0
 end_operator
 begin_operator
@@ -980,8 +972,8 @@ put-down a2 h
 0
 3
 0 7 -1 0
-0 11 -1 0
-0 20 1 11
+0 10 -1 0
+0 19 1 11
 0
 end_operator
 begin_operator
@@ -989,8 +981,8 @@ put-down a2 i
 0
 3
 0 8 -1 0
-0 11 -1 0
-0 21 1 11
+0 10 -1 0
+0 20 1 11
 0
 end_operator
 begin_operator
@@ -998,8 +990,8 @@ put-down a3 a
 0
 3
 0 0 -1 0
-0 12 -1 0
-0 13 2 11
+0 11 -1 0
+0 12 2 11
 0
 end_operator
 begin_operator
@@ -1007,8 +999,8 @@ put-down a3 b
 0
 3
 0 1 -1 0
-0 12 -1 0
-0 14 2 11
+0 11 -1 0
+0 13 2 11
 0
 end_operator
 begin_operator
@@ -1016,8 +1008,8 @@ put-down a3 c
 0
 3
 0 2 -1 0
-0 12 -1 0
-0 15 2 11
+0 11 -1 0
+0 14 2 11
 0
 end_operator
 begin_operator
@@ -1025,8 +1017,8 @@ put-down a3 d
 0
 3
 0 3 -1 0
-0 12 -1 0
-0 16 2 11
+0 11 -1 0
+0 15 2 11
 0
 end_operator
 begin_operator
@@ -1034,8 +1026,8 @@ put-down a3 e
 0
 3
 0 4 -1 0
-0 12 -1 0
-0 17 2 11
+0 11 -1 0
+0 16 2 11
 0
 end_operator
 begin_operator
@@ -1043,8 +1035,8 @@ put-down a3 f
 0
 3
 0 5 -1 0
-0 12 -1 0
-0 18 2 11
+0 11 -1 0
+0 17 2 11
 0
 end_operator
 begin_operator
@@ -1052,8 +1044,8 @@ put-down a3 g
 0
 3
 0 6 -1 0
-0 12 -1 0
-0 19 2 11
+0 11 -1 0
+0 18 2 11
 0
 end_operator
 begin_operator
@@ -1061,8 +1053,8 @@ put-down a3 h
 0
 3
 0 7 -1 0
-0 12 -1 0
-0 20 2 11
+0 11 -1 0
+0 19 2 11
 0
 end_operator
 begin_operator
@@ -1070,4112 +1062,2168 @@ put-down a3 i
 0
 3
 0 8 -1 0
-0 12 -1 0
-0 21 2 11
+0 11 -1 0
+0 20 2 11
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a b
+stack a1 a b
 0
 4
 0 0 -1 0
 0 1 0 1
-0 10 -1 0
+0 9 -1 0
+0 12 0 3
+0
+end_operator
+begin_operator
+stack a1 a c
+0
+4
+0 0 -1 0
+0 2 0 1
+0 9 -1 0
+0 12 0 4
+0
+end_operator
+begin_operator
+stack a1 a d
+0
+4
+0 0 -1 0
+0 3 0 1
+0 9 -1 0
+0 12 0 5
+0
+end_operator
+begin_operator
+stack a1 a e
+0
+4
+0 0 -1 0
+0 4 0 1
+0 9 -1 0
+0 12 0 6
+0
+end_operator
+begin_operator
+stack a1 a f
+0
+4
+0 0 -1 0
+0 5 0 1
+0 9 -1 0
+0 12 0 7
+0
+end_operator
+begin_operator
+stack a1 a g
+0
+4
+0 0 -1 0
+0 6 0 1
+0 9 -1 0
+0 12 0 8
+0
+end_operator
+begin_operator
+stack a1 a h
+0
+4
+0 0 -1 0
+0 7 0 1
+0 9 -1 0
+0 12 0 9
+0
+end_operator
+begin_operator
+stack a1 a i
+0
+4
+0 0 -1 0
+0 8 0 1
+0 9 -1 0
+0 12 0 10
+0
+end_operator
+begin_operator
+stack a1 b a
+0
+4
+0 0 0 1
+0 1 -1 0
+0 9 -1 0
 0 13 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a c
+stack a1 b c
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 2 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a d
+stack a1 b d
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 3 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a e
+stack a1 b e
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 4 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a f
+stack a1 b f
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 5 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a g
+stack a1 b g
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 6 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a h
+stack a1 b h
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 7 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 a i
+stack a1 b i
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 13 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b a
+stack a1 c a
 0
 4
 0 0 0 1
-0 1 -1 0
-0 10 -1 0
+0 2 -1 0
+0 9 -1 0
 0 14 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b c
+stack a1 c b
 0
 4
-0 1 -1 0
-0 2 0 1
-0 10 -1 0
+0 1 0 1
+0 2 -1 0
+0 9 -1 0
 0 14 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b d
+stack a1 c d
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 3 0 1
-0 10 -1 0
+0 9 -1 0
 0 14 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b e
+stack a1 c e
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 4 0 1
-0 10 -1 0
+0 9 -1 0
 0 14 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b f
+stack a1 c f
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 5 0 1
-0 10 -1 0
+0 9 -1 0
 0 14 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b g
+stack a1 c g
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 6 0 1
-0 10 -1 0
+0 9 -1 0
 0 14 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b h
+stack a1 c h
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 7 0 1
-0 10 -1 0
+0 9 -1 0
 0 14 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 b i
+stack a1 c i
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 14 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c a
+stack a1 d a
 0
 4
 0 0 0 1
-0 2 -1 0
-0 10 -1 0
+0 3 -1 0
+0 9 -1 0
 0 15 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c b
+stack a1 d b
 0
 4
 0 1 0 1
-0 2 -1 0
-0 10 -1 0
+0 3 -1 0
+0 9 -1 0
 0 15 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c d
+stack a1 d c
 0
 4
-0 2 -1 0
-0 3 0 1
-0 10 -1 0
+0 2 0 1
+0 3 -1 0
+0 9 -1 0
 0 15 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c e
+stack a1 d e
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 4 0 1
-0 10 -1 0
+0 9 -1 0
 0 15 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c f
+stack a1 d f
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 5 0 1
-0 10 -1 0
+0 9 -1 0
 0 15 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c g
+stack a1 d g
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 6 0 1
-0 10 -1 0
+0 9 -1 0
 0 15 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c h
+stack a1 d h
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 7 0 1
-0 10 -1 0
+0 9 -1 0
 0 15 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 c i
+stack a1 d i
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 15 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d a
+stack a1 e a
 0
 4
 0 0 0 1
-0 3 -1 0
-0 10 -1 0
+0 4 -1 0
+0 9 -1 0
 0 16 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d b
+stack a1 e b
 0
 4
 0 1 0 1
-0 3 -1 0
-0 10 -1 0
+0 4 -1 0
+0 9 -1 0
 0 16 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d c
+stack a1 e c
 0
 4
 0 2 0 1
-0 3 -1 0
-0 10 -1 0
+0 4 -1 0
+0 9 -1 0
 0 16 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d e
+stack a1 e d
 0
 4
-0 3 -1 0
-0 4 0 1
-0 10 -1 0
+0 3 0 1
+0 4 -1 0
+0 9 -1 0
 0 16 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d f
+stack a1 e f
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 5 0 1
-0 10 -1 0
+0 9 -1 0
 0 16 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d g
+stack a1 e g
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 6 0 1
-0 10 -1 0
+0 9 -1 0
 0 16 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d h
+stack a1 e h
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 7 0 1
-0 10 -1 0
+0 9 -1 0
 0 16 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 d i
+stack a1 e i
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 16 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e a
+stack a1 f a
 0
 4
 0 0 0 1
-0 4 -1 0
-0 10 -1 0
+0 5 -1 0
+0 9 -1 0
 0 17 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e b
+stack a1 f b
 0
 4
 0 1 0 1
-0 4 -1 0
-0 10 -1 0
+0 5 -1 0
+0 9 -1 0
 0 17 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e c
+stack a1 f c
 0
 4
 0 2 0 1
-0 4 -1 0
-0 10 -1 0
+0 5 -1 0
+0 9 -1 0
 0 17 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e d
+stack a1 f d
 0
 4
 0 3 0 1
-0 4 -1 0
-0 10 -1 0
+0 5 -1 0
+0 9 -1 0
 0 17 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e f
+stack a1 f e
 0
 4
-0 4 -1 0
-0 5 0 1
-0 10 -1 0
+0 4 0 1
+0 5 -1 0
+0 9 -1 0
 0 17 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e g
+stack a1 f g
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 6 0 1
-0 10 -1 0
+0 9 -1 0
 0 17 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e h
+stack a1 f h
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 7 0 1
-0 10 -1 0
+0 9 -1 0
 0 17 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 e i
+stack a1 f i
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 17 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f a
+stack a1 g a
 0
 4
 0 0 0 1
-0 5 -1 0
-0 10 -1 0
+0 6 -1 0
+0 9 -1 0
 0 18 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f b
+stack a1 g b
 0
 4
 0 1 0 1
-0 5 -1 0
-0 10 -1 0
+0 6 -1 0
+0 9 -1 0
 0 18 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f c
+stack a1 g c
 0
 4
 0 2 0 1
-0 5 -1 0
-0 10 -1 0
+0 6 -1 0
+0 9 -1 0
 0 18 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f d
+stack a1 g d
 0
 4
 0 3 0 1
-0 5 -1 0
-0 10 -1 0
+0 6 -1 0
+0 9 -1 0
 0 18 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f e
+stack a1 g e
 0
 4
 0 4 0 1
-0 5 -1 0
-0 10 -1 0
+0 6 -1 0
+0 9 -1 0
 0 18 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f g
+stack a1 g f
 0
 4
-0 5 -1 0
-0 6 0 1
-0 10 -1 0
+0 5 0 1
+0 6 -1 0
+0 9 -1 0
 0 18 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f h
+stack a1 g h
 0
 4
-0 5 -1 0
+0 6 -1 0
 0 7 0 1
-0 10 -1 0
+0 9 -1 0
 0 18 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 f i
+stack a1 g i
 0
 4
-0 5 -1 0
+0 6 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 18 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g a
+stack a1 h a
 0
 4
 0 0 0 1
-0 6 -1 0
-0 10 -1 0
+0 7 -1 0
+0 9 -1 0
 0 19 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g b
+stack a1 h b
 0
 4
 0 1 0 1
-0 6 -1 0
-0 10 -1 0
+0 7 -1 0
+0 9 -1 0
 0 19 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g c
+stack a1 h c
 0
 4
 0 2 0 1
-0 6 -1 0
-0 10 -1 0
+0 7 -1 0
+0 9 -1 0
 0 19 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g d
+stack a1 h d
 0
 4
 0 3 0 1
-0 6 -1 0
-0 10 -1 0
+0 7 -1 0
+0 9 -1 0
 0 19 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g e
+stack a1 h e
 0
 4
 0 4 0 1
-0 6 -1 0
-0 10 -1 0
+0 7 -1 0
+0 9 -1 0
 0 19 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g f
+stack a1 h f
 0
 4
 0 5 0 1
-0 6 -1 0
-0 10 -1 0
+0 7 -1 0
+0 9 -1 0
 0 19 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g h
+stack a1 h g
 0
 4
-0 6 -1 0
-0 7 0 1
-0 10 -1 0
+0 6 0 1
+0 7 -1 0
+0 9 -1 0
 0 19 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 g i
+stack a1 h i
 0
 4
-0 6 -1 0
+0 7 -1 0
 0 8 0 1
-0 10 -1 0
+0 9 -1 0
 0 19 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h a
+stack a1 i a
 0
 4
 0 0 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h b
+stack a1 i b
 0
 4
 0 1 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h c
+stack a1 i c
 0
 4
 0 2 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h d
+stack a1 i d
 0
 4
 0 3 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h e
+stack a1 i e
 0
 4
 0 4 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h f
+stack a1 i f
 0
 4
 0 5 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h g
+stack a1 i g
 0
 4
 0 6 0 1
-0 7 -1 0
-0 10 -1 0
+0 8 -1 0
+0 9 -1 0
 0 20 0 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 h i
+stack a1 i h
 0
 4
-0 7 -1 0
-0 8 0 1
-0 10 -1 0
+0 7 0 1
+0 8 -1 0
+0 9 -1 0
 0 20 0 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a1 i a
-0
-4
-0 0 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 3
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i b
-0
-4
-0 1 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 4
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i c
-0
-4
-0 2 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 5
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i d
-0
-4
-0 3 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 6
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i e
-0
-4
-0 4 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 7
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i f
-0
-4
-0 5 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 8
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i g
-0
-4
-0 6 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 9
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a1 i h
-0
-4
-0 7 0 1
-0 8 -1 0
-0 10 -1 0
-0 21 0 10
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 a b
+stack a2 a b
 0
 4
 0 0 -1 0
 0 1 0 1
-0 11 -1 0
+0 10 -1 0
+0 12 1 3
+0
+end_operator
+begin_operator
+stack a2 a c
+0
+4
+0 0 -1 0
+0 2 0 1
+0 10 -1 0
+0 12 1 4
+0
+end_operator
+begin_operator
+stack a2 a d
+0
+4
+0 0 -1 0
+0 3 0 1
+0 10 -1 0
+0 12 1 5
+0
+end_operator
+begin_operator
+stack a2 a e
+0
+4
+0 0 -1 0
+0 4 0 1
+0 10 -1 0
+0 12 1 6
+0
+end_operator
+begin_operator
+stack a2 a f
+0
+4
+0 0 -1 0
+0 5 0 1
+0 10 -1 0
+0 12 1 7
+0
+end_operator
+begin_operator
+stack a2 a g
+0
+4
+0 0 -1 0
+0 6 0 1
+0 10 -1 0
+0 12 1 8
+0
+end_operator
+begin_operator
+stack a2 a h
+0
+4
+0 0 -1 0
+0 7 0 1
+0 10 -1 0
+0 12 1 9
+0
+end_operator
+begin_operator
+stack a2 a i
+0
+4
+0 0 -1 0
+0 8 0 1
+0 10 -1 0
+0 12 1 10
+0
+end_operator
+begin_operator
+stack a2 b a
+0
+4
+0 0 0 1
+0 1 -1 0
+0 10 -1 0
 0 13 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a c
+stack a2 b c
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 2 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a d
+stack a2 b d
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 3 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a e
+stack a2 b e
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 4 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a f
+stack a2 b f
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 5 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a g
+stack a2 b g
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 6 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a h
+stack a2 b h
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 7 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 a i
+stack a2 b i
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 13 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b a
+stack a2 c a
 0
 4
 0 0 0 1
-0 1 -1 0
-0 11 -1 0
+0 2 -1 0
+0 10 -1 0
 0 14 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b c
+stack a2 c b
 0
 4
-0 1 -1 0
-0 2 0 1
-0 11 -1 0
+0 1 0 1
+0 2 -1 0
+0 10 -1 0
 0 14 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b d
+stack a2 c d
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 3 0 1
-0 11 -1 0
+0 10 -1 0
 0 14 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b e
+stack a2 c e
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 4 0 1
-0 11 -1 0
+0 10 -1 0
 0 14 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b f
+stack a2 c f
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 5 0 1
-0 11 -1 0
+0 10 -1 0
 0 14 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b g
+stack a2 c g
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 6 0 1
-0 11 -1 0
+0 10 -1 0
 0 14 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b h
+stack a2 c h
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 7 0 1
-0 11 -1 0
+0 10 -1 0
 0 14 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 b i
+stack a2 c i
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 14 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c a
+stack a2 d a
 0
 4
 0 0 0 1
-0 2 -1 0
-0 11 -1 0
+0 3 -1 0
+0 10 -1 0
 0 15 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c b
+stack a2 d b
 0
 4
 0 1 0 1
-0 2 -1 0
-0 11 -1 0
+0 3 -1 0
+0 10 -1 0
 0 15 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c d
+stack a2 d c
 0
 4
-0 2 -1 0
-0 3 0 1
-0 11 -1 0
+0 2 0 1
+0 3 -1 0
+0 10 -1 0
 0 15 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c e
+stack a2 d e
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 4 0 1
-0 11 -1 0
+0 10 -1 0
 0 15 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c f
+stack a2 d f
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 5 0 1
-0 11 -1 0
+0 10 -1 0
 0 15 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c g
+stack a2 d g
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 6 0 1
-0 11 -1 0
+0 10 -1 0
 0 15 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c h
+stack a2 d h
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 7 0 1
-0 11 -1 0
+0 10 -1 0
 0 15 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 c i
+stack a2 d i
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 15 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d a
+stack a2 e a
 0
 4
 0 0 0 1
-0 3 -1 0
-0 11 -1 0
+0 4 -1 0
+0 10 -1 0
 0 16 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d b
+stack a2 e b
 0
 4
 0 1 0 1
-0 3 -1 0
-0 11 -1 0
+0 4 -1 0
+0 10 -1 0
 0 16 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d c
+stack a2 e c
 0
 4
 0 2 0 1
-0 3 -1 0
-0 11 -1 0
+0 4 -1 0
+0 10 -1 0
 0 16 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d e
+stack a2 e d
 0
 4
-0 3 -1 0
-0 4 0 1
-0 11 -1 0
+0 3 0 1
+0 4 -1 0
+0 10 -1 0
 0 16 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d f
+stack a2 e f
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 5 0 1
-0 11 -1 0
+0 10 -1 0
 0 16 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d g
+stack a2 e g
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 6 0 1
-0 11 -1 0
+0 10 -1 0
 0 16 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d h
+stack a2 e h
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 7 0 1
-0 11 -1 0
+0 10 -1 0
 0 16 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 d i
+stack a2 e i
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 16 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e a
+stack a2 f a
 0
 4
 0 0 0 1
-0 4 -1 0
-0 11 -1 0
+0 5 -1 0
+0 10 -1 0
 0 17 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e b
+stack a2 f b
 0
 4
 0 1 0 1
-0 4 -1 0
-0 11 -1 0
+0 5 -1 0
+0 10 -1 0
 0 17 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e c
+stack a2 f c
 0
 4
 0 2 0 1
-0 4 -1 0
-0 11 -1 0
+0 5 -1 0
+0 10 -1 0
 0 17 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e d
+stack a2 f d
 0
 4
 0 3 0 1
-0 4 -1 0
-0 11 -1 0
+0 5 -1 0
+0 10 -1 0
 0 17 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e f
+stack a2 f e
 0
 4
-0 4 -1 0
-0 5 0 1
-0 11 -1 0
+0 4 0 1
+0 5 -1 0
+0 10 -1 0
 0 17 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e g
+stack a2 f g
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 6 0 1
-0 11 -1 0
+0 10 -1 0
 0 17 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e h
+stack a2 f h
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 7 0 1
-0 11 -1 0
+0 10 -1 0
 0 17 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 e i
+stack a2 f i
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 17 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f a
+stack a2 g a
 0
 4
 0 0 0 1
-0 5 -1 0
-0 11 -1 0
+0 6 -1 0
+0 10 -1 0
 0 18 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f b
+stack a2 g b
 0
 4
 0 1 0 1
-0 5 -1 0
-0 11 -1 0
+0 6 -1 0
+0 10 -1 0
 0 18 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f c
+stack a2 g c
 0
 4
 0 2 0 1
-0 5 -1 0
-0 11 -1 0
+0 6 -1 0
+0 10 -1 0
 0 18 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f d
+stack a2 g d
 0
 4
 0 3 0 1
-0 5 -1 0
-0 11 -1 0
+0 6 -1 0
+0 10 -1 0
 0 18 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f e
+stack a2 g e
 0
 4
 0 4 0 1
-0 5 -1 0
-0 11 -1 0
+0 6 -1 0
+0 10 -1 0
 0 18 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f g
+stack a2 g f
 0
 4
-0 5 -1 0
-0 6 0 1
-0 11 -1 0
+0 5 0 1
+0 6 -1 0
+0 10 -1 0
 0 18 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f h
+stack a2 g h
 0
 4
-0 5 -1 0
+0 6 -1 0
 0 7 0 1
-0 11 -1 0
+0 10 -1 0
 0 18 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 f i
+stack a2 g i
 0
 4
-0 5 -1 0
+0 6 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 18 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g a
+stack a2 h a
 0
 4
 0 0 0 1
-0 6 -1 0
-0 11 -1 0
+0 7 -1 0
+0 10 -1 0
 0 19 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g b
+stack a2 h b
 0
 4
 0 1 0 1
-0 6 -1 0
-0 11 -1 0
+0 7 -1 0
+0 10 -1 0
 0 19 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g c
+stack a2 h c
 0
 4
 0 2 0 1
-0 6 -1 0
-0 11 -1 0
+0 7 -1 0
+0 10 -1 0
 0 19 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g d
+stack a2 h d
 0
 4
 0 3 0 1
-0 6 -1 0
-0 11 -1 0
+0 7 -1 0
+0 10 -1 0
 0 19 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g e
+stack a2 h e
 0
 4
 0 4 0 1
-0 6 -1 0
-0 11 -1 0
+0 7 -1 0
+0 10 -1 0
 0 19 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g f
+stack a2 h f
 0
 4
 0 5 0 1
-0 6 -1 0
-0 11 -1 0
+0 7 -1 0
+0 10 -1 0
 0 19 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g h
+stack a2 h g
 0
 4
-0 6 -1 0
-0 7 0 1
-0 11 -1 0
+0 6 0 1
+0 7 -1 0
+0 10 -1 0
 0 19 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 g i
+stack a2 h i
 0
 4
-0 6 -1 0
+0 7 -1 0
 0 8 0 1
-0 11 -1 0
+0 10 -1 0
 0 19 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h a
+stack a2 i a
 0
 4
 0 0 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h b
+stack a2 i b
 0
 4
 0 1 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h c
+stack a2 i c
 0
 4
 0 2 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h d
+stack a2 i d
 0
 4
 0 3 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h e
+stack a2 i e
 0
 4
 0 4 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h f
+stack a2 i f
 0
 4
 0 5 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h g
+stack a2 i g
 0
 4
 0 6 0 1
-0 7 -1 0
-0 11 -1 0
+0 8 -1 0
+0 10 -1 0
 0 20 1 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 h i
+stack a2 i h
 0
 4
-0 7 -1 0
-0 8 0 1
-0 11 -1 0
+0 7 0 1
+0 8 -1 0
+0 10 -1 0
 0 20 1 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a2 i a
-0
-4
-0 0 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 3
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i b
-0
-4
-0 1 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 4
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i c
-0
-4
-0 2 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 5
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i d
-0
-4
-0 3 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 6
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i e
-0
-4
-0 4 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 7
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i f
-0
-4
-0 5 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 8
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i g
-0
-4
-0 6 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 9
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a2 i h
-0
-4
-0 7 0 1
-0 8 -1 0
-0 11 -1 0
-0 21 1 10
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 a b
+stack a3 a b
 0
 4
 0 0 -1 0
 0 1 0 1
-0 12 -1 0
+0 11 -1 0
+0 12 2 3
+0
+end_operator
+begin_operator
+stack a3 a c
+0
+4
+0 0 -1 0
+0 2 0 1
+0 11 -1 0
+0 12 2 4
+0
+end_operator
+begin_operator
+stack a3 a d
+0
+4
+0 0 -1 0
+0 3 0 1
+0 11 -1 0
+0 12 2 5
+0
+end_operator
+begin_operator
+stack a3 a e
+0
+4
+0 0 -1 0
+0 4 0 1
+0 11 -1 0
+0 12 2 6
+0
+end_operator
+begin_operator
+stack a3 a f
+0
+4
+0 0 -1 0
+0 5 0 1
+0 11 -1 0
+0 12 2 7
+0
+end_operator
+begin_operator
+stack a3 a g
+0
+4
+0 0 -1 0
+0 6 0 1
+0 11 -1 0
+0 12 2 8
+0
+end_operator
+begin_operator
+stack a3 a h
+0
+4
+0 0 -1 0
+0 7 0 1
+0 11 -1 0
+0 12 2 9
+0
+end_operator
+begin_operator
+stack a3 a i
+0
+4
+0 0 -1 0
+0 8 0 1
+0 11 -1 0
+0 12 2 10
+0
+end_operator
+begin_operator
+stack a3 b a
+0
+4
+0 0 0 1
+0 1 -1 0
+0 11 -1 0
 0 13 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a c
+stack a3 b c
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 2 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a d
+stack a3 b d
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 3 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a e
+stack a3 b e
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 4 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a f
+stack a3 b f
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 5 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a g
+stack a3 b g
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 6 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a h
+stack a3 b h
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 7 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 a i
+stack a3 b i
 0
 4
-0 0 -1 0
+0 1 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 13 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b a
+stack a3 c a
 0
 4
 0 0 0 1
-0 1 -1 0
-0 12 -1 0
+0 2 -1 0
+0 11 -1 0
 0 14 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b c
+stack a3 c b
 0
 4
-0 1 -1 0
-0 2 0 1
-0 12 -1 0
+0 1 0 1
+0 2 -1 0
+0 11 -1 0
 0 14 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b d
+stack a3 c d
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 3 0 1
-0 12 -1 0
+0 11 -1 0
 0 14 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b e
+stack a3 c e
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 4 0 1
-0 12 -1 0
+0 11 -1 0
 0 14 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b f
+stack a3 c f
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 5 0 1
-0 12 -1 0
+0 11 -1 0
 0 14 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b g
+stack a3 c g
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 6 0 1
-0 12 -1 0
+0 11 -1 0
 0 14 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b h
+stack a3 c h
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 7 0 1
-0 12 -1 0
+0 11 -1 0
 0 14 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 b i
+stack a3 c i
 0
 4
-0 1 -1 0
+0 2 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 14 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c a
+stack a3 d a
 0
 4
 0 0 0 1
-0 2 -1 0
-0 12 -1 0
+0 3 -1 0
+0 11 -1 0
 0 15 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c b
+stack a3 d b
 0
 4
 0 1 0 1
-0 2 -1 0
-0 12 -1 0
+0 3 -1 0
+0 11 -1 0
 0 15 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c d
+stack a3 d c
 0
 4
-0 2 -1 0
-0 3 0 1
-0 12 -1 0
+0 2 0 1
+0 3 -1 0
+0 11 -1 0
 0 15 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c e
+stack a3 d e
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 4 0 1
-0 12 -1 0
+0 11 -1 0
 0 15 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c f
+stack a3 d f
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 5 0 1
-0 12 -1 0
+0 11 -1 0
 0 15 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c g
+stack a3 d g
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 6 0 1
-0 12 -1 0
+0 11 -1 0
 0 15 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c h
+stack a3 d h
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 7 0 1
-0 12 -1 0
+0 11 -1 0
 0 15 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 c i
+stack a3 d i
 0
 4
-0 2 -1 0
+0 3 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 15 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d a
+stack a3 e a
 0
 4
 0 0 0 1
-0 3 -1 0
-0 12 -1 0
+0 4 -1 0
+0 11 -1 0
 0 16 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d b
+stack a3 e b
 0
 4
 0 1 0 1
-0 3 -1 0
-0 12 -1 0
+0 4 -1 0
+0 11 -1 0
 0 16 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d c
+stack a3 e c
 0
 4
 0 2 0 1
-0 3 -1 0
-0 12 -1 0
+0 4 -1 0
+0 11 -1 0
 0 16 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d e
+stack a3 e d
 0
 4
-0 3 -1 0
-0 4 0 1
-0 12 -1 0
+0 3 0 1
+0 4 -1 0
+0 11 -1 0
 0 16 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d f
+stack a3 e f
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 5 0 1
-0 12 -1 0
+0 11 -1 0
 0 16 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d g
+stack a3 e g
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 6 0 1
-0 12 -1 0
+0 11 -1 0
 0 16 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d h
+stack a3 e h
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 7 0 1
-0 12 -1 0
+0 11 -1 0
 0 16 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 d i
+stack a3 e i
 0
 4
-0 3 -1 0
+0 4 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 16 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e a
+stack a3 f a
 0
 4
 0 0 0 1
-0 4 -1 0
-0 12 -1 0
+0 5 -1 0
+0 11 -1 0
 0 17 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e b
+stack a3 f b
 0
 4
 0 1 0 1
-0 4 -1 0
-0 12 -1 0
+0 5 -1 0
+0 11 -1 0
 0 17 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e c
+stack a3 f c
 0
 4
 0 2 0 1
-0 4 -1 0
-0 12 -1 0
+0 5 -1 0
+0 11 -1 0
 0 17 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e d
+stack a3 f d
 0
 4
 0 3 0 1
-0 4 -1 0
-0 12 -1 0
+0 5 -1 0
+0 11 -1 0
 0 17 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e f
+stack a3 f e
 0
 4
-0 4 -1 0
-0 5 0 1
-0 12 -1 0
+0 4 0 1
+0 5 -1 0
+0 11 -1 0
 0 17 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e g
+stack a3 f g
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 6 0 1
-0 12 -1 0
+0 11 -1 0
 0 17 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e h
+stack a3 f h
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 7 0 1
-0 12 -1 0
+0 11 -1 0
 0 17 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 e i
+stack a3 f i
 0
 4
-0 4 -1 0
+0 5 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 17 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f a
+stack a3 g a
 0
 4
 0 0 0 1
-0 5 -1 0
-0 12 -1 0
+0 6 -1 0
+0 11 -1 0
 0 18 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f b
+stack a3 g b
 0
 4
 0 1 0 1
-0 5 -1 0
-0 12 -1 0
+0 6 -1 0
+0 11 -1 0
 0 18 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f c
+stack a3 g c
 0
 4
 0 2 0 1
-0 5 -1 0
-0 12 -1 0
+0 6 -1 0
+0 11 -1 0
 0 18 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f d
+stack a3 g d
 0
 4
 0 3 0 1
-0 5 -1 0
-0 12 -1 0
+0 6 -1 0
+0 11 -1 0
 0 18 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f e
+stack a3 g e
 0
 4
 0 4 0 1
-0 5 -1 0
-0 12 -1 0
+0 6 -1 0
+0 11 -1 0
 0 18 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f g
+stack a3 g f
 0
 4
-0 5 -1 0
-0 6 0 1
-0 12 -1 0
+0 5 0 1
+0 6 -1 0
+0 11 -1 0
 0 18 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f h
+stack a3 g h
 0
 4
-0 5 -1 0
+0 6 -1 0
 0 7 0 1
-0 12 -1 0
+0 11 -1 0
 0 18 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 f i
+stack a3 g i
 0
 4
-0 5 -1 0
+0 6 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 18 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g a
+stack a3 h a
 0
 4
 0 0 0 1
-0 6 -1 0
-0 12 -1 0
+0 7 -1 0
+0 11 -1 0
 0 19 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g b
+stack a3 h b
 0
 4
 0 1 0 1
-0 6 -1 0
-0 12 -1 0
+0 7 -1 0
+0 11 -1 0
 0 19 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g c
+stack a3 h c
 0
 4
 0 2 0 1
-0 6 -1 0
-0 12 -1 0
+0 7 -1 0
+0 11 -1 0
 0 19 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g d
+stack a3 h d
 0
 4
 0 3 0 1
-0 6 -1 0
-0 12 -1 0
+0 7 -1 0
+0 11 -1 0
 0 19 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g e
+stack a3 h e
 0
 4
 0 4 0 1
-0 6 -1 0
-0 12 -1 0
+0 7 -1 0
+0 11 -1 0
 0 19 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g f
+stack a3 h f
 0
 4
 0 5 0 1
-0 6 -1 0
-0 12 -1 0
+0 7 -1 0
+0 11 -1 0
 0 19 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g h
+stack a3 h g
 0
 4
-0 6 -1 0
-0 7 0 1
-0 12 -1 0
+0 6 0 1
+0 7 -1 0
+0 11 -1 0
 0 19 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 g i
+stack a3 h i
 0
 4
-0 6 -1 0
+0 7 -1 0
 0 8 0 1
-0 12 -1 0
+0 11 -1 0
 0 19 2 10
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h a
+stack a3 i a
 0
 4
 0 0 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 3
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h b
+stack a3 i b
 0
 4
 0 1 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 4
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h c
+stack a3 i c
 0
 4
 0 2 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 5
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h d
+stack a3 i d
 0
 4
 0 3 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 6
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h e
+stack a3 i e
 0
 4
 0 4 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 7
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h f
+stack a3 i f
 0
 4
 0 5 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 8
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h g
+stack a3 i g
 0
 4
 0 6 0 1
-0 7 -1 0
-0 12 -1 0
+0 8 -1 0
+0 11 -1 0
 0 20 2 9
 0
 end_operator
 begin_operator
-stack_DETDUP_0 a3 h i
-0
-4
-0 7 -1 0
-0 8 0 1
-0 12 -1 0
-0 20 2 10
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i a
-0
-4
-0 0 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 3
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i b
-0
-4
-0 1 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 4
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i c
-0
-4
-0 2 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 5
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i d
-0
-4
-0 3 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 6
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i e
-0
-4
-0 4 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 7
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i f
-0
-4
-0 5 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 8
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i g
-0
-4
-0 6 0 1
-0 8 -1 0
-0 12 -1 0
-0 21 2 9
-0
-end_operator
-begin_operator
-stack_DETDUP_0 a3 i h
+stack a3 i h
 0
 4
 0 7 0 1
 0 8 -1 0
-0 12 -1 0
-0 21 2 10
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a b
-2
-1 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a c
-2
-2 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a d
-2
-3 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a e
-2
-4 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a f
-2
-5 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a g
-2
-6 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a h
-2
-7 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 a i
-2
-8 0
-13 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b a
-2
-0 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b c
-2
-2 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b d
-2
-3 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b e
-2
-4 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b f
-2
-5 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b g
-2
-6 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b h
-2
-7 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 b i
-2
-8 0
-14 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c a
-2
-0 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c b
-2
-1 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c d
-2
-3 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c e
-2
-4 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c f
-2
-5 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c g
-2
-6 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c h
-2
-7 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 c i
-2
-8 0
-15 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d a
-2
-0 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d b
-2
-1 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d c
-2
-2 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d e
-2
-4 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d f
-2
-5 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d g
-2
-6 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d h
-2
-7 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 d i
-2
-8 0
-16 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e a
-2
-0 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e b
-2
-1 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e c
-2
-2 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e d
-2
-3 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e f
-2
-5 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e g
-2
-6 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e h
-2
-7 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 e i
-2
-8 0
-17 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f a
-2
-0 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f b
-2
-1 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f c
-2
-2 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f d
-2
-3 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f e
-2
-4 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f g
-2
-6 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f h
-2
-7 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 f i
-2
-8 0
-18 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g a
-2
-0 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g b
-2
-1 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g c
-2
-2 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g d
-2
-3 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g e
-2
-4 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g f
-2
-5 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g h
-2
-7 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 g i
-2
-8 0
-19 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h a
-2
-0 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h b
-2
-1 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h c
-2
-2 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h d
-2
-3 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h e
-2
-4 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h f
-2
-5 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h g
-2
-6 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 h i
-2
-8 0
-20 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i a
-2
-0 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i b
-2
-1 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i c
-2
-2 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i d
-2
-3 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i e
-2
-4 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i f
-2
-5 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i g
-2
-6 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a1 i h
-2
-7 0
-21 0
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a b
-2
-1 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a c
-2
-2 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a d
-2
-3 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a e
-2
-4 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a f
-2
-5 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a g
-2
-6 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a h
-2
-7 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 a i
-2
-8 0
-13 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b a
-2
-0 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b c
-2
-2 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b d
-2
-3 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b e
-2
-4 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b f
-2
-5 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b g
-2
-6 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b h
-2
-7 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 b i
-2
-8 0
-14 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c a
-2
-0 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c b
-2
-1 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c d
-2
-3 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c e
-2
-4 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c f
-2
-5 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c g
-2
-6 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c h
-2
-7 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 c i
-2
-8 0
-15 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d a
-2
-0 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d b
-2
-1 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d c
-2
-2 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d e
-2
-4 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d f
-2
-5 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d g
-2
-6 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d h
-2
-7 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 d i
-2
-8 0
-16 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e a
-2
-0 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e b
-2
-1 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e c
-2
-2 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e d
-2
-3 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e f
-2
-5 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e g
-2
-6 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e h
-2
-7 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 e i
-2
-8 0
-17 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f a
-2
-0 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f b
-2
-1 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f c
-2
-2 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f d
-2
-3 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f e
-2
-4 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f g
-2
-6 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f h
-2
-7 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 f i
-2
-8 0
-18 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g a
-2
-0 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g b
-2
-1 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g c
-2
-2 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g d
-2
-3 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g e
-2
-4 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g f
-2
-5 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g h
-2
-7 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 g i
-2
-8 0
-19 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h a
-2
-0 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h b
-2
-1 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h c
-2
-2 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h d
-2
-3 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h e
-2
-4 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h f
-2
-5 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h g
-2
-6 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 h i
-2
-8 0
-20 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i a
-2
-0 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i b
-2
-1 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i c
-2
-2 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i d
-2
-3 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i e
-2
-4 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i f
-2
-5 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i g
-2
-6 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a2 i h
-2
-7 0
-21 1
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a b
-2
-1 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a c
-2
-2 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a d
-2
-3 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a e
-2
-4 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a f
-2
-5 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a g
-2
-6 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a h
-2
-7 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 a i
-2
-8 0
-13 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b a
-2
-0 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b c
-2
-2 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b d
-2
-3 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b e
-2
-4 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b f
-2
-5 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b g
-2
-6 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b h
-2
-7 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 b i
-2
-8 0
-14 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c a
-2
-0 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c b
-2
-1 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c d
-2
-3 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c e
-2
-4 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c f
-2
-5 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c g
-2
-6 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c h
-2
-7 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 c i
-2
-8 0
-15 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d a
-2
-0 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d b
-2
-1 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d c
-2
-2 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d e
-2
-4 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d f
-2
-5 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d g
-2
-6 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d h
-2
-7 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 d i
-2
-8 0
-16 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e a
-2
-0 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e b
-2
-1 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e c
-2
-2 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e d
-2
-3 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e f
-2
-5 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e g
-2
-6 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e h
-2
-7 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 e i
-2
-8 0
-17 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f a
-2
-0 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f b
-2
-1 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f c
-2
-2 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f d
-2
-3 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f e
-2
-4 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f g
-2
-6 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f h
-2
-7 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 f i
-2
-8 0
-18 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g a
-2
-0 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g b
-2
-1 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g c
-2
-2 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g d
-2
-3 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g e
-2
-4 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g f
-2
-5 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g h
-2
-7 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 g i
-2
-8 0
-19 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h a
-2
-0 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h b
-2
-1 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h c
-2
-2 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h d
-2
-3 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h e
-2
-4 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h f
-2
-5 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h g
-2
-6 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 h i
-2
-8 0
-20 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i a
-2
-0 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i b
-2
-1 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i c
-2
-2 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i d
-2
-3 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i e
-2
-4 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i f
-2
-5 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i g
-2
-6 0
-21 2
-1
-0 9 -1 0
-0
-end_operator
-begin_operator
-stack_DETDUP_1 a3 i h
-2
-7 0
-21 2
-1
-0 9 -1 0
+0 11 -1 0
+0 20 2 10
 0
 end_operator
 begin_operator
@@ -5184,8 +3232,8 @@ unstack a1 a b
 4
 0 0 0 1
 0 1 -1 0
-0 10 0 1
-0 13 3 0
+0 9 0 1
+0 12 3 0
 0
 end_operator
 begin_operator
@@ -5194,8 +3242,8 @@ unstack a1 a c
 4
 0 0 0 1
 0 2 -1 0
-0 10 0 1
-0 13 4 0
+0 9 0 1
+0 12 4 0
 0
 end_operator
 begin_operator
@@ -5204,8 +3252,8 @@ unstack a1 a d
 4
 0 0 0 1
 0 3 -1 0
-0 10 0 1
-0 13 5 0
+0 9 0 1
+0 12 5 0
 0
 end_operator
 begin_operator
@@ -5214,8 +3262,8 @@ unstack a1 a e
 4
 0 0 0 1
 0 4 -1 0
-0 10 0 1
-0 13 6 0
+0 9 0 1
+0 12 6 0
 0
 end_operator
 begin_operator
@@ -5224,8 +3272,8 @@ unstack a1 a f
 4
 0 0 0 1
 0 5 -1 0
-0 10 0 1
-0 13 7 0
+0 9 0 1
+0 12 7 0
 0
 end_operator
 begin_operator
@@ -5234,8 +3282,8 @@ unstack a1 a g
 4
 0 0 0 1
 0 6 -1 0
-0 10 0 1
-0 13 8 0
+0 9 0 1
+0 12 8 0
 0
 end_operator
 begin_operator
@@ -5244,8 +3292,8 @@ unstack a1 a h
 4
 0 0 0 1
 0 7 -1 0
-0 10 0 1
-0 13 9 0
+0 9 0 1
+0 12 9 0
 0
 end_operator
 begin_operator
@@ -5254,8 +3302,8 @@ unstack a1 a i
 4
 0 0 0 1
 0 8 -1 0
-0 10 0 1
-0 13 10 0
+0 9 0 1
+0 12 10 0
 0
 end_operator
 begin_operator
@@ -5264,8 +3312,8 @@ unstack a1 b a
 4
 0 0 -1 0
 0 1 0 1
-0 10 0 1
-0 14 3 0
+0 9 0 1
+0 13 3 0
 0
 end_operator
 begin_operator
@@ -5274,8 +3322,8 @@ unstack a1 b c
 4
 0 1 0 1
 0 2 -1 0
-0 10 0 1
-0 14 4 0
+0 9 0 1
+0 13 4 0
 0
 end_operator
 begin_operator
@@ -5284,8 +3332,8 @@ unstack a1 b d
 4
 0 1 0 1
 0 3 -1 0
-0 10 0 1
-0 14 5 0
+0 9 0 1
+0 13 5 0
 0
 end_operator
 begin_operator
@@ -5294,8 +3342,8 @@ unstack a1 b e
 4
 0 1 0 1
 0 4 -1 0
-0 10 0 1
-0 14 6 0
+0 9 0 1
+0 13 6 0
 0
 end_operator
 begin_operator
@@ -5304,8 +3352,8 @@ unstack a1 b f
 4
 0 1 0 1
 0 5 -1 0
-0 10 0 1
-0 14 7 0
+0 9 0 1
+0 13 7 0
 0
 end_operator
 begin_operator
@@ -5314,8 +3362,8 @@ unstack a1 b g
 4
 0 1 0 1
 0 6 -1 0
-0 10 0 1
-0 14 8 0
+0 9 0 1
+0 13 8 0
 0
 end_operator
 begin_operator
@@ -5324,8 +3372,8 @@ unstack a1 b h
 4
 0 1 0 1
 0 7 -1 0
-0 10 0 1
-0 14 9 0
+0 9 0 1
+0 13 9 0
 0
 end_operator
 begin_operator
@@ -5334,8 +3382,8 @@ unstack a1 b i
 4
 0 1 0 1
 0 8 -1 0
-0 10 0 1
-0 14 10 0
+0 9 0 1
+0 13 10 0
 0
 end_operator
 begin_operator
@@ -5344,8 +3392,8 @@ unstack a1 c a
 4
 0 0 -1 0
 0 2 0 1
-0 10 0 1
-0 15 3 0
+0 9 0 1
+0 14 3 0
 0
 end_operator
 begin_operator
@@ -5354,8 +3402,8 @@ unstack a1 c b
 4
 0 1 -1 0
 0 2 0 1
-0 10 0 1
-0 15 4 0
+0 9 0 1
+0 14 4 0
 0
 end_operator
 begin_operator
@@ -5364,8 +3412,8 @@ unstack a1 c d
 4
 0 2 0 1
 0 3 -1 0
-0 10 0 1
-0 15 5 0
+0 9 0 1
+0 14 5 0
 0
 end_operator
 begin_operator
@@ -5374,8 +3422,8 @@ unstack a1 c e
 4
 0 2 0 1
 0 4 -1 0
-0 10 0 1
-0 15 6 0
+0 9 0 1
+0 14 6 0
 0
 end_operator
 begin_operator
@@ -5384,8 +3432,8 @@ unstack a1 c f
 4
 0 2 0 1
 0 5 -1 0
-0 10 0 1
-0 15 7 0
+0 9 0 1
+0 14 7 0
 0
 end_operator
 begin_operator
@@ -5394,8 +3442,8 @@ unstack a1 c g
 4
 0 2 0 1
 0 6 -1 0
-0 10 0 1
-0 15 8 0
+0 9 0 1
+0 14 8 0
 0
 end_operator
 begin_operator
@@ -5404,8 +3452,8 @@ unstack a1 c h
 4
 0 2 0 1
 0 7 -1 0
-0 10 0 1
-0 15 9 0
+0 9 0 1
+0 14 9 0
 0
 end_operator
 begin_operator
@@ -5414,8 +3462,8 @@ unstack a1 c i
 4
 0 2 0 1
 0 8 -1 0
-0 10 0 1
-0 15 10 0
+0 9 0 1
+0 14 10 0
 0
 end_operator
 begin_operator
@@ -5424,8 +3472,8 @@ unstack a1 d a
 4
 0 0 -1 0
 0 3 0 1
-0 10 0 1
-0 16 3 0
+0 9 0 1
+0 15 3 0
 0
 end_operator
 begin_operator
@@ -5434,8 +3482,8 @@ unstack a1 d b
 4
 0 1 -1 0
 0 3 0 1
-0 10 0 1
-0 16 4 0
+0 9 0 1
+0 15 4 0
 0
 end_operator
 begin_operator
@@ -5444,8 +3492,8 @@ unstack a1 d c
 4
 0 2 -1 0
 0 3 0 1
-0 10 0 1
-0 16 5 0
+0 9 0 1
+0 15 5 0
 0
 end_operator
 begin_operator
@@ -5454,8 +3502,8 @@ unstack a1 d e
 4
 0 3 0 1
 0 4 -1 0
-0 10 0 1
-0 16 6 0
+0 9 0 1
+0 15 6 0
 0
 end_operator
 begin_operator
@@ -5464,8 +3512,8 @@ unstack a1 d f
 4
 0 3 0 1
 0 5 -1 0
-0 10 0 1
-0 16 7 0
+0 9 0 1
+0 15 7 0
 0
 end_operator
 begin_operator
@@ -5474,8 +3522,8 @@ unstack a1 d g
 4
 0 3 0 1
 0 6 -1 0
-0 10 0 1
-0 16 8 0
+0 9 0 1
+0 15 8 0
 0
 end_operator
 begin_operator
@@ -5484,8 +3532,8 @@ unstack a1 d h
 4
 0 3 0 1
 0 7 -1 0
-0 10 0 1
-0 16 9 0
+0 9 0 1
+0 15 9 0
 0
 end_operator
 begin_operator
@@ -5494,8 +3542,8 @@ unstack a1 d i
 4
 0 3 0 1
 0 8 -1 0
-0 10 0 1
-0 16 10 0
+0 9 0 1
+0 15 10 0
 0
 end_operator
 begin_operator
@@ -5504,8 +3552,8 @@ unstack a1 e a
 4
 0 0 -1 0
 0 4 0 1
-0 10 0 1
-0 17 3 0
+0 9 0 1
+0 16 3 0
 0
 end_operator
 begin_operator
@@ -5514,8 +3562,8 @@ unstack a1 e b
 4
 0 1 -1 0
 0 4 0 1
-0 10 0 1
-0 17 4 0
+0 9 0 1
+0 16 4 0
 0
 end_operator
 begin_operator
@@ -5524,8 +3572,8 @@ unstack a1 e c
 4
 0 2 -1 0
 0 4 0 1
-0 10 0 1
-0 17 5 0
+0 9 0 1
+0 16 5 0
 0
 end_operator
 begin_operator
@@ -5534,8 +3582,8 @@ unstack a1 e d
 4
 0 3 -1 0
 0 4 0 1
-0 10 0 1
-0 17 6 0
+0 9 0 1
+0 16 6 0
 0
 end_operator
 begin_operator
@@ -5544,8 +3592,8 @@ unstack a1 e f
 4
 0 4 0 1
 0 5 -1 0
-0 10 0 1
-0 17 7 0
+0 9 0 1
+0 16 7 0
 0
 end_operator
 begin_operator
@@ -5554,8 +3602,8 @@ unstack a1 e g
 4
 0 4 0 1
 0 6 -1 0
-0 10 0 1
-0 17 8 0
+0 9 0 1
+0 16 8 0
 0
 end_operator
 begin_operator
@@ -5564,8 +3612,8 @@ unstack a1 e h
 4
 0 4 0 1
 0 7 -1 0
-0 10 0 1
-0 17 9 0
+0 9 0 1
+0 16 9 0
 0
 end_operator
 begin_operator
@@ -5574,8 +3622,8 @@ unstack a1 e i
 4
 0 4 0 1
 0 8 -1 0
-0 10 0 1
-0 17 10 0
+0 9 0 1
+0 16 10 0
 0
 end_operator
 begin_operator
@@ -5584,8 +3632,8 @@ unstack a1 f a
 4
 0 0 -1 0
 0 5 0 1
-0 10 0 1
-0 18 3 0
+0 9 0 1
+0 17 3 0
 0
 end_operator
 begin_operator
@@ -5594,8 +3642,8 @@ unstack a1 f b
 4
 0 1 -1 0
 0 5 0 1
-0 10 0 1
-0 18 4 0
+0 9 0 1
+0 17 4 0
 0
 end_operator
 begin_operator
@@ -5604,8 +3652,8 @@ unstack a1 f c
 4
 0 2 -1 0
 0 5 0 1
-0 10 0 1
-0 18 5 0
+0 9 0 1
+0 17 5 0
 0
 end_operator
 begin_operator
@@ -5614,8 +3662,8 @@ unstack a1 f d
 4
 0 3 -1 0
 0 5 0 1
-0 10 0 1
-0 18 6 0
+0 9 0 1
+0 17 6 0
 0
 end_operator
 begin_operator
@@ -5624,8 +3672,8 @@ unstack a1 f e
 4
 0 4 -1 0
 0 5 0 1
-0 10 0 1
-0 18 7 0
+0 9 0 1
+0 17 7 0
 0
 end_operator
 begin_operator
@@ -5634,8 +3682,8 @@ unstack a1 f g
 4
 0 5 0 1
 0 6 -1 0
-0 10 0 1
-0 18 8 0
+0 9 0 1
+0 17 8 0
 0
 end_operator
 begin_operator
@@ -5644,8 +3692,8 @@ unstack a1 f h
 4
 0 5 0 1
 0 7 -1 0
-0 10 0 1
-0 18 9 0
+0 9 0 1
+0 17 9 0
 0
 end_operator
 begin_operator
@@ -5654,8 +3702,8 @@ unstack a1 f i
 4
 0 5 0 1
 0 8 -1 0
-0 10 0 1
-0 18 10 0
+0 9 0 1
+0 17 10 0
 0
 end_operator
 begin_operator
@@ -5664,8 +3712,8 @@ unstack a1 g a
 4
 0 0 -1 0
 0 6 0 1
-0 10 0 1
-0 19 3 0
+0 9 0 1
+0 18 3 0
 0
 end_operator
 begin_operator
@@ -5674,8 +3722,8 @@ unstack a1 g b
 4
 0 1 -1 0
 0 6 0 1
-0 10 0 1
-0 19 4 0
+0 9 0 1
+0 18 4 0
 0
 end_operator
 begin_operator
@@ -5684,8 +3732,8 @@ unstack a1 g c
 4
 0 2 -1 0
 0 6 0 1
-0 10 0 1
-0 19 5 0
+0 9 0 1
+0 18 5 0
 0
 end_operator
 begin_operator
@@ -5694,8 +3742,8 @@ unstack a1 g d
 4
 0 3 -1 0
 0 6 0 1
-0 10 0 1
-0 19 6 0
+0 9 0 1
+0 18 6 0
 0
 end_operator
 begin_operator
@@ -5704,8 +3752,8 @@ unstack a1 g e
 4
 0 4 -1 0
 0 6 0 1
-0 10 0 1
-0 19 7 0
+0 9 0 1
+0 18 7 0
 0
 end_operator
 begin_operator
@@ -5714,8 +3762,8 @@ unstack a1 g f
 4
 0 5 -1 0
 0 6 0 1
-0 10 0 1
-0 19 8 0
+0 9 0 1
+0 18 8 0
 0
 end_operator
 begin_operator
@@ -5724,8 +3772,8 @@ unstack a1 g h
 4
 0 6 0 1
 0 7 -1 0
-0 10 0 1
-0 19 9 0
+0 9 0 1
+0 18 9 0
 0
 end_operator
 begin_operator
@@ -5734,8 +3782,8 @@ unstack a1 g i
 4
 0 6 0 1
 0 8 -1 0
-0 10 0 1
-0 19 10 0
+0 9 0 1
+0 18 10 0
 0
 end_operator
 begin_operator
@@ -5744,8 +3792,8 @@ unstack a1 h a
 4
 0 0 -1 0
 0 7 0 1
-0 10 0 1
-0 20 3 0
+0 9 0 1
+0 19 3 0
 0
 end_operator
 begin_operator
@@ -5754,8 +3802,8 @@ unstack a1 h b
 4
 0 1 -1 0
 0 7 0 1
-0 10 0 1
-0 20 4 0
+0 9 0 1
+0 19 4 0
 0
 end_operator
 begin_operator
@@ -5764,8 +3812,8 @@ unstack a1 h c
 4
 0 2 -1 0
 0 7 0 1
-0 10 0 1
-0 20 5 0
+0 9 0 1
+0 19 5 0
 0
 end_operator
 begin_operator
@@ -5774,8 +3822,8 @@ unstack a1 h d
 4
 0 3 -1 0
 0 7 0 1
-0 10 0 1
-0 20 6 0
+0 9 0 1
+0 19 6 0
 0
 end_operator
 begin_operator
@@ -5784,8 +3832,8 @@ unstack a1 h e
 4
 0 4 -1 0
 0 7 0 1
-0 10 0 1
-0 20 7 0
+0 9 0 1
+0 19 7 0
 0
 end_operator
 begin_operator
@@ -5794,8 +3842,8 @@ unstack a1 h f
 4
 0 5 -1 0
 0 7 0 1
-0 10 0 1
-0 20 8 0
+0 9 0 1
+0 19 8 0
 0
 end_operator
 begin_operator
@@ -5804,8 +3852,8 @@ unstack a1 h g
 4
 0 6 -1 0
 0 7 0 1
-0 10 0 1
-0 20 9 0
+0 9 0 1
+0 19 9 0
 0
 end_operator
 begin_operator
@@ -5814,8 +3862,8 @@ unstack a1 h i
 4
 0 7 0 1
 0 8 -1 0
-0 10 0 1
-0 20 10 0
+0 9 0 1
+0 19 10 0
 0
 end_operator
 begin_operator
@@ -5824,8 +3872,8 @@ unstack a1 i a
 4
 0 0 -1 0
 0 8 0 1
-0 10 0 1
-0 21 3 0
+0 9 0 1
+0 20 3 0
 0
 end_operator
 begin_operator
@@ -5834,8 +3882,8 @@ unstack a1 i b
 4
 0 1 -1 0
 0 8 0 1
-0 10 0 1
-0 21 4 0
+0 9 0 1
+0 20 4 0
 0
 end_operator
 begin_operator
@@ -5844,8 +3892,8 @@ unstack a1 i c
 4
 0 2 -1 0
 0 8 0 1
-0 10 0 1
-0 21 5 0
+0 9 0 1
+0 20 5 0
 0
 end_operator
 begin_operator
@@ -5854,8 +3902,8 @@ unstack a1 i d
 4
 0 3 -1 0
 0 8 0 1
-0 10 0 1
-0 21 6 0
+0 9 0 1
+0 20 6 0
 0
 end_operator
 begin_operator
@@ -5864,8 +3912,8 @@ unstack a1 i e
 4
 0 4 -1 0
 0 8 0 1
-0 10 0 1
-0 21 7 0
+0 9 0 1
+0 20 7 0
 0
 end_operator
 begin_operator
@@ -5874,8 +3922,8 @@ unstack a1 i f
 4
 0 5 -1 0
 0 8 0 1
-0 10 0 1
-0 21 8 0
+0 9 0 1
+0 20 8 0
 0
 end_operator
 begin_operator
@@ -5884,8 +3932,8 @@ unstack a1 i g
 4
 0 6 -1 0
 0 8 0 1
-0 10 0 1
-0 21 9 0
+0 9 0 1
+0 20 9 0
 0
 end_operator
 begin_operator
@@ -5894,8 +3942,8 @@ unstack a1 i h
 4
 0 7 -1 0
 0 8 0 1
-0 10 0 1
-0 21 10 0
+0 9 0 1
+0 20 10 0
 0
 end_operator
 begin_operator
@@ -5904,8 +3952,8 @@ unstack a2 a b
 4
 0 0 0 1
 0 1 -1 0
-0 11 0 1
-0 13 3 1
+0 10 0 1
+0 12 3 1
 0
 end_operator
 begin_operator
@@ -5914,8 +3962,8 @@ unstack a2 a c
 4
 0 0 0 1
 0 2 -1 0
-0 11 0 1
-0 13 4 1
+0 10 0 1
+0 12 4 1
 0
 end_operator
 begin_operator
@@ -5924,8 +3972,8 @@ unstack a2 a d
 4
 0 0 0 1
 0 3 -1 0
-0 11 0 1
-0 13 5 1
+0 10 0 1
+0 12 5 1
 0
 end_operator
 begin_operator
@@ -5934,8 +3982,8 @@ unstack a2 a e
 4
 0 0 0 1
 0 4 -1 0
-0 11 0 1
-0 13 6 1
+0 10 0 1
+0 12 6 1
 0
 end_operator
 begin_operator
@@ -5944,8 +3992,8 @@ unstack a2 a f
 4
 0 0 0 1
 0 5 -1 0
-0 11 0 1
-0 13 7 1
+0 10 0 1
+0 12 7 1
 0
 end_operator
 begin_operator
@@ -5954,8 +4002,8 @@ unstack a2 a g
 4
 0 0 0 1
 0 6 -1 0
-0 11 0 1
-0 13 8 1
+0 10 0 1
+0 12 8 1
 0
 end_operator
 begin_operator
@@ -5964,8 +4012,8 @@ unstack a2 a h
 4
 0 0 0 1
 0 7 -1 0
-0 11 0 1
-0 13 9 1
+0 10 0 1
+0 12 9 1
 0
 end_operator
 begin_operator
@@ -5974,8 +4022,8 @@ unstack a2 a i
 4
 0 0 0 1
 0 8 -1 0
-0 11 0 1
-0 13 10 1
+0 10 0 1
+0 12 10 1
 0
 end_operator
 begin_operator
@@ -5984,8 +4032,8 @@ unstack a2 b a
 4
 0 0 -1 0
 0 1 0 1
-0 11 0 1
-0 14 3 1
+0 10 0 1
+0 13 3 1
 0
 end_operator
 begin_operator
@@ -5994,8 +4042,8 @@ unstack a2 b c
 4
 0 1 0 1
 0 2 -1 0
-0 11 0 1
-0 14 4 1
+0 10 0 1
+0 13 4 1
 0
 end_operator
 begin_operator
@@ -6004,8 +4052,8 @@ unstack a2 b d
 4
 0 1 0 1
 0 3 -1 0
-0 11 0 1
-0 14 5 1
+0 10 0 1
+0 13 5 1
 0
 end_operator
 begin_operator
@@ -6014,8 +4062,8 @@ unstack a2 b e
 4
 0 1 0 1
 0 4 -1 0
-0 11 0 1
-0 14 6 1
+0 10 0 1
+0 13 6 1
 0
 end_operator
 begin_operator
@@ -6024,8 +4072,8 @@ unstack a2 b f
 4
 0 1 0 1
 0 5 -1 0
-0 11 0 1
-0 14 7 1
+0 10 0 1
+0 13 7 1
 0
 end_operator
 begin_operator
@@ -6034,8 +4082,8 @@ unstack a2 b g
 4
 0 1 0 1
 0 6 -1 0
-0 11 0 1
-0 14 8 1
+0 10 0 1
+0 13 8 1
 0
 end_operator
 begin_operator
@@ -6044,8 +4092,8 @@ unstack a2 b h
 4
 0 1 0 1
 0 7 -1 0
-0 11 0 1
-0 14 9 1
+0 10 0 1
+0 13 9 1
 0
 end_operator
 begin_operator
@@ -6054,8 +4102,8 @@ unstack a2 b i
 4
 0 1 0 1
 0 8 -1 0
-0 11 0 1
-0 14 10 1
+0 10 0 1
+0 13 10 1
 0
 end_operator
 begin_operator
@@ -6064,8 +4112,8 @@ unstack a2 c a
 4
 0 0 -1 0
 0 2 0 1
-0 11 0 1
-0 15 3 1
+0 10 0 1
+0 14 3 1
 0
 end_operator
 begin_operator
@@ -6074,8 +4122,8 @@ unstack a2 c b
 4
 0 1 -1 0
 0 2 0 1
-0 11 0 1
-0 15 4 1
+0 10 0 1
+0 14 4 1
 0
 end_operator
 begin_operator
@@ -6084,8 +4132,8 @@ unstack a2 c d
 4
 0 2 0 1
 0 3 -1 0
-0 11 0 1
-0 15 5 1
+0 10 0 1
+0 14 5 1
 0
 end_operator
 begin_operator
@@ -6094,8 +4142,8 @@ unstack a2 c e
 4
 0 2 0 1
 0 4 -1 0
-0 11 0 1
-0 15 6 1
+0 10 0 1
+0 14 6 1
 0
 end_operator
 begin_operator
@@ -6104,8 +4152,8 @@ unstack a2 c f
 4
 0 2 0 1
 0 5 -1 0
-0 11 0 1
-0 15 7 1
+0 10 0 1
+0 14 7 1
 0
 end_operator
 begin_operator
@@ -6114,8 +4162,8 @@ unstack a2 c g
 4
 0 2 0 1
 0 6 -1 0
-0 11 0 1
-0 15 8 1
+0 10 0 1
+0 14 8 1
 0
 end_operator
 begin_operator
@@ -6124,8 +4172,8 @@ unstack a2 c h
 4
 0 2 0 1
 0 7 -1 0
-0 11 0 1
-0 15 9 1
+0 10 0 1
+0 14 9 1
 0
 end_operator
 begin_operator
@@ -6134,8 +4182,8 @@ unstack a2 c i
 4
 0 2 0 1
 0 8 -1 0
-0 11 0 1
-0 15 10 1
+0 10 0 1
+0 14 10 1
 0
 end_operator
 begin_operator
@@ -6144,8 +4192,8 @@ unstack a2 d a
 4
 0 0 -1 0
 0 3 0 1
-0 11 0 1
-0 16 3 1
+0 10 0 1
+0 15 3 1
 0
 end_operator
 begin_operator
@@ -6154,8 +4202,8 @@ unstack a2 d b
 4
 0 1 -1 0
 0 3 0 1
-0 11 0 1
-0 16 4 1
+0 10 0 1
+0 15 4 1
 0
 end_operator
 begin_operator
@@ -6164,8 +4212,8 @@ unstack a2 d c
 4
 0 2 -1 0
 0 3 0 1
-0 11 0 1
-0 16 5 1
+0 10 0 1
+0 15 5 1
 0
 end_operator
 begin_operator
@@ -6174,8 +4222,8 @@ unstack a2 d e
 4
 0 3 0 1
 0 4 -1 0
-0 11 0 1
-0 16 6 1
+0 10 0 1
+0 15 6 1
 0
 end_operator
 begin_operator
@@ -6184,8 +4232,8 @@ unstack a2 d f
 4
 0 3 0 1
 0 5 -1 0
-0 11 0 1
-0 16 7 1
+0 10 0 1
+0 15 7 1
 0
 end_operator
 begin_operator
@@ -6194,8 +4242,8 @@ unstack a2 d g
 4
 0 3 0 1
 0 6 -1 0
-0 11 0 1
-0 16 8 1
+0 10 0 1
+0 15 8 1
 0
 end_operator
 begin_operator
@@ -6204,8 +4252,8 @@ unstack a2 d h
 4
 0 3 0 1
 0 7 -1 0
-0 11 0 1
-0 16 9 1
+0 10 0 1
+0 15 9 1
 0
 end_operator
 begin_operator
@@ -6214,8 +4262,8 @@ unstack a2 d i
 4
 0 3 0 1
 0 8 -1 0
-0 11 0 1
-0 16 10 1
+0 10 0 1
+0 15 10 1
 0
 end_operator
 begin_operator
@@ -6224,8 +4272,8 @@ unstack a2 e a
 4
 0 0 -1 0
 0 4 0 1
-0 11 0 1
-0 17 3 1
+0 10 0 1
+0 16 3 1
 0
 end_operator
 begin_operator
@@ -6234,8 +4282,8 @@ unstack a2 e b
 4
 0 1 -1 0
 0 4 0 1
-0 11 0 1
-0 17 4 1
+0 10 0 1
+0 16 4 1
 0
 end_operator
 begin_operator
@@ -6244,8 +4292,8 @@ unstack a2 e c
 4
 0 2 -1 0
 0 4 0 1
-0 11 0 1
-0 17 5 1
+0 10 0 1
+0 16 5 1
 0
 end_operator
 begin_operator
@@ -6254,8 +4302,8 @@ unstack a2 e d
 4
 0 3 -1 0
 0 4 0 1
-0 11 0 1
-0 17 6 1
+0 10 0 1
+0 16 6 1
 0
 end_operator
 begin_operator
@@ -6264,8 +4312,8 @@ unstack a2 e f
 4
 0 4 0 1
 0 5 -1 0
-0 11 0 1
-0 17 7 1
+0 10 0 1
+0 16 7 1
 0
 end_operator
 begin_operator
@@ -6274,8 +4322,8 @@ unstack a2 e g
 4
 0 4 0 1
 0 6 -1 0
-0 11 0 1
-0 17 8 1
+0 10 0 1
+0 16 8 1
 0
 end_operator
 begin_operator
@@ -6284,8 +4332,8 @@ unstack a2 e h
 4
 0 4 0 1
 0 7 -1 0
-0 11 0 1
-0 17 9 1
+0 10 0 1
+0 16 9 1
 0
 end_operator
 begin_operator
@@ -6294,8 +4342,8 @@ unstack a2 e i
 4
 0 4 0 1
 0 8 -1 0
-0 11 0 1
-0 17 10 1
+0 10 0 1
+0 16 10 1
 0
 end_operator
 begin_operator
@@ -6304,8 +4352,8 @@ unstack a2 f a
 4
 0 0 -1 0
 0 5 0 1
-0 11 0 1
-0 18 3 1
+0 10 0 1
+0 17 3 1
 0
 end_operator
 begin_operator
@@ -6314,8 +4362,8 @@ unstack a2 f b
 4
 0 1 -1 0
 0 5 0 1
-0 11 0 1
-0 18 4 1
+0 10 0 1
+0 17 4 1
 0
 end_operator
 begin_operator
@@ -6324,8 +4372,8 @@ unstack a2 f c
 4
 0 2 -1 0
 0 5 0 1
-0 11 0 1
-0 18 5 1
+0 10 0 1
+0 17 5 1
 0
 end_operator
 begin_operator
@@ -6334,8 +4382,8 @@ unstack a2 f d
 4
 0 3 -1 0
 0 5 0 1
-0 11 0 1
-0 18 6 1
+0 10 0 1
+0 17 6 1
 0
 end_operator
 begin_operator
@@ -6344,8 +4392,8 @@ unstack a2 f e
 4
 0 4 -1 0
 0 5 0 1
-0 11 0 1
-0 18 7 1
+0 10 0 1
+0 17 7 1
 0
 end_operator
 begin_operator
@@ -6354,8 +4402,8 @@ unstack a2 f g
 4
 0 5 0 1
 0 6 -1 0
-0 11 0 1
-0 18 8 1
+0 10 0 1
+0 17 8 1
 0
 end_operator
 begin_operator
@@ -6364,8 +4412,8 @@ unstack a2 f h
 4
 0 5 0 1
 0 7 -1 0
-0 11 0 1
-0 18 9 1
+0 10 0 1
+0 17 9 1
 0
 end_operator
 begin_operator
@@ -6374,8 +4422,8 @@ unstack a2 f i
 4
 0 5 0 1
 0 8 -1 0
-0 11 0 1
-0 18 10 1
+0 10 0 1
+0 17 10 1
 0
 end_operator
 begin_operator
@@ -6384,8 +4432,8 @@ unstack a2 g a
 4
 0 0 -1 0
 0 6 0 1
-0 11 0 1
-0 19 3 1
+0 10 0 1
+0 18 3 1
 0
 end_operator
 begin_operator
@@ -6394,8 +4442,8 @@ unstack a2 g b
 4
 0 1 -1 0
 0 6 0 1
-0 11 0 1
-0 19 4 1
+0 10 0 1
+0 18 4 1
 0
 end_operator
 begin_operator
@@ -6404,8 +4452,8 @@ unstack a2 g c
 4
 0 2 -1 0
 0 6 0 1
-0 11 0 1
-0 19 5 1
+0 10 0 1
+0 18 5 1
 0
 end_operator
 begin_operator
@@ -6414,8 +4462,8 @@ unstack a2 g d
 4
 0 3 -1 0
 0 6 0 1
-0 11 0 1
-0 19 6 1
+0 10 0 1
+0 18 6 1
 0
 end_operator
 begin_operator
@@ -6424,8 +4472,8 @@ unstack a2 g e
 4
 0 4 -1 0
 0 6 0 1
-0 11 0 1
-0 19 7 1
+0 10 0 1
+0 18 7 1
 0
 end_operator
 begin_operator
@@ -6434,8 +4482,8 @@ unstack a2 g f
 4
 0 5 -1 0
 0 6 0 1
-0 11 0 1
-0 19 8 1
+0 10 0 1
+0 18 8 1
 0
 end_operator
 begin_operator
@@ -6444,8 +4492,8 @@ unstack a2 g h
 4
 0 6 0 1
 0 7 -1 0
-0 11 0 1
-0 19 9 1
+0 10 0 1
+0 18 9 1
 0
 end_operator
 begin_operator
@@ -6454,8 +4502,8 @@ unstack a2 g i
 4
 0 6 0 1
 0 8 -1 0
-0 11 0 1
-0 19 10 1
+0 10 0 1
+0 18 10 1
 0
 end_operator
 begin_operator
@@ -6464,8 +4512,8 @@ unstack a2 h a
 4
 0 0 -1 0
 0 7 0 1
-0 11 0 1
-0 20 3 1
+0 10 0 1
+0 19 3 1
 0
 end_operator
 begin_operator
@@ -6474,8 +4522,8 @@ unstack a2 h b
 4
 0 1 -1 0
 0 7 0 1
-0 11 0 1
-0 20 4 1
+0 10 0 1
+0 19 4 1
 0
 end_operator
 begin_operator
@@ -6484,8 +4532,8 @@ unstack a2 h c
 4
 0 2 -1 0
 0 7 0 1
-0 11 0 1
-0 20 5 1
+0 10 0 1
+0 19 5 1
 0
 end_operator
 begin_operator
@@ -6494,8 +4542,8 @@ unstack a2 h d
 4
 0 3 -1 0
 0 7 0 1
-0 11 0 1
-0 20 6 1
+0 10 0 1
+0 19 6 1
 0
 end_operator
 begin_operator
@@ -6504,8 +4552,8 @@ unstack a2 h e
 4
 0 4 -1 0
 0 7 0 1
-0 11 0 1
-0 20 7 1
+0 10 0 1
+0 19 7 1
 0
 end_operator
 begin_operator
@@ -6514,8 +4562,8 @@ unstack a2 h f
 4
 0 5 -1 0
 0 7 0 1
-0 11 0 1
-0 20 8 1
+0 10 0 1
+0 19 8 1
 0
 end_operator
 begin_operator
@@ -6524,8 +4572,8 @@ unstack a2 h g
 4
 0 6 -1 0
 0 7 0 1
-0 11 0 1
-0 20 9 1
+0 10 0 1
+0 19 9 1
 0
 end_operator
 begin_operator
@@ -6534,8 +4582,8 @@ unstack a2 h i
 4
 0 7 0 1
 0 8 -1 0
-0 11 0 1
-0 20 10 1
+0 10 0 1
+0 19 10 1
 0
 end_operator
 begin_operator
@@ -6544,8 +4592,8 @@ unstack a2 i a
 4
 0 0 -1 0
 0 8 0 1
-0 11 0 1
-0 21 3 1
+0 10 0 1
+0 20 3 1
 0
 end_operator
 begin_operator
@@ -6554,8 +4602,8 @@ unstack a2 i b
 4
 0 1 -1 0
 0 8 0 1
-0 11 0 1
-0 21 4 1
+0 10 0 1
+0 20 4 1
 0
 end_operator
 begin_operator
@@ -6564,8 +4612,8 @@ unstack a2 i c
 4
 0 2 -1 0
 0 8 0 1
-0 11 0 1
-0 21 5 1
+0 10 0 1
+0 20 5 1
 0
 end_operator
 begin_operator
@@ -6574,8 +4622,8 @@ unstack a2 i d
 4
 0 3 -1 0
 0 8 0 1
-0 11 0 1
-0 21 6 1
+0 10 0 1
+0 20 6 1
 0
 end_operator
 begin_operator
@@ -6584,8 +4632,8 @@ unstack a2 i e
 4
 0 4 -1 0
 0 8 0 1
-0 11 0 1
-0 21 7 1
+0 10 0 1
+0 20 7 1
 0
 end_operator
 begin_operator
@@ -6594,8 +4642,8 @@ unstack a2 i f
 4
 0 5 -1 0
 0 8 0 1
-0 11 0 1
-0 21 8 1
+0 10 0 1
+0 20 8 1
 0
 end_operator
 begin_operator
@@ -6604,8 +4652,8 @@ unstack a2 i g
 4
 0 6 -1 0
 0 8 0 1
-0 11 0 1
-0 21 9 1
+0 10 0 1
+0 20 9 1
 0
 end_operator
 begin_operator
@@ -6614,8 +4662,8 @@ unstack a2 i h
 4
 0 7 -1 0
 0 8 0 1
-0 11 0 1
-0 21 10 1
+0 10 0 1
+0 20 10 1
 0
 end_operator
 begin_operator
@@ -6624,8 +4672,8 @@ unstack a3 a b
 4
 0 0 0 1
 0 1 -1 0
-0 12 0 1
-0 13 3 2
+0 11 0 1
+0 12 3 2
 0
 end_operator
 begin_operator
@@ -6634,8 +4682,8 @@ unstack a3 a c
 4
 0 0 0 1
 0 2 -1 0
-0 12 0 1
-0 13 4 2
+0 11 0 1
+0 12 4 2
 0
 end_operator
 begin_operator
@@ -6644,8 +4692,8 @@ unstack a3 a d
 4
 0 0 0 1
 0 3 -1 0
-0 12 0 1
-0 13 5 2
+0 11 0 1
+0 12 5 2
 0
 end_operator
 begin_operator
@@ -6654,8 +4702,8 @@ unstack a3 a e
 4
 0 0 0 1
 0 4 -1 0
-0 12 0 1
-0 13 6 2
+0 11 0 1
+0 12 6 2
 0
 end_operator
 begin_operator
@@ -6664,8 +4712,8 @@ unstack a3 a f
 4
 0 0 0 1
 0 5 -1 0
-0 12 0 1
-0 13 7 2
+0 11 0 1
+0 12 7 2
 0
 end_operator
 begin_operator
@@ -6674,8 +4722,8 @@ unstack a3 a g
 4
 0 0 0 1
 0 6 -1 0
-0 12 0 1
-0 13 8 2
+0 11 0 1
+0 12 8 2
 0
 end_operator
 begin_operator
@@ -6684,8 +4732,8 @@ unstack a3 a h
 4
 0 0 0 1
 0 7 -1 0
-0 12 0 1
-0 13 9 2
+0 11 0 1
+0 12 9 2
 0
 end_operator
 begin_operator
@@ -6694,8 +4742,8 @@ unstack a3 a i
 4
 0 0 0 1
 0 8 -1 0
-0 12 0 1
-0 13 10 2
+0 11 0 1
+0 12 10 2
 0
 end_operator
 begin_operator
@@ -6704,8 +4752,8 @@ unstack a3 b a
 4
 0 0 -1 0
 0 1 0 1
-0 12 0 1
-0 14 3 2
+0 11 0 1
+0 13 3 2
 0
 end_operator
 begin_operator
@@ -6714,8 +4762,8 @@ unstack a3 b c
 4
 0 1 0 1
 0 2 -1 0
-0 12 0 1
-0 14 4 2
+0 11 0 1
+0 13 4 2
 0
 end_operator
 begin_operator
@@ -6724,8 +4772,8 @@ unstack a3 b d
 4
 0 1 0 1
 0 3 -1 0
-0 12 0 1
-0 14 5 2
+0 11 0 1
+0 13 5 2
 0
 end_operator
 begin_operator
@@ -6734,8 +4782,8 @@ unstack a3 b e
 4
 0 1 0 1
 0 4 -1 0
-0 12 0 1
-0 14 6 2
+0 11 0 1
+0 13 6 2
 0
 end_operator
 begin_operator
@@ -6744,8 +4792,8 @@ unstack a3 b f
 4
 0 1 0 1
 0 5 -1 0
-0 12 0 1
-0 14 7 2
+0 11 0 1
+0 13 7 2
 0
 end_operator
 begin_operator
@@ -6754,8 +4802,8 @@ unstack a3 b g
 4
 0 1 0 1
 0 6 -1 0
-0 12 0 1
-0 14 8 2
+0 11 0 1
+0 13 8 2
 0
 end_operator
 begin_operator
@@ -6764,8 +4812,8 @@ unstack a3 b h
 4
 0 1 0 1
 0 7 -1 0
-0 12 0 1
-0 14 9 2
+0 11 0 1
+0 13 9 2
 0
 end_operator
 begin_operator
@@ -6774,8 +4822,8 @@ unstack a3 b i
 4
 0 1 0 1
 0 8 -1 0
-0 12 0 1
-0 14 10 2
+0 11 0 1
+0 13 10 2
 0
 end_operator
 begin_operator
@@ -6784,8 +4832,8 @@ unstack a3 c a
 4
 0 0 -1 0
 0 2 0 1
-0 12 0 1
-0 15 3 2
+0 11 0 1
+0 14 3 2
 0
 end_operator
 begin_operator
@@ -6794,8 +4842,8 @@ unstack a3 c b
 4
 0 1 -1 0
 0 2 0 1
-0 12 0 1
-0 15 4 2
+0 11 0 1
+0 14 4 2
 0
 end_operator
 begin_operator
@@ -6804,8 +4852,8 @@ unstack a3 c d
 4
 0 2 0 1
 0 3 -1 0
-0 12 0 1
-0 15 5 2
+0 11 0 1
+0 14 5 2
 0
 end_operator
 begin_operator
@@ -6814,8 +4862,8 @@ unstack a3 c e
 4
 0 2 0 1
 0 4 -1 0
-0 12 0 1
-0 15 6 2
+0 11 0 1
+0 14 6 2
 0
 end_operator
 begin_operator
@@ -6824,8 +4872,8 @@ unstack a3 c f
 4
 0 2 0 1
 0 5 -1 0
-0 12 0 1
-0 15 7 2
+0 11 0 1
+0 14 7 2
 0
 end_operator
 begin_operator
@@ -6834,8 +4882,8 @@ unstack a3 c g
 4
 0 2 0 1
 0 6 -1 0
-0 12 0 1
-0 15 8 2
+0 11 0 1
+0 14 8 2
 0
 end_operator
 begin_operator
@@ -6844,8 +4892,8 @@ unstack a3 c h
 4
 0 2 0 1
 0 7 -1 0
-0 12 0 1
-0 15 9 2
+0 11 0 1
+0 14 9 2
 0
 end_operator
 begin_operator
@@ -6854,8 +4902,8 @@ unstack a3 c i
 4
 0 2 0 1
 0 8 -1 0
-0 12 0 1
-0 15 10 2
+0 11 0 1
+0 14 10 2
 0
 end_operator
 begin_operator
@@ -6864,8 +4912,8 @@ unstack a3 d a
 4
 0 0 -1 0
 0 3 0 1
-0 12 0 1
-0 16 3 2
+0 11 0 1
+0 15 3 2
 0
 end_operator
 begin_operator
@@ -6874,8 +4922,8 @@ unstack a3 d b
 4
 0 1 -1 0
 0 3 0 1
-0 12 0 1
-0 16 4 2
+0 11 0 1
+0 15 4 2
 0
 end_operator
 begin_operator
@@ -6884,8 +4932,8 @@ unstack a3 d c
 4
 0 2 -1 0
 0 3 0 1
-0 12 0 1
-0 16 5 2
+0 11 0 1
+0 15 5 2
 0
 end_operator
 begin_operator
@@ -6894,8 +4942,8 @@ unstack a3 d e
 4
 0 3 0 1
 0 4 -1 0
-0 12 0 1
-0 16 6 2
+0 11 0 1
+0 15 6 2
 0
 end_operator
 begin_operator
@@ -6904,8 +4952,8 @@ unstack a3 d f
 4
 0 3 0 1
 0 5 -1 0
-0 12 0 1
-0 16 7 2
+0 11 0 1
+0 15 7 2
 0
 end_operator
 begin_operator
@@ -6914,8 +4962,8 @@ unstack a3 d g
 4
 0 3 0 1
 0 6 -1 0
-0 12 0 1
-0 16 8 2
+0 11 0 1
+0 15 8 2
 0
 end_operator
 begin_operator
@@ -6924,8 +4972,8 @@ unstack a3 d h
 4
 0 3 0 1
 0 7 -1 0
-0 12 0 1
-0 16 9 2
+0 11 0 1
+0 15 9 2
 0
 end_operator
 begin_operator
@@ -6934,8 +4982,8 @@ unstack a3 d i
 4
 0 3 0 1
 0 8 -1 0
-0 12 0 1
-0 16 10 2
+0 11 0 1
+0 15 10 2
 0
 end_operator
 begin_operator
@@ -6944,8 +4992,8 @@ unstack a3 e a
 4
 0 0 -1 0
 0 4 0 1
-0 12 0 1
-0 17 3 2
+0 11 0 1
+0 16 3 2
 0
 end_operator
 begin_operator
@@ -6954,8 +5002,8 @@ unstack a3 e b
 4
 0 1 -1 0
 0 4 0 1
-0 12 0 1
-0 17 4 2
+0 11 0 1
+0 16 4 2
 0
 end_operator
 begin_operator
@@ -6964,8 +5012,8 @@ unstack a3 e c
 4
 0 2 -1 0
 0 4 0 1
-0 12 0 1
-0 17 5 2
+0 11 0 1
+0 16 5 2
 0
 end_operator
 begin_operator
@@ -6974,8 +5022,8 @@ unstack a3 e d
 4
 0 3 -1 0
 0 4 0 1
-0 12 0 1
-0 17 6 2
+0 11 0 1
+0 16 6 2
 0
 end_operator
 begin_operator
@@ -6984,8 +5032,8 @@ unstack a3 e f
 4
 0 4 0 1
 0 5 -1 0
-0 12 0 1
-0 17 7 2
+0 11 0 1
+0 16 7 2
 0
 end_operator
 begin_operator
@@ -6994,8 +5042,8 @@ unstack a3 e g
 4
 0 4 0 1
 0 6 -1 0
-0 12 0 1
-0 17 8 2
+0 11 0 1
+0 16 8 2
 0
 end_operator
 begin_operator
@@ -7004,8 +5052,8 @@ unstack a3 e h
 4
 0 4 0 1
 0 7 -1 0
-0 12 0 1
-0 17 9 2
+0 11 0 1
+0 16 9 2
 0
 end_operator
 begin_operator
@@ -7014,8 +5062,8 @@ unstack a3 e i
 4
 0 4 0 1
 0 8 -1 0
-0 12 0 1
-0 17 10 2
+0 11 0 1
+0 16 10 2
 0
 end_operator
 begin_operator
@@ -7024,8 +5072,8 @@ unstack a3 f a
 4
 0 0 -1 0
 0 5 0 1
-0 12 0 1
-0 18 3 2
+0 11 0 1
+0 17 3 2
 0
 end_operator
 begin_operator
@@ -7034,8 +5082,8 @@ unstack a3 f b
 4
 0 1 -1 0
 0 5 0 1
-0 12 0 1
-0 18 4 2
+0 11 0 1
+0 17 4 2
 0
 end_operator
 begin_operator
@@ -7044,8 +5092,8 @@ unstack a3 f c
 4
 0 2 -1 0
 0 5 0 1
-0 12 0 1
-0 18 5 2
+0 11 0 1
+0 17 5 2
 0
 end_operator
 begin_operator
@@ -7054,8 +5102,8 @@ unstack a3 f d
 4
 0 3 -1 0
 0 5 0 1
-0 12 0 1
-0 18 6 2
+0 11 0 1
+0 17 6 2
 0
 end_operator
 begin_operator
@@ -7064,8 +5112,8 @@ unstack a3 f e
 4
 0 4 -1 0
 0 5 0 1
-0 12 0 1
-0 18 7 2
+0 11 0 1
+0 17 7 2
 0
 end_operator
 begin_operator
@@ -7074,8 +5122,8 @@ unstack a3 f g
 4
 0 5 0 1
 0 6 -1 0
-0 12 0 1
-0 18 8 2
+0 11 0 1
+0 17 8 2
 0
 end_operator
 begin_operator
@@ -7084,8 +5132,8 @@ unstack a3 f h
 4
 0 5 0 1
 0 7 -1 0
-0 12 0 1
-0 18 9 2
+0 11 0 1
+0 17 9 2
 0
 end_operator
 begin_operator
@@ -7094,8 +5142,8 @@ unstack a3 f i
 4
 0 5 0 1
 0 8 -1 0
-0 12 0 1
-0 18 10 2
+0 11 0 1
+0 17 10 2
 0
 end_operator
 begin_operator
@@ -7104,8 +5152,8 @@ unstack a3 g a
 4
 0 0 -1 0
 0 6 0 1
-0 12 0 1
-0 19 3 2
+0 11 0 1
+0 18 3 2
 0
 end_operator
 begin_operator
@@ -7114,8 +5162,8 @@ unstack a3 g b
 4
 0 1 -1 0
 0 6 0 1
-0 12 0 1
-0 19 4 2
+0 11 0 1
+0 18 4 2
 0
 end_operator
 begin_operator
@@ -7124,8 +5172,8 @@ unstack a3 g c
 4
 0 2 -1 0
 0 6 0 1
-0 12 0 1
-0 19 5 2
+0 11 0 1
+0 18 5 2
 0
 end_operator
 begin_operator
@@ -7134,8 +5182,8 @@ unstack a3 g d
 4
 0 3 -1 0
 0 6 0 1
-0 12 0 1
-0 19 6 2
+0 11 0 1
+0 18 6 2
 0
 end_operator
 begin_operator
@@ -7144,8 +5192,8 @@ unstack a3 g e
 4
 0 4 -1 0
 0 6 0 1
-0 12 0 1
-0 19 7 2
+0 11 0 1
+0 18 7 2
 0
 end_operator
 begin_operator
@@ -7154,8 +5202,8 @@ unstack a3 g f
 4
 0 5 -1 0
 0 6 0 1
-0 12 0 1
-0 19 8 2
+0 11 0 1
+0 18 8 2
 0
 end_operator
 begin_operator
@@ -7164,8 +5212,8 @@ unstack a3 g h
 4
 0 6 0 1
 0 7 -1 0
-0 12 0 1
-0 19 9 2
+0 11 0 1
+0 18 9 2
 0
 end_operator
 begin_operator
@@ -7174,8 +5222,8 @@ unstack a3 g i
 4
 0 6 0 1
 0 8 -1 0
-0 12 0 1
-0 19 10 2
+0 11 0 1
+0 18 10 2
 0
 end_operator
 begin_operator
@@ -7184,8 +5232,8 @@ unstack a3 h a
 4
 0 0 -1 0
 0 7 0 1
-0 12 0 1
-0 20 3 2
+0 11 0 1
+0 19 3 2
 0
 end_operator
 begin_operator
@@ -7194,8 +5242,8 @@ unstack a3 h b
 4
 0 1 -1 0
 0 7 0 1
-0 12 0 1
-0 20 4 2
+0 11 0 1
+0 19 4 2
 0
 end_operator
 begin_operator
@@ -7204,8 +5252,8 @@ unstack a3 h c
 4
 0 2 -1 0
 0 7 0 1
-0 12 0 1
-0 20 5 2
+0 11 0 1
+0 19 5 2
 0
 end_operator
 begin_operator
@@ -7214,8 +5262,8 @@ unstack a3 h d
 4
 0 3 -1 0
 0 7 0 1
-0 12 0 1
-0 20 6 2
+0 11 0 1
+0 19 6 2
 0
 end_operator
 begin_operator
@@ -7224,8 +5272,8 @@ unstack a3 h e
 4
 0 4 -1 0
 0 7 0 1
-0 12 0 1
-0 20 7 2
+0 11 0 1
+0 19 7 2
 0
 end_operator
 begin_operator
@@ -7234,8 +5282,8 @@ unstack a3 h f
 4
 0 5 -1 0
 0 7 0 1
-0 12 0 1
-0 20 8 2
+0 11 0 1
+0 19 8 2
 0
 end_operator
 begin_operator
@@ -7244,8 +5292,8 @@ unstack a3 h g
 4
 0 6 -1 0
 0 7 0 1
-0 12 0 1
-0 20 9 2
+0 11 0 1
+0 19 9 2
 0
 end_operator
 begin_operator
@@ -7254,8 +5302,8 @@ unstack a3 h i
 4
 0 7 0 1
 0 8 -1 0
-0 12 0 1
-0 20 10 2
+0 11 0 1
+0 19 10 2
 0
 end_operator
 begin_operator
@@ -7264,8 +5312,8 @@ unstack a3 i a
 4
 0 0 -1 0
 0 8 0 1
-0 12 0 1
-0 21 3 2
+0 11 0 1
+0 20 3 2
 0
 end_operator
 begin_operator
@@ -7274,8 +5322,8 @@ unstack a3 i b
 4
 0 1 -1 0
 0 8 0 1
-0 12 0 1
-0 21 4 2
+0 11 0 1
+0 20 4 2
 0
 end_operator
 begin_operator
@@ -7284,8 +5332,8 @@ unstack a3 i c
 4
 0 2 -1 0
 0 8 0 1
-0 12 0 1
-0 21 5 2
+0 11 0 1
+0 20 5 2
 0
 end_operator
 begin_operator
@@ -7294,8 +5342,8 @@ unstack a3 i d
 4
 0 3 -1 0
 0 8 0 1
-0 12 0 1
-0 21 6 2
+0 11 0 1
+0 20 6 2
 0
 end_operator
 begin_operator
@@ -7304,8 +5352,8 @@ unstack a3 i e
 4
 0 4 -1 0
 0 8 0 1
-0 12 0 1
-0 21 7 2
+0 11 0 1
+0 20 7 2
 0
 end_operator
 begin_operator
@@ -7314,8 +5362,8 @@ unstack a3 i f
 4
 0 5 -1 0
 0 8 0 1
-0 12 0 1
-0 21 8 2
+0 11 0 1
+0 20 8 2
 0
 end_operator
 begin_operator
@@ -7324,8 +5372,8 @@ unstack a3 i g
 4
 0 6 -1 0
 0 8 0 1
-0 12 0 1
-0 21 9 2
+0 11 0 1
+0 20 9 2
 0
 end_operator
 begin_operator
@@ -7334,8 +5382,8 @@ unstack a3 i h
 4
 0 7 -1 0
 0 8 0 1
-0 12 0 1
-0 21 10 2
+0 11 0 1
+0 20 10 2
 0
 end_operator
 0
