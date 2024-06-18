@@ -219,7 +219,7 @@ SearchEngine *OptionParser::parse_cmd_line(
             OptionParser p(argv[i], dry_run);
             engine = p.start_parsing<SearchEngine *>();
         }
-        else if (arg.compare("--safe_actions") == 0)
+        else if (arg.compare("--safe-actions") == 0)
         {
             ++i;
             string input_sage_actions = argv[i];

@@ -324,13 +324,11 @@ int main(int argc, const char **argv)
                             if(g_pruning){
                                 if(prune_check(res_node)){
                                     update_non_resilient_nodes(res_node);
-                                    if (!(*it)->is_safe())
-                                    {
-                                        std::set<Operator> post_actions = g_current_forbidden_ops;
-                                        post_actions.insert(*(*it)); // *it = pi_i
-                                        ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
-                                        update_non_resilient_nodes(res_node_f);
-                                    }
+                                    // if (!(*it)->is_safe()) need to verify if is not mandatory
+                                    std::set<Operator> post_actions = g_current_forbidden_ops;
+                                    post_actions.insert(*(*it)); // *it = pi_i
+                                    ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
+                                    update_non_resilient_nodes(res_node_f);
                                     prune = true;
                                     break;
                                 }
@@ -367,7 +365,6 @@ int main(int argc, const char **argv)
                         // g_safe_states.insert(std::make_pair(current_node.get_state().get_string_key(), std::make_pair(current_node.get_state(), plan)));
                         for (vector<const Operator *>::iterator it = plan.begin(); it != plan.end(); ++it)
                         {
-                            // cout << (*it)->get_name() << endl;
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
                             resilient_nodes.insert(std::make_pair(res_node.get_id(), res_node));
                             current = g_state_registry->get_successor_state(current, *(*it));
@@ -413,18 +410,18 @@ int main(int argc, const char **argv)
 
         g_mem_post_alg = mem_usage();
 
-        // if (g_dump_resilient_policy)
-        // {
-        //     ResilientPolicy res_policy = ResilientPolicy();
-        //     g_timer_extract_policy.resume();
-        //     res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
-        //     g_timer_extract_policy.stop();
-        //     print_resilient_policy_json(res_policy.get_policy());
-        //     g_mem_extraction = mem_usage();
-        // }
+        if (g_dump_resilient_policy)
+        {
+            ResilientPolicy res_policy = ResilientPolicy();
+            g_timer_extract_policy.resume();
+            res_policy.extract_policy(g_initial_state(), *(g_policy->get_items().front()->state), g_max_faults, resilient_nodes);
+            g_timer_extract_policy.stop();
+            print_resilient_policy_json(res_policy.get_policy());
+            g_mem_extraction = mem_usage();
+        }
 
-        // if (g_dump_resilient_nodes)
-        //     print_resilient_nodes(resilient_nodes);
+        if (g_dump_resilient_nodes)
+            print_resilient_nodes(resilient_nodes);
     }
     else
         cout << "\nInitial state is a deadend, problem is not " << g_max_faults << "-resilient!\n";
