@@ -53,8 +53,21 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
                 ResilientNode successor_node = ResilientNode(successor, node.get_k(), node.get_deactivated_op()); // <s[a], k, V>
                 PartialState successor_partial = (PartialState)successor;
 
-                if (node.get_k() >= 1)
-                {
+                if(node.get_k() == 0){
+                    if (resilient_nodes.find(successor_node.get_id()) != resilient_nodes.end() || goal.is_implied(successor_partial))
+                    {
+                        std::map<ResilientNode, Operator>::iterator it = policy.find(successor_node);
+                        if (!(it != policy.end()))
+                        {
+                            found = true;
+                            policy.insert(make_pair(node, *it_o));
+                            if (!goal.is_implied(successor_partial)){
+                                open.push_back(successor_node);
+                            }
+                            break;
+                        }
+                    }
+                }else{
                     std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
                     forbidden_plus_current.insert(*it_o);
                     ResilientNode current_without_action = ResilientNode(node.get_state(), node.get_k() - 1, forbidden_plus_current); // <s, k-1, V / a>
@@ -68,17 +81,7 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
                             open.push_back(successor_node);
                         break;
                     }
-                }
-                else
-                {
-                    if (resilient_nodes.find(successor_node.get_id()) != resilient_nodes.end() || goal.is_implied(successor_partial))
-                    {
-                        found = true;
-                        policy.insert(make_pair(node, *it_o));
-                        if (!goal.is_implied(successor_partial))
-                            open.push_back(successor_node);
-                        break;
-                    }
+
                 }
             }
         }
