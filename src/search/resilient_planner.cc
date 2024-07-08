@@ -113,11 +113,8 @@ void add_non_resilient_deadends(ResilientNode node);
 std::vector<PartialState> partial_state_to_goal(std::vector<const Operator *> plan);
 
 std::tr1::unordered_map<int, ResilientNode> resilient_nodes;
-// std::tr1::unordered_map<int, pair<PartialState, int> > resilient_partial_states;
 std::tr1::unordered_map<int, ResilientNode> non_resilient_nodes;
 std::stack<ResilientNode> open;
-// std::vector<std::vector<RelaxedProposition> > propositions;
-// std::vector<RelaxedOperator> relaxed_operators;
 
 int main(int argc, const char **argv)
 {
@@ -279,7 +276,6 @@ int main(int argc, const char **argv)
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
         ResilientNode current_node = open.top();
-        // cout << "dim open = " << open.size() << endl;
         open.pop();
         g_current_faults = current_node.get_k();
         g_current_forbidden_ops = current_node.get_deactivated_op();
@@ -308,7 +304,6 @@ int main(int argc, const char **argv)
                     update_non_resilient_nodes(current_node); // R downarrow
                 }
                 else{
-                    // cout << "PLAN" << endl;
                     g_successful_replan++;
                     if (g_verbose)
                         cout << "Successfull replanning" << endl;
@@ -326,7 +321,6 @@ int main(int argc, const char **argv)
                             if(g_pruning){
                                 if(prune_check(res_node)){
                                     update_non_resilient_nodes(res_node);
-                                    // if (!(*it)->is_safe()) need to verify if is not mandatory
                                     std::set<Operator> post_actions = g_current_forbidden_ops;
                                     post_actions.insert(*(*it)); // *it = pi_i
                                     ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
@@ -367,6 +361,7 @@ int main(int argc, const char **argv)
                         {
                             ResilientNode res_node = ResilientNode(current, 0, current_node.get_deactivated_op());
                             resilient_nodes.insert(std::make_pair(res_node.get_id(), res_node));
+                            relation_node_next_action[res_node.get_id()] = *(*it);
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
                         ResilientNode tau = ResilientNode(current, 0, current_node.get_deactivated_op());
@@ -405,7 +400,7 @@ int main(int argc, const char **argv)
             print_branches();
 
         g_timer_extraction.resume();
-        // print_plan(g_plan_to_file, extract_solution());
+        print_plan(g_plan_to_file, extract_solution());
         g_timer_extraction.stop();
 
         g_mem_post_alg = mem_usage();
@@ -555,10 +550,16 @@ bool resiliency_check(ResilientNode node)
 
         if(it_o->is_safe())
             if (resilient_nodes.find(successor_r.get_id()) != resilient_nodes.end())
+            {
+                relation_node_next_action[node.get_id()] = *it_o;
                 return true;
-
+            }
         if (resilient_nodes.find(successor_r.get_id()) != resilient_nodes.end() && resilient_nodes.find(current_r.get_id()) != resilient_nodes.end())
-            return true;
+            if (resilient_nodes.find(successor_r.get_id()) != resilient_nodes.end())
+            {
+                relation_node_next_action[node.get_id()] = *it_o;
+                return true;
+            }
     }
     return false;
 }

@@ -101,7 +101,7 @@ extern StateRegistry *g_state_registry;
 extern SuccessorGenerator *g_successor_generator_orig; // Renamed so the ops can be pruned based on deadends
 extern DeadendAwareSuccessorGenerator *g_successor_generator;
 
-
+extern std::map<int, Operator> relation_node_next_action;
 extern std::map<std::string, int> g_nondet_index_mapping; // Maps a non-deterministic action name to its id
 extern std::vector<std::vector<Operator *> *> g_nondet_mapping; // Maps a non-deterministic action id to a list of ground operators
 extern std::vector<std::vector<int> *> g_nondet_conditional_mask; // Maps a non-deterministic action id to the variables that must be defined when doing context-sensitive regression

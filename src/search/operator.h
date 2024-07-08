@@ -108,7 +108,7 @@ class Operator {
     mutable bool marked; // Used for short-term marking of preferred operators
 public:
     bool operator<(const Operator &x) const { return nondet_name < x.nondet_name; };
-
+    Operator();
     Operator(std::istream &in, bool is_axiom);
     void dump() const;
     std::string get_name() const {return name; }

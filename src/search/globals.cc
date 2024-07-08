@@ -508,6 +508,7 @@ vector<Operator> g_axioms;
 AxiomEvaluator *g_axiom_evaluator;
 vector<DomainTransitionGraph *> g_transition_graphs;
 CausalGraph *g_causal_graph;
+std::map<int, Operator> relation_node_next_action;
 
 SuccessorGenerator *g_successor_generator_orig; // Renamed so the ops can be pruned based on deadends
 DeadendAwareSuccessorGenerator *g_successor_generator;

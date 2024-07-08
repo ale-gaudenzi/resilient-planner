@@ -84,6 +84,7 @@ struct RegressionStep : PolicyItem {
     string get_name();
     Operator get_op();
     string get_op_name();
+    int get_distance();
 
     void dump() const;
     void dump_simple();

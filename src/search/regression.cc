@@ -45,6 +45,11 @@ void RegressionStep::dump_simple()
     }
 }
 
+int RegressionStep::get_distance()
+{
+    return distance;
+}
+
 string RegressionStep::get_name()
 {
     if (is_goal)

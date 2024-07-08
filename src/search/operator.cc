@@ -16,6 +16,13 @@ PrePost::PrePost(istream &in) {
         cond.push_back(Prevail(in));
     in >> var >> pre >> post;
 }
+Operator::Operator() {
+    marked = false;
+    nondet_index = -1;
+    is_an_axiom = false;
+    name = "dummy_action";
+    cost = -1;
+}
 
 Operator::Operator(istream &in, bool axiom) {
     marked = false;
