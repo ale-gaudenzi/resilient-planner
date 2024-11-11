@@ -557,7 +557,7 @@ bool g_final_fsap_free_round = false;          // Do a final JIC pass with deade
 bool g_seeded = false;                         // Only want to seed once
 int g_trial_depth = 1000;                      // Used to limit the number of simulation steps
 int g_num_trials = 1;                          // Number of trials that should be used for the simulation
-double g_jic_limit = 1800.0;                   // Limit for the just-in-case repairs
+double g_jic_limit = 5400.0;                   // Limit for the just-in-case repairs
 vector<pair<int, int> > g_goal_orig;
 Heuristic *g_heuristic_for_reachability;
 int g_dump_policy = 0;             // Whether or not we should dump the policy

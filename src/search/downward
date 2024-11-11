@@ -11,13 +11,13 @@ PLANNER="$BASEDIR/downward-release"
 shift 1
 
 echo "$PLANNER" \
-    --heuristic \""h=lmcut(cost_type=1)"\" \
+    --heuristic \""h=ff(cost_type=1)"\" \
     --search \""lazy_greedy(h, preferred=h)"\" \
     --random-seed $SEED \
     "$@" "<" output
 
 "$PLANNER" \
-    --heuristic "h=lmcut(cost_type=1)" \
+    --heuristic "h=ff(cost_type=1)" \
     --search "lazy_greedy([h], preferred=[h])" \
     --landmarks "l=lm_zg()"\
     --random-seed $SEED \

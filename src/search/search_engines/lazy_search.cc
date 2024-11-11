@@ -299,6 +299,7 @@ void LazySearch::generate_successors()
 {
     vector<const Operator *> operators;
     get_successor_operators(operators);
+
     search_progress.inc_generated(operators.size());
 
     for (int i = 0; i < operators.size(); i++)
@@ -364,7 +365,7 @@ int LazySearch::step()
     //     node.mark_as_dead_end();
     //     search_progress.inc_dead_ends();
     // }
-    if(g_pruning_during_planning){
+        if(g_pruning_during_planning){
         for (int i = 0; i < g_operators.size(); i++)
         {
             if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())

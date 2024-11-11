@@ -177,6 +177,7 @@ void DeadendAwareSuccessorGenerator::generate_applicable_ops(const StateInterfac
          * we retrieve the forbidden state-action pairs relative to the current (k,V) key of fault model
          * and add them to the deadends of the current search
          */
+
         if (g_non_resilient_deadends.find(std::make_pair(g_current_faults, g_current_forbidden_ops)) != g_non_resilient_deadends.end())
         {
             Policy *current_forbidden = g_non_resilient_deadends[std::make_pair(g_current_faults, g_current_forbidden_ops)];

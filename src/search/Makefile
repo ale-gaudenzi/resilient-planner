@@ -105,8 +105,9 @@ HEADERS += landmarks/exploration.h \
 #            learning/state_space_sample.h \
 #            learning/state_vars_feature_extractor.h \ is ambiguousC/C++(
 
-SHELL = /bin/bash
+SHELL = /bin/bash 
 CXXFLAGS= -std=c++11 
+CFLAGS += -std=c++11
 
 #SOURCES = planner.cc $(HEADERS:%.h=%.cc)
 SOURCES = resilient_planner.cc $(HEADERS:%.h=%.cc)
@@ -166,8 +167,10 @@ DEPEND = g++ -MM
 ## (POSTLINKOPT are options that appear *after* all object files.)
 
 CCOPT = -Iext
-CCOPT += -g
-CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
+CCOPT += -g 
+# CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
+CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic
+CCOPT += -std=c++11
 
 ## The following lines contain workarounds for bugs when
 ## cross-compiling to 64 bit on 32-bit systems using gcc 4.4 or gcc
