@@ -12,11 +12,13 @@
 	a1 - agent
 	a2 - agent
 	a3 - agent
+	a4 - agent
 )
 (:init
 	(handempty a1)
 	(handempty a2)
 	(handempty a3)
+	(handempty a4)
 	(clear c)
 	(clear f)
 	(clear h)

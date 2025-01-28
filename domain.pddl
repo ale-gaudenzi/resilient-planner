@@ -1,74 +1,97 @@
 (define (domain blocks)
-	(:requirements :typing)
-(:types
-	agent block - object
-)
 (:predicates
-	(on ?x - block ?y - block)
-	(ontable ?x - block)
-	(clear ?x - block)
-	(holding ?agent - agent ?x - block)
-	(handempty ?agent - agent)
+	(a)
+	(b)
+	(c)
 )
 
-(:action pick-up
-	:parameters (?a - agent ?x - block)
+(:action move_from_a_1
+	:parameters ()
 	:precondition (and
-		(clear ?x)
-		(ontable ?x)
-		(handempty ?a)
+		(a)
 	)
 	:effect (and
-		(not (ontable ?x))
-		(not (clear ?x))
-		(not (handempty ?a))
-		(holding ?a ?x)
+		(not (a))
+		(b)
 	)
 )
-
-
-(:action put-down
-	:parameters (?a - agent ?x - block)
-	:precondition 
-		(holding ?a ?x)
-	:effect (and
-		(not (holding ?a ?x))
-		(clear ?x)
-		(handempty ?a)
-		(ontable ?x)
-	)
-)
-
-
-(:action stack
-	:parameters (?a - agent ?x - block ?y - block)
+(:action move_from_a_2
+	:parameters ()
 	:precondition (and
-		(holding ?a ?x)
-		(clear ?y)
+		(a)
 	)
 	:effect (and
-		(not (holding ?a ?x))
-		(not (clear ?y))
-		(clear ?x)
-		(handempty ?a)
-		(on ?x ?y)
+		(not (a))
+		(b)
+	)
+)(:action move_from_a_3
+	:parameters ()
+	:precondition (and
+		(a)
+	)
+	:effect (and
+		(not (a))
+		(b)
 	)
 )
 
-
-(:action unstack
-	:parameters (?a - agent ?x - block ?y - block)
+(:action move_from_b_1
+	:parameters ()
 	:precondition (and
-		(on ?x ?y)
-		(clear ?x)
-		(handempty ?a)
+		(b)
 	)
 	:effect (and
-		(holding ?a ?x)
-		(clear ?y)
-		(not (clear ?x))
-		(not (handempty ?a))
-		(not (on ?x ?y))
+		(not (b))
+		(c)
+	)
+)
+(:action move_from_b_2
+	:parameters ()
+	:precondition (and
+		(b)
+	)
+	:effect (and
+		(not (b))
+		(c)
+	)
+)(:action move_from_b_3
+	:parameters ()
+	:precondition (and
+		(b)
+	)
+	:effect (and
+		(not (b))
+		(c)
+	)
+)
+(:action move_from_c_1
+	:parameters ()
+	:precondition (and
+		(c)
+	)
+	:effect (and
+		(not (c))
+		(g)
+	)
+)
+(:action move_from_c_2
+	:parameters ()
+	:precondition (and
+		(c)
+	)
+	:effect (and
+		(not (c))
+		(g)
+	)
+)
+(:action move_from_c_3
+	:parameters ()
+	:precondition (and
+		(c)
+	)
+	:effect (and
+		(not (c))
+		(g)
 	)
 )
 

@@ -156,10 +156,10 @@ extern int g_num_epochs; // Forced number of times to run the jic loop
 
 extern bool g_optimize_final_policy; // Only keep the final pairs and FSAPs that are needed
 extern bool g_record_relevant_pairs; // If true, used pairs will be kept
+extern PartialState goal_partial_state;
 
 extern bool g_debug; // Flag for debugging parts of the code
 extern int g_debug_count; // Index that allows to locate spots in the output
-
 extern bool g_safetybelt_optimized_scd; // Gradually disable the optimized SCD setting when it proves useless
 
 /* Timers */

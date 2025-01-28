@@ -49,6 +49,7 @@ HEADERS = \
           utilities.h \
           evaluators/weighted_evaluator.h \
           resilient_node.h \
+          resilient_node_formula.h \
 		  resilient_policy.h \
           open_lists/alternation_open_list.h \
           open_lists/open_list_buckets.h \
@@ -76,7 +77,7 @@ HEADERS += heuristics/blind_search_heuristic.h
 HEADERS += heuristics/cea_heuristic.h
 HEADERS += heuristics/ff_heuristic.h
 HEADERS += heuristics/goal_count_heuristic.h
-HEADERS += heuristics/hm_heuristic.h
+# HEADERS += heuristics/hm_heuristic.h
 HEADERS += heuristics/max_heuristic.h
 
 HEADERS += landmarks/exploration.h \
@@ -169,7 +170,7 @@ DEPEND = g++ -MM
 CCOPT = -Iext
 CCOPT += -g 
 # CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
-CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic
+CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -Wno-deprecated-copy -ansi -pedantic -Werror
 CCOPT += -std=c++11
 
 ## The following lines contain workarounds for bugs when

@@ -1,0 +1,3256 @@
+begin_version
+3
+end_version
+begin_metric
+0
+end_metric
+19
+begin_variable
+var10
+-1
+2
+Atom handempty(right)
+NegatedAtom handempty(right)
+end_variable
+begin_variable
+var12
+-1
+3
+Atom holding(right, shaker1)
+Atom holding(right_b, shaker1)
+Atom ontable(shaker1)
+end_variable
+begin_variable
+var13
+-1
+3
+Atom holding(right, shot1)
+Atom holding(right_b, shot1)
+Atom ontable(shot1)
+end_variable
+begin_variable
+var11
+-1
+2
+Atom handempty(right_b)
+NegatedAtom handempty(right_b)
+end_variable
+begin_variable
+var17
+-1
+2
+Atom used(shot1, ingredient3)
+NegatedAtom used(shot1, ingredient3)
+end_variable
+begin_variable
+var18
+-1
+2
+Atom used(shot1, ingredient4)
+NegatedAtom used(shot1, ingredient4)
+end_variable
+begin_variable
+var0
+-1
+2
+Atom clean(shaker1)
+NegatedAtom clean(shaker1)
+end_variable
+begin_variable
+var2
+-1
+2
+Atom contains(shaker1, cocktail1)
+NegatedAtom contains(shaker1, cocktail1)
+end_variable
+begin_variable
+var14
+-1
+2
+Atom shaked(shaker1)
+NegatedAtom shaked(shaker1)
+end_variable
+begin_variable
+var8
+-1
+2
+Atom empty(shaker1)
+NegatedAtom empty(shaker1)
+end_variable
+begin_variable
+var16
+-1
+2
+Atom unshaked(shaker1)
+NegatedAtom unshaked(shaker1)
+end_variable
+begin_variable
+var3
+-1
+2
+Atom contains(shaker1, ingredient3)
+NegatedAtom contains(shaker1, ingredient3)
+end_variable
+begin_variable
+var4
+-1
+2
+Atom contains(shaker1, ingredient4)
+NegatedAtom contains(shaker1, ingredient4)
+end_variable
+begin_variable
+var6
+-1
+2
+Atom contains(shot1, ingredient3)
+NegatedAtom contains(shot1, ingredient3)
+end_variable
+begin_variable
+var15
+-1
+3
+Atom shaker-level(shaker1, l0)
+Atom shaker-level(shaker1, l1)
+Atom shaker-level(shaker1, l2)
+end_variable
+begin_variable
+var7
+-1
+2
+Atom contains(shot1, ingredient4)
+NegatedAtom contains(shot1, ingredient4)
+end_variable
+begin_variable
+var9
+-1
+2
+Atom empty(shot1)
+NegatedAtom empty(shot1)
+end_variable
+begin_variable
+var1
+-1
+2
+Atom clean(shot1)
+NegatedAtom clean(shot1)
+end_variable
+begin_variable
+var5
+-1
+2
+Atom contains(shot1, cocktail1)
+NegatedAtom contains(shot1, cocktail1)
+end_variable
+2
+begin_mutex_group
+3
+0 0
+1 0
+2 0
+end_mutex_group
+begin_mutex_group
+3
+3 0
+1 1
+2 1
+end_mutex_group
+begin_state
+0
+2
+2
+0
+1
+1
+0
+1
+1
+0
+1
+1
+1
+1
+0
+1
+0
+0
+1
+end_state
+begin_goal
+1
+18 0
+end_goal
+92
+begin_operator
+clean-shaker right left shaker1
+2
+9 0
+1 0
+1
+0 6 -1 0
+0
+end_operator
+begin_operator
+clean-shaker right left_b shaker1
+2
+9 0
+1 0
+1
+0 6 -1 0
+0
+end_operator
+begin_operator
+clean-shaker right right_b shaker1
+3
+9 0
+3 0
+1 0
+1
+0 6 -1 0
+0
+end_operator
+begin_operator
+clean-shaker right_b left shaker1
+2
+9 0
+1 1
+1
+0 6 -1 0
+0
+end_operator
+begin_operator
+clean-shaker right_b left_b shaker1
+2
+9 0
+1 1
+1
+0 6 -1 0
+0
+end_operator
+begin_operator
+clean-shaker right_b right shaker1
+3
+9 0
+0 0
+1 1
+1
+0 6 -1 0
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient3 right left
+2
+16 0
+2 0
+2
+0 17 -1 0
+0 4 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient3 right left_b
+2
+16 0
+2 0
+2
+0 17 -1 0
+0 4 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient3 right right_b
+3
+16 0
+3 0
+2 0
+2
+0 17 -1 0
+0 4 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient3 right_b left
+2
+16 0
+2 1
+2
+0 17 -1 0
+0 4 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient3 right_b left_b
+2
+16 0
+2 1
+2
+0 17 -1 0
+0 4 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient3 right_b right
+3
+16 0
+0 0
+2 1
+2
+0 17 -1 0
+0 4 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient4 right left
+2
+16 0
+2 0
+2
+0 17 -1 0
+0 5 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient4 right left_b
+2
+16 0
+2 0
+2
+0 17 -1 0
+0 5 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient4 right right_b
+3
+16 0
+3 0
+2 0
+2
+0 17 -1 0
+0 5 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient4 right_b left
+2
+16 0
+2 1
+2
+0 17 -1 0
+0 5 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient4 right_b left_b
+2
+16 0
+2 1
+2
+0 17 -1 0
+0 5 0 1
+0
+end_operator
+begin_operator
+clean-shot shot1 ingredient4 right_b right
+3
+16 0
+0 0
+2 1
+2
+0 17 -1 0
+0 5 0 1
+0
+end_operator
+begin_operator
+empty-shaker right shaker1 cocktail1 l0 l0
+2
+1 0
+14 0
+3
+0 7 0 1
+0 9 -1 0
+0 8 0 1
+0
+end_operator
+begin_operator
+empty-shaker right shaker1 cocktail1 l1 l0
+1
+1 0
+4
+0 7 0 1
+0 9 -1 0
+0 8 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+empty-shaker right shaker1 cocktail1 l2 l0
+1
+1 0
+4
+0 7 0 1
+0 9 -1 0
+0 8 0 1
+0 14 2 0
+0
+end_operator
+begin_operator
+empty-shaker right_b shaker1 cocktail1 l0 l0
+2
+1 1
+14 0
+3
+0 7 0 1
+0 9 -1 0
+0 8 0 1
+0
+end_operator
+begin_operator
+empty-shaker right_b shaker1 cocktail1 l1 l0
+1
+1 1
+4
+0 7 0 1
+0 9 -1 0
+0 8 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+empty-shaker right_b shaker1 cocktail1 l2 l0
+1
+1 1
+4
+0 7 0 1
+0 9 -1 0
+0 8 0 1
+0 14 2 0
+0
+end_operator
+begin_operator
+empty-shot right shot1 cocktail1
+1
+2 0
+2
+0 18 0 1
+0 16 -1 0
+0
+end_operator
+begin_operator
+empty-shot right shot1 ingredient3
+1
+2 0
+2
+0 13 0 1
+0 16 -1 0
+0
+end_operator
+begin_operator
+empty-shot right shot1 ingredient4
+1
+2 0
+2
+0 15 0 1
+0 16 -1 0
+0
+end_operator
+begin_operator
+empty-shot right_b shot1 cocktail1
+1
+2 1
+2
+0 18 0 1
+0 16 -1 0
+0
+end_operator
+begin_operator
+empty-shot right_b shot1 ingredient3
+1
+2 1
+2
+0 13 0 1
+0 16 -1 0
+0
+end_operator
+begin_operator
+empty-shot right_b shot1 ingredient4
+1
+2 1
+2
+0 15 0 1
+0 16 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient3 right left dispenser3
+1
+2 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 4 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient3 right left_b dispenser3
+1
+2 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 4 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient3 right right_b dispenser3
+2
+3 0
+2 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 4 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient3 right_b left dispenser3
+1
+2 1
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 4 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient3 right_b left_b dispenser3
+1
+2 1
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 4 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient3 right_b right dispenser3
+2
+0 0
+2 1
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 4 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient4 right left dispenser4
+1
+2 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 5 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient4 right left_b dispenser4
+1
+2 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 5 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient4 right right_b dispenser4
+2
+3 0
+2 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 5 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient4 right_b left dispenser4
+1
+2 1
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 5 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient4 right_b left_b dispenser4
+1
+2 1
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 5 -1 0
+0
+end_operator
+begin_operator
+fill-shot shot1 ingredient4 right_b right dispenser4
+2
+0 0
+2 1
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 5 -1 0
+0
+end_operator
+begin_operator
+grasp right shaker1
+0
+2
+0 0 0 1
+0 1 2 0
+0
+end_operator
+begin_operator
+grasp right shot1
+0
+2
+0 0 0 1
+0 2 2 0
+0
+end_operator
+begin_operator
+grasp right_b shaker1
+0
+2
+0 3 0 1
+0 1 2 1
+0
+end_operator
+begin_operator
+grasp right_b shot1
+0
+2
+0 3 0 1
+0 2 2 1
+0
+end_operator
+begin_operator
+pour-shaker-to-shot cocktail1 shot1 right shaker1 l1 l0
+3
+7 0
+1 0
+8 0
+4
+0 17 0 1
+0 18 -1 0
+0 16 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+pour-shaker-to-shot cocktail1 shot1 right shaker1 l2 l1
+3
+7 0
+1 0
+8 0
+4
+0 17 0 1
+0 18 -1 0
+0 16 0 1
+0 14 2 1
+0
+end_operator
+begin_operator
+pour-shaker-to-shot cocktail1 shot1 right_b shaker1 l1 l0
+3
+7 0
+1 1
+8 0
+4
+0 17 0 1
+0 18 -1 0
+0 16 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+pour-shaker-to-shot cocktail1 shot1 right_b shaker1 l2 l1
+3
+7 0
+1 1
+8 0
+4
+0 17 0 1
+0 18 -1 0
+0 16 0 1
+0 14 2 1
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient3 shot1 right shaker1 l1 l0
+3
+11 0
+1 0
+8 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient3 shot1 right shaker1 l2 l1
+3
+11 0
+1 0
+8 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 14 2 1
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient3 shot1 right_b shaker1 l1 l0
+3
+11 0
+1 1
+8 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient3 shot1 right_b shaker1 l2 l1
+3
+11 0
+1 1
+8 0
+4
+0 17 0 1
+0 13 -1 0
+0 16 0 1
+0 14 2 1
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient4 shot1 right shaker1 l1 l0
+3
+12 0
+1 0
+8 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient4 shot1 right shaker1 l2 l1
+3
+12 0
+1 0
+8 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 14 2 1
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient4 shot1 right_b shaker1 l1 l0
+3
+12 0
+1 1
+8 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 14 1 0
+0
+end_operator
+begin_operator
+pour-shaker-to-shot ingredient4 shot1 right_b shaker1 l2 l1
+3
+12 0
+1 1
+8 0
+4
+0 17 0 1
+0 15 -1 0
+0 16 0 1
+0 14 2 1
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient3 shaker1 right l0 l1
+1
+2 0
+7
+0 6 0 1
+0 11 -1 0
+0 13 0 1
+0 9 0 1
+0 16 -1 0
+0 14 0 1
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient3 shaker1 right l1 l2
+1
+2 0
+7
+0 6 0 1
+0 11 -1 0
+0 13 0 1
+0 9 0 1
+0 16 -1 0
+0 14 1 2
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient3 shaker1 right_b l0 l1
+1
+2 1
+7
+0 6 0 1
+0 11 -1 0
+0 13 0 1
+0 9 0 1
+0 16 -1 0
+0 14 0 1
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient3 shaker1 right_b l1 l2
+1
+2 1
+7
+0 6 0 1
+0 11 -1 0
+0 13 0 1
+0 9 0 1
+0 16 -1 0
+0 14 1 2
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient4 shaker1 right l0 l1
+1
+2 0
+7
+0 6 0 1
+0 12 -1 0
+0 15 0 1
+0 9 0 1
+0 16 -1 0
+0 14 0 1
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient4 shaker1 right l1 l2
+1
+2 0
+7
+0 6 0 1
+0 12 -1 0
+0 15 0 1
+0 9 0 1
+0 16 -1 0
+0 14 1 2
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient4 shaker1 right_b l0 l1
+1
+2 1
+7
+0 6 0 1
+0 12 -1 0
+0 15 0 1
+0 9 0 1
+0 16 -1 0
+0 14 0 1
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-clean-shaker shot1 ingredient4 shaker1 right_b l1 l2
+1
+2 1
+7
+0 6 0 1
+0 12 -1 0
+0 15 0 1
+0 9 0 1
+0 16 -1 0
+0 14 1 2
+0 10 -1 0
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient3 shaker1 right l0 l1
+2
+2 0
+10 0
+4
+0 11 -1 0
+0 13 0 1
+0 16 -1 0
+0 14 0 1
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient3 shaker1 right l1 l2
+2
+2 0
+10 0
+4
+0 11 -1 0
+0 13 0 1
+0 16 -1 0
+0 14 1 2
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient3 shaker1 right_b l0 l1
+2
+2 1
+10 0
+4
+0 11 -1 0
+0 13 0 1
+0 16 -1 0
+0 14 0 1
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient3 shaker1 right_b l1 l2
+2
+2 1
+10 0
+4
+0 11 -1 0
+0 13 0 1
+0 16 -1 0
+0 14 1 2
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient4 shaker1 right l0 l1
+2
+2 0
+10 0
+4
+0 12 -1 0
+0 15 0 1
+0 16 -1 0
+0 14 0 1
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient4 shaker1 right l1 l2
+2
+2 0
+10 0
+4
+0 12 -1 0
+0 15 0 1
+0 16 -1 0
+0 14 1 2
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient4 shaker1 right_b l0 l1
+2
+2 1
+10 0
+4
+0 12 -1 0
+0 15 0 1
+0 16 -1 0
+0 14 0 1
+0
+end_operator
+begin_operator
+pour-shot-to-used-shaker shot1 ingredient4 shaker1 right_b l1 l2
+2
+2 1
+10 0
+4
+0 12 -1 0
+0 15 0 1
+0 16 -1 0
+0 14 1 2
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient3 right left dispenser3
+2
+2 0
+4 0
+2
+0 13 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient3 right left_b dispenser3
+2
+2 0
+4 0
+2
+0 13 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient3 right right_b dispenser3
+3
+3 0
+2 0
+4 0
+2
+0 13 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient3 right_b left dispenser3
+2
+2 1
+4 0
+2
+0 13 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient3 right_b left_b dispenser3
+2
+2 1
+4 0
+2
+0 13 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient3 right_b right dispenser3
+3
+0 0
+2 1
+4 0
+2
+0 13 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient4 right left dispenser4
+2
+2 0
+5 0
+2
+0 15 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient4 right left_b dispenser4
+2
+2 0
+5 0
+2
+0 15 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient4 right right_b dispenser4
+3
+3 0
+2 0
+5 0
+2
+0 15 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient4 right_b left dispenser4
+2
+2 1
+5 0
+2
+0 15 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient4 right_b left_b dispenser4
+2
+2 1
+5 0
+2
+0 15 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+refill-shot shot1 ingredient4 right_b right dispenser4
+3
+0 0
+2 1
+5 0
+2
+0 15 -1 0
+0 16 0 1
+0
+end_operator
+begin_operator
+shake cocktail1 ingredient3 ingredient4 shaker1 right left
+1
+1 0
+5
+0 7 -1 0
+0 11 0 1
+0 12 0 1
+0 8 -1 0
+0 10 0 1
+0
+end_operator
+begin_operator
+shake cocktail1 ingredient3 ingredient4 shaker1 right left_b
+1
+1 0
+5
+0 7 -1 0
+0 11 0 1
+0 12 0 1
+0 8 -1 0
+0 10 0 1
+0
+end_operator
+begin_operator
+shake cocktail1 ingredient3 ingredient4 shaker1 right right_b
+2
+3 0
+1 0
+5
+0 7 -1 0
+0 11 0 1
+0 12 0 1
+0 8 -1 0
+0 10 0 1
+0
+end_operator
+begin_operator
+shake cocktail1 ingredient3 ingredient4 shaker1 right_b left
+1
+1 1
+5
+0 7 -1 0
+0 11 0 1
+0 12 0 1
+0 8 -1 0
+0 10 0 1
+0
+end_operator
+begin_operator
+shake cocktail1 ingredient3 ingredient4 shaker1 right_b left_b
+1
+1 1
+5
+0 7 -1 0
+0 11 0 1
+0 12 0 1
+0 8 -1 0
+0 10 0 1
+0
+end_operator
+begin_operator
+shake cocktail1 ingredient3 ingredient4 shaker1 right_b right
+2
+0 0
+1 1
+5
+0 7 -1 0
+0 11 0 1
+0 12 0 1
+0 8 -1 0
+0 10 0 1
+0
+end_operator
+0
+begin_SG
+switch 6
+check 0
+switch 13
+check 0
+switch 9
+check 0
+switch 2
+check 0
+switch 14
+check 0
+check 1
+58
+check 1
+59
+check 0
+check 0
+switch 14
+check 0
+check 1
+60
+check 1
+61
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 15
+check 0
+switch 9
+check 0
+switch 2
+check 0
+switch 14
+check 0
+check 1
+62
+check 1
+63
+check 0
+check 0
+switch 14
+check 0
+check 1
+64
+check 1
+65
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 17
+check 0
+switch 7
+check 0
+switch 16
+check 0
+switch 1
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 0
+check 1
+46
+check 1
+47
+check 0
+check 0
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 0
+check 1
+48
+check 1
+49
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 11
+check 0
+switch 16
+check 0
+switch 1
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 0
+check 1
+50
+check 1
+51
+check 0
+check 0
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 0
+check 1
+52
+check 1
+53
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 12
+check 0
+switch 16
+check 0
+switch 1
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 0
+check 1
+54
+check 1
+55
+check 0
+check 0
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 0
+check 1
+56
+check 1
+57
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 16
+check 0
+switch 0
+check 0
+switch 2
+check 0
+check 0
+check 2
+35
+41
+check 0
+check 0
+check 0
+switch 3
+check 0
+switch 2
+check 0
+check 2
+32
+38
+check 0
+check 0
+check 0
+check 0
+switch 2
+check 0
+check 4
+30
+31
+36
+37
+check 4
+33
+34
+39
+40
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 7
+check 0
+switch 1
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 1
+18
+check 1
+19
+check 1
+20
+check 0
+check 0
+check 0
+switch 8
+check 0
+switch 14
+check 0
+check 1
+21
+check 1
+22
+check 1
+23
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 11
+check 0
+switch 12
+check 0
+switch 0
+check 0
+switch 1
+check 0
+check 0
+switch 10
+check 0
+check 1
+91
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 3
+check 0
+switch 1
+check 0
+switch 10
+check 0
+check 1
+88
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 1
+check 0
+switch 10
+check 0
+check 2
+86
+87
+check 0
+check 0
+switch 10
+check 0
+check 2
+89
+90
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 18
+check 0
+switch 2
+check 0
+check 1
+24
+check 1
+27
+check 0
+check 0
+check 0
+switch 13
+check 0
+switch 2
+check 0
+switch 8
+check 1
+25
+check 0
+check 0
+switch 14
+check 0
+switch 10
+check 0
+check 1
+66
+check 0
+check 0
+switch 10
+check 0
+check 1
+67
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 1
+28
+check 0
+check 0
+switch 14
+check 0
+switch 10
+check 0
+check 1
+68
+check 0
+check 0
+switch 10
+check 0
+check 1
+69
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 15
+check 0
+switch 2
+check 0
+switch 8
+check 1
+26
+check 0
+check 0
+switch 14
+check 0
+switch 10
+check 0
+check 1
+70
+check 0
+check 0
+switch 10
+check 0
+check 1
+71
+check 0
+check 0
+check 0
+check 0
+switch 8
+check 1
+29
+check 0
+check 0
+switch 14
+check 0
+switch 10
+check 0
+check 1
+72
+check 0
+check 0
+switch 10
+check 0
+check 1
+73
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 9
+check 0
+switch 0
+check 0
+switch 1
+check 0
+check 0
+check 1
+5
+check 0
+check 0
+check 0
+switch 3
+check 0
+switch 1
+check 0
+check 1
+2
+check 0
+check 0
+check 0
+check 0
+switch 1
+check 0
+check 2
+0
+1
+check 2
+3
+4
+check 0
+check 0
+check 0
+switch 16
+check 0
+switch 0
+check 0
+switch 2
+check 0
+check 0
+switch 4
+check 0
+check 2
+11
+79
+check 0
+switch 5
+check 0
+check 2
+17
+85
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 3
+check 0
+switch 2
+check 0
+switch 4
+check 0
+check 2
+8
+76
+check 0
+switch 5
+check 0
+check 2
+14
+82
+check 0
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 2
+check 0
+switch 4
+check 0
+check 4
+6
+7
+74
+75
+check 0
+switch 5
+check 0
+check 4
+12
+13
+80
+81
+check 0
+check 0
+switch 4
+check 0
+check 4
+9
+10
+77
+78
+check 0
+switch 5
+check 0
+check 4
+15
+16
+83
+84
+check 0
+check 0
+check 0
+check 0
+check 0
+switch 0
+check 0
+switch 1
+check 0
+check 0
+check 0
+check 1
+42
+switch 2
+check 0
+check 0
+check 0
+check 1
+43
+check 0
+check 0
+switch 3
+check 0
+switch 1
+check 0
+check 0
+check 0
+check 1
+44
+switch 2
+check 0
+check 0
+check 0
+check 1
+45
+check 0
+check 0
+check 0
+end_SG
+begin_DTG
+2
+1
+42
+1
+1 2
+1
+43
+1
+2 2
+0
+end_DTG
+begin_DTG
+0
+0
+2
+0
+42
+1
+0 0
+1
+44
+1
+3 0
+end_DTG
+begin_DTG
+0
+0
+2
+0
+43
+1
+0 0
+1
+45
+1
+3 0
+end_DTG
+begin_DTG
+2
+1
+44
+1
+1 2
+1
+45
+1
+2 2
+0
+end_DTG
+begin_DTG
+2
+1
+6
+2
+16 0
+2 0
+1
+9
+2
+16 0
+2 1
+2
+0
+30
+3
+17 0
+16 0
+2 0
+0
+33
+3
+17 0
+16 0
+2 1
+end_DTG
+begin_DTG
+2
+1
+12
+2
+16 0
+2 0
+1
+15
+2
+16 0
+2 1
+2
+0
+36
+3
+17 0
+16 0
+2 0
+0
+39
+3
+17 0
+16 0
+2 1
+end_DTG
+begin_DTG
+8
+1
+58
+4
+13 0
+9 0
+2 0
+14 0
+1
+59
+4
+13 0
+9 0
+2 0
+14 1
+1
+60
+4
+13 0
+9 0
+2 1
+14 0
+1
+61
+4
+13 0
+9 0
+2 1
+14 1
+1
+62
+4
+15 0
+9 0
+2 0
+14 0
+1
+63
+4
+15 0
+9 0
+2 0
+14 1
+1
+64
+4
+15 0
+9 0
+2 1
+14 0
+1
+65
+4
+15 0
+9 0
+2 1
+14 1
+2
+0
+0
+2
+9 0
+1 0
+0
+3
+2
+9 0
+1 1
+end_DTG
+begin_DTG
+6
+1
+18
+3
+1 0
+8 0
+14 0
+1
+19
+3
+1 0
+8 0
+14 1
+1
+20
+3
+1 0
+8 0
+14 2
+1
+21
+3
+1 1
+8 0
+14 0
+1
+22
+3
+1 1
+8 0
+14 1
+1
+23
+3
+1 1
+8 0
+14 2
+2
+0
+86
+4
+11 0
+12 0
+1 0
+10 0
+0
+89
+4
+11 0
+12 0
+1 1
+10 0
+end_DTG
+begin_DTG
+6
+1
+18
+3
+7 0
+1 0
+14 0
+1
+19
+3
+7 0
+1 0
+14 1
+1
+20
+3
+7 0
+1 0
+14 2
+1
+21
+3
+7 0
+1 1
+14 0
+1
+22
+3
+7 0
+1 1
+14 1
+1
+23
+3
+7 0
+1 1
+14 2
+2
+0
+86
+4
+11 0
+12 0
+1 0
+10 0
+0
+89
+4
+11 0
+12 0
+1 1
+10 0
+end_DTG
+begin_DTG
+8
+1
+58
+4
+6 0
+13 0
+2 0
+14 0
+1
+59
+4
+6 0
+13 0
+2 0
+14 1
+1
+60
+4
+6 0
+13 0
+2 1
+14 0
+1
+61
+4
+6 0
+13 0
+2 1
+14 1
+1
+62
+4
+6 0
+15 0
+2 0
+14 0
+1
+63
+4
+6 0
+15 0
+2 0
+14 1
+1
+64
+4
+6 0
+15 0
+2 1
+14 0
+1
+65
+4
+6 0
+15 0
+2 1
+14 1
+6
+0
+18
+4
+7 0
+1 0
+8 0
+14 0
+0
+19
+4
+7 0
+1 0
+8 0
+14 1
+0
+20
+4
+7 0
+1 0
+8 0
+14 2
+0
+21
+4
+7 0
+1 1
+8 0
+14 0
+0
+22
+4
+7 0
+1 1
+8 0
+14 1
+0
+23
+4
+7 0
+1 1
+8 0
+14 2
+end_DTG
+begin_DTG
+2
+1
+86
+3
+11 0
+12 0
+1 0
+1
+89
+3
+11 0
+12 0
+1 1
+8
+0
+58
+5
+6 0
+13 0
+9 0
+2 0
+14 0
+0
+59
+5
+6 0
+13 0
+9 0
+2 0
+14 1
+0
+60
+5
+6 0
+13 0
+9 0
+2 1
+14 0
+0
+61
+5
+6 0
+13 0
+9 0
+2 1
+14 1
+0
+62
+5
+6 0
+15 0
+9 0
+2 0
+14 0
+0
+63
+5
+6 0
+15 0
+9 0
+2 0
+14 1
+0
+64
+5
+6 0
+15 0
+9 0
+2 1
+14 0
+0
+65
+5
+6 0
+15 0
+9 0
+2 1
+14 1
+end_DTG
+begin_DTG
+2
+1
+86
+3
+12 0
+1 0
+10 0
+1
+89
+3
+12 0
+1 1
+10 0
+8
+0
+66
+4
+13 0
+2 0
+14 0
+10 0
+0
+67
+4
+13 0
+2 0
+14 1
+10 0
+0
+68
+4
+13 0
+2 1
+14 0
+10 0
+0
+69
+4
+13 0
+2 1
+14 1
+10 0
+0
+58
+5
+6 0
+13 0
+9 0
+2 0
+14 0
+0
+59
+5
+6 0
+13 0
+9 0
+2 0
+14 1
+0
+60
+5
+6 0
+13 0
+9 0
+2 1
+14 0
+0
+61
+5
+6 0
+13 0
+9 0
+2 1
+14 1
+end_DTG
+begin_DTG
+2
+1
+86
+3
+11 0
+1 0
+10 0
+1
+89
+3
+11 0
+1 1
+10 0
+8
+0
+70
+4
+15 0
+2 0
+14 0
+10 0
+0
+71
+4
+15 0
+2 0
+14 1
+10 0
+0
+72
+4
+15 0
+2 1
+14 0
+10 0
+0
+73
+4
+15 0
+2 1
+14 1
+10 0
+0
+62
+5
+6 0
+15 0
+9 0
+2 0
+14 0
+0
+63
+5
+6 0
+15 0
+9 0
+2 0
+14 1
+0
+64
+5
+6 0
+15 0
+9 0
+2 1
+14 0
+0
+65
+5
+6 0
+15 0
+9 0
+2 1
+14 1
+end_DTG
+begin_DTG
+2
+1
+25
+1
+2 0
+1
+28
+1
+2 1
+8
+0
+30
+3
+17 0
+16 0
+2 0
+0
+33
+3
+17 0
+16 0
+2 1
+0
+74
+3
+16 0
+2 0
+4 0
+0
+77
+3
+16 0
+2 1
+4 0
+0
+50
+6
+17 0
+11 0
+16 0
+1 0
+8 0
+14 1
+0
+51
+6
+17 0
+11 0
+16 0
+1 0
+8 0
+14 2
+0
+52
+6
+17 0
+11 0
+16 0
+1 1
+8 0
+14 1
+0
+53
+6
+17 0
+11 0
+16 0
+1 1
+8 0
+14 2
+end_DTG
+begin_DTG
+8
+1
+66
+3
+13 0
+2 0
+10 0
+1
+68
+3
+13 0
+2 1
+10 0
+1
+70
+3
+15 0
+2 0
+10 0
+1
+72
+3
+15 0
+2 1
+10 0
+1
+58
+4
+6 0
+13 0
+9 0
+2 0
+1
+60
+4
+6 0
+13 0
+9 0
+2 1
+1
+62
+4
+6 0
+15 0
+9 0
+2 0
+1
+64
+4
+6 0
+15 0
+9 0
+2 1
+14
+0
+19
+3
+7 0
+1 0
+8 0
+0
+22
+3
+7 0
+1 1
+8 0
+0
+50
+5
+17 0
+11 0
+16 0
+1 0
+8 0
+0
+52
+5
+17 0
+11 0
+16 0
+1 1
+8 0
+0
+54
+5
+17 0
+12 0
+16 0
+1 0
+8 0
+0
+56
+5
+17 0
+12 0
+16 0
+1 1
+8 0
+2
+67
+3
+13 0
+2 0
+10 0
+2
+69
+3
+13 0
+2 1
+10 0
+2
+71
+3
+15 0
+2 0
+10 0
+2
+73
+3
+15 0
+2 1
+10 0
+2
+59
+4
+6 0
+13 0
+9 0
+2 0
+2
+61
+4
+6 0
+13 0
+9 0
+2 1
+2
+63
+4
+6 0
+15 0
+9 0
+2 0
+2
+65
+4
+6 0
+15 0
+9 0
+2 1
+8
+0
+20
+3
+7 0
+1 0
+8 0
+0
+23
+3
+7 0
+1 1
+8 0
+1
+47
+5
+17 0
+7 0
+16 0
+1 0
+8 0
+1
+49
+5
+17 0
+7 0
+16 0
+1 1
+8 0
+1
+51
+5
+17 0
+11 0
+16 0
+1 0
+8 0
+1
+53
+5
+17 0
+11 0
+16 0
+1 1
+8 0
+1
+55
+5
+17 0
+12 0
+16 0
+1 0
+8 0
+1
+57
+5
+17 0
+12 0
+16 0
+1 1
+8 0
+end_DTG
+begin_DTG
+2
+1
+26
+1
+2 0
+1
+29
+1
+2 1
+8
+0
+36
+3
+17 0
+16 0
+2 0
+0
+39
+3
+17 0
+16 0
+2 1
+0
+80
+3
+16 0
+2 0
+5 0
+0
+83
+3
+16 0
+2 1
+5 0
+0
+54
+6
+17 0
+12 0
+16 0
+1 0
+8 0
+14 1
+0
+55
+6
+17 0
+12 0
+16 0
+1 0
+8 0
+14 2
+0
+56
+6
+17 0
+12 0
+16 0
+1 1
+8 0
+14 1
+0
+57
+6
+17 0
+12 0
+16 0
+1 1
+8 0
+14 2
+end_DTG
+begin_DTG
+18
+1
+40
+2
+17 0
+2 1
+1
+74
+2
+2 0
+4 0
+1
+77
+2
+2 1
+4 0
+1
+80
+2
+2 0
+5 0
+1
+83
+2
+2 1
+5 0
+1
+37
+2
+17 0
+2 0
+1
+54
+5
+17 0
+12 0
+1 0
+8 0
+14 1
+1
+55
+5
+17 0
+12 0
+1 0
+8 0
+14 2
+1
+56
+5
+17 0
+12 0
+1 1
+8 0
+14 1
+1
+57
+5
+17 0
+12 0
+1 1
+8 0
+14 2
+1
+53
+5
+17 0
+11 0
+1 1
+8 0
+14 2
+1
+52
+5
+17 0
+11 0
+1 1
+8 0
+14 1
+1
+51
+5
+17 0
+11 0
+1 0
+8 0
+14 2
+1
+50
+5
+17 0
+11 0
+1 0
+8 0
+14 1
+1
+49
+5
+17 0
+7 0
+1 1
+8 0
+14 2
+1
+48
+5
+17 0
+7 0
+1 1
+8 0
+14 1
+1
+47
+5
+17 0
+7 0
+1 0
+8 0
+14 2
+1
+46
+5
+17 0
+7 0
+1 0
+8 0
+14 1
+6
+0
+25
+2
+13 0
+2 0
+0
+26
+2
+15 0
+2 0
+0
+27
+2
+18 0
+2 1
+0
+28
+2
+13 0
+2 1
+0
+29
+2
+15 0
+2 1
+0
+24
+2
+18 0
+2 0
+end_DTG
+begin_DTG
+14
+1
+31
+2
+16 0
+2 0
+1
+40
+2
+16 0
+2 1
+1
+57
+5
+12 0
+16 0
+1 1
+8 0
+14 2
+1
+56
+5
+12 0
+16 0
+1 1
+8 0
+14 1
+1
+55
+5
+12 0
+16 0
+1 0
+8 0
+14 2
+1
+54
+5
+12 0
+16 0
+1 0
+8 0
+14 1
+1
+53
+5
+11 0
+16 0
+1 1
+8 0
+14 2
+1
+52
+5
+11 0
+16 0
+1 1
+8 0
+14 1
+1
+51
+5
+11 0
+16 0
+1 0
+8 0
+14 2
+1
+50
+5
+11 0
+16 0
+1 0
+8 0
+14 1
+1
+49
+5
+7 0
+16 0
+1 1
+8 0
+14 2
+1
+48
+5
+7 0
+16 0
+1 1
+8 0
+14 1
+1
+47
+5
+7 0
+16 0
+1 0
+8 0
+14 2
+1
+46
+5
+7 0
+16 0
+1 0
+8 0
+14 1
+4
+0
+6
+3
+16 0
+2 0
+4 0
+0
+9
+3
+16 0
+2 1
+4 0
+0
+12
+3
+16 0
+2 0
+5 0
+0
+15
+3
+16 0
+2 1
+5 0
+end_DTG
+begin_DTG
+2
+1
+24
+1
+2 0
+1
+27
+1
+2 1
+4
+0
+46
+6
+17 0
+7 0
+16 0
+1 0
+8 0
+14 1
+0
+47
+6
+17 0
+7 0
+16 0
+1 0
+8 0
+14 2
+0
+48
+6
+17 0
+7 0
+16 0
+1 1
+8 0
+14 1
+0
+49
+6
+17 0
+7 0
+16 0
+1 1
+8 0
+14 2
+end_DTG
+begin_CG
+14
+6 1
+17 4
+7 1
+11 1
+12 1
+13 2
+15 2
+16 4
+1 1
+2 1
+8 1
+10 1
+4 2
+5 2
+15
+6 6
+17 12
+7 12
+11 6
+12 6
+18 4
+13 4
+15 4
+9 6
+16 12
+0 1
+3 1
+8 12
+14 16
+10 6
+15
+6 8
+17 24
+11 8
+12 8
+18 2
+13 22
+15 22
+9 8
+16 46
+0 1
+3 1
+14 16
+10 8
+4 12
+5 12
+14
+6 1
+17 4
+7 1
+11 1
+12 1
+13 2
+15 2
+16 4
+1 1
+2 1
+8 1
+10 1
+4 2
+5 2
+3
+17 6
+13 6
+16 6
+3
+17 6
+15 6
+16 6
+8
+11 4
+12 4
+13 4
+15 4
+9 8
+16 8
+14 8
+10 8
+6
+17 4
+18 4
+9 6
+16 4
+8 6
+14 8
+8
+17 12
+7 6
+18 4
+13 4
+15 4
+9 6
+16 12
+14 16
+8
+6 14
+11 4
+12 4
+13 4
+15 4
+16 8
+14 8
+10 8
+8
+7 6
+11 10
+12 10
+13 4
+15 4
+16 8
+8 6
+14 8
+8
+17 4
+7 6
+12 6
+13 4
+16 4
+8 6
+14 4
+10 6
+8
+17 4
+7 6
+11 6
+15 4
+16 4
+8 6
+14 4
+10 6
+6
+6 4
+11 8
+9 4
+16 10
+14 8
+10 4
+12
+6 8
+17 12
+7 6
+11 8
+12 8
+18 4
+13 12
+15 12
+9 14
+16 28
+8 6
+10 8
+6
+6 4
+12 8
+9 4
+16 10
+14 8
+10 4
+7
+17 36
+18 4
+13 16
+15 16
+14 12
+4 12
+5 12
+7
+18 4
+13 10
+15 10
+16 24
+14 12
+4 6
+5 6
+1
+16 2
+end_CG

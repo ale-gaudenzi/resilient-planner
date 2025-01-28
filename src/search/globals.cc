@@ -19,6 +19,7 @@
 #include "option_parser_util.h"
 
 #include "resilient_node.h"
+#include "resilient_node_formula.h"
 
 #include <sys/resource.h>
 #include <cstdlib>
@@ -509,6 +510,7 @@ AxiomEvaluator *g_axiom_evaluator;
 vector<DomainTransitionGraph *> g_transition_graphs;
 CausalGraph *g_causal_graph;
 std::map<int, Operator> relation_node_next_action;
+PartialState goal_partial_state = PartialState();
 
 SuccessorGenerator *g_successor_generator_orig; // Renamed so the ops can be pruned based on deadends
 DeadendAwareSuccessorGenerator *g_successor_generator;

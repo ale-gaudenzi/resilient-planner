@@ -114,8 +114,8 @@ void ResilientPolicy::extract_policy(State initial_state, PartialState goal, int
             cout << "\nNode not found at iteration #" << i << endl;
             node.dump();
             cout << "next_actions:" << endl;
-            for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
-                cout << it_o->get_name() << endl;
+            // for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
+            //     cout << it_o->get_name() << endl;
             not_found_counter += 1;
         }
     }

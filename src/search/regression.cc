@@ -55,7 +55,7 @@ string RegressionStep::get_name()
     if (is_goal)
         return "goal / SC / d=0";
     else
-        return op->get_nondet_name() + " / " + (is_sc ? "SC" : "NSC") + " / d=" + static_cast<ostringstream *>( &(ostringstream() << distance) )->str();
+        return op->get_nondet_name() + " / " + (is_sc ? "SC" : "NSC") + " / d=" + std::ostringstream{std::ostringstream{} << distance}.str();
 }
 
 string RegressionStep::get_op_name()

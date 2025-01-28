@@ -365,33 +365,6 @@ int LazySearch::step()
     //     node.mark_as_dead_end();
     //     search_progress.inc_dead_ends();
     // }
-        if(g_pruning_during_planning){
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-            if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-                {
-                    g_operators.erase(g_operators.begin() + i);
-                    i--;
-                }
-        }
-        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-        std::vector<pair<int, int> > landmarks;
-        landmarks = landmarks_graph->extract_landmarks();
-        g_operators = g_operators_backup;
-        for (int pos = 0; pos < landmarks.size(); pos++){
-            std::pair<int, int> landmark = landmarks[pos];
-            int var = landmark.first;
-            int value = landmark.second;
-            RelaxedProposition &prop = propositions[var][value];
-            if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-            {
-                g_pruning_during_planning_value++;
-                node.mark_as_dead_end();
-                break;
-            }
-        }
-    }
 
 
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();

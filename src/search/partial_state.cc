@@ -200,3 +200,21 @@ bool PartialState::is_implied(PartialState &other)
     
     return true;
 }
+
+bool PartialState::is_model(PartialState &other)
+{
+    for (int i = 0; i < g_variable_domain.size(); i++)
+    {
+        if((vars[i] == -1)){
+            continue;
+        }
+        else if(vars[i] == other.vars[i])
+        {
+            continue;
+        }
+        else{
+            return false;
+        }
+    }
+    return true;
+}

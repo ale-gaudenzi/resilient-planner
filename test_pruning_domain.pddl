@@ -1,56 +1,37 @@
 (define (domain blocks)
-	(:predicates
-		(a)
-		(b)
-		(c)
-		(g)
-		(x)
-		(failure)
-	)
+	(:requirements :typing)
+(:types
+	car location dummy - object
+)
 
-	(:action m_1
-		:parameters ()
-		:precondition (and
-			(a)
-		)
-		:effect (and (not(a))(b))
-	)
-	(:action m_2
-		:parameters ()
-		:precondition (and
-			(b)
-		)
-		:effect (oneof
-			(and (not(b))(g))
-			(and (failure))
-		)
-	)
-	(:action m_3
-		:parameters ()
-		:precondition (and
-			(b)
-		)
-		:effect (oneof
-			(and (not(b))(c))
-			(and (failure))
-		)
-	)
-	(:action m_4
-		:parameters ()
-		:precondition (and
-			(c)
-		)
-		:effect (oneof
-			(and (not(c))(g))
-			(and (failure))
-		)
-	)
+(:predicates
+	(on ?c - object ?l - location)
+	(connected ?l1 ?l2 - location)
+	(activatee ?d - dummy)
+)
 
-	(:action m_5
-		:parameters ()
-		:precondition (and
-			(g)
-		)
-		:effect (and (not(g))(x))
+(:action move
+	:parameters (?c - car ?l1 ?l2 - location )
+	:precondition (and
+		(on ?c ?l1)
+		(connected ?l1 ?l2)
 	)
+	:effect (and
+		(not (on ?c ?l1))
+		(on ?c ?l2)
+	)
+)
+
+
+(:action doit
+	:parameters (?c - car ?d - dummy ?l - location)
+	:precondition(and
+		(on ?c ?l)
+		(on ?d ?l)
+	)
+	:effect (and
+		(activatee ?d)
+	)
+)
+
 )

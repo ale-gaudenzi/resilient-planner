@@ -38,6 +38,7 @@ public:
     }
     void dump_pddl() const;
     void dump_fdr() const;
+    bool is_model(PartialState &other);
     bool operator==(const PartialState &other) const;
     bool operator<(const PartialState &other) const;
     size_t hash() const;

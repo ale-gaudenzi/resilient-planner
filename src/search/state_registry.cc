@@ -96,6 +96,7 @@ State StateRegistry::get_successor_state(const State &predecessor, const Operato
     return lookup_state(id);
 }
 
+
 void StateRegistry::subscribe(PerStateInformationBase *psi) const
 {
     subscribers.insert(psi);

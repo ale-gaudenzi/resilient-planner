@@ -17,14 +17,14 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h resilient_policy.h print_utils.h \
- landmarks/exploration.h landmarks/../heuristics/heuristic.h \
- landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
- landmarks/landmark_types.h landmarks/../utilities.h \
- landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
- landmarks/landmark_graph.h landmarks/../operator.h \
- landmarks/exploration.h landmarks/../option_parser.h \
- landmarks/h_m_landmarks.h
+ resilient_node.h resilient_node_formula.h resilient_policy.h \
+ print_utils.h landmarks/exploration.h \
+ landmarks/../heuristics/heuristic.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/landmark_factory_zhu_givan.h \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/exploration.h \
+ landmarks/../option_parser.h landmarks/h_m_landmarks.h
 .obj/axioms.release.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.release.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -209,7 +209,8 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/cea_heuristic.h option_parser_util.h resilient_node.h
+ heuristics/cea_heuristic.h option_parser_util.h resilient_node.h \
+ resilient_node_formula.h
 .obj/heuristics/heuristic.release.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -698,6 +699,9 @@
  evaluators/../open_lists/pareto_open_list.cc
 .obj/resilient_node.release.o: resilient_node.cc resilient_node.h operator.h globals.h \
  partial_state.h state.h int_packer.h state_id.h
+.obj/resilient_node_formula.release.o: resilient_node_formula.cc \
+ resilient_node_formula.h operator.h globals.h partial_state.h state.h \
+ int_packer.h state_id.h
 .obj/resilient_policy.release.o: resilient_policy.cc resilient_policy.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
  resilient_node.h policy.h regression.h search_engines/search_engine.h \
@@ -1109,56 +1113,6 @@
  heuristics/../open_lists/alternation_open_list.cc \
  heuristics/../open_lists/pareto_open_list.h \
  heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
-.obj/heuristics/hm_heuristic.release.o: heuristics/hm_heuristic.cc heuristics/hm_heuristic.h \
- heuristics/heuristic.h heuristics/../evaluators/scalar_evaluator.h \
- heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
- heuristics/../partial_state.h heuristics/../state.h \
- heuristics/../int_packer.h heuristics/../state_id.h \
- heuristics/../globals.h heuristics/../state.h heuristics/../operator.h \
- heuristics/../globals.h heuristics/../partial_state.h \
- heuristics/../option_parser.h heuristics/../option_parser_util.h \
- heuristics/../utilities.h heuristics/../heuristics/heuristic.h \
- heuristics/../policy.h heuristics/../regression.h \
- heuristics/../operator.h heuristics/../search_engines/search_engine.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../search_space.h \
- heuristics/../search_engines/../state.h \
- heuristics/../search_engines/../search_node_info.h \
- heuristics/../search_engines/../state_id.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../operator_cost.h \
- heuristics/../search_engines/../per_state_information.h \
- heuristics/../search_engines/../globals.h \
- heuristics/../search_engines/../segmented_vector.h \
- heuristics/../search_engines/../utilities.h \
- heuristics/../search_engines/../state_registry.h \
- heuristics/../search_engines/../int_packer.h \
- heuristics/../search_engines/../search_progress.h \
- heuristics/../search_engines/../timer.h \
- heuristics/../search_engines/../heuristics/heuristic.h \
- heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
- heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h \
- heuristics/../heuristics/priority_queue.h \
- heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h \
- heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
- heuristics/../open_lists/standard_scalar_open_list.h \
- heuristics/../open_lists/open_list.h \
- heuristics/../open_lists/../evaluators/evaluator.h \
- heuristics/../open_lists/../option_parser.h \
- heuristics/../open_lists/standard_scalar_open_list.cc \
- heuristics/../open_lists/../evaluators/scalar_evaluator.h \
- heuristics/../open_lists/open_list_buckets.h \
- heuristics/../open_lists/open_list_buckets.cc \
- heuristics/../open_lists/tiebreaking_open_list.h \
- heuristics/../open_lists/tiebreaking_open_list.cc \
- heuristics/../open_lists/alternation_open_list.h \
- heuristics/../open_lists/../plugin.h \
- heuristics/../open_lists/alternation_open_list.cc \
- heuristics/../open_lists/pareto_open_list.h \
- heuristics/../open_lists/pareto_open_list.cc
 .obj/heuristics/max_heuristic.release.o: heuristics/max_heuristic.cc heuristics/max_heuristic.h \
  heuristics/priority_queue.h heuristics/relaxation_heuristic.h \
  heuristics/heuristic.h heuristics/../evaluators/scalar_evaluator.h \
@@ -1833,14 +1787,14 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h resilient_policy.h print_utils.h \
- landmarks/exploration.h landmarks/../heuristics/heuristic.h \
- landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
- landmarks/landmark_types.h landmarks/../utilities.h \
- landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
- landmarks/landmark_graph.h landmarks/../operator.h \
- landmarks/exploration.h landmarks/../option_parser.h \
- landmarks/h_m_landmarks.h
+ resilient_node.h resilient_node_formula.h resilient_policy.h \
+ print_utils.h landmarks/exploration.h \
+ landmarks/../heuristics/heuristic.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/landmark_factory_zhu_givan.h \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/exploration.h \
+ landmarks/../option_parser.h landmarks/h_m_landmarks.h
 .obj/axioms.debug.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.debug.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -2025,7 +1979,8 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/cea_heuristic.h option_parser_util.h resilient_node.h
+ heuristics/cea_heuristic.h option_parser_util.h resilient_node.h \
+ resilient_node_formula.h
 .obj/heuristics/heuristic.debug.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -2514,6 +2469,9 @@
  evaluators/../open_lists/pareto_open_list.cc
 .obj/resilient_node.debug.o: resilient_node.cc resilient_node.h operator.h globals.h \
  partial_state.h state.h int_packer.h state_id.h
+.obj/resilient_node_formula.debug.o: resilient_node_formula.cc \
+ resilient_node_formula.h operator.h globals.h partial_state.h state.h \
+ int_packer.h state_id.h
 .obj/resilient_policy.debug.o: resilient_policy.cc resilient_policy.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
  resilient_node.h policy.h regression.h search_engines/search_engine.h \
@@ -2925,56 +2883,6 @@
  heuristics/../open_lists/alternation_open_list.cc \
  heuristics/../open_lists/pareto_open_list.h \
  heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
-.obj/heuristics/hm_heuristic.debug.o: heuristics/hm_heuristic.cc heuristics/hm_heuristic.h \
- heuristics/heuristic.h heuristics/../evaluators/scalar_evaluator.h \
- heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
- heuristics/../partial_state.h heuristics/../state.h \
- heuristics/../int_packer.h heuristics/../state_id.h \
- heuristics/../globals.h heuristics/../state.h heuristics/../operator.h \
- heuristics/../globals.h heuristics/../partial_state.h \
- heuristics/../option_parser.h heuristics/../option_parser_util.h \
- heuristics/../utilities.h heuristics/../heuristics/heuristic.h \
- heuristics/../policy.h heuristics/../regression.h \
- heuristics/../operator.h heuristics/../search_engines/search_engine.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../search_space.h \
- heuristics/../search_engines/../state.h \
- heuristics/../search_engines/../search_node_info.h \
- heuristics/../search_engines/../state_id.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../operator_cost.h \
- heuristics/../search_engines/../per_state_information.h \
- heuristics/../search_engines/../globals.h \
- heuristics/../search_engines/../segmented_vector.h \
- heuristics/../search_engines/../utilities.h \
- heuristics/../search_engines/../state_registry.h \
- heuristics/../search_engines/../int_packer.h \
- heuristics/../search_engines/../search_progress.h \
- heuristics/../search_engines/../timer.h \
- heuristics/../search_engines/../heuristics/heuristic.h \
- heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
- heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h \
- heuristics/../heuristics/priority_queue.h \
- heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h \
- heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
- heuristics/../open_lists/standard_scalar_open_list.h \
- heuristics/../open_lists/open_list.h \
- heuristics/../open_lists/../evaluators/evaluator.h \
- heuristics/../open_lists/../option_parser.h \
- heuristics/../open_lists/standard_scalar_open_list.cc \
- heuristics/../open_lists/../evaluators/scalar_evaluator.h \
- heuristics/../open_lists/open_list_buckets.h \
- heuristics/../open_lists/open_list_buckets.cc \
- heuristics/../open_lists/tiebreaking_open_list.h \
- heuristics/../open_lists/tiebreaking_open_list.cc \
- heuristics/../open_lists/alternation_open_list.h \
- heuristics/../open_lists/../plugin.h \
- heuristics/../open_lists/alternation_open_list.cc \
- heuristics/../open_lists/pareto_open_list.h \
- heuristics/../open_lists/pareto_open_list.cc
 .obj/heuristics/max_heuristic.debug.o: heuristics/max_heuristic.cc heuristics/max_heuristic.h \
  heuristics/priority_queue.h heuristics/relaxation_heuristic.h \
  heuristics/heuristic.h heuristics/../evaluators/scalar_evaluator.h \
@@ -3649,14 +3557,14 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h resilient_policy.h print_utils.h \
- landmarks/exploration.h landmarks/../heuristics/heuristic.h \
- landmarks/../globals.h landmarks/../heuristics/priority_queue.h \
- landmarks/landmark_types.h landmarks/../utilities.h \
- landmarks/landmark_factory_zhu_givan.h landmarks/landmark_factory.h \
- landmarks/landmark_graph.h landmarks/../operator.h \
- landmarks/exploration.h landmarks/../option_parser.h \
- landmarks/h_m_landmarks.h
+ resilient_node.h resilient_node_formula.h resilient_policy.h \
+ print_utils.h landmarks/exploration.h \
+ landmarks/../heuristics/heuristic.h landmarks/../globals.h \
+ landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
+ landmarks/../utilities.h landmarks/landmark_factory_zhu_givan.h \
+ landmarks/landmark_factory.h landmarks/landmark_graph.h \
+ landmarks/../operator.h landmarks/exploration.h \
+ landmarks/../option_parser.h landmarks/h_m_landmarks.h
 .obj/axioms.profile.o: axioms.cc axioms.h state.h int_packer.h state_id.h globals.h \
  operator.h partial_state.h
 .obj/causal_graph.profile.o: causal_graph.cc causal_graph.h operator.h globals.h \
@@ -3841,7 +3749,8 @@
  search_engines/../operator_cost.h deadend.h \
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
- heuristics/cea_heuristic.h option_parser_util.h resilient_node.h
+ heuristics/cea_heuristic.h option_parser_util.h resilient_node.h \
+ resilient_node_formula.h
 .obj/heuristics/heuristic.profile.o: heuristics/heuristic.cc heuristics/heuristic.h \
  heuristics/../evaluators/scalar_evaluator.h \
  heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
@@ -4330,6 +4239,9 @@
  evaluators/../open_lists/pareto_open_list.cc
 .obj/resilient_node.profile.o: resilient_node.cc resilient_node.h operator.h globals.h \
  partial_state.h state.h int_packer.h state_id.h
+.obj/resilient_node_formula.profile.o: resilient_node_formula.cc \
+ resilient_node_formula.h operator.h globals.h partial_state.h state.h \
+ int_packer.h state_id.h
 .obj/resilient_policy.profile.o: resilient_policy.cc resilient_policy.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
  resilient_node.h policy.h regression.h search_engines/search_engine.h \
@@ -4741,56 +4653,6 @@
  heuristics/../open_lists/alternation_open_list.cc \
  heuristics/../open_lists/pareto_open_list.h \
  heuristics/../open_lists/pareto_open_list.cc heuristics/../state.h
-.obj/heuristics/hm_heuristic.profile.o: heuristics/hm_heuristic.cc heuristics/hm_heuristic.h \
- heuristics/heuristic.h heuristics/../evaluators/scalar_evaluator.h \
- heuristics/../evaluators/evaluator.h heuristics/../operator_cost.h \
- heuristics/../partial_state.h heuristics/../state.h \
- heuristics/../int_packer.h heuristics/../state_id.h \
- heuristics/../globals.h heuristics/../state.h heuristics/../operator.h \
- heuristics/../globals.h heuristics/../partial_state.h \
- heuristics/../option_parser.h heuristics/../option_parser_util.h \
- heuristics/../utilities.h heuristics/../heuristics/heuristic.h \
- heuristics/../policy.h heuristics/../regression.h \
- heuristics/../operator.h heuristics/../search_engines/search_engine.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../search_space.h \
- heuristics/../search_engines/../state.h \
- heuristics/../search_engines/../search_node_info.h \
- heuristics/../search_engines/../state_id.h \
- heuristics/../search_engines/../operator.h \
- heuristics/../search_engines/../operator_cost.h \
- heuristics/../search_engines/../per_state_information.h \
- heuristics/../search_engines/../globals.h \
- heuristics/../search_engines/../segmented_vector.h \
- heuristics/../search_engines/../utilities.h \
- heuristics/../search_engines/../state_registry.h \
- heuristics/../search_engines/../int_packer.h \
- heuristics/../search_engines/../search_progress.h \
- heuristics/../search_engines/../timer.h \
- heuristics/../search_engines/../heuristics/heuristic.h \
- heuristics/../search_engines/../operator_cost.h heuristics/../deadend.h \
- heuristics/../successor_generator.h \
- heuristics/../heuristics/additive_heuristic.h \
- heuristics/../heuristics/priority_queue.h \
- heuristics/../heuristics/relaxation_heuristic.h \
- heuristics/../heuristics/heuristic.h \
- heuristics/../heuristics/../partial_state.h \
- heuristics/../heuristics/cea_heuristic.h heuristics/../plugin.h \
- heuristics/../open_lists/standard_scalar_open_list.h \
- heuristics/../open_lists/open_list.h \
- heuristics/../open_lists/../evaluators/evaluator.h \
- heuristics/../open_lists/../option_parser.h \
- heuristics/../open_lists/standard_scalar_open_list.cc \
- heuristics/../open_lists/../evaluators/scalar_evaluator.h \
- heuristics/../open_lists/open_list_buckets.h \
- heuristics/../open_lists/open_list_buckets.cc \
- heuristics/../open_lists/tiebreaking_open_list.h \
- heuristics/../open_lists/tiebreaking_open_list.cc \
- heuristics/../open_lists/alternation_open_list.h \
- heuristics/../open_lists/../plugin.h \
- heuristics/../open_lists/alternation_open_list.cc \
- heuristics/../open_lists/pareto_open_list.h \
- heuristics/../open_lists/pareto_open_list.cc
 .obj/heuristics/max_heuristic.profile.o: heuristics/max_heuristic.cc heuristics/max_heuristic.h \
  heuristics/priority_queue.h heuristics/relaxation_heuristic.h \
  heuristics/heuristic.h heuristics/../evaluators/scalar_evaluator.h \
