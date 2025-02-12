@@ -482,8 +482,10 @@ Operator* generate_macro_action(PartialState partial_state, int current_level){
             pre_post.push_back(state_post);
         }
     }
-
-    Operator* macro = new Operator(formula_previal, pre_post, "macro_" + std::to_string(current_level));
+    std::ostringstream ss;
+    ss << current_level;  
+    std::string levelStr = ss.str(); 
+    Operator* macro = new Operator(formula_previal, pre_post, "macro_" + levelStr);
     return macro;
 }
 
@@ -733,8 +735,10 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
         ResilientNodeFormula node_formula = it->second;
         if(!node_formula.get_formula().is_model(goal_partial_state)){
             if(current_node.get_k() == node_formula.get_k()){
-                for(auto necessary_op : node_formula.get_pi()){
-                    if(current_node.get_deactivated_op().find(necessary_op) != current_node.get_deactivated_op().end()){
+                vector<Operator> pi = node_formula.get_pi();
+                for (int i = 0; i < pi.size(); i++)
+                {
+                    if(current_node.get_deactivated_op().find(pi[i]) != current_node.get_deactivated_op().end()){
                         continue;
                     }else{
                         gen_macro = false;

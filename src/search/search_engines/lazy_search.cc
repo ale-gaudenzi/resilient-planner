@@ -188,12 +188,13 @@ void LazySearch::get_successor_operators(vector<const Operator *> &ops)
     vector<const Operator *> all_operators;
     vector<const Operator *> preferred_operators;
 
-    for (auto macro : g_macro_actions)
+
+    for (int i =0; i<g_macro_actions.size();i++)
     {
-        if(macro->is_applicable(current_state)){
-            if (g_current_forbidden_ops.find(*macro) == g_current_forbidden_ops.end())
+        if(g_macro_actions[i]->is_applicable(current_state)){
+            if (g_current_forbidden_ops.find(*g_macro_actions[i]) == g_current_forbidden_ops.end())
             {   
-                ops.push_back(macro);
+                ops.push_back(g_macro_actions[i]);
                 not_fast_search = false;
                 break;
             }

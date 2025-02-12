@@ -33,8 +33,8 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
     }
 
     if (pi.size() != 0)
-        for (auto pi_el : pi)
-            op_pi_value += pi_el.get_name();
+        for (int i = 0; i < pi.size(); i++)
+            op_pi_value += pi[i].get_name();
     else
         op_pi_value = "";
 
@@ -54,7 +54,7 @@ void ResilientNodeFormula::dump() const
     for (set<Operator>::iterator it = deactivated_op.begin(); it != deactivated_op.end(); it++)
         cout << it->get_nondet_name() << endl;
     cout << "pi: " << endl;    
-    for (Operator op_pi: pi)
-        cout << op_pi.get_name() << endl;
+    for (int i = 0; i < pi.size(); i++)
+        cout << pi[i].get_name() << endl;
 
 }
