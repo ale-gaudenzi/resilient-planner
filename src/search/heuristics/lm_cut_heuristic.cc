@@ -81,12 +81,6 @@ void LandmarkCutHeuristic::initialize()
             op->effects[j]->effect_of.push_back(op);
 
     }
-    // map<string, pair<State, std::vector<const Operator *> > >::iterator state = g_safe_states.begin();
-    // while (state != g_safe_states.end())
-    // {
-    //     mark_resiliant_state_as_goal(state->second.first);
-    //     state++;
-    // }
 }
 
 void LandmarkCutHeuristic::build_relaxed_operator(const Operator &op)
@@ -162,14 +156,6 @@ void LandmarkCutHeuristic::first_exploration(const State &state)
         pair<int, RelaxedProposition *> top_pair = priority_queue.pop();
         int popped_cost = top_pair.first;
         RelaxedProposition *prop = top_pair.second;
-        //TODO
-        // const vector<RelaxedOperator *> &opppp = prop->precondition_of;        
-        // for (int i = 0; i < opppp.size(); i++)
-        // {
-        //     RelaxedOperator *xd = opppp[i];
-        //     cout << xd->op->get_name() << endl;
-        // }
-
         int prop_cost = prop->h_max_cost;
         assert(prop_cost <= popped_cost);
         if (prop_cost < popped_cost)
@@ -401,16 +387,6 @@ int LandmarkCutHeuristic::compute_heuristic(const State &state)
                 RelaxedProposition &prop = propositions[var][value];
                 if (prop.status == GOAL_ZONE || prop.status == BEFORE_GOAL_ZONE)
                     prop.status = REACHED;
-                // if (g_pruning)
-                // {
-                //     if (std::find(g_goal.begin(), g_goal.end(), make_pair(var, value)) != g_goal.end() &&
-                //         g_initial_state_data[var] != value && 
-                //         g_current_faults >= prop.effect_of.size())
-                //     {
-                //         cout << "\nPRUNING PROP: " << prop.name << endl;
-                //         return DEAD_END;
-                //     }
-                // }
             }
         }
         artificial_goal.status = REACHED;

@@ -341,7 +341,7 @@ void read_everything(istream &in)
     DomainTransitionGraph::read_all(in);
     // NOTE: causal graph is computed from the problem specification,
     // so must be built after the problem has been read in.
-    g_causal_graph = new CausalGraph;
+    // g_causal_graph = new CausalGraph;
 
     assert(!g_variable_domain.empty());
     g_state_packer = new IntPacker(g_variable_domain);
@@ -505,12 +505,12 @@ IntPacker *g_state_packer;
 vector<int> g_initial_state_data;
 vector<pair<int, int> > g_goal;
 vector<Operator> g_operators;
+vector<Operator*> g_macro_actions;
 vector<Operator> g_axioms;
 AxiomEvaluator *g_axiom_evaluator;
 vector<DomainTransitionGraph *> g_transition_graphs;
 CausalGraph *g_causal_graph;
 std::map<int, Operator> relation_node_next_action;
-PartialState goal_partial_state = PartialState();
 
 SuccessorGenerator *g_successor_generator_orig; // Renamed so the ops can be pruned based on deadends
 DeadendAwareSuccessorGenerator *g_successor_generator;
@@ -594,7 +594,6 @@ StateRegistry *g_state_registry = 0;
 int g_max_faults;
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
-std::vector<State> g_dead_states;
 std::map<std::string, state_plan_pair > g_safe_states;
 std::map<k_v_pair, Policy *> g_resilient_policies;
 std::map<k_v_pair, Policy *> g_non_resilient_deadends;

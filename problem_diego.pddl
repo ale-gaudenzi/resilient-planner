@@ -1,11 +1,11 @@
 (define (problem a) (:domain blocks)
 
 (:init
-	(i)
+	(initial)
 )
 (:goal
 	(and
-		(g)
+		(f)
 	)
 )
 )

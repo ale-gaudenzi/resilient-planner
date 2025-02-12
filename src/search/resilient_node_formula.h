@@ -11,17 +11,22 @@ class ResilientNodeFormula
     PartialState formula;
     int k;
     std::set<Operator> deactivated_op;
+    std::vector<Operator> pi;
     long int id;
     ResilientNodeFormula();
 
 public:
-    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> deactivated_op_);
+    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> deactivated_op_,std::vector<Operator> pi_);
 
     void dump() const;
 
     PartialState get_formula() const
     {
         return formula;
+    }
+
+    vector<Operator> get_pi(){
+        return pi;
     }
 
     int get_k() const

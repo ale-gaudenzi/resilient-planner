@@ -85,7 +85,7 @@ void SearchEngine::search(){
     if (g_timer_jit() < g_jic_limit){
         if (g_record_online_deadends && !g_limit_states && g_found_deadends.size() > 0){
             g_replan_detected_deadends = true;
-            update_deadends(g_found_deadends);
+            // update_deadends(g_found_deadends);
         }
         if (search_progress.get_generated() > 2){
             if (g_verbose){

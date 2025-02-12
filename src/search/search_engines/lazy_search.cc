@@ -179,119 +179,80 @@ void LazySearch::initialize()
     {
         heuristics.push_back(*it);
     }
-
-    if (g_pruning_during_planning)
-    {
-        propositions.resize(g_variable_domain.size());
-        for (int var = 0; var < g_variable_domain.size(); var++)
-        {
-            for (int value = 0; value < g_variable_domain[var]; value++)
-            {
-                RelaxedProposition prop = RelaxedProposition();
-                prop.name = g_fact_names[var][value];
-                propositions[var].push_back(prop);
-            }
-        }
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-            const vector<Prevail> &prevail = g_operators[i].get_prevail();
-            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
-            vector<RelaxedProposition *> precondition;
-            vector<RelaxedProposition *> effects;
-            for (int j = 0; j < prevail.size(); j++)
-                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-            for (int j = 0; j < pre_post.size(); j++)
-            {
-                if (pre_post[j].pre != -1)
-                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
-                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
-            }
-            RelaxedProposition artificial_precondition;
-            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
-            relaxed_operators.push_back(relaxed_op);
-        }
-        for (int i = 0; i < relaxed_operators.size(); i++)
-        {
-            RelaxedOperator *op = &relaxed_operators[i];
-            for (int j = 0; j < op->precondition.size(); j++)
-                op->precondition[j]->precondition_of.push_back(op);
-            for (int j = 0; j < op->effects.size(); j++){
-                op->effects[j]->effect_of.push_back(op);
-            }
-        }
-                for (int i = 0; i < g_operators.size(); i++)
-        {
-        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-            {
-                g_operators.erase(g_operators.begin() + i);
-                i--;
-            }
-        }
-        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-        landmarks = landmarks_graph->extract_landmarks();
-        g_operators = g_operators_backup;
-    }
     assert(!heuristics.empty());
 }
 
 void LazySearch::get_successor_operators(vector<const Operator *> &ops)
 {
+    bool not_fast_search = true;
     vector<const Operator *> all_operators;
     vector<const Operator *> preferred_operators;
 
-    g_successor_generator->generate_applicable_ops(
-        current_state, all_operators);
-
-    for (int i = 0; i < preferred_operator_heuristics.size(); i++)
+    for (auto macro : g_macro_actions)
     {
-        Heuristic *heur = preferred_operator_heuristics[i];
-        if (!heur->is_dead_end())
-            heur->get_preferred_operators(preferred_operators);
-    }
-
-    /**
-     * For resilient planner
-     * Remove from preferred operators the ones in V
-     * we have already ignored them in the DeadendAwareSuccessorGenerator but
-     * it seems that the heuristic still has them in its preferred_operators
-     */
-    for (int i = 0; i < preferred_operators.size(); i++)
-    {
-        if (g_current_forbidden_ops.find(*preferred_operators[i]) != g_current_forbidden_ops.end())
-        {
-            preferred_operators.erase(preferred_operators.begin() + i);
-            i--;
+        if(macro->is_applicable(current_state)){
+            if (g_current_forbidden_ops.find(*macro) == g_current_forbidden_ops.end())
+            {   
+                ops.push_back(macro);
+                not_fast_search = false;
+                break;
+            }
         }
     }
+    if(not_fast_search){
+        g_successor_generator->generate_applicable_ops(
+            current_state, all_operators);
 
-    if (succ_mode == pref_first)
-    {
+        for (int i = 0; i < preferred_operator_heuristics.size(); i++)
+        {
+            Heuristic *heur = preferred_operator_heuristics[i];
+            if (!heur->is_dead_end())
+                heur->get_preferred_operators(preferred_operators);
+        }
+
+        /**
+         * For resilient planner
+         * Remove from preferred operators the ones in V
+         * we have already ignored them in the DeadendAwareSuccessorGenerator but
+         * it seems that the heuristic still has them in its preferred_operators
+         */
         for (int i = 0; i < preferred_operators.size(); i++)
         {
-            if (!preferred_operators[i]->is_marked())
+            if (g_current_forbidden_ops.find(*preferred_operators[i]) != g_current_forbidden_ops.end())
             {
-                ops.push_back(preferred_operators[i]);
-                preferred_operators[i]->mark();
+                preferred_operators.erase(preferred_operators.begin() + i);
+                i--;
             }
         }
 
-        for (int i = 0; i < all_operators.size(); i++)
+        if (succ_mode == pref_first)
         {
-            if (!all_operators[i]->is_marked())
-                ops.push_back(all_operators[i]);
+            for (int i = 0; i < preferred_operators.size(); i++)
+            {
+                if (!preferred_operators[i]->is_marked())
+                {
+                    ops.push_back(preferred_operators[i]);
+                    preferred_operators[i]->mark();
+                }
+            }
+
+            for (int i = 0; i < all_operators.size(); i++)
+            {
+                if (!all_operators[i]->is_marked())
+                    ops.push_back(all_operators[i]);
+            }
         }
-    }
-    else
-    {
-        for (int i = 0; i < preferred_operators.size(); i++)
-            if (!preferred_operators[i]->is_marked())
-                preferred_operators[i]->mark();
+        else
+        {
+            for (int i = 0; i < preferred_operators.size(); i++)
+                if (!preferred_operators[i]->is_marked())
+                    preferred_operators[i]->mark();
 
-        ops.swap(all_operators);
+            ops.swap(all_operators);
 
-        if (succ_mode == shuffled)
-            random_shuffle(ops.begin(), ops.end());
+            if (succ_mode == shuffled)
+                random_shuffle(ops.begin(), ops.end());
+        }
     }
 }
 
@@ -319,12 +280,6 @@ void LazySearch::generate_successors()
         }
     }
 }
-
-// int LazySearch::possible_number_actions(const State s) const{
-//     vector<const Operator *> applicable_ops;
-//     g_successor_generator->generate_applicable_ops(s, applicable_ops);
-//     return applicable_ops.size()
-// }
 
 int LazySearch::fetch_next_state()
 {
@@ -355,17 +310,6 @@ int LazySearch::step()
     // - current_g is the g value of the current state according to the cost_type
     // - current_real_g is the g value of the current state (using real costs)
     SearchNode node = search_space.get_node(current_state);
-    for (size_t i = 0; i < g_dead_states.size(); ++i) {
-        if (current_state == g_dead_states[i]){
-            node.mark_as_dead_end();
-            search_progress.inc_dead_ends();
-        }
-    }
-    // if (g_dead_states.find(current_state) != g_dead_states.end()) {
-    //     node.mark_as_dead_end();
-    //     search_progress.inc_dead_ends();
-    // }
-
 
     bool reopen = reopen_closed_nodes && (current_g < node.get_g()) && !node.is_dead_end() && !node.is_new();
 
@@ -396,7 +340,6 @@ int LazySearch::step()
                 return fetch_next_state();
             }
         }
-
         search_progress.inc_evaluated_states();
         search_progress.inc_evaluations(heuristics.size());
         open_list->evaluate(current_g, false);
@@ -433,7 +376,7 @@ int LazySearch::step()
         
             if (search_progress.check_h_progress(current_g))
                 reward_progress();
-            
+
             generate_successors();
             search_progress.inc_expanded();
         }
