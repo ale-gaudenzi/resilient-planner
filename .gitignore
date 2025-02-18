@@ -1,4 +1,8 @@
 .vscode/
+.idea/
+
+test_problem
+output
 
 src/elapsed.time
 src/log

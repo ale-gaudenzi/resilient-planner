@@ -209,6 +209,7 @@ extern bool g_pruning_before_planning;
 extern bool g_pruning_during_planning;
 extern bool g_landmark_pruning;
 extern bool g_search_pruning;
+extern bool g_use_macro_actions;
 
 
 extern long g_mem_initial;

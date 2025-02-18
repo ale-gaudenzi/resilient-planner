@@ -283,13 +283,6 @@ int main(int argc, const char **argv)
     }
     while (!open.empty()){
         
-        PartialState goal_partial_state = PartialState();
-        for (int i = 0; i < g_goal.size(); i++)
-        {
-            (goal_partial_state)[g_goal[i].first] = g_goal[i].second;
-        }
-
-
         g_iteration++;
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
@@ -362,7 +355,6 @@ int main(int argc, const char **argv)
                             }
                             current = g_state_registry->get_successor_state(current, *(*it));
                         }
-                        // //TODO aggiungo stato goal a Rfrecciasu 
                         if (!prune)
                         {
                             vector<Operator> pi;
@@ -386,10 +378,10 @@ int main(int argc, const char **argv)
                         resilient_nodes_formula.insert(std::make_pair(res_formula.get_id(), res_formula));
                         for (size_t i = 0; i < plan.size(); ++i)
                         {
-                            pi.resize(pi.size() - 1);
+                            std::vector<Operator> subplan(pi.end() - (i + 1), pi.end());
                             const Operator* op = const_cast<Operator*>(plan[plan.size()-i-1]);
                             formula = regression(formula, op);
-                            res_formula = ResilientNodeFormula(formula, 0, current_node.get_deactivated_op(),pi);
+                            res_formula = ResilientNodeFormula(formula, 0, current_node.get_deactivated_op(), subplan);
                             resilient_nodes_formula.insert(std::make_pair(res_formula.get_id(), res_formula));
                         }
                     }
@@ -483,8 +475,8 @@ Operator* generate_macro_action(PartialState partial_state, int current_level){
         }
     }
     std::ostringstream ss;
-    ss << current_level;  
-    std::string levelStr = ss.str(); 
+    ss << current_level;
+    std::string levelStr = ss.str();
     Operator* macro = new Operator(formula_previal, pre_post, "macro_" + levelStr);
     return macro;
 }
@@ -589,9 +581,8 @@ bool resiliency_check_formula(ResilientNode node)
     }
 
     State state = node.get_state();
-    PartialState current_r = PartialState(state); 
+    PartialState current_r = PartialState(state);
     StateRegistry *registry = const_cast<StateRegistry *>(&state.get_registry());
-
     // Resiliency check cycle
     for (std::set<Operator>::iterator it_o = next_actions.begin(); it_o != next_actions.end(); ++it_o)
     {
@@ -601,8 +592,6 @@ bool resiliency_check_formula(ResilientNode node)
 
         std::set<Operator> forbidden_plus_current = node.get_deactivated_op();
         forbidden_plus_current.insert(*it_o);
-
-        // TODO DOPPIO FOR INNESTATO PRIMA SUL SUCCESSORE
         for (std::tr1::unordered_map<int, ResilientNodeFormula>::iterator it = resilient_nodes_formula.begin(); it != resilient_nodes_formula.end(); ++it) {
             ResilientNodeFormula successor_node_formula = it->second;
             if (successor_node_formula.get_formula().is_model(successor_p) && successor_node_formula.get_k() == node.get_k() && successor_node_formula.get_deactivated_op() == node.get_deactivated_op())
@@ -611,10 +600,15 @@ bool resiliency_check_formula(ResilientNode node)
                     ResilientNodeFormula current_resilient_node_formula = it_2->second;
                     if (current_resilient_node_formula.get_formula().is_model(current_r) && (current_resilient_node_formula.get_k() == node.get_k() - 1) && (current_resilient_node_formula.get_deactivated_op() == forbidden_plus_current))
                     {
-                        vector<Operator> pi_lower = current_resilient_node_formula.get_pi();
-                        pi_lower.insert(pi_lower.begin(), *it_o);
+                        vector<Operator> pi_equal_next_formula = successor_node_formula.get_pi();
+                        vector<Operator> pi_lower_same_formula = current_resilient_node_formula.get_pi();
+                        std::vector<Operator> combined_pi;
+                        combined_pi.reserve(pi_equal_next_formula.size() + pi_lower_same_formula.size());
+                        combined_pi.insert(combined_pi.end(), pi_equal_next_formula.begin(), pi_equal_next_formula.end());
+                        combined_pi.insert(combined_pi.end(), pi_lower_same_formula.begin(), pi_lower_same_formula.end());
+                        combined_pi.insert(combined_pi.begin(), *it_o);
                         PartialState formula = current_resilient_node_formula.get_formula();
-                        ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), node.get_deactivated_op(), pi_lower);
+                        ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), node.get_deactivated_op(), combined_pi);
                         resilient_nodes_formula.insert(make_pair(to_add.get_id(), to_add));
                         return true;
                     }
@@ -709,7 +703,6 @@ std::vector<PartialState> partial_state_to_goal(std::vector<const Operator *> pl
             first_regression_state[pre_post.var] = pre_post.pre;
         }
         partial_states.push_back(first_regression_state);
-        first_regression_state.dump_pddl();
     }
     return partial_states;
 }
@@ -724,6 +717,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
             g_operators.erase(g_operators.begin() + i--);
     }
+    if(g_use_macro_actions){
     PartialState goal_partial_state = PartialState();
     for (int i = 0; i < g_goal.size(); i++)
     {
@@ -752,6 +746,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
             }
         }
     }
+    }
     g_timer_engine_init.resume();
     engine->reset();
     g_timer_engine_init.stop();
@@ -762,7 +757,7 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
     g_timer_search.stop();
     g_macro_actions.clear();
     if (g_dump_memory_replan_progression)
-        cout << "Memory at replan #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
+        cout << "Memory at repla #" << g_replan_counter + 1 << ": " << mem_usage() << "KB" << endl;
     return engine->found_solution();
 }
 

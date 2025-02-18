@@ -481,6 +481,11 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_search_pruning = (atoi(argv[i]) == 1);
         }
+        else if (arg.compare("--macro_actions") == 0)
+        {
+            ++i;
+            g_use_macro_actions = (atoi(argv[i]) == 1);
+        }
         else
         {
             cerr << "unknown option " << arg << endl
