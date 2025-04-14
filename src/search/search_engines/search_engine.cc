@@ -107,15 +107,6 @@ void SearchEngine::search(){
     }
 }
 
-// TODO avevo provato a fare un pruning piu carino basato sugli stati ma è pessimo
-// bool SearchEngine::prune_and_set_plan(const State &state){
-//     Plan plan;
-//     search_space.trace_path(state, plan);
-//     Plan partial_plan = g_safe_states.at(state.get_string_key()).second;
-//     plan.insert(plan.end(), partial_plan.begin(), partial_plan.end());
-//     set_plan(plan);
-//     return true;
-// }
 
 bool SearchEngine::check_goal_and_set_plan(const State &state){
     if (test_goal(state))

@@ -50,6 +50,7 @@ HEADERS = \
           evaluators/weighted_evaluator.h \
           resilient_node.h \
           resilient_node_formula.h \
+          policy_node.h \
 		  resilient_policy.h \
           open_lists/alternation_open_list.h \
           open_lists/open_list_buckets.h \

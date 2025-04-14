@@ -88,8 +88,7 @@ PartialState::PartialState(const PartialState &predecessor, const Operator &op, 
         {
             if (op.get_pre_post()[i].does_fire(*context))
             {
-                assert((predecessor[op.get_pre_post()[i].var] == -1) ||
-                       (predecessor[op.get_pre_post()[i].var] == (op.get_pre_post()[i].post)));
+
                 if (!g_fullstate || (op.get_pre_post()[i].pre != -1))
                 {
                     vars[op.get_pre_post()[i].var] = op.get_pre_post()[i].pre;

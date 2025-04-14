@@ -1,0 +1,317 @@
+
+                  -{ Resilient nodes }-
+
+Node: 2058084643
+Atom on(a, i)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+Atom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+NegatedAtom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+Atom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+Atom handempty(a3)
+NegatedAtom clear(i)
+Atom on(i, d)
+k: 1
+deactivated_op: 
+unstack a1 a i
+
+Node: -1445336933
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+NegatedAtom handempty(a2)
+Atom handempty(a3)
+NegatedAtom clear(i)
+Atom holding(a2, i)
+k: 2
+deactivated_op: 
+
+Node: 684744895
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+NegatedAtom handempty(a3)
+NegatedAtom clear(i)
+Atom holding(a3, i)
+k: 1
+deactivated_op: 
+stack a2 i f
+
+Node: -1688503211
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+NegatedAtom handempty(a3)
+NegatedAtom clear(i)
+Atom holding(a3, i)
+k: 0
+deactivated_op: 
+
+macro_-1358357692
+unstack a2 i d
+
+Node: 806249643
+Atom on(a, i)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+Atom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+NegatedAtom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+Atom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+Atom handempty(a3)
+NegatedAtom clear(i)
+Atom on(i, d)
+k: 2
+deactivated_op: 
+
+Node: 456622756
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+NegatedAtom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+Atom handempty(a3)
+Atom clear(i)
+Atom on(i, d)
+k: 2
+deactivated_op: 
+
+Node: 170551453
+Atom holding(a2, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+NegatedAtom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+Atom handempty(a1)
+Atom clear(h)
+NegatedAtom handempty(a2)
+Atom handempty(a3)
+Atom clear(i)
+Atom on(i, d)
+k: 1
+deactivated_op: 
+unstack a1 a i
+
+Node: 897730310
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+NegatedAtom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+Atom handempty(a3)
+Atom clear(i)
+Atom on(i, c)
+k: 1
+deactivated_op: 
+stack a2 i f
+
+Node: -605877536
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+NegatedAtom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+Atom handempty(a3)
+Atom clear(i)
+Atom on(i, d)
+k: 1
+deactivated_op: 
+unstack a2 i d
+
+Node: 622797352
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+NegatedAtom handempty(a2)
+Atom handempty(a3)
+NegatedAtom clear(i)
+Atom holding(a2, i)
+k: 1
+deactivated_op: 
+stack a2 i f
+
+Node: 717796210
+Atom holding(a1, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+Atom handempty(a2)
+NegatedAtom handempty(a3)
+NegatedAtom clear(i)
+Atom holding(a3, i)
+k: 1
+deactivated_op: 
+unstack a2 i d
+
+Node: -1808627525
+Atom holding(a2, a)
+Atom ontable(b)
+Atom ontable(c)
+Atom ontable(d)
+Atom ontable(e)
+Atom on(f, g)
+Atom on(g, e)
+Atom on(h, b)
+NegatedAtom clear(a)
+NegatedAtom clear(b)
+Atom clear(c)
+Atom clear(d)
+NegatedAtom clear(e)
+Atom clear(f)
+NegatedAtom clear(g)
+NegatedAtom handempty(a1)
+Atom clear(h)
+NegatedAtom handempty(a2)
+Atom handempty(a3)
+NegatedAtom clear(i)
+Atom holding(a1, i)
+k: 1
+deactivated_op: 
+unstack a1 a i
+
+
+--------------------------------------------------------------------
+

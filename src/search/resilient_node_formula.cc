@@ -9,17 +9,9 @@ using namespace std;
 /// @param formula_ Full state of the node
 /// @param k_ Number of operators that can still fail
 /// @param deactivated_op_ Deactivated operators
-ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> deactivated_op_, std::vector<Operator> pi_) : formula(formula_), k(k_), deactivated_op(deactivated_op_), pi(pi_)
+ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> pi_) : formula(formula_), k(k_), pi(pi_)
 {
-    string op_value;
     string op_pi_value;
-
-    if (deactivated_op.size() != 0)
-        for (set<Operator>::iterator it = deactivated_op.begin(); it != deactivated_op.end(); it++)
-            op_value += it->get_name();
-    else
-        op_value = "";
-
     string state_value;
 
     for (int i = 0; i < g_variable_domain.size(); i++)
@@ -32,14 +24,37 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
         }
     }
 
-    if (pi.size() != 0)
-        for (int i = 0; i < pi.size(); i++)
-            op_pi_value += pi[i].get_name();
-    else
+
+    if (pi.size() != 0){
+        for (set<Operator>::iterator it = pi.begin(); it != pi.end(); it++)
+            op_pi_value += it->get_name();
+    }else{
         op_pi_value = "";
+    }
 
     std::tr1::hash<string> hasher;
-    int hash = hasher(op_value + state_value + op_pi_value);
+    int hash = hasher(state_value + op_pi_value + std::to_string(k));
+    id = hash;
+}
+ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : formula(formula_), k(k_)
+{
+    string op_pi_value;
+    string state_value;
+
+    for (int i = 0; i < g_variable_domain.size(); i++)
+        {
+            if (-1 != formula[i])
+            {
+                const string &fact_name = g_fact_names[i][formula[i]];
+                if (fact_name != "<none of those>")
+                    state_value += fact_name;
+            }
+    }
+
+    op_pi_value = "";
+
+    std::tr1::hash<string> hasher;
+    int hash = hasher(state_value + op_pi_value + std::to_string(k));
     id = hash;
 }
 
@@ -50,11 +65,8 @@ void ResilientNodeFormula::dump() const
     cout << "Node: " << id << endl;
     formula.dump_pddl();
     cout << "k: " << k << endl;
-    cout << "deactivated_op: " << endl;
-    for (set<Operator>::iterator it = deactivated_op.begin(); it != deactivated_op.end(); it++)
-        cout << it->get_nondet_name() << endl;
-    cout << "pi: " << endl;    
-    for (int i = 0; i < pi.size(); i++)
-        cout << pi[i].get_name() << endl;
+    cout << "pi: " << endl; 
+    for (set<Operator>::iterator it = pi.begin(); it != pi.end(); it++)
+        cout << it->get_name() << endl;
 
 }

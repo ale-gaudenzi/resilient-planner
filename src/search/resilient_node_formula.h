@@ -4,19 +4,19 @@
 #include "operator.h"
 #include <set>
 
+
 using namespace std;
 
 class ResilientNodeFormula
 {
     PartialState formula;
     int k;
-    std::set<Operator> deactivated_op;
-    std::vector<Operator> pi;
+    std::set<Operator> pi;
     long int id;
-    ResilientNodeFormula();
 
 public:
-    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> deactivated_op_,std::vector<Operator> pi_);
+    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> pi_);
+    ResilientNodeFormula(PartialState formula, int k_);
 
     void dump() const;
 
@@ -25,7 +25,7 @@ public:
         return formula;
     }
 
-    vector<Operator> get_pi(){
+    set<Operator> get_pi(){
         return pi;
     }
 
@@ -37,11 +37,6 @@ public:
     int get_id() const
     {
         return id;
-    }
-
-    std::set<Operator> get_deactivated_op() const
-    {
-        return deactivated_op;
     }
 
     bool operator==(const ResilientNodeFormula &other) const

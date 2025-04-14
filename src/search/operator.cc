@@ -3,7 +3,9 @@
 
 #include <string>
 #include <iostream>
+
 using namespace std;
+
 
 Prevail::Prevail(istream &in) {
     in >> var >> prev;
@@ -16,6 +18,32 @@ PrePost::PrePost(istream &in) {
         cond.push_back(Prevail(in));
     in >> var >> pre >> post;
 }
+
+Operator::Operator(std::vector<Prevail> prevail_, std::vector<PrePost> pre_post_, int k){
+    nondet_index = 0;
+    prevail = prevail_;
+    pre_post = pre_post_;
+    std::hash<string> hasher;
+    string to_hash = "";
+    for(auto pre : prevail){
+        to_hash += g_fact_names[pre.var][pre.prev];
+        to_hash += "_";
+    }
+    for(auto post: pre_post){
+        if (-1 == post.pre)
+            to_hash += "anything_";
+        else {
+            to_hash += g_fact_names[post.var][post.pre] + "_"  + g_fact_names[post.var][post.post] + "_";
+        }
+    }
+    int hash = hasher(to_hash+"-"+std::to_string(k));
+    is_an_axiom = false;
+    safe = false;
+    cost = 0;
+    name = "macro_" + std::to_string(hash);
+    nondet_name = name;
+}
+
 Operator::Operator() {
     marked = false;
     nondet_index = -1;

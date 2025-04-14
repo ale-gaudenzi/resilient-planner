@@ -28,7 +28,7 @@ ResilientNode::ResilientNode(State state_, int k_, std::set<Operator> deactivate
     }
 
     std::tr1::hash<string> hasher;
-    int hash = hasher(op_value + state_value);
+    int hash = hasher(op_value + state_value + std::to_string(k));
     id = hash;
 }
 

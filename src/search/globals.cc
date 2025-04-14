@@ -338,7 +338,7 @@ void read_everything(istream &in)
     check_magic(in, "begin_SG");
     g_successor_generator_orig = read_successor_generator(in);
     check_magic(in, "end_SG");
-    DomainTransitionGraph::read_all(in);
+    // DomainTransitionGraph::read_all(in);
     // NOTE: causal graph is computed from the problem specification,
     // so must be built after the problem has been read in.
     // g_causal_graph = new CausalGraph;

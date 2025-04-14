@@ -108,16 +108,9 @@ class Operator {
     mutable bool marked; // Used for short-term marking of preferred operators
 public:
     
-    bool operator<(const Operator &x) const { return nondet_name < x.nondet_name; };
     Operator();
     Operator(std::istream &in, bool is_axiom);
-    Operator(std::vector<Prevail> prevail_, std::vector<PrePost> pre_post_, std::string name_) : prevail(prevail_), pre_post(pre_post_), name(name_){
-        nondet_index = 0;
-        nondet_name = name;
-        is_an_axiom = false;
-        safe = false;
-        cost = 0;
-    }
+    Operator(std::vector<Prevail> prevail_, std::vector<PrePost> pre_post_, int k);
 
     void dump() const;
     std::string get_name() const {return name; }
@@ -175,6 +168,15 @@ public:
         return (name == other.name && nondet_name == other.nondet_name);
     }
 
+    // bool operator<(const Operator &other) const {
+    //     return std::tie(name, nondet_name) < std::tie(other.name, other.nondet_name);
+    // }
+
+    bool operator<(const Operator &other) const {
+        if (name < other.name) return true;
+        if (name > other.name) return false;
+        return nondet_name < other.nondet_name;
+    }
     mutable bool marker1, marker2; // HACK! HACK!
 
     int get_cost() const {return cost; }
