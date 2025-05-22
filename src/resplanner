@@ -10,7 +10,7 @@ function die {
 }
 
 function usage {
-    die "usage: $(basename "$0") [DOMAIN_FILE] PROBLEM_FILE SEARCH_OPTION ..."
+    die "usage: $(basename "$0") [DOMAIN_FILE] PROBLEM_FILE --resilient 'K' --pruning 0-1 --adaptive_replan 0-1"
 }
 
 # Paths to planner components

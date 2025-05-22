@@ -168,7 +168,7 @@ DEPEND = g++ -MM
 ## that are used for all three targets (release, debug, and profile).
 ## (POSTLINKOPT are options that appear *after* all object files.)
 
-CCOPT = -Iext
+CCOPT = -Iext -pipe -static -static-libstdc++ -static-libgcc
 CCOPT += -g 
 # CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
 CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -Wno-deprecated-copy -ansi -pedantic -Werror

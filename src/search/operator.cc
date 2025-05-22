@@ -3,6 +3,11 @@
 
 #include <string>
 #include <iostream>
+#include <tr1/unordered_map>
+using std::tr1::hash;
+
+
+
 
 using namespace std;
 
@@ -19,28 +24,42 @@ PrePost::PrePost(istream &in) {
     in >> var >> pre >> post;
 }
 
+
+
 Operator::Operator(std::vector<Prevail> prevail_, std::vector<PrePost> pre_post_, int k){
     nondet_index = 0;
     prevail = prevail_;
     pre_post = pre_post_;
-    std::hash<string> hasher;
     string to_hash = "";
-    for(auto pre : prevail){
+    std::tr1::hash<string> hasher;
+    for (std::vector<Prevail>::const_iterator it = prevail.begin(); it != prevail.end(); ++it) {
+        const Prevail pre = *it;
         to_hash += g_fact_names[pre.var][pre.prev];
         to_hash += "_";
     }
-    for(auto post: pre_post){
+    for (std::vector<PrePost>::const_iterator it = pre_post.begin(); it != pre_post.end(); ++it) {
+        const PrePost post = *it;
         if (-1 == post.pre)
             to_hash += "anything_";
         else {
             to_hash += g_fact_names[post.var][post.pre] + "_"  + g_fact_names[post.var][post.post] + "_";
         }
     }
-    int hash = hasher(to_hash+"-"+std::to_string(k));
+
     is_an_axiom = false;
     safe = false;
     cost = 0;
-    name = "macro_" + std::to_string(hash);
+
+    std::ostringstream oss;
+    oss << k;
+    std::string k_str = oss.str();
+    int hash = hasher(to_hash + "-" + k_str);
+
+    std::ostringstream oss_;
+    oss_ << hash;
+    std::string hash_str = oss_.str();
+
+    name = "macro_" + hash_str;
     nondet_name = name;
 }
 
@@ -48,7 +67,7 @@ Operator::Operator() {
     marked = false;
     nondet_index = -1;
     is_an_axiom = false;
-    name = "dummy_action";
+    name = "dummy__action";
     cost = -1;
 }
 

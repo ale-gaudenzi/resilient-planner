@@ -834,15 +834,14 @@ bool replan(ResilientNode current_node, SearchEngine *engine){
                 if(use_macro){
                     Operator* macro = generate_macro_action(node_formula.get_formula(), current_node.get_k());
                     g_macro_actions.push_back(macro);
-                    /**
-                    for (std::set<PolicyNode>::iterator it_policy = policy_node.begin(); it_policy != policy_node.end(); ++it_policy)
-               		{
-                      	if(it_policy->get_resilient_node_formula() == node_formula){
-                			macro_to_op.insert(make_pair(macro->get_name(), (*it_policy)));
-                        }
-                    }
-					**/
-
+                    if(gen_policy){
+                    	for (std::set<PolicyNode>::iterator it_policy = policy_node.begin(); it_policy != policy_node.end(); ++it_policy)
+               			{
+                      		if(it_policy->get_resilient_node_formula() == node_formula){
+                				macro_to_op.insert(make_pair(macro->get_name(), (*it_policy)));
+                        	}
+                   		}
+					}
                 }
                 
             }

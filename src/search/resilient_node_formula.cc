@@ -32,8 +32,13 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
         op_pi_value = "";
     }
 
+    std::ostringstream oss;
+    oss << k;
+    std::string k_str = oss.str();
+
+
     std::tr1::hash<string> hasher;
-    int hash = hasher(state_value + op_pi_value + std::to_string(k));
+    int hash = hasher(state_value + op_pi_value + k_str);
     id = hash;
 }
 ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : formula(formula_), k(k_)
@@ -52,9 +57,11 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : form
     }
 
     op_pi_value = "";
-
+    std::ostringstream oss;
+    oss << k;
+    std::string k_str = oss.str();
     std::tr1::hash<string> hasher;
-    int hash = hasher(state_value + op_pi_value + std::to_string(k));
+    int hash = hasher(state_value + op_pi_value + k_str);
     id = hash;
 }
 

@@ -481,7 +481,7 @@ SearchEngine *OptionParser::parse_cmd_line(
             ++i;
             g_search_pruning = (atoi(argv[i]) == 1);
         }
-        else if (arg.compare("--macro_actions") == 0)
+        else if (arg.compare("--adaptive_replan") == 0)
         {
             ++i;
             g_use_macro_actions = (atoi(argv[i]) == 1);
@@ -500,74 +500,7 @@ SearchEngine *OptionParser::parse_cmd_line(
 
 string OptionParser::usage(string progname)
 {
-    string usage =
-        "usage: \n" +
-        progname + " [OPTIONS] --search SEARCH < OUTPUT\n\n"
-                   "* SEARCH (SearchEngine): configuration of the search algorithm\n"
-                   "* OUTPUT (filename): preprocessor output\n\n"
-                   "Options:\n"
-                   "--help [NAME]\n"
-                   "    Prints help for all heuristics, openlists, etc. called NAME.\n"
-                   "    Without parameter: prints help for everything available\n"
-                   "--landmarks LANDMARKS_PREDEFINITION\n"
-                   "    Predefines a set of landmarks that can afterwards be referenced\n"
-                   "    by the name that is specified in the definition.\n"
-                   "--heuristic HEURISTIC_PREDEFINITION\n"
-                   "    Predefines a heuristic that can afterwards be referenced\n"
-                   "    by the name that is specified in the definition.\n"
-                   "--random-seed SEED\n"
-                   "    Use random seed SEED\n\n"
-                   "--plan-file FILENAME\n"
-                   "    Plan will be output to a file called FILENAME\n\n"
-                   "--jic-limit TIME_LIMIT\n"
-                   "    Only perform JIC for the given time. This will be cut in half if final-fsap-free-round is used.\n\n"
-                   "--epochs EPOCH_COUNT (default=1)\n"
-                   "    Minimum number of times to execute the JIC loop. Useful if deadends are present and a single pass takes too long.\n\n"
-                   "--forgetpolicy 1/0\n"
-                   "    Throw out the policy after every simulation.\n\n"
-                   "--replan-on-failure 1/0 (default=1)\n"
-                   "    Replan if the state isn't recognized.\n\n"
-                   "--fullstate 1/0\n"
-                   "    Use full states in the regression.\n\n"
-                   "--planlocal 1/0\n"
-                   "    Plan locally to recover before planning for the goal.\n\n"
-                   "--partial-planlocal 1/0\n"
-                   "    Use the partial state that matches the expect state when planning locally.\n\n"
-                   "--limit-planlocal 1/0\n"
-                   "    Limit the planlocal searching to a fixed number of search steps.\n\n"
-                   "--plan-with-policy 1/0\n"
-                   "    Stop searching when the policy matches the current state.\n\n"
-                   "--depth NUM_ACTIONS (default=1000)\n"
-                   "    Stop simulations and consider it a failure after NUM_ACTIONS actions.\n\n"
-                   "--trials NUM_TRIALS (default=1)\n"
-                   "    Number of trials to run for the simulator.\n\n"
-                   "--detect-deadends 1/0\n"
-                   "    Use primitive deadend detection to ensure a strongly cyclic solution.\n\n"
-                   "--generalize-deadends 1/0\n"
-                   "    Generalize the deadends found based on relaxed reachability.\n\n"
-                   "--online-deadends 1/0\n"
-                   "    Generate and store deadend states that are found online.\n\n"
-                   "--sample-for-depth1-deadends 1/0 (default=1)\n"
-                   "    Analyze the non-deterministic alternate states from the generated weak plans for deadends.\n\n"
-                   "--combine-deadends 1/0 (default=0)\n"
-                   "    Combine the FSAP conditions if every applicable action is forbidden to be a new deadend.\n\n"
-                   "--repeat-fsaps-backwards 1/0 (default=0)\n"
-                   "    Keep making FSAPs as long as states where they hold have no applicable actions (experimental and mostly damaging)\n\n"
-                   "--optimized-scd 2/1/0 (default=2)\n"
-                   "    Perform optimized strong cyclic detection when checking the partial policy. A value of 2 means that it will gradually disable the scd check if it is unhelpful for the particular problem being solved.\n\n"
-                   "--repeat-strengthening 1/0 (default=0)\n"
-                   "    Repeat the strong cyclic strengthening step back to the initial state. Adds many more state-action pairs, and so is disabled by default. Only useful when optimized-scd is very effective.\n\n"
-                   "--relevant-deadend-regression 1/0 (default=0)\n"
-                   "    Regress deadends in the FSAP construction only through actions that trigger the deadend.\n\n"
-                   "--final-fsap-free-round 1/0 (default=0)\n"
-                   "    Do one final JIC round with the best policy found (closing every leaf possible).\n\n"
-                   "--optimize-final-policy 1/0 (default=0)\n"
-                   "    Do a final simulation and throw out any pair (or FSAP) not used.\n\n"
-                   "--dump-policy 1/2\n"
-                   "    Dump the policy to the file policy.out. 1 creates a switch graph (currently unsafe to use), while 2 creates a human readable form (preferred for use with the prp_api.py file).\n\n"
-                   "--debug-output 1/0\n"
-                   "    Output plans and other information during the planning process.\n\n"
-                   "See http://www.haz.ca/research/prp for details.";
+    string usage = "usage: \n" + progname + " [OPTIONS] --search SEARCH < OUTPUT\n\n";
     return usage;
 }
 
