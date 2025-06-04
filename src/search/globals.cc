@@ -622,6 +622,9 @@ bool g_pruning_before_all = false;
 bool g_pruning_during_planning = false;
 bool g_pruning_before_planning = false;
 
+
+
+
 int g_max_iterations = -1;
 
 long g_mem_initial = 0;

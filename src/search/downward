@@ -1,0 +1,28 @@
+#! /bin/bash
+BASEDIR="$(dirname "$0")"
+TEMPFILE=downward.tmp.$$
+cat > $TEMPFILE
+
+#SEED=`date +%s`
+SEED=814102613
+
+PLANNER="$BASEDIR/downward-release"
+
+shift 1
+
+echo "$PLANNER" \
+    --heuristic \""h=lmcut(cost_type=1)"\" \
+    --search \""lazy_greedy(h, preferred=h)"\" \
+    --random-seed $SEED \
+    "$@" "<" output
+
+"$PLANNER" \
+    --heuristic "h=lmcut(cost_type=1)" \
+    --search "lazy_greedy([h], preferred=[h])" \
+    --landmarks "l=lm_zg()"\
+    --random-seed $SEED \
+    "$@" < $TEMPFILE
+            
+EXITCODE=$?
+# rm -f $TEMPFILE
+exit $EXITCODE
