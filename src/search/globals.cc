@@ -566,6 +566,7 @@ int g_dump_policy = 0;             // Whether or not we should dump the policy
 int g_monotonicity_violations = 0; // Count on the number of times we need to add a deadend because of a bad policy loop
 int g_num_regsteps = 0;            // Used to give each regstep an id based on when it was created
 int g_num_epochs = 1;              // Forced number of times to run the jic loop
+int g_n_not_insert = 0;        
 
 bool g_optimize_final_policy = false; // Only keep the final pairs and FSAPs that are needed
 bool g_record_relevant_pairs = false; // If true, used pairs will be kept
@@ -577,6 +578,8 @@ int g_debug_count = 1; // Index that allows to locate spots in the output
 bool g_safetybelt_optimized_scd = true; // Gradually disable the optimized SCD setting when it proves useless
 
 Timer g_timer_regression;
+Timer g_timer_check_formula;
+Timer g_timer_landmark;
 Timer g_timer_simulator;
 Timer g_timer_engine_init;
 Timer g_timer_search;

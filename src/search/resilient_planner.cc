@@ -104,6 +104,7 @@ public:
             return !labels.empty();
         }
 };
+bool check_resilient_formula_to_add(PartialState formula, const int k, const std::set<Operator> depend_ops);
 bool prune_check(const ResilientNode &node);
 PartialState regression(PartialState from, const Operator* op);
 bool resiliency_check(const ResilientNode &node);
@@ -144,7 +145,8 @@ int main(int argc, const char **argv)
 
     list<PolicyItem *> regression_steps;
 
-
+    g_timer_check_formula.stop();
+    g_timer_check_formula.reset();
     g_timer_engine_init.stop();
     g_timer_engine_init.reset();
     g_timer_search.stop();
@@ -157,6 +159,8 @@ int main(int argc, const char **argv)
     g_timer_extraction.reset();
     g_timer_extract_policy.stop();
     g_timer_extract_policy.reset();
+    g_timer_landmark.stop();
+    g_timer_landmark.reset();
 
     g_mem_initial = mem_usage();
 
@@ -226,6 +230,7 @@ int main(int argc, const char **argv)
 
     //TODO: il pruning solo per alcuni fatti e landmark, non tutti, non ha senso!
     if(g_pruning){
+        g_timer_landmark.resume();
         PartialState current_state = PartialState(initial_node.get_state());
         std::vector<std::vector<RelaxedProposition> > propositions;
         std::vector<RelaxedOperator> relaxed_operators;
@@ -285,9 +290,9 @@ int main(int argc, const char **argv)
                 }
             }
         }
+        g_timer_landmark.stop();
     }
     while (!open.empty()){
-        
         g_iteration++;
         if (open.size() > g_max_dimension_open)
             g_max_dimension_open = open.size();
@@ -402,8 +407,14 @@ int main(int argc, const char **argv)
                             formula_pi.insert(*op);
                             formula = regression(formula, op);
                             res_formula = ResilientNodeFormula(formula, 0, formula_pi);
-                            resilient_nodes_formula_by_k[0].insert(res_formula);
-                            policy_node.insert(PolicyNode(res_formula, *op));
+                            g_timer_check_formula.resume();
+                            if(check_resilient_formula_to_add(formula, 0, formula_pi)){
+                                resilient_nodes_formula_by_k[0].insert(res_formula);
+                                policy_node.insert(PolicyNode(res_formula, *op));
+                            }
+                            g_timer_check_formula.stop();
+                            // resilient_nodes_formula_by_k[0].insert(res_formula);
+                            // policy_node.insert(PolicyNode(res_formula, *op));
                         }
                     }
                     regression_steps.clear();
@@ -465,6 +476,35 @@ int main(int argc, const char **argv)
     print_memory();
 }
 
+bool check_resilient_formula_to_add(PartialState formula, const int k, const std::set<Operator> depend_ops) {
+    std::set<ResilientNodeFormula> current_formulas = resilient_nodes_formula_by_k[k];
+    for (std::set<ResilientNodeFormula>::iterator it = current_formulas.begin(); it != current_formulas.end(); ++it) {
+        ResilientNodeFormula node_formula = *it;
+        std::set<Operator> node_pi = node_formula.get_pi();
+        if (node_formula.get_formula().is_model(formula)) {
+            if (node_formula.get_pi().size() >= depend_ops.size()) {
+                for (std::set<Operator>::iterator it_o = depend_ops.begin(); it_o != depend_ops.end(); ++it_o) {
+                    Operator op = *it_o;
+                    if(!(op.get_name().find("macro_") != std::string::npos)){
+                    	if (!(node_pi.find(op) != node_pi.end())) {
+                        	return true;
+                    	}
+                    }
+                }
+                g_n_not_insert++;
+                return false;
+            } else {
+                return true;
+            }
+        } else {
+            return true;
+        }
+    }
+    return true; 
+}
+
+
+
 PartialState regression(PartialState from, const Operator* op){
     PartialState regressed = PartialState(from, *op, false, new PartialState());
     return regressed;
@@ -500,6 +540,7 @@ Operator* generate_macro_action(PartialState partial_state, int current_level){
 }
 
 bool prune_check(const ResilientNode &node){
+    g_timer_landmark.resume();
     PartialState current_state = PartialState(node.get_state());
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
@@ -513,66 +554,67 @@ bool prune_check(const ResilientNode &node){
     {
         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
             g_operators.erase(std::remove_if(g_operators.begin(),g_operators.end(),[&](const Operator &op) { return g_current_forbidden_ops.count(op) > 0;}),g_operators.end());
-        }
-        std::vector<std::vector<RelaxedProposition> > propositions;
-        std::vector<RelaxedOperator> relaxed_operators;
-        propositions.resize(g_variable_domain.size());
-        for (int var = 0; var < g_variable_domain.size(); var++)
+    }
+    std::vector<std::vector<RelaxedProposition> > propositions;
+    std::vector<RelaxedOperator> relaxed_operators;
+    propositions.resize(g_variable_domain.size());
+    for (int var = 0; var < g_variable_domain.size(); var++)
+    {
+        for (int value = 0; value < g_variable_domain[var]; value++)
         {
-            for (int value = 0; value < g_variable_domain[var]; value++)
+            RelaxedProposition prop = RelaxedProposition();
+            prop.name = g_fact_names[var][value];
+            propositions[var].push_back(prop);
+        }
+    }
+    for (int i = 0; i < g_operators.size(); i++)
+    {
+        const vector<Prevail> &prevail = g_operators[i].get_prevail();
+        const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
+        vector<RelaxedProposition *> precondition;
+        vector<RelaxedProposition *> effects;
+        for (int j = 0; j < prevail.size(); j++)
+            precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
+        for (int j = 0; j < pre_post.size(); j++)
+        {
+            if (pre_post[j].pre != -1)
+                precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
+            effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
+        }
+        RelaxedProposition artificial_precondition;
+        RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
+        relaxed_operators.push_back(relaxed_op);
+    }
+    for (int i = 0; i < relaxed_operators.size(); i++){
+        RelaxedOperator *op = &relaxed_operators[i];
+        for (int j = 0; j < op->precondition.size(); j++)
+            op->precondition[j]->precondition_of.push_back(op);
+        for (int j = 0; j < op->effects.size(); j++){
+            op->effects[j]->effect_of.push_back(op);
+            if (op->safe)
+                op->effects[j]->safe = true;
+        }
+    }
+    LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
+    LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
+    std::vector<pair<int, int> > landmarks;
+    landmarks = landmarks_graph->extract_landmarks();
+    g_operators = g_operators_backup;
+    for (int pos = 0; pos < landmarks.size(); pos++)
+    {
+        std::pair<int, int> landmark = landmarks[pos];
+        int var = landmark.first;
+        int value = landmark.second;
+        RelaxedProposition &prop = propositions[var][value];
+        if (!prop.safe){
+            if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
             {
-                RelaxedProposition prop = RelaxedProposition();
-                prop.name = g_fact_names[var][value];
-                propositions[var].push_back(prop);
+                g_pruning_before_planning_value++;
+                return true;
             }
         }
-        for (int i = 0; i < g_operators.size(); i++)
-        {
-            const vector<Prevail> &prevail = g_operators[i].get_prevail();
-            const vector<PrePost> &pre_post = g_operators[i].get_pre_post();
-            vector<RelaxedProposition *> precondition;
-            vector<RelaxedProposition *> effects;
-            for (int j = 0; j < prevail.size(); j++)
-                precondition.push_back(&propositions[prevail[j].var][prevail[j].prev]);
-            for (int j = 0; j < pre_post.size(); j++)
-            {
-                if (pre_post[j].pre != -1)
-                    precondition.push_back(&propositions[pre_post[j].var][pre_post[j].pre]);
-                effects.push_back(&propositions[pre_post[j].var][pre_post[j].post]);
-            }
-            RelaxedProposition artificial_precondition;
-            RelaxedOperator relaxed_op(precondition, effects, &g_operators[i], 0);
-            relaxed_operators.push_back(relaxed_op);
-        }
-        for (int i = 0; i < relaxed_operators.size(); i++){
-            RelaxedOperator *op = &relaxed_operators[i];
-            for (int j = 0; j < op->precondition.size(); j++)
-                op->precondition[j]->precondition_of.push_back(op);
-            for (int j = 0; j < op->effects.size(); j++){
-                op->effects[j]->effect_of.push_back(op);
-                if (op->safe)
-                    op->effects[j]->safe = true;
-            }
-        }
-        LandmarkFactoryZhuGivan *lm_graph_factory = new LandmarkFactoryZhuGivan(landmark_generator_options);
-        LandmarkGraph* landmarks_graph = lm_graph_factory->compute_lm_graph();
-        std::vector<pair<int, int> > landmarks;
-        landmarks = landmarks_graph->extract_landmarks();
-        g_operators = g_operators_backup;
-        for (int pos = 0; pos < landmarks.size(); pos++)
-        {
-            std::pair<int, int> landmark = landmarks[pos];
-            int var = landmark.first;
-            int value = landmark.second;
-            RelaxedProposition &prop = propositions[var][value];
-            if (!prop.safe){
-                if (current_state[var] != -1 && current_state[var] != value && g_current_faults >= prop.effect_of.size())
-                {
-                    g_pruning_before_planning_value++;
-                    return false;
-                }
-            }
-        }
+    }
+    g_timer_landmark.stop();
     return false;
 }
 
@@ -674,8 +716,14 @@ bool resiliency_check_formula(const ResilientNode &node)
                             pi_equal_next_formula.insert(next_op_for_node);
                             PartialState formula = regression(successor_node_formula_same_level_k.get_formula(), op);
                             ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
-                            resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
-                            policy_node.insert(PolicyNode(to_add, next_op_for_node));
+                            g_timer_check_formula.resume();
+                            if(check_resilient_formula_to_add(formula, node.get_k(), pi_equal_next_formula)){
+                                resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
+                                policy_node.insert(PolicyNode(to_add, next_op_for_node));
+                            }
+                            g_timer_check_formula.stop();
+                            // resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
+                            // policy_node.insert(PolicyNode(to_add, next_op_for_node));
                             return true;
                         }
                     }
@@ -731,18 +779,32 @@ bool resiliency_check_formula(const ResilientNode &node)
                                                 pi_equal_next_formula.insert(tmp.get_operator());
                                                 formula = tmp.get_resilient_node_formula().get_formula();
                                                 formula.combine_with(current_resilient_node_formula_lower_level.get_formula());
-                                                ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
-                                	    	    resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
-                                    	    	policy_node.insert(PolicyNode(to_add, tmp.get_operator()));
+                                                g_timer_check_formula.resume();
+                                                if(check_resilient_formula_to_add(formula, node.get_k(), pi_equal_next_formula)){
+                                                    ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
+                                                    resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
+                                    	    	    policy_node.insert(PolicyNode(to_add, tmp.get_operator()));
+                                                }
+                                                g_timer_check_formula.stop();
+                                                // ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
+                                                // resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
+                                    	    	// policy_node.insert(PolicyNode(to_add, tmp.get_operator()));
                                             }else{
                                             	pi_equal_next_formula = successor_node_formula_same_level_k.get_pi();
                                                 pi_equal_next_formula.insert(pi_lower_same_formula.begin(), pi_lower_same_formula.end());
                                     	    	pi_equal_next_formula.insert(next_op_for_node);
                                                 formula = regression(successor_node_formula_same_level_k.get_formula(), op);
 			        		    				formula.combine_with(current_resilient_node_formula_lower_level.get_formula());
-                    	            	        ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
-                                	    	    resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
-                                    	    	policy_node.insert(PolicyNode(to_add, *op));
+                                                g_timer_check_formula.resume();
+                                                if(check_resilient_formula_to_add(formula, node.get_k(), pi_equal_next_formula)){
+                                                    ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
+                                                    resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
+                                    	    	    policy_node.insert(PolicyNode(to_add, *op));
+                                                }
+                                                g_timer_check_formula.stop();
+                                                // ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula);
+                                                // resilient_nodes_formula_by_k[node.get_k()].insert(to_add);
+                                    	    	// policy_node.insert(PolicyNode(to_add, *op));
                                             }
                                         	return true;
                                         }

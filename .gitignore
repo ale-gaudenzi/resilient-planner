@@ -1,10 +1,12 @@
 .vscode/
 .idea/
 
+src_development
 test_problem
 output
-
+compile_temporal.py
 FT-Domain
+other_domains
 
 src/elapsed.time
 src/log

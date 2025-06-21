@@ -99,6 +99,10 @@ void print_timings()
     cout << "     Resilient plan extraction: " << g_timer_extraction << endl;
     cout << "   Resilient policy extraction: " << g_timer_extract_policy << endl;
     cout << "                    Total time: " << g_timer << endl;
+    cout << "                       EXTRA" << endl;
+    cout << "                 Landmark time: " << g_timer_landmark << endl;
+    cout << "            Number valid check: " << g_n_not_insert << endl;
+    cout << "                Formulas check: " << g_timer_check_formula << endl;
     cout << "\n--------------------------------------------------------------------\n";
 }
 

@@ -163,6 +163,8 @@ extern int g_debug_count; // Index that allows to locate spots in the output
 extern bool g_safetybelt_optimized_scd; // Gradually disable the optimized SCD setting when it proves useless
 
 /* Timers */
+extern int g_n_not_insert;
+extern Timer g_timer_landmark;
 extern Timer g_timer_regression;
 extern Timer g_timer_simulator;
 extern Timer g_timer_engine_init;
@@ -171,6 +173,7 @@ extern Timer g_timer_policy_build;
 extern Timer g_timer_policy_eval;
 extern Timer g_timer_policy_use;
 extern Timer g_timer_jit;
+extern Timer g_timer_check_formula;
 
 /** Resiliency 
 *  structure and variables added for resilient planning algorithm
