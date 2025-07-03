@@ -72,6 +72,7 @@ void print_statistics(int resilient_nodes_size, int non_resilient_nodes_size)
     cout << "\n                      -{ Statistics }-\n\n" << endl;
     cout << "                    Iterations: " << g_iteration << endl;
     cout << "   Successful resiliency check: " << g_successful_resiliency_check << endl;
+    cout << "             Total Reopen Node: " << g_expanded_node << endl;
     cout << "             Successful replan: " << g_successful_replan << endl;
     cout << "                      Deadends: " << g_deadend_states->get_size() << endl;
     cout << "               Resilient nodes: " << resilient_nodes_size << endl;
@@ -80,10 +81,11 @@ void print_statistics(int resilient_nodes_size, int non_resilient_nodes_size)
     cout << "      Max dimension open stack: " << g_max_dimension_open << endl;
     cout << "\n\n--------------------------------------------------------------------" << endl;
     cout << "\n                      -{ Landmarks Pruning }-\n" << endl;
-    cout << "                    Before all: " << g_pruning_before_all_value << endl;
-    cout << "               Before planning: " << g_pruning_before_planning_value << endl;
-    cout << "               During planning: " << g_pruning_during_planning_value << endl; //ovviamente questi non sono nodi veri ma deadend during the search
-    cout << "                    No pruning: " << g_replanning << endl;
+    cout << "         During Initializaiton: " << g_pruning_before_all_value << endl;
+    cout << "         Landmark Pruning D.E.: " << g_pruning_before_planning_value << endl;
+    cout << "        Total Number Landmarks: " << g_numer_landmarkds << endl;
+    cout << "  Maximum Actions For Landmark: " << g_max_actions_for_landmark << endl;
+    cout << "  Minimum Actions For Landmark: " << g_min_actions_for_landmark << endl;
     cout << "                         TOTAL: " << (g_pruning_before_all_value+g_pruning_before_planning_value+g_replanning) << endl;
     cout << "\n--------------------------------------------------------------------\n";
 }
@@ -94,13 +96,17 @@ void print_timings()
     cout << "\n                  -{ Timing Statistics }-\n\n";
     cout << "         Engine Initialization: " << g_timer_engine_init << endl;
     cout << "                   Search Time: " << g_timer_search << endl;
+    cout << "                   RCheck time: " << g_timer_RCheck << endl;   
+    cout << "                Fill Open List: " << g_timer_open_list_generation << endl;
+    cout << "         Certificate Selection: " << g_time_macro_actions_generation << endl;
+    cout << "                 Landmark time: " << g_timer_landmark << endl;
     cout << "           Policy Construction: " << g_timer_policy_build << endl;
-    cout << "                    Main cycle: " << g_timer_cycle << endl;
     cout << "     Resilient plan extraction: " << g_timer_extraction << endl;
+    cout << "                    Main cycle: " << g_timer_cycle << endl;
+    cout << "                     ******* " << endl;
     cout << "   Resilient policy extraction: " << g_timer_extract_policy << endl;
     cout << "                    Total time: " << g_timer << endl;
     cout << "                       EXTRA" << endl;
-    cout << "                 Landmark time: " << g_timer_landmark << endl;
     cout << "            Number valid check: " << g_n_not_insert << endl;
     cout << "                Formulas check: " << g_timer_check_formula << endl;
     cout << "\n--------------------------------------------------------------------\n";

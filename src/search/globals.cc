@@ -577,6 +577,11 @@ int g_debug_count = 1; // Index that allows to locate spots in the output
 
 bool g_safetybelt_optimized_scd = true; // Gradually disable the optimized SCD setting when it proves useless
 
+
+Timer g_timer_RCheck;
+Timer g_timer_open_list_generation;
+
+Timer g_time_macro_actions_generation;
 Timer g_timer_regression;
 Timer g_timer_check_formula;
 Timer g_timer_landmark;
@@ -596,6 +601,13 @@ StateRegistry *g_state_registry = 0;
  *  structure and variables added for resilient planning algorithm
  */
 int g_max_faults;
+
+int g_expanded_node = 0;
+int g_numer_landmarkds = 0 ;
+int g_max_actions_for_landmark = -1;
+int g_min_actions_for_landmark = -1;
+
+
 int g_current_faults;
 std::set<Operator> g_current_forbidden_ops;
 std::map<std::string, state_plan_pair > g_safe_states;

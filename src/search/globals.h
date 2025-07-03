@@ -164,6 +164,11 @@ extern bool g_safetybelt_optimized_scd; // Gradually disable the optimized SCD s
 
 /* Timers */
 extern int g_n_not_insert;
+
+extern Timer g_timer_RCheck;
+extern Timer g_timer_open_list_generation;
+
+extern Timer g_time_macro_actions_generation;
 extern Timer g_timer_landmark;
 extern Timer g_timer_regression;
 extern Timer g_timer_simulator;
@@ -232,6 +237,12 @@ extern int g_replanning;
 extern int g_pruning_before_all_value;
 extern int g_pruning_before_planning_value;
 extern int g_pruning_during_planning_value;
+
+extern int g_expanded_node;
+extern int g_numer_landmarkds;
+extern int g_max_actions_for_landmark;
+extern int g_min_actions_for_landmark;
+
 
 extern int g_max_dimension_open;
 extern int g_replan_counter;
