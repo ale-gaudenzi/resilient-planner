@@ -19,8 +19,7 @@ private:
     map<ResilientNode, Operator> policy;
 
 public:
-    void extract_policy(State initial_state, PartialState goal, int K, std::tr1::unordered_map<ResilientNodeFormula, Operator>  policy_node, std::tr1::unordered_map<int, std::set<ResilientNodeFormula>> resilient_nodes_formula_by_k,std::tr1::unordered_map<string, PolicyNode> macro_to_op);
-    Operator get_successor(ResilientNode node) { return policy.find(node)->second; };
+    void extract_policy(State initial_state, ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>> resilient_nodes_formula_by_k);
     map<ResilientNode, Operator> get_policy() { return policy; }
 };
 

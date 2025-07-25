@@ -9,7 +9,7 @@ using namespace std;
 /// @param formula_ Full state of the node
 /// @param k_ Number of operators that can still fail
 /// @param deactivated_op_ Deactivated operators
-ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> pi_) : formula(formula_), k(k_), pi(pi_)
+ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> pi_, Operator next_op_) : formula(formula_), k(k_), pi(pi_), next_op(next_op_)
 {
     string op_pi_value;
     string state_value;
@@ -38,7 +38,7 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
 
 
     std::tr1::hash<string> hasher;
-    int hash = hasher(state_value + op_pi_value + k_str);
+    int hash = hasher(state_value + op_pi_value + k_str + next_op.get_name());
     id = hash;
 }
 ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : formula(formula_), k(k_)
@@ -75,5 +75,6 @@ void ResilientNodeFormula::dump() const
     cout << "pi: " << endl; 
     for (set<Operator>::iterator it = pi.begin(); it != pi.end(); it++)
         cout << it->get_name() << endl;
-
+    cout << "next op: " << endl;
+    cout << next_op.get_name() << endl;
 }

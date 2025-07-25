@@ -10,13 +10,16 @@ class ResilientNodeFormula {
     int k;
     std::set<Operator> pi;
     long int id;
+    Operator next_op;
 
 public:
-    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> pi_);
+    ResilientNodeFormula() = default;
+    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> pi_, Operator next_op_);
     ResilientNodeFormula(PartialState formula, int k_);
 
     void dump() const;
     PartialState get_formula() const { return formula; }
+    Operator get_next_operator() const { return next_op; }
     std::set<Operator> get_pi() { return pi; }
     int get_k() const { return k; }
     int get_id() const { return id; }
