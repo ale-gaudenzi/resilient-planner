@@ -6,6 +6,7 @@
 #include "utilities.h"
 #include "search_engines/search_engine.h"
 #include "regression.h"
+
 #include "policy.h"
 #include "partial_state.h"
 #include "resilient_node.h"
@@ -16,7 +17,6 @@
 #include "landmarks/exploration.h"
 #include "landmarks/landmark_factory_zhu_givan.h"
 #include "landmarks/h_m_landmarks.h"
-
 
 #include <math.h>
 #include <list>
@@ -49,18 +49,32 @@ struct RelaxedOperator
     const Operator *op;
     std::vector<RelaxedProposition *> precondition;
     std::vector<RelaxedProposition *> effects;
-    int base_cost; // 0 for axioms, 1 for regular operators
-    bool safe;
-    int cost;
-    int unsatisfied_preconditions;
-    int h_max_supporter_cost; // h_max_cost of h_max_supporter
-    RelaxedProposition *h_max_supporter;
+    int base_cost;             // 0 for axioms, 1 for regular operators
+
+    bool safe = false;         // 🔧 inizializzato
+    int cost = 0;              // 🔧 inizializzato
+    int unsatisfied_preconditions = 0;     // 🔧 inizializzato
+    int h_max_supporter_cost = std::numeric_limits<int>::max(); // 🔧 inizializzato
+    RelaxedProposition *h_max_supporter = nullptr;              // 🔧 inizializzato
+
     RelaxedOperator(const std::vector<RelaxedProposition *> &pre,
                     const std::vector<RelaxedProposition *> &eff,
                     const Operator *the_op, int base)
-        : op(the_op), precondition(pre), effects(eff), base_cost(base), safe(false)
+        : op(the_op),
+          precondition(pre),
+          effects(eff),
+          base_cost(base)
     {
+        // safe rimane a false di default; se serve lo setti dopo
+        // cost/unsatisfied/... già inizializzati sopra
     }
+
+    // esplicita i costruttori per evitare sorprese
+    RelaxedOperator() = default;
+    RelaxedOperator(const RelaxedOperator&) = default;
+    RelaxedOperator(RelaxedOperator&&) noexcept = default;
+    RelaxedOperator& operator=(const RelaxedOperator&) = default;
+    RelaxedOperator& operator=(RelaxedOperator&&) noexcept = default;
 
     inline void update_h_max_supporter();
 };
@@ -93,16 +107,6 @@ struct RelaxedProposition
     RelaxedProposition()
     {
     }
-};
-typedef __gnu_cxx::hash_set<std::pair<int, int>, hash_int_pair> lm_set;
-class plan_graph_node {
-public:
-        lm_set labels;
-        inline bool reached() const {
-            // NOTE: nodes are always labeled with itself,
-            // if they have been reached
-            return !labels.empty();
-        }
 };
 
 bool prune_check(const ResilientNode &node);
@@ -364,7 +368,7 @@ int main(int argc, const char **argv)
                         {
                             // Create node <tau_i-1, k, V>
                             ResilientNode res_node = ResilientNode(current, g_current_faults, g_current_forbidden_ops);
-                            // Create node <tau_i-1, k - 1, V U {pi_i}>
+                            // Create node <tau_i-1, k - 1, V U {pi_i}>  to compile
                             if(g_pruning){
                                 if(prune_check(res_node)){
                                     update_non_resilient_nodes(res_node);
@@ -384,7 +388,6 @@ int main(int argc, const char **argv)
                             		}else{
                                     	post_actions.insert(*(*it)); // *it = pi_i
                                     }
-                                    post_actions.insert(*(*it)); // *it = pi_i
                                     ResilientNode res_node_f = ResilientNode(current, g_current_faults - 1, post_actions);
                                     open.push(res_node_f);
                                 }
@@ -475,7 +478,7 @@ int main(int argc, const char **argv)
 
   	    PartialState initial_state_p = PartialState(static_initial_state);
 
-        std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> resilient_nodes_formula_max_faults = resilient_nodes_formula_by_k[g_max_faults];
+        std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>& resilient_nodes_formula_max_faults = resilient_nodes_formula_by_k[g_max_faults];
         for (std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>::iterator it_2 = resilient_nodes_formula_max_faults.begin(); it_2 != resilient_nodes_formula_max_faults.end(); ++it_2){
         	ResilientNodeFormula current_resilient_node_formula_lower_level = it_2->first;
             if (current_resilient_node_formula_lower_level.get_formula().is_model(initial_state_p)){
@@ -553,11 +556,6 @@ bool prune_check(const ResilientNode &node){
     g_state_registry->reset_initial_state();
     for (int i = 0; i < g_variable_name.size(); i++)
         g_initial_state_data[i] = current_state[i];
-    for (int i = 0; i < g_operators.size(); i++)
-    {
-        if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
-            g_operators.erase(std::remove_if(g_operators.begin(),g_operators.end(),[&](const Operator &op) { return g_current_forbidden_ops.count(op) > 0;}),g_operators.end());
-    }
     for (int i = 0; i < g_operators.size(); i++)
     {
         if (g_current_forbidden_ops.find(g_operators[i]) != g_current_forbidden_ops.end())
@@ -656,14 +654,17 @@ bool resiliency_check_formula(const ResilientNode &node)
                     ResilientNodeFormula tmp = macro_to_op[curr_op.get_name()];
                     Operator new_op = tmp.get_next_operator();
                     stored_ops.push_back(new_op);
+                }else
+                {
+                    stored_ops.push_back(curr_op);                
+
                 }
-                stored_ops.push_back(curr_op);                
             }
         }
     }
 
     for (auto& oper : stored_ops) {     
-        all_operators.push_back(&oper);               
+        all_operators.push_back(&oper);
     }
 
 
@@ -684,7 +685,7 @@ bool resiliency_check_formula(const ResilientNode &node)
         PartialState successor_p = PartialState(successor);
         if(node.get_k() == 0){
             for (int i = 0; i <= g_max_faults; i++){
-                std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> resilient_nodes_formula = resilient_nodes_formula_by_k[i];
+                auto& resilient_nodes_formula = resilient_nodes_formula_by_k[i];
                 for (std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>::iterator it = resilient_nodes_formula.begin(); it != resilient_nodes_formula.end(); ++it){
                     ResilientNodeFormula successor_node_formula_same_level_k = it->first;
                     bool invalid_successor_same_level = false;
@@ -716,7 +717,7 @@ bool resiliency_check_formula(const ResilientNode &node)
         }
         else{
             for (int i = node.get_k(); i <= g_max_faults; i++){
-                std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> resilient_nodes_formula = resilient_nodes_formula_by_k[i];
+                std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>& resilient_nodes_formula = resilient_nodes_formula_by_k[i];
                 for (std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>::iterator it = resilient_nodes_formula.begin(); it != resilient_nodes_formula.end(); ++it){
                     ResilientNodeFormula successor_node_formula_same_level_k = it->first;
                     bool invalid_successor_same_level = false;
@@ -734,7 +735,7 @@ bool resiliency_check_formula(const ResilientNode &node)
                     }
                     if(!invalid_successor_same_level){
                         for (int y = node.get_k() -1 ; y <= g_max_faults; y++){
-                            std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> resilient_nodes_formula_y = resilient_nodes_formula_by_k[y];
+                            auto& resilient_nodes_formula_y = resilient_nodes_formula_by_k[y];
                             for (std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>::iterator it_2 = resilient_nodes_formula_y.begin(); it_2 != resilient_nodes_formula_y.end(); ++it_2){
                               	ResilientNodeFormula current_resilient_node_formula_lower_level = it_2->first;
                             	bool current_lower_level_is_invalid = false;
@@ -879,7 +880,7 @@ bool replan(const ResilientNode &current_node, SearchEngine *engine){
         // gia cilare sulla policy
         for (int k = current_node.get_k(); k <= g_max_faults; k++)
         {
-            std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> resilient_nodes_formula = resilient_nodes_formula_by_k[k];
+            std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>& resilient_nodes_formula = resilient_nodes_formula_by_k[k];
             for (std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>::iterator it = resilient_nodes_formula.begin(); it != resilient_nodes_formula.end(); ++it)
             {
                 ResilientNodeFormula node_formula = it->first;

@@ -160,6 +160,7 @@ TARGET_DEBUG    = $(TARGET)$(TARGET_SUFFIX_DEBUG)
 OBJECTS_PROFILE = $(SOURCES:%.cc=.obj/%$(OBJECT_SUFFIX_PROFILE).o)
 TARGET_PROFILE  = $(TARGET)$(TARGET_SUFFIX_PROFILE)
 
+# CC     = g++ -pg
 CC     = g++ 
 DEPEND = g++ -MM 
 
@@ -172,7 +173,7 @@ CCOPT = -Iext -pipe -static -static-libstdc++ -static-libgcc
 CCOPT += -g 
 # CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -ansi -pedantic -Werror
 CCOPT += -Wall -W -Wno-sign-compare -Wno-deprecated -Wno-deprecated-copy -ansi -pedantic -Werror
-CCOPT += -std=c++11
+CCOPT += -std=c++11 -O3 -march=native
 
 ## The following lines contain workarounds for bugs when
 ## cross-compiling to 64 bit on 32-bit systems using gcc 4.4 or gcc
