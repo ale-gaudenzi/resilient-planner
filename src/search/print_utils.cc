@@ -199,36 +199,43 @@ void print_resilient_policy(map<ResilientNode, Operator> policy)
     cout.rdbuf(coutbuf);
 }
 
-void print_resilient_policy_json(map<ResilientNode, Operator> policy)
+void print_resilient_policy_json(map<ResilientNodeFormula, std::tr1::unordered_map<std::string, int>> policy)
 {
     jobject dump = jobject();
     vector<jobject> items;
     int i = 0;
 
-    for (std::map<ResilientNode, Operator>::iterator it = policy.begin(); it != policy.end(); ++it)
+    for (map<ResilientNodeFormula, std::tr1::unordered_map<std::string, int>>::iterator it = policy.begin(); it != policy.end(); ++it)
     {
         jobject item = jobject();
         item["#"] = ++i;
         item["id"] = it->first.get_id();
+        PartialState partial_state = it->first.get_formula();
 
         vector<string> state;
         for (int j = 0; j < g_variable_domain.size(); j++)
         {
-            const string &fact_name = g_fact_names[j][(it->first.get_state())[j]];
-            if (fact_name != "<none of those>")
-                state.push_back(fact_name);
+            if (-1 != partial_state[j]){
+                const string &fact_name = g_fact_names[j][partial_state[j]];
+                if (fact_name != "<none of those>")
+                    state.push_back(fact_name);
+                else
+                    state.push_back("[" + g_variable_name[j] + "] None of those.");
+            }
         }
-        item["state"] = state;
+        item["partial state"] = state;
 
         item["k"] = it->first.get_k();
 
-        set<Operator> deactivated_op = it->first.get_deactivated_op();
+        set<Operator> deactivated_op = it->first.get_pi();
         vector<string> deactivated_op_names;
         for (std::set<Operator>::iterator it_o = deactivated_op.begin(); it_o != deactivated_op.end(); ++it_o)
             deactivated_op_names.push_back(it_o->get_nondet_name());
         item["forbidden"] = deactivated_op_names;
-
-        item["action"] = it->second.get_nondet_name();
+        item["next action"] = it->first.get_next_operator().get_nondet_name();
+        item["current_level_resiliency_id"] = it->second["current_level_resiliency"];
+        if(it->first.get_k() > 0)
+            item["lower_level_resiliency_id"] = it->second["lower_level_resiliency"];
 
         items.push_back(item);
     }

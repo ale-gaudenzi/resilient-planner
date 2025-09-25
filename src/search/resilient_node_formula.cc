@@ -41,6 +41,33 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
     int hash = hasher(state_value + op_pi_value + k_str + next_op.get_name());
     id = hash;
 }
+
+ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> pi_, Operator next_op_, long int id_) : formula(formula_), k(k_), pi(pi_), next_op(next_op_)
+{
+    string op_pi_value;
+    string state_value;
+
+    for (int i = 0; i < g_variable_domain.size(); i++)
+    {
+        if (-1 != formula[i])
+        {
+            const string &fact_name = g_fact_names[i][formula[i]];
+            if (fact_name != "<none of those>")
+                state_value += fact_name;
+        }
+    }
+
+
+    if (pi.size() != 0){
+        for (set<Operator>::iterator it = pi.begin(); it != pi.end(); it++)
+            op_pi_value += it->get_name();
+    }else{
+        op_pi_value = "";
+    }
+    
+    id = id_;
+}
+
 ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : formula(formula_), k(k_)
 {
     string op_pi_value;

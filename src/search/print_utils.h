@@ -3,6 +3,7 @@
 
 #include "resilient_node.h"
 #include "resilient_policy.h"
+#include "resilient_node_formula.h"
 #include <tr1/unordered_map>
 
 using namespace std;
@@ -16,6 +17,6 @@ extern void print_memory();
 extern void print_policy();
 extern void print_plan(bool to_file, std::list<Operator> plan);
 extern void print_resilient_policy(map<ResilientNode, Operator> policy);
-extern void print_resilient_policy_json(map<ResilientNode, Operator> policy);
+extern void print_resilient_policy_json(map<ResilientNodeFormula, std::tr1::unordered_map<std::string, int>> policy);
 
 #endif

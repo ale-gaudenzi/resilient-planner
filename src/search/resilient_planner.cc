@@ -359,7 +359,7 @@ int main(int argc, const char **argv)
                     if (g_verbose)
                         cout << "Successfull replanning" << endl;
                     // Save current initial state in a variable and computed plan for iteration
-                    State current = g_initial_state();
+                    State current = current_node.get_state();
                     std::vector<const Operator *> plan = engine->get_plan();
                     bool prune = false;
                     if (current_node.get_k() >= 1)
@@ -431,14 +431,22 @@ int main(int argc, const char **argv)
                                 set<Operator> tmp_oper_pi = tmp.get_pi();
                                 formula_pi.insert(tmp_oper_pi.begin(), tmp_oper_pi.end());
                                 formula = regression(formula, op);
-								ResilientNodeFormula res_formula = ResilientNodeFormula(formula, 0, formula_pi, tmp.get_next_operator());
-                                resilient_nodes_formula_by_k[0][res_formula] = std::vector<ResilientNodeFormula>{resilient_nodes_formula_by_k[0][tmp]};
+                                ResilientNodeFormula res_formula = ResilientNodeFormula(formula, 0, formula_pi, tmp.get_next_operator());
+                                if (!resilient_nodes_formula_by_k[0][res_formula].empty()) {
+                                    ResilientNodeFormula dummy_1 = resilient_nodes_formula_by_k[0][res_formula][0];
+                                    bool security = (res_formula == dummy_1 || res_formula == tmp);
+                                    if (!(security)){
+                                        resilient_nodes_formula_by_k[0][res_formula] = std::vector<ResilientNodeFormula>{resilient_nodes_formula_by_k[0][tmp]};
+                                    }
+                                }
                                 old_res_formula = res_formula;
                             }else{
                               	formula_pi.insert(*op);
                                 formula = regression(formula, op);
 								ResilientNodeFormula res_formula = ResilientNodeFormula(formula, 0, formula_pi, *op);
-                                resilient_nodes_formula_by_k[0][res_formula] = std::vector<ResilientNodeFormula>{old_res_formula};
+                                if (resilient_nodes_formula_by_k[0][res_formula].empty()) {
+                                    resilient_nodes_formula_by_k[0][res_formula] = std::vector<ResilientNodeFormula>{old_res_formula};
+                                }
                                 old_res_formula = res_formula;
                             }
                         }
@@ -496,7 +504,7 @@ int main(int argc, const char **argv)
         {
             ResilientPolicy res_policy = ResilientPolicy();
             g_timer_extract_policy.resume();
-            res_policy.extract_policy(static_initial_state, initial_certificate, goal_partial_state, g_max_faults, resilient_nodes_formula_by_k);
+            res_policy.extract_policy(initial_certificate, goal_partial_state, g_max_faults, resilient_nodes_formula_by_k);
             g_timer_extract_policy.stop();
             print_resilient_policy_json(res_policy.get_policy());
             g_mem_extraction = mem_usage();
@@ -633,12 +641,12 @@ bool resiliency_check_formula(const ResilientNode &node)
         g_timer_RCheck.stop();
         return false;
     }
+    State state = node.get_state();
+    PartialState current_r = PartialState(state);
     vector< Operator> stored_ops;
     vector<const Operator *> all_operators;
     list<PolicyItem *> current_policy = g_policy->get_items();
-    State state = node.get_state();
 
-    PartialState current_r = PartialState(state);
 
     // Find from the policy every action applicable in the current state, minus V
     for (std::list<PolicyItem *>::iterator it = current_policy.begin(); it != current_policy.end(); ++it)
@@ -706,7 +714,9 @@ bool resiliency_check_formula(const ResilientNode &node)
                             pi_equal_next_formula.insert(*ope);
                             PartialState formula = regression(successor_node_formula_same_level_k.get_formula(), ope);
                             ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula, *ope);
-                            resilient_nodes_formula_by_k[node.get_k()][to_add] = std::vector<ResilientNodeFormula>{successor_node_formula_same_level_k};
+                            if (resilient_nodes_formula_by_k[node.get_k()][to_add].empty()) {
+                                resilient_nodes_formula_by_k[node.get_k()][to_add] = std::vector<ResilientNodeFormula>{successor_node_formula_same_level_k};
+                            }
                             g_timer_check_formula.stop();
                             g_timer_RCheck.stop();
                             return true;
@@ -760,7 +770,9 @@ bool resiliency_check_formula(const ResilientNode &node)
                                         formula = regression(successor_node_formula_same_level_k.get_formula(), ope);
                                         formula.combine_with(current_resilient_node_formula_lower_level.get_formula());
                                         ResilientNodeFormula to_add = ResilientNodeFormula(formula, node.get_k(), pi_equal_next_formula, *ope);
-                                        resilient_nodes_formula_by_k[node.get_k()][to_add] = std::vector<ResilientNodeFormula>{successor_node_formula_same_level_k, current_resilient_node_formula_lower_level};
+                                        if (resilient_nodes_formula_by_k[node.get_k()][to_add].empty()) {
+                                            resilient_nodes_formula_by_k[node.get_k()][to_add] = std::vector<ResilientNodeFormula>{successor_node_formula_same_level_k, current_resilient_node_formula_lower_level};
+                                        }
                                         g_timer_RCheck.stop();
                                         return true;
                                         }

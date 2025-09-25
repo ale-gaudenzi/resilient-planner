@@ -9,83 +9,62 @@ using namespace std;
 /// @param goal The last state of the policy.
 /// @param K The resilience parameter.
 /// @param resilient_nodes The set of resilient nodes.
-void ResilientPolicy::extract_policy(State initial_state, ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> >  resilient_nodes_formula_by_k)
+void ResilientPolicy::extract_policy(ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> >  resilient_nodes_formula_by_k)
 {
-    StateRegistry *registry = const_cast<StateRegistry *>(&initial_state.get_registry());
     int not_found_counter = 0;
     int i = 0;
-    list<pair<ResilientNode, ResilientNodeFormula> > open;
-    open.push_back(make_pair(ResilientNode(initial_state, K, set<Operator>()), initial_certiticate));
+    list<pair<ResilientNodeFormula, ResilientNodeFormula> > open;
+    ResilientNodeFormula initial_node = ResilientNodeFormula(initial_certiticate.get_formula(), K, set<Operator>(), initial_certiticate.get_next_operator(), initial_certiticate.get_id());
+    open.push_back(make_pair(initial_node, initial_certiticate));
     while (!open.empty())
     {
         bool found = false;
-        ResilientNode current_node = open.front().first;
+        ResilientNodeFormula current_node = open.front().first;
         ResilientNodeFormula current_certificate = open.front().second;
-        set<Operator> current_node_forbidden = current_node.get_deactivated_op();
-        if (policy.find(current_node) != policy.end()){
-            found = true;
-            list<ResilientNode> to_delete_list;
-            ResilientNode to_delete = current_node;
-            to_delete_list.push_back(to_delete);
-            while (to_delete_list.size() > 0){
-                ResilientNode to_delete_node = to_delete_list.front();
-                to_delete_list.pop_front();
-                if(policy.find(to_delete_node)!= policy.end()){
-                    Operator op = policy[to_delete];
-                    policy.erase(to_delete_node);
-                    State successor = registry->get_successor_state(to_delete.get_state(), op);
-                    PartialState successor_partial = PartialState(successor);
-                    if(!goal.is_implied(successor_partial)){
-                    	to_delete_list.push_back(ResilientNode(successor, to_delete_node.get_k(), to_delete_node.get_deactivated_op()));
-                    }
-                    if(to_delete_node.get_k()>0){
-                        set<Operator> to_delete_node_forbidden = to_delete_node.get_deactivated_op();
-                        to_delete_node_forbidden.insert(op);
-                        to_delete_list.push_back(ResilientNode(to_delete_node.get_state(), to_delete_node.get_k() - 1, to_delete_node_forbidden));
-                    }
-                }
+        set<Operator> current_node_forbidden = current_node.get_pi();
+        found = true;
+        open.pop_front();
+        if (current_node.get_k() == 0)
+        {
+            ResilientNodeFormula successor_formula = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
+            PartialState successor = successor_formula.get_formula();
+            policy[current_node]["current_level_resiliency"] = successor_formula.get_id();
+            if (!goal.is_implied(successor))
+            {
+                ResilientNodeFormula successor_node = ResilientNodeFormula(successor, current_node.get_k(), current_node.get_pi(), successor_formula.get_next_operator(), successor_formula.get_id());
+                open.push_back(make_pair(successor_node, successor_formula));
             }
         }
         else
         {
-            found = true;
-            open.pop_front();
-            policy[current_node] = current_certificate.get_next_operator();
-            State successor = registry->get_successor_state(current_node.get_state(), current_certificate.get_next_operator());
-            if (current_node.get_k() == 0)
-            {
-                ResilientNode successor_node = ResilientNode(successor, current_node.get_k(), current_node.get_deactivated_op());
-                PartialState successor_partial = PartialState(successor);
+            ResilientNodeFormula first = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
+            ResilientNodeFormula second = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][1];
+
+            current_node_forbidden.insert(current_certificate.get_next_operator());
+
+            if(first.get_k() >= current_node.get_k()){
+                ResilientNodeFormula current_node_lower_level = ResilientNodeFormula(second.get_formula(), current_node.get_k() - 1, current_node_forbidden, second.get_next_operator(), second.get_id());
+                ResilientNodeFormula successor_node = ResilientNodeFormula(first.get_formula(), current_node.get_k(), current_node.get_pi(), first.get_next_operator(), first.get_id());
+                PartialState successor_partial = successor_node.get_formula();
+                policy[current_node]["current_level_resiliency"] = first.get_id();
+                policy[current_node]["lower_level_resiliency"] = second.get_id();
+                open.push_back(make_pair(current_node_lower_level, second));
                 if(!goal.is_implied(successor_partial)){
-                    ResilientNodeFormula successor_formula = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
-                    open.push_back(make_pair(successor_node, successor_formula));
+                    open.push_back(make_pair(successor_node, first));
                 }
             }
-            else
-            {
-                ResilientNode successor_node = ResilientNode(successor, current_node.get_k(), current_node.get_deactivated_op());
-                PartialState current_partial = PartialState(current_node.get_state());
-                PartialState successor_partial = PartialState(successor);
-                current_node_forbidden.insert(current_certificate.get_next_operator());
-                ResilientNode current_node_lower_level = ResilientNode(current_node.get_state(), current_node.get_k() - 1, current_node_forbidden);
-                ResilientNodeFormula first = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
-                ResilientNodeFormula second = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][1];
-                if(first.get_formula().is_model(current_partial) && first.get_k() >= current_node_lower_level.get_k() && second.get_k() >= successor_node.get_k()){
-                    open.push_back(make_pair(current_node_lower_level, first));
-                    if(!goal.is_implied(successor_partial)){
-                        open.push_back(make_pair(successor_node, second));
-                    }
-                }
-                else if(second.get_formula().is_model(current_partial) && first.get_k() >= successor_node.get_k() && first.get_k() >= current_node_lower_level.get_k()){
-                    open.push_back(make_pair(current_node_lower_level, second));
-                    if(!goal.is_implied(successor_partial)){
-                        open.push_back(make_pair(successor_node, first));
-                    }
-                }
-                else{
-                  continue;
+            else{
+                ResilientNodeFormula current_node_lower_level = ResilientNodeFormula(first.get_formula(), current_node.get_k() - 1, current_node_forbidden, first.get_next_operator(), first.get_id());
+                ResilientNodeFormula successor_node = ResilientNodeFormula(second.get_formula(), current_node.get_k(), current_node.get_pi(), second.get_next_operator(), second.get_id());
+                policy[current_node]["current_level_resiliency"] = second.get_id();
+                policy[current_node]["lower_level_resiliency"] = first.get_id();
+                PartialState successor_partial = successor_node.get_formula();
+                open.push_back(make_pair(current_node_lower_level, first));
+                if(!goal.is_implied(successor_partial)){
+                    open.push_back(make_pair(successor_node, second));
                 }
             }
+
         }
         i++;
         if (!found)
@@ -101,4 +80,3 @@ void ResilientPolicy::extract_policy(State initial_state, ResilientNodeFormula i
     else
         cout << "\n\nResilient policy created, " << policy.size() << " nodes found." << endl;
 }
-

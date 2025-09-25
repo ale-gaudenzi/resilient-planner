@@ -16,11 +16,11 @@ using namespace std;
 class ResilientPolicy
 {
 private:
-    map<ResilientNode, Operator> policy;
+    map<ResilientNodeFormula, std::tr1::unordered_map<std::string, int>> policy;
 
 public:
-    void extract_policy(State initial_state, ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>> resilient_nodes_formula_by_k);
-    map<ResilientNode, Operator> get_policy() { return policy; }
+    void extract_policy(ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>> resilient_nodes_formula_by_k);
+    map<ResilientNodeFormula, std::tr1::unordered_map<string, int>> get_policy() { return policy; }
 };
 
 #endif
