@@ -199,18 +199,21 @@ void print_resilient_policy(map<ResilientNode, Operator> policy)
     cout.rdbuf(coutbuf);
 }
 
-void print_resilient_policy_json(map<ResilientNodeFormula, std::tr1::unordered_map<std::string, int>> policy)
+void print_resilient_policy_json(std::tr1::unordered_map<int, PolicyNode> policy)
 {
     jobject dump = jobject();
     vector<jobject> items;
     int i = 0;
 
-    for (map<ResilientNodeFormula, std::tr1::unordered_map<std::string, int>>::iterator it = policy.begin(); it != policy.end(); ++it)
+    for (std::tr1::unordered_map<int, PolicyNode>::iterator it = policy.begin(); it != policy.end(); ++it)
     {
         jobject item = jobject();
+        PolicyNode node = it->second;
         item["#"] = ++i;
-        item["id"] = it->first.get_id();
-        PartialState partial_state = it->first.get_formula();
+        // item["id"] = it->get_id();
+        item["id"] = node.get_id();
+        item["certificate_id"] = node.get_certificate().get_id();
+        PartialState partial_state = node.get_certificate().get_formula();
 
         vector<string> state;
         for (int j = 0; j < g_variable_domain.size(); j++)
@@ -225,17 +228,17 @@ void print_resilient_policy_json(map<ResilientNodeFormula, std::tr1::unordered_m
         }
         item["partial state"] = state;
 
-        item["k"] = it->first.get_k();
+        item["k"] = node.get_k();
 
-        set<Operator> deactivated_op = it->first.get_pi();
+        set<Operator> deactivated_op = node.get_forbidden_actions();
         vector<string> deactivated_op_names;
         for (std::set<Operator>::iterator it_o = deactivated_op.begin(); it_o != deactivated_op.end(); ++it_o)
             deactivated_op_names.push_back(it_o->get_nondet_name());
         item["forbidden"] = deactivated_op_names;
-        item["next action"] = it->first.get_next_operator().get_nondet_name();
-        item["current_level_resiliency_id"] = it->second["current_level_resiliency"];
-        if(it->first.get_k() > 0)
-            item["lower_level_resiliency_id"] = it->second["lower_level_resiliency"];
+        item["next action"] = node.get_certificate().get_next_operator().get_nondet_name();
+        item["current_level_resiliency_id"] = node.get_current_level_resiliency_id();
+        if(node.get_k() > 0)
+            item["lower_level_resiliency_id"] = node.get_lower_level_resiliency_id();
 
         items.push_back(item);
     }

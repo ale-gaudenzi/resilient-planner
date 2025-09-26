@@ -9,27 +9,28 @@ using namespace std;
 
 class PolicyNode
 {
-    ResilientNodeFormula resilient_node_formula;
-    Operator op;
     long int id;
+    ResilientNodeFormula certificate;
+    int k;
+    set<Operator> forbidden_actions;
+    int current_level_resiliency;
+    int lower_level_resiliency;
 
 public:
-    PolicyNode();
-    PolicyNode(ResilientNodeFormula resilient_node_formula_, Operator op_);
+    PolicyNode(ResilientNodeFormula certificate_, int k_, set<Operator> forbidden_actions_, int current_level_resiliency_, int lower_level_resiliency_ );
+    PolicyNode() = default;
 
-    void dump() const;
+    int get_id() const { return id; };
 
-    ResilientNodeFormula get_resilient_node_formula() const
-    {
-        return resilient_node_formula;
-    }
+    ResilientNodeFormula get_certificate() const { return certificate; };
 
-    long int get_id() const { return id; };
+    set<Operator> get_forbidden_actions() const { return forbidden_actions; };
 
-    Operator get_operator() const
-    {
-        return op;
-    }
+    int get_k() const { return k; };
+
+    int get_lower_level_resiliency_id() const {return lower_level_resiliency;}
+
+    int get_current_level_resiliency_id() const{return current_level_resiliency;}
 
     bool operator==(const PolicyNode &other) const
     {

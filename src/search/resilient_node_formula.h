@@ -10,17 +10,19 @@ class ResilientNodeFormula {
     int k;
     std::set<Operator> pi;
     long int id;
+    int distance;
     Operator next_op;
 
 public:
     ResilientNodeFormula() = default;
     ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> pi_, Operator next_op_);
-    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> pi_, Operator next_op_, long int id_);
+    ResilientNodeFormula(PartialState formula, int k_, std::set<Operator> pi_, Operator next_op_, int distance);
     ResilientNodeFormula(PartialState formula, int k_);
 
     void dump() const;
     PartialState get_formula() const { return formula; }
     Operator get_next_operator() const { return next_op; }
+    int get_distance() const {return distance;}
     std::set<Operator> get_pi() const { return pi; }
     int get_k() const { return k; }
     int get_id() const { return id; }

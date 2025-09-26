@@ -42,7 +42,7 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
     id = hash;
 }
 
-ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> pi_, Operator next_op_, long int id_) : formula(formula_), k(k_), pi(pi_), next_op(next_op_)
+ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::set<Operator> pi_, Operator next_op_, int distance_) : formula(formula_), k(k_), pi(pi_), next_op(next_op_), distance(distance_)
 {
     string op_pi_value;
     string state_value;
@@ -64,8 +64,14 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_, std::s
     }else{
         op_pi_value = "";
     }
-    
-    id = id_;
+
+    std::ostringstream oss;
+    oss << (k + distance);
+    std::string k_str = oss.str();
+
+    std::tr1::hash<string> hasher;
+    int hash = hasher(state_value + op_pi_value + k_str + next_op.get_name());
+    id = hash;
 }
 
 ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : formula(formula_), k(k_)
@@ -97,7 +103,7 @@ ResilientNodeFormula::ResilientNodeFormula(PartialState formula_, int k_) : form
 void ResilientNodeFormula::dump() const
 {
     cout << "Node: " << id << endl;
-    formula.dump_pddl();
+    // formula.dump_pddl();
     cout << "k: " << k << endl;
     cout << "pi: " << endl; 
     for (set<Operator>::iterator it = pi.begin(); it != pi.end(); it++)

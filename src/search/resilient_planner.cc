@@ -123,7 +123,6 @@ std::vector<PartialState> partial_state_to_goal(std::vector<const Operator *> pl
 std::tr1::unordered_map<int, ResilientNode> resilient_nodes;
 std::tr1::unordered_map<ResilientNodeFormula, Operator> policy_node;
 std::tr1::unordered_map<string, ResilientNodeFormula> macro_to_op;
-std::tr1::unordered_map<int, std::vector<PolicyNode> > policy_certificate;
 std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> > resilient_nodes_formula_by_k;
 std::tr1::unordered_map<int, ResilientNode> non_resilient_nodes;
 std::stack<ResilientNode> open;
