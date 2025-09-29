@@ -7,125 +7,73 @@ using namespace std;
 /// Extract the resilient policy from the global policy.
 /// @param initial_state The first state of the policy.
 /// @param goal The last state of the policy.
-/// @param K The resilience parameter.
+/// @param K The resili ence parameter.
 /// @param resilient_nodes The set of resilient nodes.
-void ResilientPolicy::extract_policy(ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> >  resilient_nodes_formula_by_k)
+void ResilientPolicy::extract_policy(State initial_state, ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> >  resilient_nodes_formula_by_k)
 {
     int not_found_counter = 0;
     int i = 0;
-    list<pair<ResilientNodeFormula, ResilientNodeFormula> > open;
-    ResilientNodeFormula initial_node = ResilientNodeFormula(initial_certiticate.get_formula(), K, set<Operator>(), initial_certiticate.get_next_operator());
-
-
+    StateRegistry *registry = const_cast<StateRegistry *>(&initial_state.get_registry());
+    list<pair<ResilientNode, ResilientNodeFormula> > open;
+    ResilientNode initial_node = ResilientNode(initial_state, K, set<Operator>());
     open.push_back(make_pair(initial_node, initial_certiticate));
     while (!open.empty())
     {
-        ResilientNodeFormula current_node = open.front().first;
+        bool found = false;
+        ResilientNode current_node = open.front().first;
         ResilientNodeFormula current_certificate = open.front().second;
-
-        set<Operator> current_node_forbidden = current_node.get_pi();
+        set<Operator> current_node_forbidden = current_node.get_deactivated_op();
+        found = true;
         open.pop_front();
-        
+        Operator next_op = current_certificate.get_next_operator();
+        policy[current_node] = next_op;
+        State successor = registry->get_successor_state(current_node.get_state(), next_op);
+        PartialState successor_p = PartialState(successor);
+        PartialState current_p = PartialState(current_node.get_state());
+
         if (current_node.get_k() == 0)
         {
-            ResilientNodeFormula successor_formula = resilient_nodes_formula_by_k[0][current_certificate][0];
-            PartialState successor = successor_formula.get_formula();
-            ResilientNodeFormula successor_node = ResilientNodeFormula(successor, 0, current_node_forbidden, successor_formula.get_next_operator());
-            PolicyNode policy_node = PolicyNode(current_node, 0, current_node_forbidden, successor_node.get_id(), 0);
-
-            policy[current_node.get_id()] = policy_node;
-
-            if (!goal.is_implied(successor))
+            ResilientNodeFormula successor_formula = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
+            if (!goal.is_implied(successor_p))
             {
+                ResilientNode successor_node = ResilientNode(successor, current_node.get_k(), current_node.get_deactivated_op());
                 open.push_back(make_pair(successor_node, successor_formula));
             }
         }
         else
         {
+            current_node_forbidden.insert(current_certificate.get_next_operator());
+
             ResilientNodeFormula first = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
             ResilientNodeFormula second = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][1];
 
-            current_node_forbidden.insert(current_certificate.get_next_operator());
-
-            if(first.get_k() >= current_node.get_k()){
-
-                ResilientNodeFormula current_node_lower_level = ResilientNodeFormula(second.get_formula(), current_node.get_k() - 1, current_node_forbidden, second.get_next_operator());
-                ResilientNodeFormula successor_node = ResilientNodeFormula(first.get_formula(), current_node.get_k(), current_node.get_pi(), first.get_next_operator());
-
-                PolicyNode policy_node = PolicyNode(current_node, current_node.get_k(), current_node.get_pi(), successor_node.get_id(), current_node_lower_level.get_id());
-
-                policy[current_node.get_id()] = policy_node;
-
-                PartialState successor_partial = successor_node.get_formula();
-                open.push_back(make_pair(current_node_lower_level, second));
-
-                if(!goal.is_implied(successor_partial)){
-                    open.push_back(make_pair(successor_node, first));
+            ResilientNode current_node_lower_level = ResilientNode(current_node.get_state(), current_node.get_k() - 1, current_node_forbidden);
+            ResilientNode successor_node_same_level = ResilientNode(successor, current_node.get_k(), current_node.get_deactivated_op());
+            if(first.get_k() >= successor_node_same_level.get_k() && first.get_formula().is_model(successor_p)){
+                	open.push_back(make_pair(current_node_lower_level, second));
+                if(!goal.is_implied(successor_p)){
+                 	open.push_back(make_pair(successor_node_same_level, first));
                 }
             }
-            else{
-                ResilientNodeFormula current_node_lower_level = ResilientNodeFormula(first.get_formula(), current_node.get_k() - 1, current_node_forbidden, first.get_next_operator());
-                ResilientNodeFormula successor_node = ResilientNodeFormula(second.get_formula(), current_node.get_k(), current_node.get_pi(), second.get_next_operator());
-
-                PolicyNode policy_node = PolicyNode(current_node, current_node.get_k(), current_node.get_pi(),  successor_node.get_id(), current_node_lower_level.get_id());
-
-                policy[current_node.get_id()] = policy_node;
-
-                PartialState successor_partial = successor_node.get_formula();
+            else if(second.get_k() >= successor_node_same_level.get_k() && second.get_formula().is_model(successor_p))
+            {
                 open.push_back(make_pair(current_node_lower_level, first));
-                if(!goal.is_implied(successor_partial)){
-                    open.push_back(make_pair(successor_node, second));
+                if(!goal.is_implied(successor_p)){
+                	open.push_back(make_pair(successor_node_same_level, second));
                 }
+            }else{
+                found = false;
             }
-
         }
         i++;
+        if (!found)
+        {
+            cout << "\nNode not found at iteration #" << i << endl;
+            current_node.dump();
+            cout << "next_actions:" << endl;
+            not_found_counter += 1;
+        }
     }
-
-    // set<int> ids;
-    // list<ResilientNodeFormula> another_open;
-    // another_open.push_back(initial_certiticate);
-    // ids.insert(initial_certiticate.get_id());
-    // while (!another_open.empty())
-    // {
-    //     ResilientNodeFormula current_certificate = another_open.front();
-    //     another_open.pop_front();
-    //     if (current_certificate.get_k() == 0)
-    //     {
-    //         ResilientNodeFormula successor_certificate = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
-    //         if (policy.count(successor_certificate) > 0) {
-    //             ids.insert(successor_certificate.get_id());
-    //             another_open.push_back(successor_certificate);
-    //         }
-    //     }
-    //     else
-    //     {
-    //         ResilientNodeFormula first = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][0];
-    //         ResilientNodeFormula second = resilient_nodes_formula_by_k[current_certificate.get_k()][current_certificate][1];
-    //         if (policy.count(first) > 0) {
-    //             ids.insert(first.get_id());
-    //             another_open.push_back(first);
-    //         }
-    //         if (policy.count(second) > 0) {
-    //             ids.insert(second.get_id());
-    //             another_open.push_back(second);
-    //         }
-    //     }
-
-    // }
-
-    // cout << "Dimensione totale nodi: " << ids.size() << endl;
-
-    // for (auto it = policy.begin(); it != policy.end(); )
-    // {
-    //     const ResilientNodeFormula& key = it->first;
-    //     if(ids.count(key.get_id())){
-    //         ++it;
-    //     }else{
-    //         it = policy.erase(it);
-    //     }
-    // }
-
     if (not_found_counter > 0)
         cout << "\n\nResilient policy created, but " << not_found_counter << " nodes not found." << endl;
     else

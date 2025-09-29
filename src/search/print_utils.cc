@@ -199,46 +199,40 @@ void print_resilient_policy(map<ResilientNode, Operator> policy)
     cout.rdbuf(coutbuf);
 }
 
-void print_resilient_policy_json(std::tr1::unordered_map<int, PolicyNode> policy)
+void print_resilient_policy_json( map<ResilientNode, Operator> policy)
 {
     jobject dump = jobject();
     vector<jobject> items;
     int i = 0;
 
-    for (std::tr1::unordered_map<int, PolicyNode>::iterator it = policy.begin(); it != policy.end(); ++it)
+    for(map<ResilientNode, Operator>::iterator it = policy.begin(); it != policy.end(); ++it)
     {
         jobject item = jobject();
-        PolicyNode node = it->second;
         item["#"] = ++i;
-        // item["id"] = it->get_id();
-        item["id"] = node.get_id();
-        item["certificate_id"] = node.get_certificate().get_id();
-        PartialState partial_state = node.get_certificate().get_formula();
+        item["id"] = it->first.get_id();
+        State full_state = it->first.get_state();
 
         vector<string> state;
         for (int j = 0; j < g_variable_domain.size(); j++)
         {
-            if (-1 != partial_state[j]){
-                const string &fact_name = g_fact_names[j][partial_state[j]];
+            if (-1 != full_state[j]){
+                const string &fact_name = g_fact_names[j][full_state[j]];
                 if (fact_name != "<none of those>")
                     state.push_back(fact_name);
                 else
                     state.push_back("[" + g_variable_name[j] + "] None of those.");
             }
         }
-        item["partial state"] = state;
+        item["state"] = state;
 
-        item["k"] = node.get_k();
+        item["k"] = it->first.get_k();
 
-        set<Operator> deactivated_op = node.get_forbidden_actions();
+        set<Operator> deactivated_op = it->first.get_deactivated_op();
         vector<string> deactivated_op_names;
         for (std::set<Operator>::iterator it_o = deactivated_op.begin(); it_o != deactivated_op.end(); ++it_o)
             deactivated_op_names.push_back(it_o->get_nondet_name());
         item["forbidden"] = deactivated_op_names;
-        item["next action"] = node.get_certificate().get_next_operator().get_nondet_name();
-        item["current_level_resiliency_id"] = node.get_current_level_resiliency_id();
-        if(node.get_k() > 0)
-            item["lower_level_resiliency_id"] = node.get_lower_level_resiliency_id();
+        item["next action"] = it->second.get_nondet_name();
 
         items.push_back(item);
     }

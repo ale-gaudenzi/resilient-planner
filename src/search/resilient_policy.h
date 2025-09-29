@@ -3,9 +3,7 @@
 
 #include "operator.h"
 #include "resilient_node.h"
-#include "policy_node.h"
 #include "resilient_node_formula.h"
-#include "policy_node.h"
 #include "policy.h"
 #include "globals.h"
 
@@ -17,11 +15,12 @@ using namespace std;
 class ResilientPolicy
 {
 private:
-    std::tr1::unordered_map<int, PolicyNode> policy;
+    map<ResilientNode, Operator> policy;
+
 
 public:
-    void extract_policy(ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>> resilient_nodes_formula_by_k);
-    std::tr1::unordered_map<int, PolicyNode> get_policy() { return policy; }
+    void extract_policy(State initial_state, ResilientNodeFormula initial_certiticate, PartialState goal, int K, std::tr1::unordered_map<int, std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>> resilient_nodes_formula_by_k);
+    map<ResilientNode, Operator> get_policy() { return policy; }
 };
 
 #endif

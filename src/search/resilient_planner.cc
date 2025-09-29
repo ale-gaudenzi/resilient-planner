@@ -10,7 +10,6 @@
 #include "policy.h"
 #include "partial_state.h"
 #include "resilient_node.h"
-#include "policy_node.h"
 #include "resilient_node_formula.h"
 #include "resilient_policy.h"
 #include "print_utils.h"
@@ -485,7 +484,7 @@ int main(int argc, const char **argv)
 
   	    PartialState initial_state_p = PartialState(static_initial_state);
 
-        std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>& resilient_nodes_formula_max_faults = resilient_nodes_formula_by_k[g_max_faults];
+        std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>> &resilient_nodes_formula_max_faults = resilient_nodes_formula_by_k[g_max_faults];
         for (std::tr1::unordered_map<ResilientNodeFormula, std::vector<ResilientNodeFormula>>::iterator it_2 = resilient_nodes_formula_max_faults.begin(); it_2 != resilient_nodes_formula_max_faults.end(); ++it_2){
         	ResilientNodeFormula current_resilient_node_formula_lower_level = it_2->first;
             if (current_resilient_node_formula_lower_level.get_formula().is_model(initial_state_p)){
@@ -503,7 +502,7 @@ int main(int argc, const char **argv)
         {
             ResilientPolicy res_policy = ResilientPolicy();
             g_timer_extract_policy.resume();
-            res_policy.extract_policy(initial_certificate, goal_partial_state, g_max_faults, resilient_nodes_formula_by_k);
+            res_policy.extract_policy(static_initial_state, initial_certificate, goal_partial_state, g_max_faults, resilient_nodes_formula_by_k);
             g_timer_extract_policy.stop();
             print_resilient_policy_json(res_policy.get_policy());
             g_mem_extraction = mem_usage();

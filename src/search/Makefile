@@ -50,7 +50,6 @@ HEADERS = \
           evaluators/weighted_evaluator.h \
           resilient_node.h \
           resilient_node_formula.h \
-          policy_node.h \
 		  resilient_policy.h \
           open_lists/alternation_open_list.h \
           open_lists/open_list_buckets.h \
@@ -160,8 +159,8 @@ TARGET_DEBUG    = $(TARGET)$(TARGET_SUFFIX_DEBUG)
 OBJECTS_PROFILE = $(SOURCES:%.cc=.obj/%$(OBJECT_SUFFIX_PROFILE).o)
 TARGET_PROFILE  = $(TARGET)$(TARGET_SUFFIX_PROFILE)
 
-# CC     = g++ -pg
-CC     = g++ -O3 
+# CC     = g++ -pg -03
+CC     = g++
 DEPEND = g++ -MM 
 
 

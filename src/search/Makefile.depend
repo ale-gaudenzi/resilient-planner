@@ -17,8 +17,8 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h policy_node.h resilient_node_formula.h \
- resilient_policy.h print_utils.h landmarks/exploration.h \
+ resilient_node.h resilient_node_formula.h resilient_policy.h \
+ print_utils.h landmarks/exploration.h \
  landmarks/../heuristics/heuristic.h landmarks/../globals.h \
  landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
  landmarks/../utilities.h landmarks/landmark_factory_zhu_givan.h \
@@ -702,12 +702,10 @@
 .obj/resilient_node_formula.release.o: resilient_node_formula.cc \
  resilient_node_formula.h operator.h globals.h partial_state.h state.h \
  int_packer.h state_id.h
-.obj/policy_node.release.o: policy_node.cc policy_node.h operator.h globals.h \
- partial_state.h state.h int_packer.h state_id.h resilient_node_formula.h
 .obj/resilient_policy.release.o: resilient_policy.cc resilient_policy.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
- resilient_node.h policy_node.h resilient_node_formula.h policy.h \
- regression.h search_engines/search_engine.h search_engines/../operator.h \
+ resilient_node.h resilient_node_formula.h policy.h regression.h \
+ search_engines/search_engine.h search_engines/../operator.h \
  search_engines/../search_space.h search_engines/../state.h \
  search_engines/../search_node_info.h search_engines/../state_id.h \
  search_engines/../operator.h search_engines/../operator_cost.h \
@@ -732,8 +730,8 @@
 .obj/ext/json.release.o: ext/json.cc ext/json.h
 .obj/print_utils.release.o: print_utils.cc print_utils.h resilient_node.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
- resilient_policy.h policy_node.h resilient_node_formula.h policy.h \
- regression.h search_engines/search_engine.h search_engines/../operator.h \
+ resilient_policy.h resilient_node_formula.h policy.h regression.h \
+ search_engines/search_engine.h search_engines/../operator.h \
  search_engines/../search_space.h search_engines/../state.h \
  search_engines/../search_node_info.h search_engines/../state_id.h \
  search_engines/../operator.h search_engines/../operator_cost.h \
@@ -1789,8 +1787,8 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h policy_node.h resilient_node_formula.h \
- resilient_policy.h print_utils.h landmarks/exploration.h \
+ resilient_node.h resilient_node_formula.h resilient_policy.h \
+ print_utils.h landmarks/exploration.h \
  landmarks/../heuristics/heuristic.h landmarks/../globals.h \
  landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
  landmarks/../utilities.h landmarks/landmark_factory_zhu_givan.h \
@@ -2474,12 +2472,10 @@
 .obj/resilient_node_formula.debug.o: resilient_node_formula.cc \
  resilient_node_formula.h operator.h globals.h partial_state.h state.h \
  int_packer.h state_id.h
-.obj/policy_node.debug.o: policy_node.cc policy_node.h operator.h globals.h \
- partial_state.h state.h int_packer.h state_id.h resilient_node_formula.h
 .obj/resilient_policy.debug.o: resilient_policy.cc resilient_policy.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
- resilient_node.h policy_node.h resilient_node_formula.h policy.h \
- regression.h search_engines/search_engine.h search_engines/../operator.h \
+ resilient_node.h resilient_node_formula.h policy.h regression.h \
+ search_engines/search_engine.h search_engines/../operator.h \
  search_engines/../search_space.h search_engines/../state.h \
  search_engines/../search_node_info.h search_engines/../state_id.h \
  search_engines/../operator.h search_engines/../operator_cost.h \
@@ -2504,8 +2500,8 @@
 .obj/ext/json.debug.o: ext/json.cc ext/json.h
 .obj/print_utils.debug.o: print_utils.cc print_utils.h resilient_node.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
- resilient_policy.h policy_node.h resilient_node_formula.h policy.h \
- regression.h search_engines/search_engine.h search_engines/../operator.h \
+ resilient_policy.h resilient_node_formula.h policy.h regression.h \
+ search_engines/search_engine.h search_engines/../operator.h \
  search_engines/../search_space.h search_engines/../state.h \
  search_engines/../search_node_info.h search_engines/../state_id.h \
  search_engines/../operator.h search_engines/../operator_cost.h \
@@ -3561,8 +3557,8 @@
  heuristics/additive_heuristic.h heuristics/priority_queue.h \
  heuristics/relaxation_heuristic.h heuristics/heuristic.h \
  heuristics/cea_heuristic.h ext/tree_util.hh ext/tree.hh timer.h \
- resilient_node.h policy_node.h resilient_node_formula.h \
- resilient_policy.h print_utils.h landmarks/exploration.h \
+ resilient_node.h resilient_node_formula.h resilient_policy.h \
+ print_utils.h landmarks/exploration.h \
  landmarks/../heuristics/heuristic.h landmarks/../globals.h \
  landmarks/../heuristics/priority_queue.h landmarks/landmark_types.h \
  landmarks/../utilities.h landmarks/landmark_factory_zhu_givan.h \
@@ -4246,12 +4242,10 @@
 .obj/resilient_node_formula.profile.o: resilient_node_formula.cc \
  resilient_node_formula.h operator.h globals.h partial_state.h state.h \
  int_packer.h state_id.h
-.obj/policy_node.profile.o: policy_node.cc policy_node.h operator.h globals.h \
- partial_state.h state.h int_packer.h state_id.h resilient_node_formula.h
 .obj/resilient_policy.profile.o: resilient_policy.cc resilient_policy.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
- resilient_node.h policy_node.h resilient_node_formula.h policy.h \
- regression.h search_engines/search_engine.h search_engines/../operator.h \
+ resilient_node.h resilient_node_formula.h policy.h regression.h \
+ search_engines/search_engine.h search_engines/../operator.h \
  search_engines/../search_space.h search_engines/../state.h \
  search_engines/../search_node_info.h search_engines/../state_id.h \
  search_engines/../operator.h search_engines/../operator_cost.h \
@@ -4276,8 +4270,8 @@
 .obj/ext/json.profile.o: ext/json.cc ext/json.h
 .obj/print_utils.profile.o: print_utils.cc print_utils.h resilient_node.h operator.h \
  globals.h partial_state.h state.h int_packer.h state_id.h \
- resilient_policy.h policy_node.h resilient_node_formula.h policy.h \
- regression.h search_engines/search_engine.h search_engines/../operator.h \
+ resilient_policy.h resilient_node_formula.h policy.h regression.h \
+ search_engines/search_engine.h search_engines/../operator.h \
  search_engines/../search_space.h search_engines/../state.h \
  search_engines/../search_node_info.h search_engines/../state_id.h \
  search_engines/../operator.h search_engines/../operator_cost.h \
