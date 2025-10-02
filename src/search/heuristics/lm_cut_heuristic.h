@@ -65,15 +65,19 @@ struct RelaxedOperator
     std::vector<RelaxedProposition *> effects;
     int base_cost; // 0 for axioms, 1 for regular operators
 
-    int cost;
-    int unsatisfied_preconditions;
-    int h_max_supporter_cost; // h_max_cost of h_max_supporter
-    RelaxedProposition *h_max_supporter;
+    int cost = 0;
+    int unsatisfied_preconditions = 0;
+    int h_max_supporter_cost = 0;
+    RelaxedProposition *h_max_supporter = nullptr;  // inizializza anche questo
+
     RelaxedOperator(const std::vector<RelaxedProposition *> &pre,
                     const std::vector<RelaxedProposition *> &eff,
                     const Operator *the_op, int base)
         : op(the_op), precondition(pre), effects(eff), base_cost(base)
     {
+        // se vuoi, puoi anche impostare:
+        unsatisfied_preconditions = static_cast<int>(pre.size());
+        cost = base;
     }
 
     inline void update_h_max_supporter();

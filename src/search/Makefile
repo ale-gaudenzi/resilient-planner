@@ -160,7 +160,7 @@ OBJECTS_PROFILE = $(SOURCES:%.cc=.obj/%$(OBJECT_SUFFIX_PROFILE).o)
 TARGET_PROFILE  = $(TARGET)$(TARGET_SUFFIX_PROFILE)
 
 # CC     = g++ -pg -03
-CC     = g++
+CC     = g++ -O3
 DEPEND = g++ -MM 
 
 

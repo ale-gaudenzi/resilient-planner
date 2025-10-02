@@ -50,7 +50,7 @@ protected:
     // No implementation to prevent default construction
 
 public:
-    State();
+    State() = default;
 
     ~State();
 
